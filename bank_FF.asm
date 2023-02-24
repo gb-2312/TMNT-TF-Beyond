@@ -7273,28 +7273,6 @@ loc_F5CC_RTS:   ; bzk optimize
 C D 3 - - - 0x03F5DC 0F:F5CC: 60        RTS
 
 
-; bzk garbage
-- - - - - - 0x03F5DD 0F:F5CD: EA        NOP
-- - - - - - 0x03F5DE 0F:F5CE: EA        NOP
-- - - - - - 0x03F5DF 0F:F5CF: EA        NOP
-- - - - - - 0x03F5E0 0F:F5D0: EA        NOP
-- - - - - - 0x03F5E1 0F:F5D1: EA        NOP
-- - - - - - 0x03F5E2 0F:F5D2: EA        NOP
-- - - - - - 0x03F5E3 0F:F5D3: EA        NOP
-- - - - - - 0x03F5E4 0F:F5D4: EA        NOP
-- - - - - - 0x03F5E5 0F:F5D5: EA        NOP
-- - - - - - 0x03F5E6 0F:F5D6: EA        NOP
-- - - - - - 0x03F5E7 0F:F5D7: EA        NOP
-- - - - - - 0x03F5E8 0F:F5D8: EA        NOP
-- - - - - - 0x03F5E9 0F:F5D9: EA        NOP
-- - - - - - 0x03F5EA 0F:F5DA: EA        NOP
-
-
-; bzk garbage
-- - - - - - 0x03F5EB 0F:F5DB: A9 30     LDA #con_prg_bank + $10
-- - - - - - 0x03F5ED 0F:F5DD: D0 1A     BNE bra_F5F9   ; jmp
-
-
 
 sub_F5DF_swap_prg_12:
 C - - - - - 0x03F5EF 0F:F5DF: A9 32     LDA #con_prg_bank + $12
@@ -7330,10 +7308,6 @@ C - - - - - 0x03F601 0F:F5F1: D0 06     BNE bra_F5F9    ; jmp
 sub_F5F3_swap_prg_1C:
 C - - - - - 0x03F603 0F:F5F3: A9 3C     LDA #con_prg_bank + $1C
 C - - - - - 0x03F605 0F:F5F5: D0 02     BNE bra_F5F9    ; jmp
-
-
-; bzk garbage
-- - - - - - 0x03F607 0F:F5F7: A9 3E     LDA #con_prg_bank + $1E
 
 
 
