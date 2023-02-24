@@ -6492,12 +6492,6 @@ tbl_F0DE:
 - D 3 - - - 0x03F12C 0F:F11C: 00 82     .word _off006_0x000210_1F
 
 
-; bzk garbage
-- - - - - - 0x03F12E 0F:F11E: EA        .byte $EA, $EA, $EA   ; 
-- - - - - - 0x03F131 0F:F121: EA        .byte $EA, $EA, $EA, $EA, $EA, $EA, $EA, $EA, $EA, $EA, $EA, $EA, $EA, $EA, $EA, $EA   ; 
-- - - - - - 0x03F141 0F:F131: EA        .byte $EA, $EA, $EA   ; 
-
-
 
 tbl_F134:
 - D 3 - - - 0x03F144 0F:F134: 14        .byte $14   ; 00 leo
@@ -6695,12 +6689,6 @@ C - - - - - 0x03F27C 0F:F26C: A9 00     LDA #$00
 C - - - - - 0x03F27E 0F:F26E: 20 5D D2  JSR sub_D25D_записать_A_в_буфер_с_чтением_индекса
 C - - - - - 0x03F281 0F:F271: 85 23     STA ram_0023
 C - - - - - 0x03F283 0F:F273: 4C 6C F8  JMP loc_F86C
-
-
-; bzk garbage
-- - - - - - 0x03F286 0F:F276: EA        NOP
-- - - - - - 0x03F287 0F:F277: EA        NOP
-- - - - - - 0x03F288 0F:F278: EA        NOP
 
 
 
@@ -7054,11 +7042,6 @@ C - - - - - 0x03F4AE 0F:F49E: 2C        .byte $2C   ; BIT
 bra_F49F:
 C - - - - - 0x03F4AF 0F:F49F: A9 02     LDA #$02
 C - - - - - 0x03F4B1 0F:F4A1: 4C AE F5  JMP loc_F5AE
-
-
-; bzk garbage
-- - - - - - 0x03F4B4 0F:F4A4: EA        NOP
-- - - - - - 0x03F4B5 0F:F4A5: EA        NOP
 
 
 
