@@ -1835,10 +1835,6 @@ C - - - - - 0x024C3B 09:8C2B: 20 32 D0  JSR sub_0x03D042_поинтеры_пос
 - D 0 - I - 0x024C4E 09:8C3E: CA 8E     .word ofs_055_8ECA_08
 
 
-; bzk garbage
-- - - - - - 0x024C50 09:8C40: EA        NOP
-
-
 
 loc_8C41:
 C D 0 - - - 0x024C51 09:8C41: A9 0C     LDA #$0C
@@ -2294,14 +2290,6 @@ C - - - - - 0x024F63 09:8F53: A9 80     LDA #$80
 C - - - - - 0x024F65 09:8F55: 1D 80 05  ORA ram_obj_0580,X
 C - - - - - 0x024F68 09:8F58: 9D 80 05  STA ram_obj_0580,X
 C - - - - - 0x024F6B 09:8F5B: 4C 73 D0  JMP loc_0x03D083
-
-
-; bzk garbage
-- - - - - - 0x024F6E 09:8F5E: EA        NOP
-- - - - - - 0x024F6F 09:8F5F: EA        NOP
-- - - - - - 0x024F70 09:8F60: EA        NOP
-- - - - - - 0x024F71 09:8F61: EA        NOP
-- - - - - - 0x024F72 09:8F62: EA        NOP
 
 
 
@@ -2844,13 +2832,6 @@ C - - - - - 0x025348 09:9338: C9 01     CMP #$01
 C - - - - - 0x02534A 09:933A: F0 2D     BEQ bra_9369_RTS
 C - - - - - 0x02534C 09:933C: 20 18 D2  JSR sub_0x03D228
 C - - - - - 0x02534F 09:933F: 4C 65 DD  JMP loc_0x03DD75
-
-
-; bzk garbage
-- - - - - - 0x025352 09:9342: A0 0A     LDY #$0A
-- - - - - - 0x025354 09:9344: 20 E7 8A  JSR sub_8AE7
-- - - - - - 0x025357 09:9347: DE 60 05  DEC ram_obj_0560,X
-- - - - - - 0x02535A 09:934A: 10 1D     BPL bra_9369_RTS
 
 
 
