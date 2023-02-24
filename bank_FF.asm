@@ -2486,35 +2486,6 @@ bra_DA8D_loop:
 - - - - - - 0x03DAAE 0F:DA9E: 60        RTS
 
 
-; bzk garbage
-- - - - - - 0x03DAAF 0F:DA9F: A5 05     LDA ram_0005
-- - - - - - 0x03DAB1 0F:DAA1: 29 0F     AND #$0F
-- - - - - - 0x03DAB3 0F:DAA3: 38        SEC
-- - - - - - 0x03DAB4 0F:DAA4: E9 04     SBC #$04
-- - - - - - 0x03DAB6 0F:DAA6: C9 08     CMP #$08
-- - - - - - 0x03DAB8 0F:DAA8: 29 07     AND #$07
-- - - - - - 0x03DABA 0F:DAAA: A8        TAY
-- - - - - - 0x03DABB 0F:DAAB: A5 06     LDA ram_0006
-- - - - - - 0x03DABD 0F:DAAD: B0 02     BCS bra_DAB1
-- - - - - - 0x03DABF 0F:DAAF: A5 07     LDA ram_0007
-bra_DAB1:
-- - - - - - 0x03DAC1 0F:DAB1: D9 B5 DA  CMP tbl_DAB5,Y
-- - - - - - 0x03DAC4 0F:DAB4: 60        RTS
-
-
-; bzk garbage
-tbl_DAB5:
-- - - - - - 0x03DAC5 0F:DAB5: 33        .byte $33   ; 
-- - - - - - 0x03DAC6 0F:DAB6: 3C        .byte $3C   ; 
-- - - - - - 0x03DAC7 0F:DAB7: 43        .byte $43   ; 
-- - - - - - 0x03DAC8 0F:DAB8: 47        .byte $47   ; 
-- - - - - - 0x03DAC9 0F:DAB9: 48        .byte $48   ; 
-- - - - - - 0x03DACA 0F:DABA: 47        .byte $47   ; 
-- - - - - - 0x03DACB 0F:DABB: 43        .byte $43   ; 
-- - - - - - 0x03DACC 0F:DABC: 3C        .byte $3C   ; 
-- - - - - - 0x03DACD 0F:DABD: 33        .byte $33   ; 
-
-
 
 sub_DABE_удалить_все_объекты:
 sub_0x03DACE_удалить_все_объекты:
