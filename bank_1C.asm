@@ -1745,7 +1745,7 @@ ofs_012_8A91_00:
 C - - J - - 0x038AA1 0E:8A91: 20 CB 8A  JSR sub_8ACB
 C - - - - - 0x038AA4 0E:8A94: A2 03     LDX #$03
 bra_8A96_loop:
-C - - - - - 0x038AA6 0E:8A96: 9D 2B 06  STA ram_062B,X
+C - - - - - 0x038AA6 0E:8A96: 9D 2B 06  STA ram_062B,X ; 062B 062C 062D 062E 
 C - - - - - 0x038AA9 0E:8A99: CA        DEX
 C - - - - - 0x038AAA 0E:8A9A: 10 FA     BPL bra_8A96_loop
 C - - - - - 0x038AAC 0E:8A9C: A0 00     LDY #$00
@@ -1939,13 +1939,13 @@ bra_8BB7:
 C - - - - - 0x038BC7 0E:8BB7: 9D 26 06  STA ram_plr_0626,X
 C - - - - - 0x038BCA 0E:8BBA: B5 11     LDA ram_0011,X
 C - - - - - 0x038BCC 0E:8BBC: 18        CLC
-C - - - - - 0x038BCD 0E:8BBD: 7D 2B 06  ADC ram_062B,X
+C - - - - - 0x038BCD 0E:8BBD: 7D 2B 06  ADC ram_062B,X ; 062B 062C 062D 062E 
 C - - - - - 0x038BD0 0E:8BC0: C9 0A     CMP #$0A
 C - - - - - 0x038BD2 0E:8BC2: 90 05     BCC bra_8BC9
 C - - - - - 0x038BD4 0E:8BC4: FE 2A 06  INC ram_plr_062A,X
 C - - - - - 0x038BD7 0E:8BC7: E9 0A     SBC #$0A
 bra_8BC9:
-C - - - - - 0x038BD9 0E:8BC9: 9D 2B 06  STA ram_062B,X
+C - - - - - 0x038BD9 0E:8BC9: 9D 2B 06  STA ram_062B,X ; 062B 062C 062D 062E 
 C - - - - - 0x038BDC 0E:8BCC: CA        DEX
 C - - - - - 0x038BDD 0E:8BCD: 10 D9     BPL bra_8BA8_loop
 C - - - - - 0x038BDF 0E:8BCF: AD 71 06  LDA ram_0671
@@ -1996,7 +1996,7 @@ C - - - - - 0x038C31 0E:8C21: 20 5B D2  JSR sub_0x03D26B_записать_FF_в_
 bra_8C24:
 C - - - - - 0x038C34 0E:8C24: A2 00     LDX #$00
 bra_8C26_loop:
-C - - - - - 0x038C36 0E:8C26: BD 2B 06  LDA ram_062B,X
+C - - - - - 0x038C36 0E:8C26: BD 2B 06  LDA ram_062B,X ; 062B 062C 062D 062E 
 C - - - - - 0x038C39 0E:8C29: D0 07     BNE bra_8C32
 C - - - - - 0x038C3B 0E:8C2B: E8        INX
 C - - - - - 0x038C3C 0E:8C2C: E0 04     CPX #$04
@@ -2012,7 +2012,7 @@ C - - - - - 0x038C49 0E:8C39: A9 23     LDA #> $2371
 C - - - - - 0x038C4B 0E:8C3B: 20 6B D2  JSR sub_0x03D27B_записать_адрес_2006_Y_и_A_в_буфер
 C - - - - - 0x038C4E 0E:8C3E: A4 00     LDY ram_0000
 bra_8C40_loop:
-C - - - - - 0x038C50 0E:8C40: B9 2B 06  LDA ram_062B,Y
+C - - - - - 0x038C50 0E:8C40: B9 2B 06  LDA ram_062B,Y ; 062C 062D 062E 
 C - - - - - 0x038C53 0E:8C43: 18        CLC
 C - - - - - 0x038C54 0E:8C44: 69 81     ADC #$81
 C - - - - - 0x038C56 0E:8C46: 20 5D D2  JSR sub_0x03D26D_записать_A_в_буфер_с_чтением_индекса

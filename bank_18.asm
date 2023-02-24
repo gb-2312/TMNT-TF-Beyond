@@ -212,7 +212,7 @@ _off014_8166_07_continue:
 
 
 
-_off014_8174_09:
+_off014_8174_09_easy:
 - D 0 - I - 0x030184 0C:8174: 74 20     .word $2074
 - D 0 - I - 0x030186 0C:8176: 8F        .byte $8F, $8B, $9D, $A3, $00, $00   ; EASY
 
@@ -220,7 +220,7 @@ _off014_8174_09:
 
 
 
-_off014_817D_0A:
+_off014_817D_0A_normal:
 - D 0 - I - 0x03018D 0C:817D: 74 20     .word $2074
 - D 0 - I - 0x03018F 0C:817F: 98        .byte $98, $99, $9C, $97, $8B, $96   ; NORMAL
 
@@ -228,7 +228,7 @@ _off014_817D_0A:
 
 
 
-_off014_8186_0B:
+_off014_8186_0B_hard:
 - D 0 - I - 0x030196 0C:8186: 74 20     .word $2074
 - D 0 - I - 0x030198 0C:8188: 92        .byte $92, $8B, $9C, $8E, $00, $00   ; HARD
 
@@ -236,7 +236,7 @@ _off014_8186_0B:
 
 
 
-_off014_818F_13:
+_off014_818F_13_normal:
 - D 0 - I - 0x03019F 0C:818F: F4 20     .word $20F4
 - D 0 - I - 0x0301A1 0C:8191: 98        .byte $98, $99, $9C, $97, $8B, $96   ; NORMAL
 
@@ -244,7 +244,7 @@ _off014_818F_13:
 
 
 
-_off014_8198_14:
+_off014_8198_14_turbo:
 - D 0 - I - 0x0301A8 0C:8198: F4 20     .word $20F4
 - D 0 - I - 0x0301AA 0C:819A: 9E        .byte $9E, $9F, $9C, $8C, $99, $00   ; TURBO
 
@@ -252,7 +252,7 @@ _off014_8198_14:
 
 
 
-_off014_81A1_0E:
+_off014_81A1_0E_winner:
 - - - - - - 0x0301B1 0C:81A1: ED 20     .word $20ED
 - - - - - - 0x0301B3 0C:81A3: A1        .byte $A1, $93, $98, $98, $8F, $9C   ; WINNER
 
@@ -260,7 +260,7 @@ _off014_81A1_0E:
 
 
 
-_off014_81AA_0F:
+_off014_81AA_0F_player1_player2:
 - - - - - - 0x0301BA 0C:81AA: 02 25     .word $2502
 - - - - - - 0x0301BC 0C:81AC: 9A        .byte $9A, $96, $8B, $A3, $8F, $9C, $82   ; PLAYER1
 
@@ -281,7 +281,7 @@ _off014_81BE_11:
 
 
 
-_off014_81CB_12:
+_off014_81CB_12_cpu:
 - D 0 - I - 0x0301DB 0C:81CB: 74 20     .word $2074
 - D 0 - I - 0x0301DD 0C:81CD: 00        .byte $00, $00, $8D, $9A, $9F, $00, $00, $00   ; CPU
 
@@ -289,7 +289,7 @@ _off014_81CB_12:
 
 
 
-_off014_81D6_15:
+_off014_81D6_15_bonus:
 - D 0 - I - 0x0301E6 0C:81D6: 6A 23     .word $236A
 - D 0 - I - 0x0301E8 0C:81D8: 8C        .byte $8C, $99, $98, $9F, $9D   ; BONUS
 
@@ -302,7 +302,7 @@ _off014_81D6_15:
 
 
 
-_off014_81E3_16:
+_off014_81E3_16_time:
 - D 0 - I - 0x0301F3 0C:81E3: 2A 23     .word $232A
 - D 0 - I - 0x0301F5 0C:81E5: 9E        .byte $9E, $93, $97, $8F   ; TIME
 
@@ -310,7 +310,7 @@ _off014_81E3_16:
 
 
 
-_off014_81EA_17:
+_off014_81EA_17_perfect:
 - D 0 - I - 0x0301FA 0C:81EA: 4A 23     .word $234A
 - D 0 - I - 0x0301FC 0C:81EC: 9A        .byte $9A, $8F, $9C, $90, $8F, $8D, $9E   ; PERFECT
 
@@ -318,7 +318,7 @@ _off014_81EA_17:
 
 
 
-_off014_81F4_18:
+_off014_81F4_18_life:
 - D 0 - I - 0x030204 0C:81F4: 4A 23     .word $234A
 - D 0 - I - 0x030206 0C:81F6: 96        .byte $96, $93, $90, $8F   ; LIFE
 
@@ -326,7 +326,7 @@ _off014_81F4_18:
 
 
 
-_off014_81FB_19:
+_off014_81FB_19_rematch:
 - D 0 - I - 0x03020B 0C:81FB: 0D 23     .word $230D
 - D 0 - I - 0x03020D 0C:81FD: 9C        .byte $9C, $8F, $97, $8B, $9E, $8D, $92   ; REMATCH
 
@@ -334,7 +334,7 @@ _off014_81FB_19:
 
 
 
-_off014_8205_1A:
+_off014_8205_1A_end:
 - D 0 - I - 0x030215 0C:8205: 4D 23     .word $234D
 - D 0 - I - 0x030217 0C:8207: 8F        .byte $8F, $98, $8E   ; END
 
@@ -342,7 +342,7 @@ _off014_8205_1A:
 
 
 
-_off014_820B_08:
+_off014_820B_08_bonus_game:
 - D 0 - I - 0x03021B 0C:820B: 0C 22     .word $220C
 - D 0 - I - 0x03021D 0C:820D: 8C        .byte $8C, $99, $98, $9F, $9D, $00, $91, $8B, $97, $8F   ; BONUS GAME
 
@@ -350,7 +350,7 @@ _off014_820B_08:
 
 
 
-_off014_8218_0D:
+_off014_8218_0D_time_bonus_game:
 - D 0 - I - 0x030228 0C:8218: 89 20     .word $2089
 - D 0 - I - 0x03022A 0C:821A: 9E        .byte $9E, $93, $97, $8F   ; TIME
 
@@ -363,7 +363,7 @@ _off014_8218_0D:
 
 
 
-_off014_822C_0C:
+_off014_822C_0C_expert:
 - D 0 - I - 0x03023C 0C:822C: 74 20     .word $2074
 - D 0 - I - 0x03023E 0C:822E: 8F        .byte $8F, $A2, $9A, $8F, $9C, $9E   ; EXPERT
 
@@ -1481,7 +1481,7 @@ _off001_8AD6_59:
 
 
 
-_off014_8AF8_30:
+_off014_8AF8_30_off:
 - D 0 - I - 0x030B08 0C:8AF8: 74 20     .word $2074
 - D 0 - I - 0x030B0A 0C:8AFA: 99        .byte $99, $90, $90, $00, $00, $00   ; OFF
 
@@ -1489,7 +1489,7 @@ _off014_8AF8_30:
 
 
 
-_off014_8B01_31:
+_off014_8B01_31_on:
 ; bzk optimize, лишние пробелы в конце
 - D 0 - I - 0x030B11 0C:8B01: 74 20     .word $2074
 - D 0 - I - 0x030B13 0C:8B03: 99        .byte $99, $98, $00, $00, $00, $00   ; ON
@@ -1498,7 +1498,7 @@ _off014_8B01_31:
 
 
 
-_off014_8B0A_32:
+_off014_8B0A_32_off:
 ; bzk optimize, лишние пробелы в конце
 - D 0 - I - 0x030B1A 0C:8B0A: B4 20     .word $20B4
 - D 0 - I - 0x030B1C 0C:8B0C: 99        .byte $99, $90, $90, $00, $00, $00, $00, $00   ; OFF
@@ -1507,7 +1507,7 @@ _off014_8B0A_32:
 
 
 
-_off014_8B15_33:
+_off014_8B15_33_on:
 - D 0 - I - 0x030B25 0C:8B15: B4 20     .word $20B4
 - D 0 - I - 0x030B27 0C:8B17: 99        .byte $99, $98, $00, $00, $00, $00, $00, $00   ; ON
 
@@ -1515,7 +1515,7 @@ _off014_8B15_33:
 
 
 
-_off014_8B20_26:
+_off014_8B20_26_difficulty:
 - D 0 - I - 0x030B30 0C:8B20: 66 20     .word $2066
 - D 0 - I - 0x030B32 0C:8B22: 8E        .byte $8E, $93, $90, $90, $93, $8D, $9F, $96, $9E, $A3   ; DIFFICULTY
 
@@ -1523,7 +1523,7 @@ _off014_8B20_26:
 
 
 
-_off014_8B2D_27:
+_off014_8B2D_27_skin:
 ; bzk optimize, лишние пробелы в конце
 - D 0 - I - 0x030B3D 0C:8B2D: A6 20     .word $20A6
 - D 0 - I - 0x030B3F 0C:8B2F: 9D        .byte $9D, $95, $93, $98, $00, $00, $00, $00, $00, $00   ; SKIN
@@ -1532,7 +1532,7 @@ _off014_8B2D_27:
 
 
 
-_off014_8B3A_28:
+_off014_8B3A_28_speed:
 - D 0 - I - 0x030B4A 0C:8B3A: E6 20     .word $20E6
 - D 0 - I - 0x030B4C 0C:8B3C: 9D        .byte $9D, $9A, $8F, $8F, $8E   ; SPEED
 
@@ -1540,7 +1540,7 @@ _off014_8B3A_28:
 
 
 
-_off014_8B42_29:
+_off014_8B42_29_timer:
 - D 0 - I - 0x030B52 0C:8B42: 26 21     .word $2126
 - D 0 - I - 0x030B54 0C:8B44: 9E        .byte $9E, $93, $97, $8F, $9C, $00, $00, $00, $00, $00, $00, $00, $00   ; TIMER
 
@@ -1548,7 +1548,7 @@ _off014_8B42_29:
 
 
 
-_off014_8B52_2A:
+_off014_8B52_2A_health:
 - D 0 - I - 0x030B62 0C:8B52: 66 21     .word $2166
 - D 0 - I - 0x030B64 0C:8B54: 92        .byte $92, $8F, $8B, $96, $9E, $92, $00, $00, $00, $00, $00, $00, $00   ; HEALTH
 
@@ -1556,7 +1556,7 @@ _off014_8B52_2A:
 
 
 
-_off014_8B62_2B:
+_off014_8B62_2B_balancing:
 - D 0 - I - 0x030B72 0C:8B62: 66 20     .word $2066
 - D 0 - I - 0x030B74 0C:8B64: 8C        .byte $8C, $8B, $96, $8B, $98, $8D, $93, $98, $91, $00   ; BALANCING
 
@@ -1564,7 +1564,7 @@ _off014_8B62_2B:
 
 
 
-_off014_8B6F_2C:
+_off014_8B6F_2C_shred_ctrl:
 - D 0 - I - 0x030B7F 0C:8B6F: A6 20     .word $20A6
 - D 0 - I - 0x030B81 0C:8B71: 9D        .byte $9D, $92, $9C, $8F, $8E, $00, $8D, $9E, $9C, $96   ; SHRED CTRL
 
@@ -1572,7 +1572,7 @@ _off014_8B6F_2C:
 
 
 
-_off014_8B7C_2D:
+_off014_8B7C_2D_bgm:
 - D 0 - I - 0x030B8C 0C:8B7C: E6 20     .word $20E6
 - D 0 - I - 0x030B8E 0C:8B7E: 8C        .byte $8C, $91, $97, $00, $00   ; BGM
 
@@ -1580,7 +1580,7 @@ _off014_8B7C_2D:
 
 
 
-_off014_8B84_2E:
+_off014_8B84_2E_team_keeps:
 - D 0 - I - 0x030B94 0C:8B84: 26 21     .word $2126
 - D 0 - I - 0x030B96 0C:8B86: 9E        .byte $9E, $8F, $8B, $97, $00, $95, $8F, $8F, $9A, $9D   ; TEAM KEEPS
 - D 0 - I - 0x030BA0 0C:8B90: 00        .byte $00, $00, $00, $00, $00, $00, $00   ; 
@@ -1589,7 +1589,7 @@ _off014_8B84_2E:
 
 
 
-_off014_8B98_2F:
+_off014_8B98_2F_______:
 - D 0 - I - 0x030BA8 0C:8B98: 66 21     .word $2166
 - D 0 - I - 0x030BAA 0C:8B9A: 00        .byte $00, $00, $00, $00, $00, $00   ; 
 - D 0 - I - 0x030BB0 0C:8BA0: BD        .byte $BD, $BD, $BD, $BD, $BD, $BD, $BD   ; -------
@@ -1599,7 +1599,7 @@ _off014_8B98_2F:
 
 
 
-_off014_8BAD_36:
+_off014_8BAD_36_losermix:
 - D 0 - I - 0x030BBD 0C:8BAD: 34 21     .word $2134
 - D 0 - I - 0x030BBF 0C:8BAF: 96        .byte $96, $99, $9D, $8F, $9C, $97, $93, $A2   ; LOSERMIX
 
@@ -1607,7 +1607,7 @@ _off014_8BAD_36:
 
 
 
-_off014_8BB8_35:
+_off014_8BB8_35_loser:
 - D 0 - I - 0x030BC8 0C:8BB8: 34 21     .word $2134
 - D 0 - I - 0x030BCA 0C:8BBA: 96        .byte $96, $99, $9D, $8F, $9C, $00, $00, $00   ; LOSER
 
@@ -1615,7 +1615,7 @@ _off014_8BB8_35:
 
 
 
-_off014_8BC3_37:
+_off014_8BC3_37_winner:
 - D 0 - I - 0x030BD3 0C:8BC3: 34 21     .word $2134
 - D 0 - I - 0x030BD5 0C:8BC5: A1        .byte $A1, $93, $98, $98, $8F, $9C, $00, $00   ; WINNER
 
@@ -1623,7 +1623,7 @@ _off014_8BC3_37:
 
 
 
-_off014_8BCE_38:
+_off014_8BCE_38_survival:
 - D 0 - I - 0x030BDE 0C:8BCE: 34 21     .word $2134
 - D 0 - I - 0x030BE0 0C:8BD0: 9D        .byte $9D, $9F, $9C, $A0, $93, $A0, $8B, $96   ; SURVIVAL
 
@@ -1631,7 +1631,7 @@ _off014_8BCE_38:
 
 
 
-_off014_8BD9_34:
+_off014_8BD9_34_no_one:
 - D 0 - I - 0x030BE9 0C:8BD9: 34 21     .word $2134
 - D 0 - I - 0x030BEB 0C:8BDB: 98        .byte $98, $99, $00, $99, $98, $8F, $00, $00   ; NO ONE
 
@@ -1650,55 +1650,55 @@ tbl_8C00:
 - D 0 - - - 0x030C1A 0C:8C0A: 4E 81     .word _off014_814E_05_option
 - D 0 - - - 0x030C1C 0C:8C0C: 57 81     .word _off014_8157_06_game_over
 - D 0 - - - 0x030C1E 0C:8C0E: 66 81     .word _off014_8166_07_continue
-- D 0 - - - 0x030C20 0C:8C10: 0B 82     .word _off014_820B_08
-- D 0 - - - 0x030C22 0C:8C12: 74 81     .word _off014_8174_09
-- D 0 - - - 0x030C24 0C:8C14: 7D 81     .word _off014_817D_0A
-- D 0 - - - 0x030C26 0C:8C16: 86 81     .word _off014_8186_0B
-- D 0 - - - 0x030C28 0C:8C18: 2C 82     .word _off014_822C_0C
-- D 0 - - - 0x030C2A 0C:8C1A: 18 82     .word _off014_8218_0D
-- - - - - - 0x030C2C 0C:8C1C: A1 81     .word _off014_81A1_0E
-- - - - - - 0x030C2E 0C:8C1E: AA 81     .word _off014_81AA_0F
-- - - - - - 0x030C30 0C:8C20: FF FF     .word $FFFF      ; 10
+- D 0 - - - 0x030C20 0C:8C10: 0B 82     .word _off014_820B_08_bonus_game
+- D 0 - - - 0x030C22 0C:8C12: 74 81     .word _off014_8174_09_easy
+- D 0 - - - 0x030C24 0C:8C14: 7D 81     .word _off014_817D_0A_normal
+- D 0 - - - 0x030C26 0C:8C16: 86 81     .word _off014_8186_0B_hard
+- D 0 - - - 0x030C28 0C:8C18: 2C 82     .word _off014_822C_0C_expert
+- D 0 - - - 0x030C2A 0C:8C1A: 18 82     .word _off014_8218_0D_time_bonus_game
+- - - - - - 0x030C2C 0C:8C1C: A1 81     .word _off014_81A1_0E_winner
+- - - - - - 0x030C2E 0C:8C1E: AA 81     .word _off014_81AA_0F_player1_player2
+- - - - - - 0x030C30 0C:8C20: FF FF     .word $FFFF      ; 10 индекс не существует
 - D 0 - - - 0x030C32 0C:8C22: BE 81     .word _off014_81BE_11
-- D 0 - - - 0x030C34 0C:8C24: CB 81     .word _off014_81CB_12
-- D 0 - - - 0x030C36 0C:8C26: 8F 81     .word _off014_818F_13
-- D 0 - - - 0x030C38 0C:8C28: 98 81     .word _off014_8198_14
-- D 0 - - - 0x030C3A 0C:8C2A: D6 81     .word _off014_81D6_15
-- D 0 - - - 0x030C3C 0C:8C2C: E3 81     .word _off014_81E3_16
-- D 0 - - - 0x030C3E 0C:8C2E: EA 81     .word _off014_81EA_17
-- D 0 - - - 0x030C40 0C:8C30: F4 81     .word _off014_81F4_18
-- D 0 - - - 0x030C42 0C:8C32: FB 81     .word _off014_81FB_19
-- D 0 - - - 0x030C44 0C:8C34: 05 82     .word _off014_8205_1A
-- D 0 - - - 0x030C46 0C:8C36: 1D B0     .word _off014_B01D_1B
-- D 0 - - - 0x030C48 0C:8C38: 24 B0     .word _off014_B024_1C
-- D 0 - - - 0x030C4A 0C:8C3A: 2B B0     .word _off014_B02B_1D
-- D 0 - - - 0x030C4C 0C:8C3C: 32 B0     .word _off014_B032_1E
-- D 0 - - - 0x030C4E 0C:8C3E: F1 AF     .word _off014_AFF1_1F
-- D 0 - - - 0x030C50 0C:8C40: FC AF     .word _off014_AFFC_20
-- D 0 - - - 0x030C52 0C:8C42: 07 B0     .word _off014_B007_21
-- D 0 - - - 0x030C54 0C:8C44: 12 B0     .word _off014_B012_22
-- D 0 - - - 0x030C56 0C:8C46: 39 B0     .word _off014_B039_23
-- D 0 - - - 0x030C58 0C:8C48: 44 B0     .word _off014_B044_24
-- D 0 - - - 0x030C5A 0C:8C4A: 4F B0     .word _off014_B04F_25
-- D 0 - - - 0x030C5C 0C:8C4C: 20 8B     .word _off014_8B20_26
-- D 0 - - - 0x030C5E 0C:8C4E: 2D 8B     .word _off014_8B2D_27
-- D 0 - - - 0x030C60 0C:8C50: 3A 8B     .word _off014_8B3A_28
-- D 0 - - - 0x030C62 0C:8C52: 42 8B     .word _off014_8B42_29
-- D 0 - - - 0x030C64 0C:8C54: 52 8B     .word _off014_8B52_2A
-- D 0 - - - 0x030C66 0C:8C56: 62 8B     .word _off014_8B62_2B
-- D 0 - - - 0x030C68 0C:8C58: 6F 8B     .word _off014_8B6F_2C
-- D 0 - - - 0x030C6A 0C:8C5A: 7C 8B     .word _off014_8B7C_2D
-- D 0 - - - 0x030C6C 0C:8C5C: 84 8B     .word _off014_8B84_2E
-- D 0 - - - 0x030C6E 0C:8C5E: 98 8B     .word _off014_8B98_2F
-- D 0 - - - 0x030C70 0C:8C60: F8 8A     .word _off014_8AF8_30
-- D 0 - - - 0x030C72 0C:8C62: 01 8B     .word _off014_8B01_31
-- D 0 - - - 0x030C74 0C:8C64: 0A 8B     .word _off014_8B0A_32
-- D 0 - - - 0x030C76 0C:8C66: 15 8B     .word _off014_8B15_33
-- D 0 - - - 0x030C78 0C:8C68: D9 8B     .word _off014_8BD9_34
-- D 0 - - - 0x030C7A 0C:8C6A: B8 8B     .word _off014_8BB8_35
-- D 0 - - - 0x030C7C 0C:8C6C: AD 8B     .word _off014_8BAD_36
-- D 0 - - - 0x030C7E 0C:8C6E: C3 8B     .word _off014_8BC3_37
-- D 0 - - - 0x030C80 0C:8C70: CE 8B     .word _off014_8BCE_38
+- D 0 - - - 0x030C34 0C:8C24: CB 81     .word _off014_81CB_12_cpu
+- D 0 - - - 0x030C36 0C:8C26: 8F 81     .word _off014_818F_13_normal
+- D 0 - - - 0x030C38 0C:8C28: 98 81     .word _off014_8198_14_turbo
+- D 0 - - - 0x030C3A 0C:8C2A: D6 81     .word _off014_81D6_15_bonus
+- D 0 - - - 0x030C3C 0C:8C2C: E3 81     .word _off014_81E3_16_time
+- D 0 - - - 0x030C3E 0C:8C2E: EA 81     .word _off014_81EA_17_perfect
+- D 0 - - - 0x030C40 0C:8C30: F4 81     .word _off014_81F4_18_life
+- D 0 - - - 0x030C42 0C:8C32: FB 81     .word _off014_81FB_19_rematch
+- D 0 - - - 0x030C44 0C:8C34: 05 82     .word _off014_8205_1A_end
+- D 0 - - - 0x030C46 0C:8C36: 1D B0     .word _off014_B01D_1B_100
+- D 0 - - - 0x030C48 0C:8C38: 24 B0     .word _off014_B024_1C_150
+- D 0 - - - 0x030C4A 0C:8C3A: 2B B0     .word _off014_B02B_1D_200
+- D 0 - - - 0x030C4C 0C:8C3C: 32 B0     .word _off014_B032_1E_бесконечность
+- D 0 - - - 0x030C4E 0C:8C3E: F1 AF     .word _off014_AFF1_1F_45
+- D 0 - - - 0x030C50 0C:8C40: FC AF     .word _off014_AFFC_20_60
+- D 0 - - - 0x030C52 0C:8C42: 07 B0     .word _off014_B007_21_99
+- D 0 - - - 0x030C54 0C:8C44: 12 B0     .word _off014_B012_22_бесконечность
+- D 0 - - - 0x030C56 0C:8C46: 39 B0     .word _off014_B039_23_green
+- D 0 - - - 0x030C58 0C:8C48: 44 B0     .word _off014_B044_24_original
+- D 0 - - - 0x030C5A 0C:8C4A: 4F B0     .word _off014_B04F_25_night
+- D 0 - - - 0x030C5C 0C:8C4C: 20 8B     .word _off014_8B20_26_difficulty
+- D 0 - - - 0x030C5E 0C:8C4E: 2D 8B     .word _off014_8B2D_27_skin
+- D 0 - - - 0x030C60 0C:8C50: 3A 8B     .word _off014_8B3A_28_speed
+- D 0 - - - 0x030C62 0C:8C52: 42 8B     .word _off014_8B42_29_timer
+- D 0 - - - 0x030C64 0C:8C54: 52 8B     .word _off014_8B52_2A_health
+- D 0 - - - 0x030C66 0C:8C56: 62 8B     .word _off014_8B62_2B_balancing
+- D 0 - - - 0x030C68 0C:8C58: 6F 8B     .word _off014_8B6F_2C_shred_ctrl
+- D 0 - - - 0x030C6A 0C:8C5A: 7C 8B     .word _off014_8B7C_2D_bgm
+- D 0 - - - 0x030C6C 0C:8C5C: 84 8B     .word _off014_8B84_2E_team_keeps
+- D 0 - - - 0x030C6E 0C:8C5E: 98 8B     .word _off014_8B98_2F_______
+- D 0 - - - 0x030C70 0C:8C60: F8 8A     .word _off014_8AF8_30_off
+- D 0 - - - 0x030C72 0C:8C62: 01 8B     .word _off014_8B01_31_on
+- D 0 - - - 0x030C74 0C:8C64: 0A 8B     .word _off014_8B0A_32_off
+- D 0 - - - 0x030C76 0C:8C66: 15 8B     .word _off014_8B15_33_on
+- D 0 - - - 0x030C78 0C:8C68: D9 8B     .word _off014_8BD9_34_no_one
+- D 0 - - - 0x030C7A 0C:8C6A: B8 8B     .word _off014_8BB8_35_loser
+- D 0 - - - 0x030C7C 0C:8C6C: AD 8B     .word _off014_8BAD_36_losermix
+- D 0 - - - 0x030C7E 0C:8C6E: C3 8B     .word _off014_8BC3_37_winner
+- D 0 - - - 0x030C80 0C:8C70: CE 8B     .word _off014_8BCE_38_survival
 
 
 
@@ -1791,7 +1791,7 @@ C - - - - - 0x031079 0C:9069: D0 F4     BNE bra_905F_loop    ; jmp
 
 
 
-_off014_AFF1_1F:
+_off014_AFF1_1F_45:
 - D 1 - I - 0x033001 0C:AFF1: 34 21     .word $2134
 - D 1 - I - 0x033003 0C:AFF3: 00        .byte $00, $85, $86, $00, $00, $00, $00, $00   ; 45
 
@@ -1799,7 +1799,7 @@ _off014_AFF1_1F:
 
 
 
-_off014_AFFC_20:
+_off014_AFFC_20_60:
 - D 1 - I - 0x03300C 0C:AFFC: 34 21     .word $2134
 - D 1 - I - 0x03300E 0C:AFFE: 00        .byte $00, $87, $81, $00, $00, $00, $00, $00   ; 60
 
@@ -1807,7 +1807,7 @@ _off014_AFFC_20:
 
 
 
-_off014_B007_21:
+_off014_B007_21_99:
 - D 1 - I - 0x033017 0C:B007: 34 21     .word $2134
 - D 1 - I - 0x033019 0C:B009: 00        .byte $00, $8A, $8A, $00, $00, $00, $00, $00   ; 99
 
@@ -1815,7 +1815,7 @@ _off014_B007_21:
 
 
 
-_off014_B012_22:
+_off014_B012_22_бесконечность:
 - D 1 - I - 0x033022 0C:B012: 34 21     .word $2134
 - D 1 - I - 0x033024 0C:B014: 00        .byte $00, $BA, $BB, $00, $00, $00, $00, $00   ; бесконечность
 
@@ -1823,7 +1823,7 @@ _off014_B012_22:
 
 
 
-_off014_B01D_1B:
+_off014_B01D_1B_100:
 - D 1 - I - 0x03302D 0C:B01D: 74 21     .word $2174
 - D 1 - I - 0x03302F 0C:B01F: 82        .byte $82, $81, $81, $BC   ; 100%
 
@@ -1831,7 +1831,7 @@ _off014_B01D_1B:
 
 
 
-_off014_B024_1C:
+_off014_B024_1C_150:
 - D 1 - I - 0x033034 0C:B024: 74 21     .word $2174
 - D 1 - I - 0x033036 0C:B026: 82        .byte $82, $86, $81, $BC   ; 150%
 
@@ -1839,7 +1839,7 @@ _off014_B024_1C:
 
 
 
-_off014_B02B_1D:
+_off014_B02B_1D_200:
 - D 1 - I - 0x03303B 0C:B02B: 74 21     .word $2174
 - D 1 - I - 0x03303D 0C:B02D: 83        .byte $83, $81, $81, $BC   ; 200%
 
@@ -1847,7 +1847,7 @@ _off014_B02B_1D:
 
 
 
-_off014_B032_1E:
+_off014_B032_1E_бесконечность:
 ; bzk optimize, заменить 80 на 00
 - D 1 - I - 0x033042 0C:B032: 74 21     .word $2174
 - D 1 - I - 0x033044 0C:B034: 80        .byte $80, $BA, $BB, $80   ; бесконечность
@@ -1856,7 +1856,7 @@ _off014_B032_1E:
 
 
 
-_off014_B039_23:
+_off014_B039_23_green:
 - D 1 - I - 0x033049 0C:B039: B4 20     .word $20B4
 - D 1 - I - 0x03304B 0C:B03B: 91        .byte $91, $9C, $8F, $8F, $98, $00, $00, $00   ; GREEN
 
@@ -1864,7 +1864,7 @@ _off014_B039_23:
 
 
 
-_off014_B044_24:
+_off014_B044_24_original:
 - D 1 - I - 0x033054 0C:B044: B4 20     .word $20B4
 - D 1 - I - 0x033056 0C:B046: 99        .byte $99, $9C, $93, $91, $93, $98, $8B, $96   ; ORIGINAL
 
@@ -1872,7 +1872,7 @@ _off014_B044_24:
 
 
 
-_off014_B04F_25:
+_off014_B04F_25_night:
 - D 1 - I - 0x03305F 0C:B04F: B4 20     .word $20B4
 - D 1 - I - 0x033061 0C:B051: 98        .byte $98, $93, $91, $92, $9E, $00, $00, $00   ; NIGHT
 
