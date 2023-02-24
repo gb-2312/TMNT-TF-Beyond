@@ -2093,17 +2093,6 @@ _off015_8C43_0A:
 - D 0 - I - 0x034C55 0D:8C45: FF        .byte con_8B0B_FF   ; 
 
 
-; bzk garbage
-- - - - - - 0x034C56 0D:8C46: FD        .byte con_8B0B_FD   ; 
-- - - - - - 0x034C57 0D:8C47: 06        .byte $06   ; 
-- - - - - - 0x034C58 0D:8C48: F4        .byte con_8B0B_F4   ; 
-- - - - - - 0x034C59 0D:8C49: FD        .byte con_8B0B_FD   ; 
-- - - - - - 0x034C5A 0D:8C4A: 04        .byte $04   ; 
-- - - - - - 0x034C5B 0D:8C4B: 04        .byte $04   ; 
-- - - - - - 0x034C5C 0D:8C4C: 40        .byte $40   ; 
-- - - - - - 0x034C5D 0D:8C4D: FF        .byte con_8B0B_FF   ; 
-
-
 
 _off015_8C4E_07:
 - D 0 - I - 0x034C5E 0D:8C4E: DE        .byte con_8B0B_DE   ; 
