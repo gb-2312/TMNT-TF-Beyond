@@ -3302,7 +3302,7 @@ C - - - - - 0x03E25A 0F:E24A: 4C 25 DC  JMP loc_DC25
 
 ofs_001_E24E_03:
 C - - J - - 0x03E25E 0F:E24E: 20 3F F0  JSR sub_F03F
-C - - - - - 0x03E261 0F:E251: A2 28     LDX #$28
+C - - - - - 0x03E261 0F:E251: A2 28     LDX #con_0x03F0EE_28
 C - - - - - 0x03E263 0F:E253: 20 44 F0  JSR sub_F044
 C - - - - - 0x03E266 0F:E256: E6 95     INC ram_0095
 C - - - - - 0x03E268 0F:E258: A9 00     LDA #$00
@@ -3582,7 +3582,7 @@ C - - - - - 0x03E406 0F:E3F6: A9 36     LDA #con_prg_bank + $16
 C - - - - - 0x03E408 0F:E3F8: 20 00 F6  JSR sub_F600_swap_prg_16
 C - - - - - 0x03E40B 0F:E3FB: 20 50 AE  JSR sub_0x02EE60_выбрать_палитру_уровня
 C - - - - - 0x03E40E 0F:E3FE: 20 44 F0  JSR sub_F044
-C - - - - - 0x03E411 0F:E401: A2 0C     LDX #$0C
+C - - - - - 0x03E411 0F:E401: A2 0C     LDX #con_0x03F0EE_0C
 C - - - - - 0x03E413 0F:E403: 20 44 F0  JSR sub_F044
 C - - - - - 0x03E416 0F:E406: 20 9E EB  JSR sub_EB9E_вывести_имя_перса_над_шкалой_здоровья
 C - - - - - 0x03E419 0F:E409: A2 01     LDX #$01
@@ -4180,13 +4180,13 @@ C - - - - - 0x03E808 0F:E7F8: 8D 10 04  STA ram_obj_pos_Y
 C - - - - - 0x03E80B 0F:E7FB: A9 09     LDA #con_0x03F84C_09
 C - - - - - 0x03E80D 0F:E7FD: 20 14 F8  JSR sub_F814
 C - - - - - 0x03E810 0F:E800: 20 BE DA  JSR sub_DABE_удалить_все_объекты
-C - - - - - 0x03E813 0F:E803: A2 1C     LDX #$1C
+C - - - - - 0x03E813 0F:E803: A2 1C     LDX #con_0x03F0EE_1C
 C - - - - - 0x03E815 0F:E805: 20 44 F0  JSR sub_F044
 C - - - - - 0x03E818 0F:E808: A9 7C     LDA #$7C
 C - - - - - 0x03E81A 0F:E80A: 85 32     STA ram_0032
 C - - - - - 0x03E81C 0F:E80C: A9 20     LDA #$20
 C - - - - - 0x03E81E 0F:E80E: 85 37     STA ram_0037
-C - - - - - 0x03E820 0F:E810: A2 1E     LDX #$1E
+C - - - - - 0x03E820 0F:E810: A2 1E     LDX #con_0x03F0EE_1E
 C - - - - - 0x03E822 0F:E812: 20 44 F0  JSR sub_F044
 C - - - - - 0x03E825 0F:E815: A9 0D     LDA #con_0x030C10_0D
 C - - - - - 0x03E827 0F:E817: 20 E5 F6  JSR sub_F6E5_нарисовать_на_экране
@@ -5473,7 +5473,7 @@ C - - - - - 0x03EF70 0F:EF60: 60        RTS
 
 
 
-_off006_EF61_0D:
+_off006_EF61_1A:
 - D 3 - I - 0x03EF71 0F:EF61: 00 22     .word $2200
 - D 3 - I - 0x03EF73 0F:EF63: 78        .byte $78, $00   ; 
 - D 3 - I - 0x03EF75 0F:EF65: 78        .byte $78, $00   ; 
@@ -5593,7 +5593,7 @@ C - - - - - 0x03F013 0F:F003: 20 8C FC  JSR sub_FC8C_set_mirroring_V
 C - - - - - 0x03F016 0F:F006: A5 FF     LDA ram_for_2000
 C - - - - - 0x03F018 0F:F008: 29 FC     AND #$FC
 C - - - - - 0x03F01A 0F:F00A: 85 FF     STA ram_for_2000
-C - - - - - 0x03F01C 0F:F00C: A2 02     LDX #$02
+C - - - - - 0x03F01C 0F:F00C: A2 02     LDX #con_0x03F0EE_02
 C - - - - - 0x03F01E 0F:F00E: 20 44 F0  JSR sub_F044
 C - - - - - 0x03F021 0F:F011: A0 04     LDY #$04
 C - - - - - 0x03F023 0F:F013: A9 1B     LDA #$1B
@@ -5633,7 +5633,7 @@ sub_0x03F04F:
 C - - - - - 0x03F04F 0F:F03F: 20 BE DA  JSR sub_DABE_удалить_все_объекты
 sub_F042:
 loc_0x03F052:
-C D 3 - - - 0x03F052 0F:F042: A2 00     LDX #$00
+C D 3 - - - 0x03F052 0F:F042: A2 00     LDX #con_0x03F0EE_00
 sub_F044:
 sub_0x03F054:
 C - - - - - 0x03F054 0F:F044: 8A        TXA
@@ -5647,6 +5647,7 @@ C - - - - - 0x03F060 0F:F050: 4C 17 F6  JMP loc_F617_restore_prg
 
 
 sub_F053_отрисовка_статичного_экрана:
+; bzk optimize, уменшить индексы в 2 раза, добавить тут TXA ASL TAX, удалить 0x03F054
 C - - - - - 0x03F063 0F:F053: BD DE F0  LDA tbl_F0DE,X
 C - - - - - 0x03F066 0F:F056: 85 00     STA ram_0000
 C - - - - - 0x03F068 0F:F058: BD DF F0  LDA tbl_F0DE + $01,X
@@ -5739,37 +5740,37 @@ C - - - - - 0x03F0EB 0F:F0DB: 4C B5 F2  JMP loc_F2B5_восстановить_20
 
 tbl_F0DE:
 - D 3 - - - 0x03F0EE 0F:F0DE: 43 F1     .word _off006_F143_00
-- D 3 - - - 0x03F0F0 0F:F0E0: A5 83     .word _off006_0x02C3B5_01
-- D 3 - - - 0x03F0F2 0F:F0E2: 6A 83     .word _off006_0x02C37A_02
-- D 3 - - - 0x03F0F4 0F:F0E4: 80 B9     .word _off006_0x02F990_03
-- D 3 - - - 0x03F0F6 0F:F0E6: 60 84     .word _off006_0x02C470_04
-- D 3 - - - 0x03F0F8 0F:F0E8: 5F 87     .word _off006_0x02C76F_05
-- D 3 - - - 0x03F0FA 0F:F0EA: 35 84     .word _off006_0x02C445_06
-- D 3 - - - 0x03F0FC 0F:F0EC: DB 8B     .word _off006_0x02CBEB_07
-- D 3 - - - 0x03F0FE 0F:F0EE: F4 8E     .word _off006_0x02CF04_08
-- D 3 - - - 0x03F100 0F:F0F0: 46 90     .word _off006_0x02D056_09
-- D 3 - - - 0x03F102 0F:F0F2: 3F 91     .word _off006_0x02D14F_0A
-- D 3 - - - 0x03F104 0F:F0F4: 9C 94     .word _off006_0x02D4AC_0B
-- D 3 - - - 0x03F106 0F:F0F6: 8E 9F     .word _off006_0x02DF9E_0C
-- D 3 - - - 0x03F108 0F:F0F8: 61 EF     .word _off006_EF61_0D
-- D 3 - - - 0x03F10A 0F:F0FA: 39 96     .word _off006_0x02D649_0E
-- D 3 - - - 0x03F10C 0F:F0FC: 47 84     .word _off006_0x02C457_0F
-- D 3 - - - 0x03F10E 0F:F0FE: B2 99     .word _off006_0x02D9C2_10
-- D 3 - - - 0x03F110 0F:F100: A6 9B     .word _off006_0x02DBB6_11
-- D 3 - - - 0x03F112 0F:F102: 44 9C     .word _off006_0x02DC54_12
-- D 3 - - - 0x03F114 0F:F104: 04 9D     .word _off006_0x02DD14_13
-- D 3 - - - 0x03F116 0F:F106: AE 9E     .word _off006_0x02DEBE_14
-- D 3 - - - 0x03F118 0F:F108: 75 A0     .word _off006_0x02E085_15
-- D 3 - - - 0x03F11A 0F:F10A: 81 A1     .word _off006_0x02E191_16
-- D 3 - - - 0x03F11C 0F:F10C: 77 A2     .word _off006_0x02E287_17
-- D 3 - - - 0x03F11E 0F:F10E: CF A2     .word _off006_0x02E2DF_18
-- D 3 - - - 0x03F120 0F:F110: 3D A3     .word _off006_0x02E34D_19
-- D 3 - - - 0x03F122 0F:F112: B4 A3     .word _off006_0x02E3C4_1A
-- D 3 - - - 0x03F124 0F:F114: 29 A4     .word _off006_0x02E439_1B
-- D 3 - - - 0x03F126 0F:F116: 95 A4     .word _off006_0x02E4A5_1C
-- D 3 - - - 0x03F128 0F:F118: 0E A5     .word _off006_0x02E51E_1D
-- D 3 - - - 0x03F12A 0F:F11A: 00 80     .word _off006_0x000010_1E
-- D 3 - - - 0x03F12C 0F:F11C: 00 82     .word _off006_0x000210_1F
+- D 3 - - - 0x03F0F0 0F:F0E0: A5 83     .word _off006_0x02C3B5_02
+- D 3 - - - 0x03F0F2 0F:F0E2: 6A 83     .word _off006_0x02C37A_04
+- D 3 - - - 0x03F0F4 0F:F0E4: 80 B9     .word _off006_0x02F990_06
+- D 3 - - - 0x03F0F6 0F:F0E6: 60 84     .word _off006_0x02C470_08
+- D 3 - - - 0x03F0F8 0F:F0E8: 5F 87     .word _off006_0x02C76F_0A
+- D 3 - - - 0x03F0FA 0F:F0EA: 35 84     .word _off006_0x02C445_0C
+- D 3 - - - 0x03F0FC 0F:F0EC: DB 8B     .word _off006_0x02CBEB_0E
+- D 3 - - - 0x03F0FE 0F:F0EE: F4 8E     .word _off006_0x02CF04_10
+- D 3 - - - 0x03F100 0F:F0F0: 46 90     .word _off006_0x02D056_12
+- D 3 - - - 0x03F102 0F:F0F2: 3F 91     .word _off006_0x02D14F_14
+- D 3 - - - 0x03F104 0F:F0F4: 9C 94     .word _off006_0x02D4AC_16
+- D 3 - - - 0x03F106 0F:F0F6: 8E 9F     .word _off006_0x02DF9E_18
+- D 3 - - - 0x03F108 0F:F0F8: 61 EF     .word _off006_EF61_1A
+- D 3 - - - 0x03F10A 0F:F0FA: 39 96     .word _off006_0x02D649_1C
+- D 3 - - - 0x03F10C 0F:F0FC: 47 84     .word _off006_0x02C457_1E
+- D 3 - - - 0x03F10E 0F:F0FE: B2 99     .word _off006_0x02D9C2_20
+- D 3 - - - 0x03F110 0F:F100: A6 9B     .word _off006_0x02DBB6_22
+- D 3 - - - 0x03F112 0F:F102: 44 9C     .word _off006_0x02DC54_24
+- D 3 - - - 0x03F114 0F:F104: 04 9D     .word _off006_0x02DD14_26
+- D 3 - - - 0x03F116 0F:F106: AE 9E     .word _off006_0x02DEBE_28
+- D 3 - - - 0x03F118 0F:F108: 75 A0     .word _off006_0x02E085_2A
+- D 3 - - - 0x03F11A 0F:F10A: 81 A1     .word _off006_0x02E191_2C
+- D 3 - - - 0x03F11C 0F:F10C: 77 A2     .word _off006_0x02E287_2E
+- D 3 - - - 0x03F11E 0F:F10E: CF A2     .word _off006_0x02E2DF_30
+- D 3 - - - 0x03F120 0F:F110: 3D A3     .word _off006_0x02E34D_32
+- D 3 - - - 0x03F122 0F:F112: B4 A3     .word _off006_0x02E3C4_34
+- D 3 - - - 0x03F124 0F:F114: 29 A4     .word _off006_0x02E439_36
+- D 3 - - - 0x03F126 0F:F116: 95 A4     .word _off006_0x02E4A5_38
+- D 3 - - - 0x03F128 0F:F118: 0E A5     .word _off006_0x02E51E_3A
+- D 3 - - - 0x03F12A 0F:F11A: 00 80     .word _off006_0x000010_3C
+- D 3 - - - 0x03F12C 0F:F11C: 00 82     .word _off006_0x000210_3E
 
 
 
@@ -6408,7 +6409,7 @@ C - - - - - 0x03F521 0F:F511: D0 2B     BNE bra_F53E
 C - - - - - 0x03F523 0F:F513: 20 88 FB  JSR sub_FB88
 C - - - - - 0x03F526 0F:F516: 20 09 D0  JSR sub_D009_очистить_оперативку_1
 C - - - - - 0x03F529 0F:F519: 20 42 F0  JSR sub_F042
-C - - - - - 0x03F52C 0F:F51C: A2 04     LDX #$04
+C - - - - - 0x03F52C 0F:F51C: A2 04     LDX #con_0x03F0EE_04
 C - - - - - 0x03F52E 0F:F51E: 20 44 F0  JSR sub_F044
 C - - - - - 0x03F531 0F:F521: A9 00     LDA #$00
 C - - - - - 0x03F533 0F:F523: 20 B0 D3  JSR sub_D3B0
@@ -6459,7 +6460,7 @@ ofs_000_F56F_06:
 C - - J - - 0x03F57F 0F:F56F: A6 21     LDX ram_0021
 C - - - - - 0x03F581 0F:F571: D0 1D     BNE bra_F590
 C - - - - - 0x03F583 0F:F573: 20 09 D0  JSR sub_D009_очистить_оперативку_1
-C - - - - - 0x03F586 0F:F576: A2 06     LDX #$06
+C - - - - - 0x03F586 0F:F576: A2 06     LDX #con_0x03F0EE_06
 C - - - - - 0x03F588 0F:F578: 20 44 F0  JSR sub_F044
 C - - - - - 0x03F58B 0F:F57B: A9 00     LDA #$00
 C - - - - - 0x03F58D 0F:F57D: 20 B0 D3  JSR sub_D3B0

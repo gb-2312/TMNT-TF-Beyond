@@ -167,7 +167,7 @@ con_0x03DC39_20                         = $20 ;
 
 
 
-; 0x03F6AC
+; смотреть 0x03F6AC
 ; 01-2D 0x020EB0 музыка
 con_0x03F6AD_01                         = $01 ; 
 con_0x03F6AD_02                         = $02 ; 
@@ -269,6 +269,42 @@ con_0x03F6AD_5A                         = $5A ;
 
 ; 5B 0x021008 ???
 con_0x03F6AD_5B                         = $5B ; 
+
+
+
+; смотреть 0x03F0F0
+con_0x03F0EE_00                         = $00 ; 
+con_0x03F0EE_02                         = $02 ; 
+con_0x03F0EE_04                         = $04 ; 
+con_0x03F0EE_06                         = $06 ; 
+con_0x03F0EE_08                         = $08 ; 
+con_0x03F0EE_0A                         = $0A ; 
+con_0x03F0EE_0C                         = $0C ; 
+con_0x03F0EE_0E                         = $0E ; 
+con_0x03F0EE_10                         = $10 ; 
+con_0x03F0EE_12                         = $12 ; 
+con_0x03F0EE_14                         = $14 ; 
+con_0x03F0EE_16                         = $16 ; 
+con_0x03F0EE_18                         = $18 ; 
+con_0x03F0EE_1A                         = $1A ; 
+con_0x03F0EE_1C                         = $1C ; 
+con_0x03F0EE_1E                         = $1E ; 
+con_0x03F0EE_20                         = $20 ; 
+con_0x03F0EE_22                         = $22 ; 
+con_0x03F0EE_24                         = $24 ; 
+con_0x03F0EE_26                         = $26 ; 
+con_0x03F0EE_28                         = $28 ; 
+con_0x03F0EE_2A                         = $2A ; 
+con_0x03F0EE_2C                         = $2C ; 
+con_0x03F0EE_2E                         = $2E ; 
+con_0x03F0EE_30                         = $30 ; 
+con_0x03F0EE_32                         = $32 ; 
+con_0x03F0EE_34                         = $34 ; 
+con_0x03F0EE_36                         = $36 ; 
+con_0x03F0EE_38                         = $38 ; 
+con_0x03F0EE_3A                         = $3A ; 
+con_0x03F0EE_3C                         = $3C ; 
+con_0x03F0EE_3E                         = $3E ; 
 
 
 

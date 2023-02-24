@@ -60,7 +60,7 @@ C - - - - - 0x038040 0E:8030: 85 34     STA ram_0034
 C - - - - - 0x038042 0E:8032: 20 25 DC  JSR sub_0x03DC35
 C - - - - - 0x038045 0E:8035: A9 0E     LDA #con_0x03F84C_0E
 C - - - - - 0x038047 0E:8037: 20 14 F8  JSR sub_0x03F824
-C - - - - - 0x03804A 0E:803A: A2 18     LDX #$18
+C - - - - - 0x03804A 0E:803A: A2 18     LDX #con_0x03F0EE_18
 C - - - - - 0x03804C 0E:803C: 20 44 F0  JSR sub_0x03F054
 C - - - - - 0x03804F 0E:803F: A9 07     LDA #$07
 C - - - - - 0x038051 0E:8041: A8        TAY
@@ -489,7 +489,7 @@ C - - - - - 0x0382CE 0E:82BE: 20 6E DD  JSR sub_0x03DD7E
 C - - - - - 0x0382D1 0E:82C1: A9 07     LDA #con_0x03F84C_07
 C - - - - - 0x0382D3 0E:82C3: 20 14 F8  JSR sub_0x03F824
 C - - - - - 0x0382D6 0E:82C6: 20 6D D4  JSR sub_0x03D47D
-C - - - - - 0x0382D9 0E:82C9: A2 16     LDX #$16    ; todo con
+C - - - - - 0x0382D9 0E:82C9: A2 16     LDX #con_0x03F0EE_16
 C - - - - - 0x0382DB 0E:82CB: 20 44 F0  JSR sub_0x03F054
 C - - - - - 0x0382DE 0E:82CE: A9 3E     LDA #con_0x03F6AD_3E
 C - - - - - 0x0382E0 0E:82D0: A4 95     LDY ram_0095
@@ -1413,7 +1413,7 @@ C - - - - - 0x0388B5 0E:88A5: F0 03     BEQ bra_88AA
 C - - - - - 0x0388B7 0E:88A7: 4C 9E 89  JMP loc_899E
 bra_88AA:
 C - - - - - 0x0388BA 0E:88AA: 20 BE DA  JSR sub_0x03DACE_удалить_все_объекты
-C - - - - - 0x0388BD 0E:88AD: A2 12     LDX #$12
+C - - - - - 0x0388BD 0E:88AD: A2 12     LDX #con_0x03F0EE_12
 C - - - - - 0x0388BF 0E:88AF: 20 44 F0  JSR sub_0x03F054
 C - - - - - 0x0388C2 0E:88B2: 20 2F F7  JSR sub_0x03F73F_нарисовать_рожи_персов_на_экране_выбора_карты
 C - - - - - 0x0388C5 0E:88B5: E6 95     INC ram_0095
@@ -2076,7 +2076,7 @@ C - - - - - 0x038C8E 0E:8C7E: 20 32 D0  JSR sub_0x03D042_поинтеры_пос
 
 
 ofs_011_8C8D_00:
-C - - J - - 0x038C9D 0E:8C8D: A2 20     LDX #$20
+C - - J - - 0x038C9D 0E:8C8D: A2 20     LDX #con_0x03F0EE_20
 C - - - - - 0x038C9F 0E:8C8F: 20 44 F0  JSR sub_0x03F054
 C - - - - - 0x038CA2 0E:8C92: 20 BE DA  JSR sub_0x03DACE_удалить_все_объекты
 C - - - - - 0x038CA5 0E:8C95: 8D 54 01  STA ram_0154
@@ -2780,7 +2780,7 @@ C - - - - - 0x039101 0E:90F1: A9 4D     LDA #$4D
 C - - - - - 0x039103 0E:90F3: 8D 00 04  STA ram_plr_anim_id
 C - - - - - 0x039106 0E:90F6: A0 16     LDY #$16
 C - - - - - 0x039108 0E:90F8: A9 17     LDA #$17
-C - - - - - 0x03910A 0E:90FA: A2 2A     LDX #$2A
+C - - - - - 0x03910A 0E:90FA: A2 2A     LDX #con_0x03F0EE_2A
 C - - - - - 0x03910C 0E:90FC: D0 27     BNE bra_9125    ; jmp
 
 
@@ -2807,7 +2807,7 @@ C - - - - - 0x03912A 0E:911A: A9 4E     LDA #$4E
 C - - - - - 0x03912C 0E:911C: 8D 00 04  STA ram_plr_anim_id
 C - - - - - 0x03912F 0E:911F: A0 18     LDY #$18
 C - - - - - 0x039131 0E:9121: A9 19     LDA #$19
-C - - - - - 0x039133 0E:9123: A2 2C     LDX #$2C
+C - - - - - 0x039133 0E:9123: A2 2C     LDX #con_0x03F0EE_2C
 bra_9125:
 C - - - - - 0x039135 0E:9125: 48        PHA
 C - - - - - 0x039136 0E:9126: 98        TYA
@@ -2933,6 +2933,12 @@ C - - - - - 0x0391FC 0E:91EC: AD B0 04  LDA ram_obj_04B0
 C - - - - - 0x0391FF 0E:91EF: 0A        ASL
 C - - - - - 0x039200 0E:91F0: 69 30     ADC #$30
 C - - - - - 0x039202 0E:91F2: AA        TAX
+; con_0x03F0EE_30
+; con_0x03F0EE_32
+; con_0x03F0EE_34
+; con_0x03F0EE_36
+; con_0x03F0EE_38
+; con_0x03F0EE_3A
 C - - - - - 0x039203 0E:91F3: 20 44 F0  JSR sub_0x03F054
 C - - - - - 0x039206 0E:91F6: AD B0 04  LDA ram_obj_04B0
 C - - - - - 0x039209 0E:91F9: 0A        ASL
@@ -3629,7 +3635,7 @@ ofs_007_96BF_04:
 C - - J - - 0x0396CF 0E:96BF: E6 21     INC ram_0021
 C - - - - - 0x0396D1 0E:96C1: A9 02     LDA #con_0x03F84C_02
 C - - - - - 0x0396D3 0E:96C3: 20 14 F8  JSR sub_0x03F824
-C - - - - - 0x0396D6 0E:96C6: A2 08     LDX #$08
+C - - - - - 0x0396D6 0E:96C6: A2 08     LDX #con_0x03F0EE_08
 C - - - - - 0x0396D8 0E:96C8: 20 44 F0  JSR sub_0x03F054
 C - - - - - 0x0396DB 0E:96CB: A0 01     LDY #$01
 C - - - - - 0x0396DD 0E:96CD: A9 02     LDA #$02
@@ -3842,7 +3848,7 @@ C - - - - - 0x03984A 0E:983A: 4C 2E E1  JMP loc_0x03E13E
 
 
 ofs_007_983D_06:
-C - - J - - 0x03984D 0E:983D: A2 2E     LDX #$2E
+C - - J - - 0x03984D 0E:983D: A2 2E     LDX #con_0x03F0EE_2E
 C - - - - - 0x03984F 0E:983F: 20 44 F0  JSR sub_0x03F054
 C - - - - - 0x039852 0E:9842: 20 BE DA  JSR sub_0x03DACE_удалить_все_объекты
 C - - - - - 0x039855 0E:9845: E6 21     INC ram_0021
@@ -4015,8 +4021,8 @@ tbl_994B:
 - D 0 - - - 0x03995C 0E:994C: 24        .byte $24   ; 01
 
 tbl_994D:
-- D 0 - - - 0x03995D 0E:994D: 22        .byte $22   ; 00
-- D 0 - - - 0x03995E 0E:994E: 24        .byte $24   ; 01
+- D 0 - - - 0x03995D 0E:994D: 22        .byte con_0x03F0EE_22   ; 00
+- D 0 - - - 0x03995E 0E:994E: 24        .byte con_0x03F0EE_24   ; 01
 
 tbl_994F:
 - D 0 - - - 0x03995F 0E:994F: 0A        .byte con_0x03DC39_0A   ; 00
@@ -4789,7 +4795,7 @@ C - - J - - 0x039FE6 0E:9FD6: A9 0C     LDA #con_0x03F84C_0C
 C - - - - - 0x039FE8 0E:9FD8: 20 14 F8  JSR sub_0x03F824
 C - - - - - 0x039FEB 0E:9FDB: 20 3F F0  JSR sub_0x03F04F
 C - - - - - 0x039FEE 0E:9FDE: E6 21     INC ram_0021
-C - - - - - 0x039FF0 0E:9FE0: A2 26     LDX #$26
+C - - - - - 0x039FF0 0E:9FE0: A2 26     LDX #con_0x03F0EE_26
 C - - - - - 0x039FF2 0E:9FE2: 20 44 F0  JSR sub_0x03F054
 C - - - - - 0x039FF5 0E:9FE5: A9 04     LDA #$04
 C - - - - - 0x039FF7 0E:9FE7: 85 00     STA ram_0000
