@@ -2648,34 +2648,6 @@ C - - - - - 0x03DB91 0F:DB81: 9D 30 04  STA ram_obj_0430,X
 C - - - - - 0x03DB94 0F:DB84: 60        RTS
 
 
-; bzk garbage
-- - - - - - 0x03DB95 0F:DB85: 20 9E DB  JSR sub_DB9E
-- - - - - - 0x03DB98 0F:DB88: A0 00     LDY #$00
-- - - - - - 0x03DB9A 0F:DB8A: 18        CLC
-- - - - - - 0x03DB9B 0F:DB8B: BD 70 04  LDA ram_obj_0470,X
-- - - - - - 0x03DB9E 0F:DB8E: 7D 20 04  ADC ram_obj_0420,X
-- - - - - - 0x03DBA1 0F:DB91: 85 05     STA ram_0005
-- - - - - - 0x03DBA3 0F:DB93: BD 60 04  LDA ram_obj_0460,X
-- - - - - - 0x03DBA6 0F:DB96: 10 01     BPL bra_DB99
-- - - - - - 0x03DBA8 0F:DB98: 88        DEY
-bra_DB99:
-- - - - - - 0x03DBA9 0F:DB99: 7D 10 04  ADC ram_obj_pos_Y,X
-- - - - - - 0x03DBAC 0F:DB9C: 85 04     STA ram_0004
-sub_DB9E:
-- - - - - - 0x03DBAE 0F:DB9E: A0 00     LDY #$00
-- - - - - - 0x03DBB0 0F:DBA0: 18        CLC
-- - - - - - 0x03DBB1 0F:DBA1: BD 90 04  LDA ram_obj_0490,X
-- - - - - - 0x03DBB4 0F:DBA4: 7D 50 04  ADC ram_obj_0450,X
-- - - - - - 0x03DBB7 0F:DBA7: 85 02     STA ram_0002
-- - - - - - 0x03DBB9 0F:DBA9: BD 80 04  LDA ram_obj_0480,X
-- - - - - - 0x03DBBC 0F:DBAC: 10 01     BPL bra_DBAF
-- - - - - - 0x03DBBE 0F:DBAE: 88        DEY
-bra_DBAF:
-- - - - - - 0x03DBBF 0F:DBAF: 7D 40 04  ADC ram_obj_pos_X,X
-- - - - - - 0x03DBC2 0F:DBB2: 85 01     STA ram_0001
-- - - - - - 0x03DBC4 0F:DBB4: 60        RTS
-
-
 
 sub_0x03DBC5_скопировать_данные_объекта_X_в_Y:
 C - - - - - 0x03DBC5 0F:DBB5: BD 50 04  LDA ram_obj_0450,X
