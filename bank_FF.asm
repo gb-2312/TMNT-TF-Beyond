@@ -2358,16 +2358,6 @@ tbl_D9BF:
 
 
 ; bzk garbage
-- - - - - - 0x03D9EF 0F:D9DF: 85 04     STA ram_0004
-- - - - - - 0x03D9F1 0F:D9E1: A5 A8     LDA ram_00A8
-- - - - - - 0x03D9F3 0F:D9E3: 48        PHA
-- - - - - - 0x03D9F4 0F:D9E4: 20 EB D9  JSR sub_D9EB
-- - - - - - 0x03D9F7 0F:D9E7: 68        PLA
-- - - - - - 0x03D9F8 0F:D9E8: 85 A8     STA ram_00A8
-- - - - - - 0x03D9FA 0F:D9EA: 60        RTS
-
-
-; bzk garbage
 sub_D9EB:
 - - - - - - 0x03D9FB 0F:D9EB: 84 0C     STY ram_000C
 - - - - - - 0x03D9FD 0F:D9ED: 20 24 DA  JSR sub_DA24
