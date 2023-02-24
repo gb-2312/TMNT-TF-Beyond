@@ -6964,10 +6964,6 @@ tbl_BFD8:
 - D 1 - - - 0x03BFE9 0E:BFD9: 32        .byte $32   ; 01
 
 
-; bzk garbage
-- - - - - - 0x03BFEA 0E:BFDA: FF        .byte $FF   ; 
-
-
 
 tbl_BFDB:
 - - - - - - 0x03BFEB 0E:BFDB: FF        .byte $FF   ; 00
@@ -6989,11 +6985,6 @@ tbl_BFE0:
 - D 1 - - - 0x03BFF7 0E:BFE7: FF        .byte $FF   ; 07
 
 
-; bzk garbage
-- - - - - - 0x03BFF8 0E:BFE8: FF        .byte $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF   ; 
-- - - - - - 0x03C000 0E:BFF0: FF        .byte $FF   ; 
-
-
 
 tbl_BFF1:
 - D 1 - - - 0x03C001 0E:BFF1: 06        .byte $06   ; 00
@@ -7004,13 +6995,6 @@ tbl_BFF1:
 - D 1 - - - 0x03C006 0E:BFF6: 07        .byte $07   ; 05
 - - - - - - 0x03C007 0E:BFF7: 00        .byte $00   ; 06
 - - - - - - 0x03C008 0E:BFF8: 01        .byte $01   ; 07
-
-
-; bzk garbage
-- - - - - - 0x03C009 0E:BFF9: EA        NOP
-- - - - - - 0x03C00A 0E:BFFA: EA        NOP
-- - - - - - 0x03C00B 0E:BFFB: EA        NOP
-- - - - - - 0x03C00C 0E:BFFC: EA        NOP
 
 
 
