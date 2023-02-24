@@ -796,26 +796,6 @@ _off006_0x02C76F_05:
 - D 0 - I - 0x02CADF 0B:8ACF: 55        .byte $55, $44, $55, $FF, $FF, $06, $50, $82, $5F, $5F, $08, $00, $10, $FF, $FF   ; 
 
 
-; bzk garbage
-- - - - - - 0x02CAEE 0B:8ADE: FF        .byte $FF, $FF   ; 
-- - - - - - 0x02CAF0 0B:8AE0: FF        .byte $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF   ; 
-- - - - - - 0x02CB00 0B:8AF0: FF        .byte $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF   ; 
-- - - - - - 0x02CB10 0B:8B00: FF        .byte $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF   ; 
-- - - - - - 0x02CB20 0B:8B10: FF        .byte $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF   ; 
-- - - - - - 0x02CB30 0B:8B20: FF        .byte $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF   ; 
-- - - - - - 0x02CB40 0B:8B30: FF        .byte $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF   ; 
-- - - - - - 0x02CB50 0B:8B40: FF        .byte $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF   ; 
-- - - - - - 0x02CB60 0B:8B50: FF        .byte $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF   ; 
-- - - - - - 0x02CB70 0B:8B60: FF        .byte $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF   ; 
-- - - - - - 0x02CB80 0B:8B70: FF        .byte $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF   ; 
-- - - - - - 0x02CB90 0B:8B80: FF        .byte $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF   ; 
-- - - - - - 0x02CBA0 0B:8B90: FF        .byte $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF   ; 
-- - - - - - 0x02CBB0 0B:8BA0: FF        .byte $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF   ; 
-- - - - - - 0x02CBC0 0B:8BB0: FF        .byte $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF   ; 
-- - - - - - 0x02CBD0 0B:8BC0: FF        .byte $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF   ; 
-- - - - - - 0x02CBE0 0B:8BD0: FF        .byte $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF   ; 
-
-
 
 _off006_0x02CBEB_07:
 - D 0 - I - 0x02CBEB 0B:8BDB: 00        .byte $00, $20, $7E, $00, $42, $00, $13, $01, $C4, $3D, $85, $00, $40, $40, $00, $3F   ; 
@@ -908,15 +888,6 @@ _off006_0x02D056_09:
 - D 0 - I - 0x02D0C6 0B:90B6: CD        .byte $CD, $73, $CE, $F0, $0A, $00, $10, $88, $28, $00, $09, $FF, $8F, $00, $00, $FF   ; 
 - D 0 - I - 0x02D0D6 0B:90C6: FF        .byte $FF, $AA, $AA, $EE, $33, $00, $00, $F7, $FD, $AA, $AA, $EE, $03, $FF, $82, $F5   ; 
 - D 0 - I - 0x02D0E6 0B:90D6: F5        .byte $F5, $05, $FF, $03, $F5, $81, $FD, $1A, $FF, $FF   ; 
-
-
-; bzk garbage
-- - - - - - 0x02D0F0 0B:90E0: FF        .byte $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF   ; 
-- - - - - - 0x02D100 0B:90F0: FF        .byte $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF   ; 
-- - - - - - 0x02D110 0B:9100: FF        .byte $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF   ; 
-- - - - - - 0x02D120 0B:9110: FF        .byte $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF   ; 
-- - - - - - 0x02D130 0B:9120: FF        .byte $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF   ; 
-- - - - - - 0x02D140 0B:9130: FF        .byte $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF   ; 
 
 
 
@@ -1197,12 +1168,6 @@ _off006_0x02DF9E_0C:
 - D 1 - I - 0x02E03E 0B:A02E: 00        .byte $00, $C2, $EE, $0F, $00, $C2, $E6, $0C, $00, $C2, $F0, $10, $00, $C2, $E8, $0B   ; 
 - D 1 - I - 0x02E04E 0B:A03E: 00        .byte $00, $C3, $F2, $10, $00, $C2, $EA, $0C, $00, $C2, $F5, $54, $00, $81, $30, $0B   ; 
 - D 1 - I - 0x02E05E 0B:A04E: 00        .byte $00, $17, $55, $81, $41, $06, $55, $82, $15, $00, $08, $55, $FF   ; 
-
-
-; bzk garbage
-- - - - - - 0x02E06B 0B:A05B: FF        .byte $FF, $FF, $FF, $FF, $FF   ; 
-- - - - - - 0x02E070 0B:A060: FF        .byte $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF   ; 
-- - - - - - 0x02E080 0B:A070: FF        .byte $FF, $FF, $FF, $FF, $FF   ; 
 
 
 
