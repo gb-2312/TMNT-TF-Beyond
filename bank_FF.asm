@@ -2833,7 +2833,6 @@ C - - - - - 0x03DC8F 0F:DC7F: DD 10 04  CMP ram_obj_pos_Y,X
 C - - - - - 0x03DC92 0F:DC82: B0 0C     BCS bra_DC90
 bra_DC84:
 C - - - - - 0x03DC94 0F:DC84: A9 B0     LDA #$B0
-bra_DC86:
 C - - - - - 0x03DC96 0F:DC86: 9D 10 04  STA ram_obj_pos_Y,X
 C - - - - - 0x03DC99 0F:DC89: A9 00     LDA #$00
 C - - - - - 0x03DC9B 0F:DC8B: 20 D3 DC  JSR sub_DCD3
@@ -2856,25 +2855,7 @@ C - - - - - 0x03DCAB 0F:DC9B: A9 50     LDA #$50
 C - - - - - 0x03DCAD 0F:DC9D: D0 B9     BNE bra_DC58    ; jmp
 
 
-; bzk garbage
-- - - - - - 0x03DCAF 0F:DC9F: 20 92 DC  JSR sub_DC92
-- - - - - - 0x03DCB2 0F:DCA2: A9 C0     LDA #$C0
-- - - - - - 0x03DCB4 0F:DCA4: DD 10 04  CMP ram_obj_pos_Y,X
-- - - - - - 0x03DCB7 0F:DCA7: B0 E7     BCS bra_DC90
-- - - - - - 0x03DCB9 0F:DCA9: 90 DB     BCC bra_DC86   ; jmp
 
-
-; bzk garbage
-- - - - - - 0x03DCBB 0F:DCAB: A0 FF     LDY #$FF
-- - - - - - 0x03DCBD 0F:DCAD: D0 02     BNE bra_DCB1    ; jmp
-
-
-; bzk garbage
-- - - - - - 0x03DCBF 0F:DCAF: A0 00     LDY #$00
-
-
-
-bra_DCB1:
 sub_0x03DCC1:
 C - - - - - 0x03DCC1 0F:DCB1: 18        CLC
 C - - - - - 0x03DCC2 0F:DCB2: 7D 90 04  ADC ram_obj_0490,X
@@ -2883,18 +2864,6 @@ C - - - - - 0x03DCC8 0F:DCB8: 98        TYA
 C - - - - - 0x03DCC9 0F:DCB9: 7D 80 04  ADC ram_obj_0480,X
 C - - - - - 0x03DCCC 0F:DCBC: 9D 80 04  STA ram_obj_0480,X
 C - - - - - 0x03DCCF 0F:DCBF: 60        RTS
-
-
-; bzk garbage
-- - - - - - 0x03DCD0 0F:DCC0: A4 28     LDY ram_0028
-- - - - - - 0x03DCD2 0F:DCC2: A5 22     LDA ram_0022
-- - - - - - 0x03DCD4 0F:DCC4: 59 3C 06  EOR ram_063C,Y
-- - - - - - 0x03DCD7 0F:DCC7: 79 00 00  ADC ram_0000,Y
-- - - - - - 0x03DCDA 0F:DCCA: 65 28     ADC ram_0028
-- - - - - - 0x03DCDC 0F:DCCC: 2A        ROL
-- - - - - - 0x03DCDD 0F:DCCD: 85 28     STA ram_0028
-- - - - - - 0x03DCDF 0F:DCCF: EE 3C 06  INC ram_063C
-- - - - - - 0x03DCE2 0F:DCD2: 60        RTS
 
 
 
@@ -2930,10 +2899,6 @@ C - - - - - 0x03DD02 0F:DCF2: B0 03     BCS bra_DCF7_RTS
 C - - - - - 0x03DD04 0F:DCF4: 9D 10 04  STA ram_obj_pos_Y,X
 bra_DCF7_RTS:
 C - - - - - 0x03DD07 0F:DCF7: 60        RTS
-
-
-; bzk garbage
-- - - - - - 0x03DD08 0F:DCF8: A2 00     LDX #$00
 
 
 
