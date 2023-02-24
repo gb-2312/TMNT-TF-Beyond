@@ -183,7 +183,7 @@
 .export sub_0x03F04F
 .export loc_0x03F052
 .export sub_0x03F054
-.export sub_0x03F214
+.export sub_0x03F214_генератор_рандома
 .export sub_0x03F5BE
 .export loc_0x03F5BE
 .export loc_0x03F5F7_swap_prg_16
@@ -1186,7 +1186,7 @@ C - - - - - 0x03D2E0 0F:D2D0: AD 3E 06  LDA ram_063E
 C - - - - - 0x03D2E3 0F:D2D3: F0 CE     BEQ bra_D2A3
 C - - - - - 0x03D2E5 0F:D2D5: 60        RTS
 bra_D2D6:
-C - - - - - 0x03D2E6 0F:D2D6: A5 28     LDA ram_0028
+C - - - - - 0x03D2E6 0F:D2D6: A5 28     LDA ram_random_1
 C - - - - - 0x03D2E8 0F:D2D8: 29 07     AND #$07
 C - - - - - 0x03D2EA 0F:D2DA: A8        TAY
 C - - - - - 0x03D2EB 0F:D2DB: B9 EE D2  LDA tbl_D2EE,Y
@@ -1272,7 +1272,7 @@ loc_D346_записать_3_цвета_в_буфер:
 sub_0x03D356_записать_3_цвета_в_буфер:
 loc_0x03D356_записать_3_цвета_в_буфер:
 ; A = индекс палитры
-; X = индекс для ram_064C
+; X = индекс для ram_064D
 ; tip_индекс_буфера_палитры
     ; 00 = палитра фона 00
     ; 01 = палитра фона 01
@@ -1290,7 +1290,7 @@ C - - - - - 0x03D369 0F:D359: 20 40 AF  JSR sub_0x02EF50
                                         JSR sub_F617_restore_prg
 ; первый цвет из 4х всегда черный по умолчанию (может быть осветлен)
 C - - - - - 0x03D371 0F:D361: A9 0F     LDA #$0F
-C - - - - - 0x03D373 0F:D363: 9D 4C 06  STA ram_064C,X
+C - - - - - 0x03D373 0F:D363: 9D 4C 06  STA ram_pal_buffer - $01,X
 C - - - - - 0x03D376 0F:D366: A6 03     LDX ram_0003
 C - - - - - 0x03D378 0F:D368: A4 04     LDY ram_0004
 C - - - - - 0x03D37A 0F:D36A: BD 74 D3  LDA tbl_D374,X
@@ -1309,6 +1309,7 @@ tbl_D374:
 - D 2 - - - 0x03D389 0F:D379: 20        .byte $20   ; 05
 - D 2 - - - 0x03D38A 0F:D37A: 40        .byte $40   ; 06
 - D 2 - - - 0x03D38B 0F:D37B: 80        .byte $80   ; 07
+; bzk bug, считывается байт под индексом 08 из-за 0x038381
 
 
 
@@ -1360,7 +1361,7 @@ C - - - - - 0x03D3D6 0F:D3C6: A9 00     LDA #$00
 C - - - - - 0x03D3D8 0F:D3C8: 85 00     STA ram_0000
 C - - - - - 0x03D3DA 0F:D3CA: A2 1F     LDX #$1F
 bra_D3CC_loop:
-C - - - - - 0x03D3DC 0F:D3CC: BD 4D 06  LDA ram_064D,X
+C - - - - - 0x03D3DC 0F:D3CC: BD 4D 06  LDA ram_pal_buffer,X
 C - - - - - 0x03D3DF 0F:D3CF: C9 0F     CMP #$0F
 C - - - - - 0x03D3E1 0F:D3D1: F0 12     BEQ bra_D3E5
 C - - - - - 0x03D3E3 0F:D3D3: E6 00     INC ram_0000
@@ -1374,7 +1375,7 @@ C - - - - - 0x03D3EE 0F:D3DE: B0 02     BCS bra_D3E2
 bra_D3E0:
 C - - - - - 0x03D3F0 0F:D3E0: A9 0F     LDA #$0F
 bra_D3E2:
-C - - - - - 0x03D3F2 0F:D3E2: 9D 4D 06  STA ram_064D,X
+C - - - - - 0x03D3F2 0F:D3E2: 9D 4D 06  STA ram_pal_buffer,X
 bra_D3E5:
 C - - - - - 0x03D3F5 0F:D3E5: CA        DEX
 C - - - - - 0x03D3F6 0F:D3E6: 10 E4     BPL bra_D3CC_loop
@@ -1399,10 +1400,10 @@ C D 2 - - - 0x03D409 0F:D3F9: AD 02 06  LDA ram_0602
 C - - - - - 0x03D40C 0F:D3FC: D0 1C     BNE bra_D41A
 C - - - - - 0x03D40E 0F:D3FE: A2 1F     LDX #$1F
 bra_D400_loop:
-C - - - - - 0x03D410 0F:D400: BD 4D 06  LDA ram_064D,X
+C - - - - - 0x03D410 0F:D400: BD 4D 06  LDA ram_pal_buffer,X
 C - - - - - 0x03D413 0F:D403: 9D 04 06  STA ram_0604,X
 C - - - - - 0x03D416 0F:D406: A9 0F     LDA #$0F
-C - - - - - 0x03D418 0F:D408: 9D 4D 06  STA ram_064D,X
+C - - - - - 0x03D418 0F:D408: 9D 4D 06  STA ram_pal_buffer,X
 C - - - - - 0x03D41B 0F:D40B: CA        DEX
 C - - - - - 0x03D41C 0F:D40C: 10 F2     BPL bra_D400_loop
 sub_D40E:
@@ -1429,13 +1430,13 @@ C - - - - - 0x03D443 0F:D433: 98        TYA
 C - - - - - 0x03D444 0F:D434: 29 0F     AND #$0F
 C - - - - - 0x03D446 0F:D436: B0 0A     BCS bra_D442
 bra_D438:
-C - - - - - 0x03D448 0F:D438: BD 4D 06  LDA ram_064D,X
+C - - - - - 0x03D448 0F:D438: BD 4D 06  LDA ram_pal_buffer,X
 C - - - - - 0x03D44B 0F:D43B: C9 0F     CMP #$0F
 C - - - - - 0x03D44D 0F:D43D: F0 06     BEQ bra_D445
 C - - - - - 0x03D44F 0F:D43F: 18        CLC
 C - - - - - 0x03D450 0F:D440: 69 10     ADC #$10
 bra_D442:
-C - - - - - 0x03D452 0F:D442: 9D 4D 06  STA ram_064D,X
+C - - - - - 0x03D452 0F:D442: 9D 4D 06  STA ram_pal_buffer,X
 bra_D445:
 C - - - - - 0x03D455 0F:D445: CA        DEX
 C - - - - - 0x03D456 0F:D446: 10 E1     BPL bra_D429_loop
@@ -1481,7 +1482,7 @@ loc_0x03D47D:
 C D 2 - - - 0x03D47D 0F:D46D: A2 1F     LDX #$1F
 C - - - - - 0x03D47F 0F:D46F: A9 0F     LDA #$0F
 bra_D471:
-C - - - - - 0x03D481 0F:D471: 9D 4D 06  STA ram_064D,X
+C - - - - - 0x03D481 0F:D471: 9D 4D 06  STA ram_pal_buffer,X
 C - - - - - 0x03D484 0F:D474: CA        DEX
 C - - - - - 0x03D485 0F:D475: 10 FA     BPL bra_D471
 C - - - - - 0x03D487 0F:D477: 30 EB     BMI bra_D464    ; jmp
@@ -1509,7 +1510,7 @@ C - - - - - 0x03D4A6 0F:D496: 0A        ASL
 C - - - - - 0x03D4A7 0F:D497: 0A        ASL
 C - - - - - 0x03D4A8 0F:D498: 65 01     ADC ram_0001
 C - - - - - 0x03D4AA 0F:D49A: AA        TAX
-C - - - - - 0x03D4AB 0F:D49B: BD 4D 06  LDA ram_064D,X
+C - - - - - 0x03D4AB 0F:D49B: BD 4D 06  LDA ram_pal_buffer,X
 C - - - - - 0x03D4AE 0F:D49E: C9 30     CMP #$30
 C - - - - - 0x03D4B0 0F:D4A0: B0 07     BCS bra_D4A9
 C - - - - - 0x03D4B2 0F:D4A2: C9 0F     CMP #$0F
@@ -1521,7 +1522,7 @@ C - - - - - 0x03D4B9 0F:D4A9: A9 20     LDA #$20
 bra_D4AB:
 C - - - - - 0x03D4BB 0F:D4AB: 18        CLC
 C - - - - - 0x03D4BC 0F:D4AC: 69 10     ADC #$10
-C - - - - - 0x03D4BE 0F:D4AE: 9D 4D 06  STA ram_064D,X
+C - - - - - 0x03D4BE 0F:D4AE: 9D 4D 06  STA ram_pal_buffer,X
 C - - - - - 0x03D4C1 0F:D4B1: CA        DEX
 C - - - - - 0x03D4C2 0F:D4B2: C6 01     DEC ram_0001
 C - - - - - 0x03D4C4 0F:D4B4: 10 DE     BPL bra_D494_loop
@@ -1546,10 +1547,10 @@ C - - - - - 0x03D4E3 0F:D4D3: A9 08     LDA #$08
 C - - - - - 0x03D4E5 0F:D4D5: 8D 03 06  STA ram_0603
 C - - - - - 0x03D4E8 0F:D4D8: A2 1F     LDX #$1F
 bra_D4DA_loop:
-C - - - - - 0x03D4EA 0F:D4DA: BD 4D 06  LDA ram_064D,X
+C - - - - - 0x03D4EA 0F:D4DA: BD 4D 06  LDA ram_pal_buffer,X
 C - - - - - 0x03D4ED 0F:D4DD: 9D 04 06  STA ram_0604,X
 C - - - - - 0x03D4F0 0F:D4E0: A9 30     LDA #$30
-C - - - - - 0x03D4F2 0F:D4E2: 9D 4D 06  STA ram_064D,X
+C - - - - - 0x03D4F2 0F:D4E2: 9D 4D 06  STA ram_pal_buffer,X
 C - - - - - 0x03D4F5 0F:D4E5: CA        DEX
 C - - - - - 0x03D4F6 0F:D4E6: 10 F2     BPL bra_D4DA_loop
 C - - - - - 0x03D4F8 0F:D4E8: 4C 64 D4  JMP loc_D464
@@ -1566,7 +1567,7 @@ C - - - - - 0x03D50A 0F:D4FA: C9 3F     CMP #$3F
 C - - - - - 0x03D50C 0F:D4FC: D0 02     BNE bra_D500
 C - - - - - 0x03D50E 0F:D4FE: A9 30     LDA #$30
 bra_D500:
-C - - - - - 0x03D510 0F:D500: 9D 4D 06  STA ram_064D,X
+C - - - - - 0x03D510 0F:D500: 9D 4D 06  STA ram_pal_buffer,X
 C - - - - - 0x03D513 0F:D503: CA        DEX
 C - - - - - 0x03D514 0F:D504: 10 EF     BPL bra_D4F5_loop
 C - - - - - 0x03D516 0F:D506: EE 02 06  INC ram_0602
@@ -1574,7 +1575,7 @@ C - - - - - 0x03D519 0F:D509: 4C 64 D4  JMP loc_D464
 bra_D50C:
 C - - - - - 0x03D51C 0F:D50C: A2 1F     LDX #$1F
 bra_D50E_loop:
-C - - - - - 0x03D51E 0F:D50E: BD 4D 06  LDA ram_064D,X
+C - - - - - 0x03D51E 0F:D50E: BD 4D 06  LDA ram_pal_buffer,X
 C - - - - - 0x03D521 0F:D511: DD 04 06  CMP ram_0604,X
 C - - - - - 0x03D524 0F:D514: F0 0A     BEQ bra_D520
 C - - - - - 0x03D526 0F:D516: 38        SEC
@@ -1582,7 +1583,7 @@ C - - - - - 0x03D527 0F:D517: E9 10     SBC #$10
 C - - - - - 0x03D529 0F:D519: B0 02     BCS bra_D51D
 C - - - - - 0x03D52B 0F:D51B: A9 0F     LDA #$0F
 bra_D51D:
-C - - - - - 0x03D52D 0F:D51D: 9D 4D 06  STA ram_064D,X
+C - - - - - 0x03D52D 0F:D51D: 9D 4D 06  STA ram_pal_buffer,X
 bra_D520:
 C - - - - - 0x03D530 0F:D520: CA        DEX
 C - - - - - 0x03D531 0F:D521: 10 EB     BPL bra_D50E_loop
@@ -1606,29 +1607,29 @@ C - - - - - 0x03D54F 0F:D53F: C9 10     CMP #$10
 C - - - - - 0x03D551 0F:D541: 90 12     BCC bra_D555
 C - - - - - 0x03D553 0F:D543: 29 0F     AND #$0F
 C - - - - - 0x03D555 0F:D545: D0 0C     BNE bra_D553
-C - - - - - 0x03D557 0F:D547: 8C 6D 06  STY ram_066D
+C - - - - - 0x03D557 0F:D547: 8C 6D 06  STY ram_066D    ; счетчик цикла
 C - - - - - 0x03D55A 0F:D54A: A9 01     LDA #$01
 C - - - - - 0x03D55C 0F:D54C: 20 5D D2  JSR sub_D25D_записать_A_в_буфер_с_чтением_индекса
-C - - - - - 0x03D55F 0F:D54F: A9 10     LDA #$10
+C - - - - - 0x03D55F 0F:D54F: A9 10     LDA #$10    ; палитра спрайтов
 C - - - - - 0x03D561 0F:D551: D0 0C     BNE bra_D55F    ; jmp
 bra_D553:
 C - - - - - 0x03D563 0F:D553: A0 20     LDY #$20
 bra_D555:
-C - - - - - 0x03D565 0F:D555: 8C 6D 06  STY ram_066D
+C - - - - - 0x03D565 0F:D555: 8C 6D 06  STY ram_066D    ; счетчик цикла
 C - - - - - 0x03D568 0F:D558: A9 01     LDA #$01
 C - - - - - 0x03D56A 0F:D55A: 20 5D D2  JSR sub_D25D_записать_A_в_буфер_с_чтением_индекса
-C - - - - - 0x03D56D 0F:D55D: A9 00     LDA #$00
+C - - - - - 0x03D56D 0F:D55D: A9 00     LDA #$00    ; палитра фона
 bra_D55F:
-C - - - - - 0x03D56F 0F:D55F: 85 A9     STA ram_00A9
+C - - - - - 0x03D56F 0F:D55F: 85 A9     STA ram_global_obj_index
 C - - - - - 0x03D571 0F:D561: 20 66 D2  JSR sub_D266_записать_A_в_буфер_без_сохранения_индекса
 C - - - - - 0x03D574 0F:D564: A9 3F     LDA #$3F
 C - - - - - 0x03D576 0F:D566: 20 66 D2  JSR sub_D266_записать_A_в_буфер_без_сохранения_индекса
-C - - - - - 0x03D579 0F:D569: A4 A9     LDY ram_00A9
+C - - - - - 0x03D579 0F:D569: A4 A9     LDY ram_global_obj_index
 bra_D56B_loop:
-C - - - - - 0x03D57B 0F:D56B: B9 4D 06  LDA ram_064D,Y
+C - - - - - 0x03D57B 0F:D56B: B9 4D 06  LDA ram_pal_buffer,Y
 C - - - - - 0x03D57E 0F:D56E: 20 66 D2  JSR sub_D266_записать_A_в_буфер_без_сохранения_индекса
 C - - - - - 0x03D581 0F:D571: C8        INY
-C - - - - - 0x03D582 0F:D572: CE 6D 06  DEC ram_066D
+C - - - - - 0x03D582 0F:D572: CE 6D 06  DEC ram_066D    ; счетчик цикла
 C - - - - - 0x03D585 0F:D575: D0 F4     BNE bra_D56B_loop
 C - - - - - 0x03D587 0F:D577: 4C 59 D2  JMP loc_D259_записать_FF_в_буфер_с_индексом_X
 
@@ -2636,7 +2637,7 @@ sub_DEC0:
 C - - - - - 0x03DED0 0F:DEC0: 18        CLC
 C - - - - - 0x03DED1 0F:DEC1: 7D 45 06  ADC ram_plr_0645,X ; 0645 0646 
 C - - - - - 0x03DED4 0F:DEC4: 9D 45 06  STA ram_plr_0645,X ; 0645 0646 
-C - - - - - 0x03DED7 0F:DEC7: A4 A9     LDY ram_00A9
+C - - - - - 0x03DED7 0F:DEC7: A4 A9     LDY ram_global_obj_index
 C - - - - - 0x03DED9 0F:DEC9: B9 50 05  LDA ram_obj_id,Y
 C - - - - - 0x03DEDC 0F:DECC: C9 04     CMP #$04
 C - - - - - 0x03DEDE 0F:DECE: F0 D9     BEQ bra_DEA9
@@ -3262,7 +3263,7 @@ C - - - - - 0x03E219 0F:E209: E0 03     CPX #$03
 C - - - - - 0x03E21B 0F:E20B: 90 39     BCC bra_E246
 C - - - - - 0x03E21D 0F:E20D: A9 36     LDA #con_prg_bank + $16
 C - - - - - 0x03E21F 0F:E20F: 20 00 F6  JSR sub_F600_swap_prg_16
-C - - - - - 0x03E222 0F:E212: A5 28     LDA ram_0028
+C - - - - - 0x03E222 0F:E212: A5 28     LDA ram_random_1
 C - - - - - 0x03E224 0F:E214: 29 0F     AND #$0F
 C - - - - - 0x03E226 0F:E216: 4C 70 BF  JMP loc_0x02FF80
 
@@ -3704,7 +3705,7 @@ C - - - - - 0x03E4D4 0F:E4C4: A0 00     LDY #$00
 C - - - - - 0x03E4D6 0F:E4C6: AD 49 06  LDA ram_0649
 C - - - - - 0x03E4D9 0F:E4C9: CD 4A 06  CMP ram_064A
 C - - - - - 0x03E4DC 0F:E4CC: D0 02     BNE bra_E4D0
-C - - - - - 0x03E4DE 0F:E4CE: 46 28     LSR ram_0028
+C - - - - - 0x03E4DE 0F:E4CE: 46 28     LSR ram_random_1
 bra_E4D0:
 C - - - - - 0x03E4E0 0F:E4D0: B0 01     BCS bra_E4D3
 C - - - - - 0x03E4E2 0F:E4D2: C8        INY
@@ -5193,8 +5194,8 @@ C - - - - - 0x03EDD5 0F:EDC5: 60        RTS
 
 sub_EDC6:
 sub_0x03EDD6:
-C - - - - - 0x03EDD6 0F:EDC6: 20 04 F2  JSR sub_F204
-C - - - - - 0x03EDD9 0F:EDC9: A5 28     LDA ram_0028
+C - - - - - 0x03EDD6 0F:EDC6: 20 04 F2  JSR sub_F204_генератор_рандома
+C - - - - - 0x03EDD9 0F:EDC9: A5 28     LDA ram_random_1
 C - - - - - 0x03EDDB 0F:EDCB: AC 25 01  LDY ram_option_difficulty
 bra_EDCE_loop:
 C - - - - - 0x03EDDE 0F:EDCE: F0 04     BEQ bra_EDD4
@@ -5209,8 +5210,8 @@ C - - - - - 0x03EDE7 0F:EDD7: 60        RTS
 
 sub_EDD8:
 sub_0x03EDE8:
-C - - - - - 0x03EDE8 0F:EDD8: 20 04 F2  JSR sub_F204
-C - - - - - 0x03EDEB 0F:EDDB: A5 28     LDA ram_0028
+C - - - - - 0x03EDE8 0F:EDD8: 20 04 F2  JSR sub_F204_генератор_рандома
+C - - - - - 0x03EDEB 0F:EDDB: A5 28     LDA ram_random_1
 C - - - - - 0x03EDED 0F:EDDD: A0 02     LDY #$02
 bra_EDDF:
 C - - - - - 0x03EDEF 0F:EDDF: CC 25 01  CPY ram_option_difficulty
@@ -5902,24 +5903,24 @@ C - - - - - 0x03F204 0F:F1F4: 20 C2 F6  JSR sub_F6C2_выключить_музы
 C - - - - - 0x03F207 0F:F1F7: 20 E1 F4  JSR sub_F4E1
 C - - - - - 0x03F20A 0F:F1FA: 20 C6 F2  JSR sub_F2C6_nmi_on
 C - - - - - 0x03F20D 0F:F1FD: 58        CLI
-loc_F1FE:
-C D 3 - - - 0x03F20E 0F:F1FE: 20 04 F2  JSR sub_F204
-C - - - - - 0x03F211 0F:F201: 4C FE F1  JMP loc_F1FE
+loc_F1FE_infinite_loop:
+C D 3 - - - 0x03F20E 0F:F1FE: 20 04 F2  JSR sub_F204_генератор_рандома
+C - - - - - 0x03F211 0F:F201: 4C FE F1  JMP loc_F1FE_infinite_loop
 
 
 
-sub_F204:
-sub_0x03F214:
-C - - - - - 0x03F214 0F:F204: E6 28     INC ram_0028
+sub_F204_генератор_рандома:
+sub_0x03F214_генератор_рандома:
+C - - - - - 0x03F214 0F:F204: E6 28     INC ram_random_1
 C - - - - - 0x03F216 0F:F206: 18        CLC
-C - - - - - 0x03F217 0F:F207: A5 28     LDA ram_0028
+C - - - - - 0x03F217 0F:F207: A5 28     LDA ram_random_1
 C - - - - - 0x03F219 0F:F209: 65 22     ADC ram_0022
-C - - - - - 0x03F21B 0F:F20B: 85 28     STA ram_0028
-C - - - - - 0x03F21D 0F:F20D: A4 28     LDY ram_0028
+C - - - - - 0x03F21B 0F:F20B: 85 28     STA ram_random_1
+C - - - - - 0x03F21D 0F:F20D: A4 28     LDY ram_random_1
 C - - - - - 0x03F21F 0F:F20F: B9 00 00  LDA ram_0000,Y
-C - - - - - 0x03F222 0F:F212: 65 28     ADC ram_0028
-C - - - - - 0x03F224 0F:F214: 65 8C     ADC ram_008C
-C - - - - - 0x03F226 0F:F216: 85 8C     STA ram_008C
+C - - - - - 0x03F222 0F:F212: 65 28     ADC ram_random_1
+C - - - - - 0x03F224 0F:F214: 65 8C     ADC ram_random_2
+C - - - - - 0x03F226 0F:F216: 85 8C     STA ram_random_2
 C - - - - - 0x03F228 0F:F218: 60        RTS
 
 
@@ -6608,6 +6609,7 @@ C - - - - - 0x03F62E 0F:F61E: 10 E0     BPL bra_F600    ; jmp
 
 sub_F620:
 C - - - - - 0x03F630 0F:F620: A5 23     LDA ram_0023
+; bzk optimize, бесполезный адрес 003C
 C - - - - - 0x03F632 0F:F622: 85 3C     STA ram_003C
 C - - - - - 0x03F634 0F:F624: D0 10     BNE bra_F636
 C - - - - - 0x03F636 0F:F626: A5 34     LDA ram_0034
@@ -6685,7 +6687,7 @@ loc_F690:
 sub_F690:
 sub_0x03F6A0:
 loc_0x03F6A0:
-C D 3 - - - 0x03F6A0 0F:F690: 84 A9     STY ram_00A9
+C D 3 - - - 0x03F6A0 0F:F690: 84 A9     STY ram_global_obj_index
 C - - - - - 0x03F6A2 0F:F692: 86 A8     STX ram_00A8
 loc_F694:
 sub_0x03F6A4:
@@ -6700,7 +6702,7 @@ loc_F6A0_restore_prg_в_оригинальный_банк:
 C D 3 - - - 0x03F6B0 0F:F6A0: 20 5F F6  JSR sub_F65F_restore_prg_в_оригинальный_банк
 C - - - - - 0x03F6B3 0F:F6A3: A6 A8     LDX ram_00A8
 bra_F6A5:
-C - - - - - 0x03F6B5 0F:F6A5: A4 A9     LDY ram_00A9
+C - - - - - 0x03F6B5 0F:F6A5: A4 A9     LDY ram_global_obj_index
 C - - - - - 0x03F6B7 0F:F6A7: 60        RTS
 
 
@@ -6709,7 +6711,7 @@ sub_F6C2_выключить_музыку_и_звуки:
 loc_F6C2_выключить_музыку_и_звуки:
 sub_0x03F6D2_выключить_музыку_и_звуки:
 loc_0x03F6D2_выключить_музыку_и_звуки:
-C D 3 - - - 0x03F6D2 0F:F6C2: 84 A9     STY ram_00A9
+C D 3 - - - 0x03F6D2 0F:F6C2: 84 A9     STY ram_global_obj_index
 C - - - - - 0x03F6D4 0F:F6C4: A4 2E     LDY ram_002E
 C - - - - - 0x03F6D6 0F:F6C6: D0 DD     BNE bra_F6A5
 C - - - - - 0x03F6D8 0F:F6C8: 86 A8     STX ram_00A8

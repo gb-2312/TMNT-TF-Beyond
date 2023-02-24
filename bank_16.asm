@@ -1168,7 +1168,7 @@ _off006_0x02E51E_3A:
 
 
 sub_A591:
-C - - - - - 0x02E5A1 0B:A591: A4 A9     LDY ram_00A9
+C - - - - - 0x02E5A1 0B:A591: A4 A9     LDY ram_global_obj_index
 C - - - - - 0x02E5A3 0B:A593: BD 40 04  LDA ram_obj_pos_X,X
 C - - - - - 0x02E5A6 0B:A596: D9 40 04  CMP ram_obj_pos_X,Y
 C - - - - - 0x02E5A9 0B:A599: A9 00     LDA #$00
@@ -1220,7 +1220,7 @@ C - - - - - 0x02E7CD 0B:A7BD: B9 E0 B5  LDA tbl_B5E0_lo,Y
 C - - - - - 0x02E7D0 0B:A7C0: 85 00     STA ram_0000
 C - - - - - 0x02E7D2 0B:A7C2: B9 E7 B5  LDA tbl_B5E7_hi,Y
 C - - - - - 0x02E7D5 0B:A7C5: 85 01     STA ram_0001
-C - - - - - 0x02E7D7 0B:A7C7: A4 A9     LDY ram_00A9
+C - - - - - 0x02E7D7 0B:A7C7: A4 A9     LDY ram_global_obj_index
 C - - - - - 0x02E7D9 0B:A7C9: B9 12 06  LDA ram_plr_0612,Y
 C - - - - - 0x02E7DC 0B:A7CC: 0A        ASL
 C - - - - - 0x02E7DD 0B:A7CD: A8        TAY
@@ -1273,7 +1273,7 @@ ofs_0x02E86E:
 C - - - - - 0x02E86E 0B:A85E: B5 91     LDA ram_btn_hold,X
 C - - - - - 0x02E870 0B:A860: 29 08     AND #con_btn_Up
 C - - - - - 0x02E872 0B:A862: F0 1C     BEQ bra_A880
-C - - - - - 0x02E874 0B:A864: A4 A9     LDY ram_00A9
+C - - - - - 0x02E874 0B:A864: A4 A9     LDY ram_global_obj_index
 C - - - - - 0x02E876 0B:A866: B9 20 05  LDA ram_obj_0520,Y
 C - - - - - 0x02E879 0B:A869: C9 03     CMP #$03
 C - - - - - 0x02E87B 0B:A86B: D0 13     BNE bra_A880
@@ -1672,7 +1672,7 @@ C - - - - - 0x02EEA9 0B:AE99: 85 00     STA ram_0000
 C - - - - - 0x02EEAB 0B:AE9B: A0 0B     LDY #$0B
 bra_AE9D_loop:
 C - - - - - 0x02EEAD 0B:AE9D: B1 00     LDA (ram_0000),Y
-C - - - - - 0x02EEAF 0B:AE9F: 99 4D 06  STA ram_064D,Y
+C - - - - - 0x02EEAF 0B:AE9F: 99 4D 06  STA ram_pal_buffer,Y
 C - - - - - 0x02EEB2 0B:AEA2: 88        DEY
 C - - - - - 0x02EEB3 0B:AEA3: 10 F8     BPL bra_AE9D_loop
 C - - - - - 0x02EEB5 0B:AEA5: A0 13     LDY #$13
@@ -1700,7 +1700,6 @@ tbl_AF3D:
 
 
 sub_0x02EF50:
-; требуются поинтеры для 0x02EFFA 0x02F1FA 0x02F3FA
 C - - - - - 0x02EF50 0B:AF40: AD 2B 01  LDA ram_option_misc
 C - - - - - 0x02EF53 0B:AF43: 29 07     AND #$07
                                         ASL
@@ -1725,10 +1724,11 @@ C - - - - - 0x02EF5B 0B:AF4B: 85 01     STA ram_0001
 C - - - - - 0x02EF5D 0B:AF4D: A0 02     LDY #$02
 bra_AF4F_loop:
 C - - - - - 0x02EF5F 0B:AF4F: B1 00     LDA (ram_0000),Y
-C - - - - - 0x02EF61 0B:AF51: 9D 4C 06  STA ram_064C,X
+C - - - - - 0x02EF61 0B:AF51: 9D 4C 06  STA ram_pal_buffer - $01,X
 C - - - - - 0x02EF64 0B:AF54: CA        DEX
 C - - - - - 0x02EF65 0B:AF55: 88        DEY
 C - - - - - 0x02EF66 0B:AF56: 10 F7     BPL bra_AF4F_loop
+; нельзя менять X на выходе
 C - - - - - 0x02EF68 0B:AF58: 4C 17 F6  RTS
 
 
@@ -2796,11 +2796,11 @@ bra_BE64:
 
 
 sub_BE7C:
-- - - - - - 0x02FE8C 0B:BE7C: A5 28     LDA ram_0028
+- - - - - - 0x02FE8C 0B:BE7C: A5 28     LDA ram_random_1
 - - - - - - 0x02FE8E 0B:BE7E: 29 07     AND #$07
 - - - - - - 0x02FE90 0B:BE80: 69 FF     ADC #$FF
 - - - - - - 0x02FE92 0B:BE82: 10 04     BPL bra_BE88_RTS
-- - - - - - 0x02FE94 0B:BE84: A5 8C     LDA ram_008C
+- - - - - - 0x02FE94 0B:BE84: A5 8C     LDA ram_random_2
 - - - - - - 0x02FE96 0B:BE86: 29 06     AND #$06
 bra_BE88_RTS:
 - - - - - - 0x02FE98 0B:BE88: 60        RTS
