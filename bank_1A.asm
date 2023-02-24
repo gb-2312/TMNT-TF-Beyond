@@ -2622,16 +2622,6 @@ _off015_8DA8_42:
 - D 0 - I - 0x034DBD 0D:8DAD: FF        .byte con_8B0B_FF   ; 
 
 
-; bzk garbage
-- - - - - - 0x034DBE 0D:8DAE: 0A        .byte $0A   ; 
-- - - - - - 0x034DBF 0D:8DAF: 1C        .byte $1C   ; 
-- - - - - - 0x034DC0 0D:8DB0: 1E        .byte $1E   ; 
-- - - - - - 0x034DC1 0D:8DB1: 28        .byte $28   ; 
-- - - - - - 0x034DC2 0D:8DB2: 1E        .byte $1E   ; 
-- - - - - - 0x034DC3 0D:8DB3: 00        .byte $00   ; 
-- - - - - - 0x034DC4 0D:8DB4: 00        .byte $00   ; 
-
-
 
 tbl_8DB5:
 ;                                              +-------------------- 00 easy
@@ -2757,16 +2747,6 @@ tbl_8E69:
 - D 0 - - - 0x034E7E 0D:8E6E: 20        .byte $20   ; 05
 - D 0 - - - 0x034E7F 0D:8E6F: 15        .byte $15   ; 06
 - D 0 - - - 0x034E80 0D:8E70: 03        .byte $03   ; 07
-
-
-; bzk garbage
-- - - - - - 0x034E81 0D:8E71: A9 01     LDA #$01
-- - - - - - 0x034E83 0D:8E73: 60        RTS
-
-
-; bzk garbage
-- - - - - - 0x034E84 0D:8E74: A9 02     LDA #$02
-- - - - - - 0x034E86 0D:8E76: 60        RTS
 
 
 
