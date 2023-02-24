@@ -1636,11 +1636,6 @@ C - - - - - 0x024B05 09:8AF5: B9 E8 98  LDA tbl_98E8,Y
 C - - - - - 0x024B08 09:8AF8: 4C 94 DF  JMP loc_0x03DFA4
 
 
-; bzk garbage
-- - - - - - 0x024B0B 09:8AFB: BD 10 06  LDA ram_plr_0610,X
-- - - - - - 0x024B0E 09:8AFE: D0 08     BNE bra_8B08
-
-
 
 bra_8B00_RTS:
 C - - - - - 0x024B10 09:8B00: 60        RTS
@@ -1652,7 +1647,6 @@ C - - - - - 0x024B11 09:8B01: BD 10 06  LDA ram_plr_0610,X
 C - - - - - 0x024B14 09:8B04: F0 FA     BEQ bra_8B00_RTS
 C - - - - - 0x024B16 09:8B06: 68        PLA
 C - - - - - 0x024B17 09:8B07: 68        PLA
-bra_8B08:
 C - - - - - 0x024B18 09:8B08: BD 20 05  LDA ram_obj_0520,X
 C - - - - - 0x024B1B 09:8B0B: C9 01     CMP #$01
 C - - - - - 0x024B1D 09:8B0D: D0 0F     BNE bra_8B1E
