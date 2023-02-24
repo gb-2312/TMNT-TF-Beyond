@@ -3030,13 +3030,6 @@ C - - - - - 0x03DD8C 0F:DD7C: 85 A7     STA ram_00A7
 C - - - - - 0x03DD8E 0F:DD7E: 60        RTS
 
 
-; bzk garbage
-- - - - - - 0x03DD8F 0F:DD7F: 85 94     STA ram_0094
-- - - - - - 0x03DD91 0F:DD81: A9 00     LDA #$00
-- - - - - - 0x03DD93 0F:DD83: 85 95     STA ram_0095
-- - - - - - 0x03DD95 0F:DD85: 60        RTS
-
-
 
 sub_0x03DD96:
 C - - - - - 0x03DD96 0F:DD86: BD 80 04  LDA ram_obj_0480,X
@@ -3087,10 +3080,6 @@ tbl_0x03DDC6:
 - D 2 - - - 0x03DDE2 0F:DDD2: FC        .byte $FC, $FD, $FC, $FC, $FE, $01, $FF   ; 04 casey
 - D 2 - - - 0x03DDE9 0F:DDD9: FC        .byte $FC, $FD, $FC, $FC, $FE, $03, $00   ; 05 hot
 - D 2 - - - 0x03DDF0 0F:DDE0: FC        .byte $FC, $FD, $FC, $FC, $FE, $00, $00   ; 06 shred
-
-
-; bzk garbage
-- - - - - - 0x03DDF7 0F:DDE7: FF        .byte $FF, $FF   ; 
 
 
 
@@ -3209,13 +3198,6 @@ C - - - - - 0x03DE7E 0F:DE6E: D0 02     BNE bra_DE72_RTS
 C - - - - - 0x03DE80 0F:DE70: A9 03     LDA #$03
 bra_DE72_RTS:
 C - - - - - 0x03DE82 0F:DE72: 60        RTS
-
-
-; bzk garbage
-- - - - - - 0x03DE83 0F:DE73: EA        NOP
-- - - - - - 0x03DE84 0F:DE74: EA        NOP
-- - - - - - 0x03DE85 0F:DE75: EA        NOP
-- - - - - - 0x03DE86 0F:DE76: EA        NOP
 
 
 
