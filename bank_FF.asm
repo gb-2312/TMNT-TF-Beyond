@@ -8466,25 +8466,6 @@ C - - - - - 0x03FBFF 0F:FBEF: 60        RTS
 - - - - - - 0x03FC21 0F:FC11: 60        RTS
 
 
-; bzk garbage
-- - - - - - 0x03FC22 0F:FC12: AD 00 80  LDA $8000
-- - - - - - 0x03FC25 0F:FC15: 85 46     STA ram_0046
-- - - - - - 0x03FC27 0F:FC17: 18        CLC
-- - - - - - 0x03FC28 0F:FC18: 69 01     ADC #$01
-- - - - - - 0x03FC2A 0F:FC1A: 85 47     STA ram_0047
-- - - - - - 0x03FC2C 0F:FC1C: A9 30     LDA #$30
-- - - - - - 0x03FC2E 0F:FC1E: A0 06     LDY #$06
-- - - - - - 0x03FC30 0F:FC20: 84 43     STY ram_0043
-- - - - - - 0x03FC32 0F:FC22: 8C 00 80  STY $8000
-- - - - - - 0x03FC35 0F:FC25: 8D 01 80  STA $8001
-- - - - - - 0x03FC38 0F:FC28: C8        INY
-- - - - - - 0x03FC39 0F:FC29: A9 31     LDA #$31
-- - - - - - 0x03FC3B 0F:FC2B: 84 43     STY ram_0043
-- - - - - - 0x03FC3D 0F:FC2D: 8C 00 80  STY $8000
-- - - - - - 0x03FC40 0F:FC30: 8D 01 80  STA $8001
-- - - - - - 0x03FC43 0F:FC33: 60        RTS
-
-
 
 loc_FC34:
 sub_FC34:
