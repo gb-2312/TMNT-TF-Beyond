@@ -3933,10 +3933,6 @@ C - - - - - 0x03E258 0F:E248: 85 95     STA ram_0095
 C - - - - - 0x03E25A 0F:E24A: 4C 25 DC  JMP loc_DC25
 
 
-; bzk garbage
-- - - - - - 0x03E25D 0F:E24D: 60        RTS
-
-
 
 ofs_001_E24E_03:
 C - - J - - 0x03E25E 0F:E24E: 20 3F F0  JSR sub_F03F
@@ -4194,13 +4190,6 @@ tbl_0x03E3E8:
 - D 3 - - - 0x03E3EE 0F:E3DE: 04        .byte $04   ; 06 shred
 
 
-; bzk garbage?
-- - - - - - 0x03E3EF 0F:E3DF: EA        NOP
-- - - - - - 0x03E3F0 0F:E3E0: EA        NOP
-- - - - - - 0x03E3F1 0F:E3E1: EA        NOP
-- - - - - - 0x03E3F2 0F:E3E2: EA        NOP
-
-
 
 loc_E3E3:
 C D 3 - - - 0x03E3F3 0F:E3E3: AD 50 01  LDA ram_0150
@@ -4215,11 +4204,6 @@ C - - - - - 0x03E3FC 0F:E3EC: 4C 25 FA  JMP loc_FA25
 tbl_E3EF:
 - D 3 - - - 0x03E3FF 0F:E3EF: 80        .byte $80   ; 00
 - D 3 - - - 0x03E400 0F:E3F0: 84        .byte $84   ; 04
-
-
-; bzk garbage
-- - - - - - 0x03E401 0F:E3F1: EA        NOP
-- - - - - - 0x03E402 0F:E3F2: EA        NOP
 
 
 
