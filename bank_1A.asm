@@ -441,43 +441,14 @@ bra_82A1_D0_FF:
 
 
 
-ofs_083_82A5_FF:
-C - - - - - 0x0342B5 0D:82A5: A9 00     LDA #$00
-C - - - - - 0x0342B7 0D:82A7: 9D E6 06  STA ram_06E6,X
-C - - - - - 0x0342BA 0D:82AA: 4C 96 ED  JMP loc_0x03EDA6
-
-
-
-ofs_083_82B2_FC:
-- - - - - - 0x0342C2 0D:82B2: A9 01     LDA #$01
-- - - - - - 0x0342C4 0D:82B4: 9D D2 06  STA ram_06D2,X
-- - - - - - 0x0342C7 0D:82B7: A9 00     LDA #$00
-- - - - - - 0x0342C9 0D:82B9: 9D C4 06  STA ram_06C4,X
-- - - - - - 0x0342CC 0D:82BC: 60        RTS
-
-
-
-ofs_083_82C1_D9:
-C - - - - - 0x0342D1 0D:82C1: A9 00     LDA #$00
-C - - - - - 0x0342D3 0D:82C3: 95 91     STA ram_btn_hold,X
-C - - - - - 0x0342D5 0D:82C5: 95 8E     STA ram_btn_press,X
-C - - - - - 0x0342D7 0D:82C7: 9D C6 06  STA ram_06C6,X
-C - - - - - 0x0342DA 0D:82CA: 9D C8 06  STA ram_06C8,X
-C - - - - - 0x0342DD 0D:82CD: 60        RTS
-
-
-
-ofs_083_82D2_FD:
-C - - - - - 0x0342E2 0D:82D2: FE C2 06  INC ram_06C2,X
-                                        LDY ram_0004
-C - - - - - 0x0342E5 0D:82D5: C8        INY
-C - - - - - 0x0342E6 0D:82D6: 20 20 ED  JSR sub_0x03ED30_чтение_cpu_btn
-C - - - - - 0x0342E9 0D:82D9: 9D D4 06  STA ram_06D4,X
-C - - - - - 0x0342EC 0D:82DC: A9 00     LDA #$00
-C - - - - - 0x0342EE 0D:82DE: 9D DA 06  STA ram_06DA,X
-C - - - - - 0x0342F1 0D:82E1: A9 03     LDA #$03
-C - - - - - 0x0342F3 0D:82E3: 9D D2 06  STA ram_06D2,X
-C - - - - - 0x0342F6 0D:82E6: 4C 6E 82  JMP loc_826E
+ofs_083_8310_D3:
+C - - - - - 0x034321 0D:8311: A9 17     LDA #$17
+C - - - - - 0x034323 0D:8313: 9D D4 06  STA ram_06D4,X
+- - - - - - 0x03432B 0D:831B: A9 18     LDA #$18
+- - - - - - 0x03432D 0D:831D: 9D D4 06  STA ram_06D4,X
+C - - - - - 0x034330 0D:8320: A9 03     LDA #$03
+C - - - - - 0x034332 0D:8322: 9D D2 06  STA ram_06D2,X
+C - - - - - 0x034335 0D:8325: 4C 6E 82  JMP loc_826E
 
 
 
@@ -499,26 +470,6 @@ C - - - - - 0x034315 0D:8305: 4C 6E 82  JMP loc_826E
 
 
 
-ofs_083_8310_D3:
-C - - - - - 0x034321 0D:8311: A9 17     LDA #$17
-C - - - - - 0x034323 0D:8313: 9D D4 06  STA ram_06D4,X
-- - - - - - 0x03432B 0D:831B: A9 18     LDA #$18
-- - - - - - 0x03432D 0D:831D: 9D D4 06  STA ram_06D4,X
-C - - - - - 0x034330 0D:8320: A9 03     LDA #$03
-C - - - - - 0x034332 0D:8322: 9D D2 06  STA ram_06D2,X
-C - - - - - 0x034335 0D:8325: 4C 6E 82  JMP loc_826E
-
-
-
-ofs_083_8310_FE:
-                                        LDA #$17
-                                        STA ram_06D4,X
-                                        LDA #$03
-                                        STA ram_06D2,X
-                                        JMP loc_826E
-
-
-
 ofs_083_832C_D5:
 C - - - - - 0x03433C 0D:832C: BD C6 06  LDA ram_06C6,X
 C - - - - - 0x03433F 0D:832F: 29 03     AND #con_btns_LR
@@ -528,44 +479,6 @@ C - - - - - 0x034347 0D:8337: 9D 24 06  STA ram_0624,X
 C - - - - - 0x03434A 0D:833A: A9 02     LDA #$02
 C - - - - - 0x03434C 0D:833C: 9D 26 06  STA ram_plr_0626,X
 C - - - - - 0x03434F 0D:833F: 4C 6E 82  JMP loc_826E
-
-
-
-ofs_083_8346_DD:
-C - - - - - 0x034356 0D:8346: FE DC 06  INC ram_06DC,X
-C - - - - - 0x034359 0D:8349: A9 40     LDA #con_btn_B
-C - - - - - 0x03435B 0D:834B: 95 8E     STA ram_btn_press,X
-C - - - - - 0x03435D 0D:834D: 95 91     STA ram_btn_hold,X
-C - - - - - 0x03435F 0D:834F: 60        RTS
-
-
-
-ofs_083_835A_DA:
-                                        LDA #$DA
-C - - - - - 0x03436A 0D:835A: 9D E6 06  STA ram_06E6,X
-C - - - - - 0x03436D 0D:835D: 4C 6E 82  JMP loc_826E
-
-
-
-ofs_083_835A_DB:
-C - - - - - 0x034368 0D:8358: A9 00     LDA #$00
-                                        STA ram_06E6,X
-                                        JMP loc_826E
-
-
-
-ofs_083_8364_DC:
-C - - - - - 0x034374 0D:8364: FE C2 06  INC ram_06C2,X
-                                        LDY ram_0004
-C - - - - - 0x034377 0D:8367: C8        INY
-C - - - - - 0x034378 0D:8368: 20 20 ED  JSR sub_0x03ED30_чтение_cpu_btn
-C - - - - - 0x03437B 0D:836B: 9D DA 06  STA ram_06DA,X
-C - - - - - 0x03437E 0D:836E: A9 0A     LDA #$0A
-loc_8370:
-C D 0 - - - 0x034380 0D:8370: 9D D4 06  STA ram_06D4,X
-C - - - - - 0x034383 0D:8373: A9 03     LDA #$03
-C - - - - - 0x034385 0D:8375: 9D D2 06  STA ram_06D2,X
-C - - - - - 0x034388 0D:8378: 60        RTS
 
 
 
@@ -610,6 +523,93 @@ C - - - - - 0x0343C9 0D:83B9: 9D C0 06  STA ram_06C0,X
 C - - - - - 0x0343CC 0D:83BC: 9D E2 06  STA ram_06E2,X
 C - - - - - 0x0343CF 0D:83BF: 20 48 82  JSR sub_8248
 C - - - - - 0x0343D2 0D:83C2: 4C 05 ED  JMP loc_0x03ED15
+
+
+
+ofs_083_82C1_D9:
+C - - - - - 0x0342D1 0D:82C1: A9 00     LDA #$00
+C - - - - - 0x0342D3 0D:82C3: 95 91     STA ram_btn_hold,X
+C - - - - - 0x0342D5 0D:82C5: 95 8E     STA ram_btn_press,X
+C - - - - - 0x0342D7 0D:82C7: 9D C6 06  STA ram_06C6,X
+C - - - - - 0x0342DA 0D:82CA: 9D C8 06  STA ram_06C8,X
+C - - - - - 0x0342DD 0D:82CD: 60        RTS
+
+
+
+ofs_083_835A_DA:
+                                        LDA #$DA
+C - - - - - 0x03436A 0D:835A: 9D E6 06  STA ram_06E6,X
+C - - - - - 0x03436D 0D:835D: 4C 6E 82  JMP loc_826E
+
+
+
+ofs_083_835A_DB:
+C - - - - - 0x034368 0D:8358: A9 00     LDA #$00
+                                        STA ram_06E6,X
+                                        JMP loc_826E
+
+
+
+ofs_083_8364_DC:
+C - - - - - 0x034374 0D:8364: FE C2 06  INC ram_06C2,X
+                                        LDY ram_0004
+C - - - - - 0x034377 0D:8367: C8        INY
+C - - - - - 0x034378 0D:8368: 20 20 ED  JSR sub_0x03ED30_чтение_cpu_btn
+C - - - - - 0x03437B 0D:836B: 9D DA 06  STA ram_06DA,X
+C - - - - - 0x03437E 0D:836E: A9 0A     LDA #$0A
+loc_8370:
+C D 0 - - - 0x034380 0D:8370: 9D D4 06  STA ram_06D4,X
+C - - - - - 0x034383 0D:8373: A9 03     LDA #$03
+C - - - - - 0x034385 0D:8375: 9D D2 06  STA ram_06D2,X
+C - - - - - 0x034388 0D:8378: 60        RTS
+
+
+
+ofs_083_8346_DD:
+C - - - - - 0x034356 0D:8346: FE DC 06  INC ram_06DC,X
+C - - - - - 0x034359 0D:8349: A9 40     LDA #con_btn_B
+C - - - - - 0x03435B 0D:834B: 95 8E     STA ram_btn_press,X
+C - - - - - 0x03435D 0D:834D: 95 91     STA ram_btn_hold,X
+C - - - - - 0x03435F 0D:834F: 60        RTS
+
+
+
+ofs_083_82B2_FC:
+- - - - - - 0x0342C2 0D:82B2: A9 01     LDA #$01
+- - - - - - 0x0342C4 0D:82B4: 9D D2 06  STA ram_06D2,X
+- - - - - - 0x0342C7 0D:82B7: A9 00     LDA #$00
+- - - - - - 0x0342C9 0D:82B9: 9D C4 06  STA ram_06C4,X
+- - - - - - 0x0342CC 0D:82BC: 60        RTS
+
+
+
+ofs_083_82D2_FD:
+C - - - - - 0x0342E2 0D:82D2: FE C2 06  INC ram_06C2,X
+                                        LDY ram_0004
+C - - - - - 0x0342E5 0D:82D5: C8        INY
+C - - - - - 0x0342E6 0D:82D6: 20 20 ED  JSR sub_0x03ED30_чтение_cpu_btn
+C - - - - - 0x0342E9 0D:82D9: 9D D4 06  STA ram_06D4,X
+C - - - - - 0x0342EC 0D:82DC: A9 00     LDA #$00
+C - - - - - 0x0342EE 0D:82DE: 9D DA 06  STA ram_06DA,X
+C - - - - - 0x0342F1 0D:82E1: A9 03     LDA #$03
+C - - - - - 0x0342F3 0D:82E3: 9D D2 06  STA ram_06D2,X
+C - - - - - 0x0342F6 0D:82E6: 4C 6E 82  JMP loc_826E
+
+
+
+ofs_083_8310_FE:
+                                        LDA #$17
+                                        STA ram_06D4,X
+                                        LDA #$03
+                                        STA ram_06D2,X
+                                        JMP loc_826E
+
+
+
+ofs_083_82A5_FF:
+C - - - - - 0x0342B5 0D:82A5: A9 00     LDA #$00
+C - - - - - 0x0342B7 0D:82A7: 9D E6 06  STA ram_06E6,X
+C - - - - - 0x0342BA 0D:82AA: 4C 96 ED  JMP loc_0x03EDA6
 
 
 
