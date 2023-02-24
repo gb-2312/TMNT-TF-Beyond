@@ -6170,11 +6170,6 @@ _off006_EF61_0D:
 - D 3 - I - 0x03EF7B 0F:EF6B: FF        .byte $FF   ; 
 
 
-; bzk garbage?
-- - - - - - 0x03EF7C 0F:EF6C: FF        .byte $FF, $FF, $FF, $FF   ; 
-- - - - - - 0x03EF80 0F:EF70: FF        .byte $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF   ; 
-
-
 
 loc_0x03EF88:
 C D 3 - - - 0x03EF88 0F:EF78: 10 14     BPL bra_EF8E
