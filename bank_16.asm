@@ -1701,7 +1701,7 @@ tbl_AF3D:
 
 sub_0x02EF50:
 C - - - - - 0x02EF50 0B:AF40: AD 2B 01  LDA ram_option_misc
-C - - - - - 0x02EF53 0B:AF43: 29 07     AND #$07
+C - - - - - 0x02EF53 0B:AF43: 29 07     AND #$03
                                         ASL
 C - - - - - 0x02EF55 0B:AF45: A8        TAY
 ; загрузить базовый поинтер палитры
@@ -1716,19 +1716,25 @@ C - - - - - 0x02EF5B 0B:AF4B: 85 01     STA ram_0001
                                         TYA
                                         ADC ram_0001
                                         STA ram_0001
-                                        INX
+                                        LDA tbl_D374,X
+                                        ORA ram_066D
+                                        STA ram_066D
                                         TXA
                                         ASL
                                         ASL
                                         TAX
-C - - - - - 0x02EF5D 0B:AF4D: A0 02     LDY #$02
+; первый цвет из 4х всегда черный по умолчанию (может быть осветлен в будущем)
+                                        LDA #$0F
+                                        STA ram_pal_buffer,X
+                                        INX
+C - - - - - 0x02EF5D 0B:AF4D: A0 02     LDY #$00
 bra_AF4F_loop:
 C - - - - - 0x02EF5F 0B:AF4F: B1 00     LDA (ram_0000),Y
-C - - - - - 0x02EF61 0B:AF51: 9D 4C 06  STA ram_pal_buffer - $01,X
-C - - - - - 0x02EF64 0B:AF54: CA        DEX
-C - - - - - 0x02EF65 0B:AF55: 88        DEY
-C - - - - - 0x02EF66 0B:AF56: 10 F7     BPL bra_AF4F_loop
-; нельзя менять X на выходе
+C - - - - - 0x02EF61 0B:AF51: 9D 4C 06  STA ram_pal_buffer,X
+C - - - - - 0x02EF64 0B:AF54: CA        INX
+C - - - - - 0x02EF65 0B:AF55: 88        INY
+                                        CPY #$03
+C - - - - - 0x02EF66 0B:AF56: 10 F7     BCC bra_AF4F_loop
 C - - - - - 0x02EF68 0B:AF58: 4C 17 F6  RTS
 
 
@@ -1748,6 +1754,20 @@ C - - - - - 0x03D39F 0F:D38F: 18        CLC
 C - - - - - 0x03D3A0 0F:D390: C8        INY
 bra_D391_RTS:
 C - - - - - 0x03D3A1 0F:D391: 60        RTS
+
+
+
+tbl_D374:
+; перемещено из банка FF
+- D 2 - - - 0x03D384 0F:D374: 01        .byte $01   ; 00
+- D 2 - - - 0x03D385 0F:D375: 02        .byte $02   ; 01
+- D 2 - - - 0x03D386 0F:D376: 04        .byte $04   ; 02
+- D 2 - - - 0x03D387 0F:D377: 08        .byte $08   ; 03
+- D 2 - - - 0x03D388 0F:D378: 10        .byte $10   ; 04
+- D 2 - - - 0x03D389 0F:D379: 20        .byte $20   ; 05
+- D 2 - - - 0x03D38A 0F:D37A: 40        .byte $40   ; 06
+- D 2 - - - 0x03D38B 0F:D37B: 80        .byte $80   ; 07
+; bzk bug, считывается байт под индексом 08 из-за 0x038381
 
 
 

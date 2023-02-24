@@ -1288,28 +1288,9 @@ C - - - - - 0x03D358 0F:D348: 86 03     STX ram_0003
 C - - - - - 0x03D366 0F:D356: 20 E7 F5  JSR sub_F5E7_swap_prg_16
 C - - - - - 0x03D369 0F:D359: 20 40 AF  JSR sub_0x02EF50
                                         JSR sub_F617_restore_prg
-; первый цвет из 4х всегда черный по умолчанию (может быть осветлен)
-C - - - - - 0x03D371 0F:D361: A9 0F     LDA #$0F
-C - - - - - 0x03D373 0F:D363: 9D 4C 06  STA ram_pal_buffer - $01,X
-C - - - - - 0x03D376 0F:D366: A6 03     LDX ram_0003
-C - - - - - 0x03D378 0F:D368: A4 04     LDY ram_0004
-C - - - - - 0x03D37A 0F:D36A: BD 74 D3  LDA tbl_D374,X
-C - - - - - 0x03D37D 0F:D36D: 0D 6D 06  ORA ram_066D
-C - - - - - 0x03D380 0F:D370: 8D 6D 06  STA ram_066D
+                                        LDX ram_0003
+                                        LDY ram_0004
 C - - - - - 0x03D383 0F:D373: 60        RTS
-
-
-
-tbl_D374:
-- D 2 - - - 0x03D384 0F:D374: 01        .byte $01   ; 00
-- D 2 - - - 0x03D385 0F:D375: 02        .byte $02   ; 01
-- D 2 - - - 0x03D386 0F:D376: 04        .byte $04   ; 02
-- D 2 - - - 0x03D387 0F:D377: 08        .byte $08   ; 03
-- D 2 - - - 0x03D388 0F:D378: 10        .byte $10   ; 04
-- D 2 - - - 0x03D389 0F:D379: 20        .byte $20   ; 05
-- D 2 - - - 0x03D38A 0F:D37A: 40        .byte $40   ; 06
-- D 2 - - - 0x03D38B 0F:D37B: 80        .byte $80   ; 07
-; bzk bug, считывается байт под индексом 08 из-за 0x038381
 
 
 
