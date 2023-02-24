@@ -1383,14 +1383,6 @@ C - - - - - 0x02E704 0B:A6F4: 85 12     STA ram_0012
 C - - - - - 0x02E706 0B:A6F6: 4C 17 F6  JMP loc_0x03F627_restore_prg
 
 
-; bzk garbage
-- - - - - - 0x02E709 0B:A6F9: FF        .byte $FF, $FF, $FF, $FF, $FF, $FF, $FF   ; 
-- - - - - - 0x02E710 0B:A700: FF        .byte $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF   ; 
-- - - - - - 0x02E720 0B:A710: FF        .byte $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF   ; 
-- - - - - - 0x02E730 0B:A720: FF        .byte $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF   ; 
-- - - - - - 0x02E740 0B:A730: FF        .byte $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF   ; 
-
-
 
 sub_0x02E74B:
 - - - - - - 0x02E74B 0B:A73B: 05 AF     ORA ram_00AF
@@ -1401,16 +1393,6 @@ sub_0x02E74B:
 - - - - - - 0x02E757 0B:A747: 8D 10 01  STA ram_0110
 - - - - - - 0x02E75A 0B:A74A: 20 09 DE  JSR sub_0x03DE19_очистить_00AE_00B5
 - - - - - - 0x02E75D 0B:A74D: 4C 17 F6  JMP loc_0x03F627_restore_prg
-
-
-; bzk garbage
-- - - - - - 0x02E760 0B:A750: FF        .byte $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF   ; 
-- - - - - - 0x02E770 0B:A760: FF        .byte $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF   ; 
-- - - - - - 0x02E780 0B:A770: FF        .byte $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF   ; 
-- - - - - - 0x02E790 0B:A780: FF        .byte $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF   ; 
-- - - - - - 0x02E7A0 0B:A790: FF        .byte $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF   ; 
-- - - - - - 0x02E7B0 0B:A7A0: FF        .byte $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF   ; 
-- - - - - - 0x02E7C0 0B:A7B0: FF        .byte $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF   ; 
 
 
 
@@ -1447,12 +1429,6 @@ C - - - - - 0x02E7FE 0B:A7EE: 9D 00 06  STA ram_plr_0600,X
 C - - - - - 0x02E801 0B:A7F1: 4C 17 F6  JMP loc_0x03F627_restore_prg
 
 
-; bzk garbage
-- - - - - - 0x02E804 0B:A7F4: FF        .byte $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF   ; 
-- - - - - - 0x02E810 0B:A800: FF        .byte $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF   ; 
-- - - - - - 0x02E820 0B:A810: FF        .byte $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF   ; 
-
-
 
 ofs_0x02E830:
 C - - - - - 0x02E830 0B:A820: 8A        TXA
@@ -1474,12 +1450,6 @@ tbl_A831:
 - D 1 - - - 0x02E845 0B:A835: 24        .byte $24   ; 04 casey
 - - - - - - 0x02E846 0B:A836: 24        .byte $24   ; 05 hot
 - D 1 - - - 0x02E847 0B:A837: 22        .byte $22   ; 06 shred
-
-
-; bzk garbage
-- - - - - - 0x02E848 0B:A838: FF        .byte $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF   ; 
-- - - - - - 0x02E850 0B:A840: FF        .byte $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF   ; 
-- - - - - - 0x02E860 0B:A850: FF        .byte $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF   ; 
 
 
 
@@ -1509,10 +1479,6 @@ C - - - - - 0x02E89B 0B:A88B: 48        PHA
 C - - - - - 0x02E89C 0B:A88C: A9 24     LDA #< (ofs_0x024635 - $01)
 C - - - - - 0x02E89E 0B:A88E: 48        PHA
 C - - - - - 0x02E89F 0B:A88F: 4C 17 F6  JMP loc_0x03F627_restore_prg
-
-
-; bzk garbage
-- - - - - - 0x02E8A2 0B:A892: FF        .byte $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF   ; 
 
 
 
