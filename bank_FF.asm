@@ -7943,10 +7943,6 @@ C - - - - - 0x03F8CB 0F:F8BB: 20 00 F6  JSR sub_F600_swap_prg_16
 C - - - - - 0x03F8CE 0F:F8BE: 4C 90 AF  JMP loc_0x02EFA0
 
 
-; bzk garbage
-- - - - - - 0x03F8D1 0F:F8C1: EA        NOP
-
-
 
 sub_F8C2_попытка_выключить_обновление_oam:
 ; насколько я помню, используется только в момент
@@ -8185,10 +8181,6 @@ C - - - - - 0x03FA6B 0F:FA5B: A0 40     LDY #< $2240
 C - - - - - 0x03FA6D 0F:FA5D: 8D 06 20  STA $2006
 C - - - - - 0x03FA70 0F:FA60: 8C 06 20  STY $2006
 C - - - - - 0x03FA73 0F:FA63: 4C E3 E3  JMP loc_E3E3
-
-
-; bzk garbage
-- - - - - - 0x03FA76 0F:FA66: EA        NOP
 
 
 
