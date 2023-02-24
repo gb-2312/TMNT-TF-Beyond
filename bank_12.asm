@@ -10812,10 +10812,6 @@ C - - - - - 0x027E22 09:BE12: B9 39 BF  LDA tbl_BFB9 - $80,Y
 C - - - - - 0x027E25 09:BE15: 90 CC     BCC bra_BDE3    ; jmp
 
 
-; bzk garbage
-- - - - - - 0x027E27 09:BE17: FF        .byte $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF   ; 
-
-
 
 sub_BE20:
 C - - - - - 0x027E30 09:BE20: 10 0E     BPL bra_BE30
@@ -10834,10 +10830,6 @@ C - - - - - 0x027E49 09:BE39: 9D 90 05  STA ram_obj_0590,X ; 0590 0591
 C - - - - - 0x027E4C 09:BE3C: 9D 47 06  STA ram_plr_0647,X ; 0647 0648 
 bra_BE3F_RTS:
 C - - - - - 0x027E4F 09:BE3F: 60        RTS
-
-
-; bzk garbage
-- - - - - - 0x027E50 09:BE40: FF        .byte $FF, $FF, $FF, $FF   ; 
 
 
 
@@ -10891,17 +10883,6 @@ bra_BE99:
 C - - - - - 0x027EA9 09:BE99: 29 BF     AND #$BF
 C - - - - - 0x027EAB 09:BE9B: 9D 00 06  STA ram_plr_0600,X ; 0600 0601 
 C - - - - - 0x027EAE 09:BE9E: 60        RTS
-
-
-; bzk garbage
-- - - - - - 0x027EAF 09:BE9F: FF        .byte $FF   ; 
-- - - - - - 0x027EB0 09:BEA0: FF        .byte $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF   ; 
-- - - - - - 0x027EC0 09:BEB0: FF        .byte $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF   ; 
-- - - - - - 0x027ED0 09:BEC0: FF        .byte $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF   ; 
-- - - - - - 0x027EE0 09:BED0: FF        .byte $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF   ; 
-- - - - - - 0x027EF0 09:BEE0: FF        .byte $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF   ; 
-- - - - - - 0x027F00 09:BEF0: FF        .byte $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF   ; 
-- - - - - - 0x027F10 09:BF00: FF        .byte $FF, $FF, $FF   ; 
 
 
 
