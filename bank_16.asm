@@ -3410,10 +3410,6 @@ C - - - - - 0x02FF75 0B:BF65: FE 30 05  INC ram_obj_0530,X
 C - - - - - 0x02FF78 0B:BF68: 60        RTS
 
 
-; bzk garbage
-- - - - - - 0x02FF79 0B:BF69: FF        .byte $FF, $FF, $FF, $FF, $FF, $FF, $FF   ; 
-
-
 
 loc_0x02FF80:
 C D 1 - - - 0x02FF80 0B:BF70: A8        TAY
@@ -3455,14 +3451,6 @@ C - - - - - 0x02FFC5 0B:BFB5: 4C 46 E2  JMP loc_0x03E256
 
 
 
-; bzk garbage
-- - - - - - 0x02FFC8 0B:BFB8: FF        .byte $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF   ; 
-- - - - - - 0x02FFD0 0B:BFC0: FF        .byte $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF   ; 
-- - - - - - 0x02FFE0 0B:BFD0: FF        .byte $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF   ; 
-- - - - - - 0x02FFF0 0B:BFE0: FF        .byte $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF   ; 
-
-
-
 tbl_BFEA:
 - - - - - - 0x02FFFA 0B:BFEA: 00        .byte $00   ; 00
 - D 1 - - - 0x02FFFB 0B:BFEB: 06        .byte $06   ; 01
@@ -3488,11 +3476,6 @@ tbl_BFFA:
 - D 1 - - - 0x03000B 0B:BFFB: 10        .byte $10   ; 01
 - D 1 - - - 0x03000C 0B:BFFC: 10        .byte $10   ; 02
 - D 1 - - - 0x03000D 0B:BFFD: 3C        .byte $3C   ; 03
-
-
-; bzk garbage
-- - - - - - 0x03000E 0B:BFFE: EA        .byte $EA   ; 
-- - - - - - 0x03000F 0B:BFFF: EA        .byte $EA   ; 
 
 
 
