@@ -8519,22 +8519,6 @@ C - - - - - 0x03FC58 0F:FC48: 60        RTS
 - - - - - - 0x03FC81 0F:FC71: 60        RTS
 
 
-; bzk garbage
-- - - - - - 0x03FC82 0F:FC72: A9 00     LDA #$00
-- - - - - - 0x03FC84 0F:FC74: 8D 00 80  STA $8000
-- - - - - - 0x03FC87 0F:FC77: 8D 00 E0  STA $E000
-- - - - - - 0x03FC8A 0F:FC7A: AD 02 20  LDA $2002
-- - - - - - 0x03FC8D 0F:FC7D: A9 10     LDA #$10
-- - - - - - 0x03FC8F 0F:FC7F: AA        TAX
-bra_FC80_loop:
-- - - - - - 0x03FC90 0F:FC80: 8D 06 20  STA $2006
-- - - - - - 0x03FC93 0F:FC83: 8D 06 20  STA $2006
-- - - - - - 0x03FC96 0F:FC86: 49 10     EOR #$10
-- - - - - - 0x03FC98 0F:FC88: CA        DEX
-- - - - - - 0x03FC99 0F:FC89: D0 F5     BNE bra_FC80_loop
-- - - - - - 0x03FC9B 0F:FC8B: 60        RTS
-
-
 
 loc_FC8C_set_mirroring_V:
 sub_FC8C_set_mirroring_V:
