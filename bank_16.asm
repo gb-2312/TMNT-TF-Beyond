@@ -3,7 +3,6 @@
 .include "copy_bank_val.inc"
 ; 0x02C010-0x03000F
 .org $8000
-; !!! нельзя перемещать код пока не разберусь с 0x02EE96 и 0x02EF50
 
 
 
@@ -46,7 +45,6 @@
 .export sub_0x02EE60_выбрать_палитру_уровня
 .export sub_0x02EF50
 .export loc_0x02EFA0
-.export tbl_0x02EFFA_палитра
 .export ofs_0x02F73B
 .export _off006_0x02F990_03
 .export loc_0x02FC90
@@ -1806,32 +1804,24 @@ C - - - - - 0x02EC17 0B:AC07: 60        RTS
 
 
 tbl_ACB0:
-off_AD00_start = tbl_AD00_палитра
-; bzk optimize
-- D 1 - - - 0x02ECC0 0B:ACB0: 00        .byte off_AD00_00 - off_AD00_start
-- D 1 - - - 0x02ECC1 0B:ACB1: 0C        .byte off_AD0C_01 - off_AD00_start
-- D 1 - - - 0x02ECC2 0B:ACB2: 00        .byte off_AD00_02 - off_AD00_start
-- D 1 - - - 0x02ECC3 0B:ACB3: 0C        .byte off_AD0C_03 - off_AD00_start
-- D 1 - - - 0x02ECC4 0B:ACB4: 18        .byte off_AD18_04 - off_AD00_start
-- D 1 - - - 0x02ECC5 0B:ACB5: 18        .byte off_AD18_05 - off_AD00_start
-- D 1 - - - 0x02ECC6 0B:ACB6: 24        .byte off_AD24_06 - off_AD00_start
-- D 1 - - - 0x02ECC7 0B:ACB7: 30        .byte off_AD30_07 - off_AD00_start
-- - - - - - 0x02ECC8 0B:ACB8: FF        .byte $FF    ; 08 placeholder
-- - - - - - 0x02ECC9 0B:ACB9: FF        .byte $FF    ; 09 placeholder
-- - - - - - 0x02ECCA 0B:ACBA: FF        .byte $FF    ; 0A placeholder
-- - - - - - 0x02ECCB 0B:ACBB: FF        .byte $FF    ; 0B placeholder
-- - - - - - 0x02ECCC 0B:ACBC: FF        .byte $FF    ; 0C placeholder
-- - - - - - 0x02ECCD 0B:ACBD: FF        .byte $FF    ; 0D placeholder
-- - - - - - 0x02ECCE 0B:ACBE: FF        .byte $FF    ; 0E placeholder
-- - - - - - 0x02ECCF 0B:ACBF: FF        .byte $FF    ; 0F placeholder
-- - - - - - 0x02ECD0 0B:ACC0: 80        .byte off_AD80_10 - off_AD00_start
-- - - - - - 0x02ECD1 0B:ACC1: 8C        .byte off_AD8C_11 - off_AD00_start
-- - - - - - 0x02ECD2 0B:ACC2: 80        .byte off_AD80_12 - off_AD00_start
-- - - - - - 0x02ECD3 0B:ACC3: 8C        .byte off_AD8C_13 - off_AD00_start
-- - - - - - 0x02ECD4 0B:ACC4: 98        .byte off_AD98_14 - off_AD00_start
-- - - - - - 0x02ECD5 0B:ACC5: 98        .byte off_AD98_15 - off_AD00_start
-- - - - - - 0x02ECD6 0B:ACC6: A4        .byte off_ADA4_16 - off_AD00_start
-- - - - - - 0x02ECD7 0B:ACC7: B0        .byte off_ADB0_17 - off_AD00_start
+; green, original
+- D 1 - - - 0x02ECC0 0B:ACB0: 00        .word off_AD00_00
+- D 1 - - - 0x02ECC1 0B:ACB1: 0C        .word off_AD0C_01
+- D 1 - - - 0x02ECC2 0B:ACB2: 00        .word off_AD00_02
+- D 1 - - - 0x02ECC3 0B:ACB3: 0C        .word off_AD0C_03
+- D 1 - - - 0x02ECC4 0B:ACB4: 18        .word off_AD18_04
+- D 1 - - - 0x02ECC5 0B:ACB5: 18        .word off_AD18_05
+- D 1 - - - 0x02ECC6 0B:ACB6: 24        .word off_AD24_06
+- D 1 - - - 0x02ECC7 0B:ACB7: 30        .word off_AD30_07
+; night
+- - - - - - 0x02ECD0 0B:ACC0: 80        .word off_AD80_10
+- - - - - - 0x02ECD1 0B:ACC1: 8C        .word off_AD8C_11
+- - - - - - 0x02ECD2 0B:ACC2: 80        .word off_AD80_12
+- - - - - - 0x02ECD3 0B:ACC3: 8C        .word off_AD8C_13
+- - - - - - 0x02ECD4 0B:ACC4: 98        .word off_AD98_14
+- - - - - - 0x02ECD5 0B:ACC5: 98        .word off_AD98_15
+- - - - - - 0x02ECD6 0B:ACC6: A4        .word off_ADA4_16
+- - - - - - 0x02ECD7 0B:ACC7: B0        .word off_ADB0_17
 
 
 ; bzk garbage
@@ -1853,7 +1843,6 @@ tbl_ACD0_палитра:
 
 
 
-tbl_AD00_палитра:
 off_AD00_00:
 off_AD00_02:
 - D 1 - I - 0x02ED10 0B:AD00: 0F        .byte $0F, $17, $27, $38   ; 
@@ -1989,24 +1978,22 @@ C - - - - - 0x02EE8C 0B:AE7C: B9 30 AE  LDA tbl_AE30,Y
 C - - - - - 0x02EE8F 0B:AE7F: 85 4E     STA ram_004E
 C - - - - - 0x02EE91 0B:AE81: B9 31 AE  LDA tbl_AE30 + $01,Y
 C - - - - - 0x02EE94 0B:AE84: 85 4F     STA ram_004F
-; требуется добавить нормальную запись младшего байта
-; удалить 0x02EE96 и 0x02EE98, раскомментировать код
-; еще можно записать базовый адрес палитры, а потом добавить к нему индекс палитры * 0C, возможно еще + 009E
-C - - - - - 0x02EE96 0B:AE86: A9 AD     LDA #> tbl_AD00_палитра
-C - - - - - 0x02EE98 0B:AE88: 85 01     STA ram_0001
 C - - - - - 0x02EE9A 0B:AE8A: AD 2B 01  LDA ram_option_misc
 C - - - - - 0x02EE9D 0B:AE8D: 29 02     AND #$02
 C - - - - - 0x02EE9F 0B:AE8F: F0 02     BEQ bra_AE93
 ; if night
-- - - - - - 0x02EEA1 0B:AE91: A9 10     LDA #$10
-bra_AE93:   ; A = 00
+- - - - - - 0x02EEA1 0B:AE91: A9 10     LDA #$08
+bra_AE93:
+                                        .byte $2C   ; BIT
+                                        LDA #$00
+                                        CLC
 C - - - - - 0x02EEA3 0B:AE93: 65 9E     ADC ram_009E
-                                        ;ASL
+                                        ASL
 C - - - - - 0x02EEA5 0B:AE95: AA        TAX
 C - - - - - 0x02EEA6 0B:AE96: BD B0 AC  LDA tbl_ACB0,X
 C - - - - - 0x02EEA9 0B:AE99: 85 00     STA ram_0000
-                                        ;LDA tbl_ACB0 + $01,X
-                                        ;STA ram_0001
+                                        LDA tbl_ACB0 + $01,X
+                                        STA ram_0001
 C - - - - - 0x02EEAB 0B:AE9B: A0 0B     LDY #$0B
 bra_AE9D_loop:
 C - - - - - 0x02EEAD 0B:AE9D: B1 00     LDA (ram_0000),Y
@@ -2029,35 +2016,37 @@ C - - - - - 0x02EECE 0B:AEBE: BE 20 AE  LDX tbl_AE20,Y
 C - - - - - 0x02EED1 0B:AEC1: 60        RTS
 
 
-; bzk garbage
-- - - - - - 0x02EED2 0B:AEC2: FF        .byte $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF   ; 
-- - - - - - 0x02EEE0 0B:AED0: FF        .byte $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF   ; 
-- - - - - - 0x02EEF0 0B:AEE0: FF        .byte $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF   ; 
-- - - - - - 0x02EF00 0B:AEF0: FF        .byte $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF   ; 
-- - - - - - 0x02EF10 0B:AF00: FF        .byte $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF   ; 
-- - - - - - 0x02EF20 0B:AF10: FF        .byte $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF   ; 
-- - - - - - 0x02EF30 0B:AF20: FF        .byte $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF   ; 
-- - - - - - 0x02EF40 0B:AF30: FF        .byte $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF   ; 
-
-
 
 tbl_AF3D:
-- D 1 - - - 0x02EF4D 0B:AF3D: 21        .byte $21   ; 00
-- - - - - - 0x02EF4E 0B:AF3E: 23        .byte $23   ; 01
-- - - - - - 0x02EF4F 0B:AF3F: 25        .byte $25   ; 02
+- D 1 - - - 0x02EF4D 0B:AF3D: 21        .word tbl_B3EA_green   ; 00
+- - - - - - 0x02EF4E 0B:AF3E: 23        .word tbl_B1EA_original   ; 01
+- - - - - - 0x02EF4F 0B:AF3F: 25        .word tbl_AFEA_night   ; 02
 
 
 
 sub_0x02EF50:
 ; требуются поинтеры для 0x02EFFA 0x02F1FA 0x02F3FA
-; C = 0
 C - - - - - 0x02EF50 0B:AF40: AD 2B 01  LDA ram_option_misc
-; bzk optimize, раз в таблице 3 байта, достаточно AND 03
 C - - - - - 0x02EF53 0B:AF43: 29 07     AND #$07
+                                        ASL
 C - - - - - 0x02EF55 0B:AF45: A8        TAY
-C - - - - - 0x02EF56 0B:AF46: A5 01     LDA ram_0001
-C - - - - - 0x02EF58 0B:AF48: F9 3D AF  SBC tbl_AF3D,Y
+; загрузить базовый поинтер палитры
+                                        LDA tbl_AF3D,Y
+C - - - - - 0x02EF56 0B:AF46: A5 01     STA ram_0000
+C - - - - - 0x02EF58 0B:AF48: F9 3D AF  LDA tbl_AF3D + $01,Y
 C - - - - - 0x02EF5B 0B:AF4B: 85 01     STA ram_0001
+                                        JSR sub_D37C_подкорректировать_поинтер_палитры
+                                        CLC
+                                        ADC ram_0000
+                                        STA ram_0000
+                                        TYA
+                                        ADC ram_0001
+                                        STA ram_0001
+                                        INX
+                                        TXA
+                                        ASL
+                                        ASL
+                                        TAX
 C - - - - - 0x02EF5D 0B:AF4D: A0 02     LDY #$02
 bra_AF4F_loop:
 C - - - - - 0x02EF5F 0B:AF4F: B1 00     LDA (ram_0000),Y
@@ -2065,7 +2054,25 @@ C - - - - - 0x02EF61 0B:AF51: 9D 4C 06  STA ram_064C,X
 C - - - - - 0x02EF64 0B:AF54: CA        DEX
 C - - - - - 0x02EF65 0B:AF55: 88        DEY
 C - - - - - 0x02EF66 0B:AF56: 10 F7     BPL bra_AF4F_loop
-C - - - - - 0x02EF68 0B:AF58: 4C 17 F6  JMP loc_0x03F627_restore_prg
+C - - - - - 0x02EF68 0B:AF58: 4C 17 F6  RTS
+
+
+
+sub_D37C_подкорректировать_поинтер_палитры:
+; перемещено из банка FF
+C D 2 - - - 0x03D38C 0F:D37C: 85 05     LDA ram_0005
+C - - - - - 0x03D38E 0F:D37E: AC 93 D3  LDY #$00
+C - - - - - 0x03D391 0F:D381: 0A        ASL
+C - - - - - 0x03D392 0F:D382: 20 8D D3  JSR sub_D38D
+C - - - - - 0x03D395 0F:D385: 65 05     ADC ram_0005
+C - - - - - 0x03D397 0F:D387: 20 8D D3  JSR sub_D38D
+C - - - - - 0x03D39A 0F:D38A: 6D 92 D3  ADC #$00
+sub_D38D:
+C - - - - - 0x03D39D 0F:D38D: 90 02     BCC bra_D391_RTS
+C - - - - - 0x03D39F 0F:D38F: 18        CLC
+C - - - - - 0x03D3A0 0F:D390: C8        INY
+bra_D391_RTS:
+C - - - - - 0x03D3A1 0F:D391: 60        RTS
 
 
 ; bzk garbage
@@ -2106,9 +2113,7 @@ C - - - - - 0x02EFC3 0B:AFB3: 60        RTS
 
 
 
-
-tbl_0x02EFFA_палитра:
-; bzk optimize, поправить поинтер в 0x03D38E
+tbl_AFEA_night:
 - - - - - - 0x02EFFA 0B:AFEA: 20        .byte $20, $20, $20   ; 00
 - - - - - - 0x02EFFD 0B:AFED: 16        .byte $16, $1A, $20   ; 01
 - - - - - - 0x02F000 0B:AFF0: 01        .byte $01, $11, $21   ; 02
@@ -2232,6 +2237,7 @@ tbl_0x02EFFA_палитра:
 
 
 
+tbl_B1EA_original:
 - - - - - - 0x02F1FA 0B:B1EA: 20        .byte $20, $20, $20   ; 00
 - - - - - - 0x02F1FD 0B:B1ED: 16        .byte $16, $1A, $20   ; 01
 - - - - - - 0x02F200 0B:B1F0: 00        .byte $00, $10, $20   ; 02
@@ -2355,6 +2361,7 @@ tbl_0x02EFFA_палитра:
 
 
 
+tbl_B3EA_green:
 - D 1 - I - 0x02F3FA 0B:B3EA: 20        .byte $20, $20, $20   ; 00
 - D 1 - I - 0x02F3FD 0B:B3ED: 16        .byte $16, $1A, $20   ; 01
 - D 1 - I - 0x02F400 0B:B3F0: 00        .byte $00, $10, $20   ; 02
