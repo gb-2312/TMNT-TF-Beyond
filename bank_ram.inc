@@ -102,7 +102,7 @@ ram_0048                                = $0048 ; 02EE7C 03F1BE 03F21F 03F824 03
 ram_0049                                = $0049 ; 02EE7E 0389B7 03F1BE 03F21F 03F4E9 03F837 03FB9A 03FBA0 03FBA5 
 
 ; bzk бесполезный адрес
-ram_copy_C000                                = $004A ; 03F1BE 03F21F 03F833 03F8FF 03F98E 03F9DB 03FA24 03FA7F 03FAFA 03FB27 03FB5D 03FBF0 
+ram_copy_C000                           = $004A ; 03F1BE 03F21F 03F833 03F8FF 03F98E 03F9DB 03FA24 03FA7F 03FAFA 03FB27 03FB5D 03FBF0 
 
 ; ($indirect)
 ram_004B                                = $004B ; 02EE86 03F1BE 03F21F 03F844 
