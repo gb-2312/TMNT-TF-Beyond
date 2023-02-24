@@ -8499,26 +8499,6 @@ C - - - - - 0x03FC55 0F:FC45: 8D 01 80  STA $8001
 C - - - - - 0x03FC58 0F:FC48: 60        RTS
 
 
-; bzk garbage
-- - - - - - 0x03FC59 0F:FC49: A9 02     LDA #$02
-- - - - - - 0x03FC5B 0F:FC4B: 8D 00 80  STA $8000
-- - - - - - 0x03FC5E 0F:FC4E: A5 34     LDA ram_0034
-- - - - - - 0x03FC60 0F:FC50: 8D 01 80  STA $8001
-- - - - - - 0x03FC63 0F:FC53: A9 03     LDA #$03
-- - - - - - 0x03FC65 0F:FC55: 8D 00 80  STA $8000
-- - - - - - 0x03FC68 0F:FC58: A5 35     LDA ram_0035
-- - - - - - 0x03FC6A 0F:FC5A: 8D 01 80  STA $8001
-- - - - - - 0x03FC6D 0F:FC5D: A9 04     LDA #$04
-- - - - - - 0x03FC6F 0F:FC5F: 8D 00 80  STA $8000
-- - - - - - 0x03FC72 0F:FC62: A5 36     LDA ram_0036
-- - - - - - 0x03FC74 0F:FC64: 8D 01 80  STA $8001
-- - - - - - 0x03FC77 0F:FC67: A9 05     LDA #$05
-- - - - - - 0x03FC79 0F:FC69: 8D 00 80  STA $8000
-- - - - - - 0x03FC7C 0F:FC6C: A5 37     LDA ram_0037
-- - - - - - 0x03FC7E 0F:FC6E: 8D 01 80  STA $8001
-- - - - - - 0x03FC81 0F:FC71: 60        RTS
-
-
 
 loc_FC8C_set_mirroring_V:
 sub_FC8C_set_mirroring_V:
