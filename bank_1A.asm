@@ -5170,10 +5170,6 @@ C - - - - - 0x035BBF 0D:9BAF: A8        TAY
 C - - - - - 0x035BC0 0D:9BB0: 4C 00 A8  JMP loc_A800
 
 
-; bzk garbage
-- - - - - - 0x035BC3 0D:9BB3: 60        RTS
-
-
 
 bra_9BB4:
 C - - - - - 0x035BC4 0D:9BB4: BC DE 06  LDY ram_06DE,X
@@ -5183,13 +5179,6 @@ C - - - - - 0x035BCC 0D:9BBC: 4C 75 A4  JMP loc_A475
 bra_9BBF:
 C - - - - - 0x035BCF 0D:9BBF: A9 16     LDA #$16
 C - - - - - 0x035BD1 0D:9BC1: 60        RTS
-
-
-; bzk garbage
-- - - - - - 0x035BD2 0D:9BC2: EA        NOP
-- - - - - - 0x035BD3 0D:9BC3: EA        NOP
-- - - - - - 0x035BD4 0D:9BC4: EA        NOP
-- - - - - - 0x035BD5 0D:9BC5: EA        NOP
 
 
 
@@ -5328,10 +5317,6 @@ ofs_022_9C75_01_raph:
 C - - J - - 0x035C85 0D:9C75: 4C A4 BF  JMP loc_BFA4
 
 
-; bzk garbage
-- - - - - - 0x035C88 0D:9C78: EA        NOP
-
-
 
 loc_9C79:
 C D 0 - - - 0x035C89 0D:9C79: D0 1D     BNE bra_9C98
@@ -5389,10 +5374,6 @@ C - - J - - 0x035CC3 0D:9CB3: A5 11     LDA ram_0011
 C - - - - - 0x035CC5 0D:9CB5: C9 08     CMP #$08
 C - - - - - 0x035CC7 0D:9CB7: D0 0A     BNE bra_9CC3_RTS
 C - - - - - 0x035CC9 0D:9CB9: 4C 5F BF  JMP loc_BF5F
-
-
-; bzk garbage
-- - - - - - 0x035CCC 0D:9CBC: EA        NOP
 
 
 
@@ -5478,10 +5459,6 @@ ofs_021_9D17_02_RTS:
 C - - J - - 0x035D27 0D:9D17: 60        RTS
 
 
-; bzk garbage
-- - - - - - 0x035D28 0D:9D18: 60        RTS
-
-
 
 ofs_021_9D19_04_RTS:
 - - - - - - 0x035D29 0D:9D19: 60        RTS
@@ -5543,10 +5520,6 @@ ofs_020_9D5F_02_RTS:
 - - - - - - 0x035D6F 0D:9D5F: 60        RTS
 
 
-; bzk garbage
-- - - - - - 0x035D70 0D:9D60: 60        RTS
-
-
 
 ofs_020_9D61_04_RTS:
 - - - - - - 0x035D71 0D:9D61: 60        RTS
@@ -5602,10 +5575,6 @@ C - - - - - 0x035DA9 0D:9D99: 20 32 D0  JSR sub_0x03D042_поинтеры_пос
 ; bzk optimize
 ofs_019_9DAA_02_RTS:
 C - - J - - 0x035DBA 0D:9DAA: 60        RTS
-
-
-; bzk garbage
-- - - - - - 0x035DBB 0D:9DAB: 60        RTS
 
 
 
@@ -5694,12 +5663,6 @@ bra_9E2B_RTS:
 - - - - - - 0x035E3B 0D:9E2B: 60        RTS
 
 
-; bzk garbage
-- - - - - - 0x035E3C 0D:9E2C: A9 01     LDA #$01
-- - - - - - 0x035E3E 0D:9E2E: 85 17     STA ram_0017
-- - - - - - 0x035E40 0D:9E30: 60        RTS
-
-
 
 loc_9E31:
 C D 0 - - - 0x035E41 0D:9E31: A9 1C     LDA #$1C
@@ -5776,10 +5739,6 @@ bra_9EAB:
 - - - - - - 0x035EBB 0D:9EAB: A9 1D     LDA #$1D
 - - - - - - 0x035EBD 0D:9EAD: 85 17     STA ram_0017
 - - - - - - 0x035EBF 0D:9EAF: 60        RTS
-
-
-; bzk garbage
-- - - - - - 0x035EC0 0D:9EB0: 60        RTS
 
 
 ; bzk optimize
@@ -5934,12 +5893,6 @@ loc_9F95:
 - - - - - - 0x035FA9 0D:9F99: 60        RTS
 
 
-; bzk garbage
-- - - - - - 0x035FAA 0D:9F9A: 60        RTS
-- - - - - - 0x035FAB 0D:9F9B: 60        RTS
-- - - - - - 0x035FAC 0D:9F9C: 60        RTS
-
-
 ; bzk optimize
 ofs_017_9F9D_05_RTS:
 - - - - - - 0x035FAD 0D:9F9D: 60        RTS
@@ -5986,11 +5939,6 @@ C - - - - - 0x035FEA 0D:9FDA: BD E2 06  LDA ram_06E2,X
 C - - - - - 0x035FED 0D:9FDD: C9 25     CMP #$25
 C - - - - - 0x035FEF 0D:9FDF: D0 05     BNE bra_9FE6
 C - - - - - 0x035FF1 0D:9FE1: 4C 00 BE  JMP loc_BE00
-
-
-; bzk garbage
-- - - - - - 0x035FF4 0D:9FE4: EA        NOP
-- - - - - - 0x035FF5 0D:9FE5: 60        RTS
 
 
 
