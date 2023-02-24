@@ -216,7 +216,7 @@ C - - - - - 0x02C107 0B:80F7: A5 2C     LDA ram_002C
 C - - - - - 0x02C109 0B:80F9: F0 03     BEQ bra_80FE
 C - - - - - 0x02C10B 0B:80FB: EE E0 04  INC ram_obj_04E0
 bra_80FE:
-C - - - - - 0x02C10E 0B:80FE: A9 0A     LDA #$0A
+C - - - - - 0x02C10E 0B:80FE: A9 0A     LDA #con_0x03F84C_0A
 C - - - - - 0x02C110 0B:8100: 20 14 F8  JSR sub_0x03F824
 C - - - - - 0x02C113 0B:8103: 4C 6D D4  JMP loc_0x03D47D
 

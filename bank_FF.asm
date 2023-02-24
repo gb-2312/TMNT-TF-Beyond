@@ -3404,7 +3404,7 @@ C - - - - - 0x03E2EF 0F:E2DF: A2 FF     LDX #$FF
 C - - - - - 0x03E2F1 0F:E2E1: 86 57     STX ram_0057
 C - - - - - 0x03E2F3 0F:E2E3: A2 00     LDX #$00
 C - - - - - 0x03E2F5 0F:E2E5: 86 56     STX ram_0056
-C - - - - - 0x03E2F7 0F:E2E7: A9 06     LDA #$06    ; todo con
+C - - - - - 0x03E2F7 0F:E2E7: A9 06     LDA #con_0x03F84C_06
 C - - - - - 0x03E2F9 0F:E2E9: 20 14 F8  JSR sub_F814
 C - - - - - 0x03E2FC 0F:E2EC: 4C 41 E1  JMP loc_E141
 
@@ -4199,7 +4199,7 @@ C - - - - - 0x03E801 0F:E7F1: A9 18     LDA #$18
 C - - - - - 0x03E803 0F:E7F3: 8D 40 04  STA ram_obj_pos_X
 C - - - - - 0x03E806 0F:E7F6: A9 B0     LDA #$B0
 C - - - - - 0x03E808 0F:E7F8: 8D 10 04  STA ram_obj_pos_Y
-C - - - - - 0x03E80B 0F:E7FB: A9 09     LDA #$09
+C - - - - - 0x03E80B 0F:E7FB: A9 09     LDA #con_0x03F84C_09
 C - - - - - 0x03E80D 0F:E7FD: 20 14 F8  JSR sub_F814
 C - - - - - 0x03E810 0F:E800: 20 BE DA  JSR sub_DABE_удалить_все_объекты
 C - - - - - 0x03E813 0F:E803: A2 1C     LDX #$1C
@@ -4312,7 +4312,7 @@ C - - - - - 0x03E8BC 0F:E8AC: 20 3F F0  JSR sub_F03F
 C - - - - - 0x03E8BF 0F:E8AF: 20 6D D4  JSR sub_D46D
 C - - - - - 0x03E8C2 0F:E8B2: 20 BF E8  JSR sub_E8BF
 C - - - - - 0x03E8C5 0F:E8B5: E6 95     INC ram_0095
-C - - - - - 0x03E8C7 0F:E8B7: A9 0B     LDA #$0B
+C - - - - - 0x03E8C7 0F:E8B7: A9 0B     LDA #con_0x03F84C_0B
 C - - - - - 0x03E8C9 0F:E8B9: 20 14 F8  JSR sub_F814
 C - - - - - 0x03E8CC 0F:E8BC: 4C 41 E1  JMP loc_E141
 
@@ -5627,7 +5627,7 @@ C - - - - - 0x03F031 0F:F021: A9 78     LDA #$78
 C - - - - - 0x03F033 0F:F023: 85 32     STA ram_0032
 C - - - - - 0x03F035 0F:F025: A9 7A     LDA #$7A
 C - - - - - 0x03F037 0F:F027: 85 33     STA ram_0033
-C - - - - - 0x03F039 0F:F029: A9 08     LDA #$08
+C - - - - - 0x03F039 0F:F029: A9 08     LDA #con_0x03F84C_08
 C - - - - - 0x03F03B 0F:F02B: 20 14 F8  JSR sub_F814
 C - - - - - 0x03F03E 0F:F02E: A9 05     LDA #$05
 C - - - - - 0x03F040 0F:F030: 85 08     STA ram_0008
@@ -7025,11 +7025,12 @@ C - - - - - 0x03F84B 0F:F83B: 60        RTS
 
 
 tbl_F83C:
-- - - - - - 0x03F84C 0F:F83C: 7D F8     .word ofs_067_F87D_00 ; вероятно не используется
-- - - - - - 0x03F84E 0F:F83E: 85 F8     .word $F885      ; 01 явно неиспользуемый адрес
+; con_0x03F84C_
+- - - - - - 0x03F84C 0F:F83C: 7D F8     .word ofs_067_F87D_00 ; индекс не существует
+- - - - - - 0x03F84E 0F:F83E: 85 F8     .word $F885      ; 01 ; индекс не существует  
 - D 3 - - - 0x03F850 0F:F840: D0 F8     .word ofs_067_F8D0_02
-- - - - - - 0x03F852 0F:F842: 40 F9     .word ofs_067_F940_03
-- - - - - - 0x03F854 0F:F844: 57 F9     .word $F957      ; 04 адрес не существует
+- - - - - - 0x03F852 0F:F842: 40 F9     .word ofs_067_F940_03 ; индекс не существует
+- - - - - - 0x03F854 0F:F844: 57 F9     .word $F957      ; 04 ; индекс не существует
 - D 3 - - - 0x03F856 0F:F846: 38 FA     .word ofs_067_FA38_05
 - D 3 - - - 0x03F858 0F:F848: 6E F9     .word ofs_067_F96E_06
 - D 3 - - - 0x03F85A 0F:F84A: 96 FA     .word ofs_067_FA96_07
@@ -7709,6 +7710,7 @@ C - - - - - 0x03FCA9 0F:FC99: 60        RTS
 
 
 tbl_FC9A_scanline:
+; con_0x03F84C_
 ; номер сканлинии
 - - - - - - 0x03FCAA 0F:FC9A: 30        .byte $30   ; 00
 - D 3 - - - 0x03FCAB 0F:FC9B: 28        .byte $28   ; 01
