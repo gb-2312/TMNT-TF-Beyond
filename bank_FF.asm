@@ -3595,8 +3595,8 @@ C - - - - - 0x03E3FC 0F:E3EC: 4C 25 FA  JMP loc_FA25
 
 
 tbl_E3EF:
-- D 3 - - - 0x03E3FF 0F:E3EF: 80        .byte $80   ; 00
-- D 3 - - - 0x03E400 0F:E3F0: 84        .byte $84   ; 04
+- D 3 - - - 0x03E3FF 0F:E3EF: 80        .byte con_chr_bank + $80   ; 00
+- D 3 - - - 0x03E400 0F:E3F0: 84        .byte con_chr_bank + $84   ; 04
 
 
 
@@ -7464,7 +7464,7 @@ C - - - - - 0x03FABE 0F:FAAE: 20 81 F8  JSR sub_F881_garbage_loop
 ; bzk optimize
 C - - - - - 0x03FAC1 0F:FAB1: EA        NOP
 ofs_067_FAB2_08:
-C - - J - - 0x03FAC2 0F:FAB2: A9 7C     LDA #$7C
+C - - J - - 0x03FAC2 0F:FAB2: A9 7C     LDA #con_chr_bank + $7C
 C - - - - - 0x03FAC4 0F:FAB4: 20 25 FA  JSR sub_FA25
 C - - - - - 0x03FAC7 0F:FAB7: 4C 8D FB  JMP loc_FB8D
 
@@ -7503,7 +7503,7 @@ C - - - - - 0x03FAFA 0F:FAEA: 85 4A     STA ram_copy_C000
 C - - - - - 0x03FAFC 0F:FAEC: E6 4D     INC ram_004D
 C - - - - - 0x03FAFE 0F:FAEE: 88        DEY
 C - - - - - 0x03FAFF 0F:FAEF: F0 05     BEQ bra_FAF6
-C - - - - - 0x03FB01 0F:FAF1: A9 7C     LDA #$7C
+C - - - - - 0x03FB01 0F:FAF1: A9 7C     LDA #con_chr_bank + $7C
 C - - - - - 0x03FB03 0F:FAF3: 4C 25 FA  JMP loc_FA25
 bra_FAF6:
 C - - - - - 0x03FB06 0F:FAF6: 4C 34 FC  JMP loc_FC34
@@ -7557,7 +7557,7 @@ C - - - - - 0x03FB42 0F:FB32: A9 6C     LDA #$6C
 C - - - - - 0x03FB44 0F:FB34: 2C        .byte $2C   ; BIT
 bra_FB35:
 ofs_067_FB35_0D:
-C - - - - - 0x03FB45 0F:FB35: A9 7C     LDA #$7C
+C - - - - - 0x03FB45 0F:FB35: A9 7C     LDA #con_chr_bank + $7C
 C - - - - - 0x03FB47 0F:FB37: 20 25 FA  JSR sub_FA25
 C - - - - - 0x03FB4A 0F:FB3A: 4C 8D FB  JMP loc_FB8D
 
