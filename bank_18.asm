@@ -1806,23 +1806,14 @@ tbl_8FD1:
 - - - - - - 0x031005 0C:8FF5: FF        .byte $FF, $FF, $FF, $FF   ; 09
 
 
-; bzk garbage
-- - - - - - 0x031009 0C:8FF9: FF        .byte $FF   ; 
-- - - - - - 0x03100A 0C:8FFA: FF        .byte $FF   ; 
-
-
 
 tbl_8FFB:
 - D 0 - - - 0x03100B 0C:8FFB: 9E        .byte $9E   ; 00
 - D 0 - - - 0x03100C 0C:8FFC: 3E        .byte $3E   ; 01
+
 tbl_8FFD:
 - D 0 - - - 0x03100D 0C:8FFD: 20        .byte $20   ; 00
 - D 0 - - - 0x03100E 0C:8FFE: 23        .byte $23   ; 01
-
-
-
-; bzk garbage
-- - - - - - 0x03100F 0C:8FFF: FF        .byte $FF   ; 
 
 
 
