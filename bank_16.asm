@@ -1824,10 +1824,6 @@ tbl_ACB0:
 - - - - - - 0x02ECD7 0B:ACC7: B0        .word off_ADB0_17
 
 
-; bzk garbage
-- - - - - - 0x02ECD8 0B:ACC8: FF        .byte $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF   ; 
-
-
 
 tbl_ACD0_палитра:
 - D 1 - - - 0x02ECE0 0B:ACD0: 0F        .byte $0F, $16, $1A, $20   ; 
@@ -1835,11 +1831,6 @@ tbl_ACD0_палитра:
 - D 1 - - - 0x02ECE8 0B:ACD8: 0F        .byte $0F, $07, $16, $31   ; 
 - D 1 - - - 0x02ECEC 0B:ACDC: 0F        .byte $0F, $04, $16, $37   ; 
 - D 1 - - - 0x02ECF0 0B:ACE0: 0F        .byte $0F, $11, $21, $20   ; 
-
-
-; bzk garbage
-- - - - - - 0x02ECF4 0B:ACE4: FF        .byte $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF   ; 
-- - - - - - 0x02ED00 0B:ACF0: FF        .byte $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF   ; 
 
 
 
@@ -1870,16 +1861,6 @@ off_AD30_07:
 - D 1 - I - 0x02ED40 0B:AD30: 0F        .byte $0F, $20, $10, $00   ; 
 - D 1 - I - 0x02ED44 0B:AD34: 0F        .byte $0F, $37, $27, $17   ; 
 - D 1 - I - 0x02ED48 0B:AD38: 0F        .byte $0F, $06, $16, $26   ; 
-
-
-; bzk garbage
-- - - - - - 0x02ED4C 0B:AD3C: FF        .byte $FF, $FF, $FF, $FF   ; 
-- - - - - - 0x02ED50 0B:AD40: FF        .byte $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF   ; 
-- - - - - - 0x02ED60 0B:AD50: FF        .byte $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF   ; 
-- - - - - - 0x02ED70 0B:AD60: FF        .byte $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF   ; 
-- - - - - - 0x02ED80 0B:AD70: FF        .byte $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF   ; 
-
-
 
 off_AD80_10:
 off_AD80_12:
