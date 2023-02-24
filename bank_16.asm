@@ -2667,11 +2667,6 @@ _off013_B6B0_06_shred:
 - - - - - - 0x02F71E 0B:B70E: FF        .byte $FF, $FF   ; 2F
 
 
-; bzk garbage
-- - - - - - 0x02F720 0B:B710: FF        .byte $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF   ; 
-- - - - - - 0x02F730 0B:B720: FF        .byte $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF   ; 
-
-
 
 ofs_0x02F73B:
 C - - - - - 0x02F73B 0B:B72B: BD 40 05  LDA ram_obj_0540,X
@@ -2810,11 +2805,6 @@ C - - - - - 0x02F83A 0B:B82A: A9 10     LDA #$10
 C - - - - - 0x02F83C 0B:B82C: 4C 3F B7  JMP loc_B73F
 
 
-; bzk garbage
-- - - - - - 0x02F83F 0B:B82F: FF        .byte $FF   ; 
-- - - - - - 0x02F840 0B:B830: FF        .byte $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF   ; 
-
-
 
 tbl_B83C:
 - D 1 - - - 0x02F84C 0B:B83C: C7        .byte $C7   ; 00
@@ -2823,10 +2813,6 @@ tbl_B83C:
 - D 1 - - - 0x02F84F 0B:B83F: C7        .byte $C7   ; 03
 - D 1 - - - 0x02F850 0B:B840: C6        .byte $C6   ; 04
 - D 1 - - - 0x02F851 0B:B841: C5        .byte $C5   ; 05
-
-
-; bzk garbage
-- - - - - - 0x02F852 0B:B842: FF        .byte $FF, $FF, $FF, $FF, $FF, $FF   ; 
 
 
 
@@ -2842,11 +2828,6 @@ C - - - - - 0x02F860 0B:B850: 48        PHA
 C - - - - - 0x02F861 0B:B851: A9 BA     LDA #< (ofs_0x0278CB - $01)
 C - - - - - 0x02F863 0B:B853: 48        PHA
 C - - - - - 0x02F864 0B:B854: 4C 17 F6  JMP loc_0x03F627_restore_prg
-
-
-; bzk garbage
-- - - - - - 0x02F867 0B:B857: FF        .byte $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF   ; 
-- - - - - - 0x02F870 0B:B860: FF        .byte $FF, $FF, $FF, $FF, $FF   ; 
 
 
 
