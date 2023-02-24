@@ -5231,11 +5231,6 @@ C - - - - - 0x03EA31 0F:EA21: A5 95     LDA ram_0095
 C - - - - - 0x03EA33 0F:EA23: 60        RTS
 
 
-; bzk garbage
-- - - - - - 0x03EA34 0F:EA24: FF        .byte $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF   ; 
-- - - - - - 0x03EA40 0F:EA30: FF        .byte $FF, $FF   ; 
-
-
 
 sub_0x03EA42:
 C - - - - - 0x03EA42 0F:EA32: 20 DF F5  JSR sub_F5DF_swap_prg_12
@@ -5738,10 +5733,6 @@ C - - - - - 0x03ED0F 0F:ECFF: 95 91     STA ram_btn_hold,X
 C - - - - - 0x03ED11 0F:ED01: 4C 4C A3  JMP loc_0x03635C
 
 
-; bzk garbage
-- - - - - - 0x03ED14 0F:ED04: 60        RTS
-
-
 
 loc_0x03ED15:
 C D 3 - - - 0x03ED15 0F:ED05: BD C6 06  LDA ram_06C6,X
@@ -5835,11 +5826,6 @@ C - - - - - 0x03ED96 0F:ED86: 60        RTS
 bra_ED87:
 C - - - - - 0x03ED97 0F:ED87: 18        CLC
 C - - - - - 0x03ED98 0F:ED88: 60        RTS
-
-
-; bzk garbage
-- - - - - - 0x03ED99 0F:ED89: 9D C6 06  STA ram_06C6,X
-- - - - - - 0x03ED9C 0F:ED8C: 9D C8 06  STA ram_06C8,X
 
 
 
