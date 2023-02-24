@@ -6207,16 +6207,6 @@ tbl_0x03EFA5:
 - - - - - - 0x03EFA8 0F:EF98: C0        .byte $C0   ; 03
 
 
-; bzk garbage?
-- - - - - - 0x03EFA9 0F:EF99: EA        NOP
-- - - - - - 0x03EFAA 0F:EF9A: EA        NOP
-- - - - - - 0x03EFAB 0F:EF9B: EA        NOP
-- - - - - - 0x03EFAC 0F:EF9C: EA        NOP
-- - - - - - 0x03EFAD 0F:EF9D: EA        NOP
-- - - - - - 0x03EFAE 0F:EF9E: EA        NOP
-- - - - - - 0x03EFAF 0F:EF9F: EA        NOP
-
-
 
 sub_0x03EFB0:
 C - - - - - 0x03EFB0 0F:EFA0: A2 01     LDX #$01
@@ -6227,23 +6217,6 @@ C - - - - - 0x03EFB7 0F:EFA7: 20 08 80  JSR sub_0x024018
 C - - - - - 0x03EFBA 0F:EFAA: 20 E3 F5  JSR sub_F5E3_swap_prg_14
 C - - - - - 0x03EFBD 0F:EFAD: 20 7C BD  JSR sub_0x02BD8C
 C - - - - - 0x03EFC0 0F:EFB0: 4C 17 F6  JMP loc_F617_restore_prg
-
-
-; bzk garbage
-- - - - - - 0x03EFC3 0F:EFB3: EA        NOP
-- - - - - - 0x03EFC4 0F:EFB4: EA        NOP
-- - - - - - 0x03EFC5 0F:EFB5: EA        NOP
-- - - - - - 0x03EFC6 0F:EFB6: EA        NOP
-- - - - - - 0x03EFC7 0F:EFB7: EA        NOP
-- - - - - - 0x03EFC8 0F:EFB8: EA        NOP
-- - - - - - 0x03EFC9 0F:EFB9: EA        NOP
-- - - - - - 0x03EFCA 0F:EFBA: EA        NOP
-- - - - - - 0x03EFCB 0F:EFBB: EA        NOP
-- - - - - - 0x03EFCC 0F:EFBC: EA        NOP
-- - - - - - 0x03EFCD 0F:EFBD: EA        NOP
-- - - - - - 0x03EFCE 0F:EFBE: EA        NOP
-- - - - - - 0x03EFCF 0F:EFBF: EA        NOP
-- - - - - - 0x03EFD0 0F:EFC0: EA        NOP
 
 
 
