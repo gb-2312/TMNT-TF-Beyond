@@ -386,7 +386,6 @@ C - - - - - 0x0342AD 0D:829D: 9D C4 06  STA ram_06C4,X
 bra_82A0_RTS:
 C - - - - - 0x0342B0 0D:82A0: 60        RTS
 bra_82A1_D0_FF:
-; bzk optimize, создать таблицу с прыжками для управляющих байтов
                                         SEC
                                         SBC #$D0
                                         JSR sub_0x03D042_поинтеры_после_JSR
