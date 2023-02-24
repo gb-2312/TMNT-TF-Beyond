@@ -32,12 +32,6 @@ C - - - - - 0x034025 0D:8015: 10 EC     BPL bra_8003_loop
 C - - - - - 0x034027 0D:8017: 60        RTS
 
 
-; bzk garbage
-- - - - - - 0x034028 0D:8018: EA        .byte $EA, $EA, $EA, $EA, $EA, $EA, $EA, $EA   ; 
-- - - - - - 0x034030 0D:8020: EA        .byte $EA, $EA, $EA, $EA, $EA, $EA, $EA, $EA, $EA, $EA, $EA, $EA, $EA, $EA, $EA, $EA   ; 
-- - - - - - 0x034040 0D:8030: EA        .byte $EA, $EA, $EA, $EA, $EA, $EA   ; 
-
-
 
 sub_8036:
 C - - - - - 0x034046 0D:8036: 20 04 F2  JSR sub_0x03F214
@@ -399,10 +393,6 @@ C - - - - - 0x0342B3 0D:82A3: D0 09     BNE bra_82AE
 C - - - - - 0x0342B5 0D:82A5: A9 00     LDA #$00
 C - - - - - 0x0342B7 0D:82A7: 9D E6 06  STA ram_06E6,X
 C - - - - - 0x0342BA 0D:82AA: 4C 96 ED  JMP loc_0x03EDA6
-
-
-; bzk garbage
-- - - - - - 0x0342BD 0D:82AD: 60        RTS
 
 
 
@@ -988,10 +978,6 @@ C - - - - - 0x034688 0D:8678: 9D C2 06  STA ram_06C2,X
 C - - - - - 0x03468B 0D:867B: 4C FB 89  JMP loc_89FB
 
 
-; bzk garbage
-- - - - - - 0x03468E 0D:867E: EA        NOP
-
-
 
 ofs_032_867F_06:
 C - - J - - 0x03468F 0D:867F: BD 20 05  LDA ram_obj_0520,X
@@ -1532,19 +1518,6 @@ C - - - - - 0x034A21 0D:8A11: 1D C8 06  ORA ram_06C8,X
 C - - - - - 0x034A24 0D:8A14: 95 91     STA ram_btn_hold,X
 C - - - - - 0x034A26 0D:8A16: 9D C6 06  STA ram_06C6,X
 C - - - - - 0x034A29 0D:8A19: 4C BF A1  JMP loc_A1BF
-
-
-; bzk garbage
-- - - - - - 0x034A2C 0D:8A1C: 60        RTS
-
-
-; bzk garbage
-- - - - - - 0x034A2D 0D:8A1D: 0A        .byte $0A   ; 
-- - - - - - 0x034A2E 0D:8A1E: 08        .byte $08   ; 
-- - - - - - 0x034A2F 0D:8A1F: 01        .byte $01   ; 
-- - - - - - 0x034A30 0D:8A20: 10        .byte $10   ; 
-- - - - - - 0x034A31 0D:8A21: 0A        .byte $0A   ; 
-- - - - - - 0x034A32 0D:8A22: 01        .byte $01   ; 
 
 
 
