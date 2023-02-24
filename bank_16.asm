@@ -1910,16 +1910,6 @@ off_ADB0_17:
 - - - - - - 0x02EDC8 0B:ADB8: 0F        .byte $0F, $03, $13, $23   ; 
 
 
-; bzk garbage
-- - - - - - 0x02EDCC 0B:ADBC: FF        .byte $FF, $FF, $FF, $FF   ; 
-- - - - - - 0x02EDD0 0B:ADC0: FF        .byte $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF   ; 
-- - - - - - 0x02EDE0 0B:ADD0: FF        .byte $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF   ; 
-- - - - - - 0x02EDF0 0B:ADE0: FF        .byte $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF   ; 
-- - - - - - 0x02EE00 0B:ADF0: FF        .byte $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF   ; 
-- - - - - - 0x02EE10 0B:AE00: FF        .byte $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF   ; 
-- - - - - - 0x02EE20 0B:AE10: FF        .byte $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF   ; 
-
-
 
 tbl_AE20:
 - D 1 - - - 0x02EE30 0B:AE20: 0A        .byte $0A   ; 00
@@ -1932,10 +1922,6 @@ tbl_AE20:
 - D 1 - - - 0x02EE37 0B:AE27: 3E        .byte $3E   ; 07
 
 
-; bzk garbage
-- - - - - - 0x02EE38 0B:AE28: FF        .byte $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF   ; 
-
-
 
 tbl_AE30:
 - D 1 - - - 0x02EE40 0B:AE30: 68        .byte $68, $6A   ; 00
@@ -1946,10 +1932,6 @@ tbl_AE30:
 - D 1 - - - 0x02EE4A 0B:AE3A: 60        .byte $60, $62   ; 05
 - D 1 - - - 0x02EE4C 0B:AE3C: 5C        .byte $5C, $5E   ; 06
 - D 1 - - - 0x02EE4E 0B:AE3E: 88        .byte $88, $8A   ; 07
-
-
-; bzk garbage
-- - - - - - 0x02EE50 0B:AE40: FF        .byte $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF   ; 
 
 
 
@@ -2075,13 +2057,6 @@ bra_D391_RTS:
 C - - - - - 0x03D3A1 0F:D391: 60        RTS
 
 
-; bzk garbage
-- - - - - - 0x02EF6B 0B:AF5B: FF        .byte $FF, $FF, $FF, $FF, $FF   ; 
-- - - - - - 0x02EF70 0B:AF60: FF        .byte $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF   ; 
-- - - - - - 0x02EF80 0B:AF70: FF        .byte $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF   ; 
-- - - - - - 0x02EF90 0B:AF80: FF        .byte $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF   ; 
-
-
 
 loc_0x02EFA0:
 C D 1 - - - 0x02EFA0 0B:AF90: 68        PLA
@@ -2103,13 +2078,6 @@ bra_AFB0:
 - - - - - - 0x02EFC0 0B:AFB0: FE 29 01  INC ram_0129,X
 bra_AFB3_RTS:
 C - - - - - 0x02EFC3 0B:AFB3: 60        RTS
-
-
-; bzk garbage
-- - - - - - 0x02EFC4 0B:AFB4: FF        .byte $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF   ; 
-- - - - - - 0x02EFD0 0B:AFC0: FF        .byte $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF   ; 
-- - - - - - 0x02EFE0 0B:AFD0: FF        .byte $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF   ; 
-- - - - - - 0x02EFF0 0B:AFE0: FF        .byte $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF   ; 
 
 
 
