@@ -7863,12 +7863,6 @@ off_F890_start = tbl_F890
 - D 3 - - - 0x03F89C 0F:F88C: 1E        .byte off_F8AE_07 - off_F890_start
 
 
-; bzk garbage
-- - - - - - 0x03F89D 0F:F88D: EA        NOP
-- - - - - - 0x03F89E 0F:F88E: EA        NOP
-- - - - - - 0x03F89F 0F:F88F: EA        NOP
-
-
 
 tbl_F890:
 off_F890_00:
