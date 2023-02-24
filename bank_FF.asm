@@ -8590,16 +8590,6 @@ tbl_FCAB:
 - D 3 - - - 0x03FCC2 0F:FCB2: 42        .byte $42   ; 07
 
 
-; bzk garbage
-- - - - - - 0x03FCC3 0F:FCB3: EA        NOP
-- - - - - - 0x03FCC4 0F:FCB4: EA        NOP
-- - - - - - 0x03FCC5 0F:FCB5: EA        NOP
-- - - - - - 0x03FCC6 0F:FCB6: EA        NOP
-- - - - - - 0x03FCC7 0F:FCB7: EA        NOP
-- - - - - - 0x03FCC8 0F:FCB8: EA        NOP
-- - - - - - 0x03FCC9 0F:FCB9: EA        NOP
-
-
 
 tbl_FCBA:
 - D 3 - - - 0x03FCCA 0F:FCBA: 33        .byte $33   ; 00
