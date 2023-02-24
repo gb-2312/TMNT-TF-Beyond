@@ -5055,10 +5055,6 @@ C - - - - - 0x025CAF 09:9C9F: D0 0B     BNE bra_9CAC_RTS
 C - - - - - 0x025CB1 09:9CA1: F0 01     BEQ bra_9CA4    ; jmp
 
 
-; bzk garbage
-- - - - - - 0x025CB3 09:9CA3: 60        RTS
-
-
 
 bra_9CA4:
 loc_9CA4:
@@ -5258,12 +5254,6 @@ bra_9DF8:
 C - - - - - 0x025E08 09:9DF8: 9D 00 06  STA ram_plr_0600,X
 C - - - - - 0x025E0B 09:9DFB: FE 40 05  INC ram_obj_0540,X
 C - - - - - 0x025E0E 09:9DFE: 60        RTS
-
-
-; bzk garbage
-- - - - - - 0x025E0F 09:9DFF: FF        .byte $FF   ; 
-- - - - - - 0x025E10 09:9E00: FF        .byte $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF   ; 
-- - - - - - 0x025E20 09:9E10: FF        .byte $FF, $FF, $FF, $FF, $FF, $FF   ; 
 
 
 
