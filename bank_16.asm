@@ -2467,22 +2467,6 @@ tbl_B3EA_green:
 - D 1 - I - 0x02F52C 0B:B51C: 18        .byte $18, $28, $20   ; 66
 
 
-; bzk garbage
-- - - - - - 0x02F52F 0B:B51F: FF        .byte $FF   ; 
-- - - - - - 0x02F530 0B:B520: FF        .byte $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF   ; 
-- - - - - - 0x02F540 0B:B530: FF        .byte $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF   ; 
-- - - - - - 0x02F550 0B:B540: FF        .byte $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF   ; 
-- - - - - - 0x02F560 0B:B550: FF        .byte $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF   ; 
-- - - - - - 0x02F570 0B:B560: FF        .byte $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF   ; 
-- - - - - - 0x02F580 0B:B570: FF        .byte $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF   ; 
-- - - - - - 0x02F590 0B:B580: FF        .byte $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF   ; 
-- - - - - - 0x02F5A0 0B:B590: FF        .byte $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF   ; 
-- - - - - - 0x02F5B0 0B:B5A0: FF        .byte $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF   ; 
-- - - - - - 0x02F5C0 0B:B5B0: FF        .byte $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF   ; 
-- - - - - - 0x02F5D0 0B:B5C0: FF        .byte $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF   ; 
-- - - - - - 0x02F5E0 0B:B5D0: FF        .byte $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF   ; 
-
-
 
 tbl_B5E0_lo:
 - D 1 - - - 0x02F5F0 0B:B5E0: F0        .byte < _off013_B5F0_00_leo
@@ -2501,10 +2485,6 @@ tbl_B5E7_hi:
 - D 1 - - - 0x02F5FB 0B:B5EB: B5        .byte > _off013_B5F0_04_casey
 - D 1 - - - 0x02F5FC 0B:B5EC: B6        .byte > _off013_B650_05_hot
 - D 1 - - - 0x02F5FD 0B:B5ED: B6        .byte > _off013_B6B0_06_shred
-
-
-; bzk garbage
-- - - - - - 0x02F5FE 0B:B5EE: FF        .byte $FF, $FF   ; 
 
 
 
