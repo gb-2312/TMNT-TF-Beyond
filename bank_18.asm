@@ -145,16 +145,6 @@ bra_80B4_FF:
 C - - - - - 0x0300C4 0C:80B4: 4C 5B D2  JMP loc_0x03D26B_записать_FF_в_буфер
 
 
-; bzk garbage
-- - - - - - 0x0300C7 0C:80B7: EA        .byte $EA, $EA, $EA, $EA, $EA, $EA, $EA, $EA, $EA   ; 
-- - - - - - 0x0300D0 0C:80C0: EA        .byte $EA, $EA, $EA, $EA, $EA, $EA, $EA, $EA, $EA, $EA, $EA, $EA, $EA, $EA, $EA, $EA   ; 
-- - - - - - 0x0300E0 0C:80D0: EA        .byte $EA, $EA, $EA, $EA, $EA, $EA, $EA, $EA, $EA, $EA, $EA, $EA, $EA, $EA, $EA, $EA   ; 
-- - - - - - 0x0300F0 0C:80E0: EA        .byte $EA, $EA, $EA, $EA, $EA, $EA, $EA, $EA, $EA, $EA, $EA, $EA, $EA, $EA, $EA, $EA   ; 
-- - - - - - 0x030100 0C:80F0: EA        .byte $EA, $EA, $EA, $EA, $EA, $EA, $EA, $EA, $EA, $EA, $EA, $EA, $EA, $EA, $EA, $EA   ; 
-- - - - - - 0x030110 0C:8100: EA        .byte $EA, $EA, $EA, $EA, $EA, $EA, $EA, $EA, $EA, $EA, $EA, $EA, $EA, $EA, $EA, $EA   ; 
-- - - - - - 0x030120 0C:8110: EA        .byte $EA, $EA, $EA, $EA, $EA, $EA, $EA, $EA, $EA, $EA   ; 
-
-
 
 _off014_811A_00_story:
 - D 0 - I - 0x03012A 0C:811A: 0C 22     .word $220C
@@ -473,12 +463,6 @@ tbl_0x030245_спрайты_объектов:
 - D 0 - - - 0x0302F5 0C:82E5: D6 8A     .word _off001_8AD6_59
 
 
-; bzk garbage
-- - - - - - 0x0302F7 0C:82E7: EA        .byte $EA, $EA, $EA, $EA, $EA, $EA, $EA, $EA, $EA   ; 
-- - - - - - 0x030300 0C:82F0: EA        .byte $EA, $EA, $EA, $EA, $EA, $EA, $EA, $EA, $EA, $EA, $EA, $EA, $EA, $EA, $EA, $EA   ; 
-- - - - - - 0x030310 0C:8300: EA        .byte $EA, $EA, $EA, $EA, $EA   ; 
-
-
 
 _off001_8305_01:
 _off001_8305_06:
@@ -569,11 +553,6 @@ _off001_8357_0B:
 - D 0 - I - 0x030378 0C:8368: 00        .byte $00, $DC, $02, $20   ; 
 - D 0 - I - 0x03037C 0C:836C: 00        .byte $00, $DE, $02, $28   ; 
 @end:
-
-
-; bzk garbage
-- - - - - - 0x030380 0C:8370: 80        .byte $80   ; 
-- - - - - - 0x030381 0C:8371: 07 83     .word $8307
 
 
 
@@ -1502,12 +1481,6 @@ _off001_8AD6_59:
 
 
 
-; bzk garbage
-- - - - - - 0x030AF7 0C:8AE7: FF        .byte $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF   ; 
-- - - - - - 0x030B00 0C:8AF0: FF        .byte $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF   ; 
-
-
-
 _off014_8AF8_30:
 - D 0 - I - 0x030B08 0C:8AF8: 74 20     .word $2074
 - D 0 - I - 0x030B0A 0C:8AFA: 99        .byte $99, $90, $90, $00, $00, $00   ; OFF
@@ -1663,12 +1636,6 @@ _off014_8BD9_34:
 - D 0 - I - 0x030BEB 0C:8BDB: 98        .byte $98, $99, $00, $99, $98, $8F, $00, $00   ; NO ONE
 
 - D 0 - I - 0x030BF3 0C:8BE3: FF        .byte $FF   ; end token
-
-
-
-; bzk garbage
-- - - - - - 0x030BF4 0C:8BE4: FF        .byte $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF   ; 
-- - - - - - 0x030C00 0C:8BF0: FF        .byte $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF   ; 
 
 
 
