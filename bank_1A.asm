@@ -387,81 +387,76 @@ bra_82A0_RTS:
 C - - - - - 0x0342B0 0D:82A0: 60        RTS
 bra_82A1_D0_FF:
 ; bzk optimize, создать таблицу с прыжками для управляющих байтов
-                                       ;SEC
-                                       ;SBC #$D0
-                                       ;JSR sub_0x03D042_поинтеры_после_JSR
-                                       ;.word $FFFF      ; D0
-                                       ;.word $FFFF      ; D1
-                                       ;.word $FFFF      ; D2
-                                       ;.word ofs_083_8310_D3
-                                       ;.word ofs_083_82ED_D4
-                                       ;.word ofs_083_832C_D5
-                                       ;.word ofs_083_837D_D6
-                                       ;.word ofs_083_839F_D7
-                                       ;.word ofs_083_83B2_D8
-                                       ;.word ofs_083_82C1_D9
-                                       ;.word ofs_083_835A_DA
-                                       ;.word ofs_083_835A_DB
-                                       ;.word ofs_083_8364_DC
-                                       ;.word ofs_083_8346_DD
-                                       ;.word $FFFF      ; DE
-                                       ;.word $FFFF      ; DF
-                                       ;.word $FFFF      ; E0
-                                       ;.word $FFFF      ; E1
-                                       ;.word $FFFF      ; E2
-                                       ;.word $FFFF      ; E3
-                                       ;.word $FFFF      ; E4
-                                       ;.word $FFFF      ; E5
-                                       ;.word $FFFF      ; E6
-                                       ;.word $FFFF      ; E7
-                                       ;.word $FFFF      ; E8
-                                       ;.word $FFFF      ; E9
-                                       ;.word $FFFF      ; EA
-                                       ;.word $FFFF      ; EB
-                                       ;.word $FFFF      ; EC
-                                       ;.word $FFFF      ; ED
-                                       ;.word $FFFF      ; EE
-                                       ;.word $FFFF      ; EF
-                                       ;.word $FFFF      ; F0
-                                       ;.word $FFFF      ; F1
-                                       ;.word $FFFF      ; F2
-                                       ;.word $FFFF      ; F3
-                                       ;.word $FFFF      ; F4
-                                       ;.word $FFFF      ; F5
-                                       ;.word $FFFF      ; F6
-                                       ;.word $FFFF      ; F7
-                                       ;.word $FFFF      ; F8
-                                       ;.word $FFFF      ; F9
-                                       ;.word $FFFF      ; FA
-                                       ;.word $FFFF      ; FB
-                                       ;.word ofs_083_82B2_FC
-                                       ;.word ofs_083_82D2_FD
-                                       ;.word ofs_083_8310_FE
-                                       ;.word ofs_083_82A5_FF
+                                        SEC
+                                        SBC #$D0
+                                        JSR sub_0x03D042_поинтеры_после_JSR
+                                        .word $FFFF      ; D0
+                                        .word $FFFF      ; D1
+                                        .word $FFFF      ; D2
+                                        .word ofs_083_8310_D3
+                                        .word ofs_083_82ED_D4
+                                        .word ofs_083_832C_D5
+                                        .word ofs_083_837D_D6
+                                        .word ofs_083_839F_D7
+                                        .word ofs_083_83B2_D8
+                                        .word ofs_083_82C1_D9
+                                        .word ofs_083_835A_DA
+                                        .word ofs_083_835A_DB
+                                        .word ofs_083_8364_DC
+                                        .word ofs_083_8346_DD
+                                        .word $FFFF      ; DE
+                                        .word $FFFF      ; DF
+                                        .word $FFFF      ; E0
+                                        .word $FFFF      ; E1
+                                        .word $FFFF      ; E2
+                                        .word $FFFF      ; E3
+                                        .word $FFFF      ; E4
+                                        .word $FFFF      ; E5
+                                        .word $FFFF      ; E6
+                                        .word $FFFF      ; E7
+                                        .word $FFFF      ; E8
+                                        .word $FFFF      ; E9
+                                        .word $FFFF      ; EA
+                                        .word $FFFF      ; EB
+                                        .word $FFFF      ; EC
+                                        .word $FFFF      ; ED
+                                        .word $FFFF      ; EE
+                                        .word $FFFF      ; EF
+                                        .word $FFFF      ; F0
+                                        .word $FFFF      ; F1
+                                        .word $FFFF      ; F2
+                                        .word $FFFF      ; F3
+                                        .word $FFFF      ; F4
+                                        .word $FFFF      ; F5
+                                        .word $FFFF      ; F6
+                                        .word $FFFF      ; F7
+                                        .word $FFFF      ; F8
+                                        .word $FFFF      ; F9
+                                        .word $FFFF      ; FA
+                                        .word $FFFF      ; FB
+                                        .word ofs_083_82B2_FC
+                                        .word ofs_083_82D2_FD
+                                        .word ofs_083_8310_FE
+                                        .word ofs_083_82A5_FF
 
 
 
-C - - - - - 0x0342B1 0D:82A1: C9 FF     CMP #$FF
-C - - - - - 0x0342B3 0D:82A3: D0 09     BNE bra_82AE
-; FF
 ofs_083_82A5_FF:
 C - - - - - 0x0342B5 0D:82A5: A9 00     LDA #$00
 C - - - - - 0x0342B7 0D:82A7: 9D E6 06  STA ram_06E6,X
 C - - - - - 0x0342BA 0D:82AA: 4C 96 ED  JMP loc_0x03EDA6
-bra_82AE:
-C - - - - - 0x0342BE 0D:82AE: C9 FC     CMP #$FC
-C - - - - - 0x0342C0 0D:82B0: D0 0B     BNE bra_82BD
-; FC
+
+
+
 ofs_083_82B2_FC:
 - - - - - - 0x0342C2 0D:82B2: A9 01     LDA #$01
 - - - - - - 0x0342C4 0D:82B4: 9D D2 06  STA ram_06D2,X
 - - - - - - 0x0342C7 0D:82B7: A9 00     LDA #$00
 - - - - - - 0x0342C9 0D:82B9: 9D C4 06  STA ram_06C4,X
 - - - - - - 0x0342CC 0D:82BC: 60        RTS
-bra_82BD:
-C - - - - - 0x0342CD 0D:82BD: C9 D9     CMP #$D9
-C - - - - - 0x0342CF 0D:82BF: D0 0D     BNE bra_82CE
-; D9
+
+
+
 ofs_083_82C1_D9:
 C - - - - - 0x0342D1 0D:82C1: A9 00     LDA #$00
 C - - - - - 0x0342D3 0D:82C3: 95 91     STA ram_btn_hold,X
@@ -469,13 +464,12 @@ C - - - - - 0x0342D5 0D:82C5: 95 8E     STA ram_btn_press,X
 C - - - - - 0x0342D7 0D:82C7: 9D C6 06  STA ram_06C6,X
 C - - - - - 0x0342DA 0D:82CA: 9D C8 06  STA ram_06C8,X
 C - - - - - 0x0342DD 0D:82CD: 60        RTS
-bra_82CE:
-C - - - - - 0x0342DE 0D:82CE: C9 FD     CMP #$FD
-C - - - - - 0x0342E0 0D:82D0: D0 17     BNE bra_82E9
-; FD
+
+
+
 ofs_083_82D2_FD:
 C - - - - - 0x0342E2 0D:82D2: FE C2 06  INC ram_06C2,X
-                                       ;LDY ram_0004
+                                        LDY ram_0004
 C - - - - - 0x0342E5 0D:82D5: C8        INY
 C - - - - - 0x0342E6 0D:82D6: 20 20 ED  JSR sub_0x03ED30_чтение_cpu_btn
 C - - - - - 0x0342E9 0D:82D9: 9D D4 06  STA ram_06D4,X
@@ -484,10 +478,9 @@ C - - - - - 0x0342EE 0D:82DE: 9D DA 06  STA ram_06DA,X
 C - - - - - 0x0342F1 0D:82E1: A9 03     LDA #$03
 C - - - - - 0x0342F3 0D:82E3: 9D D2 06  STA ram_06D2,X
 C - - - - - 0x0342F6 0D:82E6: 4C 6E 82  JMP loc_826E
-bra_82E9:
-C - - - - - 0x0342F9 0D:82E9: C9 D4     CMP #$D4
-C - - - - - 0x0342FB 0D:82EB: D0 1B     BNE bra_8308
-; D4
+
+
+
 ofs_083_82ED_D4:
 C - - - - - 0x0342FD 0D:82ED: 20 9A A1  JSR sub_A19A
 C - - - - - 0x034300 0D:82F0: 0A        ASL
@@ -503,39 +496,29 @@ C - - - - - 0x034311 0D:8301: 9D D2 06  STA ram_06D2,X
 C - - - - - 0x034314 0D:8304: 60        RTS
 bra_8305:
 C - - - - - 0x034315 0D:8305: 4C 6E 82  JMP loc_826E
-bra_8308:
-C - - - - - 0x034318 0D:8308: C9 D3     CMP #$D3
-C - - - - - 0x03431A 0D:830A: F0 04     BEQ bra_8310
-C - - - - - 0x03431C 0D:830C: C9 FE     CMP #$FE
-C - - - - - 0x03431E 0D:830E: D0 18     BNE bra_8328
-bra_8310:
-; D3 FE
+
+
+
 ofs_083_8310_D3:
-C - - - - - 0x034320 0D:8310: 48        PHA ; удалить
 C - - - - - 0x034321 0D:8311: A9 17     LDA #$17
 C - - - - - 0x034323 0D:8313: 9D D4 06  STA ram_06D4,X
-C - - - - - 0x034326 0D:8316: 68        PLA ; удалить
-C - - - - - 0x034327 0D:8317: C9 D3     CMP #$D3 ; удалить
-C - - - - - 0x034329 0D:8319: D0 05     BNE bra_8320 ; удалить
-; D3
 - - - - - - 0x03432B 0D:831B: A9 18     LDA #$18
 - - - - - - 0x03432D 0D:831D: 9D D4 06  STA ram_06D4,X
-bra_8320:
-; FE
 C - - - - - 0x034330 0D:8320: A9 03     LDA #$03
 C - - - - - 0x034332 0D:8322: 9D D2 06  STA ram_06D2,X
 C - - - - - 0x034335 0D:8325: 4C 6E 82  JMP loc_826E
+
+
+
 ofs_083_8310_FE:
-                                       ;LDA #$17
-                                       ;STA ram_06D4,X
-                                       ;LDA #$03
-                                       ;STA ram_06D2,X
-                                       ;JMP loc_826E
-                                       
-bra_8328:
-C - - - - - 0x034338 0D:8328: C9 D5     CMP #$D5
-C - - - - - 0x03433A 0D:832A: D0 16     BNE bra_8342
-; D5
+                                        LDA #$17
+                                        STA ram_06D4,X
+                                        LDA #$03
+                                        STA ram_06D2,X
+                                        JMP loc_826E
+
+
+
 ofs_083_832C_D5:
 C - - - - - 0x03433C 0D:832C: BD C6 06  LDA ram_06C6,X
 C - - - - - 0x03433F 0D:832F: 29 03     AND #con_btns_LR
@@ -545,52 +528,50 @@ C - - - - - 0x034347 0D:8337: 9D 24 06  STA ram_0624,X
 C - - - - - 0x03434A 0D:833A: A9 02     LDA #$02
 C - - - - - 0x03434C 0D:833C: 9D 26 06  STA ram_plr_0626,X
 C - - - - - 0x03434F 0D:833F: 4C 6E 82  JMP loc_826E
-bra_8342:
-C - - - - - 0x034352 0D:8342: C9 DD     CMP #$DD
-C - - - - - 0x034354 0D:8344: D0 0A     BNE bra_8350
-; DD
+
+
+
 ofs_083_8346_DD:
 C - - - - - 0x034356 0D:8346: FE DC 06  INC ram_06DC,X
 C - - - - - 0x034359 0D:8349: A9 40     LDA #con_btn_B
 C - - - - - 0x03435B 0D:834B: 95 8E     STA ram_btn_press,X
 C - - - - - 0x03435D 0D:834D: 95 91     STA ram_btn_hold,X
 C - - - - - 0x03435F 0D:834F: 60        RTS
-bra_8350:
-C - - - - - 0x034360 0D:8350: C9 DA     CMP #$DA
-C - - - - - 0x034362 0D:8352: F0 06     BEQ bra_835A
-C - - - - - 0x034364 0D:8354: C9 DB     CMP #$DB
-C - - - - - 0x034366 0D:8356: D0 08     BNE bra_8360
-C - - - - - 0x034368 0D:8358: A9 00     LDA #$00
-bra_835A:
-; DA DB
+
+
+
 ofs_083_835A_DA:
-ofs_083_835A_DB:
+                                        LDA #$DA
 C - - - - - 0x03436A 0D:835A: 9D E6 06  STA ram_06E6,X
 C - - - - - 0x03436D 0D:835D: 4C 6E 82  JMP loc_826E
-bra_8360:
-C - - - - - 0x034370 0D:8360: C9 DC     CMP #$DC
-C - - - - - 0x034372 0D:8362: D0 15     BNE bra_8379
-; DC
+
+
+
+ofs_083_835A_DB:
+C - - - - - 0x034368 0D:8358: A9 00     LDA #$00
+                                        STA ram_06E6,X
+                                        JMP loc_826E
+
+
+
 ofs_083_8364_DC:
 C - - - - - 0x034374 0D:8364: FE C2 06  INC ram_06C2,X
-                                       ;LDY ram_0004
+                                        LDY ram_0004
 C - - - - - 0x034377 0D:8367: C8        INY
 C - - - - - 0x034378 0D:8368: 20 20 ED  JSR sub_0x03ED30_чтение_cpu_btn
 C - - - - - 0x03437B 0D:836B: 9D DA 06  STA ram_06DA,X
 C - - - - - 0x03437E 0D:836E: A9 0A     LDA #$0A
-bra_8370:
 loc_8370:
 C D 0 - - - 0x034380 0D:8370: 9D D4 06  STA ram_06D4,X
 C - - - - - 0x034383 0D:8373: A9 03     LDA #$03
 C - - - - - 0x034385 0D:8375: 9D D2 06  STA ram_06D2,X
 C - - - - - 0x034388 0D:8378: 60        RTS
-bra_8379:
-C - - - - - 0x034389 0D:8379: C9 D6     CMP #$D6
-C - - - - - 0x03438B 0D:837B: D0 1E     BNE bra_839B
-; D6
+
+
+
 ofs_083_837D_D6:
 C - - - - - 0x03438D 0D:837D: FE C2 06  INC ram_06C2,X
-                                       ;LDY ram_0004
+                                        LDY ram_0004
 C - - - - - 0x034390 0D:8380: C8        INY
 C - - - - - 0x034391 0D:8381: 20 20 ED  JSR sub_0x03ED30_чтение_cpu_btn
 C - - - - - 0x034394 0D:8384: 84 17     STY ram_0017
@@ -605,34 +586,30 @@ C - - - - - 0x03439F 0D:838F: B9 E8 06  LDA ram_06E8,Y
 C - - - - - 0x0343A2 0D:8392: 9D DA 06  STA ram_06DA,X
 C - - - - - 0x0343A5 0D:8395: A4 17     LDY ram_0017
 C - - - - - 0x0343A7 0D:8397: A9 0A     LDA #$0A
-C - - - - - 0x0343A9 0D:8399: D0 D5     BNE bra_8370    ; jmp
-bra_839B:
-C - - - - - 0x0343AB 0D:839B: C9 D7     CMP #$D7
-C - - - - - 0x0343AD 0D:839D: D0 0F     BNE bra_83AE
-; D7
+C - - - - - 0x0343A9 0D:8399: D0 D5     JMP loc_8370
+
+
+
 ofs_083_839F_D7:
 C - - - - - 0x0343AF 0D:839F: FE C2 06  INC ram_06C2,X
-                                       ;LDY ram_0004
+                                        LDY ram_0004
 C - - - - - 0x0343B2 0D:83A2: C8        INY
 C - - - - - 0x0343B3 0D:83A3: 20 20 ED  JSR sub_0x03ED30_чтение_cpu_btn
 C - - - - - 0x0343B6 0D:83A6: 9D DA 06  STA ram_06DA,X
 C - - - - - 0x0343B9 0D:83A9: A9 15     LDA #$15
 C - - - - - 0x0343BB 0D:83AB: 4C 70 83  JMP loc_8370
-bra_83AE:
-C - - - - - 0x0343BE 0D:83AE: C9 D8     CMP #$D8
-C - - - - - 0x0343C0 0D:83B0: D0 13     BNE bra_83C5
-; D8
+
+
+
 ofs_083_83B2_D8:
 C - - - - - 0x0343C2 0D:83B2: FE C2 06  INC ram_06C2,X
-                                       ;LDY ram_0004
+                                        LDY ram_0004
 C - - - - - 0x0343C5 0D:83B5: C8        INY
 C - - - - - 0x0343C6 0D:83B6: 20 20 ED  JSR sub_0x03ED30_чтение_cpu_btn
 C - - - - - 0x0343C9 0D:83B9: 9D C0 06  STA ram_06C0,X
 C - - - - - 0x0343CC 0D:83BC: 9D E2 06  STA ram_06E2,X
 C - - - - - 0x0343CF 0D:83BF: 20 48 82  JSR sub_8248
 C - - - - - 0x0343D2 0D:83C2: 4C 05 ED  JMP loc_0x03ED15
-bra_83C5:
-- - - - - - 0x0343D5 0D:83C5: 60        RTS
 
 
 
