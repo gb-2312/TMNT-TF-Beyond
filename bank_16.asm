@@ -3117,11 +3117,6 @@ C - - - - - 0x02FD6D 0B:BD5D: DD 29 01  CMP ram_0129,X
 C - - - - - 0x02FD70 0B:BD60: 4C BC BE  JMP loc_BEBC
 
 
-; bzk garbage
-- - - - - - 0x02FD73 0B:BD63: FF        .byte $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF   ; 
-- - - - - - 0x02FD80 0B:BD70: FF        .byte $FF, $FF, $FF, $FF   ; 
-
-
 
 tbl_BD74:
 - D 1 - - - 0x02FD84 0B:BD74: 00        .byte $00   ; 00
@@ -3210,12 +3205,6 @@ C - - - - - 0x02FE04 0B:BDF4: AD E0 04  LDA ram_obj_04E0
 C - - - - - 0x02FE07 0B:BDF7: 4C 64 81  JMP loc_8164
 
 
-; bzk garbage
-- - - - - - 0x02FE0A 0B:BDFA: FF        .byte $FF, $FF, $FF, $FF, $FF, $FF   ; 
-- - - - - - 0x02FE10 0B:BE00: FF        .byte $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF   ; 
-- - - - - - 0x02FE20 0B:BE10: FF        .byte $FF, $FF   ; 
-
-
 
 loc_BE12:
 C D 1 - - - 0x02FE22 0B:BE12: A5 2C     LDA ram_002C
@@ -3288,11 +3277,6 @@ bra_BE88_RTS:
 - - - - - - 0x02FE98 0B:BE88: 60        RTS
 
 
-; bzk garbage
-- - - - - - 0x02FE99 0B:BE89: FF        .byte $FF, $FF, $FF, $FF, $FF, $FF, $FF   ; 
-- - - - - - 0x02FEA0 0B:BE90: FF        .byte $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF   ; 
-
-
 
 loc_BEA0:
 C D 1 - - - 0x02FEB0 0B:BEA0: A9 81     LDA #$81
@@ -3318,11 +3302,6 @@ bra_BEC2:
 C - - - - - 0x02FED2 0B:BEC2: 98        TYA
 C - - - - - 0x02FED3 0B:BEC3: 20 5D D2  JSR sub_0x03D26D_записать_A_в_буфер_с_чтением_индекса
 C - - - - - 0x02FED6 0B:BEC6: 4C 17 F6  JMP loc_0x03F627_restore_prg
-
-
-; bzk garbage
-- - - - - - 0x02FED9 0B:BEC9: FF        .byte $FF, $FF, $FF, $FF, $FF, $FF, $FF   ; 
-- - - - - - 0x02FEE0 0B:BED0: FF        .byte $FF, $FF, $FF, $FF   ; 
 
 
 
@@ -3364,11 +3343,6 @@ bra_BF10_RTS:
 C - - - - - 0x02FF20 0B:BF10: 60        RTS
 
 
-; bzk garbage
-- - - - - - 0x02FF21 0B:BF11: FF        .byte $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF   ; 
-- - - - - - 0x02FF30 0B:BF20: FF        .byte $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF   ; 
-
-
 
 loc_BF2C:
 C D 1 - - - 0x02FF3C 0B:BF2C: A4 2C     LDY ram_002C
@@ -3385,10 +3359,6 @@ C - - - - - 0x02FF4C 0B:BF3C: B9 7A BD  LDA tbl_BD7A_анимация,Y
 bra_BF3F:
 C - - - - - 0x02FF4F 0B:BF3F: 9D 00 04  STA ram_plr_anim_id,X
 C - - - - - 0x02FF52 0B:BF42: 60        RTS
-
-
-; bzk garbage
-- - - - - - 0x02FF53 0B:BF43: FF        .byte $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF   ; 
 
 
 
