@@ -7583,17 +7583,6 @@ bra_BC0A:
 - - - - - - 0x037C39 0D:BC29: 4C 07 BE  JMP loc_BE07
 
 
-; bzk garbage
-- - - - - - 0x037C3C 0D:BC2C: EA        NOP
-- - - - - - 0x037C3D 0D:BC2D: EA        NOP
-- - - - - - 0x037C3E 0D:BC2E: EA        NOP
-- - - - - - 0x037C3F 0D:BC2F: EA        NOP
-- - - - - - 0x037C40 0D:BC30: EA        NOP
-- - - - - - 0x037C41 0D:BC31: EA        NOP
-- - - - - - 0x037C42 0D:BC32: EA        NOP
-- - - - - - 0x037C43 0D:BC33: EA        NOP
-
-
 
 bra_BC34:
 - - - - - - 0x037C44 0D:BC34: BD 20 05  LDA ram_obj_0520,X
@@ -7626,25 +7615,6 @@ bra_BC65:
 - - - - - - 0x037C79 0D:BC69: 60        RTS
 
 
-; bzk garbage
-- - - - - - 0x037C7A 0D:BC6A: FF        .byte $FF, $FF, $FF, $FF, $FF, $FF   ; 
-- - - - - - 0x037C80 0D:BC70: FF        .byte $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF   ; 
-- - - - - - 0x037C90 0D:BC80: FF        .byte $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF   ; 
-- - - - - - 0x037CA0 0D:BC90: FF        .byte $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF   ; 
-- - - - - - 0x037CB0 0D:BCA0: FF        .byte $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF   ; 
-- - - - - - 0x037CC0 0D:BCB0: FF        .byte $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF   ; 
-- - - - - - 0x037CD0 0D:BCC0: FF        .byte $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF   ; 
-- - - - - - 0x037CE0 0D:BCD0: FF        .byte $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF   ; 
-- - - - - - 0x037CF0 0D:BCE0: FF        .byte $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF   ; 
-- - - - - - 0x037D00 0D:BCF0: FF        .byte $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF   ; 
-- - - - - - 0x037D10 0D:BD00: FF        .byte $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF   ; 
-- - - - - - 0x037D20 0D:BD10: FF        .byte $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF   ; 
-- - - - - - 0x037D30 0D:BD20: FF        .byte $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF   ; 
-- - - - - - 0x037D40 0D:BD30: FF        .byte $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF   ; 
-- - - - - - 0x037D50 0D:BD40: FF        .byte $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF   ; 
-- - - - - - 0x037D60 0D:BD50: FF        .byte $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF   ; 
-
-
 
 tbl_BD60:
 - - - - - - 0x037D70 0D:BD60: 00        .byte $00   ; 00 leo
@@ -7656,10 +7626,6 @@ tbl_BD60:
 - - - - - - 0x037D76 0D:BD66: 00        .byte $00   ; 06 shred
 
 
-; bzk garbage
-- - - - - - 0x037D77 0D:BD67: FF        .byte $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF   ; 
-
-
 
 tbl_BD70:
 - - - - - - 0x037D80 0D:BD70: 00        .byte $00   ; 00 leo
@@ -7669,10 +7635,6 @@ tbl_BD70:
 - - - - - - 0x037D84 0D:BD74: 01        .byte $01   ; 04 casey
 - - - - - - 0x037D85 0D:BD75: 00        .byte $00   ; 05 hot
 - - - - - - 0x037D86 0D:BD76: 00        .byte $00   ; 06 shred
-
-
-; bzk garbage
-- - - - - - 0x037D87 0D:BD77: FF        .byte $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF   ; 
 
 
 
@@ -7779,15 +7741,6 @@ C - - - - - 0x037E48 0D:BE38: 2C        .byte $2C   ; BIT
 C - - - - - 0x037E4B 0D:BE3B: 85 17     STA ram_0017
 bra_BE3D_RTS:
 C - - - - - 0x037E4D 0D:BE3D: 60        RTS
-
-
-; bzk garbage
-- - - - - - 0x037E4E 0D:BE3E: FF        .byte $FF, $FF   ; 
-- - - - - - 0x037E50 0D:BE40: FF        .byte $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF   ; 
-- - - - - - 0x037E60 0D:BE50: FF        .byte $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF   ; 
-- - - - - - 0x037E70 0D:BE60: FF        .byte $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF   ; 
-- - - - - - 0x037E80 0D:BE70: FF        .byte $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF   ; 
-- - - - - - 0x037E90 0D:BE80: FF        .byte $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF   ; 
 
 
 
@@ -7902,10 +7855,6 @@ bra_BF54_RTS:
 C - - - - - 0x037F64 0D:BF54: 60        RTS
 
 
-; bzk garbage
-- - - - - - 0x037F65 0D:BF55: FF        .byte $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF   ; 
-
-
 
 loc_BF5F:
 C D 1 - - - 0x037F6F 0D:BF5F: AD 25 01  LDA ram_option_difficulty
@@ -7957,13 +7906,6 @@ C - - - - - 0x037FBD 0D:BFAD: C9 08     CMP #$08
 C - - - - - 0x037FBF 0D:BFAF: 4C 79 9C  JMP loc_9C79
 bra_BFB2_RTS:
 C - - - - - 0x037FC2 0D:BFB2: 60        RTS
-
-
-; bzk garbage
-- - - - - - 0x037FC3 0D:BFB3: FF        .byte $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF   ; 
-- - - - - - 0x037FD0 0D:BFC0: FF        .byte $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF   ; 
-- - - - - - 0x037FE0 0D:BFD0: FF        .byte $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF   ; 
-- - - - - - 0x037FF0 0D:BFE0: FF        .byte $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF   ; 
 
 
 
