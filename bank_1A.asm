@@ -3940,13 +3940,13 @@ C - - - - - 0x0354C4 0D:94B4: 60        RTS
 
 
 
-loc_94B5:
+loc_94B5:   ; bzk optimize
 C D 0 - - - 0x0354C5 0D:94B5: A9 21     LDA #$21
 C - - - - - 0x0354C7 0D:94B7: 60        RTS
 
 
 
-loc_94C1:
+loc_94C1:   ; bzk optimize
 C D 0 - - - 0x0354D1 0D:94C1: A9 07     LDA #$07
 C - - - - - 0x0354D3 0D:94C3: 60        RTS
 
