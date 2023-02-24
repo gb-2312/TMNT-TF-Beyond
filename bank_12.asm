@@ -7764,12 +7764,6 @@ bra_AC9D_RTS:
 C - - - - - 0x026CAD 09:AC9D: 60        RTS
 
 
-; bzk garbage
-- - - - - - 0x026CAE 09:AC9E: EA        NOP
-- - - - - - 0x026CAF 09:AC9F: EA        NOP
-- - - - - - 0x026CB0 09:ACA0: EA        NOP
-
-
 
 bra_ACA1:
 C - - - - - 0x026CB1 09:ACA1: 68        PLA
@@ -9729,11 +9723,6 @@ C - - - - - 0x027797 09:B787: 9D 60 05  STA ram_obj_0560,X ; 0560 0561
 C - - - - - 0x02779A 09:B78A: 60        RTS
 
 
-; bzk garbage
-- - - - - - 0x02779B 09:B78B: FF        .byte $FF, $FF, $FF, $FF, $FF   ; 
-- - - - - - 0x0277A0 09:B790: FF        .byte $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF   ; 
-
-
 
 loc_B79C:
 C D 1 - - - 0x0277AC 09:B79C: BD 20 05  LDA ram_obj_0520,X ; 0520 0521 
@@ -9750,10 +9739,6 @@ C - - - - - 0x0277C1 09:B7B1: 29 F0     AND #$F0
 C - - - - - 0x0277C3 09:B7B3: 9D 00 06  STA ram_plr_0600,X ; 0600 0601 
 bra_B7B6:
 C - - - - - 0x0277C6 09:B7B6: 4C 07 8C  JMP loc_8C07
-
-
-; bzk garbage
-- - - - - - 0x0277C9 09:B7B9: FF        .byte $FF, $FF, $FF, $FF, $FF, $FF, $FF   ; 
 
 
 
@@ -9788,10 +9773,6 @@ sub_B7DD:
 C - - - - - 0x0277ED 09:B7DD: B9 3E 97  LDA tbl_973E,Y
 C - - - - - 0x0277F0 09:B7E0: DE C0 04  DEC ram_obj_04C0,X ; 04C0 04C1 
 C - - - - - 0x0277F3 09:B7E3: 60        RTS
-
-
-; bzk garbage
-- - - - - - 0x0277F4 09:B7E4: FF        .byte $FF, $FF, $FF, $FF, $FF, $FF   ; 
 
 
 
@@ -10097,10 +10078,6 @@ tbl_BA16:
 - D 1 - - - 0x027A2A 09:BA1A: 01        .byte $01   ; 04 casey
 - D 1 - - - 0x027A2B 09:BA1B: 03        .byte $03   ; 05 hot
 - D 1 - - - 0x027A2C 09:BA1C: 06        .byte $06   ; 06 shred
-
-
-; bzk garbage
-- - - - - - 0x027A2D 09:BA1D: EA        NOP
 
 
 
