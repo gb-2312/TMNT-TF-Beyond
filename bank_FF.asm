@@ -450,13 +450,6 @@ _off009_0x03CFF5_29:
 - D 2 - I - 0x03D00F 0F:CFFF: FF        .byte $FF   ; 
 
 
-; bzk garbage
-- - - - - - 0x03D010 0F:D000: 20 09 D0  JSR sub_D009_очистить_оперативку_1
-- - - - - - 0x03D013 0F:D003: A9 01     LDA #$01
-- - - - - - 0x03D015 0F:D005: 85 26     STA ram_0026
-- - - - - - 0x03D017 0F:D007: 60        RTS
-
-
 ; bzk optimize
 sub_D008_RTS:
 C - - - - - 0x03D018 0F:D008: 60        RTS
@@ -529,17 +522,6 @@ C - - - - - 0x03D066 0F:D056: 90 02     BCC bra_D05A_RTS
 C - - - - - 0x03D068 0F:D058: F6 01     INC ram_0001,X
 bra_D05A_RTS:
 C - - - - - 0x03D06A 0F:D05A: 60        RTS
-
-
-; bzk garbage
-- - - - - - 0x03D06B 0F:D05B: 38        SEC
-- - - - - - 0x03D06C 0F:D05C: 49 FF     EOR #$FF
-- - - - - - 0x03D06E 0F:D05E: 75 00     ADC ram_0000,X
-- - - - - - 0x03D070 0F:D060: 95 00     STA ram_0000,X
-- - - - - - 0x03D072 0F:D062: B0 02     BCS bra_D066_RTS
-- - - - - - 0x03D074 0F:D064: D6 01     DEC ram_0001,X
-bra_D066_RTS:
-- - - - - - 0x03D076 0F:D066: 60        RTS
 
 
 
