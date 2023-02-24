@@ -10271,15 +10271,6 @@ tbl_BA8A:
 - - - - - - 0x027A9F 09:BA8F: A0        .byte $A0   ; 
 
 
-; bzk garbage
-- - - - - - 0x027AA0 09:BA90: EA        NOP
-- - - - - - 0x027AA1 09:BA91: EA        NOP
-- - - - - - 0x027AA2 09:BA92: EA        NOP
-- - - - - - 0x027AA3 09:BA93: EA        NOP
-- - - - - - 0x027AA4 09:BA94: EA        NOP
-- - - - - - 0x027AA5 09:BA95: EA        NOP
-
-
 
 sub_BA96:
 C - - - - - 0x027AA6 09:BA96: BC 26 06  LDY ram_0626,X
@@ -10295,18 +10286,6 @@ C - - - - - 0x027AB9 09:BAA9: A9 1E     LDA #$1E
 C - - - - - 0x027ABB 09:BAAB: 9D 28 06  STA ram_0628,X
 bra_BAAE_RTS:
 C - - - - - 0x027ABE 09:BAAE: 60        RTS
-
-
-; bzk garbage
-- - - - - - 0x027ABF 09:BAAF: BD 10 05  LDA ram_obj_0510,X
-- - - - - - 0x027AC2 09:BAB2: 0A        ASL
-- - - - - - 0x027AC3 09:BAB3: 0A        ASL
-- - - - - - 0x027AC4 09:BAB4: A9 01     LDA #$01
-- - - - - - 0x027AC6 09:BAB6: 90 02     BCC bra_BABA
-- - - - - - 0x027AC8 09:BAB8: A9 02     LDA #$02
-bra_BABA:
-- - - - - - 0x027ACA 09:BABA: DD 24 06  CMP ram_0624,X
-- - - - - - 0x027ACD 09:BABD: 60        RTS
 
 
 
