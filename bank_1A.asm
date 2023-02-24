@@ -4493,11 +4493,6 @@ C - - - - - 0x035818 0D:9808: B0 1C     BCS bra_9826
 - - - - - - 0x03581C 0D:980C: 60        RTS
 
 
-; bzk garbage
-- - - - - - 0x03581D 0D:980D: A9 3E     LDA #$3E
-- - - - - - 0x03581F 0D:980F: 60        RTS
-
-
 
 bra_9810:
 C - - - - - 0x035820 0D:9810: A5 28     LDA ram_0028
@@ -4646,12 +4641,6 @@ bra_98C4:
 C - - - - - 0x0358D4 0D:98C4: 20 96 ED  JSR sub_0x03EDA6
 C - - - - - 0x0358D7 0D:98C7: A9 17     LDA #$17
 C - - - - - 0x0358D9 0D:98C9: 60        RTS
-
-
-; bzk garbage
-- - - - - - 0x0358DA 0D:98CA: 20 96 ED  JSR sub_0x03EDA6
-- - - - - - 0x0358DD 0D:98CD: A9 0B     LDA #$0B
-- - - - - - 0x0358DF 0D:98CF: 60        RTS
 
 
 
