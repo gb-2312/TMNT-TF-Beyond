@@ -1063,7 +1063,6 @@ C - - - - - 0x03D21C 0F:D20C: BD 40 04  LDA ram_obj_pos_X,X
 C - - - - - 0x03D21F 0F:D20F: 38        SEC
 C - - - - - 0x03D220 0F:D210: F9 40 04  SBC ram_obj_pos_X,Y
 C - - - - - 0x03D223 0F:D213: B0 23     BCS bra_D238_RTS
-bra_D215:   ; bzk garbage label
 C - - - - - 0x03D225 0F:D215: 4C FC D1  JMP loc_D1FC_EOR
 
 
@@ -1093,28 +1092,6 @@ C - - - - - 0x03D246 0F:D236: 85 00     STA ram_0000
 bra_D238_RTS:
 C - - - - - 0x03D248 0F:D238: 60        RTS
 
-
-; bzk garbage
-- - - - - - 0x03D249 0F:D239: 20 26 D2  JSR sub_D226
-- - - - - - 0x03D24C 0F:D23C: BD 10 05  LDA ram_obj_0510,X
-- - - - - - 0x03D24F 0F:D23F: 29 40     AND #$40
-- - - - - - 0x03D251 0F:D241: C5 00     CMP ram_0000
-- - - - - - 0x03D253 0F:D243: 60        RTS
-
-
-; bzk garbage
-- - - - - - 0x03D254 0F:D244: BD 10 04  LDA ram_obj_pos_Y,X
-- - - - - - 0x03D257 0F:D247: 38        SEC
-- - - - - - 0x03D258 0F:D248: F9 10 04  SBC ram_obj_pos_Y,Y
-- - - - - - 0x03D25B 0F:D24B: 90 C8     BCC bra_D215
-- - - - - - 0x03D25D 0F:D24D: 60        RTS
-
-
-; bzk garbage
-- - - - - - 0x03D25E 0F:D24E: 18        CLC
-- - - - - - 0x03D25F 0F:D24F: 7D 10 04  ADC ram_obj_pos_Y,X
-- - - - - - 0x03D262 0F:D252: 9D 10 04  STA ram_obj_pos_Y,X
-- - - - - - 0x03D265 0F:D255: 60        RTS
 
 
 ; bzk optimize, лучше создать отдельные подпрограммы для каждого случая
@@ -1199,12 +1176,6 @@ C D 2 - - - 0x03D2B3 0F:D2A3: E6 94     INC ram_0094
 C - - - - - 0x03D2B5 0F:D2A5: A9 00     LDA #$00
 C - - - - - 0x03D2B7 0F:D2A7: 85 95     STA ram_0095
 C - - - - - 0x03D2B9 0F:D2A9: 60        RTS
-
-
-; bzk garbage
-- - - - - - 0x03D2BA 0F:D2AA: 02        .byte $02   ; 
-- - - - - - 0x03D2BB 0F:D2AB: 01        .byte $01   ; 
-- - - - - - 0x03D2BC 0F:D2AC: 00        .byte $00   ; 
 
 
 
