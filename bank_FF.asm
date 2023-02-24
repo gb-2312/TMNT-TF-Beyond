@@ -5030,22 +5030,6 @@ bra_E93C_RTS:
 C - - - - - 0x03E94C 0F:E93C: 60        RTS
 
 
-; bzk garbage
-- - - - - - 0x03E94D 0F:E93D: EA        NOP
-- - - - - - 0x03E94E 0F:E93E: EA        NOP
-- - - - - - 0x03E94F 0F:E93F: EA        NOP
-- - - - - - 0x03E950 0F:E940: EA        NOP
-- - - - - - 0x03E951 0F:E941: EA        NOP
-- - - - - - 0x03E952 0F:E942: EA        NOP
-- - - - - - 0x03E953 0F:E943: EA        NOP
-- - - - - - 0x03E954 0F:E944: EA        NOP
-- - - - - - 0x03E955 0F:E945: EA        NOP
-- - - - - - 0x03E956 0F:E946: EA        NOP
-- - - - - - 0x03E957 0F:E947: EA        NOP
-- - - - - - 0x03E958 0F:E948: EA        NOP
-- - - - - - 0x03E959 0F:E949: EA        NOP
-
-
 
 tbl_E94A:
 - D 3 - - - 0x03E95A 0F:E94A: E4 25     .word $25E4 ; 00
@@ -5097,13 +5081,6 @@ tbl_E979:
 - D 3 - - - 0x03E98B 0F:E97B: 06        .byte $06, $00   ; 01 = 60
 - - - - - - 0x03E98D 0F:E97D: 09        .byte $09, $09   ; 02 = 99
 - - - - - - 0x03E98F 0F:E97F: 0A        .byte $0A, $0A   ; 03 = бесконечное
-
-
-; bzk garbage
-- - - - - - 0x03E991 0F:E981: C9        .byte $C9   ; 
-- - - - - - 0x03E992 0F:E982: C8        .byte $C8   ; 
-- - - - - - 0x03E993 0F:E983: AA        .byte $AA   ; 
-- - - - - - 0x03E994 0F:E984: CA        .byte $CA   ; 
 
 
 
