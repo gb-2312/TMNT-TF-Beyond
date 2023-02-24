@@ -6675,13 +6675,6 @@ C - - - - - 0x036438 0D:A428: A9 01     LDA #$01
 C - - - - - 0x03643A 0D:A42A: 60        RTS
 
 
-; bzk garbage
-- - - - - - 0x03643B 0D:A42B: FF        .byte $FF, $FF, $FF, $FF, $FF   ; 
-- - - - - - 0x036440 0D:A430: FF        .byte $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF   ; 
-- - - - - - 0x036450 0D:A440: FF        .byte $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF   ; 
-- - - - - - 0x036460 0D:A450: FF        .byte $FF, $FF, $FF, $FF, $FF, $FF   ; 
-
-
 
 loc_A456:
 - - - - - - 0x036466 0D:A456: AD 38 06  LDA ram_0638
@@ -6832,10 +6825,6 @@ C - - - - - 0x03656C 0D:A55C: 10 03     BPL bra_A561
 - - - - - - 0x03656E 0D:A55E: 4C 7F 9A  JMP loc_9A7F
 bra_A561:
 C - - - - - 0x036571 0D:A561: 4C 20 9B  JMP loc_9B20
-
-
-; bzk garbage
-- - - - - - 0x036574 0D:A564: FF        .byte $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF   ; 
 
 
 
@@ -7072,10 +7061,6 @@ loc_A70D:
 - - - - - - 0x03671F 0D:A70F: 4C 5C A6  JMP loc_A65C
 
 
-; bzk garbage
-- - - - - - 0x036722 0D:A712: FF        .byte $FF, $FF, $FF   ; 
-
-
 
 bra_A715:
 - - - - - - 0x036725 0D:A715: C0 18     CPY #$18
@@ -7089,10 +7074,6 @@ bra_A715:
 - - - - - - 0x036733 0D:A723: 4C 5C A6  JMP loc_A65C
 
 
-; bzk garbage
-- - - - - - 0x036736 0D:A726: FF        .byte $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF   ; 
-
-
 
 sub_A730:
 C - - - - - 0x036740 0D:A730: AD 25 01  LDA ram_option_difficulty
@@ -7102,12 +7083,6 @@ C - - - - - 0x036747 0D:A737: 4C 14 EE  JMP loc_0x03EE24
 bra_A73A:
 - - - - - - 0x03674A 0D:A73A: 38        SEC
 - - - - - - 0x03674B 0D:A73B: 60        RTS
-
-
-; bzk garbage
-- - - - - - 0x03674C 0D:A73C: FF        .byte $FF, $FF, $FF, $FF   ; 
-- - - - - - 0x036750 0D:A740: FF        .byte $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF   ; 
-- - - - - - 0x036760 0D:A750: FF        .byte $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF   ; 
 
 
 
@@ -7147,15 +7122,6 @@ C - - - - - 0x0367AA 0D:A79A: 85 17     STA ram_0017
 C - - - - - 0x0367AC 0D:A79C: 60        RTS
 
 
-; bzk garbage
-- - - - - - 0x0367AD 0D:A79D: FF        .byte $FF, $FF, $FF   ; 
-- - - - - - 0x0367B0 0D:A7A0: FF        .byte $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF   ; 
-- - - - - - 0x0367C0 0D:A7B0: FF        .byte $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF   ; 
-- - - - - - 0x0367D0 0D:A7C0: FF        .byte $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF   ; 
-- - - - - - 0x0367E0 0D:A7D0: FF        .byte $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF   ; 
-- - - - - - 0x0367F0 0D:A7E0: FF        .byte $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF   ; 
-
-
 
 tbl_A7F0:
 - - - - - - 0x036800 0D:A7F0: 3A        .byte $3A   ; 00
@@ -7176,10 +7142,6 @@ tbl_A7F4:
 - - - - - - 0x036809 0D:A7F9: 27        .byte $27   ; 01
 - - - - - - 0x03680A 0D:A7FA: 17        .byte $17   ; 02
 - - - - - - 0x03680B 0D:A7FB: 33        .byte $33   ; 03
-
-
-; bzk garbage
-- - - - - - 0x03680C 0D:A7FC: FF        .byte $FF, $FF, $FF, $FF   ; 
 
 
 
