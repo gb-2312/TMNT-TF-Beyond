@@ -2181,27 +2181,6 @@ bra_D8D9:
 - - - - - - 0x03D8F2 0F:D8E2: 60        RTS
 
 
-; bzk garbage
-- - - - - - 0x03D8F3 0F:D8E3: 86 04     STX ram_0004
-- - - - - - 0x03D8F5 0F:D8E5: 85 00     STA ram_0000
-- - - - - - 0x03D8F7 0F:D8E7: A9 00     LDA #$00
-- - - - - - 0x03D8F9 0F:D8E9: 85 01     STA ram_0001
-- - - - - - 0x03D8FB 0F:D8EB: A0 08     LDY #$08
-- - - - - - 0x03D8FD 0F:D8ED: 46 00     LSR ram_0000
-bra_D8EF_loop:
-- - - - - - 0x03D8FF 0F:D8EF: 90 07     BCC bra_D8F8
-- - - - - - 0x03D901 0F:D8F1: 18        CLC
-- - - - - - 0x03D902 0F:D8F2: A5 04     LDA ram_0004
-- - - - - - 0x03D904 0F:D8F4: 65 01     ADC ram_0001
-- - - - - - 0x03D906 0F:D8F6: 85 01     STA ram_0001
-bra_D8F8:
-- - - - - - 0x03D908 0F:D8F8: 66 01     ROR ram_0001
-- - - - - - 0x03D90A 0F:D8FA: 66 00     ROR ram_0000
-- - - - - - 0x03D90C 0F:D8FC: 88        DEY
-- - - - - - 0x03D90D 0F:D8FD: D0 F0     BNE bra_D8EF_loop
-- - - - - - 0x03D90F 0F:D8FF: 60        RTS
-
-
 
 sub_D900:
 C - - - - - 0x03D910 0F:D900: 85 1A     STA ram_001A
