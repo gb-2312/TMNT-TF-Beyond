@@ -2691,18 +2691,6 @@ C - - - - - 0x03DBE0 0F:DBD0: 99 10 04  STA ram_obj_pos_Y,Y
 C - - - - - 0x03DBE3 0F:DBD3: 60        RTS
 
 
-; bzk garbage
-- - - - - - 0x03DBE4 0F:DBD4: BD 90 04  LDA ram_obj_0490,X
-- - - - - - 0x03DBE7 0F:DBD7: 99 90 04  STA ram_obj_0490,Y
-- - - - - - 0x03DBEA 0F:DBDA: BD 80 04  LDA ram_obj_0480,X
-- - - - - - 0x03DBED 0F:DBDD: 99 80 04  STA ram_obj_0480,Y
-- - - - - - 0x03DBF0 0F:DBE0: BD 70 04  LDA ram_obj_0470,X
-- - - - - - 0x03DBF3 0F:DBE3: 99 70 04  STA ram_obj_0470,Y
-- - - - - - 0x03DBF6 0F:DBE6: BD 60 04  LDA ram_obj_0460,X
-- - - - - - 0x03DBF9 0F:DBE9: 99 60 04  STA ram_obj_0460,Y
-- - - - - - 0x03DBFC 0F:DBEC: 60        RTS
-
-
 
 loc_DC04:
 sub_0x03DC14:
