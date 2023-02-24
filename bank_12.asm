@@ -1657,18 +1657,6 @@ C - - - - - 0x024B18 09:8B08: BD 20 05  LDA ram_obj_0520,X
 C - - - - - 0x024B1B 09:8B0B: C9 01     CMP #$01
 C - - - - - 0x024B1D 09:8B0D: D0 0F     BNE bra_8B1E
 C - - - - - 0x024B1F 09:8B0F: 4C A1 8B  JMP loc_8BA1
-
-
-; bzk garbage
-- - - - - - 0x024B22 09:8B12: C9 20     CMP #$20
-- - - - - - 0x024B24 09:8B14: D0 05     BNE bra_8B1B
-- - - - - - 0x024B26 09:8B16: A9 10     LDA #$10
-- - - - - - 0x024B28 09:8B18: 20 58 DC  JSR sub_0x03DC68
-bra_8B1B:
-- - - - - - 0x024B2B 09:8B1B: 4C A1 8B  JMP loc_8BA1
-
-
-
 bra_8B1E:
 C - - - - - 0x024B2E 09:8B1E: 20 6A D0  JSR sub_0x03D07A
 C - - - - - 0x024B31 09:8B21: 20 69 DC  JSR sub_0x03DC79
