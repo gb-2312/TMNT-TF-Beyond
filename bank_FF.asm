@@ -2703,29 +2703,6 @@ C - - - - - 0x03DBE3 0F:DBD3: 60        RTS
 - - - - - - 0x03DBFC 0F:DBEC: 60        RTS
 
 
-; bzk garbage
-- - - - - - 0x03DBFD 0F:DBED: 48        PHA
-- - - - - - 0x03DBFE 0F:DBEE: 29 F0     AND #$F0
-- - - - - - 0x03DC00 0F:DBF0: A8        TAY
-- - - - - - 0x03DC01 0F:DBF1: 68        PLA
-- - - - - - 0x03DC02 0F:DBF2: 29 0F     AND #$0F
-- - - - - - 0x03DC04 0F:DBF4: C9 08     CMP #$08
-- - - - - - 0x03DC06 0F:DBF6: 90 02     BCC bra_DBFA_RTS
-- - - - - - 0x03DC08 0F:DBF8: 09 F8     ORA #$F8
-bra_DBFA_RTS:
-- - - - - - 0x03DC0A 0F:DBFA: 60        RTS
-
-
-; bzk garbage
-- - - - - - 0x03DC0B 0F:DBFB: A8        TAY
-- - - - - - 0x03DC0C 0F:DBFC: 30 03     BMI bra_DC01
-- - - - - - 0x03DC0E 0F:DBFE: A0 00     LDY #$00
-- - - - - - 0x03DC10 0F:DC00: 60        RTS
-bra_DC01:
-- - - - - - 0x03DC11 0F:DC01: A0 FF     LDY #$FF
-- - - - - - 0x03DC13 0F:DC03: 60        RTS
-
-
 
 loc_DC04:
 sub_0x03DC14:
@@ -2784,13 +2761,6 @@ tbl_DC29:
 - D 2 - - - 0x03DC55 0F:DC45: 7C        .byte $7C, $72   ; 1C
 - D 2 - - - 0x03DC57 0F:DC47: 4C        .byte $4C, $4E   ; 1E
 - D 2 - - - 0x03DC59 0F:DC49: 36        .byte $36, $34   ; 20
-
-
-; bzk garbage
-- - - - - - 0x03DC5B 0F:DC4B: A9 00     LDA #$00
-- - - - - - 0x03DC5D 0F:DC4D: 8D 3C 06  STA ram_063C
-- - - - - - 0x03DC60 0F:DC50: 8D 3D 06  STA ram_063D
-- - - - - - 0x03DC63 0F:DC53: 60        RTS
 
 
 
