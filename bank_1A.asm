@@ -6184,14 +6184,6 @@ bra_A0EC:
 loc_A0F7:
 bra_A0F7:
 C D 1 - - - 0x036107 0D:A0F7: 4C 60 A7  JMP loc_A760
-
-
-; bzk garbage
-- - - - - - 0x03610A 0D:A0FA: EA        NOP
-- - - - - - 0x03610B 0D:A0FB: 60        RTS
-
-
-
 bra_A0FC:
 - - - - - - 0x03610C 0D:A0FC: A9 41     LDA #$41
 - - - - - - 0x03610E 0D:A0FE: 85 17     STA ram_0017
@@ -6313,12 +6305,6 @@ tbl_A195:
 - - - - - - 0x0361A6 0D:A196: 19        .byte $19   ; 01 turbo
 
 
-; bzk garbage
-- - - - - - 0x0361A7 0D:A197: EA        NOP
-- - - - - - 0x0361A8 0D:A198: EA        NOP
-- - - - - - 0x0361A9 0D:A199: EA        NOP
-
-
 
 sub_A19A:
 C - - - - - 0x0361AA 0D:A19A: AD 25 01  LDA ram_option_difficulty
@@ -6327,10 +6313,6 @@ C - - - - - 0x0361AF 0D:A19F: F0 03     BEQ bra_A1A4_RTS
 C - - - - - 0x0361B1 0D:A1A1: BD 50 05  LDA ram_obj_id,X
 bra_A1A4_RTS:   ; A = 00
 C - - - - - 0x0361B4 0D:A1A4: 60        RTS
-
-
-; bzk garbage
-- - - - - - 0x0361B5 0D:A1A5: EA        NOP
 
 
 
@@ -6603,11 +6585,6 @@ C - - - - - 0x0363AB 0D:A39B: 9D C6 06  STA ram_06C6,X
 C - - - - - 0x0363AE 0D:A39E: 9D C8 06  STA ram_06C8,X
 bra_A3A1_RTS:
 C - - - - - 0x0363B1 0D:A3A1: 60        RTS
-
-
-; bzk garbage
-- - - - - - 0x0363B2 0D:A3A2: EA        .byte $EA, $EA, $EA, $EA, $EA, $EA, $EA, $EA, $EA, $EA, $EA, $EA, $EA, $EA   ; 
-- - - - - - 0x0363C0 0D:A3B0: EA        .byte $EA, $EA, $EA, $EA, $EA, $EA, $EA, $EA   ; 
 
 
 
