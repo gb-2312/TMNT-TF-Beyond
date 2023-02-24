@@ -6145,7 +6145,7 @@ bra_A0B0:
 
 
 
-loc_A0F7:
+loc_A0F7:   ; bzk optimize
 bra_A0F7:
 C D 1 - - - 0x036107 0D:A0F7: 4C 60 A7  JMP loc_A760
 
