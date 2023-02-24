@@ -2957,7 +2957,7 @@ C - - - - - 0x03DD21 0F:DD11: 4C 5F DD  JMP loc_DD5F
 
 
 
-loc_DD5F:
+loc_DD5F:   ; bzk optimize
 C D 2 - - - 0x03DD6F 0F:DD5F: 05 00     ORA ram_0000
 C - - - - - 0x03DD71 0F:DD61: 9D 10 05  STA ram_obj_0510,X
 C - - - - - 0x03DD74 0F:DD64: 60        RTS
