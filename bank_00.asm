@@ -39,18 +39,6 @@ _off006_0x000010_1E:
 - D 0 - I - 0x000180 00:8170: A9        .byte $A9, $A9, $A9, $00, $A9, $A9, $A9, $63, $00, $08, $FE, $30, $00, $FF   ; 
 
 
-; bzk garbage
-- - - - - - 0x00018E 00:817E: FF        .byte $FF, $FF   ; 
-- - - - - - 0x000190 00:8180: FF        .byte $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF   ; 
-- - - - - - 0x0001A0 00:8190: FF        .byte $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF   ; 
-- - - - - - 0x0001B0 00:81A0: FF        .byte $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF   ; 
-- - - - - - 0x0001C0 00:81B0: FF        .byte $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF   ; 
-- - - - - - 0x0001D0 00:81C0: FF        .byte $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF   ; 
-- - - - - - 0x0001E0 00:81D0: FF        .byte $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF   ; 
-- - - - - - 0x0001F0 00:81E0: FF        .byte $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF   ; 
-- - - - - - 0x000200 00:81F0: FF        .byte $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF   ; 
-
-
 
 _off006_0x000210_1F:
 - D 0 - I - 0x000210 00:8200: 00        .byte $00, $20, $7E, $00, $42, $00, $1E, $00, $01, $01, $01, $00, $1E, $00, $82, $03   ; 
