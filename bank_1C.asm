@@ -1779,7 +1779,7 @@ loc_8ACB:
 C D 0 - - - 0x038ADB 0E:8ACB: A9 00     LDA #$00
 C - - - - - 0x038ADD 0E:8ACD: A2 03     LDX #$03
 bra_8ACF_loop:
-C - - - - - 0x038ADF 0E:8ACF: 9D 26 06  STA ram_0626,X
+C - - - - - 0x038ADF 0E:8ACF: 9D 26 06  STA ram_plr_0626,X
 C - - - - - 0x038AE2 0E:8AD2: CA        DEX
 C - - - - - 0x038AE3 0E:8AD3: 10 FA     BPL bra_8ACF_loop
 bra_8AD5_RTS:
@@ -1930,19 +1930,19 @@ C - - - - - 0x038BB6 0E:8BA6: A2 03     LDX #$03
 bra_8BA8_loop:
 C - - - - - 0x038BB8 0E:8BA8: B5 11     LDA ram_0011,X
 C - - - - - 0x038BBA 0E:8BAA: 18        CLC
-C - - - - - 0x038BBB 0E:8BAB: 7D 26 06  ADC ram_0626,X
+C - - - - - 0x038BBB 0E:8BAB: 7D 26 06  ADC ram_plr_0626,X
 C - - - - - 0x038BBE 0E:8BAE: C9 0A     CMP #$0A
 C - - - - - 0x038BC0 0E:8BB0: 90 05     BCC bra_8BB7
 C - - - - - 0x038BC2 0E:8BB2: FE 25 06  INC ram_0625,X
 C - - - - - 0x038BC5 0E:8BB5: E9 0A     SBC #$0A
 bra_8BB7:
-C - - - - - 0x038BC7 0E:8BB7: 9D 26 06  STA ram_0626,X
+C - - - - - 0x038BC7 0E:8BB7: 9D 26 06  STA ram_plr_0626,X
 C - - - - - 0x038BCA 0E:8BBA: B5 11     LDA ram_0011,X
 C - - - - - 0x038BCC 0E:8BBC: 18        CLC
 C - - - - - 0x038BCD 0E:8BBD: 7D 2B 06  ADC ram_062B,X
 C - - - - - 0x038BD0 0E:8BC0: C9 0A     CMP #$0A
 C - - - - - 0x038BD2 0E:8BC2: 90 05     BCC bra_8BC9
-C - - - - - 0x038BD4 0E:8BC4: FE 2A 06  INC ram_062A,X
+C - - - - - 0x038BD4 0E:8BC4: FE 2A 06  INC ram_plr_062A,X
 C - - - - - 0x038BD7 0E:8BC7: E9 0A     SBC #$0A
 bra_8BC9:
 C - - - - - 0x038BD9 0E:8BC9: 9D 2B 06  STA ram_062B,X
@@ -1952,7 +1952,7 @@ C - - - - - 0x038BDF 0E:8BCF: AD 71 06  LDA ram_0671
 C - - - - - 0x038BE2 0E:8BD2: 20 5A F7  JSR sub_0x03F76A
 C - - - - - 0x038BE5 0E:8BD5: A2 00     LDX #$00
 bra_8BD7_loop:
-C - - - - - 0x038BE7 0E:8BD7: BD 26 06  LDA ram_0626,X
+C - - - - - 0x038BE7 0E:8BD7: BD 26 06  LDA ram_plr_0626,X
 C - - - - - 0x038BEA 0E:8BDA: D0 07     BNE bra_8BE3
 C - - - - - 0x038BEC 0E:8BDC: E8        INX
 C - - - - - 0x038BED 0E:8BDD: E0 04     CPX #$04
@@ -1975,7 +1975,7 @@ C - - - - - 0x038C06 0E:8BF6: A9 23     LDA #$23
 C - - - - - 0x038C08 0E:8BF8: 20 6B D2  JSR sub_0x03D27B_записать_адрес_2006_Y_и_A_в_буфер
 C - - - - - 0x038C0B 0E:8BFB: A4 00     LDY ram_0000
 bra_8BFD_loop:
-C - - - - - 0x038C0D 0E:8BFD: B9 26 06  LDA ram_0626,Y
+C - - - - - 0x038C0D 0E:8BFD: B9 26 06  LDA ram_plr_0626,Y
 C - - - - - 0x038C10 0E:8C00: 18        CLC
 C - - - - - 0x038C11 0E:8C01: 69 81     ADC #$81
 C - - - - - 0x038C13 0E:8C03: 20 5D D2  JSR sub_0x03D26D_записать_A_в_буфер_с_чтением_индекса
@@ -4295,7 +4295,7 @@ C - - - - - 0x039B5D 0E:9B4D: B9 91 A7  LDA tbl_A790 + $01,Y
 C - - - - - 0x039B60 0E:9B50: 8D 34 06  STA ram_0634
 C - - - - - 0x039B63 0E:9B53: A9 00     LDA #$00
 C - - - - - 0x039B65 0E:9B55: 8D 32 06  STA ram_0632
-C - - - - - 0x039B68 0E:9B58: 8D 39 06  STA ram_0639
+C - - - - - 0x039B68 0E:9B58: 8D 39 06  STA ram_plr_0639
 C - - - - - 0x039B6B 0E:9B5B: 20 01 A6  JSR sub_A601_подготовить_надпись_с_предложением_пройти_expert
 sub_9B5E_задержка_6_кадров:
 ; пауза между каждой напечатанной буквой
@@ -4347,7 +4347,7 @@ C - - - - - 0x039BAC 0E:9B9C: F0 69     BEQ bra_9C07_FF
 C - - - - - 0x039BAE 0E:9B9E: 48        PHA
 C - - - - - 0x039BAF 0E:9B9F: 18        CLC
 C - - - - - 0x039BB0 0E:9BA0: AD 36 06  LDA ram_plr_0636
-C - - - - - 0x039BB3 0E:9BA3: 6D 39 06  ADC ram_0639
+C - - - - - 0x039BB3 0E:9BA3: 6D 39 06  ADC ram_plr_0639
 C - - - - - 0x039BB6 0E:9BA6: A8        TAY
 C - - - - - 0x039BB7 0E:9BA7: AD 35 06  LDA ram_0635
 C - - - - - 0x039BBA 0E:9BAA: 69 00     ADC #$00
@@ -4357,7 +4357,7 @@ C - - - - - 0x039BC0 0E:9BB0: 20 5D D2  JSR sub_0x03D26D_записать_A_в_�
 C - - - - - 0x039BC3 0E:9BB3: 20 5B D2  JSR sub_0x03D26B_записать_FF_в_буфер
 loc_9BB6:
 bra_9BB6:
-C D 0 - - - 0x039BC6 0E:9BB6: EE 39 06  INC ram_0639
+C D 0 - - - 0x039BC6 0E:9BB6: EE 39 06  INC ram_plr_0639
 bra_9BB9:
 C - - - - - 0x039BC9 0E:9BB9: EE 32 06  INC ram_0632
 C - - - - - 0x039BCC 0E:9BBC: 60        RTS
@@ -4368,7 +4368,7 @@ C - - - - - 0x039BCF 0E:9BBF: 18        CLC
 C - - - - - 0x039BD0 0E:9BC0: 6D 36 06  ADC ram_plr_0636
 C - - - - - 0x039BD3 0E:9BC3: 8D 36 06  STA ram_plr_0636
 C - - - - - 0x039BD6 0E:9BC6: A9 00     LDA #$00
-C - - - - - 0x039BD8 0E:9BC8: 8D 39 06  STA ram_0639
+C - - - - - 0x039BD8 0E:9BC8: 8D 39 06  STA ram_plr_0639
 C - - - - - 0x039BDB 0E:9BCB: 6D 35 06  ADC ram_0635
 C - - - - - 0x039BDE 0E:9BCE: 8D 35 06  STA ram_0635
 C - - - - - 0x039BE1 0E:9BD1: 10 E6     BPL bra_9BB9    ; jmp
@@ -4383,7 +4383,7 @@ C - - - - - 0x039BF1 0E:9BE1: 60        RTS
 bra_9BE2_BC:
 ; очистить текст
 C - - - - - 0x039BF2 0E:9BE2: A0 00     LDY #$00
-C - - - - - 0x039BF4 0E:9BE4: 8C 39 06  STY ram_0639
+C - - - - - 0x039BF4 0E:9BE4: 8C 39 06  STY ram_plr_0639
 bra_9BE7_loop:
 C - - - - - 0x039BF7 0E:9BE7: B9 FA 9B  LDA tbl_9BFA,Y
 C - - - - - 0x039BFA 0E:9BEA: C9 FF     CMP #$FF

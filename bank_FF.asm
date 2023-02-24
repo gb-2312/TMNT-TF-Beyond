@@ -2647,8 +2647,8 @@ C - - - - - 0x03DEAF 0F:DE9F: 4C 94 F6  JMP loc_F694
 sub_DEA2:
 sub_0x03DEB2:
 C - - - - - 0x03DEB2 0F:DEA2: 18        CLC
-C - - - - - 0x03DEB3 0F:DEA3: 7D 45 06  ADC ram_0645,X
-C - - - - - 0x03DEB6 0F:DEA6: 9D 45 06  STA ram_0645,X
+C - - - - - 0x03DEB3 0F:DEA3: 7D 45 06  ADC ram_plr_0645,X ; 0645 0646 
+C - - - - - 0x03DEB6 0F:DEA6: 9D 45 06  STA ram_plr_0645,X ; 0645 0646 
 bra_DEA9:
 C - - - - - 0x03DEB9 0F:DEA9: A9 00     LDA #$00
 bra_DEAB:
@@ -2657,7 +2657,7 @@ C - - - - - 0x03DEBD 0F:DEAD: A9 00     LDA #$00
 C - - - - - 0x03DEBF 0F:DEAF: 9D F0 05  STA ram_obj_05F0,X
 C - - - - - 0x03DEC2 0F:DEB2: 38        SEC
 C - - - - - 0x03DEC3 0F:DEB3: BD 90 05  LDA ram_obj_0590,X
-C - - - - - 0x03DEC6 0F:DEB6: FD 45 06  SBC ram_0645,X
+C - - - - - 0x03DEC6 0F:DEB6: FD 45 06  SBC ram_plr_0645,X ; 0645 0646 
 bra_DEB9_RTS:
 C - - - - - 0x03DEC9 0F:DEB9: 60        RTS
 
@@ -2671,8 +2671,8 @@ C - - - - - 0x03DECD 0F:DEBD: 4C 7A DE  JMP loc_DE7A
 
 sub_DEC0:
 C - - - - - 0x03DED0 0F:DEC0: 18        CLC
-C - - - - - 0x03DED1 0F:DEC1: 7D 45 06  ADC ram_0645,X
-C - - - - - 0x03DED4 0F:DEC4: 9D 45 06  STA ram_0645,X
+C - - - - - 0x03DED1 0F:DEC1: 7D 45 06  ADC ram_plr_0645,X ; 0645 0646 
+C - - - - - 0x03DED4 0F:DEC4: 9D 45 06  STA ram_plr_0645,X ; 0645 0646 
 C - - - - - 0x03DED7 0F:DEC7: A4 A9     LDY ram_00A9
 C - - - - - 0x03DED9 0F:DEC9: B9 50 05  LDA ram_obj_id,Y
 C - - - - - 0x03DEDC 0F:DECC: C9 04     CMP #$04
@@ -3770,11 +3770,11 @@ bra_E4FA:
 C - - - - - 0x03E50A 0F:E4FA: 4C 94 F7  JMP loc_F794
 bra_E4FD_loop:
 C - - - - - 0x03E50D 0F:E4FD: A9 AE     LDA #$AE
-C - - - - - 0x03E50F 0F:E4FF: DD 10 04  CMP ram_obj_pos_Y,X
+C - - - - - 0x03E50F 0F:E4FF: DD 10 04  CMP ram_obj_pos_Y,X ; 0410 0411 
 C - - - - - 0x03E512 0F:E502: B0 E2     BCS bra_E4E6
-C - - - - - 0x03E514 0F:E504: BD 90 05  LDA ram_obj_0590,X
+C - - - - - 0x03E514 0F:E504: BD 90 05  LDA ram_obj_0590,X ; 0590 0591 
 C - - - - - 0x03E517 0F:E507: F0 07     BEQ bra_E510
-C - - - - - 0x03E519 0F:E509: BD 45 06  LDA ram_0645,X
+C - - - - - 0x03E519 0F:E509: BD 45 06  LDA ram_plr_0645,X ; 0645 0646 
 C - - - - - 0x03E51C 0F:E50C: D0 D8     BNE bra_E4E6
 ; bzk optimize
 C - - - - - 0x03E51E 0F:E50E: EA        NOP
@@ -4204,8 +4204,8 @@ C - - - - - 0x03E7E7 0F:E7D7: 8D 30 05  STA ram_obj_0530
 C - - - - - 0x03E7EA 0F:E7DA: A9 00     LDA #$00
 C - - - - - 0x03E7EC 0F:E7DC: 8D 73 06  STA ram_0673
 C - - - - - 0x03E7EF 0F:E7DF: 85 AA     STA ram_00AA
-C - - - - - 0x03E7F1 0F:E7E1: 8D 1A 06  STA ram_061A
-C - - - - - 0x03E7F4 0F:E7E4: 8D 18 06  STA ram_0618
+C - - - - - 0x03E7F1 0F:E7E1: 8D 1A 06  STA ram_plr_061A
+C - - - - - 0x03E7F4 0F:E7E4: 8D 18 06  STA ram_plr_0618
 C - - - - - 0x03E7F7 0F:E7E7: 8D 10 06  STA ram_plr_0610
 C - - - - - 0x03E7FA 0F:E7EA: 8D 11 06  STA ram_plr_0610 + $01
 C - - - - - 0x03E7FD 0F:E7ED: 85 A6     STA ram_00A6
@@ -4364,6 +4364,7 @@ C - - - - - 0x03E8F7 0F:E8E7: 4C 04 DC  JMP loc_DC04
 
 ofs_001_E8EA_1E:
 C - - J - - 0x03E8FA 0F:E8EA: 20 33 D3  JSR sub_D333
+; bzk optimize
 C - - - - - 0x03E8FD 0F:E8ED: EA        NOP
 C - - - - - 0x03E8FE 0F:E8EE: 20 DE F7  JSR sub_F7DE
 C - - - - - 0x03E901 0F:E8F1: AD 31 06  LDA ram_0631
