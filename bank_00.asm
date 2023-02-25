@@ -97,12 +97,16 @@ _off006_0x000210_3E:
 
 
 sub_0x003F10:
-C - - - - - 0x003F10 00:BF00: A5 2C     LDA ram_002C
+C - - - - - 0x003F10 00:BF00: A5 2C     LDA ram_game_mode
+; con_gm_vs_team
+; con_gm_tournament
 C - - - - - 0x003F12 00:BF02: 4A        LSR
 C - - - - - 0x003F13 00:BF03: B0 04     BCS bra_BF09
+; con_gm_tournament
 C - - - - - 0x003F15 00:BF05: B9 30 01  LDA ram_0130,Y
 C - - - - - 0x003F18 00:BF08: 60        RTS
 bra_BF09:
+; con_gm_vs_team
 C - - - - - 0x003F19 00:BF09: A6 A8     LDX ram_00A8
 C - - - - - 0x003F1B 00:BF0B: BD 55 01  LDA ram_0155,X
 C - - - - - 0x003F1E 00:BF0E: 30 02     BMI bra_BF12

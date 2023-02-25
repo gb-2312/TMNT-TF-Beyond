@@ -82,8 +82,15 @@ C - - - - - 0x02C0FC 0B:80EC: 85 32     STA ram_0032
 C - - - - - 0x02C0FE 0B:80EE: 20 00 AC  JSR sub_AC00
 C - - - - - 0x02C102 0B:80F2: A0 02     LDY #con_0x03DC39_02
 C - - - - - 0x02C104 0B:80F4: 20 04 DC  JSR sub_0x03DC14
-C - - - - - 0x02C107 0B:80F7: A5 2C     LDA ram_002C
-C - - - - - 0x02C109 0B:80F9: F0 03     BEQ bra_80FE
+C - - - - - 0x02C107 0B:80F7: A5 2C     LDA ram_game_mode
+; con_gm_story
+; con_gm_vs_player
+; con_gm_vs_cpu
+; con_gm_vs_team
+C - - - - - 0x02C109 0B:80F9: F0 03     BEQ bra_80FE    ; if con_gm_story
+; con_gm_vs_player
+; con_gm_vs_cpu
+; con_gm_vs_team
 C - - - - - 0x02C10B 0B:80FB: EE E0 04  INC ram_obj_04E0
 bra_80FE:
 C - - - - - 0x02C10E 0B:80FE: A9 0A     LDA #con_0x03F84C_0A
@@ -94,14 +101,22 @@ C - - - - - 0x02C113 0B:8103: 4C 6D D4  JMP loc_0x03D47D
 
 ofs_041_8106_01:
 C - - J - - 0x02C116 0B:8106: EE 3E 06  INC ram_063E
-C - - - - - 0x02C119 0B:8109: A4 2C     LDY ram_002C
+C - - - - - 0x02C119 0B:8109: A4 2C     LDY ram_game_mode
 C - - - - - 0x02C11B 0B:810B: BE FA BF  LDX tbl_BFFA,Y
 C - - - - - 0x02C11E 0B:810E: 20 44 F0  JSR sub_0x03F054
-C - - - - - 0x02C122 0B:8112: A5 2C     LDA ram_002C
+C - - - - - 0x02C122 0B:8112: A5 2C     LDA ram_game_mode
+; con_gm_story
+; con_gm_vs_player
+; con_gm_vs_cpu
+; con_gm_vs_team
 C - - - - - 0x02C124 0B:8114: D0 05     BNE bra_811B
+; if con_gm_story
 C - - - - - 0x02C126 0B:8116: A2 1A     LDX #con_0x03F0EE_1A
 C - - - - - 0x02C128 0B:8118: 20 44 F0  JSR sub_0x03F054
 bra_811B:
+; con_gm_vs_player
+; con_gm_vs_cpu
+; con_gm_vs_team
 C - - - - - 0x02C12B 0B:811B: A0 06     LDY #$06
 C - - - - - 0x02C12D 0B:811D: A9 13     LDA #$13
 C - - - - - 0x02C12F 0B:811F: 20 94 D3  JSR sub_0x03D3A4
@@ -119,10 +134,14 @@ C - - - - - 0x02C146 0B:8136: A9 37     LDA #con_0x03F6AD_37
 C - - - - - 0x02C148 0B:8138: 20 90 F6  JSR sub_0x03F6A0
 C - - - - - 0x02C14B 0B:813B: A2 00     LDX #$00
 C - - - - - 0x02C14D 0B:813D: 20 2F 82  JSR sub_822F
-C - - - - - 0x02C150 0B:8140: A5 2C     LDA ram_002C
-C - - - - - 0x02C152 0B:8142: F0 08     BEQ bra_814C
+C - - - - - 0x02C150 0B:8140: A5 2C     LDA ram_game_mode
+; con_gm_story
+; con_gm_vs_player
+; con_gm_vs_cpu
+; con_gm_vs_team
+C - - - - - 0x02C152 0B:8142: F0 08     BEQ bra_814C    ; if con_gm_story
 C - - - - - 0x02C154 0B:8144: C9 02     CMP #$02
-C - - - - - 0x02C156 0B:8146: F0 04     BEQ bra_814C
+C - - - - - 0x02C156 0B:8146: F0 04     BEQ bra_814C    ; if con_gm_vs_cpu
 C - - - - - 0x02C158 0B:8148: E8        INX
 C - - - - - 0x02C159 0B:8149: 20 2F 82  JSR sub_822F
 bra_814C:
@@ -143,9 +162,16 @@ C - - - - - 0x02C165 0B:8155: 4C 46 D3  JMP loc_0x03D356_записать_3_цв
 ofs_041_8158_02:
 C - - J - - 0x02C168 0B:8158: EE 3E 06  INC ram_063E
 ofs_041_815B_03:
-C - - - - - 0x02C16B 0B:815B: A5 2C     LDA ram_002C
+C - - - - - 0x02C16B 0B:815B: A5 2C     LDA ram_game_mode
+; con_gm_story
+; con_gm_vs_player
+; con_gm_vs_cpu
+; con_gm_vs_team
 C - - - - - 0x02C16D 0B:815D: C9 02     CMP #$02
-C - - - - - 0x02C16F 0B:815F: F0 23     BEQ bra_8184
+C - - - - - 0x02C16F 0B:815F: F0 23     BEQ bra_8184_vs_cpu
+; con_gm_story
+; con_gm_vs_player
+; con_gm_vs_team
 C - - - - - 0x02C171 0B:8161: 4C 80 BD  JMP loc_BD80
 
 
@@ -174,7 +200,7 @@ C - - - - - 0x02C18B 0B:817B: 20 32 D0  JSR sub_0x03D042_поинтеры_пос
 
 
 
-bra_8184:
+bra_8184_vs_cpu:
 loc_8184:
 C D 0 - - - 0x02C194 0B:8184: 18        CLC
 C - - - - - 0x02C195 0B:8185: AD 30 05  LDA ram_obj_0530
@@ -252,9 +278,10 @@ bra_81F7:
 C - - - - - 0x02C207 0B:81F7: 95 A2     STA ram_plr_id,X
 C - - - - - 0x02C209 0B:81F9: C9 0F     CMP #$0F
 C - - - - - 0x02C20B 0B:81FB: D0 1B     BNE bra_8218
-- - - - - - 0x02C20D 0B:81FD: A5 2C     LDA ram_002C
+- - - - - - 0x02C20D 0B:81FD: A5 2C     LDA ram_game_mode
 - - - - - - 0x02C20F 0B:81FF: C9 02     CMP #$02
 - - - - - - 0x02C211 0B:8201: D0 05     BNE bra_8208
+; if con_gm_vs_cpu
 - - - - - - 0x02C213 0B:8203: AD 30 05  LDA ram_obj_0530
 - - - - - - 0x02C216 0B:8206: F0 10     BEQ bra_8218
 bra_8208:
@@ -321,7 +348,7 @@ C D 0 - - - 0x02C27F 0B:826F: FE 30 05  INC ram_obj_0530,X
 C - - - - - 0x02C282 0B:8272: A9 3C     LDA #$3C
 C - - - - - 0x02C284 0B:8274: 9D A0 04  STA ram_obj_04A0,X
 C - - - - - 0x02C287 0B:8277: B4 A2     LDY ram_plr_id,X
-C - - - - - 0x02C289 0B:8279: B9 5E E1  LDA tbl_0x03E16E,Y
+C - - - - - 0x02C289 0B:8279: B9 5E E1  LDA tbl_0x03E16E_звук_выбора_перса,Y
 C - - - - - 0x02C28C 0B:827C: 4C 90 F6  JMP loc_0x03F6A0
 
 
@@ -365,9 +392,14 @@ C - - - - - 0x02C2B6 0B:82A6: D0 13     BNE bra_82BB_RTS
 C - - - - - 0x02C2B8 0B:82A8: 20 4C BF  JSR sub_BF4C
 sub_82AB:
 C - - - - - 0x02C2BB 0B:82AB: 8A        TXA
-C - - - - - 0x02C2BC 0B:82AC: A4 2C     LDY ram_002C
+C - - - - - 0x02C2BC 0B:82AC: A4 2C     LDY ram_game_mode
+; con_gm_story
+; con_gm_vs_player
+; con_gm_vs_cpu
+; con_gm_vs_team
 C - - - - - 0x02C2BE 0B:82AE: C0 02     CPY #$02
 C - - - - - 0x02C2C0 0B:82B0: D0 02     BNE bra_82B4
+; if con_gm_vs_cpu
 C - - - - - 0x02C2C2 0B:82B2: 69 01     ADC #$01
 bra_82B4:
 C - - - - - 0x02C2C4 0B:82B4: A8        TAY
@@ -406,9 +438,14 @@ C - - - - - 0x02C2F3 0B:82E3: A9 1F     LDA #$1F
 C - - - - - 0x02C2F5 0B:82E5: 20 5F D2  JSR sub_0x03D26F_записать_A_в_буфер_с_сохранением_индекса
 C - - - - - 0x02C2F8 0B:82E8: 20 59 D2  JSR sub_0x03D269_записать_FF_в_буфер_без_чтения_индекса
 C - - - - - 0x02C2FB 0B:82EB: AE E0 04  LDX ram_obj_04E0
-C - - - - - 0x02C2FE 0B:82EE: A5 2C     LDA ram_002C
+C - - - - - 0x02C2FE 0B:82EE: A5 2C     LDA ram_game_mode
+; con_gm_story
+; con_gm_vs_player
+; con_gm_vs_cpu
+; con_gm_vs_team
 C - - - - - 0x02C300 0B:82F0: C9 02     CMP #$02
 C - - - - - 0x02C302 0B:82F2: D0 08     BNE bra_82FC
+; if con_gm_vs_cpu
 C - - - - - 0x02C304 0B:82F4: AD 30 05  LDA ram_obj_0530
 C - - - - - 0x02C307 0B:82F7: 4A        LSR
 C - - - - - 0x02C308 0B:82F8: D0 02     BNE bra_82FC
@@ -479,6 +516,7 @@ tbl_8349_pos_X_спрайты_портрета:
 - D 0 - - - 0x02C35D 0B:834D: 30        .byte $30   ; 04 casey
 - D 0 - - - 0x02C35E 0B:834E: 70        .byte $70   ; 05 hot
 - D 0 - - - 0x02C35F 0B:834F: B0        .byte $B0   ; 06 shred
+
 tbl_8350_pos_X_курсор:
 - D 0 - - - 0x02C360 0B:8350: 14        .byte $14   ; 00 leo
 - D 0 - - - 0x02C361 0B:8351: 4C        .byte $4C   ; 01 raph
@@ -1319,9 +1357,15 @@ tbl_A8A6:
 sub_0x02EA10:
 C - - - - - 0x02EA10 0B:AA00: BD 6B E4  LDA tbl_0x03E47B,X
 C - - - - - 0x02EA13 0B:AA03: 9D 10 05  STA ram_obj_0510,X
-C - - - - - 0x02EA16 0B:AA06: A5 2C     LDA ram_002C
+C - - - - - 0x02EA16 0B:AA06: A5 2C     LDA ram_game_mode
+; con_gm_story
+; con_gm_vs_player
+; con_gm_vs_cpu
+; con_gm_vs_team
+; con_gm_tournament
 C - - - - - 0x02EA18 0B:AA08: 49 03     EOR #$03
 C - - - - - 0x02EA1A 0B:AA0A: D0 20     BNE bra_AA2C
+; if con_gm_vs_team
 C - - - - - 0x02EA1C 0B:AA0C: AD 51 01  LDA ram_0151
 C - - - - - 0x02EA1F 0B:AA0F: 49 01     EOR #$01
 C - - - - - 0x02EA21 0B:AA11: F0 17     BEQ bra_AA2A
@@ -1496,15 +1540,15 @@ C - - - - - 0x02EB9D 0B:AB8D: 60        RTS
 
 
 tbl_ABFC:
-- D 1 - - - 0x02EC0C 0B:ABFC: 58        .byte $58   ; 00
-- D 1 - - - 0x02EC0D 0B:ABFD: 58        .byte $58   ; 01
-- D 1 - - - 0x02EC0E 0B:ABFE: 58        .byte $58   ; 02
-- D 1 - - - 0x02EC0F 0B:ABFF: 76        .byte $76   ; 03
+- D 1 - - - 0x02EC0C 0B:ABFC: 58        .byte $58   ; 00 story
+- D 1 - - - 0x02EC0D 0B:ABFD: 58        .byte $58   ; 01 vs player
+- D 1 - - - 0x02EC0E 0B:ABFE: 58        .byte $58   ; 02 vs cpu
+- D 1 - - - 0x02EC0F 0B:ABFF: 76        .byte $76   ; 03 vs team
 
 
 
 sub_AC00:
-C - - - - - 0x02EC10 0B:AC00: A4 2C     LDY ram_002C
+C - - - - - 0x02EC10 0B:AC00: A4 2C     LDY ram_game_mode
 C - - - - - 0x02EC12 0B:AC02: B9 FC AB  LDA tbl_ABFC,Y
 C - - - - - 0x02EC15 0B:AC05: 85 33     STA ram_0033
 C - - - - - 0x02EC17 0B:AC07: 60        RTS
@@ -1771,9 +1815,10 @@ loc_0x02EFA0:
 C D 1 - - - 0x02EFA0 0B:AF90: 68        PLA
 C - - - - - 0x02EFA1 0B:AF91: 8D 3F 06  STA ram_063F
 C - - - - - 0x02EFA4 0B:AF94: 30 1D     BMI bra_AFB3_RTS
-C - - - - - 0x02EFA6 0B:AF96: A4 2C     LDY ram_002C
+C - - - - - 0x02EFA6 0B:AF96: A4 2C     LDY ram_game_mode
+; con_gm_vs_cpu
 C - - - - - 0x02EFA8 0B:AF98: C0 01     CPY #$01
-C - - - - - 0x02EFAA 0B:AF9A: D0 17     BNE bra_AFB3_RTS
+C - - - - - 0x02EFAA 0B:AF9A: D0 17     BNE bra_AFB3_RTS    ; if con_gm_vs_player
 - - - - - - 0x02EFAC 0B:AF9C: AA        TAX
 - - - - - - 0x02EFAD 0B:AF9D: BD 29 01  LDA ram_0129,X
 - - - - - - 0x02EFB0 0B:AFA0: 29 0F     AND #$0F
@@ -2552,12 +2597,16 @@ C - - - - - 0x02FC05 0B:BBF5: 60        RTS
 
 
 loc_0x02FC90:
-C D 1 - - - 0x02FC90 0B:BC80: A5 2C     LDA ram_002C
+C D 1 - - - 0x02FC90 0B:BC80: A5 2C     LDA ram_game_mode
+; con_gm_vs_team
+; con_gm_tournament
 C - - - - - 0x02FC92 0B:BC82: C9 03     CMP #$03
 C - - - - - 0x02FC94 0B:BC84: F0 06     BEQ bra_BC8C
+; con_gm_tournament
 C - - - - - 0x02FC96 0B:BC86: AE 54 01  LDX ram_0154
 C - - - - - 0x02FC99 0B:BC89: 4C 1D E6  JMP loc_0x03E62D
 bra_BC8C:
+; con_gm_vs_team
 C - - - - - 0x02FC9C 0B:BC8C: EE 50 01  INC ram_0150
 C - - - - - 0x02FC9F 0B:BC8F: AC 2C 01  LDY ram_option_team_keeps
 C - - - - - 0x02FCA2 0B:BC92: A5 08     LDA ram_0008
@@ -2633,11 +2682,14 @@ bra_BD0C_loop:
 
 
 sub_0x02FD40:
-C - - - - - 0x02FD40 0B:BD30: A5 2C     LDA ram_002C
+C - - - - - 0x02FD40 0B:BD30: A5 2C     LDA ram_game_mode
+; con_gm_vs_player
+; con_gm_vs_team
 C - - - - - 0x02FD42 0B:BD32: 4A        LSR
 C - - - - - 0x02FD43 0B:BD33: F0 03     BEQ bra_BD38
 C - - - - - 0x02FD45 0B:BD35: 4C A0 BE  JMP loc_BEA0
 bra_BD38:
+; if con_gm_vs_player
 C - - - - - 0x02FD48 0B:BD38: A4 00     LDY ram_0000
 C - - - - - 0x02FD4A 0B:BD3A: B9 29 01  LDA ram_0129,Y
 C - - - - - 0x02FD4D 0B:BD3D: 29 F0     AND #$F0
@@ -2752,16 +2804,21 @@ C - - - - - 0x02FE07 0B:BDF7: 4C 64 81  JMP loc_8164
 
 
 loc_BE12:
-C D 1 - - - 0x02FE22 0B:BE12: A5 2C     LDA ram_002C
+C D 1 - - - 0x02FE22 0B:BE12: A5 2C     LDA ram_game_mode
+; con_gm_story
+; con_gm_vs_player
+; con_gm_vs_cpu
+; con_gm_vs_team
 C - - - - - 0x02FE24 0B:BE14: C9 03     CMP #$03
 C - - - - - 0x02FE26 0B:BE16: D0 39     BNE bra_BE51
+; if con_gm_vs_team
 C - - - - - 0x02FE28 0B:BE18: 98        TYA
-C - - - - - 0x02FE29 0B:BE19: 29 10     AND #$10
+C - - - - - 0x02FE29 0B:BE19: 29 10     AND #con_btn_Start
 C - - - - - 0x02FE2B 0B:BE1B: F0 03     BEQ bra_BE20
 - - - - - - 0x02FE2D 0B:BE1D: DE 42 01  DEC ram_0142,X
 bra_BE20:
 C - - - - - 0x02FE30 0B:BE20: 98        TYA
-C - - - - - 0x02FE31 0B:BE21: 29 40     AND #$40
+C - - - - - 0x02FE31 0B:BE21: 29 40     AND #con_btn_B
 C - - - - - 0x02FE33 0B:BE23: D0 2F     BNE bra_BE54
 C - - - - - 0x02FE35 0B:BE25: BD 40 01  LDA ram_0140,X
 C - - - - - 0x02FE38 0B:BE28: C9 07     CMP #$07
@@ -2782,7 +2839,7 @@ C - - - - - 0x02FE4D 0B:BE3D: F0 04     BEQ bra_BE43
 bra_BE43:
 C - - - - - 0x02FE53 0B:BE43: B5 91     LDA ram_btn_hold,X
 bra_BE45:
-C - - - - - 0x02FE55 0B:BE45: 29 40     AND #$40
+C - - - - - 0x02FE55 0B:BE45: 29 40     AND #con_btn_B
 C - - - - - 0x02FE57 0B:BE47: D0 1B     BNE bra_BE64
 C - - - - - 0x02FE59 0B:BE49: DE 44 01  DEC ram_0144,X
 C - - - - - 0x02FE5C 0B:BE4C: B5 A2     LDA ram_plr_id,X
@@ -2856,9 +2913,14 @@ C - - - - - 0x02FEE6 0B:BED6: 85 A2     STA ram_plr_id
 C - - - - - 0x02FEE8 0B:BED8: A0 01     LDY #$01
 C - - - - - 0x02FEEA 0B:BEDA: 84 A3     STY ram_plr_id + $01
 C - - - - - 0x02FEEC 0B:BEDC: 84 98     STY ram_0098
-C - - - - - 0x02FEEE 0B:BEDE: A4 2C     LDY ram_002C
+C - - - - - 0x02FEEE 0B:BEDE: A4 2C     LDY ram_game_mode
+; con_gm_story
+; con_gm_vs_player
+; con_gm_vs_cpu
+; con_gm_vs_team
+; con_gm_tournament
 C - - - - - 0x02FEF0 0B:BEE0: C0 04     CPY #$04
-C - - - - - 0x02FEF2 0B:BEE2: F0 14     BEQ bra_BEF8
+C - - - - - 0x02FEF2 0B:BEE2: F0 14     BEQ bra_BEF8    ; if con_gm_tournament
 C - - - - - 0x02FEF4 0B:BEE4: A2 2D     LDX #$2D
 bra_BEE6_loop:
 C - - - - - 0x02FEF6 0B:BEE6: 9D 30 01  STA ram_0130,X
@@ -2890,9 +2952,14 @@ C - - - - - 0x02FF20 0B:BF10: 60        RTS
 
 
 loc_BF2C:
-C D 1 - - - 0x02FF3C 0B:BF2C: A4 2C     LDY ram_002C
+C D 1 - - - 0x02FF3C 0B:BF2C: A4 2C     LDY ram_game_mode
+; con_gm_story
+; con_gm_vs_player
+; con_gm_vs_cpu
+; con_gm_vs_team
 C - - - - - 0x02FF3E 0B:BF2E: C0 03     CPY #$03
 C - - - - - 0x02FF40 0B:BF30: D0 0D     BNE bra_BF3F
+; if con_gm_vs_team
 C - - - - - 0x02FF42 0B:BF32: 8A        TXA
 C - - - - - 0x02FF43 0B:BF33: F0 02     BEQ bra_BF37
 C - - - - - 0x02FF45 0B:BF35: A9 03     LDA #$03
@@ -2908,9 +2975,14 @@ C - - - - - 0x02FF52 0B:BF42: 60        RTS
 
 
 sub_BF4C:
-C - - - - - 0x02FF5C 0B:BF4C: A5 2C     LDA ram_002C
+C - - - - - 0x02FF5C 0B:BF4C: A5 2C     LDA ram_game_mode
+; con_gm_story
+; con_gm_vs_player
+; con_gm_vs_cpu
+; con_gm_vs_team
 C - - - - - 0x02FF5E 0B:BF4E: C9 03     CMP #$03
 C - - - - - 0x02FF60 0B:BF50: D0 13     BNE bra_BF65
+; con_gm_vs_team
 C - - - - - 0x02FF62 0B:BF52: BD 42 01  LDA ram_0142,X
 C - - - - - 0x02FF65 0B:BF55: D0 0B     BNE bra_BF62
 C - - - - - 0x02FF67 0B:BF57: BD 40 01  LDA ram_0140,X
@@ -2987,10 +3059,10 @@ tbl_BFEA:
 
 
 tbl_BFFA:
-- D 1 - - - 0x03000A 0B:BFFA: 10        .byte con_0x03F0EE_10   ; 00
-- D 1 - - - 0x03000B 0B:BFFB: 10        .byte con_0x03F0EE_10   ; 01
-- D 1 - - - 0x03000C 0B:BFFC: 10        .byte con_0x03F0EE_10   ; 02
-- D 1 - - - 0x03000D 0B:BFFD: 3C        .byte con_0x03F0EE_3C   ; 03
+- D 1 - - - 0x03000A 0B:BFFA: 10        .byte con_0x03F0EE_10   ; 00 story
+- D 1 - - - 0x03000B 0B:BFFB: 10        .byte con_0x03F0EE_10   ; 01 vs player
+- D 1 - - - 0x03000C 0B:BFFC: 10        .byte con_0x03F0EE_10   ; 02 vs cpu
+- D 1 - - - 0x03000D 0B:BFFD: 3C        .byte con_0x03F0EE_3C   ; 03 vs team
 
 
 

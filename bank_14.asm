@@ -6080,10 +6080,10 @@ C - - - - - 0x02BE80 0A:BE70: C9 05     CMP #$05
 C - - - - - 0x02BE82 0A:BE72: B0 28     BCS bra_BE9C
 C - - - - - 0x02BE84 0A:BE74: 18        CLC
 C - - - - - 0x02BE85 0A:BE75: AD 41 04  LDA ram_obj_pos_X + $01
-C - - - - - 0x02BE88 0A:BE78: 69 40     ADC #$40
+C - - - - - 0x02BE88 0A:BE78: 69 40     ADC #< $0040
 C - - - - - 0x02BE8A 0A:BE7A: 8D 46 04  STA ram_obj_pos_X + $06
 C - - - - - 0x02BE8D 0A:BE7D: AD 31 04  LDA ram_obj_0430 + $01
-C - - - - - 0x02BE90 0A:BE80: 69 00     ADC #$00
+C - - - - - 0x02BE90 0A:BE80: 69 00     ADC #> $0040
 C - - - - - 0x02BE92 0A:BE82: 8D 36 04  STA ram_obj_0430 + $06
 C - - - - - 0x02BE95 0A:BE85: A9 80     LDA #$80
 C - - - - - 0x02BE97 0A:BE87: 8D E6 05  STA ram_obj_05E0 + $06

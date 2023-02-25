@@ -1060,6 +1060,9 @@ C - - - - - 0x02475B 09:874B: D0 03     BNE bra_8750
 C - - - - - 0x02475D 09:874D: 4C 6D 84  JMP loc_846D
 bra_8750:
 C - - - - - 0x024760 09:8750: 4C 30 86  JMP loc_8630
+
+
+
 ofs_060_8753_08:
 C - - J - - 0x024763 09:8753: BD 50 05  LDA ram_obj_id,X
 C - - - - - 0x024766 09:8756: 20 32 D0  JSR sub_0x03D042_поинтеры_после_JSR
@@ -1282,7 +1285,7 @@ C - - - - - 0x0248CF 09:88BF: 9D A0 04  STA ram_obj_04A0,X
 C - - - - - 0x0248D2 09:88C2: FE 40 05  INC ram_obj_0540,X
 C - - - - - 0x0248D5 09:88C5: 20 A3 DF  JSR sub_0x03DFB3
 C - - - - - 0x0248D8 09:88C8: BC 50 05  LDY ram_obj_id,X
-C - - - - - 0x0248DB 09:88CB: B9 5E E1  LDA tbl_0x03E16E,Y
+C - - - - - 0x0248DB 09:88CB: B9 5E E1  LDA tbl_0x03E16E_звук_выбора_перса,Y
 C - - - - - 0x0248DE 09:88CE: 4C 94 F6  JMP loc_0x03F6A4
 
 
@@ -1455,7 +1458,7 @@ C - - - - - 0x0249FB 09:89EB: F0 0E     BEQ bra_89FB
 C - - - - - 0x0249FD 09:89ED: DE F0 04  DEC ram_obj_04F0,X
 C - - - - - 0x024A00 09:89F0: D0 09     BNE bra_89FB
 C - - - - - 0x024A02 09:89F2: BC 50 05  LDY ram_obj_id,X
-C - - - - - 0x024A05 09:89F5: B9 D2 99  LDA tbl_99D2,Y
+C - - - - - 0x024A05 09:89F5: B9 D2 99  LDA tbl_99D2_звук_крика_после_смерти,Y
 C - - - - - 0x024A08 09:89F8: 20 90 F6  JSR sub_0x03F6A0
 bra_89FB:
 C - - - - - 0x024A0B 09:89FB: A9 50     LDA #$50
@@ -3798,7 +3801,7 @@ off_974C_03_don:
 - D 0 - - - 0x025770 09:9760: B6        .byte $B6, con_0x03F6AD_05, $10, $F0   ; 
 - D 0 - - - 0x025774 09:9764: B6        .byte $B6, con_0x03F6AD_05, $01, $EC   ; 
 - D 0 - - - 0x025778 09:9768: B7        .byte $B7, con_0x03F6AD_05, $F8, $E8   ; 
-- D 0 - - - 0x02577C 09:976C: B7        .byte $B7, $C5, $E8, $E8   ; 
+- D 0 - - - 0x02577C 09:976C: B7        .byte $B7, $C5,             $E8, $E8   ; 
 off_9770_02_mike:
 - D 0 - - - 0x025780 09:9770: 00        .byte $00, con_0x03F6AD_53, $00, $00   ; 
 - D 0 - - - 0x025784 09:9774: B5        .byte $B5, con_0x03F6AD_05, $14, $00   ; 
@@ -3808,7 +3811,7 @@ off_9770_02_mike:
 - D 0 - - - 0x025794 09:9784: B9        .byte $B9, con_0x03F6AD_05, $08, $00   ; 
 - D 0 - - - 0x025798 09:9788: B9        .byte $B9, con_0x03F6AD_05, $FE, $00   ; 
 - D 0 - - - 0x02579C 09:978C: BA        .byte $BA, con_0x03F6AD_05, $F8, $00   ; 
-- D 0 - - - 0x0257A0 09:9790: BA        .byte $BA, $C5, $F0, $00   ; 
+- D 0 - - - 0x0257A0 09:9790: BA        .byte $BA, $C5,             $F0, $00   ; 
 off_9794_01_raph:
 - D 0 - - - 0x0257A4 09:9794: CC        .byte $CC, con_0x03F6AD_0C, $08, $00   ; 
 - D 0 - - - 0x0257A8 09:9798: CD        .byte $CD, con_0x03F6AD_0C, $0B, $00   ; 
@@ -3817,7 +3820,7 @@ off_9794_01_raph:
 - D 0 - - - 0x0257B4 09:97A4: CC        .byte $CC, con_0x03F6AD_0C, $08, $00   ; 
 - D 0 - - - 0x0257B8 09:97A8: CD        .byte $CD, con_0x03F6AD_0C, $0B, $00   ; 
 - D 0 - - - 0x0257BC 09:97AC: CC        .byte $CC, con_0x03F6AD_0C, $08, $00   ; 
-- D 0 - - - 0x0257C0 09:97B0: CD        .byte $CD, $8C, $0B, $00   ; 
+- D 0 - - - 0x0257C0 09:97B0: CD        .byte $CD, $8C,             $0B, $00   ; 
 off_97B4_04_casey:
 - D 0 - - - 0x0257C4 09:97B4: 00        .byte $00, con_0x03F6AD_55, $00, $00   ; 
 - D 0 - - - 0x0257C8 09:97B8: B2        .byte $B2, con_0x03F6AD_0A, $18, $00   ; 
@@ -3828,7 +3831,7 @@ off_97B4_04_casey:
 - D 0 - - - 0x0257DC 09:97CC: B5        .byte $B5, con_0x03F6AD_50, $F0, $0C   ; 
 - D 0 - - - 0x0257E0 09:97D0: A8        .byte $A8, con_0x03F6AD_05, $00, $00   ; 
 - D 0 - - - 0x0257E4 09:97D4: A7        .byte $A7, con_0x03F6AD_05, $00, $00   ; 
-- D 0 - - - 0x0257E8 09:97D8: A2        .byte $A2, $85, $00, $00   ; 
+- D 0 - - - 0x0257E8 09:97D8: A2        .byte $A2, $85,             $00, $00   ; 
 off_97DC_05_hot:
 - D 0 - - - 0x0257EC 09:97DC: 00        .byte $00, con_0x03F6AD_5A, $00, $00   ; 
 - D 0 - - - 0x0257F0 09:97E0: 92        .byte $92, con_0x03F6AD_08, $18, $00   ; 
@@ -4274,7 +4277,7 @@ tbl_99CE:
 
 
 
-tbl_99D2:
+tbl_99D2_звук_крика_после_смерти:
 - D 0 - - - 0x0259E2 09:99D2: 4D        .byte con_0x03F6AD_4D   ; 00 leo
 - D 0 - - - 0x0259E3 09:99D3: 4D        .byte con_0x03F6AD_4D   ; 01 raph
 - D 0 - - - 0x0259E4 09:99D4: 4D        .byte con_0x03F6AD_4D   ; 02 mike
@@ -7997,10 +8000,18 @@ tbl_AFBC:
 sub_AFF6:
 sub_0x027006:
 C - - - - - 0x027006 09:AFF6: A2 00     LDX #$00
-C - - - - - 0x027008 09:AFF8: A5 2C     LDA ram_002C
+C - - - - - 0x027008 09:AFF8: A5 2C     LDA ram_game_mode
+; con_gm_story
+; con_gm_vs_player
+; con_gm_vs_cpu
+; con_gm_vs_team
+; con_gm_tournament
 C - - - - - 0x02700A 09:AFFA: C9 03     CMP #$03
-C - - - - - 0x02700C 09:AFFC: F0 0C     BEQ bra_B00A
-C - - - - - 0x02700E 09:AFFE: B0 68     BCS bra_B068_RTS
+C - - - - - 0x02700C 09:AFFC: F0 0C     BEQ bra_B00A    ; if con_gm_vs_team
+C - - - - - 0x02700E 09:AFFE: B0 68     BCS bra_B068_RTS    ; if con_gm_tournament
+; con_gm_story
+; con_gm_vs_player
+; con_gm_vs_cpu
 C - - - - - 0x027010 09:B000: AD 56 01  LDA ram_0156
 C - - - - - 0x027013 09:B003: 6D 55 01  ADC ram_0155
 C - - - - - 0x027016 09:B006: B0 60     BCS bra_B068_RTS
@@ -9653,9 +9664,13 @@ C - - - - - 0x0279CD 09:B9BD: 29 08     AND #con_btn_Up
 C - - - - - 0x0279CF 09:B9BF: F0 03     BEQ bra_B9C4
 C - - - - - 0x0279D1 09:B9C1: 9D 33 06  STA ram_0633,X
 bra_B9C4:
-C - - - - - 0x0279D4 09:B9C4: A5 2C     LDA ram_002C
+C - - - - - 0x0279D4 09:B9C4: A5 2C     LDA ram_game_mode
+; con_gm_story
+; con_gm_vs_team
+; con_gm_tournament
 C - - - - - 0x0279D6 09:B9C6: 4A        LSR
 C - - - - - 0x0279D7 09:B9C7: 90 0C     BCC bra_B9D5
+; con_gm_vs_team
 C - - - - - 0x0279D9 09:B9C9: AD 51 01  LDA ram_0151
 C - - - - - 0x0279DC 09:B9CC: D0 07     BNE bra_B9D5
 C - - - - - 0x0279DE 09:B9CE: AD 2B 01  LDA ram_option_misc
@@ -9979,9 +9994,17 @@ C - - - - - 0x027B48 09:BB38: D0 E3     BNE bra_BB1D    ; jmp
 
 loc_BB3A:
 C D 1 - - - 0x027B4A 09:BB3A: A9 05     LDA #$05
-C - - - - - 0x027B4C 09:BB3C: A4 2C     LDY ram_002C
+C - - - - - 0x027B4C 09:BB3C: A4 2C     LDY ram_game_mode
+; con_gm_story
+; con_gm_vs_player
+; con_gm_vs_cpu
+; con_gm_vs_team
+; con_gm_tournament
 C - - - - - 0x027B4E 09:BB3E: C0 03     CPY #$03
 C - - - - - 0x027B50 09:BB40: B0 41     BCS bra_BB83
+; con_gm_story
+; con_gm_vs_player
+; con_gm_vs_cpu
 C - - - - - 0x027B52 09:BB42: AC 60 05  LDY ram_obj_0560
 C - - - - - 0x027B55 09:BB45: C0 40     CPY #$40
 C - - - - - 0x027B57 09:BB47: 90 3A     BCC bra_BB83
@@ -9994,12 +10017,19 @@ C - - - - - 0x027B5F 09:BB4F: D0 32     BNE bra_BB83    ; jmp?
 
 sub_0x027B61:
 C - - - - - 0x027B61 09:BB51: AD 71 06  LDA ram_0671
-C - - - - - 0x027B64 09:BB54: A4 2C     LDY ram_002C
-C - - - - - 0x027B66 09:BB56: F0 25     BEQ bra_BB7D
+C - - - - - 0x027B64 09:BB54: A4 2C     LDY ram_game_mode
+; con_gm_story
+; con_gm_vs_player
+; con_gm_vs_cpu
+; con_gm_vs_team
+; con_gm_tournament
+C - - - - - 0x027B66 09:BB56: F0 25     BEQ bra_BB7D    ; if con_gm_story
 C - - - - - 0x027B68 09:BB58: 88        DEY
-C - - - - - 0x027B69 09:BB59: F0 28     BEQ bra_BB83
+C - - - - - 0x027B69 09:BB59: F0 28     BEQ bra_BB83    ; if con_gm_vs_player
 C - - - - - 0x027B6B 09:BB5B: 88        DEY
-C - - - - - 0x027B6C 09:BB5C: F0 1F     BEQ bra_BB7D
+C - - - - - 0x027B6C 09:BB5C: F0 1F     BEQ bra_BB7D    ; if con_gm_vs_cpu
+; con_gm_vs_team
+; con_gm_tournament
 C - - - - - 0x027B6E 09:BB5E: AD 71 06  LDA ram_0671
 C - - - - - 0x027B71 09:BB61: C9 03     CMP #$03
 C - - - - - 0x027B73 09:BB63: B0 1E     BCS bra_BB83

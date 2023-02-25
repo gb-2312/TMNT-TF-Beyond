@@ -108,7 +108,7 @@ C - - - - - 0x030084 0C:8074: F0 92     BEQ bra_8008_main_loop    ; jmp
 
 
 sub_0x030086_написать_на_экране:
-; в основном написать какой-то текст
+; если индекс +80, тогда текст будет затерт
 C - - - - - 0x030086 0C:8076: 0A        ASL
 C - - - - - 0x030087 0C:8077: A8        TAY
 C - - - - - 0x030088 0C:8078: B9 00 8C  LDA tbl_8C00,Y
@@ -117,6 +117,7 @@ C - - - - - 0x03008D 0C:807D: B9 01 8C  LDA tbl_8C00 + $01,Y
 C - - - - - 0x030090 0C:8080: 85 01     STA ram_0001
 C - - - - - 0x030092 0C:8082: A9 FF     LDA #$FF
 C - - - - - 0x030094 0C:8084: 69 00     ADC #$00
+; запишется 00 если индекс был +80
 C - - - - - 0x030096 0C:8086: 85 02     STA ram_0002
 C - - - - - 0x030098 0C:8088: A0 00     LDY #$00
 loc_808A_main_loop:
@@ -135,6 +136,8 @@ C - - - - - 0x0300AE 0C:809E: C9 FF     CMP #$FF
 C - - - - - 0x0300B0 0C:80A0: F0 12     BEQ bra_80B4_FF
 C - - - - - 0x0300B2 0C:80A2: C9 FE     CMP #$FE
 C - - - - - 0x0300B4 0C:80A4: F0 08     BEQ bra_80AE_FE
+; если индекс был 80, получится AND 00 = 00, и вместо буквы запишется пробел
+; в противном случае после AND FF буква не поменяется
 C - - - - - 0x0300B6 0C:80A6: 25 02     AND ram_0002
 C - - - - - 0x0300B8 0C:80A8: 20 5F D2  JSR sub_0x03D26F_записать_A_в_буфер_с_сохранением_индекса
 C - - - - - 0x0300BB 0C:80AB: 4C 9B 80  JMP loc_809B_loop
@@ -1702,34 +1705,41 @@ tbl_8C00:
 
 
 
-tbl_8FD1:
-- D 0 - - - 0x030FE1 0C:8FD1: C6        .byte $C6, $BF, $C9, $FF   ; 00
-- D 0 - - - 0x030FE5 0C:8FD5: CC        .byte $CC, $BB, $CA, $FF   ; 01
-- D 0 - - - 0x030FE9 0C:8FD9: C7        .byte $C7, $C3, $C5, $FF   ; 02
-- D 0 - - - 0x030FED 0C:8FDD: BE        .byte $BE, $C9, $C8, $FF   ; 03
-- D 0 - - - 0x030FF1 0C:8FE1: BD        .byte $BD, $BB, $CD, $FF   ; 04
-- D 0 - - - 0x030FF5 0C:8FE5: C2        .byte $C2, $C9, $CE, $FF   ; 05
-- D 0 - - - 0x030FF9 0C:8FE9: CD        .byte $CD, $C2, $CC, $FF   ; 06
-- - - - - - 0x030FFD 0C:8FED: CC        .byte $CC, $C8, $BE, $FF   ; 07
-- D 0 - - - 0x031001 0C:8FF1: A9        .byte $A9, $A9, $A9, $FF   ; 08
+tbl_8FD1_имена_из_3х_букв:
+- D 0 - - - 0x030FE1 0C:8FD1: C6        .byte $C6, $BF, $C9, $FF   ; 00 LEO
+- D 0 - - - 0x030FE5 0C:8FD5: CC        .byte $CC, $BB, $CA, $FF   ; 01 RAP
+- D 0 - - - 0x030FE9 0C:8FD9: C7        .byte $C7, $C3, $C5, $FF   ; 02 MIK
+- D 0 - - - 0x030FED 0C:8FDD: BE        .byte $BE, $C9, $C8, $FF   ; 03 DON
+- D 0 - - - 0x030FF1 0C:8FE1: BD        .byte $BD, $BB, $CD, $FF   ; 04 CAS
+- D 0 - - - 0x030FF5 0C:8FE5: C2        .byte $C2, $C9, $CE, $FF   ; 05 HOT
+- D 0 - - - 0x030FF9 0C:8FE9: CD        .byte $CD, $C2, $CC, $FF   ; 06 SHR
+- - - - - - 0x030FFD 0C:8FED: CC        .byte $CC, $C8, $BE, $FF   ; 07 RND
+- D 0 - - - 0x031001 0C:8FF1: A9        .byte $A9, $A9, $A9, $FF   ; 08 ???
 - - - - - - 0x031005 0C:8FF5: FF        .byte $FF, $FF, $FF, $FF   ; 09
 
 
 
-tbl_8FFB:
-- D 0 - - - 0x03100B 0C:8FFB: 9E        .byte $9E   ; 00
-- D 0 - - - 0x03100C 0C:8FFC: 3E        .byte $3E   ; 01
+tbl_8FFB_ppu_lo:
+- D 0 - - - 0x03100B 0C:8FFB: 9E        .byte < $209E   ; 00
+- D 0 - - - 0x03100C 0C:8FFC: 3E        .byte < $233E   ; 01
 
-tbl_8FFD:
-- D 0 - - - 0x03100D 0C:8FFD: 20        .byte $20   ; 00
-- D 0 - - - 0x03100E 0C:8FFE: 23        .byte $23   ; 01
+tbl_8FFD_ppu_hi:
+- D 0 - - - 0x03100D 0C:8FFD: 20        .byte > $209E   ; 00
+- D 0 - - - 0x03100E 0C:8FFE: 23        .byte > $233E   ; 01
 
 
 
 sub_0x031010_запись_буферов_в_ppu:
-C - - - - - 0x031010 0C:9000: A5 2C     LDA ram_002C
+C - - - - - 0x031010 0C:9000: A5 2C     LDA ram_game_mode
+; con_gm_story
+; con_gm_vs_player
+; con_gm_vs_cpu
+; con_gm_vs_team
+; con_gm_tournament
+; con_gm_options
 C - - - - - 0x031012 0C:9002: 49 03     EOR #$03
 C - - - - - 0x031014 0C:9004: D0 0A     BNE bra_9010
+; con_gm_vs_team
 C - - - - - 0x031016 0C:9006: A2 01     LDX #$01
 bra_9008_loop:
 C - - - - - 0x031018 0C:9008: BD 44 01  LDA ram_0144,X
@@ -1739,14 +1749,14 @@ C - - - - - 0x03101E 0C:900E: 10 F8     BPL bra_9008_loop
 bra_9010:
 C - - - - - 0x031020 0C:9010: 4C 06 80  JMP loc_8006
 bra_9013:
-C - - - - - 0x031023 0C:9013: A9 01     LDA #$01
+C - - - - - 0x031023 0C:9013: A9 01     LDA #con_buf_mode_01
 C - - - - - 0x031025 0C:9015: 8D 46 01  STA ram_0146
 C - - - - - 0x031028 0C:9018: BD 40 01  LDA ram_0140,X
 C - - - - - 0x03102B 0C:901B: 0A        ASL
 C - - - - - 0x03102C 0C:901C: 0A        ASL
-C - - - - - 0x03102D 0C:901D: 7D FB 8F  ADC tbl_8FFB,X
+C - - - - - 0x03102D 0C:901D: 7D FB 8F  ADC tbl_8FFB_ppu_lo,X
 C - - - - - 0x031030 0C:9020: 8D 47 01  STA ram_0147
-C - - - - - 0x031033 0C:9023: BD FD 8F  LDA tbl_8FFD,X
+C - - - - - 0x031033 0C:9023: BD FD 8F  LDA tbl_8FFD_ppu_hi,X
 C - - - - - 0x031036 0C:9026: 8D 48 01  STA ram_0148
 C - - - - - 0x031039 0C:9029: FE 44 01  INC ram_0144,X
 C - - - - - 0x03103C 0C:902C: F0 13     BEQ bra_9041
@@ -1774,7 +1784,7 @@ C - - - - - 0x031060 0C:9050: AA        TAX
 bra_9051:
 C - - - - - 0x031061 0C:9051: A0 04     LDY #$04
 bra_9053_loop:
-C - - - - - 0x031063 0C:9053: BD D0 8F  LDA tbl_8FD1 - $01,X
+C - - - - - 0x031063 0C:9053: BD D0 8F  LDA tbl_8FD1_имена_из_3х_букв - $01,X
 C - - - - - 0x031066 0C:9056: 99 48 01  STA ram_0149 - $01,Y
 C - - - - - 0x031069 0C:9059: CA        DEX
 C - - - - - 0x03106A 0C:905A: 88        DEY
