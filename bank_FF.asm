@@ -5805,7 +5805,10 @@ C - - - - - 0x03F194 0F:F184: 30 FB     BMI bra_F181_infinite_loop
 C - - - - - 0x03F196 0F:F186: CA        DEX
 C - - - - - 0x03F197 0F:F187: D0 F3     BNE bra_F17C_loop
 C - - - - - 0x03F199 0F:F189: 20 49 F3  JSR sub_F349
-C - - - - - 0x03F19C 0F:F18C: 20 BB F2  JSR sub_F2BB
+C - - - - - 0x03F19C 0F:F18C: 20 BB F2  LDA #$0F
+                                        STA $4015
+                                        LDA #$C0
+                                        STA $4017
 C - - - - - 0x03F19F 0F:F18F: 8A        TXA ; 00
 C - - - - - 0x03F1A0 0F:F190: 85 00     STA ram_0000
 C - - - - - 0x03F1A2 0F:F192: 85 01     STA ram_0001
@@ -5976,16 +5979,6 @@ loc_F2B5_восстановить_2000:
 C D 3 - - - 0x03F2C5 0F:F2B5: A5 FF     LDA ram_for_2000
 C - - - - - 0x03F2C7 0F:F2B7: 8D 00 20  STA $2000
 C - - - - - 0x03F2CA 0F:F2BA: 60        RTS
-
-
-
-sub_F2BB:
-; bzk optimize
-C - - - - - 0x03F2CB 0F:F2BB: A9 0F     LDA #$0F
-C - - - - - 0x03F2CD 0F:F2BD: 8D 15 40  STA $4015
-C - - - - - 0x03F2D0 0F:F2C0: A9 C0     LDA #$C0
-C - - - - - 0x03F2D2 0F:F2C2: 8D 17 40  STA $4017
-C - - - - - 0x03F2D5 0F:F2C5: 60        RTS
 
 
 
