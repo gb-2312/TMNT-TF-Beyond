@@ -439,7 +439,7 @@ bra_82A1_D0_FF:
 
 
 ofs_083_82ED_D4:
-C - - - - - 0x0342FD 0D:82ED: 20 9A A1  JSR sub_A19A_вычислить_индекс_по_персу
+C - - - - - 0x0342FD 0D:82ED: 20 9A A1  LDA ram_obj_id,X
 C - - - - - 0x034300 0D:82F0: 0A        ASL
 C - - - - - 0x034301 0D:82F1: 0A        ASL
 C - - - - - 0x034302 0D:82F2: 18        CLC
@@ -1197,7 +1197,7 @@ bra_86EF:
 - - - - - - 0x0346FF 0D:86EF: A9 00     LDA #$00
 - - - - - - 0x034701 0D:86F1: 9D C8 06  STA ram_06C8,X
 - - - - - - 0x034704 0D:86F4: 9D C6 06  STA ram_06C6,X
-- - - - - - 0x034707 0D:86F7: 20 9A A1  JSR sub_A19A_вычислить_индекс_по_персу
+- - - - - - 0x034707 0D:86F7: 20 9A A1  LDA ram_obj_id,X
 - - - - - - 0x03470A 0D:86FA: 0A        ASL
 - - - - - - 0x03470B 0D:86FB: 0A        ASL
 - - - - - - 0x03470C 0D:86FC: 18        CLC
@@ -2740,8 +2740,7 @@ tbl_8DB5:
 - - - - - - 0x034DD1 0D:8DC1: 10        .byte $10, $08, $00, $00   ; 03 don
 - - - - - - 0x034DD5 0D:8DC5: 10        .byte $10, $08, $00, $00   ; 04 casey
 - D 0 - - - 0x034DD9 0D:8DC9: 20        .byte $20, $10, $00, $00   ; 05 hot
-- D 0 - - - 0x034DDD 0D:8DCD: 08        .byte $08, $04, $00        ; 06 shred
-; bzk bug, должен быть еще один байт
+- D 0 - - - 0x034DDD 0D:8DCD: 08        .byte $08, $04, $00, $00   ; 06 shred
 
 
 
@@ -2752,13 +2751,12 @@ tbl_8DD0:
 ;                                              |    |    |    +----- 03 expert
 ;                                              |    |    |    |
 - - - - - - 0x034DE0 0D:8DD0: 14        .byte $14, $08, $03, $01   ; 00 leo
-- - - - - - 0x034DE4 0D:8DD4: 14        .byte $14, $08, $03, $00   ; 01 raph
-- - - - - - 0x034DE8 0D:8DD8: 14        .byte $14, $08, $03, $00   ; 02 mike
-- - - - - - 0x034DEC 0D:8DDC: 14        .byte $14, $08, $03, $00   ; 03 don
-- - - - - - 0x034DF0 0D:8DE0: 08        .byte $08, $04, $01, $00   ; 04 casey
-- - - - - - 0x034DF4 0D:8DE4: 18        .byte $18, $0A, $05, $00   ; 05 hot
-- - - - - - 0x034DF8 0D:8DE8: 10        .byte $10, $05, $01        ; 06 shred
-; bzk bug, должен быть еще один байт
+- - - - - - 0x034DE4 0D:8DD4: 14        .byte $14, $08, $03, $01   ; 01 raph
+- - - - - - 0x034DE8 0D:8DD8: 14        .byte $14, $08, $03, $01   ; 02 mike
+- - - - - - 0x034DEC 0D:8DDC: 14        .byte $14, $08, $03, $01   ; 03 don
+- - - - - - 0x034DF0 0D:8DE0: 08        .byte $08, $04, $01, $01   ; 04 casey
+- - - - - - 0x034DF4 0D:8DE4: 18        .byte $18, $0A, $05, $01   ; 05 hot
+- - - - - - 0x034DF8 0D:8DE8: 10        .byte $10, $05, $01, $01   ; 06 shred
 
 
 
@@ -6110,16 +6108,6 @@ tbl_A191:
 tbl_A195:
 - - - - - - 0x0361A5 0D:A195: 16        .byte $16   ; 00 normal
 - - - - - - 0x0361A6 0D:A196: 19        .byte $19   ; 01 turbo
-
-
-
-sub_A19A_вычислить_индекс_по_персу:
-C - - - - - 0x0361AA 0D:A19A: AD 25 01  LDA ram_option_difficulty
-C - - - - - 0x0361AD 0D:A19D: 49 03     EOR #$03
-C - - - - - 0x0361AF 0D:A19F: F0 03     BEQ bra_A1A4_RTS    ; if expert
-C - - - - - 0x0361B1 0D:A1A1: BD 50 05  LDA ram_obj_id,X
-bra_A1A4_RTS:   ; A = 00
-C - - - - - 0x0361B4 0D:A1A4: 60        RTS
 
 
 
