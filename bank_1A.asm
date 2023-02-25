@@ -392,7 +392,7 @@ bra_82A1_D0_FF:
                                         .word $FFFF      ; D0
                                         .word $FFFF      ; D1
                                         .word $FFFF      ; D2
-                                        .word ofs_083_8310_D3
+                                        .word $FFFF      ; D3
                                         .word ofs_083_82ED_D4
                                         .word ofs_083_832C_D5
                                         .word ofs_083_837D_D6
@@ -437,17 +437,6 @@ bra_82A1_D0_FF:
                                         .word ofs_083_82D2_FD
                                         .word ofs_083_8310_FE
                                         .word ofs_083_82A5_FF
-
-
-
-ofs_083_8310_D3:
-C - - - - - 0x034321 0D:8311: A9 17     LDA #$17
-C - - - - - 0x034323 0D:8313: 9D D4 06  STA ram_06D4,X
-- - - - - - 0x03432B 0D:831B: A9 18     LDA #$18
-- - - - - - 0x03432D 0D:831D: 9D D4 06  STA ram_06D4,X
-C - - - - - 0x034330 0D:8320: A9 03     LDA #$03
-C - - - - - 0x034332 0D:8322: 9D D2 06  STA ram_06D2,X
-C - - - - - 0x034335 0D:8325: 4C 6E 82  JMP loc_826E
 
 
 
@@ -611,26 +600,6 @@ C - - - - - 0x0342B7 0D:82A7: 9D E6 06  STA ram_06E6,X
 C - - - - - 0x0342BA 0D:82AA: 4C 96 ED  JMP loc_0x03EDA6
 
 
-; bzk garbage? если соответствующие управляющие байты не существуют
-loc_83C6:
-- - - - - - 0x0343D6 0D:83C6: 0A        ASL
-- - - - - - 0x0343D7 0D:83C7: A8        TAY
-- - - - - - 0x0343D8 0D:83C8: B9 0B 8B  LDA tbl_8B0B_шаблоны_ai,Y
-- - - - - - 0x0343DB 0D:83CB: 85 08     STA ram_0008
-- - - - - - 0x0343DD 0D:83CD: B9 0C 8B  LDA tbl_8B0B_шаблоны_ai + $01,Y
-- - - - - - 0x0343E0 0D:83D0: 85 09     STA ram_0009
-- - - - - - 0x0343E2 0D:83D2: A4 17     LDY ram_0017
-- - - - - - 0x0343E4 0D:83D4: 88        DEY
-bra_83D5_loop:
-- - - - - - 0x0343E5 0D:83D5: B1 08     LDA (ram_0008),Y
-- - - - - - 0x0343E7 0D:83D7: 20 E3 83  JSR sub_83E3
-- - - - - - 0x0343EA 0D:83DA: 20 14 ED  JSR sub_0x03ED24_запись_cpu_btn
-- - - - - - 0x0343ED 0D:83DD: C8        INY
-- - - - - - 0x0343EE 0D:83DE: C9 FF     CMP #$FF
-- - - - - - 0x0343F0 0D:83E0: D0 F3     BNE bra_83D5_loop
-C - - - - - 0x0343F2 0D:83E2: 60        RTS
-
-
 
 sub_83E3:
                                         CMP #$D0
@@ -690,11 +659,11 @@ sub_83E5:
                                         .word ofs_084_8456_F5
                                         .word ofs_084_8460_F6
                                         .word ofs_084_846A_F7
-                                        .word ofs_084_8413_F8
-                                        .word ofs_084_843E_F9
-                                        .word ofs_084_844F_FA
-                                        .word ofs_084_8474_FB
-                                        .word ofs_084_83E2_FC
+                                        .word $FFFF      ; F8
+                                        .word $FFFF      ; F9
+                                        .word $FFFF      ; FA
+                                        .word $FFFF      ; FB
+                                        .word $FFFF      ; FC
                                         .word ofs_084_847B_FD
                                         .word ofs_084_83E2_FE
                                         .word ofs_084_83E2_FF
@@ -842,36 +811,6 @@ ofs_084_846A_F7:
 C - - - - - 0x03447A 0D:846A: 20 EF 83  JSR sub_83EF
 C - - - - - 0x03447D 0D:846D: 09 40     ORA #$40
 C - - - - - 0x03447F 0D:846F: 60        RTS
-
-
-
-ofs_084_8413_F8:
-                                        LDA #$F8
-- - - - - - 0x034423 0D:8413: 4C C6 83  JMP loc_83C6
-
-
-
-ofs_084_843E_F9:
-                                        LDA #$F9
-- - - - - - 0x03444E 0D:843E: 4C C6 83  JMP loc_83C6
-
-
-
-ofs_084_844F_FA:
-                                        LDA #$FA
-- - - - - - 0x03445F 0D:844F: 4C C6 83  JMP loc_83C6
-
-
-
-ofs_084_8474_FB:
-                                        LDA #$FB
-- - - - - - 0x034484 0D:8474: 4C C6 83  JMP loc_83C6
-
-
-
-ofs_084_83E2_FC:
-                                        LDA #$FC
-                                        RTS
 
 
 
