@@ -1103,7 +1103,6 @@ C - - - - - 0x03D275 0F:D265: 60        RTS
 
 
 sub_D266_записать_A_в_буфер_без_сохранения_индекса:
-loc_D266_записать_A_в_буфер_без_сохранения_индекса:
 sub_0x03D276_записать_A_в_буфер_без_сохранения_индекса:
 C D 2 - - - 0x03D276 0F:D266: 9D 00 03  STA ram_ppu_buffer,X
 C - - - - - 0x03D279 0F:D269: E8        INX
@@ -4581,7 +4580,12 @@ C - - - - - 0x03EA94 0F:EA84: F0 FB     BEQ bra_EA81_RTS
 C - - - - - 0x03EA96 0F:EA86: A4 00     LDY ram_0000
 C - - - - - 0x03EA98 0F:EA88: 18        CLC
 C - - - - - 0x03EA99 0F:EA89: 79 68 EB  ADC tbl_EB68,Y
-C - - - - - 0x03EA9C 0F:EA8C: 4C 66 D2  JMP loc_D266_записать_A_в_буфер_без_сохранения_индекса
+C - - - - - 0x03EA9C 0F:EA8C: 4C 66 D2  STA ram_ppu_buffer,X
+                                        INX
+                                        RTS
+
+
+
 sub_EA8F:
 C - - - - - 0x03EA9F 0F:EA8F: A9 3F     LDA #$3F
 C - - - - - 0x03EAA1 0F:EA91: A4 02     LDY ram_0002
