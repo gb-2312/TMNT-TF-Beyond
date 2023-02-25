@@ -1088,23 +1088,15 @@ C D 2 - - - 0x03D266 0F:D256: 20 5D D2  LDX ram_index_ppu_buffer
 
 
 
+sub_D25B_записать_FF_в_буфер_с_чтением_индекса:
+sub_0x03D26B_записать_FF_в_буфер_с_чтением_индекса:
+loc_0x03D26B_записать_FF_в_буфер_с_чтением_индекса:
+C D 2 - - - 0x03D26B 0F:D25B: A9 FF     LDX ram_index_ppu_buffer
 loc_D259_записать_FF_в_буфер_без_чтения_индекса:
 sub_D259_записать_FF_в_буфер_без_чтения_индекса:
 sub_0x03D269_записать_FF_в_буфер_без_чтения_индекса:
 loc_0x03D269_записать_FF_в_буфер_без_чтения_индекса:
 C D 2 - - - 0x03D269 0F:D259: 86 25     LDA #$FF
-                                        STA ram_ppu_buffer,X
-                                        INX
-                                        STX ram_index_ppu_buffer
-                                        RTS
-
-
-
-sub_D25B_записать_FF_в_буфер_с_чтением_индекса:
-sub_0x03D26B_записать_FF_в_буфер_с_чтением_индекса:
-loc_0x03D26B_записать_FF_в_буфер_с_чтением_индекса:
-C D 2 - - - 0x03D26B 0F:D25B: A9 FF     LDX ram_index_ppu_buffer
-                                        LDA #$FF
                                         STA ram_ppu_buffer,X
                                         INX
                                         STX ram_index_ppu_buffer
