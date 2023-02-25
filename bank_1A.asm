@@ -761,24 +761,6 @@ ofs_084_83E2_DD:
                                         RTS
 
 
-
-ofs_084_83E2_FC:
-                                        LDA #$FC
-                                        RTS
-
-
-
-ofs_084_83E2_FE:
-                                        LDA #$FE
-                                        RTS
-
-
-
-ofs_084_83E2_FF:
-                                        LDA #$FF
-                                        RTS
-
-
 sub_83EF:
 loc_83EF:
 ofs_084_83EF_DE:
@@ -794,47 +776,16 @@ C - - - - - 0x03440A 0D:83FA: 60        RTS
 
 
 
-ofs_084_83FF_F0:
-C - - - - - 0x03440F 0D:83FF: 20 EF 83  JSR sub_83EF
-C - - - - - 0x034412 0D:8402: 09 08     ORA #$08
-C - - - - - 0x034414 0D:8404: 60        RTS
-
-
-
-ofs_084_8409_F2:
-C - - - - - 0x034419 0D:8409: 20 EF 83  JSR sub_83EF
-C - - - - - 0x03441C 0D:840C: 09 04     ORA #$04
-C - - - - - 0x03441E 0D:840E: 60        RTS
-
-
-
-ofs_084_8413_F8:
-                                        LDA #$F8
-- - - - - - 0x034423 0D:8413: 4C C6 83  JMP loc_83C6
-
-
-
 sub_841A:    ; bzk optimize
 ofs_084_841A_DF:    ; bzk optimize
 C - - - - - 0x03442A 0D:841A: 4C 9D A4  JMP loc_A49D
 
 
 
-loc_841D:
-C D 0 - - - 0x03442D 0D:841D: 0A        ASL
-C - - - - - 0x03442E 0D:841E: B0 03     BCS bra_8423
-C - - - - - 0x034430 0D:8420: A9 02     LDA #$02
-C - - - - - 0x034432 0D:8422: 60        RTS
-bra_8423:
-C - - - - - 0x034433 0D:8423: A9 01     LDA #$01
-C - - - - - 0x034435 0D:8425: 60        RTS
-
-
-
-ofs_084_842A_F3:
-C - - - - - 0x03443A 0D:842A: 20 1A 84  JSR sub_841A
-C - - - - - 0x03443D 0D:842D: 09 04     ORA #$04
-C - - - - - 0x03443F 0D:842F: 60        RTS
+ofs_084_83FF_F0:
+C - - - - - 0x03440F 0D:83FF: 20 EF 83  JSR sub_83EF
+C - - - - - 0x034412 0D:8402: 09 08     ORA #$08
+C - - - - - 0x034414 0D:8404: 60        RTS
 
 
 
@@ -845,21 +796,23 @@ C - - - - - 0x034449 0D:8439: 60        RTS
 
 
 
-ofs_084_843E_F9:
-                                        LDA #$F9
-- - - - - - 0x03444E 0D:843E: 4C C6 83  JMP loc_83C6
+ofs_084_8409_F2:
+C - - - - - 0x034419 0D:8409: 20 EF 83  JSR sub_83EF
+C - - - - - 0x03441C 0D:840C: 09 04     ORA #$04
+C - - - - - 0x03441E 0D:840E: 60        RTS
+
+
+
+ofs_084_842A_F3:
+C - - - - - 0x03443A 0D:842A: 20 1A 84  JSR sub_841A
+C - - - - - 0x03443D 0D:842D: 09 04     ORA #$04
+C - - - - - 0x03443F 0D:842F: 60        RTS
 
 
 
 ofs_084_8445_F4:
 C - - - - - 0x034455 0D:8445: AD D8 06  LDA ram_06D8
 C - - - - - 0x034458 0D:8448: 4C F2 83  JMP loc_83F2
-
-
-
-ofs_084_844F_FA:
-                                        LDA #$FA
-- - - - - - 0x03445F 0D:844F: 4C C6 83  JMP loc_83C6
 
 
 
@@ -883,15 +836,62 @@ C - - - - - 0x03447F 0D:846F: 60        RTS
 
 
 
+ofs_084_8413_F8:
+                                        LDA #$F8
+- - - - - - 0x034423 0D:8413: 4C C6 83  JMP loc_83C6
+
+
+
+ofs_084_843E_F9:
+                                        LDA #$F9
+- - - - - - 0x03444E 0D:843E: 4C C6 83  JMP loc_83C6
+
+
+
+ofs_084_844F_FA:
+                                        LDA #$FA
+- - - - - - 0x03445F 0D:844F: 4C C6 83  JMP loc_83C6
+
+
+
 ofs_084_8474_FB:
                                         LDA #$FB
 - - - - - - 0x034484 0D:8474: 4C C6 83  JMP loc_83C6
 
 
 
+ofs_084_83E2_FC:
+                                        LDA #$FC
+                                        RTS
+
+
+
 ofs_084_847B_FD:
                                         LDA #$FD
 C - - - - - 0x034490 0D:8480: 60        RTS
+
+
+
+ofs_084_83E2_FE:
+                                        LDA #$FE
+                                        RTS
+
+
+
+ofs_084_83E2_FF:
+                                        LDA #$FF
+                                        RTS
+
+
+
+loc_841D:
+C D 0 - - - 0x03442D 0D:841D: 0A        ASL
+C - - - - - 0x03442E 0D:841E: B0 03     BCS bra_8423
+C - - - - - 0x034430 0D:8420: A9 02     LDA #$02
+C - - - - - 0x034432 0D:8422: 60        RTS
+bra_8423:
+C - - - - - 0x034433 0D:8423: A9 01     LDA #$01
+C - - - - - 0x034435 0D:8425: 60        RTS
 
 
 
