@@ -439,7 +439,7 @@ bra_82A1_D0_FF:
 
 
 ofs_083_82ED_D4:
-C - - - - - 0x0342FD 0D:82ED: 20 9A A1  JSR sub_A19A
+C - - - - - 0x0342FD 0D:82ED: 20 9A A1  JSR sub_A19A_вычислить_индекс_по_персу
 C - - - - - 0x034300 0D:82F0: 0A        ASL
 C - - - - - 0x034301 0D:82F1: 0A        ASL
 C - - - - - 0x034302 0D:82F2: 18        CLC
@@ -1197,7 +1197,7 @@ bra_86EF:
 - - - - - - 0x0346FF 0D:86EF: A9 00     LDA #$00
 - - - - - - 0x034701 0D:86F1: 9D C8 06  STA ram_06C8,X
 - - - - - - 0x034704 0D:86F4: 9D C6 06  STA ram_06C6,X
-- - - - - - 0x034707 0D:86F7: 20 9A A1  JSR sub_A19A
+- - - - - - 0x034707 0D:86F7: 20 9A A1  JSR sub_A19A_вычислить_индекс_по_персу
 - - - - - - 0x03470A 0D:86FA: 0A        ASL
 - - - - - - 0x03470B 0D:86FB: 0A        ASL
 - - - - - - 0x03470C 0D:86FC: 18        CLC
@@ -6113,10 +6113,10 @@ tbl_A195:
 
 
 
-sub_A19A:
+sub_A19A_вычислить_индекс_по_персу:
 C - - - - - 0x0361AA 0D:A19A: AD 25 01  LDA ram_option_difficulty
 C - - - - - 0x0361AD 0D:A19D: 49 03     EOR #$03
-C - - - - - 0x0361AF 0D:A19F: F0 03     BEQ bra_A1A4_RTS
+C - - - - - 0x0361AF 0D:A19F: F0 03     BEQ bra_A1A4_RTS    ; if expert
 C - - - - - 0x0361B1 0D:A1A1: BD 50 05  LDA ram_obj_id,X
 bra_A1A4_RTS:   ; A = 00
 C - - - - - 0x0361B4 0D:A1A4: 60        RTS
