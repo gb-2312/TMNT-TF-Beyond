@@ -130,7 +130,7 @@ C - - - - - 0x02C13D 0B:812D: A6 08     LDX ram_0008
 C - - - - - 0x02C13F 0B:812F: 20 4F 81  JSR sub_814F
 C - - - - - 0x02C142 0B:8132: C6 08     DEC ram_0008
 C - - - - - 0x02C144 0B:8134: 10 F7     BPL bra_812D_loop
-C - - - - - 0x02C146 0B:8136: A9 37     LDA #con_0x03F6AD_37
+C - - - - - 0x02C146 0B:8136: A9 37     LDA #con_music_player_select
 C - - - - - 0x02C148 0B:8138: 20 90 F6  JSR sub_0x03F6A0
 C - - - - - 0x02C14B 0B:813B: A2 00     LDX #$00
 C - - - - - 0x02C14D 0B:813D: 20 2F 82  JSR sub_822F
@@ -2365,7 +2365,7 @@ ofs_038_B750_01:
 C - - J - - 0x02F760 0B:B750: DE 60 05  DEC ram_obj_0560,X
 C - - - - - 0x02F763 0B:B753: D0 F8     BNE bra_B74D
 C - - - - - 0x02F765 0B:B755: FE 40 05  INC ram_obj_0540,X
-C - - - - - 0x02F768 0B:B758: A9 56     LDA #con_0x03F6AD_56
+C - - - - - 0x02F768 0B:B758: A9 56     LDA #con_dpcm_warcry_casey_2
 C - - - - - 0x02F76A 0B:B75A: 20 94 F6  JSR sub_0x03F6A4
 C - - - - - 0x02F76D 0B:B75D: A9 F9     LDA #$F9
 C - - - - - 0x02F76F 0B:B75F: AC 26 01  LDY ram_option_speed

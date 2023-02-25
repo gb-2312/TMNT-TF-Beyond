@@ -6057,7 +6057,7 @@ C - - - - - 0x02BE55 0A:BE45: 60        RTS
 
 
 ofs_043_BE46_02:
-C - - J - - 0x02BE56 0A:BE46: A9 14     LDA #con_0x03F6AD_14
+C - - J - - 0x02BE56 0A:BE46: A9 14     LDA #con_sfx_разбитая_стена
 C - - - - - 0x02BE58 0A:BE48: 20 90 F6  JSR sub_0x03F6A0
 C - - - - - 0x02BE5B 0A:BE4B: 20 C3 BE  JSR sub_BEC3
 C - - - - - 0x02BE5E 0A:BE4E: A9 04     LDA #$04

@@ -3165,13 +3165,13 @@ C - - - - - 0x03E16D 0F:E15D: 60        RTS
 
 
 tbl_0x03E16E_звук_выбора_перса:
-- D 3 - - - 0x03E16E 0F:E15E: 53        .byte con_0x03F6AD_53   ; 00 leo
-- D 3 - - - 0x03E16F 0F:E15F: 53        .byte con_0x03F6AD_53   ; 01 raph
-- D 3 - - - 0x03E170 0F:E160: 53        .byte con_0x03F6AD_53   ; 02 mike
-- D 3 - - - 0x03E171 0F:E161: 53        .byte con_0x03F6AD_53   ; 03 don
-- D 3 - - - 0x03E172 0F:E162: 55        .byte con_0x03F6AD_55   ; 04 casey
-- D 3 - - - 0x03E173 0F:E163: 59        .byte con_0x03F6AD_59   ; 05 hot
-- D 3 - - - 0x03E174 0F:E164: 52        .byte con_0x03F6AD_52   ; 06 shred
+- D 3 - - - 0x03E16E 0F:E15E: 53        .byte con_dpcm_warcry_turtle_1   ; 00 leo
+- D 3 - - - 0x03E16F 0F:E15F: 53        .byte con_dpcm_warcry_turtle_1   ; 01 raph
+- D 3 - - - 0x03E170 0F:E160: 53        .byte con_dpcm_warcry_turtle_1   ; 02 mike
+- D 3 - - - 0x03E171 0F:E161: 53        .byte con_dpcm_warcry_turtle_1   ; 03 don
+- D 3 - - - 0x03E172 0F:E162: 55        .byte con_dpcm_warcry_casey_1   ; 04 casey
+- D 3 - - - 0x03E173 0F:E163: 59        .byte con_dpcm_warcry_hot_1   ; 05 hot
+- D 3 - - - 0x03E174 0F:E164: 52        .byte con_dpcm_warcry_shred_1   ; 06 shred
 
 
 
@@ -3209,7 +3209,7 @@ C - - - - - 0x03E199 0F:E189: 20 32 D0  JSR sub_D032_поинтеры_после
 - D 3 - I - 0x03E1AC 0F:E19C: 2E E5     .word ofs_001_E52E_08
 - D 3 - I - 0x03E1AE 0F:E19E: 5D E5     .word ofs_001_E55D_09
 - D 3 - I - 0x03E1B0 0F:E1A0: D5 E5     .word ofs_001_E5D5_0A
-- D 3 - I - 0x03E1B2 0F:E1A2: 8F E6     .word ofs_001_E68F_0B
+- D 3 - I - 0x03E1B2 0F:E1A2: 8F E6     .word ofs_001_E68F_0B_draw
 - D 3 - I - 0x03E1B4 0F:E1A4: FF E6     .word ofs_001_E6FF_0C
 - D 3 - I - 0x03E1B6 0F:E1A6: 42 E7     .word ofs_001_E742_0D
 - D 3 - I - 0x03E1B8 0F:E1A8: 3F F7     .word ofs_001_F73F_0E
@@ -3403,7 +3403,7 @@ C - - - - - 0x03E2DB 0F:E2CB: A9 04     LDA #$04
 C - - - - - 0x03E2DD 0F:E2CD: 20 A0 EB  JSR sub_EBA0_вывести_имя_перса_на_vs_экране
 C - - - - - 0x03E2E0 0F:E2D0: A9 00     LDA #$00
 C - - - - - 0x03E2E2 0F:E2D2: 20 D3 F7  JSR sub_F7D3
-C - - - - - 0x03E2E5 0F:E2D5: A9 32     LDA #con_0x03F6AD_32
+C - - - - - 0x03E2E5 0F:E2D5: A9 32     LDA #con_music_vs_screen
 C - - - - - 0x03E2E7 0F:E2D7: 20 90 F6  JSR sub_F690
 C - - - - - 0x03E2EA 0F:E2DA: A9 D0     LDA #$D0
 C - - - - - 0x03E2EC 0F:E2DC: 8D 60 05  STA ram_obj_0560
@@ -3769,7 +3769,7 @@ C - - - - - 0x03E4E3 0F:E4D3: A9 02     LDA #$02
 C - - - - - 0x03E4E5 0F:E4D5: 99 49 06  STA ram_0649,Y
 C - - - - - 0x03E4E8 0F:E4D8: A9 0A     LDA #$0A
 C - - - - - 0x03E4EA 0F:E4DA: 85 95     STA ram_0095
-C - - - - - 0x03E4EC 0F:E4DC: A9 5B     LDA #$5B    ; con_0x03F6AD_5B
+C - - - - - 0x03E4EC 0F:E4DC: A9 5B     LDA #$5B    ; con_music_volume_fade
 C - - - - - 0x03E4EE 0F:E4DE: 85 98     STA ram_0098
 C - - - - - 0x03E4F0 0F:E4E0: 20 90 F6  JSR sub_F690
 C - - - - - 0x03E4F3 0F:E4E3: 4C 2E E1  JMP loc_E12E
@@ -4078,7 +4078,10 @@ bra_E68C:
 C - - - - - 0x03E69C 0F:E68C: 85 95     STA ram_0095
 bra_E68E_RTS:
 C - - - - - 0x03E69E 0F:E68E: 60        RTS
-ofs_001_E68F_0B:
+
+
+
+ofs_001_E68F_0B_draw:
 C - - J - - 0x03E69F 0F:E68F: A9 00     LDA #$00
 C - - - - - 0x03E6A1 0F:E691: 8D 07 04  STA ram_0407
 C - - - - - 0x03E6A4 0F:E694: 8D 10 06  STA ram_plr_0610
@@ -4089,7 +4092,7 @@ C - - - - - 0x03E6AF 0F:E69F: CA        DEX
 C - - - - - 0x03E6B0 0F:E6A0: 20 67 D0  JSR sub_D067
 C - - - - - 0x03E6B3 0F:E6A3: 8D 3C 06  STA ram_063C
 C - - - - - 0x03E6B6 0F:E6A6: 8D 3D 06  STA ram_063D
-C - - - - - 0x03E6B9 0F:E6A9: A9 17     LDA #con_0x03F6AD_17
+C - - - - - 0x03E6B9 0F:E6A9: A9 17     LDA #con_sfx_закусь_рафа    ; звук DRAW
 C - - - - - 0x03E6BB 0F:E6AB: 20 8B F6  JSR sub_F68B
 C - - - - - 0x03E6BF 0F:E6AF: 20 F3 F5  JSR sub_F5F3_swap_prg_1C
 C - - - - - 0x03E6C2 0F:E6B2: 4C 67 A7  JMP loc_0x03A777
@@ -4284,7 +4287,7 @@ C - - - - - 0x03E820 0F:E810: A2 1E     LDX #con_0x03F0EE_1E
 C - - - - - 0x03E822 0F:E812: 20 44 F0  JSR sub_F044
 C - - - - - 0x03E825 0F:E815: A9 0D     LDA #con_0x030C10_0D
 C - - - - - 0x03E827 0F:E817: 20 E5 F6  JSR sub_F6E5_написать_на_экране
-C - - - - - 0x03E82A 0F:E81A: A9 3D     LDA #con_0x03F6AD_3D
+C - - - - - 0x03E82A 0F:E81A: A9 3D     LDA #con_music_ost_bonus_stage
 C - - - - - 0x03E82C 0F:E81C: 20 90 F6  JSR sub_F690
 C - - - - - 0x03E82F 0F:E81F: A9 10     LDA #$10
 C - - - - - 0x03E831 0F:E821: A0 0A     LDY #$0A
@@ -4315,7 +4318,7 @@ C - - - - - 0x03E85F 0F:E84F: A9 00     LDA #$00
 C - - - - - 0x03E861 0F:E851: 85 96     STA ram_0096
 C - - - - - 0x03E863 0F:E853: AA        TAX
 C - - - - - 0x03E864 0F:E854: 20 DD DF  JSR sub_DFDD
-C - - - - - 0x03E867 0F:E857: A9 40     LDA #con_0x03F6AD_40
+C - - - - - 0x03E867 0F:E857: A9 40     LDA #con_music_bonus_game_lose
 C - - - - - 0x03E869 0F:E859: 4C 8B F6  JMP loc_F68B
 
 
@@ -4323,7 +4326,7 @@ C - - - - - 0x03E869 0F:E859: 4C 8B F6  JMP loc_F68B
 ofs_001_E85C_1A:
 C - - J - - 0x03E86C 0F:E85C: A0 00     LDY #$00
 C - - - - - 0x03E86E 0F:E85E: 8C 71 06  STY ram_0671
-C - - - - - 0x03E871 0F:E861: 88        DEY
+C - - - - - 0x03E871 0F:E861: 88        DEY ; FF
 C - - - - - 0x03E872 0F:E862: 84 98     STY ram_0098
 C - - - - - 0x03E874 0F:E864: 20 A6 F7  JSR sub_F7A6
 C - - - - - 0x03E877 0F:E867: AD 24 06  LDA ram_0624
@@ -4348,7 +4351,7 @@ C - - - - - 0x03E890 0F:E880: 60        RTS
 ofs_001_E881_1B:
 C - - J - - 0x03E891 0F:E881: A2 FF     LDX #$FF
 C - - - - - 0x03E893 0F:E883: 86 98     STX ram_0098
-C - - - - - 0x03E895 0F:E885: E8        INX
+C - - - - - 0x03E895 0F:E885: E8        INX ; 00
 C - - - - - 0x03E896 0F:E886: 20 2A E7  JSR sub_E72A
 C - - - - - 0x03E899 0F:E889: BD C0 05  LDA ram_obj_anim_timer,X
 C - - - - - 0x03E89C 0F:E88C: 30 E0     BMI bra_E86E
@@ -7808,25 +7811,25 @@ tbl_FC9A_scanline:
 
 
 tbl_FCAB:
-- D 3 - - - 0x03FCBB 0F:FCAB: 2E        .byte con_0x03F6AD_2E   ; 00
-- D 3 - - - 0x03FCBC 0F:FCAC: 2F        .byte con_0x03F6AD_2F   ; 01
-- D 3 - - - 0x03FCBD 0F:FCAD: 2E        .byte con_0x03F6AD_2E   ; 02
-- D 3 - - - 0x03FCBE 0F:FCAE: 2F        .byte con_0x03F6AD_2F   ; 03
-- D 3 - - - 0x03FCBF 0F:FCAF: 30        .byte con_0x03F6AD_30   ; 04
-- D 3 - - - 0x03FCC0 0F:FCB0: 30        .byte con_0x03F6AD_30   ; 05
-- D 3 - - - 0x03FCC1 0F:FCB1: 31        .byte con_0x03F6AD_31   ; 06
-- D 3 - - - 0x03FCC2 0F:FCB2: 42        .byte con_0x03F6AD_42   ; 07
+- D 3 - - - 0x03FCBB 0F:FCAB: 2E        .byte con_music_ost_sewer   ; 00
+- D 3 - - - 0x03FCBC 0F:FCAC: 2F        .byte con_music_ost_down_town   ; 01
+- D 3 - - - 0x03FCBD 0F:FCAD: 2E        .byte con_music_ost_sewer   ; 02
+- D 3 - - - 0x03FCBE 0F:FCAE: 2F        .byte con_music_ost_down_town   ; 03
+- D 3 - - - 0x03FCBF 0F:FCAF: 30        .byte con_music_ost_pirate_ship   ; 04
+- D 3 - - - 0x03FCC0 0F:FCB0: 30        .byte con_music_ost_pirate_ship   ; 05
+- D 3 - - - 0x03FCC1 0F:FCB1: 31        .byte con_music_ost_water_front   ; 06
+- D 3 - - - 0x03FCC2 0F:FCB2: 42        .byte con_music_ost_technodrome   ; 07
 
 
 
 tbl_FCBA:
-- D 3 - - - 0x03FCCA 0F:FCBA: 33        .byte con_0x03F6AD_33   ; 00
-- D 3 - - - 0x03FCCB 0F:FCBB: 34        .byte con_0x03F6AD_34   ; 01
-- D 3 - - - 0x03FCCC 0F:FCBC: 33        .byte con_0x03F6AD_33   ; 02
-- D 3 - - - 0x03FCCD 0F:FCBD: 34        .byte con_0x03F6AD_34   ; 03
-- D 3 - - - 0x03FCCE 0F:FCBE: 35        .byte con_0x03F6AD_35   ; 04
-- D 3 - - - 0x03FCCF 0F:FCBF: 35        .byte con_0x03F6AD_35   ; 05
-- D 3 - - - 0x03FCD0 0F:FCC0: 36        .byte con_0x03F6AD_36   ; 06
+- D 3 - - - 0x03FCCA 0F:FCBA: 33        .byte con_music_no_time_sewer   ; 00
+- D 3 - - - 0x03FCCB 0F:FCBB: 34        .byte con_music_no_time_down_town   ; 01
+- D 3 - - - 0x03FCCC 0F:FCBC: 33        .byte con_music_no_time_sewer   ; 02
+- D 3 - - - 0x03FCCD 0F:FCBD: 34        .byte con_music_no_time_down_town   ; 03
+- D 3 - - - 0x03FCCE 0F:FCBE: 35        .byte con_music_no_time_pirate_ship   ; 04
+- D 3 - - - 0x03FCCF 0F:FCBF: 35        .byte con_music_no_time_pirate_ship   ; 05
+- D 3 - - - 0x03FCD0 0F:FCC0: 36        .byte con_music_no_time_water_front   ; 06
 - - - - - - 0x03FCD1 0F:FCC1: 3B        .byte con_0x03F6AD_3B   ; 07
 
 

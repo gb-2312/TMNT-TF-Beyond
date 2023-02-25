@@ -1026,18 +1026,18 @@ C - - - - - 0x020689 08:8679: 4C A4 8B  JMP loc_8BA4
 
 
 tbl_867C:
-- - - - - - 0x02068C 08:867C: 01        .byte con_0x03F6AD_01   ; 00
-- D 0 - - - 0x02068D 08:867D: 01        .byte con_0x03F6AD_01   ; 01
-- D 0 - - - 0x02068E 08:867E: 02        .byte con_0x03F6AD_02   ; 02
-- D 0 - - - 0x02068F 08:867F: 03        .byte con_0x03F6AD_03   ; 03
-- D 0 - - - 0x020690 08:8680: 03        .byte con_0x03F6AD_03   ; 04
-- - - - - - 0x020691 08:8681: 47        .byte con_0x03F6AD_47   ; 05
-- D 0 - - - 0x020692 08:8682: 47        .byte con_0x03F6AD_47   ; 06
-- D 0 - - - 0x020693 08:8683: 48        .byte con_0x03F6AD_48   ; 07
-- D 0 - - - 0x020694 08:8684: 49        .byte con_0x03F6AD_49   ; 08
-- D 0 - - - 0x020695 08:8685: 4A        .byte con_0x03F6AD_4A   ; 09
-- D 0 - - - 0x020696 08:8686: 4B        .byte con_0x03F6AD_4B   ; 0A
-- D 0 - - - 0x020697 08:8687: 4C        .byte con_0x03F6AD_4C   ; 0B
+- - - - - - 0x02068C 08:867C: 01        .byte con_sound_unk_01   ; 00
+- D 0 - - - 0x02068D 08:867D: 01        .byte con_sound_unk_01   ; 01
+- D 0 - - - 0x02068E 08:867E: 02        .byte con_sound_unk_02   ; 02
+- D 0 - - - 0x02068F 08:867F: 03        .byte con_sound_unk_03   ; 03
+- D 0 - - - 0x020690 08:8680: 03        .byte con_sound_unk_03   ; 04
+- - - - - - 0x020691 08:8681: 47        .byte con_sound_unk_47   ; 05
+- D 0 - - - 0x020692 08:8682: 47        .byte con_sound_unk_47   ; 06
+- D 0 - - - 0x020693 08:8683: 48        .byte con_sound_unk_48   ; 07
+- D 0 - - - 0x020694 08:8684: 49        .byte con_sound_unk_49   ; 08
+- D 0 - - - 0x020695 08:8685: 4A        .byte con_sound_unk_4A   ; 09
+- D 0 - - - 0x020696 08:8686: 4B        .byte con_sound_unk_4B   ; 0A
+- D 0 - - - 0x020697 08:8687: 4C        .byte con_sound_unk_4C   ; 0B
 
 
 

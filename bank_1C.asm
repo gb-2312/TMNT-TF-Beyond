@@ -293,7 +293,7 @@ C - - - - - 0x03819E 0E:818E: EE 50 01  INC ram_0150
 C - - - - - 0x0381A1 0E:8191: 10 09     BPL bra_819C
 - - - - - - 0x0381A3 0E:8193: A9 FF     LDA #$FF
 - - - - - - 0x0381A5 0E:8195: 85 31     STA ram_continue
-- - - - - - 0x0381A7 0E:8197: A9 53     LDA #con_0x03F6AD_53
+- - - - - - 0x0381A7 0E:8197: A9 53     LDA #con_dpcm_warcry_turtle_1
 - - - - - - 0x0381A9 0E:8199: 20 90 F6  JSR sub_0x03F6A0
 bra_819C:
 C - - - - - 0x0381AC 0E:819C: A5 90     LDA ram_sum_btn_press
@@ -443,25 +443,28 @@ tbl_820D:
 
 
 tbl_829D:
-- D 0 - - - 0x0382AD 0E:829D: 2E        .byte con_0x03F6AD_2E   ; 00
-- D 0 - - - 0x0382AE 0E:829E: 2F        .byte con_0x03F6AD_2F   ; 01
-- D 0 - - - 0x0382AF 0E:829F: 30        .byte con_0x03F6AD_30   ; 02
-- D 0 - - - 0x0382B0 0E:82A0: 31        .byte con_0x03F6AD_31   ; 03
+- D 0 - - - 0x0382AD 0E:829D: 2E        .byte con_music_ost_sewer   ; 00
+- D 0 - - - 0x0382AE 0E:829E: 2F        .byte con_music_ost_down_town   ; 01
+- D 0 - - - 0x0382AF 0E:829F: 30        .byte con_music_ost_pirate_ship   ; 02
+- D 0 - - - 0x0382B0 0E:82A0: 31        .byte con_music_ost_water_front   ; 03
 - D 0 - - - 0x0382B1 0E:82A1: 3A        .byte con_0x03F6AD_3A   ; 04
 - D 0 - - - 0x0382B2 0E:82A2: 3C        .byte con_0x03F6AD_3C   ; 05
-- D 0 - - - 0x0382B3 0E:82A3: 53        .byte con_0x03F6AD_53   ; 06
-- D 0 - - - 0x0382B4 0E:82A4: 55        .byte con_0x03F6AD_55   ; 07
-- D 0 - - - 0x0382B5 0E:82A5: 59        .byte con_0x03F6AD_59   ; 08
-- D 0 - - - 0x0382B6 0E:82A6: 52        .byte con_0x03F6AD_52   ; 09
-- D 0 - - - 0x0382B7 0E:82A7: 54        .byte con_0x03F6AD_54   ; 0A
-- D 0 - - - 0x0382B8 0E:82A8: 56        .byte con_0x03F6AD_56   ; 0B
-- D 0 - - - 0x0382B9 0E:82A9: 57        .byte con_0x03F6AD_57   ; 0C
-- D 0 - - - 0x0382BA 0E:82AA: 58        .byte con_0x03F6AD_58   ; 0D
-- D 0 - - - 0x0382BB 0E:82AB: 4D        .byte con_0x03F6AD_4D   ; 0E
-- D 0 - - - 0x0382BC 0E:82AC: 4E        .byte con_0x03F6AD_4E   ; 0F
-- D 0 - - - 0x0382BD 0E:82AD: 50        .byte con_0x03F6AD_50   ; 10
-- D 0 - - - 0x0382BE 0E:82AE: 4F        .byte con_0x03F6AD_4F   ; 11
-; bzk garbage?
+- D 0 - - - 0x0382B3 0E:82A3: 53        .byte con_dpcm_warcry_turtle_1   ; 06
+- D 0 - - - 0x0382B4 0E:82A4: 55        .byte con_dpcm_warcry_casey_1   ; 07
+- D 0 - - - 0x0382B5 0E:82A5: 59        .byte con_dpcm_warcry_hot_1   ; 08
+- D 0 - - - 0x0382B6 0E:82A6: 52        .byte con_dpcm_warcry_shred_1   ; 09
+- D 0 - - - 0x0382B7 0E:82A7: 54        .byte con_dpcm_warcry_turtle_2   ; 0A
+- D 0 - - - 0x0382B8 0E:82A8: 56        .byte con_dpcm_warcry_casey_2   ; 0B
+- D 0 - - - 0x0382B9 0E:82A9: 57        .byte con_dpcm_warcry_shred_2   ; 0C
+- D 0 - - - 0x0382BA 0E:82AA: 58        .byte con_dpcm_warcry_shred_3   ; 0D
+- D 0 - - - 0x0382BB 0E:82AB: 4D        .byte con_dmcp_dead_turtle   ; 0E
+- D 0 - - - 0x0382BC 0E:82AC: 4E        .byte con_dmcp_dead_casey   ; 0F
+- D 0 - - - 0x0382BD 0E:82AD: 50        .byte con_dmcp_dead_hot   ; 10
+- D 0 - - - 0x0382BE 0E:82AE: 4F        .byte con_dmcp_dead_shred   ; 11
+
+
+
+; bzk garbage
 - - - - - - 0x0382BF 0E:82AF: 85        .byte $85   ; 12
 - - - - - - 0x0382C0 0E:82B0: 86        .byte $86   ; 13
 - - - - - - 0x0382C1 0E:82B1: 87        .byte $87   ; 14
@@ -1059,7 +1062,7 @@ C - - - - - 0x038681 0E:8671: 8D 60 05  STA ram_obj_0560
 C - - - - - 0x038684 0E:8674: 8D 61 05  STA ram_obj_0560 + $01
 C - - - - - 0x038687 0E:8677: A9 06     LDA #con_0x030C10_06
 C - - - - - 0x038689 0E:8679: 20 E5 F6  JSR sub_0x03F6F5_написать_на_экране
-C - - - - - 0x03868C 0E:867C: A9 39     LDA #con_0x03F6AD_39
+C - - - - - 0x03868C 0E:867C: A9 39     LDA #con_music_game_over
 C - - - - - 0x03868E 0E:867E: 4C 90 F6  JMP loc_0x03F6A0
 
 
@@ -2922,7 +2925,7 @@ C - - - - - 0x0391C1 0E:91B1: F0 0C     BEQ bra_91BF
 C - - - - - 0x0391C3 0E:91B3: AD 60 05  LDA ram_obj_0560
 C - - - - - 0x0391C6 0E:91B6: C9 40     CMP #$40
 C - - - - - 0x0391C8 0E:91B8: D0 E3     BNE bra_919D_RTS
-C - - - - - 0x0391CA 0E:91BA: A9 5B     LDA #con_0x03F6AD_5B
+C - - - - - 0x0391CA 0E:91BA: A9 5B     LDA #con_music_volume_fade
 C - - - - - 0x0391CC 0E:91BC: 4C 90 F6  JMP loc_0x03F6A0
 bra_91BF:
 C - - - - - 0x0391CF 0E:91BF: A9 40     LDA #$40
@@ -3942,7 +3945,7 @@ ofs_007_98AD_0A:
 - - - - - - 0x0398CC 0E:98BC: A9 0B     LDA #$0B
 - - - - - - 0x0398CE 0E:98BE: 85 21     STA ram_0021
 - - - - - - 0x0398D0 0E:98C0: 20 25 DC  JSR sub_0x03DC35
-- - - - - - 0x0398D3 0E:98C3: A9 42     LDA #con_0x03F6AD_42
+- - - - - - 0x0398D3 0E:98C3: A9 42     LDA #con_music_ost_technodrome
 - - - - - - 0x0398D5 0E:98C5: 20 90 F6  JSR sub_0x03F6A0
 sub_98C8:
 - - - - - - 0x0398D8 0E:98C8: A9 60     LDA #$60
@@ -4014,7 +4017,7 @@ C - - - - - 0x039936 0E:9926: CE 60 05  DEC ram_obj_0560
 C - - - - - 0x039939 0E:9929: AD 60 05  LDA ram_obj_0560
 C - - - - - 0x03993C 0E:992C: C9 20     CMP #$20
 C - - - - - 0x03993E 0E:992E: D0 CC     BNE bra_98FC_RTS
-C - - - - - 0x039940 0E:9930: A9 5B     LDA #con_0x03F6AD_5B
+C - - - - - 0x039940 0E:9930: A9 5B     LDA #con_music_volume_fade
 C - - - - - 0x039942 0E:9932: 4C 90 F6  JMP loc_0x03F6A0
 
 
@@ -4344,7 +4347,7 @@ con_9B6F_BB_задержка                    = $BB ; записать зад�
 con_9B6F_BC_очистить                    = $BC ; очистить текст
 con_9B6F_BD_новая_строка                = $BD ; новая строка
 con_9B6F_BE_проверка_сложности          = $BE ; проверка на сложность easy
-con_9B6F_BF_сменить_музыку              = $BF ; воспроизвести музыку 5B
+con_9B6F_BF_сменить_музыку              = $BF ; затухание громкости
 con_9B6F_FF_закончить                   = $FF ; закончить вывод текста
 C - - J - - 0x039B7F 0E:9B6F: CE 37 06  DEC ram_plr_0636 + $01
 C - - - - - 0x039B82 0E:9B72: D0 EF     BNE bra_9B63_RTS
@@ -4448,8 +4451,8 @@ C - - - - - 0x039C1C 0E:9C0C: 60        RTS
 
 
 bra_9C0D_BF:
-; воспроизвести музыку 5B
-C - - - - - 0x039C1D 0E:9C0D: A9 5B     LDA #con_0x03F6AD_5B
+; затухание громкости
+C - - - - - 0x039C1D 0E:9C0D: A9 5B     LDA #con_music_volume_fade
 C - - - - - 0x039C1F 0E:9C0F: 20 90 F6  JSR sub_0x03F6A0
 C - - - - - 0x039C22 0E:9C12: 4C B6 9B  JMP loc_9BB6
 
@@ -4912,7 +4915,7 @@ C - - - - - 0x03A0B2 0E:A0A2: F0 27     BEQ bra_A0CB
 C - - - - - 0x03A0B4 0E:A0A4: AD 60 05  LDA ram_obj_0560
 C - - - - - 0x03A0B7 0E:A0A7: C9 28     CMP #$28
 C - - - - - 0x03A0B9 0E:A0A9: D0 05     BNE bra_A0B0
-C - - - - - 0x03A0BB 0E:A0AB: A9 5B     LDA #con_0x03F6AD_5B
+C - - - - - 0x03A0BB 0E:A0AB: A9 5B     LDA #con_music_volume_fade
 C - - - - - 0x03A0BD 0E:A0AD: 20 90 F6  JSR sub_0x03F6A0
 bra_A0B0:
 C - - - - - 0x03A0C0 0E:A0B0: EE A0 04  INC ram_obj_04A0
@@ -5696,7 +5699,7 @@ C - - - - - 0x03A48E 0E:A47E: BD 9A A5  LDA tbl_A59A,X
 C - - - - - 0x03A491 0E:A481: 9D 10 04  STA ram_obj_pos_Y,X
 C - - - - - 0x03A494 0E:A484: CA        DEX
 C - - - - - 0x03A495 0E:A485: 10 EC     BPL bra_A473_loop
-C - - - - - 0x03A497 0E:A487: A9 43     LDA #con_0x03F6AD_43
+C - - - - - 0x03A497 0E:A487: A9 43     LDA #con_music_rematch
 C - - - - - 0x03A499 0E:A489: 20 90 F6  JSR sub_0x03F6A0
 C - - - - - 0x03A49C 0E:A48C: 4C 41 E1  JMP loc_0x03E151
 
