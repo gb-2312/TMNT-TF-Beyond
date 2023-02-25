@@ -1165,8 +1165,6 @@ ofs_002_D2AD_01:
 C - - J - - 0x03D2BD 0F:D2AD: A9 36     LDA #con_prg_bank + $16
 C - - - - - 0x03D2BF 0F:D2AF: 20 00 F6  JSR sub_F600_swap_prg_16
 C - - - - - 0x03D2C2 0F:D2B2: 20 D4 BE  JSR sub_0x02FEE4
-; bzk optimize
-C - - - - - 0x03D2C5 0F:D2B5: EA        NOP
 C - - - - - 0x03D2C6 0F:D2B6: E6 94     INC ram_0094
 C - - - - - 0x03D2C8 0F:D2B8: 4C 88 FB  JMP loc_FB88
 
@@ -3593,8 +3591,6 @@ C - - - - - 0x03E441 0F:E431: A0 01     LDY #$01
 C - - - - - 0x03E443 0F:E433: A9 36     LDA #con_prg_bank + $16
 C - - - - - 0x03E445 0F:E435: 20 00 F6  JSR sub_F600_swap_prg_16
 C - - - - - 0x03E448 0F:E438: 20 00 AA  JSR sub_0x02EA10
-; bzk optimize
-C - - - - - 0x03E44B 0F:E43B: EA        NOP
 C - - - - - 0x03E44C 0F:E43C: 8A        TXA
 C - - - - - 0x03E44D 0F:E43D: 09 80     ORA #$80
 C - - - - - 0x03E44F 0F:E43F: 9D 00 05  STA ram_obj_0500,X
@@ -3721,9 +3717,6 @@ C - - - - - 0x03E514 0F:E504: BD 90 05  LDA ram_obj_0590,X ; 0590 0591
 C - - - - - 0x03E517 0F:E507: F0 07     BEQ bra_E510
 C - - - - - 0x03E519 0F:E509: BD 45 06  LDA ram_plr_0645,X ; 0645 0646 
 C - - - - - 0x03E51C 0F:E50C: D0 D8     BNE bra_E4E6
-; bzk optimize
-C - - - - - 0x03E51E 0F:E50E: EA        NOP
-C - - - - - 0x03E51F 0F:E50F: EA        NOP
 bra_E510:
 C - - - - - 0x03E520 0F:E510: CA        DEX
 C - - - - - 0x03E521 0F:E511: 10 EA     BPL bra_E4FD_loop
@@ -3975,8 +3968,6 @@ C - - - - - 0x03E6B3 0F:E6A3: 8D 3C 06  STA ram_063C
 C - - - - - 0x03E6B6 0F:E6A6: 8D 3D 06  STA ram_063D
 C - - - - - 0x03E6B9 0F:E6A9: A9 17     LDA #con_0x03F6AD_17
 C - - - - - 0x03E6BB 0F:E6AB: 20 8B F6  JSR sub_F68B
-; bzk optimize
-C - - - - - 0x03E6BE 0F:E6AE: EA        NOP
 C - - - - - 0x03E6BF 0F:E6AF: 20 F3 F5  JSR sub_F5F3_swap_prg_1C
 C - - - - - 0x03E6C2 0F:E6B2: 4C 67 A7  JMP loc_0x03A777
 
@@ -3996,8 +3987,6 @@ bra_E6C7:
 C - - - - - 0x03E6D7 0F:E6C7: EE 4A 06  INC ram_064A
 bra_E6CA:
 C - - - - - 0x03E6DA 0F:E6CA: 8E 71 06  STX ram_0671
-C - - - - - 0x03E6DD 0F:E6CD: EA        NOP
-C - - - - - 0x03E6DE 0F:E6CE: EA        NOP
 C - - - - - 0x03E6DF 0F:E6CF: 20 A3 DF  JSR sub_DFA3
 C - - - - - 0x03E6E2 0F:E6D2: 8A        TXA
 C - - - - - 0x03E6E3 0F:E6D3: 49 01     EOR #$01
@@ -4309,8 +4298,6 @@ C - - - - - 0x03E8F7 0F:E8E7: 4C 04 DC  JMP loc_DC04
 
 ofs_001_E8EA_1E:
 C - - J - - 0x03E8FA 0F:E8EA: 20 33 D3  JSR sub_D333
-; bzk optimize
-C - - - - - 0x03E8FD 0F:E8ED: EA        NOP
 C - - - - - 0x03E8FE 0F:E8EE: 20 DE F7  JSR sub_F7DE
 C - - - - - 0x03E901 0F:E8F1: AD 31 06  LDA ram_0631
 C - - - - - 0x03E904 0F:E8F4: D0 8A     BNE bra_E880_RTS
@@ -5580,7 +5567,6 @@ C - - - - - 0x03F01E 0F:F00E: 20 44 F0  JSR sub_F044
 C - - - - - 0x03F021 0F:F011: A0 04     LDY #$04
 C - - - - - 0x03F023 0F:F013: A9 1B     LDA #$1B
 C - - - - - 0x03F025 0F:F015: 20 94 D3  JSR sub_D394
-C - - - - - 0x03F028 0F:F018: EA        NOP
 C - - - - - 0x03F029 0F:F019: EE 6D 06  INC ram_066D
 C - - - - - 0x03F02C 0F:F01C: 20 02 D6  JSR sub_D602_выбрать_chr_банк_на_основе_опции_skin
 C - - - - - 0x03F02F 0F:F01F: 86 35     STX ram_0035
@@ -7419,8 +7405,6 @@ C - - J - - 0x03FAB7 0F:FAA7: A2 01     LDX #$01
 C - - - - - 0x03FAB9 0F:FAA9: 20 81 F8  JSR sub_F881_garbage_loop
 C - - - - - 0x03FABC 0F:FAAC: A2 02     LDX #$02
 C - - - - - 0x03FABE 0F:FAAE: 20 81 F8  JSR sub_F881_garbage_loop
-; bzk optimize
-C - - - - - 0x03FAC1 0F:FAB1: EA        NOP
 ofs_067_FAB2_08:
 C - - J - - 0x03FAC2 0F:FAB2: A9 7C     LDA #con_chr_bank + $7C
 C - - - - - 0x03FAC4 0F:FAB4: 20 25 FA  JSR sub_FA25
@@ -7526,9 +7510,6 @@ C - - J - - 0x03FB4D 0F:FB3D: A2 02     LDX #$02
 C - - - - - 0x03FB4F 0F:FB3F: 20 81 F8  JSR sub_F881_garbage_loop
 C - - - - - 0x03FB52 0F:FB42: A5 4D     LDA ram_004D
 C - - - - - 0x03FB54 0F:FB44: D0 10     BNE bra_FB56
-; bzk optimize
-C - - - - - 0x03FB56 0F:FB46: EA        NOP
-C - - - - - 0x03FB57 0F:FB47: EA        NOP
 C - - - - - 0x03FB58 0F:FB48: A9 54     LDA #$54
 C - - - - - 0x03FB5A 0F:FB4A: 8D 00 C0  STA $C000
 C - - - - - 0x03FB5D 0F:FB4D: 85 4A     STA ram_copy_C000
@@ -7790,8 +7771,6 @@ C - - - - - 0x03FD5A 0F:FD4A: 20 0B F7  JSR sub_F70B
 C - - - - - 0x03FD5D 0F:FD4D: 20 04 80  JSR sub_0x024014
 C - - - - - 0x03FD60 0F:FD50: 20 91 AD  JSR sub_0x026DA1
 C - - - - - 0x03FD63 0F:FD53: 20 3B FF  JSR sub_FF3B
-; bzk optimize
-C - - - - - 0x03FD66 0F:FD56: EA        NOP
 loc_FD57:
 C D 3 - - - 0x03FD67 0F:FD57: A6 AD     LDX ram_00AD
 C - - - - - 0x03FD69 0F:FD59: BD 36 06  LDA ram_plr_0636,X
