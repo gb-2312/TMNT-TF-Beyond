@@ -4167,8 +4167,7 @@ C - - - - - 0x03E82F 0F:E81F: A9 10     LDA #$10
 C - - - - - 0x03E831 0F:E821: A0 0A     LDY #$0A
 C - - - - - 0x03E833 0F:E823: 20 94 D3  JSR sub_D394
 C - - - - - 0x03E836 0F:E826: A2 04     LDX #$04    ; tip_индекс_буфера_палитры + $04
-; bzk optimize, LDA ram_plr_id
-C - - - - - 0x03E838 0F:E828: B5 9E     LDA ram_plr_id - $04,X ; 00A2 
+C - - - - - 0x03E838 0F:E828: B5 9E     LDA ram_plr_id
 C - - - - - 0x03E83A 0F:E82A: 20 2A E3  JSR sub_E32A_выбрать_палитру_персу
 C - - - - - 0x03E83D 0F:E82D: 4C 41 E1  JMP loc_E141
 
