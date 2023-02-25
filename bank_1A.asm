@@ -776,7 +776,6 @@ C - - - - - 0x03440A 0D:83FA: 60        RTS
 
 
 
-sub_841A:    ; bzk optimize
 ofs_084_841A_DF:    ; bzk optimize
 C - - - - - 0x03442A 0D:841A: 4C 9D A4  JMP loc_A49D
 
@@ -790,7 +789,7 @@ C - - - - - 0x034414 0D:8404: 60        RTS
 
 
 ofs_084_8434_F1:
-C - - - - - 0x034444 0D:8434: 20 1A 84  JSR sub_841A
+C - - - - - 0x034444 0D:8434: 20 1A 84  JSR sub_A49D
 C - - - - - 0x034447 0D:8437: 09 08     ORA #$08
 C - - - - - 0x034449 0D:8439: 60        RTS
 
@@ -804,7 +803,7 @@ C - - - - - 0x03441E 0D:840E: 60        RTS
 
 
 ofs_084_842A_F3:
-C - - - - - 0x03443A 0D:842A: 20 1A 84  JSR sub_841A
+C - - - - - 0x03443A 0D:842A: 20 1A 84  JSR sub_A49D
 C - - - - - 0x03443D 0D:842D: 09 04     ORA #$04
 C - - - - - 0x03443F 0D:842F: 60        RTS
 
@@ -6562,6 +6561,7 @@ C - - - - - 0x0364AC 0D:A49C: 60        RTS
 
 
 loc_A49D:
+sub_A49D:
 C D 1 - - - 0x0364AD 0D:A49D: BD 50 05  LDA ram_obj_id,X
 C - - - - - 0x0364B0 0D:A4A0: C9 06     CMP #$06
 C - - - - - 0x0364B2 0D:A4A2: D0 0A     BNE bra_A4AE
