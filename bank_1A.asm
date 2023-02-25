@@ -338,8 +338,6 @@ ofs_034_8243_00:
 C - - J - - 0x034253 0D:8243: 20 B8 A3  JSR sub_A3B8
 C - - - - - 0x034256 0D:8246: F0 26     BEQ bra_826E
 sub_8248:
-; bzk optimize
-C - - - - - 0x034258 0D:8248: EA        NOP
 C - - - - - 0x034259 0D:8249: 0A        ASL
 C - - - - - 0x03425A 0D:824A: A8        TAY
 C - - - - - 0x03425B 0D:824B: B9 0B 8B  LDA tbl_8B0B_шаблоны_ai,Y
@@ -3745,8 +3743,6 @@ C - - - - - 0x0353AA 0D:939A: B0 EB     BCS bra_9387
 C - - - - - 0x0353AC 0D:939C: 20 A9 EE  JSR sub_0x03EEB9
 C - - - - - 0x0353AF 0D:939F: A9 20     LDA #$20
 C - - - - - 0x0353B1 0D:93A1: 20 3E EE  JSR sub_0x03EE4E
-; bzk optimize
-C - - - - - 0x0353B4 0D:93A4: EA        NOP
 C - - - - - 0x0353B5 0D:93A5: B0 E0     BCS bra_9387
 C - - - - - 0x0353B7 0D:93A7: 20 96 ED  JSR sub_0x03EDA6
 C - - - - - 0x0353BA 0D:93AA: A9 16     LDA #$16
@@ -4331,7 +4327,6 @@ bra_974D:
 - - - - - - 0x035762 0D:9752: 60        RTS
 bra_9753:
 loc_9753:
-C D 0 - - - 0x035763 0D:9753: EA        NOP ; bzk optimize
 C - - - - - 0x035764 0D:9754: 20 96 ED  JSR sub_0x03EDA6
 C - - - - - 0x035767 0D:9757: A9 08     LDA #$08
 C - - - - - 0x035769 0D:9759: 60        RTS
@@ -5191,7 +5186,6 @@ ofs_022_9C32_00_leo:
 C D 0 - - - 0x035C42 0D:9C32: A5 11     LDA ram_0011
 C - - - - - 0x035C44 0D:9C34: C9 08     CMP #$08
 C - - - - - 0x035C46 0D:9C36: D0 37     BNE bra_9C6F_RTS
-C - - - - - 0x035C48 0D:9C38: EA        NOP
 C - - - - - 0x035C49 0D:9C39: A5 13     LDA ram_0013
 C - - - - - 0x035C4B 0D:9C3B: C9 03     CMP #$03
 C - - - - - 0x035C4D 0D:9C3D: F0 21     BEQ bra_9C60
@@ -6058,8 +6052,6 @@ bra_A148:
 - - - - - - 0x036161 0D:A151: C9 03     CMP #$03
 - - - - - - 0x036163 0D:A153: F0 0C     BEQ bra_A161_RTS
 - - - - - - 0x036165 0D:A155: 20 D8 ED  JSR sub_0x03EDE8
-; bzk optimize
-- - - - - - 0x036168 0D:A158: EA        NOP
 - - - - - - 0x036169 0D:A159: C9 50     CMP #$50
 - - - - - - 0x03616B 0D:A15B: B0 05     BCS bra_A162
 - - - - - - 0x03616D 0D:A15D: A9 25     LDA #$25
@@ -6215,8 +6207,6 @@ C - - - - - 0x03623A 0D:A22A: D0 5E     BNE bra_A28A
 - - - - - - 0x03624B 0D:A23B: D0 03     BNE bra_A240
 - - - - - - 0x03624D 0D:A23D: 4C 56 A4  JMP loc_A456
 bra_A240:
-; bzk optimize
-- - - - - - 0x036250 0D:A240: EA        NOP
 - - - - - - 0x036251 0D:A241: C9 04     CMP #$04
 - - - - - - 0x036253 0D:A243: D0 11     BNE bra_A256
 - - - - - - 0x036255 0D:A245: B9 40 05  LDA ram_obj_0540,Y
@@ -6679,9 +6669,6 @@ bra_A5F9:
 - - - - - - 0x03660B 0D:A5FB: B9 40 05  LDA ram_obj_0540,Y
 - - - - - - 0x03660E 0D:A5FE: D0 5A     BNE bra_A65A
 bra_A600:
-; bzk optimize
-- - - - - - 0x036610 0D:A600: EA        NOP
-- - - - - - 0x036611 0D:A601: EA        NOP
 - - - - - - 0x036612 0D:A602: B9 10 05  LDA ram_obj_0510,Y
 - - - - - - 0x036615 0D:A605: DD 10 05  CMP ram_obj_0510,X
 - - - - - - 0x036618 0D:A608: F0 0D     BEQ bra_A617
@@ -7087,7 +7074,6 @@ bra_BDA8:
 - - - - - - 0x037DC7 0D:BDB7: BD C0 04  LDA ram_obj_04C0,X
 - - - - - - 0x037DCA 0D:BDBA: 49 06     EOR #$06
 - - - - - - 0x037DCC 0D:BDBC: D0 27     BNE bra_BDE5
-- - - - - - 0x037DCE 0D:BDBE: EA        NOP
 bra_BDBF:
 - - - - - - 0x037DCF 0D:BDBF: BD 00 06  LDA ram_plr_0600,X
 - - - - - - 0x037DD2 0D:BDC2: 30 1E     BMI bra_BDE2
