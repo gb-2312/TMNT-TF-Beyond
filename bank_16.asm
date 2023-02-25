@@ -42,7 +42,7 @@
 .export sub_0x02EA10
 .export loc_0x02EB10
 .export sub_0x02EE60_выбрать_палитру_уровня
-.export sub_0x02EF50
+.export sub_0x02EF50_записать_3_цвета_в_буфер
 .export loc_0x02EFA0
 .export ofs_0x02F73B
 .export _off006_0x02F990_06
@@ -103,7 +103,7 @@ ofs_041_8106_01:
 C - - J - - 0x02C116 0B:8106: EE 3E 06  INC ram_063E
 C - - - - - 0x02C119 0B:8109: A4 2C     LDY ram_game_mode
 C - - - - - 0x02C11B 0B:810B: BE FA BF  LDX tbl_BFFA,Y
-C - - - - - 0x02C11E 0B:810E: 20 44 F0  JSR sub_0x03F054
+C - - - - - 0x02C11E 0B:810E: 20 44 F0  JSR sub_0x03F054_отрисовать_экран
 C - - - - - 0x02C122 0B:8112: A5 2C     LDA ram_game_mode
 ; con_gm_story
 ; con_gm_vs_player
@@ -111,8 +111,9 @@ C - - - - - 0x02C122 0B:8112: A5 2C     LDA ram_game_mode
 ; con_gm_vs_team
 C - - - - - 0x02C124 0B:8114: D0 05     BNE bra_811B
 ; if con_gm_story
-C - - - - - 0x02C126 0B:8116: A2 1A     LDX #con_0x03F0EE_1A
-C - - - - - 0x02C128 0B:8118: 20 44 F0  JSR sub_0x03F054
+; bzk optimize, сделать 2 разных версии экранов, удалить проверку
+C - - - - - 0x02C126 0B:8116: A2 1A     LDX #con_screen_player_select_4
+C - - - - - 0x02C128 0B:8118: 20 44 F0  JSR sub_0x03F054_отрисовать_экран
 bra_811B:
 ; con_gm_vs_player
 ; con_gm_vs_cpu
@@ -1644,15 +1645,15 @@ off_ADB0_17:
 
 
 
-tbl_AE20:
-- D 1 - - - 0x02EE30 0B:AE20: 0A        .byte con_0x03F0EE_0A   ; 00
-- D 1 - - - 0x02EE31 0B:AE21: 14        .byte con_0x03F0EE_14   ; 01
-- D 1 - - - 0x02EE32 0B:AE22: 0A        .byte con_0x03F0EE_0A   ; 02
-- D 1 - - - 0x02EE33 0B:AE23: 14        .byte con_0x03F0EE_14   ; 03
-- D 1 - - - 0x02EE34 0B:AE24: 0E        .byte con_0x03F0EE_0E   ; 04
-- D 1 - - - 0x02EE35 0B:AE25: 0E        .byte con_0x03F0EE_0E   ; 05
-- D 1 - - - 0x02EE36 0B:AE26: 08        .byte con_0x03F0EE_08   ; 06
-- D 1 - - - 0x02EE37 0B:AE27: 3E        .byte con_0x03F0EE_3E   ; 07
+tbl_AE20_уровень_для_отрисовки:
+- D 1 - - - 0x02EE30 0B:AE20: 0A        .byte con_screen_stage_sewer   ; 00
+- D 1 - - - 0x02EE31 0B:AE21: 14        .byte con_screen_stage_down_town   ; 01
+- D 1 - - - 0x02EE32 0B:AE22: 0A        .byte con_screen_stage_sewer   ; 02
+- D 1 - - - 0x02EE33 0B:AE23: 14        .byte con_screen_stage_down_town   ; 03
+- D 1 - - - 0x02EE34 0B:AE24: 0E        .byte con_screen_stage_pirate_ship   ; 04
+- D 1 - - - 0x02EE35 0B:AE25: 0E        .byte con_screen_stage_pirate_ship   ; 05
+- D 1 - - - 0x02EE36 0B:AE26: 08        .byte con_screen_stage_water_front   ; 06
+- D 1 - - - 0x02EE37 0B:AE27: 3E        .byte con_screen_stage_technodrome   ; 07
 
 
 
@@ -1679,9 +1680,9 @@ C - - - - - 0x02EE71 0B:AE61: 8D 71 06  STA ram_0671
 C - - - - - 0x02EE74 0B:AE64: 85 AA     STA ram_00AA
 C - - - - - 0x02EE76 0B:AE66: 85 86     STA ram_0086
 C - - - - - 0x02EE78 0B:AE68: 85 4D     STA ram_004D
-C - - - - - 0x02EE7A 0B:AE6A: A9 01     LDA #$01
+C - - - - - 0x02EE7A 0B:AE6A: A9 01     LDA #$01    ; enable irq
 C - - - - - 0x02EE7C 0B:AE6C: 85 48     STA ram_0048
-C - - - - - 0x02EE7E 0B:AE6E: 85 49     STA ram_0049
+C - - - - - 0x02EE7E 0B:AE6E: 85 49     STA ram_irq_flag
 C - - - - - 0x02EE80 0B:AE70: A5 9E     LDA ram_009E
 C - - - - - 0x02EE82 0B:AE72: 0A        ASL
 C - - - - - 0x02EE83 0B:AE73: A8        TAY
@@ -1727,27 +1728,27 @@ C - - - - - 0x02EEC6 0B:AEB6: E6 95     INC ram_0095
 C - - - - - 0x02EEC8 0B:AEB8: A9 60     LDA #$60
 C - - - - - 0x02EECA 0B:AEBA: 85 A6     STA ram_00A6
 C - - - - - 0x02EECC 0B:AEBC: A4 9E     LDY ram_009E
-C - - - - - 0x02EECE 0B:AEBE: BE 20 AE  LDX tbl_AE20,Y
+C - - - - - 0x02EECE 0B:AEBE: BE 20 AE  LDX tbl_AE20_уровень_для_отрисовки,Y
 C - - - - - 0x02EED1 0B:AEC1: 60        RTS
 
 
 
-tbl_AF3D:
+tbl_AF3D_палитра:
 - D 1 - - - 0x02EF4D 0B:AF3D: 21        .word tbl_B3EA_green   ; 00
 - - - - - - 0x02EF4E 0B:AF3E: 23        .word tbl_B1EA_original   ; 01
 - - - - - - 0x02EF4F 0B:AF3F: 25        .word tbl_AFEA_night   ; 02
 
 
 
-sub_0x02EF50:
+sub_0x02EF50_записать_3_цвета_в_буфер:
 C - - - - - 0x02EF50 0B:AF40: AD 2B 01  LDA ram_option_misc
 C - - - - - 0x02EF53 0B:AF43: 29 07     AND #$03
                                         ASL
 C - - - - - 0x02EF55 0B:AF45: A8        TAY
 ; загрузить базовый поинтер палитры
-                                        LDA tbl_AF3D,Y
+                                        LDA tbl_AF3D_палитра,Y
 C - - - - - 0x02EF56 0B:AF46: A5 01     STA ram_0000
-C - - - - - 0x02EF58 0B:AF48: F9 3D AF  LDA tbl_AF3D + $01,Y
+C - - - - - 0x02EF58 0B:AF48: F9 3D AF  LDA tbl_AF3D_палитра + $01,Y
 C - - - - - 0x02EF5B 0B:AF4B: 85 01     STA ram_0001
                                         JSR sub_D37C_подкорректировать_поинтер_палитры
                                         CLC
@@ -3008,7 +3009,7 @@ bra_BF7B:
 C - - - - - 0x02FF8B 0B:BF7B: 85 9E     STA ram_009E
 C - - - - - 0x02FF8D 0B:BF7D: E0 04     CPX #$04
 C - - - - - 0x02FF8F 0B:BF7F: D0 03     BNE bra_BF84
-C - - - - - 0x02FF91 0B:BF81: 4C 19 E2  JMP loc_0x03E229
+C - - - - - 0x02FF91 0B:BF81: 4C 19 E2  JMP loc_0x03E229_отрисовать_турнирную_сетку
 bra_BF84:
 C - - - - - 0x02FF94 0B:BF84: AC 50 01  LDY ram_0150
 C - - - - - 0x02FF97 0B:BF87: AD 2C 01  LDA ram_option_team_keeps
@@ -3059,10 +3060,10 @@ tbl_BFEA:
 
 
 tbl_BFFA:
-- D 1 - - - 0x03000A 0B:BFFA: 10        .byte con_0x03F0EE_10   ; 00 story
-- D 1 - - - 0x03000B 0B:BFFB: 10        .byte con_0x03F0EE_10   ; 01 vs player
-- D 1 - - - 0x03000C 0B:BFFC: 10        .byte con_0x03F0EE_10   ; 02 vs cpu
-- D 1 - - - 0x03000D 0B:BFFD: 3C        .byte con_0x03F0EE_3C   ; 03 vs team
+- D 1 - - - 0x03000A 0B:BFFA: 10        .byte con_screen_player_select_7   ; 00 story
+- D 1 - - - 0x03000B 0B:BFFB: 10        .byte con_screen_player_select_7   ; 01 vs player
+- D 1 - - - 0x03000C 0B:BFFC: 10        .byte con_screen_player_select_7   ; 02 vs cpu
+- D 1 - - - 0x03000D 0B:BFFD: 3C        .byte con_screen_player_select_vs   ; 03 vs team
 
 
 

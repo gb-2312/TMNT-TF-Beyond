@@ -240,7 +240,7 @@ con_music_ost_sewer                     = $2E ; (stage soundtrack normal) sewer
 con_music_ost_down_town                 = $2F ; (stage soundtrack normal) down town
 con_music_ost_pirate_ship               = $30 ; (stage soundtrack normal) pirate ship
 con_music_ost_water_front               = $31 ; (stage soundtrack normal) water front
-con_music_vs_screen                     = $32 ; VS экран
+con_music_vs_screen                     = $32 ; vs экран
 con_music_no_time_sewer                 = $33 ; (stage soundtrack low time) sewer
 con_music_no_time_down_town             = $34 ; (stage soundtrack low time) down town
 con_music_no_time_pirate_ship           = $35 ; (stage soundtrack low time) pirate ship
@@ -289,39 +289,39 @@ con_music_volume_fade                   = $5B ; постепенное зату�
 
 
 
-; смотреть 0x03F0F0
-con_0x03F0EE_00                         = $00 ; 
-con_0x03F0EE_02                         = $02 ; 
-con_0x03F0EE_04                         = $04 ; 
-con_0x03F0EE_06                         = $06 ; 
-con_0x03F0EE_08                         = $08 ; 
-con_0x03F0EE_0A                         = $0A ; 
-con_0x03F0EE_0C                         = $0C ; 
-con_0x03F0EE_0E                         = $0E ; 
-con_0x03F0EE_10                         = $10 ; 
-con_0x03F0EE_12                         = $12 ; 
-con_0x03F0EE_14                         = $14 ; 
-con_0x03F0EE_16                         = $16 ; 
-con_0x03F0EE_18                         = $18 ; 
-con_0x03F0EE_1A                         = $1A ; 
-con_0x03F0EE_1C                         = $1C ; 
-con_0x03F0EE_1E                         = $1E ; 
-con_0x03F0EE_20                         = $20 ; 
-con_0x03F0EE_22                         = $22 ; 
-con_0x03F0EE_24                         = $24 ; 
-con_0x03F0EE_26                         = $26 ; 
-con_0x03F0EE_28                         = $28 ; 
-con_0x03F0EE_2A                         = $2A ; 
-con_0x03F0EE_2C                         = $2C ; 
-con_0x03F0EE_2E                         = $2E ; 
-con_0x03F0EE_30                         = $30 ; 
-con_0x03F0EE_32                         = $32 ; 
-con_0x03F0EE_34                         = $34 ; 
-con_0x03F0EE_36                         = $36 ; 
-con_0x03F0EE_38                         = $38 ; 
-con_0x03F0EE_3A                         = $3A ; 
-con_0x03F0EE_3C                         = $3C ; 
-con_0x03F0EE_3E                         = $3E ; 
+; индексы для отрисовки экранов, смотреть 0x03F0F0
+con_screen_00                           = $00 ; просто пустой экран, можно использовать для очистки
+con_screen_главное_меню                 = $02 ; главное меню
+con_screen_konami                       = $04 ; после 04, KONAMI
+con_screen_копирайты                    = $06 ; текст самого первого экрана с номером хака
+con_screen_stage_water_front            = $08 ; stage water front
+con_screen_stage_sewer                  = $0A ; stage sewer
+con_screen_tmnt                         = $0C ; логотип tmnt внизу во время боя
+con_screen_stage_pirate_ship            = $0E ; stage pirate ship
+con_screen_player_select_7              = $10 ; player select (7 персов)
+con_screen_stage_select                 = $12 ; stage select
+con_screen_stage_down_town              = $14 ; stage down town
+con_screen_турнирная_сетка              = $16 ; турнирная сетка
+con_screen_options                      = $18 ; options
+con_screen_player_select_4              = $1A ; player select (4 перса)
+con_screen_bonus_tmnt                   = $1C ; аналогично 0C, но для bonus stage и с каким-то лишним мусором в центре экрана (перерисовывается с 1E)
+con_screen_bonus_stage                  = $1E ; bonus stage
+con_screen_клавиатура                   = $20 ; клавиатура в режиме tournament
+con_screen_ending_1                     = $22 ; ending, сцена 1 (черепаха со шрушером)
+con_screen_ending_3                     = $24 ; ending, сцена 3 (фотка с черепахами и сплинтером)
+con_screen_hiscore                      = $26 ; top score (телка с микрофоном)
+con_screen_vs                           = $28 ; vs экран
+con_screen_opening_1                    = $2A ; opening, сцена 1
+con_screen_opening_2                    = $2C ; opening, сцена 2
+con_screen_ending_2                     = $2E ; ending, сцена 2 (сплинтер)
+con_screen_opening_leo                  = $30 ; opening, список персов, leo
+con_screen_opening_raph                 = $32 ; opening, список персов, raph
+con_screen_opening_mike                 = $34 ; opening, список персов, mike
+con_screen_opening_don                  = $36 ; opening, список персов, don
+con_screen_opening_casey                = $38 ; opening, список персов, casey
+con_screen_opening_hot                  = $3A ; opening, список персов, hot
+con_screen_player_select_vs             = $3C ; player select (vs team)
+con_screen_stage_technodrome            = $3E ; stage technodrome
 
 
 

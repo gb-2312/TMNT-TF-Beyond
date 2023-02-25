@@ -119,7 +119,7 @@
 .export loc_0x03E151
 .export sub_0x03E15C
 .export tbl_0x03E16E_звук_выбора_перса
-.export loc_0x03E229
+.export loc_0x03E229_отрисовать_турнирную_сетку
 .export loc_0x03E256
 .export sub_0x03E2FF
 .export sub_0x03E32D
@@ -181,8 +181,8 @@
 .export loc_0x03EFFC
 .export sub_0x03F04C
 .export sub_0x03F04F
-.export loc_0x03F052
-.export sub_0x03F054
+.export loc_0x03F052_отрисовать_пустой_экран
+.export sub_0x03F054_отрисовать_экран
 .export sub_0x03F214_генератор_рандома
 .export sub_0x03F5BE
 .export loc_0x03F5BE
@@ -196,8 +196,8 @@
 .export loc_0x03F6A4
 .export sub_0x03F6D2_выключить_музыку_и_звуки
 .export loc_0x03F6D2_выключить_музыку_и_звуки
-.export sub_0x03F6F5_написать_на_экране
-.export loc_0x03F6F5_написать_на_экране
+.export sub_0x03F6F5_написать_текст_на_экране
+.export loc_0x03F6F5_написать_текст_на_экране
 .export sub_0x03F724
 .export loc_0x03F724
 .export sub_0x03F73F_нарисовать_рожи_персов_на_экране_выбора_карты
@@ -210,7 +210,7 @@
 .export sub_0x03F824
 .export loc_0x03F824
 .export ofs_0x03F8E0
-.export sub_0x03FB98
+.export sub_0x03FB98_disable_irq
 .export sub_0x03FC9C_set_mirroring_V
 .export sub_0x03FCA0_set_mirroring_H
 .export loc_0x03FE68
@@ -1187,7 +1187,7 @@ C - - J - - 0x03D2BD 0F:D2AD: A9 36     LDA #con_prg_bank + $16
 C - - - - - 0x03D2BF 0F:D2AF: 20 00 F6  JSR sub_F600_swap_prg_16
 C - - - - - 0x03D2C2 0F:D2B2: 20 D4 BE  JSR sub_0x02FEE4
 C - - - - - 0x03D2C6 0F:D2B6: E6 94     INC ram_0094
-C - - - - - 0x03D2C8 0F:D2B8: 4C 88 FB  JMP loc_FB88
+C - - - - - 0x03D2C8 0F:D2B8: 4C 88 FB  JMP loc_FB88_disable_irq
 
 
 
@@ -1324,7 +1324,7 @@ C D 2 - - - 0x03D356 0F:D346: 84 04     STY ram_0004
 C - - - - - 0x03D358 0F:D348: 86 03     STX ram_0003
                                         STA ram_0005
 C - - - - - 0x03D366 0F:D356: 20 E7 F5  JSR sub_F5E7_swap_prg_16
-C - - - - - 0x03D369 0F:D359: 20 40 AF  JSR sub_0x02EF50
+C - - - - - 0x03D369 0F:D359: 20 40 AF  JSR sub_0x02EF50_записать_3_цвета_в_буфер
                                         JSR sub_F617_restore_prg
                                         LDX ram_0003
                                         LDY ram_0004
@@ -3202,15 +3202,15 @@ C - - - - - 0x03E199 0F:E189: 20 32 D0  JSR sub_D032_поинтеры_после
 - D 3 - I - 0x03E19C 0F:E18C: CE E1     .word ofs_001_E1CE_00
 - D 3 - I - 0x03E19E 0F:E18E: FD E1     .word ofs_001_E1FD_01
 - D 3 - I - 0x03E1A0 0F:E190: E7 F7     .word ofs_001_F7E7_02
-- D 3 - I - 0x03E1A2 0F:E192: 4E E2     .word ofs_001_E24E_03
+- D 3 - I - 0x03E1A2 0F:E192: 4E E2     .word ofs_001_E24E_03_отрисовать_vs_экран
 - D 3 - I - 0x03E1A4 0F:E194: 41 E3     .word ofs_001_E341_04
-- D 3 - I - 0x03E1A6 0F:E196: F3 E3     .word ofs_001_E3F3_05
+- D 3 - I - 0x03E1A6 0F:E196: F3 E3     .word ofs_001_E3F3_05_отрисовать_tmnt_внизу_экрана
 - D 3 - I - 0x03E1A8 0F:E198: 6D E4     .word ofs_001_E46D_06
 - D 3 - I - 0x03E1AA 0F:E19A: A3 E4     .word ofs_001_E4A3_07
 - D 3 - I - 0x03E1AC 0F:E19C: 2E E5     .word ofs_001_E52E_08
 - D 3 - I - 0x03E1AE 0F:E19E: 5D E5     .word ofs_001_E55D_09
 - D 3 - I - 0x03E1B0 0F:E1A0: D5 E5     .word ofs_001_E5D5_0A
-- D 3 - I - 0x03E1B2 0F:E1A2: 8F E6     .word ofs_001_E68F_0B_draw
+- D 3 - I - 0x03E1B2 0F:E1A2: 8F E6     .word ofs_001_E68F_0B_ничья_во_время_боя
 - D 3 - I - 0x03E1B4 0F:E1A4: FF E6     .word ofs_001_E6FF_0C
 - D 3 - I - 0x03E1B6 0F:E1A6: 42 E7     .word ofs_001_E742_0D
 - D 3 - I - 0x03E1B8 0F:E1A8: 3F F7     .word ofs_001_F73F_0E
@@ -3223,7 +3223,7 @@ C - - - - - 0x03E199 0F:E189: 20 32 D0  JSR sub_D032_поинтеры_после
 - D 3 - I - 0x03E1C6 0F:E1B6: 99 E7     .word ofs_001_E799_15
 - - - - - - 0x03E1C8 0F:E1B8: A1 E7     .word ofs_001_E7A1_16
 - D 3 - I - 0x03E1CA 0F:E1BA: A1 E7     .word ofs_001_E7A1_17
-- D 3 - I - 0x03E1CC 0F:E1BC: BE E7     .word ofs_001_E7BE_18
+- D 3 - I - 0x03E1CC 0F:E1BC: BE E7     .word ofs_001_E7BE_18_отрисовать_bonus_stage
 - D 3 - I - 0x03E1CE 0F:E1BE: 30 E8     .word ofs_001_E830_19
 - D 3 - I - 0x03E1D0 0F:E1C0: 5C E8     .word ofs_001_E85C_1A
 - D 3 - I - 0x03E1D2 0F:E1C2: 81 E8     .word ofs_001_E881_1B
@@ -3236,7 +3236,7 @@ C - - - - - 0x03E199 0F:E189: 20 32 D0  JSR sub_D032_поинтеры_после
 
 
 ofs_001_E1CE_00:
-C - - J - - 0x03E1DE 0F:E1CE: 20 42 F0  JSR sub_F042
+C - - J - - 0x03E1DE 0F:E1CE: 20 42 F0  JSR sub_F042_отрисовать_пустой_экран
 C - - - - - 0x03E1E1 0F:E1D1: A5 AE     LDA ram_00AE
 C - - - - - 0x03E1E3 0F:E1D3: 48        PHA
 C - - - - - 0x03E1E4 0F:E1D4: A5 AF     LDA ram_00AF
@@ -3290,7 +3290,8 @@ C - - - - - 0x03E226 0F:E216: 4C 70 BF  JMP loc_0x02FF80
 
 
 
-loc_0x03E229:
+loc_0x03E229_отрисовать_турнирную_сетку:
+; bzk optimize, многовато внутренних прыжков, можно все записать в одном месте
 C D 3 - - - 0x03E229 0F:E219: AD 54 01  LDA ram_0154
 C - - - - - 0x03E22C 0F:E21C: 0A        ASL
 C - - - - - 0x03E22D 0F:E21D: A8        TAY
@@ -3298,7 +3299,7 @@ C - - - - - 0x03E22E 0F:E21E: B9 4C 01  LDA ram_014C,Y
 C - - - - - 0x03E231 0F:E221: 85 A2     STA ram_plr_id
 C - - - - - 0x03E233 0F:E223: B9 4D 01  LDA ram_014D,Y
 C - - - - - 0x03E236 0F:E226: 85 A3     STA ram_plr_id + $01
-C - - - - - 0x03E238 0F:E228: 20 26 F7  JSR sub_F726
+C - - - - - 0x03E238 0F:E228: 20 26 F7  JSR sub_F726_отрисовать_турнирную_сетку
 C - - - - - 0x03E23B 0F:E22B: A9 40     LDA #$40
 C - - - - - 0x03E23D 0F:E22D: 8D 60 05  STA ram_obj_0560
 C - - - - - 0x03E240 0F:E230: 60        RTS
@@ -3328,10 +3329,10 @@ C - - - - - 0x03E25A 0F:E24A: 4C 25 DC  JMP loc_DC25
 
 
 
-ofs_001_E24E_03:
+ofs_001_E24E_03_отрисовать_vs_экран:
 C - - J - - 0x03E25E 0F:E24E: 20 3F F0  JSR sub_F03F
-C - - - - - 0x03E261 0F:E251: A2 28     LDX #con_0x03F0EE_28
-C - - - - - 0x03E263 0F:E253: 20 44 F0  JSR sub_F044
+C - - - - - 0x03E261 0F:E251: A2 28     LDX #con_screen_vs
+C - - - - - 0x03E263 0F:E253: 20 44 F0  JSR sub_F044_отрисовать_экран
 C - - - - - 0x03E266 0F:E256: E6 95     INC ram_0095
 C - - - - - 0x03E268 0F:E258: A9 00     LDA #$00
 C - - - - - 0x03E26A 0F:E25A: 8D 49 06  STA ram_0649
@@ -3619,14 +3620,14 @@ tbl_E3EF:
 
 
 
-ofs_001_E3F3_05:
+ofs_001_E3F3_05_отрисовать_tmnt_внизу_экрана:
 C - - J - - 0x03E403 0F:E3F3: 20 C2 F6  JSR sub_F6C2_выключить_музыку_и_звуки
 C - - - - - 0x03E406 0F:E3F6: A9 36     LDA #con_prg_bank + $16
 C - - - - - 0x03E408 0F:E3F8: 20 00 F6  JSR sub_F600_swap_prg_16
 C - - - - - 0x03E40B 0F:E3FB: 20 50 AE  JSR sub_0x02EE60_выбрать_палитру_уровня
-C - - - - - 0x03E40E 0F:E3FE: 20 44 F0  JSR sub_F044
-C - - - - - 0x03E411 0F:E401: A2 0C     LDX #con_0x03F0EE_0C
-C - - - - - 0x03E413 0F:E403: 20 44 F0  JSR sub_F044
+C - - - - - 0x03E40E 0F:E3FE: 20 44 F0  JSR sub_F044_отрисовать_экран
+C - - - - - 0x03E411 0F:E401: A2 0C     LDX #con_screen_tmnt
+C - - - - - 0x03E413 0F:E403: 20 44 F0  JSR sub_F044_отрисовать_экран
 C - - - - - 0x03E416 0F:E406: 20 9E EB  JSR sub_EB9E_вывести_имя_перса_над_шкалой_здоровья
 C - - - - - 0x03E419 0F:E409: A2 01     LDX #$01
 C - - - - - 0x03E41B 0F:E40B: 86 A8     STX ram_00A8
@@ -4082,7 +4083,7 @@ C - - - - - 0x03E69E 0F:E68E: 60        RTS
 
 
 
-ofs_001_E68F_0B_draw:
+ofs_001_E68F_0B_ничья_во_время_боя:
 C - - J - - 0x03E69F 0F:E68F: A9 00     LDA #$00
 C - - - - - 0x03E6A1 0F:E691: 8D 07 04  STA ram_0407
 C - - - - - 0x03E6A4 0F:E694: 8D 10 06  STA ram_plr_0610
@@ -4185,7 +4186,7 @@ C - - - - - 0x03E757 0F:E747: 4C 6E DD  JMP loc_DD6E
 
 ofs_001_E753_0F:
 C - - J - - 0x03E763 0F:E753: E6 95     INC ram_0095
-C - - - - - 0x03E765 0F:E755: 20 26 F7  JSR sub_F726
+C - - - - - 0x03E765 0F:E755: 20 26 F7  JSR sub_F726_отрисовать_турнирную_сетку
 C - - - - - 0x03E768 0F:E758: A9 FF     LDA #$FF
 C - - - - - 0x03E76A 0F:E75A: 8D 60 05  STA ram_obj_0560
 ofs_001_E75D_10:
@@ -4237,7 +4238,7 @@ C - - J - - 0x03E7B1 0F:E7A1: E6 95     INC ram_0095
 C - - - - - 0x03E7B3 0F:E7A3: 20 3C F0  JSR sub_F03C
 C - - - - - 0x03E7B6 0F:E7A6: 20 25 DC  JSR sub_DC25
 C - - - - - 0x03E7B9 0F:E7A9: A9 08     LDA #con_0x030C10_08
-C - - - - - 0x03E7BB 0F:E7AB: 20 E5 F6  JSR sub_F6E5_написать_на_экране
+C - - - - - 0x03E7BB 0F:E7AB: 20 E5 F6  JSR sub_F6E5_написать_текст_на_экране
 C - - - - - 0x03E7BE 0F:E7AE: A9 20     LDA #$20
 C - - - - - 0x03E7C0 0F:E7B0: 8D 60 05  STA ram_obj_0560
 C - - - - - 0x03E7C3 0F:E7B3: A9 00     LDA #$00
@@ -4248,7 +4249,7 @@ C - - - - - 0x03E7CB 0F:E7BB: 4C 41 E1  JMP loc_E141
 
 
 
-ofs_001_E7BE_18:
+ofs_001_E7BE_18_отрисовать_bonus_stage:
 C - - J - - 0x03E7CE 0F:E7BE: A5 96     LDA ram_0096
 C - - - - - 0x03E7D0 0F:E7C0: D0 0A     BNE bra_E7CC
 C - - - - - 0x03E7D2 0F:E7C2: CE 60 05  DEC ram_obj_0560
@@ -4278,16 +4279,16 @@ C - - - - - 0x03E808 0F:E7F8: 8D 10 04  STA ram_obj_pos_Y
 C - - - - - 0x03E80B 0F:E7FB: A9 09     LDA #con_0x03F84C_09
 C - - - - - 0x03E80D 0F:E7FD: 20 14 F8  JSR sub_F814
 C - - - - - 0x03E810 0F:E800: 20 BE DA  JSR sub_DABE_удалить_все_объекты
-C - - - - - 0x03E813 0F:E803: A2 1C     LDX #con_0x03F0EE_1C
-C - - - - - 0x03E815 0F:E805: 20 44 F0  JSR sub_F044
+C - - - - - 0x03E813 0F:E803: A2 1C     LDX #con_screen_bonus_tmnt
+C - - - - - 0x03E815 0F:E805: 20 44 F0  JSR sub_F044_отрисовать_экран
 C - - - - - 0x03E818 0F:E808: A9 7C     LDA #$7C
 C - - - - - 0x03E81A 0F:E80A: 85 32     STA ram_0032
 C - - - - - 0x03E81C 0F:E80C: A9 20     LDA #$20
 C - - - - - 0x03E81E 0F:E80E: 85 37     STA ram_0037
-C - - - - - 0x03E820 0F:E810: A2 1E     LDX #con_0x03F0EE_1E
-C - - - - - 0x03E822 0F:E812: 20 44 F0  JSR sub_F044
+C - - - - - 0x03E820 0F:E810: A2 1E     LDX #con_screen_bonus_stage
+C - - - - - 0x03E822 0F:E812: 20 44 F0  JSR sub_F044_отрисовать_экран
 C - - - - - 0x03E825 0F:E815: A9 0D     LDA #con_0x030C10_0D
-C - - - - - 0x03E827 0F:E817: 20 E5 F6  JSR sub_F6E5_написать_на_экране
+C - - - - - 0x03E827 0F:E817: 20 E5 F6  JSR sub_F6E5_написать_текст_на_экране
 C - - - - - 0x03E82A 0F:E81A: A9 3D     LDA #con_music_ost_bonus_stage
 C - - - - - 0x03E82C 0F:E81C: 20 90 F6  JSR sub_F690
 C - - - - - 0x03E82F 0F:E81F: A9 10     LDA #$10
@@ -5705,14 +5706,14 @@ C - - - - - 0x03F00D 0F:EFFD: 4C 7D D1  JMP loc_D17D
 
 
 
-sub_F000:
+sub_F000_отрисовать_главное_меню:
 C - - - - - 0x03F010 0F:F000: 20 3C F0  JSR sub_F03C
 C - - - - - 0x03F013 0F:F003: 20 8C FC  JSR sub_FC8C_set_mirroring_V
 C - - - - - 0x03F016 0F:F006: A5 FF     LDA ram_for_2000
 C - - - - - 0x03F018 0F:F008: 29 FC     AND #$FC
 C - - - - - 0x03F01A 0F:F00A: 85 FF     STA ram_for_2000
-C - - - - - 0x03F01C 0F:F00C: A2 02     LDX #con_0x03F0EE_02
-C - - - - - 0x03F01E 0F:F00E: 20 44 F0  JSR sub_F044
+C - - - - - 0x03F01C 0F:F00C: A2 02     LDX #con_screen_главное_меню
+C - - - - - 0x03F01E 0F:F00E: 20 44 F0  JSR sub_F044_отрисовать_экран
 C - - - - - 0x03F021 0F:F011: A0 04     LDY #$04
 C - - - - - 0x03F023 0F:F013: A9 1B     LDA #$1B
 C - - - - - 0x03F025 0F:F015: 20 94 D3  JSR sub_D394
@@ -5735,7 +5736,7 @@ C - - - - - 0x03F042 0F:F032: A5 08     LDA ram_0008
 ; con_0x030C10_03
 ; con_0x030C10_04
 ; con_0x030C10_05
-C - - - - - 0x03F044 0F:F034: 20 E5 F6  JSR sub_F6E5_написать_на_экране
+C - - - - - 0x03F044 0F:F034: 20 E5 F6  JSR sub_F6E5_написать_текст_на_экране
 C - - - - - 0x03F047 0F:F037: C6 08     DEC ram_0008
 C - - - - - 0x03F049 0F:F039: 10 F7     BPL bra_F032_loop
 C - - - - - 0x03F04B 0F:F03B: 60        RTS
@@ -5744,15 +5745,15 @@ C - - - - - 0x03F04B 0F:F03B: 60        RTS
 
 sub_F03C:
 sub_0x03F04C:
-C - - - - - 0x03F04C 0F:F03C: 20 88 FB  JSR sub_FB88
+C - - - - - 0x03F04C 0F:F03C: 20 88 FB  JSR sub_FB88_disable_irq
 sub_F03F:
 sub_0x03F04F:
 C - - - - - 0x03F04F 0F:F03F: 20 BE DA  JSR sub_DABE_удалить_все_объекты
-sub_F042:
-loc_0x03F052:
-C D 3 - - - 0x03F052 0F:F042: A2 00     LDX #con_0x03F0EE_00
-sub_F044:
-sub_0x03F054:
+sub_F042_отрисовать_пустой_экран:
+loc_0x03F052_отрисовать_пустой_экран:
+C D 3 - - - 0x03F052 0F:F042: A2 00     LDX #con_screen_00
+sub_F044_отрисовать_экран:
+sub_0x03F054_отрисовать_экран:
 C - - - - - 0x03F054 0F:F044: 8A        TXA
 C - - - - - 0x03F055 0F:F045: 4A        LSR
 C - - - - - 0x03F056 0F:F046: A8        TAY
@@ -6262,13 +6263,13 @@ C - - - - - 0x03F390 0F:F380: A5 30     LDA ram_0030
 C - - - - - 0x03F392 0F:F382: D0 1F     BNE bra_F3A3
 C - - - - - 0x03F394 0F:F384: A5 20     LDA ram_0020
 C - - - - - 0x03F396 0F:F386: 20 32 D0  JSR sub_D032_поинтеры_после_JSR
-- D 3 - I - 0x03F399 0F:F389: BF F3     .word ofs_000_F3BF_00
+- D 3 - I - 0x03F399 0F:F389: BF F3     .word ofs_000_F3BF_00_главное_меню
 - D 3 - I - 0x03F39B 0F:F38B: AC F4     .word ofs_000_F4AC_01
 - D 3 - I - 0x03F39D 0F:F38D: E5 F4     .word ofs_000_F4E5_02
 - D 3 - I - 0x03F39F 0F:F38F: FA F4     .word ofs_000_F4FA_03
 - D 3 - I - 0x03F3A1 0F:F391: 79 D2     .word ofs_000_D279_04
-- D 3 - I - 0x03F3A3 0F:F393: 09 F5     .word ofs_000_F509_05
-- D 3 - I - 0x03F3A5 0F:F395: 6F F5     .word ofs_000_F56F_06
+- D 3 - I - 0x03F3A3 0F:F393: 09 F5     .word ofs_000_F509_05_отрисовать_konami
+- D 3 - I - 0x03F3A5 0F:F395: 6F F5     .word ofs_000_F56F_06_отрисовать_копирайты
 - D 3 - I - 0x03F3A7 0F:F397: DC F6     .word ofs_000_F6DC_07
 - D 3 - I - 0x03F3A9 0F:F399: 9A F5     .word ofs_000_F59A_08
 - D 3 - I - 0x03F3AB 0F:F39B: A4 F5     .word ofs_000_F5A4_09
@@ -6298,7 +6299,7 @@ C - - - - - 0x03F3CC 0F:F3BC: 4C F9 D3  JMP loc_D3F9
 
 
 
-ofs_000_F3BF_00:
+ofs_000_F3BF_00_главное_меню:
 C - - J - - 0x03F3CF 0F:F3BF: A6 21     LDX ram_0021
 C - - - - - 0x03F3D1 0F:F3C1: D0 22     BNE bra_F3E5
 C - - - - - 0x03F3D3 0F:F3C3: 86 26     STX ram_0026
@@ -6306,7 +6307,7 @@ C - - - - - 0x03F3D5 0F:F3C5: 86 27     STX ram_0027
 C - - - - - 0x03F3D7 0F:F3C7: 8E 11 01  STX ram_0111
 C - - - - - 0x03F3DA 0F:F3CA: 8E 12 01  STX ram_0112
 C - - - - - 0x03F3DD 0F:F3CD: 20 09 D0  JSR sub_D009_очистить_оперативку_1
-C - - - - - 0x03F3E0 0F:F3D0: 20 00 F0  JSR sub_F000
+C - - - - - 0x03F3E0 0F:F3D0: 20 00 F0  JSR sub_F000_отрисовать_главное_меню
 C - - - - - 0x03F3E3 0F:F3D3: 20 48 E1  JSR sub_E148
 C - - - - - 0x03F3E6 0F:F3D6: 4C 38 F5  JMP loc_F538
 bra_F3D9:
@@ -6399,7 +6400,7 @@ C - - - - - 0x03F479 0F:F469: 65 27     ADC ram_0027
 ; con_0x030C10_04
 ; con_0x030C10_05
 ; возможен индекс +80
-C - - - - - 0x03F47B 0F:F46B: 20 E5 F6  JSR sub_F6E5_написать_на_экране
+C - - - - - 0x03F47B 0F:F46B: 20 E5 F6  JSR sub_F6E5_написать_текст_на_экране
 C - - - - - 0x03F47E 0F:F46E: C6 9C     DEC ram_009C
 C - - - - - 0x03F480 0F:F470: D0 EB     BNE bra_F45D_RTS
 C - - - - - 0x03F482 0F:F472: E6 21     INC ram_0021
@@ -6482,8 +6483,8 @@ bra_F4CF:
 
 
 bra_F4D7:
-C - - - - - 0x03F4E7 0F:F4D7: A0 00     LDY #$00
-C - - - - - 0x03F4E9 0F:F4D9: 84 49     STY ram_0049
+C - - - - - 0x03F4E7 0F:F4D7: A0 00     LDY #$00    ; disable irq
+C - - - - - 0x03F4E9 0F:F4D9: 84 49     STY ram_irq_flag
 sub_F4DB:
 loc_F4DB:
 C - - - - - 0x03F4EB 0F:F4DB: 20 AE F5  JSR sub_F5AE
@@ -6498,8 +6499,8 @@ C - - - - - 0x03F4F3 0F:F4E3: D0 F2     BNE bra_F4D7    ; jmp
 
 
 ofs_000_F4E5_02:
-C - - J - - 0x03F4F5 0F:F4E5: 20 42 F0  JSR sub_F042
-C - - - - - 0x03F4F8 0F:F4E8: 20 88 FB  JSR sub_FB88
+C - - J - - 0x03F4F5 0F:F4E5: 20 42 F0  JSR sub_F042_отрисовать_пустой_экран
+C - - - - - 0x03F4F8 0F:F4E8: 20 88 FB  JSR sub_FB88_disable_irq
 C - - - - - 0x03F4FB 0F:F4EB: 20 09 D0  JSR sub_D009_очистить_оперативку_1
 C - - - - - 0x03F4FE 0F:F4EE: E6 98     INC ram_0098
 C - - - - - 0x03F500 0F:F4F0: A9 00     LDA #$00
@@ -6521,17 +6522,17 @@ C - - - - - 0x03F517 0F:F507: F0 EE     BEQ bra_F4F7    ; jmp
 
 
 
-ofs_000_F509_05:
+ofs_000_F509_05_отрисовать_konami:
 C - - J - - 0x03F519 0F:F509: A5 90     LDA ram_sum_btn_press
 C - - - - - 0x03F51B 0F:F50B: 29 30     AND #con_btns_SS
 C - - - - - 0x03F51D 0F:F50D: D0 55     BNE bra_F564
 C - - - - - 0x03F51F 0F:F50F: A6 21     LDX ram_0021
 C - - - - - 0x03F521 0F:F511: D0 2B     BNE bra_F53E
-C - - - - - 0x03F523 0F:F513: 20 88 FB  JSR sub_FB88
+C - - - - - 0x03F523 0F:F513: 20 88 FB  JSR sub_FB88_disable_irq
 C - - - - - 0x03F526 0F:F516: 20 09 D0  JSR sub_D009_очистить_оперативку_1
-C - - - - - 0x03F529 0F:F519: 20 42 F0  JSR sub_F042
-C - - - - - 0x03F52C 0F:F51C: A2 04     LDX #con_0x03F0EE_04
-C - - - - - 0x03F52E 0F:F51E: 20 44 F0  JSR sub_F044
+C - - - - - 0x03F529 0F:F519: 20 42 F0  JSR sub_F042_отрисовать_пустой_экран
+C - - - - - 0x03F52C 0F:F51C: A2 04     LDX #con_screen_konami
+C - - - - - 0x03F52E 0F:F51E: 20 44 F0  JSR sub_F044_отрисовать_экран
 C - - - - - 0x03F531 0F:F521: A9 00     LDA #$00
 C - - - - - 0x03F533 0F:F523: 20 B0 D3  JSR sub_D3B0
 C - - - - - 0x03F536 0F:F526: 20 90 FC  JSR sub_FC90_set_mirroring_H
@@ -6577,12 +6578,12 @@ C - - - - - 0x03F57C 0F:F56C: 4C 3E E1  JMP loc_E13E
 
 
 
-ofs_000_F56F_06:
+ofs_000_F56F_06_отрисовать_копирайты:
 C - - J - - 0x03F57F 0F:F56F: A6 21     LDX ram_0021
 C - - - - - 0x03F581 0F:F571: D0 1D     BNE bra_F590
 C - - - - - 0x03F583 0F:F573: 20 09 D0  JSR sub_D009_очистить_оперативку_1
-C - - - - - 0x03F586 0F:F576: A2 06     LDX #con_0x03F0EE_06
-C - - - - - 0x03F588 0F:F578: 20 44 F0  JSR sub_F044
+C - - - - - 0x03F586 0F:F576: A2 06     LDX #con_screen_копирайты
+C - - - - - 0x03F588 0F:F578: 20 44 F0  JSR sub_F044_отрисовать_экран
 C - - - - - 0x03F58B 0F:F57B: A9 00     LDA #$00
 C - - - - - 0x03F58D 0F:F57D: 20 B0 D3  JSR sub_D3B0
 C - - - - - 0x03F590 0F:F580: A5 FF     LDA ram_for_2000
@@ -6605,7 +6606,7 @@ ofs_000_F59A_08:
 C - - J - - 0x03F5AA 0F:F59A: A9 00     LDA #$00
 C - - - - - 0x03F5AC 0F:F59C: 8D 75 06  STA ram_0675
 C - - - - - 0x03F5AF 0F:F59F: E6 20     INC ram_0020
-C - - - - - 0x03F5B1 0F:F5A1: 4C 88 FB  JMP loc_FB88
+C - - - - - 0x03F5B1 0F:F5A1: 4C 88 FB  JMP loc_FB88_disable_irq
 
 
 
@@ -6849,13 +6850,13 @@ C - - - - - 0x03F6F2 0F:F6E2: 4C 17 F6  JMP loc_F617_restore_prg
 
 
 
-sub_F6E5_написать_на_экране:
-sub_0x03F6F5_написать_на_экране:
-loc_0x03F6F5_написать_на_экране:
+sub_F6E5_написать_текст_на_экране:
+sub_0x03F6F5_написать_текст_на_экране:
+loc_0x03F6F5_написать_текст_на_экране:
 C D 3 - - - 0x03F6F5 0F:F6E5: 48        PHA
 C - - - - - 0x03F6F6 0F:F6E6: 20 EB F5  JSR sub_F5EB_swap_prg_18
 C - - - - - 0x03F6F9 0F:F6E9: 68        PLA
-C - - - - - 0x03F6FA 0F:F6EA: 20 76 80  JSR sub_0x030086_написать_на_экране
+C - - - - - 0x03F6FA 0F:F6EA: 20 76 80  JSR sub_0x030086_написать_текст_на_экране
 C - - - - - 0x03F6FD 0F:F6ED: 4C 17 F6  JMP loc_F617_restore_prg
 
 
@@ -6898,9 +6899,9 @@ C - - - - - 0x03F733 0F:F723: 4C 17 F6  JMP loc_F617_restore_prg
 
 
 
-sub_F726:
+sub_F726_отрисовать_турнирную_сетку:
 C - - - - - 0x03F736 0F:F726: 20 F3 F5  JSR sub_F5F3_swap_prg_1C
-C - - - - - 0x03F739 0F:F729: 20 BB 82  JSR sub_0x0382CB
+C - - - - - 0x03F739 0F:F729: 20 BB 82  JSR sub_0x0382CB_отрисовать_турнирную_сетку
 C - - - - - 0x03F73C 0F:F72C: 4C 17 F6  JMP loc_F617_restore_prg
 
 
@@ -7099,8 +7100,8 @@ C - - - - - 0x03F830 0F:F820: BD 9A FC  LDA tbl_FC9A_scanline,X
 bra_F823:
 ; bzk optimize, смысл записывать в 004A если он не будет считан?
 C - - - - - 0x03F833 0F:F823: 85 4A     STA ram_copy_C000
-C - - - - - 0x03F835 0F:F825: A0 01     LDY #$01
-C - - - - - 0x03F837 0F:F827: 84 49     STY ram_0049
+C - - - - - 0x03F835 0F:F825: A0 01     LDY #$01    ; enable irq
+C - - - - - 0x03F837 0F:F827: 84 49     STY ram_irq_flag
 C - - - - - 0x03F839 0F:F829: 88        DEY ; 00
 C - - - - - 0x03F83A 0F:F82A: 84 4D     STY ram_004D
 C - - - - - 0x03F83C 0F:F82C: 78        SEI
@@ -7691,12 +7692,12 @@ C - - - - - 0x03FB95 0F:FB85: 4C 8D FB  JMP loc_FB8D
 
 
 
-bra_FB88:
-loc_FB88:
-sub_FB88:
-sub_0x03FB98:
+bra_FB88_disable_irq:
+loc_FB88_disable_irq:
+sub_FB88_disable_irq:
+sub_0x03FB98_disable_irq:
 C D 3 - - - 0x03FB98 0F:FB88: A9 00     LDA #$00
-C - - - - - 0x03FB9A 0F:FB8A: 85 49     STA ram_0049
+C - - - - - 0x03FB9A 0F:FB8A: 85 49     STA ram_irq_flag
 C - - - - - 0x03FB9C 0F:FB8C: 60        RTS
 
 
@@ -7704,14 +7705,14 @@ C - - - - - 0x03FB9C 0F:FB8C: 60        RTS
 sub_FB8D:
 loc_FB8D:
 C D 3 - - - 0x03FB9D 0F:FB8D: 8D 00 E0  STA $E000
-C - - - - - 0x03FBA0 0F:FB90: A5 49     LDA ram_0049
-C - - - - - 0x03FBA2 0F:FB92: 30 F4     BMI bra_FB88
+C - - - - - 0x03FBA0 0F:FB90: A5 49     LDA ram_irq_flag
+C - - - - - 0x03FBA2 0F:FB92: 30 F4     BMI bra_FB88_disable_irq
 C - - - - - 0x03FBA4 0F:FB94: 60        RTS
 
 
 
 sub_FB95:
-C - - - - - 0x03FBA5 0F:FB95: A4 49     LDY ram_0049
+C - - - - - 0x03FBA5 0F:FB95: A4 49     LDY ram_irq_flag
 C - - - - - 0x03FBA7 0F:FB97: 99 00 E0  STA $E000,Y
 C - - - - - 0x03FBAA 0F:FB9A: F0 53     BEQ bra_FBEF_RTS
 C - - - - - 0x03FBAC 0F:FB9C: AD 02 20  LDA $2002
