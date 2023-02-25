@@ -32,7 +32,7 @@
 .export sub_0x03D21C
 .export sub_0x03D228
 .export loc_0x03D228
-.export loc_0x03D266
+.export loc_0x03D266_записать_A_и_FF_в_буфер
 .export sub_0x03D269_записать_FF_в_буфер_без_чтения_индекса
 .export loc_0x03D269_записать_FF_в_буфер_без_чтения_индекса
 .export sub_0x03D26B_записать_FF_в_буфер_с_чтением_индекса
@@ -1076,7 +1076,7 @@ C - - - - - 0x03D248 0F:D238: 60        RTS
 
 
 
-loc_0x03D266:
+loc_0x03D266_записать_A_и_FF_в_буфер:
 C D 2 - - - 0x03D266 0F:D256: 20 5D D2  LDX ram_index_ppu_buffer
                                         STA ram_ppu_buffer,X
                                         INX
