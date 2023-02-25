@@ -1103,7 +1103,15 @@ C D 2 - - - 0x03D269 0F:D259: 86 25     LDA #$FF
 sub_D25B_записать_FF_в_буфер:
 sub_0x03D26B_записать_FF_в_буфер:
 loc_0x03D26B_записать_FF_в_буфер:
-C D 2 - - - 0x03D26B 0F:D25B: A9 FF     LDA #$FF
+C D 2 - - - 0x03D26B 0F:D25B: A9 FF     LDX ram_index_ppu_buffer
+                                        LDA #$FF
+                                        STA ram_ppu_buffer,X
+                                        INX
+                                        STX ram_index_ppu_buffer
+                                        RTS
+
+
+
 sub_D25D_записать_A_в_буфер_с_чтением_индекса:
 sub_0x03D26D_записать_A_в_буфер_с_чтением_индекса:
 loc_0x03D26D_записать_A_в_буфер_с_чтением_индекса:
