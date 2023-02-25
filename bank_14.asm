@@ -6138,12 +6138,12 @@ loc_BED8_loop:
 C D 1 - - - 0x02BEE8 0A:BED8: A9 02     LDA #$02
 C - - - - - 0x02BEEA 0A:BEDA: 20 5D D2  JSR sub_0x03D26D_записать_A_в_буфер_с_чтением_индекса
 C - - - - - 0x02BEED 0A:BEDD: A5 01     LDA ram_0001
-C - - - - - 0x02BEEF 0A:BEDF: 20 5F D2  JSR sub_0x03D26F_записать_A_в_буфер_без_с_сохранением_индекса
+C - - - - - 0x02BEEF 0A:BEDF: 20 5F D2  JSR sub_0x03D26F_записать_A_в_буфер_с_сохранением_индекса
 C - - - - - 0x02BEF2 0A:BEE2: A5 00     LDA ram_0000
-C - - - - - 0x02BEF4 0A:BEE4: 20 5F D2  JSR sub_0x03D26F_записать_A_в_буфер_без_с_сохранением_индекса
+C - - - - - 0x02BEF4 0A:BEE4: 20 5F D2  JSR sub_0x03D26F_записать_A_в_буфер_с_сохранением_индекса
 bra_BEE7_loop:
 C - - - - - 0x02BEF7 0A:BEE7: B9 90 BF  LDA tbl_BF90,Y
-C - - - - - 0x02BEFA 0A:BEEA: 20 5F D2  JSR sub_0x03D26F_записать_A_в_буфер_без_с_сохранением_индекса
+C - - - - - 0x02BEFA 0A:BEEA: 20 5F D2  JSR sub_0x03D26F_записать_A_в_буфер_с_сохранением_индекса
 C - - - - - 0x02BEFD 0A:BEED: C8        INY
 C - - - - - 0x02BEFE 0A:BEEE: C9 FF     CMP #$FF
 C - - - - - 0x02BF00 0A:BEF0: D0 F5     BNE bra_BEE7_loop
@@ -6159,7 +6159,7 @@ C - - - - - 0x02BF10 0A:BF00: BD C4 BF  LDA tbl_BFC4,X
 C - - - - - 0x02BF13 0A:BF03: BC C5 BF  LDY tbl_BFC4 + $01,X
 C - - - - - 0x02BF16 0A:BF06: 20 6B D2  JSR sub_0x03D27B_записать_адрес_2006_Y_и_A_в_буфер
 C - - - - - 0x02BF19 0A:BF09: A9 55     LDA #$55
-C - - - - - 0x02BF1B 0A:BF0B: 20 5F D2  JSR sub_0x03D26F_записать_A_в_буфер_без_с_сохранением_индекса
+C - - - - - 0x02BF1B 0A:BF0B: 20 5F D2  JSR sub_0x03D26F_записать_A_в_буфер_с_сохранением_индекса
 C - - - - - 0x02BF1E 0A:BF0E: 4C 5B D2  JMP loc_0x03D26B_записать_FF_в_буфер_с_чтением_индекса
 
 

@@ -39,7 +39,7 @@
 .export loc_0x03D26B_записать_FF_в_буфер_с_чтением_индекса
 .export sub_0x03D26D_записать_A_в_буфер_с_чтением_индекса
 .export loc_0x03D26D_записать_A_в_буфер_с_чтением_индекса
-.export sub_0x03D26F_записать_A_в_буфер_без_с_сохранением_индекса
+.export sub_0x03D26F_записать_A_в_буфер_с_сохранением_индекса
 .export sub_0x03D276_записать_A_в_буфер_без_сохранения_индекса
 .export sub_0x03D27B_записать_адрес_2006_Y_и_A_в_буфер
 .export sub_0x03D356_записать_3_цвета_в_буфер
@@ -1115,8 +1115,8 @@ C D 2 - - - 0x03D26D 0F:D25D: A6 25     LDX ram_index_ppu_buffer
 
 
 
-sub_D25F_записать_A_в_буфер_без_с_сохранением_индекса:
-sub_0x03D26F_записать_A_в_буфер_без_с_сохранением_индекса:
+sub_D25F_записать_A_в_буфер_с_сохранением_индекса:
+sub_0x03D26F_записать_A_в_буфер_с_сохранением_индекса:
 C D 2 - - - 0x03D26F 0F:D25F: 9D 00 03  STA ram_ppu_buffer,X
 C - - - - - 0x03D272 0F:D262: E8        INX
 C - - - - - 0x03D273 0F:D263: 86 25     STX ram_index_ppu_buffer
@@ -4823,7 +4823,7 @@ C - - - - - 0x03EBDF 0F:EBCF: D0 F3     BNE bra_EBC4_loop
 bra_EBD1:
 bra_EBD1_loop:
 C - - - - - 0x03EBE1 0F:EBD1: B9 01 EC  LDA tbl_EC01_имя_перса_в_статусбаре,Y
-C - - - - - 0x03EBE4 0F:EBD4: 20 5F D2  JSR sub_D25F_записать_A_в_буфер_без_с_сохранением_индекса
+C - - - - - 0x03EBE4 0F:EBD4: 20 5F D2  JSR sub_D25F_записать_A_в_буфер_с_сохранением_индекса
 C - - - - - 0x03EBE7 0F:EBD7: C8        INY
 C - - - - - 0x03EBE8 0F:EBD8: C9 FF     CMP #$FF
 C - - - - - 0x03EBEA 0F:EBDA: D0 F5     BNE bra_EBD1
@@ -4847,7 +4847,7 @@ C - - - - - 0x03EC02 0F:EBF2: D0 F3     BNE bra_EBE7_loop
 bra_EBF4:
 bra_EBF4_loop:
 C - - - - - 0x03EC04 0F:EBF4: B9 2A EC  LDA tbl_EC2A_имя_перса_на_vs_экране,Y
-C - - - - - 0x03EC07 0F:EBF7: 20 5F D2  JSR sub_D25F_записать_A_в_буфер_без_с_сохранением_индекса
+C - - - - - 0x03EC07 0F:EBF7: 20 5F D2  JSR sub_D25F_записать_A_в_буфер_с_сохранением_индекса
 C - - - - - 0x03EC0A 0F:EBFA: C8        INY
 C - - - - - 0x03EC0B 0F:EBFB: C9 FF     CMP #$FF
 C - - - - - 0x03EC0D 0F:EBFD: D0 F5     BNE bra_EBF4_loop
