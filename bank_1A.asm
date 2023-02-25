@@ -1433,6 +1433,7 @@ C - - - - - 0x034899 0D:8889: 29 C3     AND #con_btns_AB + con_btns_LR
 loc_888B:
 C D 0 - - - 0x03489B 0D:888B: 95 91     STA ram_btn_hold,X
 C - - - - - 0x03489D 0D:888D: 9D C6 06  STA ram_06C6,X
+                                        STA ram_06C8,X
 C - - - - - 0x0348A0 0D:8890: 4C 80 BD  JMP loc_BD80
 
 
@@ -7045,8 +7046,6 @@ tbl_BD70:
 
 
 loc_BD80:
-; bzk optimize, добавить этот STA перед JMP
-C D 1 - - - 0x037D90 0D:BD80: 9D C8 06  STA ram_06C8,X
 C - - - - - 0x037D93 0D:BD83: AD 25 01  LDA ram_option_difficulty
 C - - - - - 0x037D96 0D:BD86: C9 03     CMP #$03
 C - - - - - 0x037D98 0D:BD88: 90 58     BCC bra_BDE2
