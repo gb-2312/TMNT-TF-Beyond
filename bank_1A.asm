@@ -350,6 +350,8 @@ C - - - - - 0x034265 0D:8255: A0 00     LDY #$00
 bra_8257_loop:
 C - - - - - 0x034267 0D:8257: B1 0A     LDA (ram_000A),Y
 C - - - - - 0x034269 0D:8259: 20 E3 83  JSR sub_83E3
+; восстановить Y после обработки управляющих байтов
+                                       ;LDY ram_0004
 C - - - - - 0x03426C 0D:825C: 20 14 ED  JSR sub_0x03ED24_запись_cpu_btn
 C - - - - - 0x03426F 0D:825F: C8        INY
 C - - - - - 0x034270 0D:8260: C9 FF     CMP #$FF
@@ -624,19 +626,75 @@ loc_83C6:
 bra_83D5_loop:
 - - - - - - 0x0343E5 0D:83D5: B1 08     LDA (ram_0008),Y
 - - - - - - 0x0343E7 0D:83D7: 20 E3 83  JSR sub_83E3
+                                       ;LDY ram_0004
 - - - - - - 0x0343EA 0D:83DA: 20 14 ED  JSR sub_0x03ED24_запись_cpu_btn
 - - - - - - 0x0343ED 0D:83DD: C8        INY
 - - - - - - 0x0343EE 0D:83DE: C9 FF     CMP #$FF
 - - - - - - 0x0343F0 0D:83E0: D0 F3     BNE bra_83D5_loop
 ; FF
 bra_83E2_RTS:
+ofs_084_83E2_FC_RTS:
+ofs_084_83E2_FF_RTS:
 C - - - - - 0x0343F2 0D:83E2: 60        RTS
 
 
 
 sub_83E3:
-; bzk optimize, создать таблицу с прыжками для управляющих байтов
-; bzk optimize, предположительно тут ниже указаны кнопки, пометить как con_
+; bzk optimize, в некоторых обработчиках указаны кнопки, пометить как con_btn
+                                       ;SEC
+                                       ;SBC #$D0
+                                       ;JSR sub_0x03D042_поинтеры_после_JSR
+                                       ;.word $FFFF      ; D0
+                                       ;.word $FFFF      ; D1
+                                       ;.word $FFFF      ; D2
+                                       ;.word $FFFF      ; D3
+                                       ;.word $FFFF      ; D4
+                                       ;.word $FFFF      ; D5
+                                       ;.word $FFFF      ; D6
+                                       ;.word $FFFF      ; D7
+                                       ;.word $FFFF      ; D8
+                                       ;.word $FFFF      ; D9
+                                       ;.word $FFFF      ; DA
+                                       ;.word $FFFF      ; DB
+                                       ;.word $FFFF      ; DC
+                                       ;.word $FFFF      ; DD
+                                       ;.word ofs_084_83EF_DE
+                                       ;.word ofs_084_841A_DF
+                                       ;.word $FFFF      ; E0
+                                       ;.word $FFFF      ; E1
+                                       ;.word $FFFF      ; E2
+                                       ;.word $FFFF      ; E3
+                                       ;.word $FFFF      ; E4
+                                       ;.word $FFFF      ; E5
+                                       ;.word $FFFF      ; E6
+                                       ;.word $FFFF      ; E7
+                                       ;.word $FFFF      ; E8
+                                       ;.word $FFFF      ; E9
+                                       ;.word $FFFF      ; EA
+                                       ;.word $FFFF      ; EB
+                                       ;.word $FFFF      ; EC
+                                       ;.word $FFFF      ; ED
+                                       ;.word $FFFF      ; EE
+                                       ;.word $FFFF      ; EF
+                                       ;.word ofs_084_83FF_F0
+                                       ;.word ofs_084_8434_F1
+                                       ;.word ofs_084_8409_F2
+                                       ;.word ofs_084_842A_F3
+                                       ;.word ofs_084_8445_F4
+                                       ;.word ofs_084_8456_F5
+                                       ;.word ofs_084_8460_F6
+                                       ;.word ofs_084_846A_F7
+                                       ;.word ofs_084_8413_F8
+                                       ;.word ofs_084_843E_F9
+                                       ;.word ofs_084_844F_FA
+                                       ;.word ofs_084_8474_FB
+                                       ;.word ofs_084_83E2_FC_RTS
+                                       ;.word ofs_084_847B_FD
+                                       ;.word $FFFF      ; FE
+                                       ;.word ofs_084_83E2_FF_RTS
+
+
+
 C - - - - - 0x0343F3 0D:83E3: C9 FF     CMP #$FF
 C - - - - - 0x0343F5 0D:83E5: F0 FB     BEQ bra_83E2_RTS
 C - - - - - 0x0343F7 0D:83E7: C9 FC     CMP #$FC
@@ -646,6 +704,7 @@ C - - - - - 0x0343FD 0D:83ED: D0 0C     BNE bra_83FB
 ; DE
 sub_83EF:
 loc_83EF:
+ofs_084_83EF_DE:
 C - - - - - 0x0343FF 0D:83EF: AD D6 06  LDA ram_06D6
 loc_83F2:
 C D 0 - - - 0x034402 0D:83F2: 0A        ASL
@@ -659,6 +718,7 @@ bra_83FB:
 C - - - - - 0x03440B 0D:83FB: C9 F0     CMP #$F0
 C - - - - - 0x03440D 0D:83FD: D0 06     BNE bra_8405
 ; F0
+ofs_084_83FF_F0:
 C - - - - - 0x03440F 0D:83FF: 20 EF 83  JSR sub_83EF
 C - - - - - 0x034412 0D:8402: 09 08     ORA #$08
 C - - - - - 0x034414 0D:8404: 60        RTS
@@ -666,6 +726,7 @@ bra_8405:
 C - - - - - 0x034415 0D:8405: C9 F2     CMP #$F2
 C - - - - - 0x034417 0D:8407: D0 06     BNE bra_840F
 ; F2
+ofs_084_8409_F2:
 C - - - - - 0x034419 0D:8409: 20 EF 83  JSR sub_83EF
 C - - - - - 0x03441C 0D:840C: 09 04     ORA #$04
 C - - - - - 0x03441E 0D:840E: 60        RTS
@@ -673,12 +734,15 @@ bra_840F:
 C - - - - - 0x03441F 0D:840F: C9 F8     CMP #$F8
 C - - - - - 0x034421 0D:8411: D0 03     BNE bra_8416
 ; F8
+ofs_084_8413_F8:    ; bzk optimize
+                                       ;LDA #$F8
 - - - - - - 0x034423 0D:8413: 4C C6 83  JMP loc_83C6
 bra_8416:
 C - - - - - 0x034426 0D:8416: C9 DF     CMP #$DF
 C - - - - - 0x034428 0D:8418: D0 0C     BNE bra_8426
 ; DF
-sub_841A:
+sub_841A:    ; bzk optimize
+ofs_084_841A_DF:    ; bzk optimize
 C - - - - - 0x03442A 0D:841A: 4C 9D A4  JMP loc_A49D
 loc_841D:
 C D 0 - - - 0x03442D 0D:841D: 0A        ASL
@@ -692,6 +756,7 @@ bra_8426:
 C - - - - - 0x034436 0D:8426: C9 F3     CMP #$F3
 C - - - - - 0x034438 0D:8428: D0 06     BNE bra_8430
 ; F3
+ofs_084_842A_F3:
 C - - - - - 0x03443A 0D:842A: 20 1A 84  JSR sub_841A
 C - - - - - 0x03443D 0D:842D: 09 04     ORA #$04
 C - - - - - 0x03443F 0D:842F: 60        RTS
@@ -699,6 +764,7 @@ bra_8430:
 C - - - - - 0x034440 0D:8430: C9 F1     CMP #$F1
 C - - - - - 0x034442 0D:8432: D0 06     BNE bra_843A
 ; F1
+ofs_084_8434_F1:
 C - - - - - 0x034444 0D:8434: 20 1A 84  JSR sub_841A
 C - - - - - 0x034447 0D:8437: 09 08     ORA #$08
 C - - - - - 0x034449 0D:8439: 60        RTS
@@ -706,28 +772,35 @@ bra_843A:
 C - - - - - 0x03444A 0D:843A: C9 F9     CMP #$F9
 C - - - - - 0x03444C 0D:843C: D0 03     BNE bra_8441
 ; F9
+ofs_084_843E_F9:    ; bzk optimize
+                                       ;LDA #$F9
 - - - - - - 0x03444E 0D:843E: 4C C6 83  JMP loc_83C6
 bra_8441:
 C - - - - - 0x034451 0D:8441: C9 F4     CMP #$F4
 C - - - - - 0x034453 0D:8443: D0 06     BNE bra_844B
 ; F4
+ofs_084_8445_F4:
 C - - - - - 0x034455 0D:8445: AD D8 06  LDA ram_06D8
 C - - - - - 0x034458 0D:8448: 4C F2 83  JMP loc_83F2
 bra_844B:
 C - - - - - 0x03445B 0D:844B: C9 FA     CMP #$FA
 C - - - - - 0x03445D 0D:844D: D0 03     BNE bra_8452
 ; FA
+ofs_084_844F_FA:    ; bzk optimize
+                                       ;LDA #$FA
 - - - - - - 0x03445F 0D:844F: 4C C6 83  JMP loc_83C6
 bra_8452:
 C - - - - - 0x034462 0D:8452: C9 F5     CMP #$F5
 C - - - - - 0x034464 0D:8454: D0 06     BNE bra_845C
 ; F5
+ofs_084_8456_F5:
 - - - - - - 0x034466 0D:8456: AD D8 06  LDA ram_06D8
 - - - - - - 0x034469 0D:8459: 4C 1D 84  JMP loc_841D
 bra_845C:
 C - - - - - 0x03446C 0D:845C: C9 F6     CMP #$F6
 C - - - - - 0x03446E 0D:845E: D0 06     BNE bra_8466
 ; F6
+ofs_084_8460_F6:
 C - - - - - 0x034470 0D:8460: 20 EF 83  JSR sub_83EF
 C - - - - - 0x034473 0D:8463: 09 80     ORA #$80
 C - - - - - 0x034475 0D:8465: 60        RTS
@@ -735,6 +808,7 @@ bra_8466:
 C - - - - - 0x034476 0D:8466: C9 F7     CMP #$F7
 C - - - - - 0x034478 0D:8468: D0 06     BNE bra_8470
 ; F7
+ofs_084_846A_F7:
 C - - - - - 0x03447A 0D:846A: 20 EF 83  JSR sub_83EF
 C - - - - - 0x03447D 0D:846D: 09 40     ORA #$40
 C - - - - - 0x03447F 0D:846F: 60        RTS
@@ -742,12 +816,17 @@ bra_8470:
 C - - - - - 0x034480 0D:8470: C9 FB     CMP #$FB
 C - - - - - 0x034482 0D:8472: D0 03     BNE bra_8477
 ; FB
+ofs_084_8474_FB:    ; bzk optimize
+                                       ;LDA #$FB
 - - - - - - 0x034484 0D:8474: 4C C6 83  JMP loc_83C6
 bra_8477:
 C - - - - - 0x034487 0D:8477: C9 FD     CMP #$FD
 C - - - - - 0x034489 0D:8479: D0 05     BNE bra_8480_RTS
 ; FD
+ofs_084_847B_FD:
+                                       ;LDA #$FD
 C - - - - - 0x03448B 0D:847B: 20 14 ED  JSR sub_0x03ED24_запись_cpu_btn
+                                       ;LDY ram_0004
 C - - - - - 0x03448E 0D:847E: B1 0A     LDA (ram_000A),Y
 bra_8480_RTS:
 C - - - - - 0x034490 0D:8480: 60        RTS
