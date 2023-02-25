@@ -549,6 +549,7 @@ C - - - - - 0x03D08B 0F:D07B: 60        RTS
 
 sub_0x03D08C:
 loc_0x03D08C:
+; смотреть con_0x03D0C3
 ; bzk optimize, объединить таблицы с длиной, продолжительностью и кадрами в одну общую таблицу
 ; считывать длину как 00, продолжительность как 01, а список из кадров как 02+
 C D 2 - - - 0x03D08C 0F:D07C: B9 E7 D0  LDA tbl_D0E7_колво_картинок_в_анимации,Y
@@ -643,46 +644,46 @@ tbl_D0CD_продолжительность_кадра_анимации:
 
 tbl_D0E7_колво_картинок_в_анимации:
 ; количество кадров
-; 00 черепахи 0x02410A
+; 00 черепахи
 - D 2 - - - 0x03D0F7 0F:D0E7: 02        .byte con_D101_00_len   ; 00
 - - - - - - 0x03D0F8 0F:D0E8: 0A        .byte con_D104_01_len   ; 01
 - D 2 - - - 0x03D0F9 0F:D0E9: 03        .byte con_D10F_02_len   ; 02
-; 03 0x027521
+; 03
 - D 2 - - - 0x03D0FA 0F:D0EA: 02        .byte con_D113_03_len   ; 03
-; 04 черепахи 0x038FEC
+; 04 черепахи
 - D 2 - - - 0x03D0FB 0F:D0EB: 05        .byte con_D116_04_len   ; 04
 - D 2 - - - 0x03D0FC 0F:D0EC: 05        .byte con_D11C_05_len   ; 05
-; 06 casey 0x02410A 0x038FEC
+; 06 casey
 - D 2 - - - 0x03D0FD 0F:D0ED: 03        .byte con_D122_06_len   ; 06
 - D 2 - - - 0x03D0FE 0F:D0EE: 03        .byte con_D126_07_len   ; 07
 - D 2 - - - 0x03D0FF 0F:D0EF: 03        .byte con_D126_08_len   ; 08
 - D 2 - - - 0x03D100 0F:D0F0: 03        .byte con_D10F_09_len   ; 09
-; 0A hot 0x038FEC
+; 0A hot
 - D 2 - - - 0x03D101 0F:D0F1: 05        .byte con_D12A_0A_len   ; 0A
 - D 2 - - - 0x03D102 0F:D0F2: 03        .byte con_D134_0B_len   ; 0B
-; 0C hot 0x02410A
+; 0C hot
 - D 2 - - - 0x03D103 0F:D0F3: 03        .byte con_D130_0C_len   ; 0C
 - D 2 - - - 0x03D104 0F:D0F4: 03        .byte con_D134_0D_len   ; 0D
-; 0E 0x039780 0x039785
+; 0E
 - D 2 - - - 0x03D105 0F:D0F5: 05        .byte con_D138_0E_len   ; 0E
 - D 2 - - - 0x03D106 0F:D0F6: 03        .byte con_D13E_0F_len   ; 0F
-; 10 shred 0x02410A 0x038FEC
+; 10 shred
 - D 2 - - - 0x03D107 0F:D0F7: 03        .byte con_D142_10_len   ; 10
 - D 2 - - - 0x03D108 0F:D0F8: 03        .byte con_D146_11_len   ; 11
-; 12 0x026407
+; 12
 - D 2 - - - 0x03D109 0F:D0F9: 02        .byte con_D14A_12_len   ; 12
-; 13 черепахи, hot, shred 0x0245A6
+; 13 черепахи, hot, shred
 - D 2 - - - 0x03D10A 0F:D0FA: 03        .byte con_D14D_13_len   ; 13
-; 14 0x024DCA 0x024EA2
+; 14
 - D 2 - - - 0x03D10B 0F:D0FB: 03        .byte con_D151_14_len   ; 14
-; 15 casey 0x0245A6
+; 15 casey
 - D 2 - - - 0x03D10C 0F:D0FC: 04        .byte con_D155_15_len   ; 15
 - D 2 - - - 0x03D10D 0F:D0FD: 04        .byte con_D15A_16_len   ; 16
-; 17 0x02616D
+; 17
 - D 2 - - - 0x03D10E 0F:D0FE: 02        .byte con_D15F_17_len   ; 17
-; 18 0x0266AF
+; 18
 - D 2 - - - 0x03D10F 0F:D0FF: 03        .byte con_D162_18_len   ; 18
-; 19 0x03972B
+; 19
 - D 2 - - - 0x03D110 0F:D100: 03        .byte con_D166_19_len   ; 19
 
 

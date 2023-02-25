@@ -326,6 +326,35 @@ con_0x03F0EE_3E                         = $3E ;
 
 
 
+; смотреть 0x03D08F
+con_0x03D0C3_00                         = $00 ; черепахи
+; con_0x03D0C3_01                       = $01 ; 
+con_0x03D0C3_02                         = $02 ; черепахи
+con_0x03D0C3_03                         = $03 ; ?
+con_0x03D0C3_04                         = $04 ; черепахи
+con_0x03D0C3_05                         = $05 ; casey
+con_0x03D0C3_06                         = $06 ; casey
+con_0x03D0C3_07                         = $07 ; casey
+con_0x03D0C3_08                         = $08 ; casey
+con_0x03D0C3_09                         = $09 ; черепахи
+con_0x03D0C3_0A                         = $0A ; hot
+con_0x03D0C3_0B                         = $0B ; hot
+con_0x03D0C3_0C                         = $0C ; hot
+con_0x03D0C3_0D                         = $0D ; hot
+con_0x03D0C3_0E                         = $0E ; shred
+con_0x03D0C3_0F                         = $0F ; shred
+con_0x03D0C3_10                         = $10 ; shred
+con_0x03D0C3_11                         = $11 ; shred
+con_0x03D0C3_12                         = $12 ; ?
+con_0x03D0C3_13                         = $13 ; все персы
+con_0x03D0C3_14                         = $14 ; ? все персы
+con_0x03D0C3_15                         = $15 ; casey
+con_0x03D0C3_16                         = $16 ; casey
+con_0x03D0C3_17                         = $17 ; ?
+con_0x03D0C3_18                         = $18 ; ?
+con_0x03D0C3_19                         = $19 ; ?
+
+
 
 
 
