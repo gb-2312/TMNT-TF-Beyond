@@ -1116,6 +1116,13 @@ sub_D25D_записать_A_в_буфер_с_чтением_индекса:
 sub_0x03D26D_записать_A_в_буфер_с_чтением_индекса:
 loc_0x03D26D_записать_A_в_буфер_с_чтением_индекса:
 C D 2 - - - 0x03D26D 0F:D25D: A6 25     LDX ram_index_ppu_buffer
+                                        STA ram_ppu_buffer,X
+                                        INX
+                                        STX ram_index_ppu_buffer
+                                        RTS
+
+
+
 sub_D25F_записать_A_в_буфер_без_чтения_индекса:
 sub_0x03D26F_записать_A_в_буфер_без_чтения_индекса:
 C D 2 - - - 0x03D26F 0F:D25F: 9D 00 03  STA ram_ppu_buffer,X
