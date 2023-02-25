@@ -44,8 +44,6 @@
 
 sub_0x024014:
 C - - - - - 0x024014 09:8004: 20 3B FF  JSR sub_0x03FF4B
-; bzk optimize
-C - - - - - 0x024017 09:8007: EA        NOP
 loc_0x024018:
 sub_0x024018:
 C D 0 - - - 0x024018 09:8008: A6 AD     LDX ram_00AD
@@ -1516,13 +1514,6 @@ C - - - - - 0x024A7F 09:8A6F: C9 04     CMP #$04
 C - - - - - 0x024A81 09:8A71: F0 48     BEQ bra_8ABB_RTS
 C - - - - - 0x024A83 09:8A73: A6 A9     LDX ram_global_obj_index
 C - - - - - 0x024A85 09:8A75: FE 49 06  INC ram_0649,X
-; bzk optimize
-C - - - - - 0x024A88 09:8A78: EA        NOP
-C - - - - - 0x024A89 09:8A79: EA        NOP
-C - - - - - 0x024A8A 09:8A7A: EA        NOP
-C - - - - - 0x024A8B 09:8A7B: EA        NOP
-C - - - - - 0x024A8C 09:8A7C: EA        NOP
-C - - - - - 0x024A8D 09:8A7D: EA        NOP
 C - - - - - 0x024A8E 09:8A7E: 4C 3F EB  JMP loc_0x03EB4F
 
 
@@ -2496,7 +2487,6 @@ C - - - - - 0x025123 09:9113: C9 F0     CMP #$F0
 C - - - - - 0x025125 09:9115: B0 1C     BCS bra_9133
 C - - - - - 0x025127 09:9117: A9 00     LDA #$00
 C - - - - - 0x025129 09:9119: 99 C0 04  STA ram_obj_04C0,Y
-C - - - - - 0x02512C 09:911C: EA        NOP
 bra_911D:
 C - - - - - 0x02512D 09:911D: BD 10 05  LDA ram_obj_0510,X
 C - - - - - 0x025130 09:9120: 0A        ASL
@@ -6321,9 +6311,6 @@ C - - J - - 0x026651 09:A641: A9 00     LDA #$00
 C - - - - - 0x026653 09:A643: A8        TAY
 C - - - - - 0x026654 09:A644: 20 75 A4  JSR sub_A475
 C - - - - - 0x026657 09:A647: 20 13 A3  JSR sub_A313
-; bzk optimize
-C - - - - - 0x02665A 09:A64A: EA        NOP
-C - - - - - 0x02665B 09:A64B: EA        NOP
 C - - - - - 0x02665C 09:A64C: 20 39 9E  JSR sub_9E39
 C - - - - - 0x02665F 09:A64F: 9D 60 05  STA ram_obj_0560,X ; 0564 0565 
 C - - - - - 0x026662 09:A652: A9 90     LDA #$90
@@ -7138,8 +7125,6 @@ C - - - - - 0x026AAF 09:AA9F: A9 80     LDA #$80
 C - - - - - 0x026AB1 09:AAA1: 8D 86 05  STA ram_obj_0580 + $06
 bra_AAA4:
 C - - - - - 0x026AB4 09:AAA4: 20 47 9E  JSR sub_9E47
-; bzk optimize
-C - - - - - 0x026AB7 09:AAA7: EA        NOP
 C - - - - - 0x026AB8 09:AAA8: A4 A9     LDY ram_global_obj_index
 C - - - - - 0x026ABA 09:AAAA: A6 A8     LDX ram_00A8
 C - - - - - 0x026ABC 09:AAAC: B9 B0 05  LDA ram_obj_05B0,Y ; 05B2 05B3 05B4 05B5 05B6 
@@ -7218,8 +7203,6 @@ bra_AB40_RTS:
 C - - - - - 0x026B50 09:AB40: 60        RTS
 bra_AB41:
 C - - - - - 0x026B51 09:AB41: 20 44 9E  JSR sub_9E44
-; bzk optimize
-C - - - - - 0x026B54 09:AB44: EA        NOP
 C - - - - - 0x026B55 09:AB45: 4C 5B AA  JMP loc_AA5B
 bra_AB48:
 C - - - - - 0x026B58 09:AB48: A9 82     LDA #$82
@@ -7400,9 +7383,6 @@ C - - - - - 0x026C91 09:AC81: C0 06     CPY #$06
 C - - - - - 0x026C93 09:AC83: D0 07     BNE bra_AC8C
 C - - - - - 0x026C95 09:AC85: CC 04 01  CPY ram_0104
 C - - - - - 0x026C98 09:AC88: E9 01     SBC #$01
-; bzk optimize
-C - - - - - 0x026C9A 09:AC8A: EA        NOP
-C - - - - - 0x026C9B 09:AC8B: EA        NOP
 bra_AC8C:
 C - - - - - 0x026C9C 09:AC8C: 18        CLC
 C - - - - - 0x026C9D 09:AC8D: 7D 2C 06  ADC ram_plr_062C,X ; 062C 062D 
@@ -8295,9 +8275,6 @@ C - - - - - 0x027178 09:B168: A6 01     LDX ram_0001
 C - - - - - 0x02717A 09:B16A: AD 2B 01  LDA ram_option_misc
 C - - - - - 0x02717D 09:B16D: 29 02     AND #$02
 C - - - - - 0x02717F 09:B16F: 20 EA D5  JSR sub_0x03D5FA
-; bzk optimize
-C - - - - - 0x027182 09:B172: EA        NOP
-C - - - - - 0x027183 09:B173: EA        NOP
 bra_B174:
 C - - - - - 0x027184 09:B174: C6 01     DEC ram_0001
 C - - - - - 0x027186 09:B176: C6 01     DEC ram_0001
@@ -10102,10 +10079,6 @@ C - - - - - 0x027BDD 09:BBCD: E6 2A     INC ram_002A
 C - - - - - 0x027BDF 09:BBCF: 20 96 EA  JSR sub_0x03EAA6
 C - - - - - 0x027BE2 09:BBD2: 20 75 F7  JSR sub_0x03F785
 C - - - - - 0x027BE5 09:BBD5: 20 A0 EF  JSR sub_0x03EFB0
-; bzk optimize
-C - - - - - 0x027BE8 09:BBD8: EA        NOP
-C - - - - - 0x027BE9 09:BBD9: EA        NOP
-C - - - - - 0x027BEA 09:BBDA: EA        NOP
 C - - - - - 0x027BEB 09:BBDB: A2 00     LDX #$00
 C - - - - - 0x027BED 09:BBDD: 86 AD     STX ram_00AD
 ; bzk optimize, загрузка из того же адреса
