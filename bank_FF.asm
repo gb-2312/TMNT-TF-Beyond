@@ -1093,7 +1093,6 @@ sub_D25D_записать_A_в_буфер_с_чтением_индекса:
 sub_0x03D26D_записать_A_в_буфер_с_чтением_индекса:
 loc_0x03D26D_записать_A_в_буфер_с_чтением_индекса:
 C D 2 - - - 0x03D26D 0F:D25D: A6 25     LDX ram_index_ppu_buffer
-loc_D25F_записать_A_в_буфер_без_чтения_индекса:
 sub_D25F_записать_A_в_буфер_без_чтения_индекса:
 sub_0x03D26F_записать_A_в_буфер_без_чтения_индекса:
 C D 2 - - - 0x03D26F 0F:D25F: 9D 00 03  STA ram_ppu_buffer,X
@@ -1116,13 +1115,20 @@ sub_D26B_записать_адрес_2006_Y_и_A_в_буфер:
 sub_0x03D27B_записать_адрес_2006_Y_и_A_в_буфер:
 ; A = 2006 hi
 ; Y = 2006 lo
-C - - - - - 0x03D27B 0F:D26B: 48        PHA
+; bzk optimize
+C - - - - - 0x03D27B 0F:D26B: 48        PHA ; 2006 hi
+                                        LDX ram_index_ppu_buffer
 C - - - - - 0x03D27C 0F:D26C: A9 01     LDA #con_buf_mode_01
-C - - - - - 0x03D27E 0F:D26E: 20 5D D2  JSR sub_D25D_записать_A_в_буфер_с_чтением_индекса
-C - - - - - 0x03D281 0F:D271: 98        TYA
-C - - - - - 0x03D282 0F:D272: 20 66 D2  JSR sub_D266_записать_A_в_буфер_без_сохранения_индекса
-C - - - - - 0x03D285 0F:D275: 68        PLA
-C - - - - - 0x03D286 0F:D276: 4C 5F D2  JMP loc_D25F_записать_A_в_буфер_без_чтения_индекса
+C - - - - - 0x03D27E 0F:D26E: 20 5D D2  STA ram_ppu_buffer,X
+                                        INX
+C - - - - - 0x03D281 0F:D271: 98        TYA ; 2006 lo
+C - - - - - 0x03D282 0F:D272: 20 66 D2  STA ram_ppu_buffer,X
+                                        INX
+C - - - - - 0x03D285 0F:D275: 68        PLA ; 2006 hi
+C - - - - - 0x03D286 0F:D276: 4C 5F D2  STA ram_ppu_buffer,X
+                                        INX
+                                        STX ram_index_ppu_buffer
+                                        RTS
 
 
 
