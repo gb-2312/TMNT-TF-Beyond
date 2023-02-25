@@ -1880,9 +1880,6 @@ C - - - - - 0x038B5F 0E:8B4F: 4C CB 8A  JMP loc_8ACB
 
 
 ofs_012_8B52_02:
-; bzk optimize
-C - - J - - 0x038B62 0E:8B52: EA        NOP
-C - - - - - 0x038B63 0E:8B53: EA        NOP
 C - - - - - 0x038B64 0E:8B54: 20 40 A7  JSR sub_A740
 C - - - - - 0x038B67 0E:8B57: D0 F3     BNE bra_8B4C
 C - - - - - 0x038B69 0E:8B59: 20 55 8C  JSR sub_8C55
@@ -3902,8 +3899,6 @@ C - - - - - 0x0398A6 0E:9896: D0 F9     BNE bra_9891_RTS
 C - - - - - 0x0398A8 0E:9898: CE 60 05  DEC ram_obj_0560
 C - - - - - 0x0398AB 0E:989B: D0 F4     BNE bra_9891_RTS
 C - - - - - 0x0398AD 0E:989D: 20 A4 A5  JSR sub_A5A4_проверить_на_сложность_expert
-; bzk optimize
-C - - - - - 0x0398B0 0E:98A0: EA        NOP
 C - - - - - 0x0398B1 0E:98A1: 90 05     BCC bra_98A8
 ; if expert
 - - - - - - 0x0398B3 0E:98A3: E6 21     INC ram_0021
