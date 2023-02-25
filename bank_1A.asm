@@ -776,8 +776,18 @@ C - - - - - 0x03440A 0D:83FA: 60        RTS
 
 
 
-ofs_084_841A_DF:    ; bzk optimize
-C - - - - - 0x03442A 0D:841A: 4C 9D A4  JMP loc_A49D
+sub_A49D:
+ofs_084_841A_DF:
+C D 1 - - - 0x0364AD 0D:A49D: BD 50 05  LDA ram_obj_id,X
+C - - - - - 0x0364B0 0D:A4A0: C9 06     CMP #$06
+C - - - - - 0x0364B2 0D:A4A2: D0 0A     BNE bra_A4AE
+C - - - - - 0x0364B4 0D:A4A4: BD C0 06  LDA ram_06C0,X
+C - - - - - 0x0364B7 0D:A4A7: C9 40     CMP #$40
+C - - - - - 0x0364B9 0D:A4A9: D0 03     BNE bra_A4AE
+- - - - - - 0x0364BB 0D:A4AB: 4C EF 83  JMP loc_83EF
+bra_A4AE:
+C - - - - - 0x0364BE 0D:A4AE: AD D6 06  LDA ram_06D6
+C - - - - - 0x0364C1 0D:A4B1: 4C 1D 84  JMP loc_841D
 
 
 
@@ -6557,21 +6567,6 @@ C - - - - - 0x03648A 0D:A47A: 90 1E     BCC bra_A49A
 bra_A49A:
 C - - - - - 0x0364AA 0D:A49A: A9 25     LDA #$25
 C - - - - - 0x0364AC 0D:A49C: 60        RTS
-
-
-
-loc_A49D:
-sub_A49D:
-C D 1 - - - 0x0364AD 0D:A49D: BD 50 05  LDA ram_obj_id,X
-C - - - - - 0x0364B0 0D:A4A0: C9 06     CMP #$06
-C - - - - - 0x0364B2 0D:A4A2: D0 0A     BNE bra_A4AE
-C - - - - - 0x0364B4 0D:A4A4: BD C0 06  LDA ram_06C0,X
-C - - - - - 0x0364B7 0D:A4A7: C9 40     CMP #$40
-C - - - - - 0x0364B9 0D:A4A9: D0 03     BNE bra_A4AE
-- - - - - - 0x0364BB 0D:A4AB: 4C EF 83  JMP loc_83EF
-bra_A4AE:
-C - - - - - 0x0364BE 0D:A4AE: AD D6 06  LDA ram_06D6
-C - - - - - 0x0364C1 0D:A4B1: 4C 1D 84  JMP loc_841D
 
 
 
