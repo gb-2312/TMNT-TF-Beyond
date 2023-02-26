@@ -5786,7 +5786,37 @@ sub_0x03F04F:
 C - - - - - 0x03F04F 0F:F03F: 20 BE DA  JSR sub_DABE_удалить_все_объекты
 sub_F042_отрисовать_пустой_экран:
 loc_0x03F052_отрисовать_пустой_экран:
-C D 3 - - - 0x03F052 0F:F042: A2 00     LDX #con_screen_00
+                                        JSR sub_F2D6_nmi_off
+C D 3 - - - 0x03F052 0F:F042: A2 00     LDX #$00
+                                        BIT $2002
+                                        LDA #> $2000
+                                        STA $2006
+                                        LDA #< $2000
+                                        STA $2006
+                                        LDY #$00
+@loop_2000_23FF:
+                                        STX $2007
+                                        STX $2007
+                                        STX $2007
+                                        STX $2007
+                                        INY
+                                        BNE @loop_2000_23FF
+; Y = 00
+                                        LDA #> $2C00
+                                        STA $2006
+                                        LDA #< $2C00
+                                        STA $2006
+@loop_2C00_2FFF:
+                                        STX $2007
+                                        STX $2007
+                                        STX $2007
+                                        STX $2007
+                                        INY
+                                        BNE @loop_2C00_2FFF
+                                        JMP loc_F2B5_восстановить_2000
+
+
+
 sub_F044_отрисовать_экран:
 sub_0x03F054_отрисовать_экран:
 ; Y свободен
