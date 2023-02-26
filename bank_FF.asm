@@ -5782,6 +5782,15 @@ sub_0x03F054_отрисовать_экран:
                                         STA ram_0002
                                         LDA tbl_0x03F0EF_размер_экрана + $01,X
                                         STA ram_0003
+                                        LDA tbl_0x03F0EE_поинтеры_на_экраны,X
+                                        STA ram_0000
+                                        CLC
+                                        ADC ram_0002
+                                        STA ram_0002
+                                        LDA tbl_0x03F0EE_поинтеры_на_экраны + $01,X
+                                        STA ram_0001
+                                        ADC ram_0003
+                                        STA ram_0003
                                         PLA ; индекс экрана
                                         TAY
 C - - - - - 0x03F057 0F:F047: B9 B8 E3  LDA tbl_0x03E3C8_prg_bank_с_данными_экрана,Y
@@ -5789,16 +5798,6 @@ C - - - - - 0x03F057 0F:F047: B9 B8 E3  LDA tbl_0x03E3C8_prg_bank_с_данны�
                                         JSR sub_F617_restore_prg
                                         PLA ; номер банка
 C - - - - - 0x03F05A 0F:F04A: 20 F9 F5  JSR sub_F5F9_swap_prg_A_id
-; bzk optimize, поинтеры на экраны тоже можно переместить в банк 08
-                                        LDA tbl_F0DE_поинтеры_на_экраны,X
-                                        STA ram_0000
-                                        CLC
-                                        ADC ram_0002
-                                        STA ram_0002
-                                        LDA tbl_F0DE_поинтеры_на_экраны + $01,X
-                                        STA ram_0001
-                                        ADC ram_0003
-                                        STA ram_0003
 bra_F077_loop:
                                         LDY #$00
                                         LDA (ram_0000),Y
@@ -5815,42 +5814,6 @@ bra_F078_not_overflow:
                                         BNE bra_F077_loop
                                         JSR sub_F2B5_восстановить_2000
 C - - - - - 0x03F060 0F:F050: 4C 17 F6  JMP loc_F617_restore_prg
-
-
-
-tbl_F0DE_поинтеры_на_экраны:
-- D 3 - - - 0x03F0EE 0F:F0DE: 43 F1     .word _off006_screen_00
-- D 3 - - - 0x03F0F0 0F:F0E0: A5 83     .word _off006_screen_01
-- D 3 - - - 0x03F0F2 0F:F0E2: 6A 83     .word _off006_screen_02
-- D 3 - - - 0x03F0F4 0F:F0E4: 80 B9     .word _off006_screen_03
-- D 3 - - - 0x03F0F6 0F:F0E6: 60 84     .word _off006_screen_04
-- D 3 - - - 0x03F0F8 0F:F0E8: 5F 87     .word _off006_screen_05
-- D 3 - - - 0x03F0FA 0F:F0EA: 35 84     .word _off006_screen_06
-- D 3 - - - 0x03F0FC 0F:F0EC: DB 8B     .word _off006_screen_07
-- D 3 - - - 0x03F0FE 0F:F0EE: F4 8E     .word _off006_screen_08
-- D 3 - - - 0x03F100 0F:F0F0: 46 90     .word _off006_screen_09
-- D 3 - - - 0x03F102 0F:F0F2: 3F 91     .word _off006_screen_0A
-- D 3 - - - 0x03F104 0F:F0F4: 9C 94     .word _off006_screen_0B
-- D 3 - - - 0x03F106 0F:F0F6: 8E 9F     .word _off006_screen_0C
-- D 3 - - - 0x03F108 0F:F0F8: 61 EF     .word _off006_screen_0D
-- D 3 - - - 0x03F10A 0F:F0FA: 39 96     .word _off006_screen_0E
-- D 3 - - - 0x03F10C 0F:F0FC: 47 84     .word _off006_screen_0F
-- D 3 - - - 0x03F10E 0F:F0FE: B2 99     .word _off006_screen_10
-- D 3 - - - 0x03F110 0F:F100: A6 9B     .word _off006_screen_11
-- D 3 - - - 0x03F112 0F:F102: 44 9C     .word _off006_screen_12
-- D 3 - - - 0x03F114 0F:F104: 04 9D     .word _off006_screen_13
-- D 3 - - - 0x03F116 0F:F106: AE 9E     .word _off006_screen_14
-- D 3 - - - 0x03F118 0F:F108: 75 A0     .word _off006_screen_15
-- D 3 - - - 0x03F11A 0F:F10A: 81 A1     .word _off006_screen_16
-- D 3 - - - 0x03F11C 0F:F10C: 77 A2     .word _off006_screen_17
-- D 3 - - - 0x03F11E 0F:F10E: CF A2     .word _off006_screen_18
-- D 3 - - - 0x03F120 0F:F110: 3D A3     .word _off006_screen_19
-- D 3 - - - 0x03F122 0F:F112: B4 A3     .word _off006_screen_1A
-- D 3 - - - 0x03F124 0F:F114: 29 A4     .word _off006_screen_1B
-- D 3 - - - 0x03F126 0F:F116: 95 A4     .word _off006_screen_1C
-- D 3 - - - 0x03F128 0F:F118: 0E A5     .word _off006_screen_1D
-- D 3 - - - 0x03F12A 0F:F11A: 00 80     .word _off006_screen_1E
-- D 3 - - - 0x03F12C 0F:F11C: 00 82     .word _off006_screen_1F
 
 
 

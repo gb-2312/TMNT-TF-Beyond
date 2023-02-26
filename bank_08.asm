@@ -10,6 +10,7 @@
 .export _off006_screen_0E
 .export tbl_0x03F0EF_начальный_адрес_экрана
 .export tbl_0x03F0EF_размер_экрана
+.export tbl_0x03F0EE_поинтеры_на_экраны
 .export tbl_0x03E3C8_prg_bank_с_данными_экрана
 
 
@@ -91,6 +92,43 @@ tbl_0x03F0EF_размер_экрана:
     .word $0400 ; 1D
     .word $0400 ; 1E
     .word $0800 ; 1F
+
+
+
+tbl_0x03F0EE_поинтеры_на_экраны:
+; перемещено из банка FF
+    .word _off006_screen_00
+    .word _off006_screen_01
+    .word _off006_screen_02
+    .word _off006_screen_03
+    .word _off006_screen_04
+    .word _off006_screen_05
+    .word _off006_screen_06
+    .word _off006_screen_07
+    .word _off006_screen_08
+    .word _off006_screen_09
+    .word _off006_screen_0A
+    .word _off006_screen_0B
+    .word _off006_screen_0C
+    .word _off006_screen_0D
+    .word _off006_screen_0E
+    .word _off006_screen_0F
+    .word _off006_screen_10
+    .word _off006_screen_11
+    .word _off006_screen_12
+    .word _off006_screen_13
+    .word _off006_screen_14
+    .word _off006_screen_15
+    .word _off006_screen_16
+    .word _off006_screen_17
+    .word _off006_screen_18
+    .word _off006_screen_19
+    .word _off006_screen_1A
+    .word _off006_screen_1B
+    .word _off006_screen_1C
+    .word _off006_screen_1D
+    .word _off006_screen_1E
+    .word _off006_screen_1F
 
 
 
