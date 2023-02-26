@@ -10122,21 +10122,23 @@ C - - - - - 0x027AD1 09:BAC1: DE 28 06  DEC ram_plr_0628,X ; 0628 0629
 C - - - - - 0x027AD4 09:BAC4: F0 16     BEQ bra_BADC
 C - - - - - 0x027AD6 09:BAC6: B5 8E     LDA ram_btn_press,X
 C - - - - - 0x027AD8 09:BAC8: 29 03     AND #con_btns_LR
-C - - - - - 0x027ADA 09:BACA: F0 E2     BEQ bra_BAAE_RTS
+C - - - - - 0x027ADA 09:BACA: F0 E2     BEQ bra_BAD4_RTS
 C - - - - - 0x027ADC 09:BACC: 3D 24 06  AND ram_plr_0624,X ; 0624 0625 
 C - - - - - 0x027ADF 09:BACF: F0 CA     BEQ bra_BA9B
 C - - - - - 0x027AE1 09:BAD1: FE 26 06  INC ram_plr_0626,X
+bra_BAD4_RTS:
 C - - - - - 0x027AE4 09:BAD4: 60        RTS
 bra_BAD5:
 ; if con_btn_Left
 C - - - - - 0x027AE5 09:BAD5: B5 91     LDA ram_btn_hold,X
 C - - - - - 0x027AE7 09:BAD7: 3D 24 06  AND ram_plr_0624,X ; 0624 0625 
-C - - - - - 0x027AEA 09:BADA: D0 D2     BNE bra_BAAE_RTS
+C - - - - - 0x027AEA 09:BADA: D0 D2     BNE bra_BAE7_RTS
 bra_BADC:
 C - - - - - 0x027AEC 09:BADC: A9 00     LDA #$00
 C - - - - - 0x027AEE 09:BADE: 9D 26 06  STA ram_plr_0626,X ; 0626 0627 
 C - - - - - 0x027AF1 09:BAE1: 9D 28 06  STA ram_plr_0628,X ; 0628 0629 
 C - - - - - 0x027AF4 09:BAE4: 9D 24 06  STA ram_plr_0624,X ; 0624 0625 
+bra_BAE7_RTS:
 C - - - - - 0x027AF7 09:BAE7: 60        RTS
 
 
