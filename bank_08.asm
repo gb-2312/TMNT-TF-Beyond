@@ -5,3 +5,16 @@
 .org $8000
 
 
+
+.export _off006_screen_1F
+.export _off006_screen_0E
+
+
+
+_off006_screen_1F:
+    .incbin "incbin/screens/1F.bin"
+
+_off006_screen_0E:
+    .incbin "incbin/screens/0E.bin"
+
+
