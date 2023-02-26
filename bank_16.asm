@@ -319,7 +319,7 @@ C - - - - - 0x02C27E 0B:826E: 60        RTS
 loc_826F:
 C D 0 - - - 0x02C27F 0B:826F: FE 30 05  INC ram_obj_0530,X
 C - - - - - 0x02C282 0B:8272: A9 3C     LDA #$3C
-C - - - - - 0x02C284 0B:8274: 9D A0 04  STA ram_obj_04A0,X
+C - - - - - 0x02C284 0B:8274: 9D A0 04  STA ram_obj_spd_Y_hi,X
 C - - - - - 0x02C287 0B:8277: B4 A2     LDY ram_plr_id,X
 C - - - - - 0x02C289 0B:8279: B9 5E E1  LDA tbl_0x03E16E_звук_выбора_перса,Y
 C - - - - - 0x02C28C 0B:827C: 4C 90 F6  JMP loc_0x03F6A0
@@ -352,7 +352,7 @@ C - - J - - 0x02C2A1 0B:8291: A2 00     LDX #$00
 bra_8293:
 ofs_040_8293_01:
 C - - J - - 0x02C2A3 0B:8293: 20 AB 82  JSR sub_82AB
-C - - - - - 0x02C2A6 0B:8296: BD A0 04  LDA ram_obj_04A0,X
+C - - - - - 0x02C2A6 0B:8296: BD A0 04  LDA ram_obj_spd_Y_hi,X
 C - - - - - 0x02C2A9 0B:8299: 4A        LSR
 C - - - - - 0x02C2AA 0B:829A: 4A        LSR
 C - - - - - 0x02C2AB 0B:829B: 4A        LSR
@@ -360,7 +360,7 @@ C - - - - - 0x02C2AC 0B:829C: 90 05     BCC bra_82A3
 C - - - - - 0x02C2AE 0B:829E: A9 00     LDA #$00
 C - - - - - 0x02C2B0 0B:82A0: 9D 00 04  STA ram_plr_anim_id,X
 bra_82A3:
-C - - - - - 0x02C2B3 0B:82A3: DE A0 04  DEC ram_obj_04A0,X
+C - - - - - 0x02C2B3 0B:82A3: DE A0 04  DEC ram_obj_spd_Y_hi,X
 C - - - - - 0x02C2B6 0B:82A6: D0 13     BNE bra_82BB_RTS
 C - - - - - 0x02C2B8 0B:82A8: 20 4C BF  JSR sub_BF4C
 sub_82AB:
@@ -1707,7 +1707,7 @@ C - - - - - 0x02F76F 0B:B75F: AC 26 01  LDY ram_option_speed
 C - - - - - 0x02F772 0B:B762: F0 02     BEQ bra_B766
 C - - - - - 0x02F774 0B:B764: A9 F6     LDA #$F6
 bra_B766:
-C - - - - - 0x02F776 0B:B766: 9D 60 04  STA ram_obj_0460,X
+C - - - - - 0x02F776 0B:B766: 9D 60 04  STA ram_obj_spd_Z_hi,X
 loc_B769:
 C D 1 - - - 0x02F779 0B:B769: A9 41     LDA #$41
 C - - - - - 0x02F77B 0B:B76B: 20 7D D1  JSR sub_0x03D18D
@@ -1728,7 +1728,7 @@ bra_B783:
 C - - - - - 0x02F793 0B:B783: 9D 00 04  STA ram_plr_anim_id,X
 C - - - - - 0x02F796 0B:B786: A9 48     LDA #$48
 C - - - - - 0x02F798 0B:B788: 20 4C E1  JSR sub_0x03E15C
-C - - - - - 0x02F79B 0B:B78B: 20 58 DC  JSR sub_0x03DC68
+C - - - - - 0x02F79B 0B:B78B: 20 58 DC  JSR sub_0x03DC68_добавить_A_00_к_spd_Z
 C - - - - - 0x02F79E 0B:B78E: 4C 69 B7  JMP loc_B769
 bra_B791:
 C - - - - - 0x02F7A1 0B:B791: 20 65 B8  JSR sub_B865
@@ -1743,7 +1743,7 @@ C - - - - - 0x02F7B0 0B:B7A0: 4C 48 B8  JMP loc_B848
 
 ofs_038_B7A3_03:
 C - - J - - 0x02F7B3 0B:B7A3: A9 C0     LDA #$C0
-C - - - - - 0x02F7B5 0B:B7A5: BC A0 04  LDY ram_obj_04A0,X
+C - - - - - 0x02F7B5 0B:B7A5: BC A0 04  LDY ram_obj_spd_Y_hi,X
 C - - - - - 0x02F7B8 0B:B7A8: 10 02     BPL bra_B7AC
 C - - - - - 0x02F7BA 0B:B7AA: A9 90     LDA #$90
 bra_B7AC:
@@ -1751,7 +1751,7 @@ C - - - - - 0x02F7BC 0B:B7AC: 20 7D D1  JSR sub_0x03D18D
 C - - - - - 0x02F7BF 0B:B7AF: A0 0D     LDY #$0D
 C - - - - - 0x02F7C1 0B:B7B1: AD 26 01  LDA ram_option_speed
 C - - - - - 0x02F7C4 0B:B7B4: 85 02     STA ram_0002
-C - - - - - 0x02F7C6 0B:B7B6: BD A0 04  LDA ram_obj_04A0,X
+C - - - - - 0x02F7C6 0B:B7B6: BD A0 04  LDA ram_obj_spd_Y_hi,X
 C - - - - - 0x02F7C9 0B:B7B9: 10 03     BPL bra_B7BE
 C - - - - - 0x02F7CB 0B:B7BB: A9 00     LDA #$00
 C - - - - - 0x02F7CD 0B:B7BD: 2C        .byte $2C   ; BIT
@@ -1793,12 +1793,12 @@ C - - - - - 0x02F816 0B:B806: 4C 48 B8  JMP loc_B848
 ofs_038_B809_04:
 C - - J - - 0x02F819 0B:B809: A9 48     LDA #$48
 C - - - - - 0x02F81B 0B:B80B: 20 4C E1  JSR sub_0x03E15C
-C - - - - - 0x02F81E 0B:B80E: 20 58 DC  JSR sub_0x03DC68
+C - - - - - 0x02F81E 0B:B80E: 20 58 DC  JSR sub_0x03DC68_добавить_A_00_к_spd_Z
 C - - - - - 0x02F821 0B:B811: A9 41     LDA #$41
 C - - - - - 0x02F823 0B:B813: 20 7D D1  JSR sub_0x03D18D
 C - - - - - 0x02F826 0B:B816: A0 12     LDY #$12
 C - - - - - 0x02F828 0B:B818: 20 4F DF  JSR sub_0x03DF5F
-C - - - - - 0x02F82B 0B:B81B: BD 60 04  LDA ram_obj_0460,X
+C - - - - - 0x02F82B 0B:B81B: BD 60 04  LDA ram_obj_spd_Z_hi,X
 C - - - - - 0x02F82E 0B:B81E: 30 D9     BMI bra_B7F9
 C - - - - - 0x02F830 0B:B820: BD 10 04  LDA ram_obj_pos_Y,X
 C - - - - - 0x02F833 0B:B823: C9 B0     CMP #$B0
@@ -1841,7 +1841,7 @@ C - - - - - 0x02F878 0B:B868: B5 91     LDA ram_btn_hold,X
 C - - - - - 0x02F87A 0B:B86A: C9 80     CMP #con_btn_A
 C - - - - - 0x02F87C 0B:B86C: 90 03     BCC bra_B871_RTS
 ; bzk bug? хз зачем нужен этот адрес, но надо ли ему кнопки?
-C - - - - - 0x02F87E 0B:B86E: 9D A0 04  STA ram_obj_04A0,X
+C - - - - - 0x02F87E 0B:B86E: 9D A0 04  STA ram_obj_spd_Y_hi,X
 bra_B871_RTS:
 C - - - - - 0x02F881 0B:B871: 60        RTS
 
@@ -2173,7 +2173,7 @@ bra_BE64:
 - - - - - - 0x02FE7A 0B:BE6A: A9 FD     LDA #$FD
 - - - - - - 0x02FE7C 0B:BE6C: 9D 44 01  STA ram_0144,X
 - - - - - - 0x02FE7F 0B:BE6F: A9 2C     LDA #$2C
-- - - - - - 0x02FE81 0B:BE71: 9D A0 04  STA ram_obj_04A0,X
+- - - - - - 0x02FE81 0B:BE71: 9D A0 04  STA ram_obj_spd_Y_hi,X
 - - - - - - 0x02FE84 0B:BE74: FE 30 05  INC ram_obj_0530,X
 - - - - - - 0x02FE87 0B:BE77: A9 28     LDA #con_0x03F6AD_28
 - - - - - - 0x02FE89 0B:BE79: 4C 90 F6  JMP loc_0x03F6A0
