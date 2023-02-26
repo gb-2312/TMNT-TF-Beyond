@@ -3371,7 +3371,7 @@ C - - - - - 0x03E29E 0F:E28E: A8        TAY
 C - - - - - 0x03E29F 0F:E28F: A9 03     LDA #$03
 C - - - - - 0x03E2A1 0F:E291: 85 00     STA ram_0000
 bra_E293_loop:
-C - - - - - 0x03E2A3 0F:E293: 20 00 BF  JSR sub_0x003F10
+C - - - - - 0x03E2A3 0F:E293: 20 00 BF  JSR sub_BF00
 C - - - - - 0x03E2A6 0F:E296: 29 7F     AND #$7F
 C - - - - - 0x03E2A8 0F:E298: 20 5D D2  JSR sub_D25D_записать_A_в_буфер_с_чтением_индекса
 C - - - - - 0x03E2AB 0F:E29B: C8        INY
@@ -3416,6 +3416,41 @@ C - - - - - 0x03E2F5 0F:E2E5: 86 56     STX ram_0056
 C - - - - - 0x03E2F7 0F:E2E7: A9 06     LDA #con_0x03F84C_06
 C - - - - - 0x03E2F9 0F:E2E9: 20 14 F8  JSR sub_F814
 C - - - - - 0x03E2FC 0F:E2EC: 4C 41 E1  JMP loc_E141
+
+
+
+sub_BF00:
+; перемещено из банка 00
+C - - - - - 0x003F10 00:BF00: A5 2C     LDA ram_game_mode
+; con_gm_vs_team
+; con_gm_tournament
+C - - - - - 0x003F12 00:BF02: 4A        LSR
+C - - - - - 0x003F13 00:BF03: B0 04     BCS bra_BF09
+; con_gm_tournament
+C - - - - - 0x003F15 00:BF05: B9 30 01  LDA ram_0130,Y
+C - - - - - 0x003F18 00:BF08: 60        RTS
+bra_BF09:
+; con_gm_vs_team
+C - - - - - 0x003F19 00:BF09: A6 A8     LDX ram_00A8
+C - - - - - 0x003F1B 00:BF0B: BD 55 01  LDA ram_0155,X
+C - - - - - 0x003F1E 00:BF0E: 30 02     BMI bra_BF12
+C - - - - - 0x003F20 00:BF10: 4A        LSR
+C - - - - - 0x003F21 00:BF11: 60        RTS
+bra_BF12:
+- - - - - - 0x003F22 00:BF12: 18        CLC
+- - - - - - 0x003F23 00:BF13: 6D 51 01  ADC ram_0151
+- - - - - - 0x003F26 00:BF16: A4 00     LDY ram_0000
+- - - - - - 0x003F28 00:BF18: F0 03     BEQ bra_BF1D_RTS
+- - - - - - 0x003F2A 00:BF1A: B9 1D BF  LDA tbl_BF1E - $01,Y
+bra_BF1D_RTS:
+- - - - - - 0x003F2D 00:BF1D: 60        RTS
+
+
+
+tbl_BF1E:
+- - - - - - 0x003F2E 00:BF1E: 9F        .byte $9F   ; 01
+- - - - - - 0x003F2F 00:BF1F: 9A        .byte $9A   ; 02
+- - - - - - 0x003F30 00:BF20: 8D        .byte $8D   ; 03
 
 
 
