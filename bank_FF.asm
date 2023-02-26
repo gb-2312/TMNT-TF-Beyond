@@ -4279,13 +4279,13 @@ C - - - - - 0x03E808 0F:E7F8: 8D 10 04  STA ram_obj_pos_Y
 C - - - - - 0x03E80B 0F:E7FB: A9 09     LDA #con_0x03F84C_09
 C - - - - - 0x03E80D 0F:E7FD: 20 14 F8  JSR sub_F814
 C - - - - - 0x03E810 0F:E800: 20 BE DA  JSR sub_DABE_удалить_все_объекты
-C - - - - - 0x03E813 0F:E803: A2 1C     LDX #con_screen_bonus_tmnt
+C - - - - - 0x03E813 0F:E803: A2 1C     LDX #con_screen_bonus_stage
 C - - - - - 0x03E815 0F:E805: 20 44 F0  JSR sub_F044_отрисовать_экран
 C - - - - - 0x03E818 0F:E808: A9 7C     LDA #$7C
 C - - - - - 0x03E81A 0F:E80A: 85 32     STA ram_0032
 C - - - - - 0x03E81C 0F:E80C: A9 20     LDA #$20
 C - - - - - 0x03E81E 0F:E80E: 85 37     STA ram_0037
-C - - - - - 0x03E820 0F:E810: A2 1E     LDX #con_screen_bonus_stage
+C - - - - - 0x03E820 0F:E810: A2 1E     LDX #con_screen_bonus_tmnt
 C - - - - - 0x03E822 0F:E812: 20 44 F0  JSR sub_F044_отрисовать_экран
 C - - - - - 0x03E825 0F:E815: A9 0D     LDA #con_0x030C10_0D
 C - - - - - 0x03E827 0F:E817: 20 E5 F6  JSR sub_F6E5_написать_текст_на_экране
