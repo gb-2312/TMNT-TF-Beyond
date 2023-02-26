@@ -10,6 +10,7 @@
 .export _off006_screen_0E
 .export tbl_0x03F0EF_начальный_адрес_экрана
 .export tbl_0x03F0EF_размер_экрана
+.export tbl_0x03E3C8_prg_bank_с_данными_экрана
 
 
 
@@ -90,5 +91,42 @@ tbl_0x03F0EF_размер_экрана:
     .word $0400 ; 1D
     .word $0400 ; 1E
     .word $0800 ; 1F
+
+
+
+tbl_0x03E3C8_prg_bank_с_данными_экрана:
+; перемещено из банка FF
+    .byte con_prg_bank + $02   ; 00
+    .byte con_prg_bank + $00   ; 01
+    .byte con_prg_bank + $00   ; 02
+    .byte con_prg_bank + $00   ; 03
+    .byte con_prg_bank + $06   ; 04
+    .byte con_prg_bank + $06   ; 05
+    .byte con_prg_bank + $02   ; 06
+    .byte con_prg_bank + $06   ; 07
+    .byte con_prg_bank + $02   ; 08
+    .byte con_prg_bank + $00   ; 09
+    .byte con_prg_bank + $06   ; 0A
+    .byte con_prg_bank + $00   ; 0B
+    .byte con_prg_bank + $00   ; 0C
+    .byte con_prg_bank + $02   ; 0D
+    .byte con_prg_bank + $08   ; 0E
+    .byte con_prg_bank + $02   ; 0F
+    .byte con_prg_bank + $00   ; 10
+    .byte con_prg_bank + $02   ; 11
+    .byte con_prg_bank + $02   ; 12
+    .byte con_prg_bank + $02   ; 13
+    .byte con_prg_bank + $00   ; 14
+    .byte con_prg_bank + $04   ; 15
+    .byte con_prg_bank + $04   ; 16
+    .byte con_prg_bank + $02   ; 17
+    .byte con_prg_bank + $04   ; 18
+    .byte con_prg_bank + $04   ; 19
+    .byte con_prg_bank + $04   ; 1A
+    .byte con_prg_bank + $04   ; 1B
+    .byte con_prg_bank + $04   ; 1C
+    .byte con_prg_bank + $04   ; 1D
+    .byte con_prg_bank + $02   ; 1E
+    .byte con_prg_bank + $08   ; 1F
 
 

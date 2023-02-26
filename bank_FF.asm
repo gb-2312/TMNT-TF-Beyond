@@ -3579,42 +3579,6 @@ C - - - - - 0x03E3C5 0F:E3B5: 4C 6D D4  JMP loc_D46D
 
 
 
-tbl_E3B8_prg_bank:
-- D 3 - - - 0x03E3C8 0F:E3B8: 30        .byte con_prg_bank + $02   ; 00
-- D 3 - - - 0x03E3C9 0F:E3B9: 36        .byte con_prg_bank + $00   ; 01
-- D 3 - - - 0x03E3CA 0F:E3BA: 36        .byte con_prg_bank + $00   ; 02
-- D 3 - - - 0x03E3CB 0F:E3BB: 36        .byte con_prg_bank + $00   ; 03
-- D 3 - - - 0x03E3CC 0F:E3BC: 36        .byte con_prg_bank + $06   ; 04
-- D 3 - - - 0x03E3CD 0F:E3BD: 36        .byte con_prg_bank + $06   ; 05
-- D 3 - - - 0x03E3CE 0F:E3BE: 36        .byte con_prg_bank + $02   ; 06
-- D 3 - - - 0x03E3CF 0F:E3BF: 36        .byte con_prg_bank + $06   ; 07
-- D 3 - - - 0x03E3D0 0F:E3C0: 36        .byte con_prg_bank + $02   ; 08
-- D 3 - - - 0x03E3D1 0F:E3C1: 36        .byte con_prg_bank + $00   ; 09
-- D 3 - - - 0x03E3D2 0F:E3C2: 36        .byte con_prg_bank + $06   ; 0A
-- D 3 - - - 0x03E3D3 0F:E3C3: 36        .byte con_prg_bank + $00   ; 0B
-- D 3 - - - 0x03E3D4 0F:E3C4: 36        .byte con_prg_bank + $00   ; 0C
-- D 3 - - - 0x03E3D5 0F:E3C5: 30        .byte con_prg_bank + $02   ; 0D
-- D 3 - - - 0x03E3D6 0F:E3C6: 36        .byte con_prg_bank + $08   ; 0E
-- D 3 - - - 0x03E3D7 0F:E3C7: 36        .byte con_prg_bank + $02   ; 0F
-- D 3 - - - 0x03E3D8 0F:E3C8: 36        .byte con_prg_bank + $00   ; 10
-- D 3 - - - 0x03E3D9 0F:E3C9: 36        .byte con_prg_bank + $02   ; 11
-- D 3 - - - 0x03E3DA 0F:E3CA: 36        .byte con_prg_bank + $02   ; 12
-- D 3 - - - 0x03E3DB 0F:E3CB: 36        .byte con_prg_bank + $02   ; 13
-- D 3 - - - 0x03E3DC 0F:E3CC: 36        .byte con_prg_bank + $00   ; 14
-- D 3 - - - 0x03E3DD 0F:E3CD: 36        .byte con_prg_bank + $04   ; 15
-- D 3 - - - 0x03E3DE 0F:E3CE: 36        .byte con_prg_bank + $04   ; 16
-- D 3 - - - 0x03E3DF 0F:E3CF: 36        .byte con_prg_bank + $02   ; 17
-- D 3 - - - 0x03E3E0 0F:E3D0: 36        .byte con_prg_bank + $04   ; 18
-- D 3 - - - 0x03E3E1 0F:E3D1: 36        .byte con_prg_bank + $04   ; 19
-- D 3 - - - 0x03E3E2 0F:E3D2: 36        .byte con_prg_bank + $04   ; 1A
-- D 3 - - - 0x03E3E3 0F:E3D3: 36        .byte con_prg_bank + $04   ; 1B
-- D 3 - - - 0x03E3E4 0F:E3D4: 36        .byte con_prg_bank + $04   ; 1C
-- D 3 - - - 0x03E3E5 0F:E3D5: 36        .byte con_prg_bank + $04   ; 1D
-- D 3 - - - 0x03E3E6 0F:E3D6: 00        .byte con_prg_bank + $02   ; 1E
-- D 3 - - - 0x03E3E7 0F:E3D7: 00        .byte con_prg_bank + $08   ; 1F
-
-
-
 tbl_0x03E3E8:
 ; bzk optimize, одинаковые байты
 - D 3 - - - 0x03E3E8 0F:E3D8: 04        .byte $04   ; 00 leo
@@ -5818,10 +5782,12 @@ sub_0x03F054_отрисовать_экран:
                                         STA ram_0002
                                         LDA tbl_0x03F0EF_размер_экрана + $01,X
                                         STA ram_0003
-                                        JSR sub_F617_restore_prg
                                         PLA ; индекс экрана
                                         TAY
-C - - - - - 0x03F057 0F:F047: B9 B8 E3  LDA tbl_E3B8_prg_bank,Y
+C - - - - - 0x03F057 0F:F047: B9 B8 E3  LDA tbl_0x03E3C8_prg_bank_с_данными_экрана,Y
+                                        PHA ; номер банка
+                                        JSR sub_F617_restore_prg
+                                        PLA ; номер банка
 C - - - - - 0x03F05A 0F:F04A: 20 F9 F5  JSR sub_F5F9_swap_prg_A_id
 ; bzk optimize, поинтеры на экраны тоже можно переместить в банк 08
                                         LDA tbl_F0DE_поинтеры_на_экраны,X
