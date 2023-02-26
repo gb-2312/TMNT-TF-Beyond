@@ -3622,8 +3622,8 @@ tbl_E3B8_prg_bank:
 - D 3 - - - 0x03E3E3 0F:E3D3: 36        .byte con_prg_bank + $16   ; 36
 - D 3 - - - 0x03E3E4 0F:E3D4: 36        .byte con_prg_bank + $16   ; 38
 - D 3 - - - 0x03E3E5 0F:E3D5: 36        .byte con_prg_bank + $16   ; 3A
-- D 3 - - - 0x03E3E6 0F:E3D6: 00        .byte con_prg_bank + $00   ; 3B
-- D 3 - - - 0x03E3E7 0F:E3D7: 00        .byte con_prg_bank + $00   ; 3C
+- D 3 - - - 0x03E3E6 0F:E3D6: 00        .byte con_prg_bank + $0E   ; 3B
+- D 3 - - - 0x03E3E7 0F:E3D7: 00        .byte con_prg_bank + $0E   ; 3C
 
 
 
