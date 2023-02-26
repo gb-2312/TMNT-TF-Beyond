@@ -1840,18 +1840,18 @@ C - - - - - 0x038B09 0E:8AF9: C9 10     CMP #$10
 C - - - - - 0x038B0B 0E:8AFB: 90 09     BCC bra_8B06
 C - - - - - 0x038B0D 0E:8AFD: A0 01     LDY #$01
 C - - - - - 0x038B0F 0E:8AFF: 84 13     STY ram_0013
-C - - - - - 0x038B11 0E:8B01: 88        DEY
+C - - - - - 0x038B11 0E:8B01: 88        DEY ; 00
 C - - - - - 0x038B12 0E:8B02: 84 14     STY ram_0014
-C - - - - - 0x038B14 0E:8B04: F0 07     BEQ bra_8B0D
+C - - - - - 0x038B14 0E:8B04: F0 07     BEQ bra_8B0D    ; jmp
 bra_8B06:
 loc_8B06:
 C D 0 - - - 0x038B16 0E:8B06: A0 01     LDY #$01
 C - - - - - 0x038B18 0E:8B08: 84 14     STY ram_0014
-C - - - - - 0x038B1A 0E:8B0A: 88        DEY
+C - - - - - 0x038B1A 0E:8B0A: 88        DEY ; 00
 C - - - - - 0x038B1B 0E:8B0B: 84 13     STY ram_0013
-bra_8B0D:
+bra_8B0D:   ; Y = 00
 C - - - - - 0x038B1D 0E:8B0D: 84 12     STY ram_0012
-sub_8B0F:
+sub_8B0F:   ; Y = 00
 C - - - - - 0x038B1F 0E:8B0F: 84 11     STY ram_0011
 C - - - - - 0x038B21 0E:8B11: 20 A4 8B  JSR sub_8BA4
 C - - - - - 0x038B24 0E:8B14: A9 27     LDA #con_0x03F6AD_27
@@ -1960,12 +1960,14 @@ bra_8BA8_loop:
 C - - - - - 0x038BB8 0E:8BA8: B5 11     LDA ram_0011,X ; 0011 0012 0013 0014 
 C - - - - - 0x038BBA 0E:8BAA: 18        CLC
 C - - - - - 0x038BBB 0E:8BAB: 7D 26 06  ADC ram_plr_0626,X ; 0626 0627 0628 0629 
+; ram_plr_0628
 C - - - - - 0x038BBE 0E:8BAE: C9 0A     CMP #$0A
 C - - - - - 0x038BC0 0E:8BB0: 90 05     BCC bra_8BB7
 C - - - - - 0x038BC2 0E:8BB2: FE 25 06  INC ram_0625,X ; 0628 
 C - - - - - 0x038BC5 0E:8BB5: E9 0A     SBC #$0A
 bra_8BB7:
 C - - - - - 0x038BC7 0E:8BB7: 9D 26 06  STA ram_plr_0626,X ; 0626 0627 0628 0629 
+; ram_plr_0628
 C - - - - - 0x038BCA 0E:8BBA: B5 11     LDA ram_0011,X
 C - - - - - 0x038BCC 0E:8BBC: 18        CLC
 C - - - - - 0x038BCD 0E:8BBD: 7D 2B 06  ADC ram_062B,X ; 062B 062C 062D 062E 
@@ -1982,6 +1984,7 @@ C - - - - - 0x038BE2 0E:8BD2: 20 5A F7  JSR sub_0x03F76A
 C - - - - - 0x038BE5 0E:8BD5: A2 00     LDX #$00
 bra_8BD7_loop:
 C - - - - - 0x038BE7 0E:8BD7: BD 26 06  LDA ram_plr_0626,X ; 0626 0627 0628 0629 
+; ram_plr_0628
 C - - - - - 0x038BEA 0E:8BDA: D0 07     BNE bra_8BE3
 C - - - - - 0x038BEC 0E:8BDC: E8        INX
 C - - - - - 0x038BED 0E:8BDD: E0 04     CPX #$04
@@ -2005,6 +2008,7 @@ C - - - - - 0x038C08 0E:8BF8: 20 6B D2  JSR sub_0x03D27B_записать_адр
 C - - - - - 0x038C0B 0E:8BFB: A4 00     LDY ram_0000
 bra_8BFD_loop:
 C - - - - - 0x038C0D 0E:8BFD: B9 26 06  LDA ram_plr_0626,Y ; 0627 0628 0629 
+; ram_plr_0628
 C - - - - - 0x038C10 0E:8C00: 18        CLC
 C - - - - - 0x038C11 0E:8C01: 69 81     ADC #$81
 C - - - - - 0x038C13 0E:8C03: 20 5D D2  JSR sub_0x03D26D_записать_A_в_буфер_с_чтением_индекса
