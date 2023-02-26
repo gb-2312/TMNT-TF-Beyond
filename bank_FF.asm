@@ -2112,29 +2112,17 @@ C - - - - - 0x03DB2F 0F:DB1F: 9D C0 04  STA ram_obj_04C0,X
 C - - - - - 0x03DB32 0F:DB22: 9D D0 04  STA ram_obj_04D0,X
 C - - - - - 0x03DB35 0F:DB25: 9D E0 04  STA ram_obj_04E0,X
 C - - - - - 0x03DB38 0F:DB28: 9D F0 04  STA ram_obj_04F0,X
-bra_DB2B:
+sub_0x03DB48_очистить_spd_X_и_spd_Z:
+loc_0x03DB48_очистить_spd_X_и_spd_Z:
+                                        LDA #$00
 C - - - - - 0x03DB3B 0F:DB2B: 9D 60 04  STA ram_obj_spd_Z_hi,X
 C - - - - - 0x03DB3E 0F:DB2E: 9D 70 04  STA ram_obj_spd_Z_lo,X
-bra_DB31:
+loc_0x03DB4C_очистить_spd_X:
+sub_0x03DB4C_очистить_spd_X:
+                                        LDA #$00
 C - - - - - 0x03DB41 0F:DB31: 9D 80 04  STA ram_obj_spd_X_hi,X
 C - - - - - 0x03DB44 0F:DB34: 9D 90 04  STA ram_obj_spd_X_lo,X
 C - - - - - 0x03DB47 0F:DB37: 60        RTS
-
-
-
-sub_0x03DB48_очистить_spd_X_и_spd_Z:
-loc_0x03DB48_очистить_spd_X_и_spd_Z:
-; bzk optimize, аналогичный код в 0x03D077
-C D 2 - - - 0x03DB48 0F:DB38: A9 00     LDA #$00
-C - - - - - 0x03DB4A 0F:DB3A: F0 EF     BEQ bra_DB2B    ; jmp
-
-
-
-loc_0x03DB4C_очистить_spd_X:
-sub_0x03DB4C_очистить_spd_X:
-; bzk optimize, аналогичный код в 0x03D07C
-C D 2 - - - 0x03DB4C 0F:DB3C: A9 00     LDA #$00
-C - - - - - 0x03DB4E 0F:DB3E: F0 F1     BEQ bra_DB31    ; jmp
 
 
 
