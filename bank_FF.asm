@@ -3868,7 +3868,7 @@ C - - - - - 0x03E57F 0F:E56F: B0 08     BCS bra_E579
 ; con_gm_story
 ; con_gm_vs_player
 ; con_gm_vs_cpu
-C - - - - - 0x03E581 0F:E571: 20 A6 F7  JSR sub_F7A6
+C - - - - - 0x03E581 0F:E571: 20 A6 F7  JSR sub_F7A6_подсчитать_время_и_здоровье_после_боя
 C - - - - - 0x03E584 0F:E574: AD 24 06  LDA ram_plr_0624
 C - - - - - 0x03E587 0F:E577: D0 F1     BNE bra_E56A_RTS
 bra_E579:
@@ -4319,7 +4319,7 @@ C - - J - - 0x03E86C 0F:E85C: A0 00     LDY #$00
 C - - - - - 0x03E86E 0F:E85E: 8C 71 06  STY ram_0671
 C - - - - - 0x03E871 0F:E861: 88        DEY ; FF
 C - - - - - 0x03E872 0F:E862: 84 98     STY ram_0098
-C - - - - - 0x03E874 0F:E864: 20 A6 F7  JSR sub_F7A6
+C - - - - - 0x03E874 0F:E864: 20 A6 F7  JSR sub_F7A6_подсчитать_время_и_здоровье_после_боя
 C - - - - - 0x03E877 0F:E867: AD 24 06  LDA ram_plr_0624
 C - - - - - 0x03E87A 0F:E86A: D0 14     BNE bra_E880_RTS
 C - - - - - 0x03E87C 0F:E86C: E6 95     INC ram_0095
@@ -6902,9 +6902,9 @@ C - - - - - 0x03F7B3 0F:F7A3: 4C 17 F6  JMP loc_F617_restore_prg
 
 
 
-sub_F7A6:
+sub_F7A6_подсчитать_время_и_здоровье_после_боя:
 C - - - - - 0x03F7B6 0F:F7A6: 20 F3 F5  JSR sub_F5F3_swap_prg_1C
-C - - - - - 0x03F7B9 0F:F7A9: 20 6A 8A  JSR sub_0x038A7A
+C - - - - - 0x03F7B9 0F:F7A9: 20 6A 8A  JSR sub_0x038A7A_подсчитать_время_и_здоровье_после_боя
 C - - - - - 0x03F7BC 0F:F7AC: 4C 17 F6  JMP loc_F617_restore_prg
 
 
