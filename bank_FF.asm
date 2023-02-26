@@ -5821,12 +5821,13 @@ sub_0x03F054_отрисовать_экран:
                                         TAY
 C - - - - - 0x03F057 0F:F047: B9 B8 E3  LDA tbl_E3B8_prg_bank,Y
 C - - - - - 0x03F05A 0F:F04A: 20 F9 F5  JSR sub_F5F9_swap_prg_A_id
-                                        LDA tbl_F0DE,X
+; bzk optimize, поинтеры на экраны тоже можно переместить в банк 08
+                                        LDA tbl_F0DE_поинтеры_на_экраны,X
                                         STA ram_0000
                                         CLC
                                         ADC ram_0002
                                         STA ram_0002
-                                        LDA tbl_F0DE + $01,X
+                                        LDA tbl_F0DE_поинтеры_на_экраны + $01,X
                                         STA ram_0001
                                         ADC ram_0003
                                         STA ram_0003
@@ -5849,7 +5850,7 @@ C - - - - - 0x03F060 0F:F050: 4C 17 F6  JMP loc_F617_restore_prg
 
 
 
-tbl_F0DE:
+tbl_F0DE_поинтеры_на_экраны:
 - D 3 - - - 0x03F0EE 0F:F0DE: 43 F1     .word _off006_screen_00
 - D 3 - - - 0x03F0F0 0F:F0E0: A5 83     .word _off006_screen_01
 - D 3 - - - 0x03F0F2 0F:F0E2: 6A 83     .word _off006_screen_02
