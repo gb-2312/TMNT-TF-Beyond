@@ -5754,10 +5754,8 @@ loc_0x03F052_отрисовать_пустой_экран:
 C D 3 - - - 0x03F052 0F:F042: A2 00     LDX #con_screen_00
 sub_F044_отрисовать_экран:
 sub_0x03F054_отрисовать_экран:
-C - - - - - 0x03F054 0F:F044: 8A        TXA
-C - - - - - 0x03F055 0F:F045: 4A        LSR
-C - - - - - 0x03F056 0F:F046: A8        TAY
-C - - - - - 0x03F057 0F:F047: B9 B8 E3  LDA tbl_E3B8_prg_bank,Y
+; Y свободен
+C - - - - - 0x03F057 0F:F047: B9 B8 E3  LDA tbl_E3B8_prg_bank,X
 C - - - - - 0x03F05A 0F:F04A: 20 F9 F5  JSR sub_F5F9_swap_prg_A_id
 C - - - - - 0x03F05D 0F:F04D: 20 53 F0  JSR sub_F053_отрисовка_статичного_экрана
 C - - - - - 0x03F060 0F:F050: 4C 17 F6  JMP loc_F617_restore_prg
@@ -5765,8 +5763,9 @@ C - - - - - 0x03F060 0F:F050: 4C 17 F6  JMP loc_F617_restore_prg
 
 
 sub_F053_отрисовка_статичного_экрана:
-; bzk optimize, уменшить индексы в 2 раза
-; добавить тут TXA ASL TAX, удалить деление в 0x03F054, грузить там таблицу через X
+                                        TXA
+                                        ASL
+                                        TAX
 C - - - - - 0x03F063 0F:F053: BD DE F0  LDA tbl_F0DE,X
 C - - - - - 0x03F066 0F:F056: 85 00     STA ram_0000
 C - - - - - 0x03F068 0F:F058: BD DF F0  LDA tbl_F0DE + $01,X
