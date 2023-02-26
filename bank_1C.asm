@@ -2952,8 +2952,8 @@ C D 0 - - - 0x0391F5 0E:91E5: E6 21     INC ram_0021
 C - - - - - 0x0391F7 0E:91E7: A9 00     LDA #$00
 C - - - - - 0x0391F9 0E:91E9: 8D C0 04  STA ram_obj_04C0
 C - - - - - 0x0391FC 0E:91EC: AD B0 04  LDA ram_obj_04B0
-C - - - - - 0x0391FF 0E:91EF: 0A        ASL
-C - - - - - 0x039200 0E:91F0: 69 30     ADC #$30
+C - - - - - 0x0391FF 0E:91EF: 0A        CLC
+C - - - - - 0x039200 0E:91F0: 69 30     ADC #$18
 C - - - - - 0x039202 0E:91F2: AA        TAX
 ; con_screen_opening_leo
 ; con_screen_opening_raph

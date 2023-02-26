@@ -15,6 +15,7 @@
 .export _off006_screen_12
 .export _off006_screen_06
 .export _off006_screen_0F
+.export _off006_screen_00
 
 
 
@@ -44,5 +45,8 @@ _off006_screen_06:
 
 _off006_screen_0F:
     .incbin "incbin/screens/0F.bin"
+
+_off006_screen_00:
+    .incbin "incbin/screens/00.bin"
 
 
