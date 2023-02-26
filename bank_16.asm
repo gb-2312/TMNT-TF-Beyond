@@ -1732,7 +1732,7 @@ C - - - - - 0x02F79B 0B:B78B: 20 58 DC  JSR sub_0x03DC68_добавить_A_00_�
 C - - - - - 0x02F79E 0B:B78E: 4C 69 B7  JMP loc_B769
 bra_B791:
 C - - - - - 0x02F7A1 0B:B791: 20 65 B8  JSR sub_B865
-C - - - - - 0x02F7A4 0B:B794: 20 73 D0  JSR sub_0x03D083
+C - - - - - 0x02F7A4 0B:B794: 20 73 D0  JSR sub_0x03D083_очистить_spd_Z
 C - - - - - 0x02F7A7 0B:B797: BD 54 05  LDA ram_0554,X
 C - - - - - 0x02F7AA 0B:B79A: C9 39     CMP #$39
 C - - - - - 0x02F7AC 0B:B79C: F0 5E     BEQ bra_B7FC
@@ -1803,7 +1803,7 @@ C - - - - - 0x02F82E 0B:B81E: 30 D9     BMI bra_B7F9
 C - - - - - 0x02F830 0B:B820: BD 10 04  LDA ram_obj_pos_Y,X
 C - - - - - 0x02F833 0B:B823: C9 B0     CMP #$B0
 C - - - - - 0x02F835 0B:B825: 90 D2     BCC bra_B7F9
-C - - - - - 0x02F837 0B:B827: 20 67 D0  JSR sub_0x03D077
+C - - - - - 0x02F837 0B:B827: 20 67 D0  JSR sub_0x03D077_очистить_spd_X_и_spd_Z
 C - - - - - 0x02F83A 0B:B82A: A9 10     LDA #$10
 C - - - - - 0x02F83C 0B:B82C: 4C 3F B7  JMP loc_B73F
 

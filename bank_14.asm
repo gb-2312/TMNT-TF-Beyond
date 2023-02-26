@@ -6226,7 +6226,7 @@ C - - - - - 0x02BF7B 0A:BF6B: FE 30 05  INC ram_obj_0530,X
 ofs_042_BF6E_03:
 C - - - - - 0x02BF7E 0A:BF6E: 20 69 DC  JSR sub_0x03DC79
 C - - - - - 0x02BF81 0A:BF71: 90 ED     BCC bra_BF60_RTS
-C - - - - - 0x02BF83 0A:BF73: 20 67 D0  JSR sub_0x03D077
+C - - - - - 0x02BF83 0A:BF73: 20 67 D0  JSR sub_0x03D077_очистить_spd_X_и_spd_Z
 C - - - - - 0x02BF86 0A:BF76: A9 20     LDA #$20
 C - - - - - 0x02BF88 0A:BF78: 9D 60 05  STA ram_obj_0560,X
 C - - - - - 0x02BF8B 0A:BF7B: FE 30 05  INC ram_obj_0530,X

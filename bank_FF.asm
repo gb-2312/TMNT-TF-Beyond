@@ -14,11 +14,11 @@
 .export _off009_0x03CFF5_28
 .export _off009_0x03CFF5_29
 .export sub_0x03D042_поинтеры_после_JSR
-.export sub_0x03D077
-.export loc_0x03D077
-.export sub_0x03D07A
-.export sub_0x03D083
-.export loc_0x03D083
+.export sub_0x03D077_очистить_spd_X_и_spd_Z
+.export loc_0x03D077_очистить_spd_X_и_spd_Z
+.export sub_0x03D07A_очистить_spd_X
+.export sub_0x03D083_очистить_spd_Z
+.export loc_0x03D083_очистить_spd_Z
 .export sub_0x03D08C
 .export loc_0x03D08C
 .export sub_0x03D17A
@@ -460,6 +460,9 @@ sub_D009_очистить_оперативку_1:
 ; 008E-00DF
 C - - - - - 0x03D019 0F:D009: A2 8E     LDX #$8E
 C - - - - - 0x03D01B 0F:D00B: D0 02     BNE bra_D00F    ; jmp
+
+
+
 sub_D00D_очистить_оперативку_2:
 ; 00A4-00DF
 C - - - - - 0x03D01D 0F:D00D: A2 A4     LDX #$A4
@@ -511,11 +514,11 @@ C - - - - - 0x03D05E 0F:D04E: 6C 02 00  JMP (ram_0002)
 
 
 
-sub_D067:
-sub_0x03D077:
-loc_0x03D077:
-C D 2 - - - 0x03D077 0F:D067: 20 73 D0  JSR sub_D073
-sub_0x03D07A:
+sub_D067_очистить_spd_X_и_spd_Z:
+sub_0x03D077_очистить_spd_X_и_spd_Z:
+loc_0x03D077_очистить_spd_X_и_spd_Z:
+C D 2 - - - 0x03D077 0F:D067: 20 73 D0  JSR sub_D073_очистить_spd_Z
+sub_0x03D07A_очистить_spd_X:
 C - - - - - 0x03D07A 0F:D06A: A9 00     LDA #$00
 C - - - - - 0x03D07C 0F:D06C: 9D 80 04  STA ram_obj_spd_X_hi,X
 C - - - - - 0x03D07F 0F:D06F: 9D 90 04  STA ram_obj_spd_X_lo,X
@@ -523,9 +526,9 @@ C - - - - - 0x03D082 0F:D072: 60        RTS
 
 
 
-sub_D073:
-sub_0x03D083:
-loc_0x03D083:
+sub_D073_очистить_spd_Z:
+sub_0x03D083_очистить_spd_Z:
+loc_0x03D083_очистить_spd_Z:
 C D 2 - - - 0x03D083 0F:D073: A9 00     LDA #$00
 C - - - - - 0x03D085 0F:D075: 9D 60 04  STA ram_obj_spd_Z_hi,X
 C - - - - - 0x03D088 0F:D078: 9D 70 04  STA ram_obj_spd_Z_lo,X
@@ -1349,6 +1352,10 @@ C - - - - - 0x03D3BF 0F:D3AF: 60        RTS
 sub_D3B0:
 sub_0x03D3C0:
 C - - - - - 0x03D3C0 0F:D3B0: A2 00     LDX #$00
+; tip_индекс_буфера_палитры + $00
+; tip_индекс_буфера_палитры + $01
+; tip_индекс_буфера_палитры + $02
+; tip_индекс_буфера_палитры + $03
 C - - - - - 0x03D3C2 0F:D3B2: F0 E8     BEQ bra_D39C    ; jmp
 
 
@@ -2122,6 +2129,7 @@ C - - - - - 0x03DB47 0F:DB37: 60        RTS
 
 sub_0x03DB48_очистить_spd_X_и_spd_Z:
 loc_0x03DB48_очистить_spd_X_и_spd_Z:
+; bzk optimize, аналогичный код в 0x03D077
 C D 2 - - - 0x03DB48 0F:DB38: A9 00     LDA #$00
 C - - - - - 0x03DB4A 0F:DB3A: F0 EF     BEQ bra_DB2B    ; jmp
 
@@ -2129,6 +2137,7 @@ C - - - - - 0x03DB4A 0F:DB3A: F0 EF     BEQ bra_DB2B    ; jmp
 
 loc_0x03DB4C_очистить_spd_X:
 sub_0x03DB4C_очистить_spd_X:
+; bzk optimize, аналогичный код в 0x03D07C
 C D 2 - - - 0x03DB4C 0F:DB3C: A9 00     LDA #$00
 C - - - - - 0x03DB4E 0F:DB3E: F0 F1     BEQ bra_DB31    ; jmp
 
@@ -4078,9 +4087,9 @@ C - - - - - 0x03E6A1 0F:E691: 8D 07 04  STA ram_0407
 C - - - - - 0x03E6A4 0F:E694: 8D 10 06  STA ram_plr_0610
 C - - - - - 0x03E6A7 0F:E697: 8D 11 06  STA ram_plr_0610 + $01
 C - - - - - 0x03E6AA 0F:E69A: A2 01     LDX #$01
-C - - - - - 0x03E6AC 0F:E69C: 20 67 D0  JSR sub_D067
+C - - - - - 0x03E6AC 0F:E69C: 20 67 D0  JSR sub_D067_очистить_spd_X_и_spd_Z
 C - - - - - 0x03E6AF 0F:E69F: CA        DEX
-C - - - - - 0x03E6B0 0F:E6A0: 20 67 D0  JSR sub_D067
+C - - - - - 0x03E6B0 0F:E6A0: 20 67 D0  JSR sub_D067_очистить_spd_X_и_spd_Z
 C - - - - - 0x03E6B3 0F:E6A3: 8D 3C 06  STA ram_063C
 C - - - - - 0x03E6B6 0F:E6A6: 8D 3D 06  STA ram_063D
 C - - - - - 0x03E6B9 0F:E6A9: A9 17     LDA #con_sfx_закусь_рафа    ; звук DRAW
