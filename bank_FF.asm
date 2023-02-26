@@ -6373,7 +6373,7 @@ C - - - - - 0x03F4FB 0F:F4EB: 20 09 D0  JSR sub_D009_очистить_опера
 C - - - - - 0x03F4FE 0F:F4EE: E6 98     INC ram_0098
 C - - - - - 0x03F500 0F:F4F0: A9 00     LDA #$00
 C - - - - - 0x03F502 0F:F4F2: 85 26     STA ram_0026
-C - - - - - 0x03F504 0F:F4F4: 20 08 D0  RTS
+C - - - - - 0x03F504 0F:F4F4: 20 08 D0  JMP loc_F5A7
 
 
 
