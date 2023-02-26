@@ -1801,11 +1801,10 @@ C - - - - - 0x038ADA 0E:8ACA: 60        RTS
 sub_8ACB:
 loc_8ACB:
 C D 0 - - - 0x038ADB 0E:8ACB: A9 00     LDA #$00
-C - - - - - 0x038ADD 0E:8ACD: A2 03     LDX #$03
-bra_8ACF_loop:
-C - - - - - 0x038ADF 0E:8ACF: 9D 26 06  STA ram_plr_0626,X ; 0626 0627 0628 0629 
-C - - - - - 0x038AE2 0E:8AD2: CA        DEX
-C - - - - - 0x038AE3 0E:8AD3: 10 FA     BPL bra_8ACF_loop
+C - - - - - 0x038ADF 0E:8ACF: 9D 26 06  STA ram_plr_0626
+                                        STA ram_plr_0626 + $01
+                                        STA ram_plr_0628
+                                        STA ram_plr_0628 + $01
 bra_8AD5_RTS:
 C - - - - - 0x038AE5 0E:8AD5: 60        RTS
 
