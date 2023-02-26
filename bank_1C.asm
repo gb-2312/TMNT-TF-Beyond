@@ -1838,21 +1838,27 @@ C - - - - - 0x038B04 0E:8AF4: 20 07 EB  JSR sub_0x03EB17_отрисовать_в
 C - - - - - 0x038B07 0E:8AF7: A5 95     LDA ram_0095
 C - - - - - 0x038B09 0E:8AF9: C9 10     CMP #$10
 C - - - - - 0x038B0B 0E:8AFB: 90 09     BCC bra_8B06
+                                        LDY #$00
+                                        STY ram_0011
+                                        LDY #$00
+                                        STY ram_0012
 C - - - - - 0x038B0D 0E:8AFD: A0 01     LDY #$01
 C - - - - - 0x038B0F 0E:8AFF: 84 13     STY ram_0013
-C - - - - - 0x038B11 0E:8B01: 88        DEY ; 00
-C - - - - - 0x038B12 0E:8B02: 84 14     STY ram_0014
-C - - - - - 0x038B14 0E:8B04: F0 07     BEQ bra_8B0D    ; jmp
+                                        LDY #$00
+                                        STY ram_0014
+C - - - - - 0x038B14 0E:8B04: F0 07     JMP loc_8B11
 bra_8B06:
 loc_8B06:
+                                        LDY #$00
+                                        STY ram_0011
+                                        LDY #$00
+                                        STY ram_0012
+                                        LDY #$00
+                                        STY ram_0013
 C D 0 - - - 0x038B16 0E:8B06: A0 01     LDY #$01
 C - - - - - 0x038B18 0E:8B08: 84 14     STY ram_0014
-C - - - - - 0x038B1A 0E:8B0A: 88        DEY ; 00
-C - - - - - 0x038B1B 0E:8B0B: 84 13     STY ram_0013
-bra_8B0D:   ; Y = 00
-C - - - - - 0x038B1D 0E:8B0D: 84 12     STY ram_0012
-sub_8B0F:   ; Y = 00
-C - - - - - 0x038B1F 0E:8B0F: 84 11     STY ram_0011
+loc_8B11:
+sub_8B11:
 C - - - - - 0x038B21 0E:8B11: 20 A4 8B  JSR sub_8BA4
 C - - - - - 0x038B24 0E:8B14: A9 27     LDA #con_0x03F6AD_27
 C - - - - - 0x038B26 0E:8B16: 4C 90 F6  JMP loc_0x03F6A0
@@ -1915,12 +1921,15 @@ ofs_012_8B52_02:
 C - - - - - 0x038B64 0E:8B54: 20 40 A7  JSR sub_A740
 C - - - - - 0x038B67 0E:8B57: D0 F3     BNE bra_8B4C
 C - - - - - 0x038B69 0E:8B59: 20 55 8C  JSR sub_8C55
+                                        LDY #$00
+                                        STY ram_0011
 C - - - - - 0x038B6C 0E:8B5C: A9 02     LDA #$02
 C - - - - - 0x038B6E 0E:8B5E: 85 12     STA ram_0012
+                                        LDY #$00
+C - - - - - 0x038B74 0E:8B64: 84 13     STY ram_0013
 C - - - - - 0x038B70 0E:8B60: A0 00     LDY #$00
 C - - - - - 0x038B72 0E:8B62: 84 14     STY ram_0014
-C - - - - - 0x038B74 0E:8B64: 84 13     STY ram_0013
-C - - - - - 0x038B76 0E:8B66: 20 0F 8B  JSR sub_8B0F
+C - - - - - 0x038B76 0E:8B66: 20 0F 8B  JSR sub_8B11
 C - - - - - 0x038B79 0E:8B69: A9 25     LDA #con_0x03F6AD_25
 C - - - - - 0x038B7B 0E:8B6B: 20 90 F6  JSR sub_0x03F6A0
 C - - - - - 0x038B7E 0E:8B6E: EE 24 06  INC ram_plr_0624
