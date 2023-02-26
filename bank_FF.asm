@@ -5615,16 +5615,6 @@ C - - - - - 0x03EF70 0F:EF60: 60        RTS
 
 
 
-_off006_EF61_1A:
-- D 3 - I - 0x03EF71 0F:EF61: 00 22     .word $2200
-- D 3 - I - 0x03EF73 0F:EF63: 78        .byte $78, $00   ; 
-- D 3 - I - 0x03EF75 0F:EF65: 78        .byte $78, $00   ; 
-- D 3 - I - 0x03EF77 0F:EF67: 78        .byte $78, $00   ; 
-- D 3 - I - 0x03EF79 0F:EF69: 58        .byte $58, $00   ; 
-- D 3 - I - 0x03EF7B 0F:EF6B: FF        .byte $FF   ; 
-
-
-
 loc_0x03EF88:
 C D 3 - - - 0x03EF88 0F:EF78: 10 14     BPL bra_EF8E
 C - - - - - 0x03EF8A 0F:EF7A: BD 40 04  LDA ram_obj_pos_X,X
@@ -5910,32 +5900,6 @@ loc_F13B:
 C D 3 - - - 0x03F14B 0F:F13B: A9 36     LDA #con_prg_bank + $16
 C - - - - - 0x03F14D 0F:F13D: 20 00 F6  JSR sub_F600_swap_prg_16
 C - - - - - 0x03F150 0F:F140: 4C 80 BC  JMP loc_0x02FC90
-
-
-
-_off006_F143_00:
-- D 3 - I - 0x03F153 0F:F143: 00 20     .word $2000
-- D 3 - I - 0x03F155 0F:F145: 78        .byte $78, $00   ; 
-- D 3 - I - 0x03F157 0F:F147: 78        .byte $78, $00   ; 
-- D 3 - I - 0x03F159 0F:F149: 78        .byte $78, $00   ; 
-- D 3 - I - 0x03F15B 0F:F14B: 78        .byte $78, $00   ; 
-- D 3 - I - 0x03F15D 0F:F14D: 78        .byte $78, $00   ; 
-- D 3 - I - 0x03F15F 0F:F14F: 78        .byte $78, $00   ; 
-- D 3 - I - 0x03F161 0F:F151: 78        .byte $78, $00   ; 
-- D 3 - I - 0x03F163 0F:F153: 78        .byte $78, $00   ; 
-- D 3 - I - 0x03F165 0F:F155: 40        .byte $40, $00   ; 
-- D 3 - I - 0x03F167 0F:F157: 7F        .byte $7F   ; 
-- D 3 - I - 0x03F168 0F:F158: 00 2C     .word $2C00
-- D 3 - I - 0x03F16A 0F:F15A: 78        .byte $78, $00   ; 
-- D 3 - I - 0x03F16C 0F:F15C: 78        .byte $78, $00   ; 
-- D 3 - I - 0x03F16E 0F:F15E: 78        .byte $78, $00   ; 
-- D 3 - I - 0x03F170 0F:F160: 78        .byte $78, $00   ; 
-- D 3 - I - 0x03F172 0F:F162: 78        .byte $78, $00   ; 
-- D 3 - I - 0x03F174 0F:F164: 78        .byte $78, $00   ; 
-- D 3 - I - 0x03F176 0F:F166: 78        .byte $78, $00   ; 
-- D 3 - I - 0x03F178 0F:F168: 78        .byte $78, $00   ; 
-- D 3 - I - 0x03F17A 0F:F16A: 40        .byte $40, $00   ; 
-- D 3 - I - 0x03F17C 0F:F16C: FF        .byte $FF   ; 
 
 
 
