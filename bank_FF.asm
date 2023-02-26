@@ -14,9 +14,6 @@
 .export _off009_0x03CFF5_28
 .export _off009_0x03CFF5_29
 .export sub_0x03D042_поинтеры_после_JSR
-.export sub_0x03D077_очистить_spd_X_и_spd_Z
-.export loc_0x03D077_очистить_spd_X_и_spd_Z
-.export sub_0x03D07A_очистить_spd_X
 .export sub_0x03D083_очистить_spd_Z
 .export loc_0x03D083_очистить_spd_Z
 .export sub_0x03D08C
@@ -57,7 +54,6 @@
 .export loc_0x03DB48_очистить_spd_X_и_spd_Z
 .export loc_0x03DB4C_очистить_spd_X
 .export sub_0x03DB4C_очистить_spd_X
-.export loc_0x03DB50_очистить_spd_Z
 .export sub_0x03DB59_добавить_spd_X_к_pos_X___spd_Z_к_pos_Y
 .export sub_0x03DB5C_добавить_spd_Z_к_pos_Y
 .export loc_0x03DB5C_добавить_spd_Z_к_pos_Y
@@ -506,28 +502,6 @@ C - - - - - 0x03D058 0F:D048: A4 03     LDY ram_0003
 C - - - - - 0x03D05A 0F:D04A: 85 03     STA ram_0003
 C - - - - - 0x03D05C 0F:D04C: A5 04     LDA ram_0004
 C - - - - - 0x03D05E 0F:D04E: 6C 02 00  JMP (ram_0002)
-
-
-
-sub_D067_очистить_spd_X_и_spd_Z:
-sub_0x03D077_очистить_spd_X_и_spd_Z:
-loc_0x03D077_очистить_spd_X_и_spd_Z:
-C D 2 - - - 0x03D077 0F:D067: 20 73 D0  JSR sub_D073_очистить_spd_Z
-sub_0x03D07A_очистить_spd_X:
-C - - - - - 0x03D07A 0F:D06A: A9 00     LDA #$00
-C - - - - - 0x03D07C 0F:D06C: 9D 80 04  STA ram_obj_spd_X_hi,X
-C - - - - - 0x03D07F 0F:D06F: 9D 90 04  STA ram_obj_spd_X_lo,X
-C - - - - - 0x03D082 0F:D072: 60        RTS
-
-
-
-sub_D073_очистить_spd_Z:
-sub_0x03D083_очистить_spd_Z:
-loc_0x03D083_очистить_spd_Z:
-C D 2 - - - 0x03D083 0F:D073: A9 00     LDA #$00
-C - - - - - 0x03D085 0F:D075: 9D 60 04  STA ram_obj_spd_Z_hi,X
-C - - - - - 0x03D088 0F:D078: 9D 70 04  STA ram_obj_spd_Z_lo,X
-C - - - - - 0x03D08B 0F:D07B: 60        RTS
 
 
 
@@ -2112,6 +2086,7 @@ C - - - - - 0x03DB2F 0F:DB1F: 9D C0 04  STA ram_obj_04C0,X
 C - - - - - 0x03DB32 0F:DB22: 9D D0 04  STA ram_obj_04D0,X
 C - - - - - 0x03DB35 0F:DB25: 9D E0 04  STA ram_obj_04E0,X
 C - - - - - 0x03DB38 0F:DB28: 9D F0 04  STA ram_obj_04F0,X
+sub_D067_очистить_spd_X_и_spd_Z:
 sub_0x03DB48_очистить_spd_X_и_spd_Z:
 loc_0x03DB48_очистить_spd_X_и_spd_Z:
                                         LDA #$00
@@ -2126,11 +2101,13 @@ C - - - - - 0x03DB47 0F:DB37: 60        RTS
 
 
 
-loc_0x03DB50_очистить_spd_Z:
-- - - - - - 0x03DB50 0F:DB40: A9 00     LDA #$00
-- - - - - - 0x03DB52 0F:DB42: 9D 60 04  STA ram_obj_spd_Z_hi,X
-- - - - - - 0x03DB55 0F:DB45: 9D 70 04  STA ram_obj_spd_Z_lo,X
-- - - - - - 0x03DB58 0F:DB48: 60        RTS
+sub_D073_очистить_spd_Z:
+sub_0x03D083_очистить_spd_Z:
+loc_0x03D083_очистить_spd_Z:
+C D 2 - - - 0x03D083 0F:D073: A9 00     LDA #$00
+C - - - - - 0x03D085 0F:D075: 9D 60 04  STA ram_obj_spd_Z_hi,X
+C - - - - - 0x03D088 0F:D078: 9D 70 04  STA ram_obj_spd_Z_lo,X
+C - - - - - 0x03D08B 0F:D07B: 60        RTS
 
 
 
