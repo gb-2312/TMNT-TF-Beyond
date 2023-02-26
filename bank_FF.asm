@@ -1361,7 +1361,7 @@ C - - - - - 0x03D3CC 0F:D3BC: A9 08     LDA #$08
 C - - - - - 0x03D3CE 0F:D3BE: 8D 03 06  STA ram_0603
 bra_D3C1:
 C - - - - - 0x03D3D1 0F:D3C1: A9 08     LDA #$08
-C - - - - - 0x03D3D3 0F:D3C3: 20 5C D4  JSR sub_D45C
+C - - - - - 0x03D3D3 0F:D3C3: 20 5C D4  JSR sub_D45C    ; возможен PLA PLA
 C - - - - - 0x03D3D6 0F:D3C6: A9 00     LDA #$00
 C - - - - - 0x03D3D8 0F:D3C8: 85 00     STA ram_0000
 C - - - - - 0x03D3DA 0F:D3CA: A2 1F     LDX #$1F
@@ -1413,7 +1413,7 @@ C - - - - - 0x03D41B 0F:D40B: CA        DEX
 C - - - - - 0x03D41C 0F:D40C: 10 F2     BPL bra_D400_loop
 sub_D40E:
 C - - - - - 0x03D41E 0F:D40E: EE 02 06  INC ram_0602
-C - - - - - 0x03D421 0F:D411: 20 64 D4  JSR sub_D464
+C - - - - - 0x03D421 0F:D411: 20 64 D4  JSR sub_D464_запись_FF_в_066D
 C - - - - - 0x03D424 0F:D414: A9 08     LDA #$08
 C - - - - - 0x03D426 0F:D416: 8D 03 06  STA ram_0603
 bra_D419_RTS:
@@ -1467,9 +1467,9 @@ sub_D45C:
 C - - - - - 0x03D46C 0F:D45C: CE 03 06  DEC ram_0603
 C - - - - - 0x03D46F 0F:D45F: 10 09     BPL bra_D46A
 C - - - - - 0x03D471 0F:D461: 8D 03 06  STA ram_0603
-bra_D464:
-sub_D464:
-loc_D464:
+bra_D464_запись_FF_в_066D:
+sub_D464_запись_FF_в_066D:
+loc_D464_запись_FF_в_066D:
 C D 2 - - - 0x03D474 0F:D464: A9 FF     LDA #$FF
 C - - - - - 0x03D476 0F:D466: 8D 6D 06  STA ram_066D
 C - - - - - 0x03D479 0F:D469: 60        RTS
@@ -1490,7 +1490,7 @@ bra_D471:
 C - - - - - 0x03D481 0F:D471: 9D 4D 06  STA ram_pal_buffer,X
 C - - - - - 0x03D484 0F:D474: CA        DEX
 C - - - - - 0x03D485 0F:D475: 10 FA     BPL bra_D471
-C - - - - - 0x03D487 0F:D477: 30 EB     BMI bra_D464    ; jmp
+C - - - - - 0x03D487 0F:D477: 30 EB     BMI bra_D464_запись_FF_в_066D    ; jmp
 
 
 
@@ -1503,7 +1503,7 @@ C - - - - - 0x03D493 0F:D483: 8D 03 06  STA ram_0603
 C - - - - - 0x03D496 0F:D486: 60        RTS
 bra_D487:
 C - - - - - 0x03D497 0F:D487: A9 0C     LDA #$0C
-C - - - - - 0x03D499 0F:D489: 20 5C D4  JSR sub_D45C
+C - - - - - 0x03D499 0F:D489: 20 5C D4  JSR sub_D45C    ; возможен PLA PLA
 C - - - - - 0x03D49C 0F:D48C: A9 07     LDA #$07
 C - - - - - 0x03D49E 0F:D48E: 85 00     STA ram_0000
 bra_D490_loop:
@@ -1533,7 +1533,7 @@ C - - - - - 0x03D4C2 0F:D4B2: C6 01     DEC ram_0001
 C - - - - - 0x03D4C4 0F:D4B4: 10 DE     BPL bra_D494_loop
 C - - - - - 0x03D4C6 0F:D4B6: C6 00     DEC ram_0000
 C - - - - - 0x03D4C8 0F:D4B8: 10 D6     BPL bra_D490_loop
-C - - - - - 0x03D4CA 0F:D4BA: 20 64 D4  JSR sub_D464
+C - - - - - 0x03D4CA 0F:D4BA: 20 64 D4  JSR sub_D464_запись_FF_в_066D
 C - - - - - 0x03D4CD 0F:D4BD: EE 02 06  INC ram_0602
 C - - - - - 0x03D4D0 0F:D4C0: AD 02 06  LDA ram_0602
 C - - - - - 0x03D4D3 0F:D4C3: C9 05     CMP #$05
@@ -1558,10 +1558,10 @@ C - - - - - 0x03D4F0 0F:D4E0: A9 30     LDA #$30
 C - - - - - 0x03D4F2 0F:D4E2: 9D 4D 06  STA ram_pal_buffer,X
 C - - - - - 0x03D4F5 0F:D4E5: CA        DEX
 C - - - - - 0x03D4F6 0F:D4E6: 10 F2     BPL bra_D4DA_loop
-C - - - - - 0x03D4F8 0F:D4E8: 4C 64 D4  JMP loc_D464
+C - - - - - 0x03D4F8 0F:D4E8: 4C 64 D4  JMP loc_D464_запись_FF_в_066D
 bra_D4EB:
 C - - - - - 0x03D4FB 0F:D4EB: A9 08     LDA #$08
-C - - - - - 0x03D4FD 0F:D4ED: 20 5C D4  JSR sub_D45C
+C - - - - - 0x03D4FD 0F:D4ED: 20 5C D4  JSR sub_D45C    ; возможен PLA PLA
 C - - - - - 0x03D500 0F:D4F0: 88        DEY
 C - - - - - 0x03D501 0F:D4F1: D0 19     BNE bra_D50C
 C - - - - - 0x03D503 0F:D4F3: A2 1F     LDX #$1F
@@ -1576,7 +1576,7 @@ C - - - - - 0x03D510 0F:D500: 9D 4D 06  STA ram_pal_buffer,X
 C - - - - - 0x03D513 0F:D503: CA        DEX
 C - - - - - 0x03D514 0F:D504: 10 EF     BPL bra_D4F5_loop
 C - - - - - 0x03D516 0F:D506: EE 02 06  INC ram_0602
-C - - - - - 0x03D519 0F:D509: 4C 64 D4  JMP loc_D464
+C - - - - - 0x03D519 0F:D509: 4C 64 D4  JMP loc_D464_запись_FF_в_066D
 bra_D50C:
 C - - - - - 0x03D51C 0F:D50C: A2 1F     LDX #$1F
 bra_D50E_loop:
@@ -1598,7 +1598,7 @@ C - - - - - 0x03D539 0F:D529: C9 06     CMP #$06
 C - - - - - 0x03D53B 0F:D52B: 90 03     BCC bra_D530
 C - - - - - 0x03D53D 0F:D52D: 20 EC D3  JSR sub_D3EC_очистить_0600_063B
 bra_D530:
-C - - - - - 0x03D540 0F:D530: 4C 64 D4  JMP loc_D464
+C - - - - - 0x03D540 0F:D530: 4C 64 D4  JMP loc_D464_запись_FF_в_066D
 bra_D533_RTS:
 C - - - - - 0x03D543 0F:D533: 60        RTS
 
@@ -2631,7 +2631,7 @@ C - - - - - 0x03DEC9 0F:DEB9: 60        RTS
 
 sub_0x03DECA:
 C - - - - - 0x03DECA 0F:DEBA: 20 C0 DE  JSR sub_DEC0
-C - - - - - 0x03DECD 0F:DEBD: 4C 7A DE  JMP loc_DE7A
+C - - - - - 0x03DECD 0F:DEBD: 4C 7A DE  JMP loc_DE7A    ; возможен PLA PLA
 
 
 

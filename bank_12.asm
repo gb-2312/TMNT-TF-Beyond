@@ -288,14 +288,14 @@ C - - - - - 0x02419E 09:818E: 20 32 D0  JSR sub_0x03D042_поинтеры_пос
 
 
 ofs_060_81AB_00:
-C - - J - - 0x0241BB 09:81AB: 20 01 8B  JSR sub_8B01
-C - - - - - 0x0241BE 09:81AE: 20 52 89  JSR sub_8952
+C - - J - - 0x0241BB 09:81AB: 20 01 8B  JSR sub_8B01    ; возможен PLA PLA
+C - - - - - 0x0241BE 09:81AE: 20 52 89  JSR sub_8952    ; возможен PLA PLA
 C - - - - - 0x0241C1 09:81B1: A9 AF     LDA #$AF
 C - - - - - 0x0241C3 09:81B3: DD 10 04  CMP ram_obj_pos_Y,X
 C - - - - - 0x0241C6 09:81B6: B0 58     BCS bra_8210
 C - - - - - 0x0241C8 09:81B8: A9 B0     LDA #$B0
 C - - - - - 0x0241CA 09:81BA: 9D 10 04  STA ram_obj_pos_Y,X
-C - - - - - 0x0241CD 09:81BD: 20 76 89  JSR sub_8976
+C - - - - - 0x0241CD 09:81BD: 20 76 89  JSR sub_8976    ; возможен PLA PLA
 C - - - - - 0x0241D0 09:81C0: A4 A9     LDY ram_global_obj_index
 C - - - - - 0x0241D2 09:81C2: B9 30 05  LDA ram_obj_0530,Y
 C - - - - - 0x0241D5 09:81C5: C9 04     CMP #$04
@@ -312,7 +312,7 @@ C - - - - - 0x0241E9 09:81D9: 85 01     STA ram_0001
 C - - - - - 0x0241EB 09:81DB: B5 91     LDA ram_btn_hold,X
 C - - - - - 0x0241ED 09:81DD: 29 04     AND #con_btn_Down
 C - - - - - 0x0241EF 09:81DF: D0 0F     BNE bra_81F0
-C - - - - - 0x0241F1 09:81E1: 20 0D 89  JSR sub_890D
+C - - - - - 0x0241F1 09:81E1: 20 0D 89  JSR sub_890D    ; возможен PLA PLA
 C - - - - - 0x0241F4 09:81E4: B5 91     LDA ram_btn_hold,X
 C - - - - - 0x0241F6 09:81E6: 29 03     AND #con_btns_LR
 C - - - - - 0x0241F8 09:81E8: D0 0C     BNE bra_81F6
@@ -880,7 +880,7 @@ C - - - - - 0x024608 09:85F8: 30 05     BMI bra_85FF
 C - - - - - 0x02460A 09:85FA: 20 ED DC  JSR sub_0x03DCFD
 C - - - - - 0x02460D 09:85FD: 90 15     BCC bra_8614
 bra_85FF:
-C - - - - - 0x02460F 09:85FF: 20 01 8B  JSR sub_8B01
+C - - - - - 0x02460F 09:85FF: 20 01 8B  JSR sub_8B01    ; возможен PLA PLA
 C - - - - - 0x024612 09:8602: BD 39 06  LDA ram_plr_0639,X
 C - - - - - 0x024615 09:8605: D0 0C     BNE bra_8613_RTS
 C - - - - - 0x024617 09:8607: B5 8E     LDA ram_btn_press,X
@@ -1018,9 +1018,9 @@ C - - - - - 0x024710 09:8700: 60        RTS
 
 ofs_060_8701_07:
 C - - J - - 0x024711 09:8701: 20 69 DC  JSR sub_0x03DC79
-C - - - - - 0x024714 09:8704: 20 01 8B  JSR sub_8B01
-C - - - - - 0x024717 09:8707: 20 52 89  JSR sub_8952
-C - - - - - 0x02471A 09:870A: 20 76 89  JSR sub_8976
+C - - - - - 0x024714 09:8704: 20 01 8B  JSR sub_8B01    ; возможен PLA PLA
+C - - - - - 0x024717 09:8707: 20 52 89  JSR sub_8952    ; возможен PLA PLA
+C - - - - - 0x02471A 09:870A: 20 76 89  JSR sub_8976    ; возможен PLA PLA
 C - - - - - 0x02471D 09:870D: 20 F9 81  JSR sub_81F9
 C - - - - - 0x024720 09:8710: BC 40 05  LDY ram_obj_0540,X
 C - - - - - 0x024723 09:8713: F0 05     BEQ bra_871A
@@ -1052,7 +1052,7 @@ C - - - - - 0x02474E 09:873E: 4C 21 82  JMP loc_8221
 bra_8741:
 C - - - - - 0x024751 09:8741: DE 60 05  DEC ram_obj_0560,X
 bra_8744:
-C - - - - - 0x024754 09:8744: 20 0D 89  JSR sub_890D
+C - - - - - 0x024754 09:8744: 20 0D 89  JSR sub_890D    ; возможен PLA PLA
 C - - - - - 0x024757 09:8747: 60        RTS
 bra_8748:
 C - - - - - 0x024758 09:8748: DE 60 05  DEC ram_obj_0560,X
@@ -1179,7 +1179,7 @@ C - - - - - 0x02480C 09:87FC: A9 02     LDA #$02
 C - - - - - 0x02480E 09:87FE: 85 AA     STA ram_00AA
 C - - - - - 0x024810 09:8800: A9 04     LDA #$04
 C - - - - - 0x024812 09:8802: 20 3C DE  JSR sub_0x03DE4C
-C - - - - - 0x024815 09:8805: 20 77 DE  JSR sub_0x03DE87
+C - - - - - 0x024815 09:8805: 20 77 DE  JSR sub_0x03DE87    ; возможен PLA PLA
 C - - - - - 0x024818 09:8808: A9 1E     LDA #con_0x03F6AD_1E
 C - - - - - 0x02481A 09:880A: 20 94 F6  JSR sub_0x03F6A4
 C - - - - - 0x02481D 09:880D: A5 22     LDA ram_0022
@@ -2214,7 +2214,7 @@ C - - - - - 0x024F1A 09:8F0A: D0 10     BNE bra_8F1C
 C - - - - - 0x024F1C 09:8F0C: 20 DA 8E  JSR sub_8EDA
 C - - - - - 0x024F1F 09:8F0F: A9 04     LDA #$04
 C - - - - - 0x024F21 09:8F11: 20 3C DE  JSR sub_0x03DE4C
-C - - - - - 0x024F24 09:8F14: 20 77 DE  JSR sub_0x03DE87
+C - - - - - 0x024F24 09:8F14: 20 77 DE  JSR sub_0x03DE87    ; возможен PLA PLA
 C - - - - - 0x024F27 09:8F17: A9 0C     LDA #con_0x03F6AD_0C
 C - - - - - 0x024F29 09:8F19: 20 94 F6  JSR sub_0x03F6A4
 bra_8F1C:
@@ -2532,7 +2532,7 @@ C - - - - - 0x025162 09:9152: 20 69 B0  JSR sub_B069
 C - - - - - 0x025165 09:9155: 20 40 91  JSR sub_9140
 C - - - - - 0x025168 09:9158: A6 A9     LDX ram_global_obj_index
 ; bzk optimize, JMP 0x03DE8E для читабельности и скорости
-C - - - - - 0x02516A 09:915A: 20 7C DE  JSR sub_0x03DE8C    ; подпрограмма делает PLA PLA
+C - - - - - 0x02516A 09:915A: 20 7C DE  JSR sub_0x03DE8C    ; гарантированный PLA PLA
 
 
 
@@ -4395,7 +4395,7 @@ tbl_98E8:
 
 tbl_9996:
 ; !!! ???
-- - - - - - 0x0259A6 09:9996: FF        .byte $FF   ; bzk garbage? тогда получилось бы 7 байтов FF, как для персов
+- - - - - - 0x0259A6 09:9996: FF        .byte $FF   ; bzk garbage?
 - D 0 - - - 0x0259A7 09:9997: 81        .byte $81   ; 
 - D 0 - - - 0x0259A8 09:9998: 01        .byte $01   ; 
 - - - - - - 0x0259A9 09:9999: 80        .byte $80   ; 
@@ -4622,7 +4622,7 @@ C D 0 - - - 0x025AA5 09:9A95: C0 04     CPY #$04
 C - - - - - 0x025AA7 09:9A97: F0 1E     BEQ bra_9AB7_RTS
 C - - - - - 0x025AA9 09:9A99: C0 03     CPY #$03
 C - - - - - 0x025AAB 09:9A9B: F0 1A     BEQ bra_9AB7_RTS
-C - - - - - 0x025AAD 09:9A9D: 20 44 BE  JSR sub_BE44
+C - - - - - 0x025AAD 09:9A9D: 20 44 BE  JSR sub_BE44    ; возможен PLA PLA
 C - - - - - 0x025AB0 09:9AA0: A9 00     LDA #$00
 C - - - - - 0x025AB2 09:9AA2: 9D 10 06  STA ram_plr_0610,X
 C - - - - - 0x025AB5 09:9AA5: 9D 7A 06  STA ram_plr_067A,X
@@ -5066,7 +5066,7 @@ C - - - - - 0x025D9D 09:9D8D: 9D 4B 06  STA ram_064B,X
 C - - - - - 0x025DA0 09:9D90: C5 00     CMP ram_0000
 C - - - - - 0x025DA2 09:9D92: D0 46     BNE bra_9DDA_RTS
 bra_9D94:
-C - - - - - 0x025DA4 09:9D94: 20 4C BE  JSR sub_BE4C
+C - - - - - 0x025DA4 09:9D94: 20 4C BE  JSR sub_BE4C    ; возможен PLA PLA
 C - - - - - 0x025DA7 09:9D97: 90 02     BCC bra_9D9B
 C - - - - - 0x025DA9 09:9D99: D0 3F     BNE bra_9DDA_RTS
 bra_9D9B:
@@ -5485,7 +5485,7 @@ C - - - - - 0x026069 09:A059: 88        DEY
 C - - - - - 0x02606A 09:A05A: A9 D8     LDA #$D8
 bra_A05C:
 C - - - - - 0x02606C 09:A05C: 20 B1 DC  JSR sub_0x03DCC1_добавить_A_Y_к_spdX
-C - - - - - 0x02606F 09:A05F: 20 C7 A1  JSR sub_A1C7
+C - - - - - 0x02606F 09:A05F: 20 C7 A1  JSR sub_A1C7    ; возможен PLA PLA
 C - - - - - 0x026072 09:A062: 4C DD A1  JMP loc_A1DD
 
 
@@ -5505,7 +5505,7 @@ C - - - - - 0x02608C 09:A07C: A9 40     LDA #$40
 C - - - - - 0x02608E 09:A07E: 8D B6 05  STA ram_obj_05B0 + $06
 C - - - - - 0x026091 09:A081: 8D 96 05  STA ram_obj_0590 + $06
 bra_A084:
-C - - - - - 0x026094 09:A084: 20 C7 A1  JSR sub_A1C7
+C - - - - - 0x026094 09:A084: 20 C7 A1  JSR sub_A1C7    ; возможен PLA PLA
 C - - - - - 0x026097 09:A087: AD 16 04  LDA ram_obj_pos_Y + $06
 C - - - - - 0x02609A 09:A08A: C9 45     CMP #$45
 C - - - - - 0x02609C 09:A08C: 90 2C     BCC bra_A0BA
@@ -5570,8 +5570,8 @@ C - - - - - 0x02610A 09:A0FA: EE 46 05  INC ram_obj_0540 + $06
 bra_A0FD:
 C - - - - - 0x02610D 09:A0FD: 88        DEY
 C - - - - - 0x02610E 09:A0FE: D0 2B     BNE bra_A12B
-C - - - - - 0x026110 09:A100: 20 C7 A1  JSR sub_A1C7
-C - - - - - 0x026113 09:A103: 20 D6 A1  JSR sub_A1D6
+C - - - - - 0x026110 09:A100: 20 C7 A1  JSR sub_A1C7    ; возможен PLA PLA
+C - - - - - 0x026113 09:A103: 20 D6 A1  JSR sub_A1D6    ; возможен PLA PLA
 C - - - - - 0x026116 09:A106: CE A6 04  DEC ram_obj_spd_Y_hi + $06
 C - - - - - 0x026119 09:A109: 10 05     BPL bra_A110
 C - - - - - 0x02611B 09:A10B: A9 02     LDA #$02
@@ -5588,8 +5588,8 @@ C - - - - - 0x026133 09:A123: EE 46 05  INC ram_obj_0540 + $06
 C - - - - - 0x026136 09:A126: A9 01     LDA #$01
 C - - - - - 0x026138 09:A128: 8D 06 04  STA ram_0406
 bra_A12B:
-C - - - - - 0x02613B 09:A12B: 20 C7 A1  JSR sub_A1C7
-C - - - - - 0x02613E 09:A12E: 20 D6 A1  JSR sub_A1D6
+C - - - - - 0x02613B 09:A12B: 20 C7 A1  JSR sub_A1C7    ; возможен PLA PLA
+C - - - - - 0x02613E 09:A12E: 20 D6 A1  JSR sub_A1D6    ; возможен PLA PLA
 C - - - - - 0x026141 09:A131: 20 69 DC  JSR sub_0x03DC79
 C - - - - - 0x026144 09:A134: 90 A7     BCC bra_A0DD_RTS
 C - - - - - 0x026146 09:A136: A9 80     LDA #$80
@@ -5628,8 +5628,8 @@ C - - - - - 0x02616A 09:A15A: 8D 46 04  STA ram_obj_pos_X + $06
 bra_A15D:
 C - - - - - 0x02616D 09:A15D: A0 17     LDY #con_0x03D0C3_17
 C - - - - - 0x02616F 09:A15F: 20 7C D0  JSR sub_0x03D08C
-C - - - - - 0x026172 09:A162: 20 D6 A1  JSR sub_A1D6
-C - - - - - 0x026175 09:A165: 20 C7 A1  JSR sub_A1C7
+C - - - - - 0x026172 09:A162: 20 D6 A1  JSR sub_A1D6    ; возможен PLA PLA
+C - - - - - 0x026175 09:A165: 20 C7 A1  JSR sub_A1C7    ; возможен PLA PLA
 C - - - - - 0x026178 09:A168: AD A6 04  LDA ram_obj_spd_Y_hi + $06
 C - - - - - 0x02617B 09:A16B: 4A        LSR
 C - - - - - 0x02617C 09:A16C: AD 16 04  LDA ram_obj_pos_Y + $06
@@ -5671,8 +5671,8 @@ C - - - - - 0x0261AD 09:A19D: 8D 16 04  STA ram_obj_pos_Y + $06
 C - - - - - 0x0261B0 09:A1A0: A9 CB     LDA #$CB
 C - - - - - 0x0261B2 09:A1A2: 8D 06 04  STA ram_0406
 bra_A1A5:
-C - - - - - 0x0261B5 09:A1A5: 20 D6 A1  JSR sub_A1D6
-C - - - - - 0x0261B8 09:A1A8: 20 C7 A1  JSR sub_A1C7
+C - - - - - 0x0261B5 09:A1A5: 20 D6 A1  JSR sub_A1D6    ; возможен PLA PLA
+C - - - - - 0x0261B8 09:A1A8: 20 C7 A1  JSR sub_A1C7    ; возможен PLA PLA
 C - - - - - 0x0261BB 09:A1AB: 60        RTS
 
 
@@ -7421,7 +7421,7 @@ C - - - - - 0x026B58 09:AB48: A9 82     LDA #$82
 C - - - - - 0x026B5A 09:AB4A: 85 08     STA ram_0008
 C - - - - - 0x026B5C 09:AB4C: 8D 04 01  STA ram_0104
 C - - - - - 0x026B5F 09:AB4F: A9 0D     LDA #con_0x03F6AD_0D
-C - - - - - 0x026B61 09:AB51: 20 24 AC  JSR sub_AC24
+C - - - - - 0x026B61 09:AB51: 20 24 AC  JSR sub_AC24    ; возможен PLA PLA
 C - - - - - 0x026B64 09:AB54: A9 06     LDA #$06
 C - - - - - 0x026B66 09:AB56: 20 F8 AB  JSR sub_ABF8
 C - - - - - 0x026B69 09:AB59: A0 07     LDY #$07
@@ -7606,9 +7606,6 @@ bra_AC9A:
 C - - - - - 0x026CAA 09:AC9A: 9D 2C 06  STA ram_plr_062C,X ; 062C 062D 
 bra_AC9D_RTS:
 C - - - - - 0x026CAD 09:AC9D: 60        RTS
-
-
-
 bra_ACA1:
 C - - - - - 0x026CB1 09:ACA1: 68        PLA
 C - - - - - 0x026CB2 09:ACA2: 68        PLA
@@ -7850,7 +7847,7 @@ C - - - - - 0x026DFE 09:ADEE: F0 03     BEQ bra_ADF3
 bra_ADF0:
 C - - - - - 0x026E00 09:ADF0: 4C 8A AE  JMP loc_AE8A
 bra_ADF3:
-C - - - - - 0x026E03 09:ADF3: 20 E3 AE  JSR sub_AEE3
+C - - - - - 0x026E03 09:ADF3: 20 E3 AE  JSR sub_AEE3    ; возможен PLA PLA
 C - - - - - 0x026E06 09:ADF6: E8        INX
 C - - - - - 0x026E07 09:ADF7: 88        DEY
 C - - - - - 0x026E08 09:ADF8: B9 90 04  LDA ram_obj_spd_X_lo,Y ; 0490 0491 058F 
@@ -7937,7 +7934,7 @@ C - - - - - 0x026E97 09:AE87: 4C 3A AE  JMP loc_AE3A
 
 
 loc_AE8A:
-C D 1 - - - 0x026E9A 09:AE8A: 20 E3 AE  JSR sub_AEE3
+C D 1 - - - 0x026E9A 09:AE8A: 20 E3 AE  JSR sub_AEE3    ; возможен PLA PLA
 C - - - - - 0x026E9D 09:AE8D: 88        DEY
 C - - - - - 0x026E9E 09:AE8E: E8        INX
 C - - - - - 0x026E9F 09:AE8F: B9 40 04  LDA ram_obj_pos_X,Y ; 0441 
@@ -10375,7 +10372,7 @@ C - - - - - 0x027C52 09:BC42: A0 00     LDY #$00
 C - - - - - 0x027C54 09:BC44: 84 00     STY ram_0000
 C - - - - - 0x027C57 09:BC47: AD 3C 06  LDA ram_063C
 C - - - - - 0x027C5A 09:BC4A: 10 02     BPL bra_BC4E
-- - - - - - 0x027C5C 09:BC4C: C6 00     DEC ram_0000
+- - - - - - 0x027C5C 09:BC4C: C6 00     DEC ram_0000    ; FF
 bra_BC4E:
                                         SEC
 C - - - - - 0x027C5E 09:BC4E: BD 40 04  LDA ram_obj_pos_X,X

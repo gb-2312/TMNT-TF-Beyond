@@ -1820,7 +1820,7 @@ C - - - - - 0x038AE5 0E:8AD5: 60        RTS
 
 
 ofs_012_8AD6_01_подсчет_оставшегося_времени_после_боя:
-C - - J - - 0x038AE6 0E:8AD6: 20 19 8B  JSR sub_8B19
+C - - J - - 0x038AE6 0E:8AD6: 20 19 8B  JSR sub_8B19    ; возможен PLA PLA
 C - - - - - 0x038AE9 0E:8AD9: A9 16     LDA #$16
 C - - - - - 0x038AEB 0E:8ADB: 20 21 8B  JSR sub_8B21
 C - - - - - 0x038AEE 0E:8ADE: A5 22     LDA ram_0022
@@ -1860,7 +1860,7 @@ C D 0 - - - 0x038B16 0E:8B06: A0 01     LDY #$01
 C - - - - - 0x038B18 0E:8B08: 84 14     STY ram_0014
 loc_8B11:
 sub_8B11:
-C - - - - - 0x038B21 0E:8B11: 20 A4 8B  JSR sub_8BA4
+C - - - - - 0x038B21 0E:8B11: 20 A4 8B  JSR sub_8BA4_подсчитать_очки
 C - - - - - 0x038B24 0E:8B14: A9 27     LDA #con_0x03F6AD_27
 C - - - - - 0x038B26 0E:8B16: 4C 90 F6  JMP loc_0x03F6A0
 
@@ -1921,7 +1921,7 @@ C - - - - - 0x038B5F 0E:8B4F: 4C CB 8A  JMP loc_8ACB
 ofs_012_8B52_02_завершение_подсчета_времени_после_боя:
 C - - - - - 0x038B64 0E:8B54: 20 40 A7  JSR sub_A740
 C - - - - - 0x038B67 0E:8B57: D0 F3     BNE bra_8B4C
-C - - - - - 0x038B69 0E:8B59: 20 55 8C  JSR sub_8C55
+C - - - - - 0x038B69 0E:8B59: 20 55 8C  JSR sub_8C55    ; возможен PLA PLA
                                         LDY #$00
                                         STY ram_0011
 C - - - - - 0x038B6C 0E:8B5C: A9 02     LDA #$02
@@ -1940,8 +1940,8 @@ C - - - - - 0x038B83 0E:8B73: D0 CF     BNE bra_8B44    ; jmp
 
 
 ofs_012_8B75_03_подсчет_оставшегося_здоровья_после_боя:
-C - - J - - 0x038B85 0E:8B75: 20 55 8C  JSR sub_8C55
-C - - - - - 0x038B88 0E:8B78: 20 19 8B  JSR sub_8B19
+C - - J - - 0x038B85 0E:8B75: 20 55 8C  JSR sub_8C55    ; возможен PLA PLA
+C - - - - - 0x038B88 0E:8B78: 20 19 8B  JSR sub_8B19    ; возможен PLA PLA
 C - - - - - 0x038B8B 0E:8B7B: A9 18     LDA #$18
 C - - - - - 0x038B8D 0E:8B7D: 20 21 8B  JSR sub_8B21
 C - - - - - 0x038B90 0E:8B80: AE 71 06  LDX ram_0671
@@ -1956,14 +1956,14 @@ C - - - - - 0x038BA4 0E:8B94: 20 3E 8B  JSR sub_8B3E
 C - - - - - 0x038BA7 0E:8B97: 0A        ASL
 C - - - - - 0x038BA8 0E:8B98: 9D 90 05  STA ram_obj_0590,X
 ofs_012_8B9B_04_завершение_подсчета_оставшегося_здоровья_после_боя:
-C - - - - - 0x038BAB 0E:8B9B: 20 55 8C  JSR sub_8C55
+C - - - - - 0x038BAB 0E:8B9B: 20 55 8C  JSR sub_8C55    ; возможен PLA PLA
 C - - - - - 0x038BAE 0E:8B9E: A9 00     LDA #$00
 C - - - - - 0x038BB0 0E:8BA0: 8D 24 06  STA ram_plr_0624
 C - - - - - 0x038BB3 0E:8BA3: 60        RTS
 
 
 
-sub_8BA4:
+sub_8BA4_подсчитать_очки:
 ; бряк срабатывает при подсчете очков после боя
 ; bzk optimize, поменять 0626-062E адреса на другие
 C - - - - - 0x038BB4 0E:8BA4: 86 CF     STX ram_00CF
@@ -2067,6 +2067,7 @@ C - - - - - 0x038C5C 0E:8C4C: 90 F2     BCC bra_8C40_loop
 C - - - - - 0x038C5E 0E:8C4E: 20 5B D2  JSR sub_0x03D26B_записать_FF_в_буфер_с_чтением_индекса
 bra_8C51:
 C - - - - - 0x038C61 0E:8C51: A6 CF     LDX ram_00CF
+; bzk optimize, на выходе A из 00CF не используется, удалить TXA
 C - - - - - 0x038C63 0E:8C53: 8A        TXA
 C - - - - - 0x038C64 0E:8C54: 60        RTS
 
