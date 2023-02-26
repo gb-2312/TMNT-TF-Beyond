@@ -1784,7 +1784,15 @@ bra_8AAB_FF:
 C - - - - - 0x038ABB 0E:8AAB: EE 24 06  INC ram_plr_0624
 C - - - - - 0x038ABE 0E:8AAE: A9 15     LDA #con_0x030C10_15
 C - - - - - 0x038AC0 0E:8AB0: 20 E5 F6  JSR sub_0x03F6F5_написать_текст_на_экране
-C - - - - - 0x038AC3 0E:8AB3: 20 9C A5  JSR sub_A59C_проверить_опцию_timer
+C - - - - - 0x038AC3 0E:8AB3: 20 9C A5  LDA ram_game_mode
+; con_gm_story
+; con_gm_vs_player
+; con_gm_vs_cpu
+                                        BEQ bra_8AB6    ; if con_gm_story
+; con_gm_vs_player
+; con_gm_vs_cpu
+                                        LDA ram_option_timer
+bra_8AB6:   ; A = 00
 C - - - - - 0x038AC6 0E:8AB6: C9 03     CMP #$03
 C - - - - - 0x038AC8 0E:8AB8: B0 08     BCS bra_8AC2
 C - - - - - 0x038ACA 0E:8ABA: AD 72 06  LDA ram_время_десятки
@@ -5895,20 +5903,6 @@ tbl_A598:
 tbl_A59A:
 - D 1 - - - 0x03A5AA 0E:A59A: 1F        .byte $1F   ; 00
 - D 1 - - - 0x03A5AB 0E:A59B: 6F        .byte $6F   ; 01
-
-
-
-sub_A59C_проверить_опцию_timer:
-C - - - - - 0x03A5AC 0E:A59C: A5 2C     LDA ram_game_mode
-; con_gm_story
-; con_gm_vs_player
-; con_gm_vs_cpu
-C - - - - - 0x03A5AE 0E:A59E: F0 03     BEQ bra_A5A3_RTS    ; if con_gm_story
-; con_gm_vs_player
-; con_gm_vs_cpu
-C - - - - - 0x03A5B0 0E:A5A0: AD 27 01  LDA ram_option_timer
-bra_A5A3_RTS:   ; A = 00
-C - - - - - 0x03A5B3 0E:A5A3: 60        RTS
 
 
 
