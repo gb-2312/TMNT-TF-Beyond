@@ -6412,11 +6412,6 @@ C - - - - - 0x03F504 0F:F4F4: 20 08 D0  RTS
 
 
 
-bra_F4F7:
-C - - - - - 0x03F507 0F:F4F7: 4C A7 F5  JMP loc_F5A7
-
-
-
 ofs_000_F4FA_03:
 C - - J - - 0x03F50A 0F:F4FA: A9 00     LDA #$00
 C - - - - - 0x03F50C 0F:F4FC: 85 94     STA ram_0094
@@ -6424,7 +6419,7 @@ C - - - - - 0x03F50E 0F:F4FE: 20 0D D0  JSR sub_D00D_очистить_опера
 C - - - - - 0x03F511 0F:F501: A9 00     LDA #$00
 C - - - - - 0x03F513 0F:F503: 85 A0     STA ram_strength
 C - - - - - 0x03F515 0F:F505: 85 A1     STA ram_strength + $01
-C - - - - - 0x03F517 0F:F507: F0 EE     BEQ bra_F4F7    ; jmp
+C - - - - - 0x03F517 0F:F507: F0 EE     JMP loc_F5A7
 
 
 
