@@ -10373,13 +10373,11 @@ C - - - - - 0x027C4C 09:BC3C: ED 3D 06  SBC ram_063D
 C - - - - - 0x027C4F 09:BC3F: 9D 50 04  STA ram_obj_spd_X_fr,X
 C - - - - - 0x027C52 09:BC42: A0 00     LDY #$00
 C - - - - - 0x027C54 09:BC44: 84 00     STY ram_0000
-C - - - - - 0x027C56 09:BC46: 38        SEC
 C - - - - - 0x027C57 09:BC47: AD 3C 06  LDA ram_063C
 C - - - - - 0x027C5A 09:BC4A: 10 02     BPL bra_BC4E
 - - - - - - 0x027C5C 09:BC4C: C6 00     DEC ram_0000
 bra_BC4E:
-; C = 1
-; bzk optimize, записать SEC здесь, а не в 0x027C56
+                                        SEC
 C - - - - - 0x027C5E 09:BC4E: BD 40 04  LDA ram_obj_pos_X,X
 C - - - - - 0x027C61 09:BC51: ED 3C 06  SBC ram_063C
 C - - - - - 0x027C64 09:BC54: 9D 40 04  STA ram_obj_pos_X,X
