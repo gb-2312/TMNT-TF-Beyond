@@ -511,20 +511,6 @@ C - - - - - 0x03D05E 0F:D04E: 6C 02 00  JMP (ram_0002)
 
 
 
-sub_D051_добавить_A_к_поинтеру:
-; bzk optimize, X всегда 00
-; A = величина смещения
-; X = индекс поинтера
-C - - - - - 0x03D061 0F:D051: 18        CLC
-C - - - - - 0x03D062 0F:D052: 75 00     ADC ram_0000,X
-C - - - - - 0x03D064 0F:D054: 95 00     STA ram_0000,X
-C - - - - - 0x03D066 0F:D056: 90 02     BCC bra_D05A_RTS
-C - - - - - 0x03D068 0F:D058: F6 01     INC ram_0001,X
-bra_D05A_RTS:
-C - - - - - 0x03D06A 0F:D05A: 60        RTS
-
-
-
 sub_D067:
 sub_0x03D077:
 loc_0x03D077:
@@ -5870,107 +5856,6 @@ bra_F078_not_overflow:
                                         BNE bra_F077_loop
                                         JSR sub_F2B5_восстановить_2000
 C - - - - - 0x03F060 0F:F050: 4C 17 F6  JMP loc_F617_restore_prg
-
-
-
-
-C - - - - - 0x03F05A 0F:F04A: 20 F9 F5  JSR sub_F5F9_swap_prg_A_id
-C - - - - - 0x03F05D 0F:F04D: 20 53 F0  JSR sub_F053_отрисовка_статичного_экрана
-C - - - - - 0x03F060 0F:F050: 4C 17 F6  JMP loc_F617_restore_prg
-
-
-
-sub_F053_отрисовка_статичного_экрана:
-                                        TXA
-                                        ASL
-                                        TAX
-C - - - - - 0x03F063 0F:F053: BD DE F0  LDA tbl_F0DE,X
-C - - - - - 0x03F066 0F:F056: 85 00     STA ram_0000
-C - - - - - 0x03F068 0F:F058: BD DF F0  LDA tbl_F0DE + $01,X
-C - - - - - 0x03F06B 0F:F05B: 85 01     STA ram_0001
-C - - - - - 0x03F06D 0F:F05D: 20 D6 F2  JSR sub_F2D6_nmi_off
-C - - - - - 0x03F070 0F:F060: 85 FD     STA ram_scroll_X
-C - - - - - 0x03F072 0F:F062: 85 FC     STA ram_scroll_Y
-loc_F064:
-C D 3 - - - 0x03F074 0F:F064: AD 02 20  LDA $2002
-C - - - - - 0x03F077 0F:F067: A0 01     LDY #$01
-C - - - - - 0x03F079 0F:F069: B1 00     LDA (ram_0000),Y
-C - - - - - 0x03F07B 0F:F06B: 8D 06 20  STA $2006
-C - - - - - 0x03F07E 0F:F06E: 88        DEY ; 01
-C - - - - - 0x03F07F 0F:F06F: B1 00     LDA (ram_0000),Y
-C - - - - - 0x03F081 0F:F071: 8D 06 20  STA $2006
-C - - - - - 0x03F084 0F:F074: A2 00     LDX #$00
-C - - - - - 0x03F086 0F:F076: A9 02     LDA #$02
-C - - - - - 0x03F088 0F:F078: 20 51 D0  JSR sub_D051_добавить_A_к_поинтеру
-loc_F07B:
-C D 3 - - - 0x03F08B 0F:F07B: A0 00     LDY #$00
-C - - - - - 0x03F08D 0F:F07D: B1 00     LDA (ram_0000),Y
-C - - - - - 0x03F08F 0F:F07F: C9 FF     CMP #$FF
-C - - - - - 0x03F091 0F:F081: F0 58     BEQ bra_F0DB_FF
-C - - - - - 0x03F093 0F:F083: C9 7F     CMP #$7F
-C - - - - - 0x03F095 0F:F085: F0 4C     BEQ bra_F0D3_7F
-C - - - - - 0x03F097 0F:F087: A8        TAY
-C - - - - - 0x03F098 0F:F088: 10 21     BPL bra_F0AB_00_7E
-; 80-FE
-C - - - - - 0x03F09A 0F:F08A: 29 7F     AND #$7F
-C - - - - - 0x03F09C 0F:F08C: 85 02     STA ram_0002
-C - - - - - 0x03F09E 0F:F08E: A0 01     LDY #$01
-C - - - - - 0x03F0A0 0F:F090: 29 40     AND #$40
-C - - - - - 0x03F0A2 0F:F092: D0 29     BNE bra_F0BD_C0_FE
-; 80-BF
-; записать байты после счетчика по порядку
-; счетчик = счетчик AND 7F
-bra_F094_loop:
-C - - - - - 0x03F0A4 0F:F094: B1 00     LDA (ram_0000),Y
-C - - - - - 0x03F0A6 0F:F096: 8D 07 20  STA $2007
-C - - - - - 0x03F0A9 0F:F099: C4 02     CPY ram_0002
-C - - - - - 0x03F0AB 0F:F09B: F0 03     BEQ bra_F0A0
-C - - - - - 0x03F0AD 0F:F09D: C8        INY
-C - - - - - 0x03F0AE 0F:F09E: D0 F4     BNE bra_F094_loop
-bra_F0A0:
-C - - - - - 0x03F0B0 0F:F0A0: A9 01     LDA #$01
-C - - - - - 0x03F0B2 0F:F0A2: 18        CLC
-C - - - - - 0x03F0B3 0F:F0A3: 65 02     ADC ram_0002
-bra_F0A5:
-C - - - - - 0x03F0B5 0F:F0A5: 20 51 D0  JSR sub_D051_добавить_A_к_поинтеру
-C - - - - - 0x03F0B8 0F:F0A8: 4C 7B F0  JMP loc_F07B
-bra_F0AB_00_7E:
-; записать байт после счетчика N раз подряд
-; счетчик = счетчик AND 7F
-C - - - - - 0x03F0BB 0F:F0AB: A0 01     LDY #$01
-C - - - - - 0x03F0BD 0F:F0AD: 85 02     STA ram_0002
-C - - - - - 0x03F0BF 0F:F0AF: B1 00     LDA (ram_0000),Y
-C - - - - - 0x03F0C1 0F:F0B1: A4 02     LDY ram_0002
-bra_F0B3_loop:
-C - - - - - 0x03F0C3 0F:F0B3: 8D 07 20  STA $2007
-C - - - - - 0x03F0C6 0F:F0B6: 88        DEY
-C - - - - - 0x03F0C7 0F:F0B7: D0 FA     BNE bra_F0B3_loop
-loc_F0B9:
-C D 3 - - - 0x03F0C9 0F:F0B9: A9 02     LDA #$02
-C - - - - - 0x03F0CB 0F:F0BB: D0 E8     BNE bra_F0A5    ; jmp
-bra_F0BD_C0_FE:
-; записать байт после счетчика с постоянным его увеличением на 01
-; счетчик = счетчик AND 3F
-C - - - - - 0x03F0CD 0F:F0BD: B1 00     LDA (ram_0000),Y
-C - - - - - 0x03F0CF 0F:F0BF: 85 03     STA ram_0003
-C - - - - - 0x03F0D1 0F:F0C1: A5 02     LDA ram_0002
-C - - - - - 0x03F0D3 0F:F0C3: 29 3F     AND #$3F
-C - - - - - 0x03F0D5 0F:F0C5: A8        TAY
-bra_F0C6_loop:
-C - - - - - 0x03F0D6 0F:F0C6: A5 03     LDA ram_0003
-C - - - - - 0x03F0D8 0F:F0C8: 8D 07 20  STA $2007
-C - - - - - 0x03F0DB 0F:F0CB: E6 03     INC ram_0003
-C - - - - - 0x03F0DD 0F:F0CD: 88        DEY
-C - - - - - 0x03F0DE 0F:F0CE: D0 F6     BNE bra_F0C6_loop
-C - - - - - 0x03F0E0 0F:F0D0: 4C B9 F0  JMP loc_F0B9
-bra_F0D3_7F:
-; прочитать 2 следующих байта как адрес для PPU
-C - - - - - 0x03F0E3 0F:F0D3: A9 01     LDA #$01
-C - - - - - 0x03F0E5 0F:F0D5: 20 51 D0  JSR sub_D051_добавить_A_к_поинтеру
-C - - - - - 0x03F0E8 0F:F0D8: 4C 64 F0  JMP loc_F064
-bra_F0DB_FF:
-; end token
-C - - - - - 0x03F0EB 0F:F0DB: 4C B5 F2  JMP loc_F2B5_восстановить_2000
 
 
 
