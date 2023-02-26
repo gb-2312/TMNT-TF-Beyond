@@ -50,7 +50,7 @@
 .export loc_0x03D47D
 .export sub_0x03D5FA
 .export sub_0x03DACE_удалить_все_объекты
-.export sub_0x03DAD7
+.export sub_0x03DAD7_удалить_объект_сохранив_XY
 .export sub_0x03DAE3_удалить_объект
 .export loc_0x03DAE3_удалить_объект
 .export sub_0x03DB48_очистить_spd_X_и_spd_Z
@@ -92,8 +92,8 @@
 .export sub_0x03DE0C
 .export sub_0x03DE19_очистить_00AE_00B5
 .export loc_0x03DE19_очистить_00AE_00B5
-.export sub_0x03DE30
-.export loc_0x03DE30
+.export sub_0x03DE30_удалить_объекты_перса
+.export loc_0x03DE30_удалить_объекты_перса
 .export sub_0x03DE4C
 .export ofs_0x03DE76
 .export sub_0x03DE87
@@ -2060,8 +2060,8 @@ C - - - - - 0x03DAD6 0F:DAC6: 60        RTS
 
 
 
-sub_DAC7:
-sub_0x03DAD7:
+sub_DAC7_удалить_объект_сохранив_XY:
+sub_0x03DAD7_удалить_объект_сохранив_XY:
 C - - - - - 0x03DAD7 0F:DAC7: 8A        TXA
 C - - - - - 0x03DAD8 0F:DAC8: 48        PHA
 C - - - - - 0x03DAD9 0F:DAC9: 98        TYA
@@ -2091,7 +2091,7 @@ C - - - - - 0x03DAF6 0F:DAE6: 9D 20 04  STA ram_obj_spd_Z_fr,X
 C - - - - - 0x03DAF9 0F:DAE9: 9D 00 04  STA ram_plr_anim_id,X
 C - - - - - 0x03DAFC 0F:DAEC: 9D 00 05  STA ram_obj_0500,X
 C - - - - - 0x03DAFF 0F:DAEF: 9D 10 05  STA ram_obj_0510,X
-C - - - - - 0x03DB02 0F:DAF2: 9D 20 05  STA ram_obj_0520,X
+C - - - - - 0x03DB02 0F:DAF2: 9D 20 05  STA ram_obj_0520,X  ; con_plr_state_на_земле
 C - - - - - 0x03DB05 0F:DAF5: 9D 30 05  STA ram_obj_0530,X
 C - - - - - 0x03DB08 0F:DAF8: 9D 40 05  STA ram_obj_0540,X
 C - - - - - 0x03DB0B 0F:DAFB: 9D 60 05  STA ram_obj_0560,X
@@ -2468,7 +2468,7 @@ tbl_0x03DDC6:
 
 sub_0x03DDF9:
 loc_0x03DDF9:
-C D 2 - - - 0x03DDF9 0F:DDE9: A9 07     LDA #$07
+C D 2 - - - 0x03DDF9 0F:DDE9: A9 07     LDA #con_plr_state_сидит
 C - - - - - 0x03DDFB 0F:DDEB: 9D 20 05  STA ram_obj_0520,X
 C - - - - - 0x03DDFE 0F:DDEE: A9 01     LDA #$01
 C - - - - - 0x03DE00 0F:DDF0: 9D 40 05  STA ram_obj_0540,X
@@ -2520,16 +2520,16 @@ C - - - - - 0x03DE2F 0F:DE1F: 60        RTS
 
 
 
-sub_DE20:
-sub_0x03DE30:
-loc_0x03DE30:
+sub_DE20_удалить_объекты_перса:
+sub_0x03DE30_удалить_объекты_перса:
+loc_0x03DE30_удалить_объекты_перса:
 C D 2 - - - 0x03DE30 0F:DE20: 8A        TXA
 C - - - - - 0x03DE31 0F:DE21: 29 01     AND #$01
 C - - - - - 0x03DE33 0F:DE23: 18        CLC
 C - - - - - 0x03DE34 0F:DE24: 69 02     ADC #$02
 C - - - - - 0x03DE36 0F:DE26: A8        TAY
 bra_DE27_loop:
-C - - - - - 0x03DE37 0F:DE27: 20 C7 DA  JSR sub_DAC7
+C - - - - - 0x03DE37 0F:DE27: 20 C7 DA  JSR sub_DAC7_удалить_объект_сохранив_XY
 C - - - - - 0x03DE3A 0F:DE2A: C8        INY
 C - - - - - 0x03DE3B 0F:DE2B: C8        INY
 C - - - - - 0x03DE3C 0F:DE2C: C0 0E     CPY #$0E
@@ -2540,7 +2540,7 @@ C - - - - - 0x03DE43 0F:DE33: C9 06     CMP #$06
 C - - - - - 0x03DE45 0F:DE35: D0 F0     BNE bra_DE27_loop
 C - - - - - 0x03DE47 0F:DE37: C8        INY
 C - - - - - 0x03DE48 0F:DE38: C8        INY
-C - - - - - 0x03DE49 0F:DE39: D0 EC     BNE bra_DE27_loop
+C - - - - - 0x03DE49 0F:DE39: D0 EC     BNE bra_DE27_loop   ; jmp
 bra_DE3B_RTS:
 C - - - - - 0x03DE4B 0F:DE3B: 60        RTS
 
@@ -2597,7 +2597,7 @@ C - - - - - 0x03DE8E 0F:DE7E: A9 04     LDA #$04
 C - - - - - 0x03DE90 0F:DE80: 9D 30 05  STA ram_obj_0530,X
 C - - - - - 0x03DE93 0F:DE83: A9 80     LDA #$80
 C - - - - - 0x03DE95 0F:DE85: 9D 80 05  STA ram_obj_0580,X
-C - - - - - 0x03DE98 0F:DE88: 0A        ASL
+C - - - - - 0x03DE98 0F:DE88: 0A        ASL ; 00    ; con_plr_state_на_земле
 C - - - - - 0x03DE99 0F:DE89: 9D 20 05  STA ram_obj_0520,X
 C - - - - - 0x03DE9C 0F:DE8C: 9D 40 05  STA ram_obj_0540,X
 C - - - - - 0x03DE9F 0F:DE8F: 8D 0E 04  STA ram_040E
@@ -2659,7 +2659,7 @@ C - - - - - 0x03DEEF 0F:DEDF: B9 10 04  LDA ram_obj_pos_Y,Y
 C - - - - - 0x03DEF2 0F:DEE2: 99 1C 04  STA ram_041C,Y
 C - - - - - 0x03DEF5 0F:DEE5: B9 10 05  LDA ram_obj_0510,Y
 C - - - - - 0x03DEF8 0F:DEE8: 99 1C 05  STA ram_051C,Y
-C - - - - - 0x03DEFB 0F:DEEB: BD 20 05  LDA ram_obj_0520,X
+C - - - - - 0x03DEFB 0F:DEEB: BD 20 05  LDA ram_obj_0520,X ; 0520 0521 0524 0525 
 C - - - - - 0x03DEFE 0F:DEEE: C9 03     CMP #$03
 C - - - - - 0x03DF00 0F:DEF0: D0 04     BNE bra_DEF6
 - - - - - - 0x03DF02 0F:DEF2: 68        PLA
@@ -3802,7 +3802,7 @@ C - - - - - 0x03E520 0F:E510: CA        DEX
 C - - - - - 0x03E521 0F:E511: 10 EA     BPL bra_E4FD_loop
 C - - - - - 0x03E523 0F:E513: A2 01     LDX #$01
 bra_E515_loop:
-C - - - - - 0x03E525 0F:E515: 20 20 DE  JSR sub_DE20
+C - - - - - 0x03E525 0F:E515: 20 20 DE  JSR sub_DE20_удалить_объекты_перса
 C - - - - - 0x03E528 0F:E518: CA        DEX
 C - - - - - 0x03E529 0F:E519: 10 FA     BPL bra_E515_loop
 C - - - - - 0x03E52B 0F:E51B: A9 0B     LDA #$0B
@@ -7875,7 +7875,7 @@ C - - - - - 0x03FDC7 0F:FDB7: BD 30 05  LDA ram_obj_0530,X
 C - - - - - 0x03FDCA 0F:FDBA: C9 03     CMP #$03
 C - - - - - 0x03FDCC 0F:FDBC: D0 1F     BNE bra_FDDD
 C - - - - - 0x03FDCE 0F:FDBE: BD 20 05  LDA ram_obj_0520,X
-C - - - - - 0x03FDD1 0F:FDC1: C9 04     CMP #$04
+C - - - - - 0x03FDD1 0F:FDC1: C9 04     CMP #con_plr_state_нокаут
 C - - - - - 0x03FDD3 0F:FDC3: F0 18     BEQ bra_FDDD
 C - - - - - 0x03FDD5 0F:FDC5: C9 09     CMP #$09
 C - - - - - 0x03FDD7 0F:FDC7: B0 14     BCS bra_FDDD
@@ -8071,7 +8071,7 @@ C - - - - - 0x03FEEC 0F:FEDC: 4C 6A D1  JMP loc_D16A
 
 loc_0x03FEEF:
 C D 3 - - - 0x03FEEF 0F:FEDF: BD 20 05  LDA ram_obj_0520,X
-C - - - - - 0x03FEF2 0F:FEE2: C9 08     CMP #$08
+C - - - - - 0x03FEF2 0F:FEE2: C9 08     CMP #con_plr_state_делает_суперку
 C - - - - - 0x03FEF4 0F:FEE4: D0 03     BNE bra_FEE9
 - - - - - - 0x03FEF6 0F:FEE6: BD 80 05  LDA ram_obj_0580,X
 bra_FEE9:
@@ -8099,7 +8099,7 @@ C - - - - - 0x03FF12 0F:FF02: 60        RTS
 
 sub_0x03FF13:
 C - - - - - 0x03FF13 0F:FF03: BD 20 05  LDA ram_obj_0520,X ; 0520 0521 
-C - - - - - 0x03FF16 0F:FF06: 49 09     EOR #$09
+C - - - - - 0x03FF16 0F:FF06: 49 09     EOR #con_plr_state_бросает_соперника
 C - - - - - 0x03FF18 0F:FF08: D0 F8     BNE bra_FF02_RTS
 C - - - - - 0x03FF1A 0F:FF0A: 4C 69 B0  JMP loc_0x027079
 

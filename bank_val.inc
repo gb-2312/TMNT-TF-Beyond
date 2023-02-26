@@ -68,13 +68,34 @@ con_buf_mode_05                         = $05 ; счетчик + запись б
 
 ; ram_plr_id                            = $00A2
 ; ram_obj_id                            = $0550
-con_fighter_leo                         = $00 ; 00 leo
-con_fighter_raph                        = $01 ; 01 raph
-con_fighter_mike                        = $02 ; 02 mike
-con_fighter_don                         = $03 ; 03 don
-con_fighter_casey                       = $04 ; 04 casey
-con_fighter_hot                         = $05 ; 05 hot
-con_fighter_shred                       = $06 ; 06 shred
+; con_fighter_leo                         = $00 ; 00 leo
+; con_fighter_raph                        = $01 ; 01 raph
+; con_fighter_mike                        = $02 ; 02 mike
+; con_fighter_don                         = $03 ; 03 don
+; con_fighter_casey                       = $04 ; 04 casey
+; con_fighter_hot                         = $05 ; 05 hot
+; con_fighter_shred                       = $06 ; 06 shred
+
+
+
+; ram_obj_0520                          = $0520
+; обработчик в 0x02419B
+; todo комменты в 0x03FDD5 0x03DEFE 0x0366E4 0x036685 0x036565
+; 0x0277B9 0x0277BD 0x025BD7 0x025BDA 0x025A91 0x024A1E 0x02496E 0x02405F
+con_plr_state_на_земле                  = $00 ; стоит на земле, ходит, бежит
+con_plr_state_в_прыжке                  = $01 ; в прыжке (также пишется после смерти в 0x0249EF)
+con_plr_state_подбирает_мяч             = $02 ; когда подбирает мяч (также пишется после смерти в 0x0249EF)
+con_plr_state_получает_урон             = $03 ; получает урон (также пишется после смерти в 0x0249EF)
+con_plr_state_нокаут                    = $04 ; отлетает с нокаутом и потом шатается (также пишется после смерти в 0x024A77)
+con_plr_state_труп                      = $05 ; финальная стадия смерти (пишется после смерти в 0x024AC8)
+con_plr_state_поворачивается            = $06 ; когда требуется повернуть перса потому что соперник теперь с другой стороны
+con_plr_state_сидит                     = $07 ; сидит
+con_plr_state_делает_суперку            = $08 ; делает суперку
+con_plr_state_бросает_соперника         = $09 ; бросает через себя или кусает как раф
+con_plr_state_брошен_соперником         = $0A ; тот кого бросили или закусили
+con_plr_state_попался_в_мясо            = $0B ; тот кто попал в мясо шрушера
+con_plr_state_победная_анимация         = $0C ; победная анимация
+
 
 
 

@@ -643,8 +643,8 @@ C - - - - - 0x02E86E 0B:A85E: B5 91     LDA ram_btn_hold,X
 C - - - - - 0x02E870 0B:A860: 29 08     AND #con_btn_Up
 C - - - - - 0x02E872 0B:A862: F0 1C     BEQ bra_A880
 C - - - - - 0x02E874 0B:A864: A4 A9     LDY ram_global_obj_index
-C - - - - - 0x02E876 0B:A866: B9 20 05  LDA ram_obj_0520,Y
-C - - - - - 0x02E879 0B:A869: C9 03     CMP #$03
+C - - - - - 0x02E876 0B:A866: B9 20 05  LDA ram_obj_0520,Y ; 0520 0521 
+C - - - - - 0x02E879 0B:A869: C9 03     CMP #con_plr_state_получает_урон
 C - - - - - 0x02E87B 0B:A86B: D0 13     BNE bra_A880
 C - - - - - 0x02E87D 0B:A86D: B9 C0 04  LDA ram_obj_04C0,Y
 C - - - - - 0x02E880 0B:A870: C9 04     CMP #$04
@@ -1851,17 +1851,17 @@ sub_B900:
 C - - - - - 0x02F910 0B:B900: 48        PHA
 C - - - - - 0x02F911 0B:B901: 20 13 B9  JSR sub_B913
 C - - - - - 0x02F914 0B:B904: 68        PLA
-C - - - - - 0x02F915 0B:B905: 99 50 05  STA ram_obj_id,Y
-C - - - - - 0x02F918 0B:B908: BD 10 05  LDA ram_obj_0510,X
-C - - - - - 0x02F91B 0B:B90B: 99 10 05  STA ram_obj_0510,Y
+C - - - - - 0x02F915 0B:B905: 99 50 05  STA ram_obj_id,Y ; 0554 0555 
+C - - - - - 0x02F918 0B:B908: BD 10 05  LDA ram_obj_0510,X ; 0510 0511 
+C - - - - - 0x02F91B 0B:B90B: 99 10 05  STA ram_obj_0510,Y ; 0514 0515 
 C - - - - - 0x02F91E 0B:B90E: 8A        TXA
-C - - - - - 0x02F91F 0B:B90F: 99 20 05  STA ram_obj_0520,Y
+C - - - - - 0x02F91F 0B:B90F: 99 20 05  STA ram_obj_0520,Y ; 0524 0525 
 C - - - - - 0x02F922 0B:B912: 60        RTS
 
 
 
 sub_B913:
-C - - - - - 0x02F923 0B:B913: 20 20 DE  JSR sub_0x03DE30
+C - - - - - 0x02F923 0B:B913: 20 20 DE  JSR sub_0x03DE30_удалить_объекты_перса
 C - - - - - 0x02F926 0B:B916: 8A        TXA
 C - - - - - 0x02F927 0B:B917: 29 01     AND #$01
 C - - - - - 0x02F929 0B:B919: 18        CLC
