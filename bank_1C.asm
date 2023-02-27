@@ -3229,6 +3229,8 @@ C - - - - - 0x0393A9 0E:9399: C9 10     CMP #$10
 C - - - - - 0x0393AB 0E:939B: B0 15     BCS bra_93B2
 C - - - - - 0x0393AD 0E:939D: EE C0 04  INC ram_obj_04C0    ; 02
 C - - - - - 0x0393B0 0E:93A0: 4C 2E E1  JMP loc_0x03E13E
+bra_93BA_RTS:
+C - - - - - 0x0393CA 0E:93BA: 60        RTS
 
 
 
@@ -3255,19 +3257,15 @@ C - - - - - 0x0393C7 0E:93B7: 4C 3E E1  JMP loc_0x03E14E
 
 
 
-bra_93BA_RTS:
-C - - - - - 0x0393CA 0E:93BA: 60        RTS
-
-
-
 loc_93BB:
 C D 0 - - - 0x0393CB 0E:93BB: A9 00     LDA #$00
 C - - - - - 0x0393CD 0E:93BD: 85 18     STA ram_0018
 C - - - - - 0x0393CF 0E:93BF: AC 30 05  LDY ram_obj_0530
-C - - - - - 0x0393D2 0E:93C2: F0 F6     BEQ bra_93BA_RTS
+C - - - - - 0x0393D2 0E:93C2: F0 F6     BEQ bra_93CD_RTS
 C - - - - - 0x0393D4 0E:93C4: CE 30 05  DEC ram_obj_0530
 C - - - - - 0x0393D7 0E:93C7: 20 D2 93  JSR sub_93D2
 C - - - - - 0x0393DA 0E:93CA: EE 30 05  INC ram_obj_0530
+bra_93CD_RTS:
 C - - - - - 0x0393DD 0E:93CD: 60        RTS
 
 
