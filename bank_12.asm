@@ -9911,14 +9911,15 @@ C - - - - - 0x0279F3 09:B9E3: 90 05     BCC bra_B9EA
 C - - - - - 0x0279F5 09:B9E5: A9 00     LDA #$00
 C - - - - - 0x0279F7 09:B9E7: 9D 60 05  STA ram_obj_0560,X
 bra_B9EA:
-bra_B9EB_RTS:
 C - - - - - 0x0279FA 09:B9EA: DE 60 05  DEC ram_obj_0560,X
-C - - - - - 0x0279FD 09:B9ED: 10 FC     BPL bra_B9EB_RTS + $01  ; bzk optimize
+C - - - - - 0x0279FD 09:B9ED: 10 FC     BPL bra_B9FB_RTS
 C - - - - - 0x0279FF 09:B9EF: A9 02     LDA #$02
 C - - - - - 0x027A01 09:B9F1: 9D D0 05  STA ram_obj_05D0,X
 C - - - - - 0x027A04 09:B9F4: 9D 7A 06  STA ram_plr_067A,X
 C - - - - - 0x027A07 09:B9F7: FE 40 05  INC ram_obj_0540,X
 C - - - - - 0x027A0A 09:B9FA: 4C 20 DE  JMP loc_0x03DE30_удалить_объекты_перса
+bra_B9FB_RTS:
+                                        RTS
 
 
 
