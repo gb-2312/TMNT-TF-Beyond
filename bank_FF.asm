@@ -214,7 +214,6 @@
 .export loc_0x03FE93
 .export loc_0x03FE9D
 .export loc_0x03FEAF
-.export sub_0x03FEE0
 .export loc_0x03FEEF
 .export sub_0x03FF04
 .export sub_0x03FF13
@@ -7997,17 +7996,6 @@ tbl_FEBA:
 - D 3 - - - 0x03FEDA 0F:FECA: 01        .byte $01, $01   ; 66
 - - - - - - 0x03FEDC 0F:FECC: 01        .byte $01, $02   ; 67
 - D 3 - - - 0x03FEDE 0F:FECE: 04        .byte $04, $02   ; 68
-
-
-
-sub_0x03FEE0:
-C - - - - - 0x03FEE0 0F:FED0: A4 95     LDY ram_0095
-C - - - - - 0x03FEE2 0F:FED2: C0 07     CPY #$07
-C - - - - - 0x03FEE4 0F:FED4: D0 06     BNE bra_FEDC
-C - - - - - 0x03FEE6 0F:FED6: AC 26 01  LDY ram_option_speed
-C - - - - - 0x03FEE9 0F:FED9: B9 72 87  LDA tbl_0x024782,Y
-bra_FEDC:
-C - - - - - 0x03FEEC 0F:FEDC: 4C 6A D1  JMP loc_D16A
 
 
 

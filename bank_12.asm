@@ -10,7 +10,6 @@
 .export loc_0x024018
 .export sub_0x024018
 .export ofs_0x024635
-.export tbl_0x024782
 .export sub_0x024AF7
 .export loc_0x025A8C
 .export loc_0x025AA5
@@ -1088,8 +1087,7 @@ C - - - - - 0x02477F 09:876F: 4C 5E B7  JMP loc_B75E
 
 
 
-tbl_0x024782:
-; bzk optimize
+tbl_8772:
 - D 0 - - - 0x024782 09:8772: 61        .byte $61   ; 00 normal
 - D 0 - - - 0x024783 09:8773: 11        .byte $11   ; 01 turbo
 
@@ -9271,7 +9269,14 @@ C - - - - - 0x02757C 09:B56C: 4C 4F DF  JMP loc_0x03DF5F
 ofs_048_B56F_03:
 C - - J - - 0x02757F 09:B56F: 20 6A D0  JSR sub_0x03DB4C_очистить_spd_X
 C - - - - - 0x027582 09:B572: A9 41     LDA #$41
-C - - - - - 0x027584 09:B574: 20 D0 FE  JSR sub_0x03FEE0
+; перемещено из банка FF
+                                        LDY ram_0095
+                                        CPY #$07
+                                        BNE bra_FEDC
+                                        LDY ram_option_speed
+                                        LDA tbl_8772,Y
+bra_FEDC:
+                                        JSR sub_0x03D17A
 C - - - - - 0x027587 09:B577: A0 02     LDY #$02
 bra_B579:
 C - - - - - 0x027589 09:B579: 20 4F DF  JSR sub_0x03DF5F
