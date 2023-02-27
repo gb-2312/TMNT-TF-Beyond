@@ -2361,7 +2361,8 @@ C - - - - - 0x025018 09:9008: 9D D0 04  STA ram_obj_04D0,X
 C - - - - - 0x02501B 09:900B: A9 C0     LDA #$C0
 C - - - - - 0x02501D 09:900D: 9D E0 04  STA ram_obj_04E0,X
 C - - - - - 0x025020 09:9010: A9 0A     LDA #con_plr_state_брошен_соперником
-C - - - - - 0x025022 09:9012: 20 D6 B7  JSR sub_B7D6
+C - - - - - 0x025022 09:9012: 20 D6 B7  STA ram_obj_0520,Y ; 0520 0521 
+                                        STA ram_obj_04C0,Y ; 04C0 04C1 
 C - - - - - 0x025025 09:9015: A9 00     LDA #$00
 C - - - - - 0x025027 09:9017: 99 40 05  STA ram_obj_0540,Y
 C - - - - - 0x02502A 09:901A: FE 40 05  INC ram_obj_0540,X
@@ -9622,14 +9623,6 @@ C - - - - - 0x0277E0 09:B7D0: A9 02     LDA #$02
 bra_B7D2:
 C - - - - - 0x0277E2 09:B7D2: 9D 90 05  STA ram_obj_0590,X ; 0592 0593 0594 0595 
 C - - - - - 0x0277E5 09:B7D5: 60        RTS
-
-
-
-sub_B7D6:
-; bzk optimize
-C - - - - - 0x0277E6 09:B7D6: 99 20 05  STA ram_obj_0520,Y ; 0520 0521 
-C - - - - - 0x0277E9 09:B7D9: 99 C0 04  STA ram_obj_04C0,Y ; 04C0 04C1 
-C - - - - - 0x0277EC 09:B7DC: 60        RTS
 
 
 
