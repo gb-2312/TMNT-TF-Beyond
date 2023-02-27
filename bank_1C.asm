@@ -131,7 +131,6 @@ C - - - - - 0x0380BA 0E:80AA: F0 02     BEQ bra_80AE    ; jmp
 bra_80AC:
 C - - - - - 0x0380BC 0E:80AC: A9 05     LDA #$05
 bra_80AE:
-C - - - - - 0x0380BE 0E:80AE: 8D B0 04  STA ram_obj_spd_Y_lo
 C - - - - - 0x0380C1 0E:80B1: 4C D0 81  JMP loc_81D0_записать_атрибуты_фона
 bra_80B4:
 C - - - - - 0x0380C4 0E:80B4: 98        TYA
@@ -344,8 +343,7 @@ C - - - - - 0x0381DF 0E:81CF: 60        RTS
 
 
 loc_81D0_записать_атрибуты_фона:
-; bzk optimize, в A уже нужный байт
-C D 0 - - - 0x0381E0 0E:81D0: AD B0 04  LDA ram_obj_spd_Y_lo
+C D 0 - - - 0x0381E0 0E:81D0: AD B0 04  STA ram_obj_spd_Y_lo
 C - - - - - 0x0381E3 0E:81D3: A8        TAY
 C - - - - - 0x0381E4 0E:81D4: B9 06 82  LDA tbl_8206,Y
 C - - - - - 0x0381E7 0E:81D7: 8D 01 05  STA ram_obj_0500 + $01
