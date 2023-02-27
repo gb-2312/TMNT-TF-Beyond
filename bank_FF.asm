@@ -94,7 +94,7 @@
 .export sub_0x03DE4C
 .export ofs_0x03DE76
 .export sub_0x03DE87
-.export sub_0x03DE8C
+.export loc_0x03DE8E
 .export sub_0x03DEB2
 .export sub_0x03DECA
 .export sub_0x03DEE4
@@ -2541,9 +2541,9 @@ sub_0x03DE87:
 C - - - - - 0x03DE87 0F:DE77: 20 A2 DE  JSR sub_DEA2
 loc_DE7A:
 C D 2 - - - 0x03DE8A 0F:DE7A: B0 3D     BCS bra_DEB9_RTS
-sub_0x03DE8C:
 C - - - - - 0x03DE8C 0F:DE7C: 68        PLA
 C - - - - - 0x03DE8D 0F:DE7D: 68        PLA
+loc_0x03DE8E:
 C - - - - - 0x03DE8E 0F:DE7E: A9 04     LDA #$04
 C - - - - - 0x03DE90 0F:DE80: 9D 30 05  STA ram_obj_0530,X
 C - - - - - 0x03DE93 0F:DE83: A9 80     LDA #$80

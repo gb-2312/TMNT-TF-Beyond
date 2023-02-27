@@ -2537,8 +2537,7 @@ C - - - - - 0x025160 09:9150: A6 A8     LDX ram_00A8
 C - - - - - 0x025162 09:9152: 20 69 B0  JSR sub_B069
 C - - - - - 0x025165 09:9155: 20 40 91  JSR sub_9140
 C - - - - - 0x025168 09:9158: A6 A9     LDX ram_global_obj_index
-; bzk optimize, JMP 0x03DE8E для читабельности и скорости
-C - - - - - 0x02516A 09:915A: 20 7C DE  JSR sub_0x03DE8C    ; гарантированный PLA PLA
+C - - - - - 0x02516A 09:915A: 20 7C DE  JMP loc_0x03DE8E
 
 
 
