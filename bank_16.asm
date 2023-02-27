@@ -710,7 +710,7 @@ C - - - - - 0x02EA37 0B:AA27: B9 90 AA  LDA tbl_AA90_автобаланс,Y
 bra_AA2A:
 C - - - - - 0x02EA3A 0B:AA2A: 95 A0     STA ram_strength,X
 bra_AA2C:
-C - - - - - 0x02EA3C 0B:AA2C: A0 01     LDY #$01
+C - - - - - 0x02EA3C 0B:AA2C: A0 01     LDY #con_0x0258F8_01
 C - - - - - 0x02EA3E 0B:AA2E: 4C 68 F7  JMP loc_0x03F778
 
 
