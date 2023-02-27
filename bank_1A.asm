@@ -5225,15 +5225,6 @@ C - - - - - 0x035C84 0D:9C74: 60        RTS
 
 
 
-; bzk optimize
-ofs_019_9C75_01_raph:
-ofs_020_9C75_01_raph:
-ofs_021_9C75_01_raph:
-ofs_022_9C75_01_raph:
-C - - J - - 0x035C85 0D:9C75: 4C A4 BF  JMP loc_BFA4
-
-
-
 loc_9C79:
 C D 0 - - - 0x035C89 0D:9C79: D0 1D     BNE bra_9C98
 C - - - - - 0x035C8B 0D:9C7B: 20 C6 ED  JSR sub_0x03EDD6
@@ -7197,6 +7188,10 @@ bra_BFA1:
 
 
 loc_BFA4:
+ofs_019_9C75_01_raph:
+ofs_020_9C75_01_raph:
+ofs_021_9C75_01_raph:
+ofs_022_9C75_01_raph:
 C D 1 - - - 0x037FB4 0D:BFA4: AD 25 01  LDA ram_option_difficulty
 C - - - - - 0x037FB7 0D:BFA7: C9 03     CMP #$03
 C - - - - - 0x037FB9 0D:BFA9: B0 07     BCS bra_BFB2_RTS
