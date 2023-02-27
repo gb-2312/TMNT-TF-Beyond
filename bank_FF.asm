@@ -1887,13 +1887,11 @@ C - - - - - 0x03D801 0F:D7F1: A6 2F     LDX ram_002F
 bra_D7F3_loop:
 C D 2 - - - 0x03D803 0F:D7F3: C8        INY
 C - - - - - 0x03D804 0F:D7F4: B1 08     LDA (ram_0008),Y
-C - - - - - 0x03D80A 0F:D7FA: 18        CLC
 C - - - - - 0x03D80B 0F:D7FB: 24 06     BIT ram_0006
 C - - - - - 0x03D80D 0F:D7FD: 10 06     BPL bra_D805
 C - - - - - 0x03D80F 0F:D7FF: 49 FF     EOR #$FF
 C - - - - - 0x03D811 0F:D801: 38        SEC
 C - - - - - 0x03D812 0F:D802: E9 11     SBC #$11
-C - - - - - 0x03D814 0F:D804: 18        CLC
 bra_D805:
 C - - - - - 0x03D815 0F:D805: 0A        ASL
 C - - - - - 0x03D816 0F:D806: 90 07     BCC bra_D80F
