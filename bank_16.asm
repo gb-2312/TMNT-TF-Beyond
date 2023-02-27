@@ -94,7 +94,7 @@ C - - - - - 0x02C13F 0B:812F: 20 4F 81  JSR sub_814F
 C - - - - - 0x02C142 0B:8132: C6 08     DEC ram_0008
 C - - - - - 0x02C144 0B:8134: 10 F7     BPL bra_812D_loop
 C - - - - - 0x02C146 0B:8136: A9 37     LDA #con_music_player_select
-C - - - - - 0x02C148 0B:8138: 20 90 F6  JSR sub_0x03F6A0
+C - - - - - 0x02C148 0B:8138: 20 90 F6  JSR sub_0x03F6A0_записать_звук_сохранив_X_Y
 C - - - - - 0x02C14B 0B:813B: A2 00     LDX #$00
 C - - - - - 0x02C14D 0B:813D: 20 2F 82  JSR sub_822F
 C - - - - - 0x02C150 0B:8140: A5 2C     LDA ram_game_mode
@@ -266,7 +266,7 @@ C - - - - - 0x02C232 0B:8222: A9 00     LDA #$00
 C - - - - - 0x02C234 0B:8224: 9D D0 05  STA ram_obj_05D0,X
 C - - - - - 0x02C237 0B:8227: 9D C0 05  STA ram_obj_anim_timer,X
 C - - - - - 0x02C23A 0B:822A: A9 25     LDA #con_0x03F6AD_25
-C - - - - - 0x02C23C 0B:822C: 20 90 F6  JSR sub_0x03F6A0
+C - - - - - 0x02C23C 0B:822C: 20 90 F6  JSR sub_0x03F6A0_записать_звук_сохранив_X_Y
 sub_822F:
 loc_822F:
 ; позиция курсора при выборе перса
@@ -312,7 +312,7 @@ C - - - - - 0x02C282 0B:8272: A9 3C     LDA #$3C
 C - - - - - 0x02C284 0B:8274: 9D A0 04  STA ram_obj_spd_Y_hi,X
 C - - - - - 0x02C287 0B:8277: B4 A2     LDY ram_plr_id,X
 C - - - - - 0x02C289 0B:8279: B9 5E E1  LDA tbl_0x03E16E_звук_выбора_перса,Y
-C - - - - - 0x02C28C 0B:827C: 4C 90 F6  JMP loc_0x03F6A0
+C - - - - - 0x02C28C 0B:827C: 4C 90 F6  JMP loc_0x03F6A0_записать_звук_сохранив_X_Y
 
 
 
@@ -805,7 +805,7 @@ C - - - - - 0x02EB25 0B:AB15: 7D 50 05  ADC ram_obj_id,X ; 0550 0551
 C - - - - - 0x02EB28 0B:AB18: C9 21     CMP #$21
 C - - - - - 0x02EB2A 0B:AB1A: D0 29     BNE bra_AB45
 C - - - - - 0x02EB2C 0B:AB1C: 48        PHA
-C - - - - - 0x02EB2D 0B:AB1D: B9 0D 01  LDA ram_010D,Y
+C - - - - - 0x02EB2D 0B:AB1D: B9 0D 01  LDA ram_plr_hp_hi,Y
 C - - - - - 0x02EB30 0B:AB20: F0 03     BEQ bra_AB25
 - - - - - - 0x02EB32 0B:AB22: 20 70 AB  JSR sub_AB70
 bra_AB25:
@@ -1005,10 +1005,11 @@ C - - - - - 0x02EE60 0B:AE50: A5 9E     LDA ram_009E
 C - - - - - 0x02EE62 0B:AE52: 8D 5C 01  STA ram_015C
 C - - - - - 0x02EE65 0B:AE55: EE 52 01  INC ram_0152
 C - - - - - 0x02EE68 0B:AE58: 20 8C FC  JSR sub_0x03FC9C_set_mirroring_V
+; A = 00
 C - - - - - 0x02EE6B 0B:AE5B: 8D CA 06  STA ram_06CA
 C - - - - - 0x02EE6E 0B:AE5E: 8D CB 06  STA ram_06CB
 C - - - - - 0x02EE71 0B:AE61: 8D 71 06  STA ram_0671
-C - - - - - 0x02EE74 0B:AE64: 85 AA     STA ram_00AA
+C - - - - - 0x02EE74 0B:AE64: 85 AA     STA ram_таймер_задержки_фпс
 C - - - - - 0x02EE76 0B:AE66: 85 86     STA ram_0086
 C - - - - - 0x02EE78 0B:AE68: 85 4D     STA ram_004D
 C - - - - - 0x02EE7A 0B:AE6A: A9 01     LDA #$01    ; enable irq
@@ -1698,7 +1699,7 @@ C - - J - - 0x02F760 0B:B750: DE 60 05  DEC ram_obj_0560,X
 C - - - - - 0x02F763 0B:B753: D0 F8     BNE bra_B74D
 C - - - - - 0x02F765 0B:B755: FE 40 05  INC ram_obj_0540,X
 C - - - - - 0x02F768 0B:B758: A9 56     LDA #con_dpcm_warcry_casey_2
-C - - - - - 0x02F76A 0B:B75A: 20 94 F6  JSR sub_0x03F6A4
+C - - - - - 0x02F76A 0B:B75A: 20 94 F6  JSR sub_0x03F6A4_записать_звук
 C - - - - - 0x02F76D 0B:B75D: A9 F9     LDA #$F9
 C - - - - - 0x02F76F 0B:B75F: AC 26 01  LDY ram_option_speed
 C - - - - - 0x02F772 0B:B762: F0 02     BEQ bra_B766
@@ -2101,7 +2102,7 @@ C - - - - - 0x02FDEE 0B:BDDE: 8D 00 04  STA ram_plr_anim_id
 C - - - - - 0x02FDF1 0B:BDE1: B9 7D BD  LDA tbl_BD7D,Y
 C - - - - - 0x02FDF4 0B:BDE4: 8D 01 04  STA ram_plr_anim_id + $01
 C - - - - - 0x02FDF7 0B:BDE7: A9 27     LDA #con_0x03F6AD_27
-C - - - - - 0x02FDF9 0B:BDE9: 20 90 F6  JSR sub_0x03F6A0
+C - - - - - 0x02FDF9 0B:BDE9: 20 90 F6  JSR sub_0x03F6A0_записать_звук_сохранив_X_Y
 bra_BDEC:
 C - - - - - 0x02FDFC 0B:BDEC: AD 51 01  LDA ram_0151
 C - - - - - 0x02FDFF 0B:BDEF: F0 03     BEQ bra_BDF4
@@ -2161,7 +2162,7 @@ C - - - - - 0x02FE67 0B:BE57: F0 0A     BEQ bra_BE63_RTS
 C - - - - - 0x02FE69 0B:BE59: A9 FE     LDA #$FE
 C - - - - - 0x02FE6B 0B:BE5B: 9D 44 01  STA ram_0144,X
 C - - - - - 0x02FE6E 0B:BE5E: A9 0A     LDA #con_0x03F6AD_0A
-C - - - - - 0x02FE70 0B:BE60: 4C 90 F6  JMP loc_0x03F6A0
+C - - - - - 0x02FE70 0B:BE60: 4C 90 F6  JMP loc_0x03F6A0_записать_звук_сохранив_X_Y
 bra_BE63_RTS:
 C - - - - - 0x02FE73 0B:BE63: 60        RTS
 bra_BE64:
@@ -2173,7 +2174,7 @@ bra_BE64:
 - - - - - - 0x02FE81 0B:BE71: 9D A0 04  STA ram_obj_spd_Y_hi,X
 - - - - - - 0x02FE84 0B:BE74: FE 30 05  INC ram_obj_0530,X
 - - - - - - 0x02FE87 0B:BE77: A9 28     LDA #con_0x03F6AD_28
-- - - - - - 0x02FE89 0B:BE79: 4C 90 F6  JMP loc_0x03F6A0
+- - - - - - 0x02FE89 0B:BE79: 4C 90 F6  JMP loc_0x03F6A0_записать_звук_сохранив_X_Y
 
 
 
