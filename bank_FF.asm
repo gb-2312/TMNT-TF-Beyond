@@ -5219,8 +5219,9 @@ loc_0x03EDA6:
 C D 3 - - - 0x03EDA6 0F:ED96: BD E6 06  LDA ram_06E6,X
 C - - - - - 0x03EDA9 0F:ED99: D0 28     BNE bra_EDC3
 sub_0x03EDAB:
+; очистка шаблонов и вспомогательных адресов для ai?
 C - - - - - 0x03EDAB 0F:ED9B: A9 FF     LDA #$FF
-C - - - - - 0x03EDAD 0F:ED9D: 9D C0 06  STA ram_06C0,X
+C - - - - - 0x03EDAD 0F:ED9D: 9D C0 06  STA ram_шаблон_ai,X
 C - - - - - 0x03EDB0 0F:EDA0: A9 00     LDA #$00
 C - - - - - 0x03EDB2 0F:EDA2: 9D CC 06  STA ram_06CC,X
 C - - - - - 0x03EDB5 0F:EDA5: 9D D2 06  STA ram_06D2,X
@@ -5242,7 +5243,7 @@ C - - - - - 0x03EDD5 0F:EDC5: 60        RTS
 
 
 sub_EDC6:
-sub_0x03EDD6:
+sub_0x03EDD6:   ; на выходе A = con_шаблон_ai если < 60?
 C - - - - - 0x03EDD6 0F:EDC6: 20 04 F2  JSR sub_F204_генератор_рандома
 C - - - - - 0x03EDD9 0F:EDC9: A5 28     LDA ram_random_1
 C - - - - - 0x03EDDB 0F:EDCB: AC 25 01  LDY ram_option_difficulty

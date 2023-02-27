@@ -82,7 +82,7 @@ C - - - - - 0x03409E 0D:808E: 9D F1 06  STA ram_06F1,X
 C - - - - - 0x0340A1 0D:8091: 9D E4 06  STA ram_06E4,X
 C - - - - - 0x0340A4 0D:8094: 9D DC 06  STA ram_06DC,X
 C - - - - - 0x0340A7 0D:8097: 9D DA 06  STA ram_06DA,X
-C - - - - - 0x0340AA 0D:809A: 9D C0 06  STA ram_06C0,X
+C - - - - - 0x0340AA 0D:809A: 9D C0 06  STA ram_шаблон_ai,X
 C - - - - - 0x0340AD 0D:809D: 9D C2 06  STA ram_06C2,X
 C - - - - - 0x0340B0 0D:80A0: 9D C4 06  STA ram_06C4,X
 C - - - - - 0x0340B3 0D:80A3: 9D CE 06  STA ram_06CE,X
@@ -170,7 +170,7 @@ tbl_80FA:
 ofs_037_8116_02:
 C - - J - - 0x034126 0D:8116: 20 36 80  JSR sub_8036
 C - - - - - 0x034129 0D:8119: 20 BB 81  JSR sub_81BB
-C - - - - - 0x03412C 0D:811C: BD C0 06  LDA ram_06C0,X
+C - - - - - 0x03412C 0D:811C: BD C0 06  LDA ram_шаблон_ai,X
 C - - - - - 0x03412F 0D:811F: C9 FF     CMP #$FF
 C - - - - - 0x034131 0D:8121: D0 04     BNE bra_8127
 C - - - - - 0x034133 0D:8123: DE CA 06  DEC ram_06CA,X
@@ -205,7 +205,7 @@ C - - - - - 0x03416F 0D:815F: A5 17     LDA ram_0017
 C - - - - - 0x034171 0D:8161: 9D E6 06  STA ram_06E6,X
 C - - - - - 0x034174 0D:8164: D0 14     BNE bra_817A
 bra_8166:
-C - - - - - 0x034176 0D:8166: 20 A7 81  JSR sub_81A7
+C - - - - - 0x034176 0D:8166: 20 A7 81  JSR sub_81A7_выбрать_шаблоны_ai_для_персов
 C - - - - - 0x034179 0D:8169: AC F0 06  LDY ram_06F0
 C - - - - - 0x03417C 0D:816C: D0 05     BNE bra_8173_RTS
 C - - - - - 0x03417E 0D:816E: FE E4 06  INC ram_06E4,X
@@ -217,11 +217,11 @@ C - - - - - 0x034183 0D:8173: 60        RTS
 
 ofs_037_8174_01:
 C - - J - - 0x034184 0D:8174: 20 36 80  JSR sub_8036
-C - - - - - 0x034187 0D:8177: 20 A7 81  JSR sub_81A7
+C - - - - - 0x034187 0D:8177: 20 A7 81  JSR sub_81A7_выбрать_шаблоны_ai_для_персов
 bra_817A:
-C - - - - - 0x03418A 0D:817A: 9D C0 06  STA ram_06C0,X
+C - - - - - 0x03418A 0D:817A: 9D C0 06  STA ram_шаблон_ai,X
 C - - - - - 0x03418D 0D:817D: 20 6E A5  JSR sub_A56E
-C - - - - - 0x034190 0D:8180: C9 46     CMP #$46
+C - - - - - 0x034190 0D:8180: C9 46     CMP #con_колво_шаблонов_ai + $01
 C - - - - - 0x034192 0D:8182: B0 0B     BCS bra_818F
 C - - - - - 0x034194 0D:8184: A9 00     LDA #$00
 C - - - - - 0x034196 0D:8186: 9D D2 06  STA ram_06D2,X
@@ -229,7 +229,7 @@ C - - - - - 0x034199 0D:8189: A9 02     LDA #$02
 C - - - - - 0x03419B 0D:818B: 9D CA 06  STA ram_06CA,X
 C - - - - - 0x03419E 0D:818E: 60        RTS
 bra_818F:
-C - - - - - 0x03419F 0D:818F: A9 41     LDA #$41
+C - - - - - 0x03419F 0D:818F: A9 41     LDA #con_шаблон_ai_41
 C - - - - - 0x0341A1 0D:8191: D0 E7     BNE bra_817A    ; jmp
 
 
@@ -247,7 +247,7 @@ C - - - - - 0x0341A6 0D:8196: 20 32 D0  JSR sub_0x03D042_поинтеры_пос
 
 
 
-sub_81A7:
+sub_81A7_выбрать_шаблоны_ai_для_персов:
 C - - - - - 0x0341B7 0D:81A7: BD 50 05  LDA ram_obj_id,X
 C - - - - - 0x0341BA 0D:81AA: 20 32 D0  JSR sub_0x03D042_поинтеры_после_JSR
 - D 0 - I - 0x0341BD 0D:81AD: EB 8D     .word ofs_035_8DEB_00_leo
@@ -353,8 +353,8 @@ C - - - - - 0x03426F 0D:825F: C8        INY
 C - - - - - 0x034270 0D:8260: C9 FF     CMP #$FF
 C - - - - - 0x034272 0D:8262: D0 F3     BNE bra_8257_loop
 ; FF
-C - - - - - 0x034274 0D:8264: A9 00     LDA #$00
-C - - - - - 0x034276 0D:8266: 9D C0 06  STA ram_06C0,X
+C - - - - - 0x034274 0D:8264: A9 00     LDA #$00    ; con_шаблон_ai_00 ???
+C - - - - - 0x034276 0D:8266: 9D C0 06  STA ram_шаблон_ai,X
 C - - - - - 0x034279 0D:8269: 9D C2 06  STA ram_06C2,X
 C - - - - - 0x03427C 0D:826C: 85 17     STA ram_0017
 bra_826E:
@@ -505,7 +505,7 @@ C - - - - - 0x0343C2 0D:83B2: FE C2 06  INC ram_06C2,X
                                         LDY ram_0004
 C - - - - - 0x0343C5 0D:83B5: C8        INY
 C - - - - - 0x0343C6 0D:83B6: 20 20 ED  JSR sub_0x03ED30_чтение_cpu_btn
-C - - - - - 0x0343C9 0D:83B9: 9D C0 06  STA ram_06C0,X
+C - - - - - 0x0343C9 0D:83B9: 9D C0 06  STA ram_шаблон_ai,X
 C - - - - - 0x0343CC 0D:83BC: 9D E2 06  STA ram_06E2,X
 C - - - - - 0x0343CF 0D:83BF: 20 48 82  JSR sub_8248
 C - - - - - 0x0343D2 0D:83C2: 4C 05 ED  JMP loc_0x03ED15
@@ -530,7 +530,7 @@ C - - - - - 0x03436D 0D:835D: 4C 6E 82  JMP loc_826E
 
 
 ofs_083_835A_DB:
-C - - - - - 0x034368 0D:8358: A9 00     LDA #$00
+C - - - - - 0x034368 0D:8358: A9 00     LDA #$00    ; con_шаблон_ai_00 ???
                                         STA ram_06E6,X
                                         JMP loc_826E
 
@@ -593,7 +593,7 @@ ofs_083_8310_FE:
 
 
 ofs_083_82A5_FF:
-C - - - - - 0x0342B5 0D:82A5: A9 00     LDA #$00
+C - - - - - 0x0342B5 0D:82A5: A9 00     LDA #$00    ; con_шаблон_ai_00 ???
 C - - - - - 0x0342B7 0D:82A7: 9D E6 06  STA ram_06E6,X
 C - - - - - 0x0342BA 0D:82AA: 4C 96 ED  JMP loc_0x03EDA6
 
@@ -748,8 +748,8 @@ ofs_084_841A_DF:
 C D 1 - - - 0x0364AD 0D:A49D: BD 50 05  LDA ram_obj_id,X
 C - - - - - 0x0364B0 0D:A4A0: C9 06     CMP #$06
 C - - - - - 0x0364B2 0D:A4A2: D0 0A     BNE bra_A4AE
-C - - - - - 0x0364B4 0D:A4A4: BD C0 06  LDA ram_06C0,X
-C - - - - - 0x0364B7 0D:A4A7: C9 40     CMP #$40
+C - - - - - 0x0364B4 0D:A4A4: BD C0 06  LDA ram_шаблон_ai,X
+C - - - - - 0x0364B7 0D:A4A7: C9 40     CMP #con_шаблон_ai_40
 C - - - - - 0x0364B9 0D:A4A9: D0 03     BNE bra_A4AE
 - - - - - - 0x0364BB 0D:A4AB: 4C EF 83  JMP loc_83EF
 bra_A4AE:
@@ -1502,7 +1502,7 @@ C - - - - - 0x0348F6 0D:88E6: D0 E2     BNE bra_88CA
 C - - - - - 0x0348F8 0D:88E8: A9 C0     LDA #$C0
 C - - - - - 0x0348FA 0D:88EA: 9D E0 06  STA ram_06E0,X
 C - - - - - 0x0348FD 0D:88ED: A9 FF     LDA #$FF
-C - - - - - 0x0348FF 0D:88EF: 9D C0 06  STA ram_06C0,X
+C - - - - - 0x0348FF 0D:88EF: 9D C0 06  STA ram_шаблон_ai,X
 C - - - - - 0x034902 0D:88F2: A9 01     LDA #$01
 C - - - - - 0x034904 0D:88F4: 9D CC 06  STA ram_06CC,X
 C - - - - - 0x034907 0D:88F7: A9 02     LDA #$02
@@ -1804,6 +1804,7 @@ tbl_8B04:
 
 
 tbl_8B0B_шаблоны_ai:
+; con_шаблон_ai
 - - - - - - 0x034B1B 0D:8B0B: AB 8B     .word _off015_8BAB_00
 - D 0 - - - 0x034B1D 0D:8B0D: 1E 8C     .word _off015_8C1E_01
 - D 0 - - - 0x034B1F 0D:8B0F: 24 8C     .word _off015_8C24_02
@@ -1885,7 +1886,7 @@ con_8B0B_D4                             = $D4 ;
 con_8B0B_D5                             = $D5 ; 
 con_8B0B_D6                             = $D6 ; 
 con_8B0B_D7                             = $D7 ; 
-con_8B0B_D8                             = $D8 ; 
+con_8B0B_D8                             = $D8 ; новый шаблон поведения
 con_8B0B_D9                             = $D9 ; 
 con_8B0B_DA                             = $DA ; 
 con_8B0B_DB                             = $DB ; 
@@ -2510,8 +2511,7 @@ _off015_8D0D_38:
 - - - - - - 0x034D22 0D:8D12: FD        .byte con_8B0B_FD   ; 
 - - - - - - 0x034D23 0D:8D13: 07        .byte $07   ; 
 - - - - - - 0x034D24 0D:8D14: DA        .byte con_8B0B_DA   ; 
-- - - - - - 0x034D25 0D:8D15: D8        .byte con_8B0B_D8   ; 
-- - - - - - 0x034D26 0D:8D16: 06        .byte $06   ; 
+- - - - - - 0x034D25 0D:8D15: D8        .byte con_8B0B_D8, con_шаблон_ai_06   ; 
 - - - - - - 0x034D27 0D:8D17: FF        .byte con_8B0B_FF   ; 
 
 
@@ -2520,8 +2520,7 @@ _off015_8D18_39:
 - - - - - - 0x034D28 0D:8D18: DF        .byte con_8B0B_DF   ; 
 - - - - - - 0x034D29 0D:8D19: D7        .byte con_8B0B_D7   ; 
 - - - - - - 0x034D2A 0D:8D1A: 03        .byte $03   ; 
-- - - - - - 0x034D2B 0D:8D1B: D8        .byte con_8B0B_D8   ; 
-- - - - - - 0x034D2C 0D:8D1C: 39        .byte $39   ; 
+- - - - - - 0x034D2B 0D:8D1B: D8        .byte con_8B0B_D8, con_шаблон_ai_39   ; 
 - - - - - - 0x034D2D 0D:8D1D: FF        .byte con_8B0B_FF   ; 
 
 
@@ -2548,8 +2547,7 @@ _off015_8D24_40:
 - D 0 - I - 0x034D3C 0D:8D2C: DF        .byte con_8B0B_DF   ; 
 - D 0 - I - 0x034D3D 0D:8D2D: D7        .byte con_8B0B_D7   ; 
 - D 0 - I - 0x034D3E 0D:8D2E: 05        .byte $05   ; 
-- D 0 - I - 0x034D3F 0D:8D2F: D8        .byte con_8B0B_D8   ; 
-- D 0 - I - 0x034D40 0D:8D30: 07        .byte $07   ; 
+- D 0 - I - 0x034D3F 0D:8D2F: D8        .byte con_8B0B_D8, con_шаблон_ai_07   ; 
 - D 0 - I - 0x034D41 0D:8D31: FF        .byte con_8B0B_FF   ; 
 
 
@@ -2562,8 +2560,7 @@ _off015_8D32_2A:
 - - - - - - 0x034D46 0D:8D36: 80        .byte $80   ; 
 - - - - - - 0x034D47 0D:8D37: DB        .byte con_8B0B_DB   ; 
 - - - - - - 0x034D48 0D:8D38: D9        .byte con_8B0B_D9   ; 
-- - - - - - 0x034D49 0D:8D39: D8        .byte con_8B0B_D8   ; 
-- - - - - - 0x034D4A 0D:8D3A: 20        .byte $20   ; 
+- - - - - - 0x034D49 0D:8D39: D8        .byte con_8B0B_D8, con_шаблон_ai_20   ; 
 - - - - - - 0x034D4B 0D:8D3B: FF        .byte con_8B0B_FF   ; 
 
 
@@ -2574,8 +2571,7 @@ _off015_8D3C_2F:
 - D 0 - I - 0x034D4E 0D:8D3E: 00        .byte $00   ; 
 - D 0 - I - 0x034D4F 0D:8D3F: F3        .byte con_8B0B_F3   ; 
 - D 0 - I - 0x034D50 0D:8D40: DB        .byte con_8B0B_DB   ; 
-- D 0 - I - 0x034D51 0D:8D41: D8        .byte con_8B0B_D8   ; 
-- D 0 - I - 0x034D52 0D:8D42: 1A        .byte $1A   ; 
+- D 0 - I - 0x034D51 0D:8D41: D8        .byte con_8B0B_D8, con_шаблон_ai_1A   ; 
 - D 0 - I - 0x034D53 0D:8D43: FF        .byte con_8B0B_FF   ; 
 
 
@@ -2591,8 +2587,7 @@ _off015_8D44_2B:
 - D 0 - I - 0x034D5B 0D:8D4B: F6        .byte con_8B0B_F6   ; 
 - D 0 - I - 0x034D5C 0D:8D4C: D7        .byte con_8B0B_D7   ; 
 - D 0 - I - 0x034D5D 0D:8D4D: 05        .byte $05   ; 
-- D 0 - I - 0x034D5E 0D:8D4E: D8        .byte con_8B0B_D8   ; 
-- D 0 - I - 0x034D5F 0D:8D4F: 07        .byte $07   ; 
+- D 0 - I - 0x034D5E 0D:8D4E: D8        .byte con_8B0B_D8, con_шаблон_ai_07   ; 
 - D 0 - I - 0x034D60 0D:8D50: FF        .byte con_8B0B_FF   ; 
 
 
@@ -2610,8 +2605,7 @@ _off015_8D51_3D:
 - D 0 - I - 0x034D6A 0D:8D5A: F7        .byte con_8B0B_F7   ; 
 - D 0 - I - 0x034D6B 0D:8D5B: D7        .byte con_8B0B_D7   ; 
 - D 0 - I - 0x034D6C 0D:8D5C: 05        .byte $05   ; 
-- D 0 - I - 0x034D6D 0D:8D5D: D8        .byte con_8B0B_D8   ; 
-- D 0 - I - 0x034D6E 0D:8D5E: 07        .byte $07   ; 
+- D 0 - I - 0x034D6D 0D:8D5D: D8        .byte con_8B0B_D8, con_шаблон_ai_07   ; 
 - D 0 - I - 0x034D6F 0D:8D5F: FF        .byte con_8B0B_FF   ; 
 
 
@@ -2624,8 +2618,7 @@ _off015_8D60_32:
 - D 0 - I - 0x034D74 0D:8D64: 80        .byte $80   ; 
 - D 0 - I - 0x034D75 0D:8D65: D7        .byte con_8B0B_D7   ; 
 - D 0 - I - 0x034D76 0D:8D66: 04        .byte $04   ; 
-- D 0 - I - 0x034D77 0D:8D67: D8        .byte con_8B0B_D8   ; 
-- D 0 - I - 0x034D78 0D:8D68: 07        .byte $07   ; 
+- D 0 - I - 0x034D77 0D:8D67: D8        .byte con_8B0B_D8, con_шаблон_ai_07   ; 
 - D 0 - I - 0x034D79 0D:8D69: FF        .byte con_8B0B_FF   ; 
 
 
@@ -2677,8 +2670,7 @@ _off015_8D7B_34:
 - D 0 - I - 0x034D99 0D:8D89: FD        .byte con_8B0B_FD   ; 
 - D 0 - I - 0x034D9A 0D:8D8A: 13        .byte $13   ; 
 - D 0 - I - 0x034D9B 0D:8D8B: DE        .byte con_8B0B_DE   ; 
-- D 0 - I - 0x034D9C 0D:8D8C: D8        .byte con_8B0B_D8   ; 
-- D 0 - I - 0x034D9D 0D:8D8D: 35        .byte $35   ; 
+- D 0 - I - 0x034D9C 0D:8D8C: D8        .byte con_8B0B_D8, con_шаблон_ai_35   ; 
 - D 0 - I - 0x034D9E 0D:8D8E: FF        .byte con_8B0B_FF   ; 
 
 
@@ -2694,10 +2686,8 @@ _off015_8D8F_35:
 - D 0 - I - 0x034DA6 0D:8D96: DE        .byte con_8B0B_DE   ; 
 - D 0 - I - 0x034DA7 0D:8D97: D7        .byte con_8B0B_D7   ; 
 - D 0 - I - 0x034DA8 0D:8D98: 00        .byte $00   ; 
-- D 0 - I - 0x034DA9 0D:8D99: D8        .byte con_8B0B_D8   ; 
-- D 0 - I - 0x034DAA 0D:8D9A: 35        .byte $35   ; 
-- D 0 - I - 0x034DAB 0D:8D9B: D8        .byte con_8B0B_D8   ; 
-- D 0 - I - 0x034DAC 0D:8D9C: 37        .byte $37   ; 
+- D 0 - I - 0x034DA9 0D:8D99: D8        .byte con_8B0B_D8, con_шаблон_ai_35   ; 
+- D 0 - I - 0x034DAB 0D:8D9B: D8        .byte con_8B0B_D8, con_шаблон_ai_37   ; 
 - D 0 - I - 0x034DAD 0D:8D9D: FF        .byte con_8B0B_FF   ; 
 
 
@@ -2769,7 +2759,7 @@ C - - - - - 0x034DFF 0D:8DEF: D0 0A     BNE bra_8DFB
 C - - - - - 0x034E01 0D:8DF1: 20 C6 ED  JSR sub_0x03EDD6
 C - - - - - 0x034E04 0D:8DF4: C9 20     CMP #$20
 C - - - - - 0x034E06 0D:8DF6: B0 03     BCS bra_8DFB
-C - - - - - 0x034E08 0D:8DF8: A9 20     LDA #$20
+C - - - - - 0x034E08 0D:8DF8: A9 20     LDA #con_шаблон_ai_20
 C - - - - - 0x034E0A 0D:8DFA: 60        RTS
 bra_8DFB:
 C - - - - - 0x034E0B 0D:8DFB: A5 13     LDA ram_0013
@@ -2787,10 +2777,10 @@ C D 0 - - - 0x034E18 0D:8E08: 20 96 ED  JSR sub_0x03EDA6
 C - - - - - 0x034E1B 0D:8E0B: A5 11     LDA ram_0011
 C - - - - - 0x034E1D 0D:8E0D: C9 07     CMP #$07
 C - - - - - 0x034E1F 0D:8E0F: F0 03     BEQ bra_8E14
-C - - - - - 0x034E21 0D:8E11: A9 04     LDA #$04
+C - - - - - 0x034E21 0D:8E11: A9 04     LDA #con_шаблон_ai_04
 C - - - - - 0x034E23 0D:8E13: 60        RTS
 bra_8E14:
-C - - - - - 0x034E24 0D:8E14: A9 02     LDA #$02
+C - - - - - 0x034E24 0D:8E14: A9 02     LDA #con_шаблон_ai_02
 C - - - - - 0x034E26 0D:8E16: 60        RTS
 
 
@@ -2825,33 +2815,33 @@ C - - - - - 0x034E5A 0D:8E4A: C9 04     CMP #$04
 C - - - - - 0x034E5C 0D:8E4C: D0 2F     BNE bra_8E7D
 C - - - - - 0x034E5E 0D:8E4E: 20 96 ED  JSR sub_0x03EDA6
 C - - - - - 0x034E61 0D:8E51: 20 CD EC  JSR sub_0x03ECDD
-C - - - - - 0x034E64 0D:8E54: B9 B4 90  LDA tbl_90B4,Y
+C - - - - - 0x034E64 0D:8E54: B9 B4 90  LDA tbl_90B4_шаблоны_leo,Y
 C - - - - - 0x034E67 0D:8E57: 60        RTS
 bra_8E58:
 loc_8E58:
 C D 0 - - - 0x034E68 0D:8E58: 20 96 ED  JSR sub_0x03EDA6
 C - - - - - 0x034E6B 0D:8E5B: 20 CD EC  JSR sub_0x03ECDD
-C - - - - - 0x034E6E 0D:8E5E: B9 AC 90  LDA tbl_90AC,Y
+C - - - - - 0x034E6E 0D:8E5E: B9 AC 90  LDA tbl_90AC_шаблоны_leo,Y
 C - - - - - 0x034E71 0D:8E61: 60        RTS
 
 
 
 loc_8E62:
 C D 0 - - - 0x034E72 0D:8E62: 20 CD EC  JSR sub_0x03ECDD
-C - - - - - 0x034E75 0D:8E65: B9 69 8E  LDA tbl_8E69,Y
+C - - - - - 0x034E75 0D:8E65: B9 69 8E  LDA tbl_8E69_шаблоны_leo,Y
 C - - - - - 0x034E78 0D:8E68: 60        RTS
 
 
 
-tbl_8E69:
-- D 0 - - - 0x034E79 0D:8E69: 0C        .byte $0C   ; 00
-- D 0 - - - 0x034E7A 0D:8E6A: 19        .byte $19   ; 01
-- D 0 - - - 0x034E7B 0D:8E6B: 11        .byte $11   ; 02
-- D 0 - - - 0x034E7C 0D:8E6C: 06        .byte $06   ; 03
-- D 0 - - - 0x034E7D 0D:8E6D: 05        .byte $05   ; 04
-- D 0 - - - 0x034E7E 0D:8E6E: 20        .byte $20   ; 05
-- D 0 - - - 0x034E7F 0D:8E6F: 15        .byte $15   ; 06
-- D 0 - - - 0x034E80 0D:8E70: 03        .byte $03   ; 07
+tbl_8E69_шаблоны_leo:
+- D 0 - - - 0x034E79 0D:8E69: 0C        .byte con_шаблон_ai_0C   ; 00
+- D 0 - - - 0x034E7A 0D:8E6A: 19        .byte con_шаблон_ai_19   ; 01
+- D 0 - - - 0x034E7B 0D:8E6B: 11        .byte con_шаблон_ai_11   ; 02
+- D 0 - - - 0x034E7C 0D:8E6C: 06        .byte con_шаблон_ai_06   ; 03
+- D 0 - - - 0x034E7D 0D:8E6D: 05        .byte con_шаблон_ai_05   ; 04
+- D 0 - - - 0x034E7E 0D:8E6E: 20        .byte con_шаблон_ai_20   ; 05
+- D 0 - - - 0x034E7F 0D:8E6F: 15        .byte con_шаблон_ai_15   ; 06
+- D 0 - - - 0x034E80 0D:8E70: 03        .byte con_шаблон_ai_03   ; 07
 
 
 
@@ -2871,15 +2861,15 @@ C - - - - - 0x034E96 0D:8E86: 90 24     BCC bra_8EAC
 C - - - - - 0x034E98 0D:8E88: 20 04 F2  JSR sub_0x03F214_генератор_рандома
 C - - - - - 0x034E9B 0D:8E8B: 29 01     AND #$01
 C - - - - - 0x034E9D 0D:8E8D: D0 03     BNE bra_8E92
-C - - - - - 0x034E9F 0D:8E8F: A9 20     LDA #$20
+C - - - - - 0x034E9F 0D:8E8F: A9 20     LDA #con_шаблон_ai_20
 C - - - - - 0x034EA1 0D:8E91: 60        RTS
 bra_8E92:
 C - - - - - 0x034EA2 0D:8E92: AD 25 01  LDA ram_option_difficulty
 C - - - - - 0x034EA5 0D:8E95: F0 03     BEQ bra_8E9A
-C - - - - - 0x034EA7 0D:8E97: A9 13     LDA #$13
+C - - - - - 0x034EA7 0D:8E97: A9 13     LDA #con_шаблон_ai_13
 C - - - - - 0x034EA9 0D:8E99: 60        RTS
 bra_8E9A:
-- - - - - - 0x034EAA 0D:8E9A: A9 10     LDA #$10
+- - - - - - 0x034EAA 0D:8E9A: A9 10     LDA #con_шаблон_ai_10
 - - - - - - 0x034EAC 0D:8E9C: 60        RTS
 
 
@@ -2899,15 +2889,26 @@ C - - - - - 0x034EB9 0D:8EA9: 4C 8F ED  JMP loc_0x03ED9F_запись_кнопк
 
 
 bra_8EAC:
-C - - - - - 0x034EBC 0D:8EAC: A9 07     LDA #$07
+C - - - - - 0x034EBC 0D:8EAC: A9 07     LDA #con_шаблон_ai_07
 C - - - - - 0x034EBE 0D:8EAE: 60        RTS
 
 
 
 bra_8EAF:
 loc_8EAF:
+; bzk optimize, сделать наглядную таблицу
+; учитывать что C также может быть рандомным, поэтому оставить первые 2 команды
+                                       ;TYA
+                                       ;PHA
 C D 0 - - - 0x034EBF 0D:8EAF: A5 28     LDA ram_random_1
 C - - - - - 0x034EC1 0D:8EB1: 69 01     ADC #$01
+                                       ;TAY
+                                       ;LDA tbl_8EBD,Y
+                                       ;STA temp
+                                       ;PLA
+                                       ;TAY
+                                       ;LDA temp
+                                       ;RTS
 C - - - - - 0x034EC3 0D:8EB3: 29 0F     AND #$0F
 C - - - - - 0x034EC5 0D:8EB5: C9 0E     CMP #$0E
 C - - - - - 0x034EC7 0D:8EB7: 90 02     BCC bra_8EBB
@@ -2918,10 +2919,31 @@ C - - - - - 0x034ECD 0D:8EBD: 60        RTS
 
 
 
+; tbl_8EBD:
+; ; все случаи были считаны непосредственно с игры чтобы избежать ошибок
+;     .byte con_шаблон_ai_11 ; 00
+;     .byte con_шаблон_ai_12 ; 01
+;     .byte con_шаблон_ai_13 ; 02
+;     .byte con_шаблон_ai_14 ; 03
+;     .byte con_шаблон_ai_15 ; 04
+;     .byte con_шаблон_ai_16 ; 05
+;     .byte con_шаблон_ai_17 ; 06
+;     .byte con_шаблон_ai_18 ; 07
+;     .byte con_шаблон_ai_19 ; 08
+;     .byte con_шаблон_ai_1A ; 09
+;     .byte con_шаблон_ai_1B ; 0A
+;     .byte con_шаблон_ai_1C ; 0B
+;     .byte con_шаблон_ai_1D ; 0C
+;     .byte con_шаблон_ai_11 ; 0D
+;     .byte con_шаблон_ai_10 ; 0E
+;     .byte con_шаблон_ai_10 ; 0F
+
+
+
 bra_8EBE:
 loc_8EBE:
 C D 0 - - - 0x034ECE 0D:8EBE: 20 96 ED  JSR sub_0x03EDA6
-C - - - - - 0x034ED1 0D:8EC1: A9 08     LDA #$08
+C - - - - - 0x034ED1 0D:8EC1: A9 08     LDA #con_шаблон_ai_08
 C - - - - - 0x034ED3 0D:8EC3: 60        RTS
 
 
@@ -2954,7 +2976,7 @@ C - - - - - 0x034F04 0D:8EF4: D0 0A     BNE bra_8F00
 C - - - - - 0x034F06 0D:8EF6: 20 D8 ED  JSR sub_0x03EDE8
 C - - - - - 0x034F09 0D:8EF9: C9 04     CMP #$04
 C - - - - - 0x034F0B 0D:8EFB: B0 03     BCS bra_8F00
-C - - - - - 0x034F0D 0D:8EFD: A9 19     LDA #$19
+C - - - - - 0x034F0D 0D:8EFD: A9 19     LDA #con_шаблон_ai_19
 C - - - - - 0x034F0F 0D:8EFF: 60        RTS
 bra_8F00:
 C - - - - - 0x034F10 0D:8F00: A5 28     LDA ram_random_1
@@ -2963,11 +2985,11 @@ C - - - - - 0x034F14 0D:8F04: F0 31     BEQ bra_8F37
 C - - - - - 0x034F16 0D:8F06: 20 FE ED  JSR sub_0x03EE0E
 C - - - - - 0x034F19 0D:8F09: B0 2C     BCS bra_8F37
 loc_8F0B:
-C D 0 - - - 0x034F1B 0D:8F0B: A9 16     LDA #$16
+C D 0 - - - 0x034F1B 0D:8F0B: A9 16     LDA #con_шаблон_ai_16
 C - - - - - 0x034F1D 0D:8F0D: 60        RTS
 bra_8F0E:
 C - - - - - 0x034F1E 0D:8F0E: 20 96 ED  JSR sub_0x03EDA6
-C - - - - - 0x034F21 0D:8F11: A9 34     LDA #$34
+C - - - - - 0x034F21 0D:8F11: A9 34     LDA #con_шаблон_ai_34
 C - - - - - 0x034F23 0D:8F13: 60        RTS
 bra_8F14:
 C - - - - - 0x034F24 0D:8F14: 20 96 ED  JSR sub_0x03EDA6
@@ -2979,7 +3001,7 @@ C - - - - - 0x034F30 0D:8F20: C9 30     CMP #$30
 C - - - - - 0x034F32 0D:8F22: B0 03     BCS bra_8F27
 C - - - - - 0x034F34 0D:8F24: 4C 08 8E  JMP loc_8E08
 bra_8F27:
-C - - - - - 0x034F37 0D:8F27: A9 06     LDA #$06
+C - - - - - 0x034F37 0D:8F27: A9 06     LDA #con_шаблон_ai_06
 C - - - - - 0x034F39 0D:8F29: 60        RTS
 bra_8F2A:
 C - - - - - 0x034F3A 0D:8F2A: 20 D8 ED  JSR sub_0x03EDE8
@@ -2987,7 +3009,7 @@ C - - - - - 0x034F3D 0D:8F2D: C9 30     CMP #$30
 C - - - - - 0x034F3F 0D:8F2F: 90 03     BCC bra_8F34
 C - - - - - 0x034F41 0D:8F31: 4C 08 8E  JMP loc_8E08
 bra_8F34:
-C - - - - - 0x034F44 0D:8F34: A9 19     LDA #$19
+C - - - - - 0x034F44 0D:8F34: A9 19     LDA #con_шаблон_ai_19
 C - - - - - 0x034F46 0D:8F36: 60        RTS
 bra_8F37:
 C - - - - - 0x034F47 0D:8F37: A5 11     LDA ram_0011
@@ -3008,17 +3030,17 @@ loc_8F64:
 - - - - - - 0x034F81 0D:8F71: C9 80     CMP #$80
 - - - - - - 0x034F83 0D:8F73: 90 06     BCC bra_8F7B
 loc_8F75:
-- - - - - - 0x034F85 0D:8F75: A9 19     LDA #$19
+- - - - - - 0x034F85 0D:8F75: A9 19     LDA #con_шаблон_ai_19
 - - - - - - 0x034F87 0D:8F77: 9D E6 06  STA ram_06E6,X
 - - - - - - 0x034F8A 0D:8F7A: 60        RTS
 bra_8F7B:
 - - - - - - 0x034F8B 0D:8F7B: A5 28     LDA ram_random_1
 - - - - - - 0x034F8D 0D:8F7D: C9 20     CMP #$20
 - - - - - - 0x034F8F 0D:8F7F: B0 03     BCS bra_8F84
-- - - - - - 0x034F91 0D:8F81: A9 3E     LDA #$3E
+- - - - - - 0x034F91 0D:8F81: A9 3E     LDA #con_шаблон_ai_3E
 - - - - - - 0x034F93 0D:8F83: 60        RTS
 bra_8F84:
-- - - - - - 0x034F94 0D:8F84: A9 10     LDA #$10
+- - - - - - 0x034F94 0D:8F84: A9 10     LDA #con_шаблон_ai_10
 - - - - - - 0x034F96 0D:8F86: 9D E6 06  STA ram_06E6,X
 - - - - - - 0x034F99 0D:8F89: 60        RTS
 bra_8F8A:
@@ -3089,20 +3111,20 @@ bra_9006:
 C - - - - - 0x035016 0D:9006: A5 28     LDA ram_random_1
 C - - - - - 0x035018 0D:9008: 29 01     AND #$01
 C - - - - - 0x03501A 0D:900A: D0 03     BNE bra_900F
-C - - - - - 0x03501C 0D:900C: A9 1A     LDA #$1A
+C - - - - - 0x03501C 0D:900C: A9 1A     LDA #con_шаблон_ai_1A
 C - - - - - 0x03501E 0D:900E: 60        RTS
 bra_900F:
-C - - - - - 0x03501F 0D:900F: A9 05     LDA #$05
+C - - - - - 0x03501F 0D:900F: A9 05     LDA #con_шаблон_ai_05
 C - - - - - 0x035021 0D:9011: 60        RTS
 bra_9012:
-C - - - - - 0x035022 0D:9012: A9 01     LDA #$01
+C - - - - - 0x035022 0D:9012: A9 01     LDA #con_шаблон_ai_01
 C - - - - - 0x035024 0D:9014: 60        RTS
 bra_9015:
 C - - - - - 0x035025 0D:9015: 20 96 ED  JSR sub_0x03EDA6
-C - - - - - 0x035028 0D:9018: A9 2F     LDA #$2F
+C - - - - - 0x035028 0D:9018: A9 2F     LDA #con_шаблон_ai_2F
 C - - - - - 0x03502A 0D:901A: 60        RTS
 bra_901B:
-- - - - - - 0x03502B 0D:901B: A9 16     LDA #$16
+- - - - - - 0x03502B 0D:901B: A9 16     LDA #con_шаблон_ai_16
 - - - - - - 0x03502D 0D:901D: 60        RTS
 
 
@@ -3136,16 +3158,13 @@ C - - - - - 0x035061 0D:9051: C9 03     CMP #$03
 C - - - - - 0x035063 0D:9053: B0 03     BCS bra_9058
 loc_9055:
 bra_9055:
-C D 0 - - - 0x035065 0D:9055: A9 0F     LDA #$0F
+C D 0 - - - 0x035065 0D:9055: A9 0F     LDA #con_шаблон_ai_0F
 C - - - - - 0x035067 0D:9057: 60        RTS
 bra_9058:
-C - - - - - 0x035068 0D:9058: A9 0A     LDA #$0A
+C - - - - - 0x035068 0D:9058: A9 0A     LDA #con_шаблон_ai_0A
 C - - - - - 0x03506A 0D:905A: 60        RTS
-
-
-
 bra_905B:
-- - - - - - 0x03506B 0D:905B: A9 16     LDA #$16
+- - - - - - 0x03506B 0D:905B: A9 16     LDA #con_шаблон_ai_16
 - - - - - - 0x03506D 0D:905D: 60        RTS
 
 
@@ -3176,17 +3195,17 @@ C - - - - - 0x03508C 0D:907C: 60        RTS
 
 
 tbl_907D:
-- D 0 - - - 0x03508D 0D:907D: 13        .byte $13   ; 00
-- - - - - - 0x03508E 0D:907E: 14        .byte $14   ; 01
-- - - - - - 0x03508F 0D:907F: 15        .byte $15   ; 02
-- D 0 - - - 0x035090 0D:9080: 1A        .byte $1A   ; 03
-- D 0 - - - 0x035091 0D:9081: 1B        .byte $1B   ; 04
-- D 0 - - - 0x035092 0D:9082: 1C        .byte $1C   ; 05
-- D 0 - - - 0x035093 0D:9083: 13        .byte $13   ; 06
-- D 0 - - - 0x035094 0D:9084: 1A        .byte $1A   ; 07
+- D 0 - - - 0x03508D 0D:907D: 13        .byte con_шаблон_ai_13   ; 00
+- - - - - - 0x03508E 0D:907E: 14        .byte con_шаблон_ai_14   ; 01
+- - - - - - 0x03508F 0D:907F: 15        .byte con_шаблон_ai_15   ; 02
+- D 0 - - - 0x035090 0D:9080: 1A        .byte con_шаблон_ai_1A   ; 03
+- D 0 - - - 0x035091 0D:9081: 1B        .byte con_шаблон_ai_1B   ; 04
+- D 0 - - - 0x035092 0D:9082: 1C        .byte con_шаблон_ai_1C   ; 05
+- D 0 - - - 0x035093 0D:9083: 13        .byte con_шаблон_ai_13   ; 06
+- D 0 - - - 0x035094 0D:9084: 1A        .byte con_шаблон_ai_1A   ; 07
 
 
-
+; bzk garbage
 bra_908F_loop:
 - - - - - - 0x03509F 0D:908F: A5 28     LDA ram_random_1
 - - - - - - 0x0350A1 0D:9091: E6 28     INC ram_random_1
@@ -3200,10 +3219,10 @@ bra_908F_loop:
 
 
 tbl_909F:
-- - - - - - 0x0350AF 0D:909F: 0B        .byte $0B   ; 00
-- - - - - - 0x0350B0 0D:90A0: 0C        .byte $0C   ; 01
-- - - - - - 0x0350B1 0D:90A1: 05        .byte $05   ; 02
-- - - - - - 0x0350B2 0D:90A2: 06        .byte $06   ; 03
+- - - - - - 0x0350AF 0D:909F: 0B        .byte con_шаблон_ai_0B   ; 00
+- - - - - - 0x0350B0 0D:90A0: 0C        .byte con_шаблон_ai_0C   ; 01
+- - - - - - 0x0350B1 0D:90A1: 05        .byte con_шаблон_ai_05   ; 02
+- - - - - - 0x0350B2 0D:90A2: 06        .byte con_шаблон_ai_06   ; 03
 
 
 
@@ -3216,27 +3235,27 @@ loc_90A3:
 
 
 
-tbl_90AC:
-- D 0 - - - 0x0350BC 0D:90AC: 10        .byte $10   ; 00
-- D 0 - - - 0x0350BD 0D:90AD: 17        .byte $17   ; 01
-- D 0 - - - 0x0350BE 0D:90AE: 12        .byte $12   ; 02
-- D 0 - - - 0x0350BF 0D:90AF: 20        .byte $20   ; 03
-- D 0 - - - 0x0350C0 0D:90B0: 13        .byte $13   ; 04
-- D 0 - - - 0x0350C1 0D:90B1: 37        .byte $37   ; 05
-- D 0 - - - 0x0350C2 0D:90B2: 12        .byte $12   ; 06
-- D 0 - - - 0x0350C3 0D:90B3: 20        .byte $20   ; 07
+tbl_90AC_шаблоны_leo:
+- D 0 - - - 0x0350BC 0D:90AC: 10        .byte con_шаблон_ai_10   ; 00
+- D 0 - - - 0x0350BD 0D:90AD: 17        .byte con_шаблон_ai_17   ; 01
+- D 0 - - - 0x0350BE 0D:90AE: 12        .byte con_шаблон_ai_12   ; 02
+- D 0 - - - 0x0350BF 0D:90AF: 20        .byte con_шаблон_ai_20   ; 03
+- D 0 - - - 0x0350C0 0D:90B0: 13        .byte con_шаблон_ai_13   ; 04
+- D 0 - - - 0x0350C1 0D:90B1: 37        .byte con_шаблон_ai_37   ; 05
+- D 0 - - - 0x0350C2 0D:90B2: 12        .byte con_шаблон_ai_12   ; 06
+- D 0 - - - 0x0350C3 0D:90B3: 20        .byte con_шаблон_ai_20   ; 07
 
 
 
-tbl_90B4:
-- - - - - - 0x0350C4 0D:90B4: 17        .byte $17   ; 00
-- D 0 - - - 0x0350C5 0D:90B5: 42        .byte $42   ; 01
-- D 0 - - - 0x0350C6 0D:90B6: 1A        .byte $1A   ; 02
-- D 0 - - - 0x0350C7 0D:90B7: 13        .byte $13   ; 03
-- - - - - - 0x0350C8 0D:90B8: 07        .byte $07   ; 04
-- - - - - - 0x0350C9 0D:90B9: 34        .byte $34   ; 05
-- - - - - - 0x0350CA 0D:90BA: 20        .byte $20   ; 06
-- - - - - - 0x0350CB 0D:90BB: 03        .byte $03   ; 07
+tbl_90B4_шаблоны_leo:
+- - - - - - 0x0350C4 0D:90B4: 17        .byte con_шаблон_ai_17   ; 00
+- D 0 - - - 0x0350C5 0D:90B5: 42        .byte con_шаблон_ai_42   ; 01
+- D 0 - - - 0x0350C6 0D:90B6: 1A        .byte con_шаблон_ai_1A   ; 02
+- D 0 - - - 0x0350C7 0D:90B7: 13        .byte con_шаблон_ai_13   ; 03
+- - - - - - 0x0350C8 0D:90B8: 07        .byte con_шаблон_ai_07   ; 04
+- - - - - - 0x0350C9 0D:90B9: 34        .byte con_шаблон_ai_34   ; 05
+- - - - - - 0x0350CA 0D:90BA: 20        .byte con_шаблон_ai_20   ; 06
+- - - - - - 0x0350CB 0D:90BB: 03        .byte con_шаблон_ai_03   ; 07
 
 
 
@@ -3256,7 +3275,7 @@ C - - - - - 0x0350DC 0D:90CC: 90 60     BCC bra_912E
 C - - - - - 0x0350DE 0D:90CE: 20 5A ED  JSR sub_0x03ED6A
 C - - - - - 0x0350E1 0D:90D1: 90 07     BCC bra_90DA
 C - - - - - 0x0350E3 0D:90D3: 20 CD EC  JSR sub_0x03ECDD
-C - - - - - 0x0350E6 0D:90D6: B9 90 92  LDA tbl_9290,Y
+C - - - - - 0x0350E6 0D:90D6: B9 90 92  LDA tbl_9290_шаблоны_raph,Y
 C - - - - - 0x0350E9 0D:90D9: 60        RTS
 bra_90DA:
 C - - - - - 0x0350EA 0D:90DA: BC DE 06  LDY ram_06DE,X
@@ -3273,45 +3292,45 @@ C - - - - - 0x035100 0D:90F0: 20 D8 ED  JSR sub_0x03EDE8
 C - - - - - 0x035103 0D:90F3: C9 60     CMP #$60
 C - - - - - 0x035105 0D:90F5: B0 22     BCS bra_9119
 C - - - - - 0x035107 0D:90F7: 20 96 ED  JSR sub_0x03EDA6
-C - - - - - 0x03510A 0D:90FA: A9 1F     LDA #$1F
+C - - - - - 0x03510A 0D:90FA: A9 1F     LDA #con_шаблон_ai_1F
 C - - - - - 0x03510C 0D:90FC: 60        RTS
 bra_90FD:
 C - - - - - 0x03510D 0D:90FD: 20 96 ED  JSR sub_0x03EDA6
-C - - - - - 0x035110 0D:9100: A9 3F     LDA #$3F
+C - - - - - 0x035110 0D:9100: A9 3F     LDA #con_шаблон_ai_3F
 C - - - - - 0x035112 0D:9102: 60        RTS
 bra_9103:
 C - - - - - 0x035113 0D:9103: A5 28     LDA ram_random_1
 C - - - - - 0x035115 0D:9105: C9 40     CMP #$40
 C - - - - - 0x035117 0D:9107: 90 13     BCC bra_911C
 C - - - - - 0x035119 0D:9109: 20 C2 EC  JSR sub_0x03ECD2
-C - - - - - 0x03511C 0D:910C: B9 98 92  LDA tbl_9298,Y
+C - - - - - 0x03511C 0D:910C: B9 98 92  LDA tbl_9298_шаблоны_raph,Y
 C - - - - - 0x03511F 0D:910F: 60        RTS
 bra_9110:
 C - - - - - 0x035120 0D:9110: A5 28     LDA ram_random_1
 C - - - - - 0x035122 0D:9112: 29 03     AND #$03
 C - - - - - 0x035124 0D:9114: A8        TAY
-C - - - - - 0x035125 0D:9115: B9 9C 92  LDA tbl_929C,Y
+C - - - - - 0x035125 0D:9115: B9 9C 92  LDA tbl_929C_шаблоны_raph,Y
 C - - - - - 0x035128 0D:9118: 60        RTS
 bra_9119:
-- - - - - - 0x035129 0D:9119: A9 28     LDA #$28
+- - - - - - 0x035129 0D:9119: A9 28     LDA #con_шаблон_ai_28
 - - - - - - 0x03512B 0D:911B: 60        RTS
 bra_911C:
 C - - - - - 0x03512C 0D:911C: 20 96 ED  JSR sub_0x03EDA6
-C - - - - - 0x03512F 0D:911F: A9 40     LDA #$40
+C - - - - - 0x03512F 0D:911F: A9 40     LDA #con_шаблон_ai_40
 C - - - - - 0x035131 0D:9121: 60        RTS
 bra_9122:
 C - - - - - 0x035132 0D:9122: A5 11     LDA ram_0011
 C - - - - - 0x035134 0D:9124: C9 07     CMP #$07
 C - - - - - 0x035136 0D:9126: F0 03     BEQ bra_912B
-C - - - - - 0x035138 0D:9128: A9 3B     LDA #$3B
+C - - - - - 0x035138 0D:9128: A9 3B     LDA #con_шаблон_ai_3B
 C - - - - - 0x03513A 0D:912A: 60        RTS
 bra_912B:
-- - - - - - 0x03513B 0D:912B: A9 28     LDA #$28
+- - - - - - 0x03513B 0D:912B: A9 28     LDA #con_шаблон_ai_28
 - - - - - - 0x03513D 0D:912D: 60        RTS
 bra_912E:
 loc_912E:
 - - - - - - 0x03513E 0D:912E: 20 96 ED  JSR sub_0x03EDA6
-- - - - - - 0x035141 0D:9131: A9 08     LDA #$08
+- - - - - - 0x035141 0D:9131: A9 08     LDA #con_шаблон_ai_08
 - - - - - - 0x035143 0D:9133: 60        RTS
 
 
@@ -3325,7 +3344,7 @@ C - - - - - 0x03514E 0D:913E: C9 10     CMP #$10
 C - - - - - 0x035150 0D:9140: B0 08     BCS bra_914A
 C - - - - - 0x035152 0D:9142: 20 8E EC  JSR sub_0x03EC9E
 C - - - - - 0x035155 0D:9145: B0 03     BCS bra_914A
-C - - - - - 0x035157 0D:9147: A9 13     LDA #$13
+C - - - - - 0x035157 0D:9147: A9 13     LDA #con_шаблон_ai_13
 C - - - - - 0x035159 0D:9149: 60        RTS
 bra_914A:
 C - - - - - 0x03515A 0D:914A: 20 2C ED  JSR sub_0x03ED3C
@@ -3343,10 +3362,10 @@ C - - - - - 0x035171 0D:9161: 20 96 ED  JSR sub_0x03EDA6
 C - - - - - 0x035174 0D:9164: A5 11     LDA ram_0011
 C - - - - - 0x035176 0D:9166: C9 07     CMP #$07
 C - - - - - 0x035178 0D:9168: F0 03     BEQ bra_916D
-C - - - - - 0x03517A 0D:916A: A9 04     LDA #$04
+C - - - - - 0x03517A 0D:916A: A9 04     LDA #con_шаблон_ai_04
 C - - - - - 0x03517C 0D:916C: 60        RTS
 bra_916D:
-C - - - - - 0x03517D 0D:916D: A9 02     LDA #$02
+C - - - - - 0x03517D 0D:916D: A9 02     LDA #con_шаблон_ai_02
 C - - - - - 0x03517F 0D:916F: 60        RTS
 bra_9170:
 C - - - - - 0x035180 0D:9170: B9 10 06  LDA ram_plr_0610,Y
@@ -3361,7 +3380,7 @@ C - - - - - 0x035190 0D:9180: F0 A0     BEQ bra_9122
 C - - - - - 0x035192 0D:9182: A5 28     LDA ram_random_1
 C - - - - - 0x035194 0D:9184: 29 08     AND #$08
 C - - - - - 0x035196 0D:9186: D0 03     BNE bra_918B
-C - - - - - 0x035198 0D:9188: A9 1F     LDA #$1F
+C - - - - - 0x035198 0D:9188: A9 1F     LDA #con_шаблон_ai_1F
 C - - - - - 0x03519A 0D:918A: 60        RTS
 bra_918B:
 C - - - - - 0x03519B 0D:918B: A5 11     LDA ram_0011
@@ -3370,32 +3389,32 @@ C - - - - - 0x03519F 0D:918F: D0 0C     BNE bra_919D
 C - - - - - 0x0351A1 0D:9191: A5 28     LDA ram_random_1
 C - - - - - 0x0351A3 0D:9193: 29 01     AND #$01
 C - - - - - 0x0351A5 0D:9195: D0 03     BNE bra_919A
-C - - - - - 0x0351A7 0D:9197: A9 26     LDA #$26
+C - - - - - 0x0351A7 0D:9197: A9 26     LDA #con_шаблон_ai_26
 C - - - - - 0x0351A9 0D:9199: 60        RTS
 bra_919A:
-- - - - - - 0x0351AA 0D:919A: A9 1F     LDA #$1F
+- - - - - - 0x0351AA 0D:919A: A9 1F     LDA #con_шаблон_ai_1F
 - - - - - - 0x0351AC 0D:919C: 60        RTS
 bra_919D:
 C - - - - - 0x0351AD 0D:919D: A5 28     LDA ram_random_1
 C - - - - - 0x0351AF 0D:919F: 30 07     BMI bra_91A8
 C - - - - - 0x0351B1 0D:91A1: 29 03     AND #$03
 C - - - - - 0x0351B3 0D:91A3: A8        TAY
-C - - - - - 0x0351B4 0D:91A4: B9 78 92  LDA tbl_9278,Y
+C - - - - - 0x0351B4 0D:91A4: B9 78 92  LDA tbl_9278_шаблоны_raph,Y
 C - - - - - 0x0351B7 0D:91A7: 60        RTS
 bra_91A8:
-C - - - - - 0x0351B8 0D:91A8: A9 27     LDA #$27
+C - - - - - 0x0351B8 0D:91A8: A9 27     LDA #con_шаблон_ai_27
 C - - - - - 0x0351BA 0D:91AA: 60        RTS
 
 
 
 ofs_028_91AB_02:
 C - - J - - 0x0351BB 0D:91AB: BD E2 06  LDA ram_06E2,X
-C - - - - - 0x0351BE 0D:91AE: C9 06     CMP #$06
+C - - - - - 0x0351BE 0D:91AE: C9 06     CMP #con_шаблон_ai_06
 C - - - - - 0x0351C0 0D:91B0: D0 0A     BNE bra_91BC
 C - - - - - 0x0351C2 0D:91B2: 20 D8 ED  JSR sub_0x03EDE8
 C - - - - - 0x0351C5 0D:91B5: C9 10     CMP #$10
 C - - - - - 0x0351C7 0D:91B7: B0 03     BCS bra_91BC
-C - - - - - 0x0351C9 0D:91B9: A9 43     LDA #$43
+C - - - - - 0x0351C9 0D:91B9: A9 43     LDA #con_шаблон_ai_43
 C - - - - - 0x0351CB 0D:91BB: 60        RTS
 bra_91BC:
 C - - - - - 0x0351CC 0D:91BC: 20 2C ED  JSR sub_0x03ED3C
@@ -3408,7 +3427,7 @@ C - - - - - 0x0351D8 0D:91C8: D0 09     BNE bra_91D3
 C - - - - - 0x0351DA 0D:91CA: A5 28     LDA ram_random_1
 C - - - - - 0x0351DC 0D:91CC: 29 07     AND #$07
 C - - - - - 0x0351DE 0D:91CE: A8        TAY
-C - - - - - 0x0351DF 0D:91CF: B9 7C 92  LDA tbl_927C,Y
+C - - - - - 0x0351DF 0D:91CF: B9 7C 92  LDA tbl_927C_шаблоны_raph,Y
 C - - - - - 0x0351E2 0D:91D2: 60        RTS
 bra_91D3:
 C - - - - - 0x0351E3 0D:91D3: C9 08     CMP #$08
@@ -3420,7 +3439,7 @@ C - - - - - 0x0351EA 0D:91DA: B0 10     BCS bra_91EC
 - - - - - - 0x0351F1 0D:91E1: 20 3E EE  JSR sub_0x03EE4E
 - - - - - - 0x0351F4 0D:91E4: B0 06     BCS bra_91EC
 - - - - - - 0x0351F6 0D:91E6: 20 96 ED  JSR sub_0x03EDA6
-- - - - - - 0x0351F9 0D:91E9: A9 16     LDA #$16
+- - - - - - 0x0351F9 0D:91E9: A9 16     LDA #con_шаблон_ai_16
 - - - - - - 0x0351FB 0D:91EB: 60        RTS
 bra_91EC:
 C - - - - - 0x0351FC 0D:91EC: A5 11     LDA ram_0011
@@ -3437,28 +3456,28 @@ bra_9203:
 C - - - - - 0x035213 0D:9203: 20 8E EC  JSR sub_0x03EC9E
 C - - - - - 0x035216 0D:9206: 90 0E     BCC bra_9216
 C - - - - - 0x035218 0D:9208: 20 CD EC  JSR sub_0x03ECDD
-C - - - - - 0x03521B 0D:920B: B9 88 92  LDA tbl_9288,Y
+C - - - - - 0x03521B 0D:920B: B9 88 92  LDA tbl_9288_шаблоны_raph,Y
 C - - - - - 0x03521E 0D:920E: 60        RTS
 bra_920F:
 C - - - - - 0x03521F 0D:920F: 20 C2 EC  JSR sub_0x03ECD2
-C - - - - - 0x035222 0D:9212: B9 19 92  LDA tbl_9219,Y
+C - - - - - 0x035222 0D:9212: B9 19 92  LDA tbl_9219_шаблоны_raph,Y
 C - - - - - 0x035225 0D:9215: 60        RTS
 bra_9216:
-C - - - - - 0x035226 0D:9216: A9 06     LDA #$06
+C - - - - - 0x035226 0D:9216: A9 06     LDA #con_шаблон_ai_06
 C - - - - - 0x035228 0D:9218: 60        RTS
 
 
 
-tbl_9219:
-- D 0 - - - 0x035229 0D:9219: 1A        .byte $1A   ; 00
-- D 0 - - - 0x03522A 0D:921A: 13        .byte $13   ; 01
-- D 0 - - - 0x03522B 0D:921B: 07        .byte $07   ; 02
-- D 0 - - - 0x03522C 0D:921C: 1F        .byte $1F   ; 03
+tbl_9219_шаблоны_raph:
+- D 0 - - - 0x035229 0D:9219: 1A        .byte con_шаблон_ai_1A   ; 00
+- D 0 - - - 0x03522A 0D:921A: 13        .byte con_шаблон_ai_13   ; 01
+- D 0 - - - 0x03522B 0D:921B: 07        .byte con_шаблон_ai_07   ; 02
+- D 0 - - - 0x03522C 0D:921C: 1F        .byte con_шаблон_ai_1F   ; 03
 
 
 
 bra_922E:
-C - - - - - 0x03523E 0D:922E: A9 06     LDA #$06
+C - - - - - 0x03523E 0D:922E: A9 06     LDA #con_шаблон_ai_06
 C - - - - - 0x035240 0D:9230: 60        RTS
 
 
@@ -3484,7 +3503,7 @@ C - - - - - 0x03524C 0D:923C: B0 1F     BCS bra_925D
 - - - - - - 0x035265 0D:9255: 20 3E EE  JSR sub_0x03EE4E
 - - - - - - 0x035268 0D:9258: B0 03     BCS bra_925D
 bra_925A:
-- - - - - - 0x03526A 0D:925A: A9 16     LDA #$16
+- - - - - - 0x03526A 0D:925A: A9 16     LDA #con_шаблон_ai_16
 - - - - - - 0x03526C 0D:925C: 60        RTS
 bra_925D:
 C - - - - - 0x03526D 0D:925D: 20 14 EE  JSR sub_0x03EE24
@@ -3494,78 +3513,78 @@ C - - - - - 0x035274 0D:9264: C9 02     CMP #$02
 C - - - - - 0x035276 0D:9266: B0 06     BCS bra_926E
 bra_9268:
 - - - - - - 0x035278 0D:9268: 20 96 ED  JSR sub_0x03EDA6
-- - - - - - 0x03527B 0D:926B: A9 0F     LDA #$0F
+- - - - - - 0x03527B 0D:926B: A9 0F     LDA #con_шаблон_ai_0F
 - - - - - - 0x03527D 0D:926D: 60        RTS
 bra_926E:
 C - - - - - 0x03527E 0D:926E: 20 CD EC  JSR sub_0x03ECDD
-C - - - - - 0x035281 0D:9271: B9 84 92  LDA tbl_9284,Y
+C - - - - - 0x035281 0D:9271: B9 84 92  LDA tbl_9284_шаблоны_raph,Y
 C - - - - - 0x035284 0D:9274: 60        RTS
 
 
 
-tbl_9278:
-- D 0 - - - 0x035288 0D:9278: 12        .byte $12   ; 00
-- D 0 - - - 0x035289 0D:9279: 29        .byte $29   ; 01
-- D 0 - - - 0x03528A 0D:927A: 18        .byte $18   ; 02
-- D 0 - - - 0x03528B 0D:927B: 13        .byte $13   ; 03
+tbl_9278_шаблоны_raph:
+- D 0 - - - 0x035288 0D:9278: 12        .byte con_шаблон_ai_12   ; 00
+- D 0 - - - 0x035289 0D:9279: 29        .byte con_шаблон_ai_29   ; 01
+- D 0 - - - 0x03528A 0D:927A: 18        .byte con_шаблон_ai_18   ; 02
+- D 0 - - - 0x03528B 0D:927B: 13        .byte con_шаблон_ai_13   ; 03
 
 
 
-tbl_927C:
-- D 0 - - - 0x03528C 0D:927C: 0D        .byte $0D   ; 00
-- D 0 - - - 0x03528D 0D:927D: 0B        .byte $0B   ; 01
-- D 0 - - - 0x03528E 0D:927E: 0C        .byte $0C   ; 02
-- D 0 - - - 0x03528F 0D:927F: 13        .byte $13   ; 03
-- - - - - - 0x035290 0D:9280: 14        .byte $14   ; 04
-- - - - - - 0x035291 0D:9281: 15        .byte $15   ; 05
-- D 0 - - - 0x035292 0D:9282: 1A        .byte $1A   ; 06
-- D 0 - - - 0x035293 0D:9283: 1B        .byte $1B   ; 07
+tbl_927C_шаблоны_raph:
+- D 0 - - - 0x03528C 0D:927C: 0D        .byte con_шаблон_ai_0D   ; 00
+- D 0 - - - 0x03528D 0D:927D: 0B        .byte con_шаблон_ai_0B   ; 01
+- D 0 - - - 0x03528E 0D:927E: 0C        .byte con_шаблон_ai_0C   ; 02
+- D 0 - - - 0x03528F 0D:927F: 13        .byte con_шаблон_ai_13   ; 03
+- - - - - - 0x035290 0D:9280: 14        .byte con_шаблон_ai_14   ; 04
+- - - - - - 0x035291 0D:9281: 15        .byte con_шаблон_ai_15   ; 05
+- D 0 - - - 0x035292 0D:9282: 1A        .byte con_шаблон_ai_1A   ; 06
+- D 0 - - - 0x035293 0D:9283: 1B        .byte con_шаблон_ai_1B   ; 07
 
 
 
-tbl_9284:
-- D 0 - - - 0x035294 0D:9284: 1C        .byte $1C   ; 00
-- D 0 - - - 0x035295 0D:9285: 15        .byte $15   ; 01
-- D 0 - - - 0x035296 0D:9286: 12        .byte $12   ; 02
-- D 0 - - - 0x035297 0D:9287: 18        .byte $18   ; 03
+tbl_9284_шаблоны_raph:
+- D 0 - - - 0x035294 0D:9284: 1C        .byte con_шаблон_ai_1C   ; 00
+- D 0 - - - 0x035295 0D:9285: 15        .byte con_шаблон_ai_15   ; 01
+- D 0 - - - 0x035296 0D:9286: 12        .byte con_шаблон_ai_12   ; 02
+- D 0 - - - 0x035297 0D:9287: 18        .byte con_шаблон_ai_18   ; 03
 ; bzk bug? совмещенные таблицы, читается еще 4 байта
-tbl_9288:
-- D 0 - - - 0x035298 0D:9288: 3E        .byte $3E   ; 00
-- D 0 - - - 0x035299 0D:9289: 41        .byte $41   ; 01
-- D 0 - - - 0x03529A 0D:928A: 37        .byte $37   ; 02
-- D 0 - - - 0x03529B 0D:928B: 1A        .byte $1A   ; 03
-- D 0 - - - 0x03529C 0D:928C: 10        .byte $10   ; 04
-- D 0 - - - 0x03529D 0D:928D: 34        .byte $34   ; 05
-- D 0 - - - 0x03529E 0D:928E: 29        .byte $29   ; 06
-- D 0 - - - 0x03529F 0D:928F: 26        .byte $26   ; 07
+tbl_9288_шаблоны_raph:
+- D 0 - - - 0x035298 0D:9288: 3E        .byte con_шаблон_ai_3E   ; 00
+- D 0 - - - 0x035299 0D:9289: 41        .byte con_шаблон_ai_41   ; 01
+- D 0 - - - 0x03529A 0D:928A: 37        .byte con_шаблон_ai_37   ; 02
+- D 0 - - - 0x03529B 0D:928B: 1A        .byte con_шаблон_ai_1A   ; 03
+- D 0 - - - 0x03529C 0D:928C: 10        .byte con_шаблон_ai_10   ; 04
+- D 0 - - - 0x03529D 0D:928D: 34        .byte con_шаблон_ai_34   ; 05
+- D 0 - - - 0x03529E 0D:928E: 29        .byte con_шаблон_ai_29   ; 06
+- D 0 - - - 0x03529F 0D:928F: 26        .byte con_шаблон_ai_26   ; 07
 
 
 
-tbl_9290:
-- D 0 - - - 0x0352A0 0D:9290: 29        .byte $29   ; 00
-- D 0 - - - 0x0352A1 0D:9291: 19        .byte $19   ; 01
-- D 0 - - - 0x0352A2 0D:9292: 10        .byte $10   ; 02
-- D 0 - - - 0x0352A3 0D:9293: 17        .byte $17   ; 03
-- D 0 - - - 0x0352A4 0D:9294: 42        .byte $42   ; 04
-- D 0 - - - 0x0352A5 0D:9295: 34        .byte $34   ; 05
-- D 0 - - - 0x0352A6 0D:9296: 29        .byte $29   ; 06
-- - - - - - 0x0352A7 0D:9297: 26        .byte $26   ; 07
+tbl_9290_шаблоны_raph:
+- D 0 - - - 0x0352A0 0D:9290: 29        .byte con_шаблон_ai_29   ; 00
+- D 0 - - - 0x0352A1 0D:9291: 19        .byte con_шаблон_ai_19   ; 01
+- D 0 - - - 0x0352A2 0D:9292: 10        .byte con_шаблон_ai_10   ; 02
+- D 0 - - - 0x0352A3 0D:9293: 17        .byte con_шаблон_ai_17   ; 03
+- D 0 - - - 0x0352A4 0D:9294: 42        .byte con_шаблон_ai_42   ; 04
+- D 0 - - - 0x0352A5 0D:9295: 34        .byte con_шаблон_ai_34   ; 05
+- D 0 - - - 0x0352A6 0D:9296: 29        .byte con_шаблон_ai_29   ; 06
+- - - - - - 0x0352A7 0D:9297: 26        .byte con_шаблон_ai_26   ; 07
 
 
 
-tbl_9298:
-- D 0 - - - 0x0352A8 0D:9298: 05        .byte $05   ; 00
-- D 0 - - - 0x0352A9 0D:9299: 29        .byte $29   ; 01
-- D 0 - - - 0x0352AA 0D:929A: 34        .byte $34   ; 02
-- D 0 - - - 0x0352AB 0D:929B: 1A        .byte $1A   ; 03
+tbl_9298_шаблоны_raph:
+- D 0 - - - 0x0352A8 0D:9298: 05        .byte con_шаблон_ai_05   ; 00
+- D 0 - - - 0x0352A9 0D:9299: 29        .byte con_шаблон_ai_29   ; 01
+- D 0 - - - 0x0352AA 0D:929A: 34        .byte con_шаблон_ai_34   ; 02
+- D 0 - - - 0x0352AB 0D:929B: 1A        .byte con_шаблон_ai_1A   ; 03
 
 
 
-tbl_929C:
-- D 0 - - - 0x0352AC 0D:929C: 3F        .byte $3F   ; 00
-- D 0 - - - 0x0352AD 0D:929D: 18        .byte $18   ; 01
-- D 0 - - - 0x0352AE 0D:929E: 10        .byte $10   ; 02
-- D 0 - - - 0x0352AF 0D:929F: 17        .byte $17   ; 03
+tbl_929C_шаблоны_raph:
+- D 0 - - - 0x0352AC 0D:929C: 3F        .byte con_шаблон_ai_3F   ; 00
+- D 0 - - - 0x0352AD 0D:929D: 18        .byte con_шаблон_ai_18   ; 01
+- D 0 - - - 0x0352AE 0D:929E: 10        .byte con_шаблон_ai_10   ; 02
+- D 0 - - - 0x0352AF 0D:929F: 17        .byte con_шаблон_ai_17   ; 03
 
 
 
@@ -3592,10 +3611,10 @@ C - - - - - 0x0352D5 0D:92C5: D0 37     BNE bra_92FE
 C - - - - - 0x0352D7 0D:92C7: 20 96 ED  JSR sub_0x03EDA6
 C - - - - - 0x0352DA 0D:92CA: A5 28     LDA ram_random_1
 C - - - - - 0x0352DC 0D:92CC: 30 03     BMI bra_92D1
-C - - - - - 0x0352DE 0D:92CE: A9 07     LDA #$07
+C - - - - - 0x0352DE 0D:92CE: A9 07     LDA #con_шаблон_ai_07
 C - - - - - 0x0352E0 0D:92D0: 60        RTS
 bra_92D1:
-C - - - - - 0x0352E1 0D:92D1: A9 26     LDA #$26
+C - - - - - 0x0352E1 0D:92D1: A9 26     LDA #con_шаблон_ai_26
 C - - - - - 0x0352E3 0D:92D3: 60        RTS
 
 
@@ -3607,34 +3626,34 @@ C - - - - - 0x0352E9 0D:92D9: BD 10 04  LDA ram_obj_pos_Y,X
 C - - - - - 0x0352EC 0D:92DC: C9 80     CMP #$80
 C - - - - - 0x0352EE 0D:92DE: 90 09     BCC bra_92E9
 bra_92E0:
-C - - - - - 0x0352F0 0D:92E0: A9 1E     LDA #$1E
+C - - - - - 0x0352F0 0D:92E0: A9 1E     LDA #con_шаблон_ai_1E
 C - - - - - 0x0352F2 0D:92E2: 60        RTS
 bra_92E3:
 - - - - - - 0x0352F3 0D:92E3: 20 96 ED  JSR sub_0x03EDA6
-- - - - - - 0x0352F6 0D:92E6: A9 08     LDA #$08
+- - - - - - 0x0352F6 0D:92E6: A9 08     LDA #con_шаблон_ai_08
 - - - - - - 0x0352F8 0D:92E8: 60        RTS
 bra_92E9:
 C - - - - - 0x0352F9 0D:92E9: 20 96 ED  JSR sub_0x03EDA6
 C - - - - - 0x0352FC 0D:92EC: 20 CD EC  JSR sub_0x03ECDD
-C - - - - - 0x0352FF 0D:92EF: B9 F3 92  LDA tbl_92F3,Y
+C - - - - - 0x0352FF 0D:92EF: B9 F3 92  LDA tbl_92F3_шаблоны_don,Y
 C - - - - - 0x035302 0D:92F2: 60        RTS
 
 
 
-tbl_92F3:
-- D 0 - - - 0x035303 0D:92F3: 1A        .byte $1A   ; 00
-- D 0 - - - 0x035304 0D:92F4: 19        .byte $19   ; 01
-- D 0 - - - 0x035305 0D:92F5: 07        .byte $07   ; 02
-- D 0 - - - 0x035306 0D:92F6: 13        .byte $13   ; 03
-- D 0 - - - 0x035307 0D:92F7: 1A        .byte $1A   ; 04
-- D 0 - - - 0x035308 0D:92F8: 19        .byte $19   ; 05
-- D 0 - - - 0x035309 0D:92F9: 07        .byte $07   ; 06
-- D 0 - - - 0x03530A 0D:92FA: 13        .byte $13   ; 07
+tbl_92F3_шаблоны_don:
+- D 0 - - - 0x035303 0D:92F3: 1A        .byte con_шаблон_ai_1A   ; 00
+- D 0 - - - 0x035304 0D:92F4: 19        .byte con_шаблон_ai_19   ; 01
+- D 0 - - - 0x035305 0D:92F5: 07        .byte con_шаблон_ai_07   ; 02
+- D 0 - - - 0x035306 0D:92F6: 13        .byte con_шаблон_ai_13   ; 03
+- D 0 - - - 0x035307 0D:92F7: 1A        .byte con_шаблон_ai_1A   ; 04
+- D 0 - - - 0x035308 0D:92F8: 19        .byte con_шаблон_ai_19   ; 05
+- D 0 - - - 0x035309 0D:92F9: 07        .byte con_шаблон_ai_07   ; 06
+- D 0 - - - 0x03530A 0D:92FA: 13        .byte con_шаблон_ai_13   ; 07
 
 
 
 bra_92FB:
-C - - - - - 0x03530B 0D:92FB: A9 03     LDA #$03
+C - - - - - 0x03530B 0D:92FB: A9 03     LDA #con_шаблон_ai_03
 C - - - - - 0x03530D 0D:92FD: 60        RTS
 
 
@@ -3644,10 +3663,10 @@ C - - - - - 0x03530E 0D:92FE: 20 96 ED  JSR sub_0x03EDA6
 C - - - - - 0x035311 0D:9301: A5 11     LDA ram_0011
 C - - - - - 0x035313 0D:9303: C9 07     CMP #$07
 C - - - - - 0x035315 0D:9305: F0 03     BEQ bra_930A
-C - - - - - 0x035317 0D:9307: A9 04     LDA #$04
+C - - - - - 0x035317 0D:9307: A9 04     LDA #con_шаблон_ai_04
 C - - - - - 0x035319 0D:9309: 60        RTS
 bra_930A:
-C - - - - - 0x03531A 0D:930A: A9 02     LDA #$02
+C - - - - - 0x03531A 0D:930A: A9 02     LDA #con_шаблон_ai_02
 C - - - - - 0x03531C 0D:930C: 60        RTS
 
 
@@ -3665,14 +3684,14 @@ C - - - - - 0x035330 0D:9320: C9 08     CMP #$08
 C - - - - - 0x035332 0D:9322: F0 DA     BEQ bra_92FE
 C - - - - - 0x035334 0D:9324: 20 FE ED  JSR sub_0x03EE0E
 C - - - - - 0x035337 0D:9327: B0 03     BCS bra_932C
-C - - - - - 0x035339 0D:9329: A9 16     LDA #$16
+C - - - - - 0x035339 0D:9329: A9 16     LDA #con_шаблон_ai_16
 C - - - - - 0x03533B 0D:932B: 60        RTS
 bra_932C:
 C - - - - - 0x03533C 0D:932C: A5 12     LDA ram_0012
 C - - - - - 0x03533E 0D:932E: C9 03     CMP #$03
 C - - - - - 0x035340 0D:9330: B0 3A     BCS bra_936C
 C - - - - - 0x035342 0D:9332: 20 CD EC  JSR sub_0x03ECDD
-C - - - - - 0x035345 0D:9335: B9 AD 93  LDA tbl_93AD,Y
+C - - - - - 0x035345 0D:9335: B9 AD 93  LDA tbl_93AD_шаблоны_don,Y
 C - - - - - 0x035348 0D:9338: 60        RTS
 
 
@@ -3688,10 +3707,10 @@ C - - - - - 0x035356 0D:9346: 20 D8 ED  JSR sub_0x03EDE8
 C - - - - - 0x035359 0D:9349: C9 3C     CMP #$3C
 C - - - - - 0x03535B 0D:934B: B0 03     BCS bra_9350
 bra_934D:
-C - - - - - 0x03535D 0D:934D: A9 0F     LDA #$0F
+C - - - - - 0x03535D 0D:934D: A9 0F     LDA #con_шаблон_ai_0F
 C - - - - - 0x03535F 0D:934F: 60        RTS
 bra_9350:
-C - - - - - 0x035360 0D:9350: A9 00     LDA #$00
+C - - - - - 0x035360 0D:9350: A9 00     LDA #$00    ; con_шаблон_ai_00 ???
 C - - - - - 0x035362 0D:9352: 60        RTS
 
 
@@ -3708,17 +3727,17 @@ C - - - - - 0x035371 0D:9361: B0 0C     BCS bra_936F
 C - - - - - 0x035373 0D:9363: A5 12     LDA ram_0012
 C - - - - - 0x035375 0D:9365: C9 03     CMP #$03
 C - - - - - 0x035377 0D:9367: B0 03     BCS bra_936C
-C - - - - - 0x035379 0D:9369: A9 0F     LDA #$0F
+C - - - - - 0x035379 0D:9369: A9 0F     LDA #con_шаблон_ai_0F
 C - - - - - 0x03537B 0D:936B: 60        RTS
 bra_936C:
-C - - - - - 0x03537C 0D:936C: A9 13     LDA #$13
+C - - - - - 0x03537C 0D:936C: A9 13     LDA #con_шаблон_ai_13
 C - - - - - 0x03537E 0D:936E: 60        RTS
 bra_936F:
 ofs_027_936F_02:
 C - - - - - 0x03537F 0D:936F: 20 2C ED  JSR sub_0x03ED3C
 C - - - - - 0x035382 0D:9372: B0 06     BCS bra_937A
 - - - - - - 0x035384 0D:9374: 20 96 ED  JSR sub_0x03EDA6
-- - - - - - 0x035387 0D:9377: A9 06     LDA #$06
+- - - - - - 0x035387 0D:9377: A9 06     LDA #con_шаблон_ai_06
 - - - - - - 0x035389 0D:9379: 60        RTS
 bra_937A:
 C - - - - - 0x03538A 0D:937A: 20 39 93  JSR sub_9339
@@ -3735,7 +3754,7 @@ C - - - - - 0x03539B 0D:938B: 4C D4 92  JMP loc_92D4
 bra_938E:
 C - - - - - 0x03539E 0D:938E: 29 07     AND #$07
 C - - - - - 0x0353A0 0D:9390: A8        TAY
-C - - - - - 0x0353A1 0D:9391: B9 B5 93  LDA tbl_93B5,Y
+C - - - - - 0x0353A1 0D:9391: B9 B5 93  LDA tbl_93B5_шаблоны_don,Y
 C - - - - - 0x0353A4 0D:9394: 60        RTS
 bra_9395:
 C - - - - - 0x0353A5 0D:9395: BD 10 04  LDA ram_obj_pos_Y,X
@@ -3746,32 +3765,32 @@ C - - - - - 0x0353AF 0D:939F: A9 20     LDA #$20
 C - - - - - 0x0353B1 0D:93A1: 20 3E EE  JSR sub_0x03EE4E
 C - - - - - 0x0353B5 0D:93A5: B0 E0     BCS bra_9387
 C - - - - - 0x0353B7 0D:93A7: 20 96 ED  JSR sub_0x03EDA6
-C - - - - - 0x0353BA 0D:93AA: A9 16     LDA #$16
+C - - - - - 0x0353BA 0D:93AA: A9 16     LDA #con_шаблон_ai_16
 C - - - - - 0x0353BC 0D:93AC: 60        RTS
 
 
 
-tbl_93AD:
-- D 0 - - - 0x0353BD 0D:93AD: 10        .byte $10   ; 00
-- D 0 - - - 0x0353BE 0D:93AE: 11        .byte $11   ; 01
-- D 0 - - - 0x0353BF 0D:93AF: 06        .byte $06   ; 02
-- D 0 - - - 0x0353C0 0D:93B0: 17        .byte $17   ; 03
-- D 0 - - - 0x0353C1 0D:93B1: 18        .byte $18   ; 04
-- D 0 - - - 0x0353C2 0D:93B2: 07        .byte $07   ; 05
-- D 0 - - - 0x0353C3 0D:93B3: 14        .byte $14   ; 06
-- D 0 - - - 0x0353C4 0D:93B4: 1A        .byte $1A   ; 07
+tbl_93AD_шаблоны_don:
+- D 0 - - - 0x0353BD 0D:93AD: 10        .byte con_шаблон_ai_10   ; 00
+- D 0 - - - 0x0353BE 0D:93AE: 11        .byte con_шаблон_ai_11   ; 01
+- D 0 - - - 0x0353BF 0D:93AF: 06        .byte con_шаблон_ai_06   ; 02
+- D 0 - - - 0x0353C0 0D:93B0: 17        .byte con_шаблон_ai_17   ; 03
+- D 0 - - - 0x0353C1 0D:93B1: 18        .byte con_шаблон_ai_18   ; 04
+- D 0 - - - 0x0353C2 0D:93B2: 07        .byte con_шаблон_ai_07   ; 05
+- D 0 - - - 0x0353C3 0D:93B3: 14        .byte con_шаблон_ai_14   ; 06
+- D 0 - - - 0x0353C4 0D:93B4: 1A        .byte con_шаблон_ai_1A   ; 07
 
 
 
-tbl_93B5:
-- D 0 - - - 0x0353C5 0D:93B5: 06        .byte $06   ; 00
-- D 0 - - - 0x0353C6 0D:93B6: 0D        .byte $0D   ; 01
-- D 0 - - - 0x0353C7 0D:93B7: 0B        .byte $0B   ; 02
-- D 0 - - - 0x0353C8 0D:93B8: 0C        .byte $0C   ; 03
-- D 0 - - - 0x0353C9 0D:93B9: 14        .byte $14   ; 04
-- D 0 - - - 0x0353CA 0D:93BA: 15        .byte $15   ; 05
-- D 0 - - - 0x0353CB 0D:93BB: 1A        .byte $1A   ; 06
-- D 0 - - - 0x0353CC 0D:93BC: 1B        .byte $1B   ; 07
+tbl_93B5_шаблоны_don:
+- D 0 - - - 0x0353C5 0D:93B5: 06        .byte con_шаблон_ai_06   ; 00
+- D 0 - - - 0x0353C6 0D:93B6: 0D        .byte con_шаблон_ai_0D   ; 01
+- D 0 - - - 0x0353C7 0D:93B7: 0B        .byte con_шаблон_ai_0B   ; 02
+- D 0 - - - 0x0353C8 0D:93B8: 0C        .byte con_шаблон_ai_0C   ; 03
+- D 0 - - - 0x0353C9 0D:93B9: 14        .byte con_шаблон_ai_14   ; 04
+- D 0 - - - 0x0353CA 0D:93BA: 15        .byte con_шаблон_ai_15   ; 05
+- D 0 - - - 0x0353CB 0D:93BB: 1A        .byte con_шаблон_ai_1A   ; 06
+- D 0 - - - 0x0353CC 0D:93BC: 1B        .byte con_шаблон_ai_1B   ; 07
 
 
 
@@ -3792,10 +3811,10 @@ C - - - - - 0x0353E0 0D:93D0: F0 0C     BEQ bra_93DE
 C - - - - - 0x0353E2 0D:93D2: A5 28     LDA ram_random_1
 C - - - - - 0x0353E4 0D:93D4: 29 03     AND #$03
 C - - - - - 0x0353E6 0D:93D6: F0 03     BEQ bra_93DB
-C - - - - - 0x0353E8 0D:93D8: 4C B5 94  LDA #$21
+C - - - - - 0x0353E8 0D:93D8: 4C B5 94  LDA #con_шаблон_ai_21
                                         RTS
 bra_93DB:
-C - - - - - 0x0353EB 0D:93DB: 4C C1 94  LDA #$07
+C - - - - - 0x0353EB 0D:93DB: 4C C1 94  LDA #con_шаблон_ai_07
                                         RTS
 bra_93DE:
 - - - - - - 0x0353EE 0D:93DE: A5 11     LDA ram_0011
@@ -3816,12 +3835,12 @@ bra_93F9:
 - - - - - - 0x03540E 0D:93FE: A5 28     LDA ram_random_1
 - - - - - - 0x035410 0D:9400: C9 40     CMP #$40
 - - - - - - 0x035412 0D:9402: B0 03     BCS bra_9407
-- - - - - - 0x035414 0D:9404: A9 37     LDA #$37
+- - - - - - 0x035414 0D:9404: A9 37     LDA #con_шаблон_ai_37
 - - - - - - 0x035416 0D:9406: 60        RTS
 bra_9407:
 C - - - - - 0x035417 0D:9407: 20 96 ED  JSR sub_0x03EDA6
 C - - - - - 0x03541A 0D:940A: 20 CD EC  JSR sub_0x03ECDD
-C - - - - - 0x03541D 0D:940D: B9 8F 95  LDA tbl_958F,Y
+C - - - - - 0x03541D 0D:940D: B9 8F 95  LDA tbl_958F_шаблоны_mike,Y
 C - - - - - 0x035420 0D:9410: 9D E6 06  STA ram_06E6,X
 C - - - - - 0x035423 0D:9413: 60        RTS
 bra_9414:
@@ -3833,7 +3852,7 @@ C - - - - - 0x03542E 0D:941E: 20 C2 EC  JSR sub_0x03ECD2
 C - - - - - 0x035431 0D:9421: AD 28 94  LDA tbl_9428
 C - - - - - 0x035434 0D:9424: 60        RTS
 bra_9425:
-C - - - - - 0x035435 0D:9425: A9 3D     LDA #$3D
+C - - - - - 0x035435 0D:9425: A9 3D     LDA #con_шаблон_ai_3D
 C - - - - - 0x035437 0D:9427: 60        RTS
 
 
@@ -3841,11 +3860,11 @@ C - - - - - 0x035437 0D:9427: 60        RTS
 tbl_9428:
 ; bzk bug? должно читаться через Y, как и все остальные случаи с JSR sub_0x03ECD2?
 ; ответ шрушера - это байт ИИ
-- D 0 - - - 0x035438 0D:9428: 10        .byte $10   ; 00
+- D 0 - - - 0x035438 0D:9428: 10        .byte con_шаблон_ai_10   ; 00
 ; bzk garbage?
-- - - - - - 0x035439 0D:9429: 02        .byte $02   ; 01
-- - - - - - 0x03543A 0D:942A: 17        .byte $17   ; 02
-- - - - - - 0x03543B 0D:942B: 04        .byte $04   ; 03
+- - - - - - 0x035439 0D:9429: 02        .byte con_шаблон_ai_02   ; 01
+- - - - - - 0x03543A 0D:942A: 17        .byte con_шаблон_ai_17   ; 02
+- - - - - - 0x03543B 0D:942B: 04        .byte con_шаблон_ai_04   ; 03
 
 
 
@@ -3854,10 +3873,10 @@ C - - - - - 0x03543C 0D:942C: 20 96 ED  JSR sub_0x03EDA6
 C - - - - - 0x03543F 0D:942F: A5 11     LDA ram_0011
 C - - - - - 0x035441 0D:9431: C9 07     CMP #$07
 C - - - - - 0x035443 0D:9433: F0 03     BEQ bra_9438
-C - - - - - 0x035445 0D:9435: A9 3D     LDA #$3D
+C - - - - - 0x035445 0D:9435: A9 3D     LDA #con_шаблон_ai_3D
 C - - - - - 0x035447 0D:9437: 60        RTS
 bra_9438:
-C - - - - - 0x035448 0D:9438: A9 2B     LDA #$2B
+C - - - - - 0x035448 0D:9438: A9 2B     LDA #con_шаблон_ai_2B
 C - - - - - 0x03544A 0D:943A: 60        RTS
 
 
@@ -3865,7 +3884,7 @@ C - - - - - 0x03544A 0D:943A: 60        RTS
 bra_943B:
 loc_943B:
 - - - - - - 0x03544B 0D:943B: 20 96 ED  JSR sub_0x03EDA6
-- - - - - - 0x03544E 0D:943E: A9 08     LDA #$08
+- - - - - - 0x03544E 0D:943E: A9 08     LDA #con_шаблон_ai_08
 - - - - - - 0x035450 0D:9440: 60        RTS
 
 
@@ -3894,7 +3913,7 @@ C - - - - - 0x035479 0D:9469: D0 C1     BNE bra_942C
 C - - - - - 0x03547B 0D:946B: A5 11     LDA ram_0011
 C - - - - - 0x03547D 0D:946D: C9 08     CMP #$08
 C - - - - - 0x03547F 0D:946F: F0 41     BNE bra_9471
-C - - - - - 0x0354C2 0D:94B2: A9 2B     LDA #$2B
+C - - - - - 0x0354C2 0D:94B2: A9 2B     LDA #con_шаблон_ai_2B
 C - - - - - 0x0354C4 0D:94B4: 60        RTS
 bra_9471:
 C - - - - - 0x035481 0D:9471: A5 12     LDA ram_0012
@@ -3911,36 +3930,36 @@ C - - - - - 0x03548D 0D:947D: B0 17     BCS bra_9496
 - - - - - - 0x03549B 0D:948B: 20 3E EE  JSR sub_0x03EE4E
 - - - - - - 0x03549E 0D:948E: B0 06     BCS bra_9496
 - - - - - - 0x0354A0 0D:9490: 20 96 ED  JSR sub_0x03EDA6
-- - - - - - 0x0354A3 0D:9493: A9 0F     LDA #$0F
+- - - - - - 0x0354A3 0D:9493: A9 0F     LDA #con_шаблон_ai_0F
 - - - - - - 0x0354A5 0D:9495: 60        RTS
 bra_9496:
 C - - - - - 0x0354A6 0D:9496: A5 11     LDA ram_0011
 C - - - - - 0x0354A8 0D:9498: C9 07     CMP #$07
 C - - - - - 0x0354AA 0D:949A: F0 0B     BEQ bra_94A7
 C - - - - - 0x0354AC 0D:949C: 20 C2 EC  JSR sub_0x03ECD2
-C - - - - - 0x0354AF 0D:949F: B9 A3 94  LDA tbl_94A3,Y
+C - - - - - 0x0354AF 0D:949F: B9 A3 94  LDA tbl_94A3_шаблоны_mike,Y
 C - - - - - 0x0354B2 0D:94A2: 60        RTS
 bra_94A7:
 ; bzk optimize, возможно можно сделать сначала JSR, а потом проверку 0011
 C - - - - - 0x0354B7 0D:94A7: 20 C2 EC  JSR sub_0x03ECD2
-C - - - - - 0x0354BA 0D:94AA: B9 AE 94  LDA tbl_94AE,Y
+C - - - - - 0x0354BA 0D:94AA: B9 AE 94  LDA tbl_94AE_шаблоны_mike,Y
 C - - - - - 0x0354BD 0D:94AD: 60        RTS
 
 
 
-tbl_94A3:
-- D 0 - - - 0x0354B3 0D:94A3: 07        .byte $07   ; 00
-- D 0 - - - 0x0354B4 0D:94A4: 17        .byte $17   ; 01
-- D 0 - - - 0x0354B5 0D:94A5: 10        .byte $10   ; 02
-- D 0 - - - 0x0354B6 0D:94A6: 18        .byte $18   ; 03
+tbl_94A3_шаблоны_mike:
+- D 0 - - - 0x0354B3 0D:94A3: 07        .byte con_шаблон_ai_07   ; 00
+- D 0 - - - 0x0354B4 0D:94A4: 17        .byte con_шаблон_ai_17   ; 01
+- D 0 - - - 0x0354B5 0D:94A5: 10        .byte con_шаблон_ai_10   ; 02
+- D 0 - - - 0x0354B6 0D:94A6: 18        .byte con_шаблон_ai_18   ; 03
 
 
 
-tbl_94AE:
-- D 0 - - - 0x0354BE 0D:94AE: 19        .byte $19   ; 00
-- D 0 - - - 0x0354BF 0D:94AF: 11        .byte $11   ; 01
-- D 0 - - - 0x0354C0 0D:94B0: 17        .byte $17   ; 02
-- D 0 - - - 0x0354C1 0D:94B1: 2B        .byte $2B   ; 03
+tbl_94AE_шаблоны_mike:
+- D 0 - - - 0x0354BE 0D:94AE: 19        .byte con_шаблон_ai_19   ; 00
+- D 0 - - - 0x0354BF 0D:94AF: 11        .byte con_шаблон_ai_11   ; 01
+- D 0 - - - 0x0354C0 0D:94B0: 17        .byte con_шаблон_ai_17   ; 02
+- D 0 - - - 0x0354C1 0D:94B1: 2B        .byte con_шаблон_ai_2B   ; 03
 
 
 
@@ -3950,10 +3969,10 @@ bra_94DC:
 - - - - - - 0x0354F2 0D:94E2: C9 07     CMP #con_plr_state_сидит
 - - - - - - 0x0354F4 0D:94E4: F0 03     BEQ bra_94E9
 bra_94E6:
-- - - - - - 0x0354F6 0D:94E6: A9 2E     LDA #$2E
+- - - - - - 0x0354F6 0D:94E6: A9 2E     LDA #con_шаблон_ai_2E
 - - - - - - 0x0354F8 0D:94E8: 60        RTS
 bra_94E9:
-- - - - - - 0x0354F9 0D:94E9: A9 16     LDA #$16
+- - - - - - 0x0354F9 0D:94E9: A9 16     LDA #con_шаблон_ai_16
 - - - - - - 0x0354FB 0D:94EB: 60        RTS
 
 
@@ -3979,11 +3998,11 @@ C - - - - - 0x035512 0D:9502: B0 0D     BCS bra_9511
 - - - - - - 0x03551F 0D:950F: F0 D8     BEQ bra_94E9
 bra_9511:
 C - - - - - 0x035521 0D:9511: 20 CD EC  JSR sub_0x03ECDD
-C - - - - - 0x035524 0D:9514: B9 87 95  LDA tbl_9587,Y
+C - - - - - 0x035524 0D:9514: B9 87 95  LDA tbl_9587_шаблоны_mike,Y
 C - - - - - 0x035527 0D:9517: 60        RTS
 bra_9518:
 C - - - - - 0x035528 0D:9518: 20 96 ED  JSR sub_0x03EDA6
-C - - - - - 0x03552B 0D:951B: A9 0F     LDA #$0F
+C - - - - - 0x03552B 0D:951B: A9 0F     LDA #con_шаблон_ai_0F
 C - - - - - 0x03552D 0D:951D: 60        RTS
 
 
@@ -4026,57 +4045,57 @@ C - - - - - 0x03556E 0D:955E: 90 86     BCC bra_94E6
 C - - - - - 0x035570 0D:9560: A5 28     LDA ram_random_1
 C - - - - - 0x035572 0D:9562: 29 07     AND #$07
 C - - - - - 0x035574 0D:9564: A8        TAY
-C - - - - - 0x035575 0D:9565: B9 7F 95  LDA tbl_957F,Y
+C - - - - - 0x035575 0D:9565: B9 7F 95  LDA tbl_957F_шаблоны_mike,Y
 C - - - - - 0x035578 0D:9568: 60        RTS
 bra_9569:
 - - - - - - 0x035579 0D:9569: 20 96 ED  JSR sub_0x03EDA6
-- - - - - - 0x03557C 0D:956C: A9 3D     LDA #$3D
+- - - - - - 0x03557C 0D:956C: A9 3D     LDA #con_шаблон_ai_3D
 - - - - - - 0x03557E 0D:956E: 60        RTS
 bra_956F:
 C - - - - - 0x03557F 0D:956F: 20 96 ED  JSR sub_0x03EDA6
-C - - - - - 0x035582 0D:9572: A9 22     LDA #$22
+C - - - - - 0x035582 0D:9572: A9 22     LDA #con_шаблон_ai_22
 C - - - - - 0x035584 0D:9574: 60        RTS
 bra_9575:
 loc_9575:
 C D 0 - - - 0x035585 0D:9575: 20 96 ED  JSR sub_0x03EDA6
-C - - - - - 0x035588 0D:9578: A9 21     LDA #$21
+C - - - - - 0x035588 0D:9578: A9 21     LDA #con_шаблон_ai_21
 C - - - - - 0x03558A 0D:957A: 60        RTS
 
 
 
-tbl_957F:
-- D 0 - - - 0x03558F 0D:957F: 09        .byte $09   ; 00
-- D 0 - - - 0x035590 0D:9580: 0B        .byte $0B   ; 01
-- D 0 - - - 0x035591 0D:9581: 0C        .byte $0C   ; 02
-- D 0 - - - 0x035592 0D:9582: 13        .byte $13   ; 03
-- D 0 - - - 0x035593 0D:9583: 14        .byte $14   ; 04
-- D 0 - - - 0x035594 0D:9584: 15        .byte $15   ; 05
-- D 0 - - - 0x035595 0D:9585: 1A        .byte $1A   ; 06
-- D 0 - - - 0x035596 0D:9586: 1B        .byte $1B   ; 07
+tbl_957F_шаблоны_mike:
+- D 0 - - - 0x03558F 0D:957F: 09        .byte con_шаблон_ai_09   ; 00
+- D 0 - - - 0x035590 0D:9580: 0B        .byte con_шаблон_ai_0B   ; 01
+- D 0 - - - 0x035591 0D:9581: 0C        .byte con_шаблон_ai_0C   ; 02
+- D 0 - - - 0x035592 0D:9582: 13        .byte con_шаблон_ai_13   ; 03
+- D 0 - - - 0x035593 0D:9583: 14        .byte con_шаблон_ai_14   ; 04
+- D 0 - - - 0x035594 0D:9584: 15        .byte con_шаблон_ai_15   ; 05
+- D 0 - - - 0x035595 0D:9585: 1A        .byte con_шаблон_ai_1A   ; 06
+- D 0 - - - 0x035596 0D:9586: 1B        .byte con_шаблон_ai_1B   ; 07
 
 
 
-tbl_9587:
-- D 0 - - - 0x035597 0D:9587: 1A        .byte $1A   ; 00
-- D 0 - - - 0x035598 0D:9588: 0C        .byte $0C   ; 01
-- D 0 - - - 0x035599 0D:9589: 0B        .byte $0B   ; 02
-- D 0 - - - 0x03559A 0D:958A: 13        .byte $13   ; 03
-- D 0 - - - 0x03559B 0D:958B: 14        .byte $14   ; 04
-- D 0 - - - 0x03559C 0D:958C: 15        .byte $15   ; 05
-- D 0 - - - 0x03559D 0D:958D: 1A        .byte $1A   ; 06
-- D 0 - - - 0x03559E 0D:958E: 1B        .byte $1B   ; 07
+tbl_9587_шаблоны_mike:
+- D 0 - - - 0x035597 0D:9587: 1A        .byte con_шаблон_ai_1A   ; 00
+- D 0 - - - 0x035598 0D:9588: 0C        .byte con_шаблон_ai_0C   ; 01
+- D 0 - - - 0x035599 0D:9589: 0B        .byte con_шаблон_ai_0B   ; 02
+- D 0 - - - 0x03559A 0D:958A: 13        .byte con_шаблон_ai_13   ; 03
+- D 0 - - - 0x03559B 0D:958B: 14        .byte con_шаблон_ai_14   ; 04
+- D 0 - - - 0x03559C 0D:958C: 15        .byte con_шаблон_ai_15   ; 05
+- D 0 - - - 0x03559D 0D:958D: 1A        .byte con_шаблон_ai_1A   ; 06
+- D 0 - - - 0x03559E 0D:958E: 1B        .byte con_шаблон_ai_1B   ; 07
 
 
 
-tbl_958F:
-- D 0 - - - 0x03559F 0D:958F: 19        .byte $19   ; 00
-- D 0 - - - 0x0355A0 0D:9590: 42        .byte $42   ; 01
-- - - - - - 0x0355A1 0D:9591: 17        .byte $17   ; 02
-- D 0 - - - 0x0355A2 0D:9592: 13        .byte $13   ; 03
-- - - - - - 0x0355A3 0D:9593: 07        .byte $07   ; 04
-- - - - - - 0x0355A4 0D:9594: 10        .byte $10   ; 05
-- - - - - - 0x0355A5 0D:9595: 07        .byte $07   ; 06
-- - - - - - 0x0355A6 0D:9596: 1A        .byte $1A   ; 07
+tbl_958F_шаблоны_mike:
+- D 0 - - - 0x03559F 0D:958F: 19        .byte con_шаблон_ai_19   ; 00
+- D 0 - - - 0x0355A0 0D:9590: 42        .byte con_шаблон_ai_42   ; 01
+- - - - - - 0x0355A1 0D:9591: 17        .byte con_шаблон_ai_17   ; 02
+- D 0 - - - 0x0355A2 0D:9592: 13        .byte con_шаблон_ai_13   ; 03
+- - - - - - 0x0355A3 0D:9593: 07        .byte con_шаблон_ai_07   ; 04
+- - - - - - 0x0355A4 0D:9594: 10        .byte con_шаблон_ai_10   ; 05
+- - - - - - 0x0355A5 0D:9595: 07        .byte con_шаблон_ai_07   ; 06
+- - - - - - 0x0355A6 0D:9596: 1A        .byte con_шаблон_ai_1A   ; 07
 
 
 
@@ -4087,7 +4106,7 @@ C - - - - - 0x0355AB 0D:959B: D0 0A     BNE bra_95A7
 C - - - - - 0x0355AD 0D:959D: 20 D8 ED  JSR sub_0x03EDE8
 C - - - - - 0x0355B0 0D:95A0: C9 38     CMP #$38
 C - - - - - 0x0355B2 0D:95A2: 90 03     BCC bra_95A7
-C - - - - - 0x0355B4 0D:95A4: A9 3A     LDA #$3A
+C - - - - - 0x0355B4 0D:95A4: A9 3A     LDA #con_шаблон_ai_3A
 C - - - - - 0x0355B6 0D:95A6: 60        RTS
 bra_95A7:
 C - - - - - 0x0355B7 0D:95A7: A5 13     LDA ram_0013
@@ -4120,7 +4139,7 @@ C - - - - - 0x0355E3 0D:95D3: C9 07     CMP #$07
 C - - - - - 0x0355E5 0D:95D5: F0 0A     BEQ bra_95E1
 C - - - - - 0x0355E7 0D:95D7: 20 96 ED  JSR sub_0x03EDA6
 C - - - - - 0x0355EA 0D:95DA: 20 C2 EC  JSR sub_0x03ECD2
-C - - - - - 0x0355ED 0D:95DD: B9 54 98  LDA tbl_9854,Y
+C - - - - - 0x0355ED 0D:95DD: B9 54 98  LDA tbl_9854_шаблоны_casey,Y
 C - - - - - 0x0355F0 0D:95E0: 60        RTS
 bra_95E1:
 - - - - - - 0x0355F1 0D:95E1: A9 04     LDA #con_btn_Down
@@ -4129,7 +4148,7 @@ bra_95E1:
 - - - - - - 0x0355F9 0D:95E9: 20 8F ED  JSR sub_0x03ED9F_запись_кнопки_hold_и_press
 - - - - - - 0x0355FC 0D:95EC: 20 96 ED  JSR sub_0x03EDA6
 - - - - - - 0x0355FF 0D:95EF: 20 C2 EC  JSR sub_0x03ECD2
-- - - - - - 0x035602 0D:95F2: B9 58 98  LDA tbl_9858,Y
+- - - - - - 0x035602 0D:95F2: B9 58 98  LDA tbl_9858_шаблоны_casey,Y
 - - - - - - 0x035605 0D:95F5: 60        RTS
 bra_95F6:
 C - - - - - 0x035606 0D:95F6: BC DE 06  LDY ram_06DE,X
@@ -4157,7 +4176,7 @@ bra_9628:
 C - - - - - 0x035638 0D:9628: 20 D8 ED  JSR sub_0x03EDE8
 C - - - - - 0x03563B 0D:962B: C9 80     CMP #$80
 C - - - - - 0x03563D 0D:962D: 90 03     BCC bra_9632
-- - - - - - 0x03563F 0D:962F: A9 07     LDA #$07
+- - - - - - 0x03563F 0D:962F: A9 07     LDA #con_шаблон_ai_07
 - - - - - - 0x035641 0D:9631: 60        RTS
 bra_9632:
 C - - - - - 0x035642 0D:9632: A5 11     LDA ram_0011
@@ -4168,20 +4187,17 @@ C - - - - - 0x035646 0D:9636: D0 08     BNE bra_9640
 - - - - - - 0x03564E 0D:963E: F0 07     BEQ bra_9647
 bra_9640:
 C - - - - - 0x035650 0D:9640: 20 CD EC  JSR sub_0x03ECDD
-C - - - - - 0x035653 0D:9643: B9 3C 98  LDA tbl_983C,Y
+C - - - - - 0x035653 0D:9643: B9 3C 98  LDA tbl_983C_шаблоны_casey,Y
 C - - - - - 0x035656 0D:9646: 60        RTS
 bra_9647:
 - - - - - - 0x035657 0D:9647: 20 96 ED  JSR sub_0x03EDA6
-- - - - - - 0x03565A 0D:964A: A9 1D     LDA #$1D
+- - - - - - 0x03565A 0D:964A: A9 1D     LDA #con_шаблон_ai_1D
 - - - - - - 0x03565C 0D:964C: 60        RTS
-
-
-
 bra_9653:
 C - - - - - 0x035663 0D:9653: A9 40     LDA #$40
 C - - - - - 0x035665 0D:9655: 20 8F ED  JSR sub_0x03ED9F_запись_кнопки_hold_и_press
 C - - - - - 0x035668 0D:9658: 20 96 ED  JSR sub_0x03EDA6
-C - - - - - 0x03566B 0D:965B: A9 10     LDA #$10
+C - - - - - 0x03566B 0D:965B: A9 10     LDA #con_шаблон_ai_10
 C - - - - - 0x03566D 0D:965D: 60        RTS
 
 
@@ -4192,10 +4208,10 @@ C D 0 - - - 0x03566E 0D:965E: 20 96 ED  JSR sub_0x03EDA6
 C - - - - - 0x035671 0D:9661: BD 20 05  LDA ram_obj_0520,X ; 0521 
 C - - - - - 0x035674 0D:9664: C9 07     CMP #con_plr_state_сидит
 C - - - - - 0x035676 0D:9666: F0 03     BEQ bra_966B
-C - - - - - 0x035678 0D:9668: A9 04     LDA #$04
+C - - - - - 0x035678 0D:9668: A9 04     LDA #con_шаблон_ai_04
 C - - - - - 0x03567A 0D:966A: 60        RTS
 bra_966B:
-C - - - - - 0x03567B 0D:966B: A9 02     LDA #$02
+C - - - - - 0x03567B 0D:966B: A9 02     LDA #con_шаблон_ai_02
 C - - - - - 0x03567D 0D:966D: 60        RTS
 
 
@@ -4246,13 +4262,13 @@ C - - - - - 0x0356D8 0D:96C8: B0 09     BCS bra_96D3
 C - - - - - 0x0356DA 0D:96CA: A5 28     LDA ram_random_1
 C - - - - - 0x0356DC 0D:96CC: C9 20     CMP #$20
 C - - - - - 0x0356DE 0D:96CE: B0 03     BCS bra_96D3
-- - - - - - 0x0356E0 0D:96D0: A9 0F     LDA #$0F
+- - - - - - 0x0356E0 0D:96D0: A9 0F     LDA #con_шаблон_ai_0F
 - - - - - - 0x0356E2 0D:96D2: 60        RTS
 bra_96D3:
-C - - - - - 0x0356E3 0D:96D3: A9 06     LDA #$06
+C - - - - - 0x0356E3 0D:96D3: A9 06     LDA #con_шаблон_ai_06
 C - - - - - 0x0356E5 0D:96D5: 60        RTS
 bra_96D6:
-C - - - - - 0x0356E6 0D:96D6: A9 3A     LDA #$3A
+C - - - - - 0x0356E6 0D:96D6: A9 3A     LDA #con_шаблон_ai_3A
 C - - - - - 0x0356E8 0D:96D8: 60        RTS
 bra_96D9:
 loc_96D9:
@@ -4280,7 +4296,7 @@ C - - - - - 0x035715 0D:9705: A9 80     LDA #con_btn_A
 C - - - - - 0x035717 0D:9707: 9D C6 06  STA ram_06C6,X
 C - - - - - 0x03571A 0D:970A: 9D C8 06  STA ram_06C8,X
 C - - - - - 0x03571D 0D:970D: 20 8F ED  JSR sub_0x03ED9F_запись_кнопки_hold_и_press
-C - - - - - 0x035720 0D:9710: A9 11     LDA #$11
+C - - - - - 0x035720 0D:9710: A9 11     LDA #con_шаблон_ai_11
 C - - - - - 0x035722 0D:9712: 60        RTS
 bra_9713:
 C - - - - - 0x035723 0D:9713: A5 11     LDA ram_0011
@@ -4293,7 +4309,7 @@ C - - - - - 0x035730 0D:9720: C9 38     CMP #$38
 C - - - - - 0x035732 0D:9722: B0 24     BCS bra_9748
 loc_9724:
 C D 0 - - - 0x035734 0D:9724: 20 96 ED  JSR sub_0x03EDA6
-C - - - - - 0x035737 0D:9727: A9 1D     LDA #$1D
+C - - - - - 0x035737 0D:9727: A9 1D     LDA #con_шаблон_ai_1D
 C - - - - - 0x035739 0D:9729: 60        RTS
 bra_972A:
 C - - - - - 0x03573A 0D:972A: A9 48     LDA #$48
@@ -4301,20 +4317,17 @@ C - - - - - 0x03573C 0D:972C: 20 8F ED  JSR sub_0x03ED9F_запись_кнопк
 ; A = 00
 C - - - - - 0x03573F 0D:972F: 9D C8 06  STA ram_06C8,X
 C - - - - - 0x035742 0D:9732: 60        RTS
-
-
-
 bra_9748:
 C - - - - - 0x035758 0D:9748: 20 FE ED  JSR sub_0x03EE0E
 C - - - - - 0x03575B 0D:974B: B0 0D     BCS bra_975A
 bra_974D:
 - - - - - - 0x03575D 0D:974D: 20 96 ED  JSR sub_0x03EDA6
-- - - - - - 0x035760 0D:9750: A9 16     LDA #$16
+- - - - - - 0x035760 0D:9750: A9 16     LDA #con_шаблон_ai_16
 - - - - - - 0x035762 0D:9752: 60        RTS
 bra_9753:
 loc_9753:
 C - - - - - 0x035764 0D:9754: 20 96 ED  JSR sub_0x03EDA6
-C - - - - - 0x035767 0D:9757: A9 08     LDA #$08
+C - - - - - 0x035767 0D:9757: A9 08     LDA #con_шаблон_ai_08
 C - - - - - 0x035769 0D:9759: 60        RTS
 bra_975A:
 C - - - - - 0x03576A 0D:975A: A5 12     LDA ram_0012
@@ -4323,7 +4336,7 @@ C - - - - - 0x03576E 0D:975E: B0 40     BCS bra_97A0
 C - - - - - 0x035770 0D:9760: A5 28     LDA ram_random_1
 C - - - - - 0x035772 0D:9762: 29 07     AND #$07
 C - - - - - 0x035774 0D:9764: A8        TAY
-C - - - - - 0x035775 0D:9765: B9 44 98  LDA tbl_9844,Y
+C - - - - - 0x035775 0D:9765: B9 44 98  LDA tbl_9844_шаблоны_casey,Y
 C - - - - - 0x035778 0D:9768: 60        RTS
 bra_9769:
 C - - - - - 0x035779 0D:9769: BD E4 06  LDA ram_06E4,X
@@ -4333,10 +4346,10 @@ bra_9771:
 C - - - - - 0x035781 0D:9771: A5 28     LDA ram_random_1
 C - - - - - 0x035783 0D:9773: 29 01     AND #$01
 C - - - - - 0x035785 0D:9775: D0 03     BNE bra_977A
-C - - - - - 0x035787 0D:9777: A9 06     LDA #$06
+C - - - - - 0x035787 0D:9777: A9 06     LDA #con_шаблон_ai_06
 C - - - - - 0x035789 0D:9779: 60        RTS
 bra_977A:
-C - - - - - 0x03578A 0D:977A: A9 19     LDA #$19
+C - - - - - 0x03578A 0D:977A: A9 19     LDA #con_шаблон_ai_19
 C - - - - - 0x03578C 0D:977C: 60        RTS
 
 
@@ -4352,19 +4365,19 @@ C - - - - - 0x03579B 0D:978B: B0 09     BCS bra_9796
 C - - - - - 0x03579D 0D:978D: A5 12     LDA ram_0012
 C - - - - - 0x03579F 0D:978F: C9 02     CMP #$02
 C - - - - - 0x0357A1 0D:9791: B0 0D     BCS bra_97A0
-- - - - - - 0x0357A3 0D:9793: A9 0F     LDA #$0F
+- - - - - - 0x0357A3 0D:9793: A9 0F     LDA #con_шаблон_ai_0F
 - - - - - - 0x0357A5 0D:9795: 60        RTS
 bra_9796:
 C - - - - - 0x0357A6 0D:9796: BD E2 06  LDA ram_06E2,X
-C - - - - - 0x0357A9 0D:9799: C9 2D     CMP #$2D
+C - - - - - 0x0357A9 0D:9799: C9 2D     CMP #con_шаблон_ai_2D
 C - - - - - 0x0357AB 0D:979B: F0 03     BEQ bra_97A0
-C - - - - - 0x0357AD 0D:979D: A9 2D     LDA #$2D
+C - - - - - 0x0357AD 0D:979D: A9 2D     LDA #con_шаблон_ai_2D
 C - - - - - 0x0357AF 0D:979F: 60        RTS
 bra_97A0:
-C - - - - - 0x0357B0 0D:97A0: A9 3A     LDA #$3A
+C - - - - - 0x0357B0 0D:97A0: A9 3A     LDA #con_шаблон_ai_3A
 C - - - - - 0x0357B2 0D:97A2: 60        RTS
 bra_97A3:
-C - - - - - 0x0357B3 0D:97A3: A9 0B     LDA #$0B
+C - - - - - 0x0357B3 0D:97A3: A9 0B     LDA #con_шаблон_ai_0B
 C - - - - - 0x0357B5 0D:97A5: 60        RTS
 
 
@@ -4415,16 +4428,13 @@ C - - - - - 0x035812 0D:9802: B0 0C     BCS bra_9810
 C - - - - - 0x035814 0D:9804: A5 12     LDA ram_0012
 C - - - - - 0x035816 0D:9806: C9 01     CMP #$01
 C - - - - - 0x035818 0D:9808: B0 1C     BCS bra_9826
-- - - - - - 0x03581A 0D:980A: A9 0F     LDA #$0F
+- - - - - - 0x03581A 0D:980A: A9 0F     LDA #con_шаблон_ai_0F
 - - - - - - 0x03581C 0D:980C: 60        RTS
-
-
-
 bra_9810:
 C - - - - - 0x035820 0D:9810: A5 28     LDA ram_random_1
 C - - - - - 0x035822 0D:9812: 29 07     AND #$07
 C - - - - - 0x035824 0D:9814: A8        TAY
-C - - - - - 0x035825 0D:9815: B9 4C 98  LDA tbl_984C,Y
+C - - - - - 0x035825 0D:9815: B9 4C 98  LDA tbl_984C_шаблоны_casey,Y
 C - - - - - 0x035828 0D:9818: 60        RTS
 bra_9819:
 C - - - - - 0x035829 0D:9819: A5 28     LDA ram_random_1
@@ -4433,7 +4443,7 @@ C - - - - - 0x03582D 0D:981D: 4C 24 97  JMP loc_9724
 bra_9820:
 C - - - - - 0x035830 0D:9820: 4C 26 98  JMP loc_9826
 bra_9823:
-C - - - - - 0x035833 0D:9823: A9 0B     LDA #$0B
+C - - - - - 0x035833 0D:9823: A9 0B     LDA #con_шаблон_ai_0B
 C - - - - - 0x035835 0D:9825: 60        RTS
 bra_9826:
 loc_9826:
@@ -4442,64 +4452,64 @@ C - - - - - 0x035839 0D:9829: B9 50 05  LDA ram_obj_id,Y
 C - - - - - 0x03583C 0D:982C: C9 01     CMP #$01
 C - - - - - 0x03583E 0D:982E: F0 06     BEQ bra_9836
 C - - - - - 0x035840 0D:9830: 20 96 ED  JSR sub_0x03EDA6
-C - - - - - 0x035843 0D:9833: A9 3A     LDA #$3A
+C - - - - - 0x035843 0D:9833: A9 3A     LDA #con_шаблон_ai_3A
 C - - - - - 0x035845 0D:9835: 60        RTS
 bra_9836:
 C - - - - - 0x035846 0D:9836: 20 96 ED  JSR sub_0x03EDA6
-C - - - - - 0x035849 0D:9839: A9 42     LDA #$42
+C - - - - - 0x035849 0D:9839: A9 42     LDA #con_шаблон_ai_42
 C - - - - - 0x03584B 0D:983B: 60        RTS
 
 
 
-tbl_983C:
-- D 0 - - - 0x03584C 0D:983C: 11        .byte $11   ; 00
-- D 0 - - - 0x03584D 0D:983D: 10        .byte $10   ; 01
-- D 0 - - - 0x03584E 0D:983E: 17        .byte $17   ; 02
-- D 0 - - - 0x03584F 0D:983F: 19        .byte $19   ; 03
-- - - - - - 0x035850 0D:9840: 19        .byte $19   ; 04
-- - - - - - 0x035851 0D:9841: 07        .byte $07   ; 05
-- - - - - - 0x035852 0D:9842: 11        .byte $11   ; 06
-- - - - - - 0x035853 0D:9843: 37        .byte $37   ; 07
+tbl_983C_шаблоны_casey:
+- D 0 - - - 0x03584C 0D:983C: 11        .byte con_шаблон_ai_11   ; 00
+- D 0 - - - 0x03584D 0D:983D: 10        .byte con_шаблон_ai_10   ; 01
+- D 0 - - - 0x03584E 0D:983E: 17        .byte con_шаблон_ai_17   ; 02
+- D 0 - - - 0x03584F 0D:983F: 19        .byte con_шаблон_ai_19   ; 03
+- - - - - - 0x035850 0D:9840: 19        .byte con_шаблон_ai_19   ; 04
+- - - - - - 0x035851 0D:9841: 07        .byte con_шаблон_ai_07   ; 05
+- - - - - - 0x035852 0D:9842: 11        .byte con_шаблон_ai_11   ; 06
+- - - - - - 0x035853 0D:9843: 37        .byte con_шаблон_ai_37   ; 07
 
 
 
-tbl_9844:
-- - - - - - 0x035854 0D:9844: 10        .byte $10   ; 00
-- - - - - - 0x035855 0D:9845: 11        .byte $11   ; 01
-- - - - - - 0x035856 0D:9846: 12        .byte $12   ; 02
-- - - - - - 0x035857 0D:9847: 17        .byte $17   ; 03
-- - - - - - 0x035858 0D:9848: 18        .byte $18   ; 04
-- D 0 - - - 0x035859 0D:9849: 19        .byte $19   ; 05
-- D 0 - - - 0x03585A 0D:984A: 14        .byte $14   ; 06
-- - - - - - 0x03585B 0D:984B: 3A        .byte $3A   ; 07
+tbl_9844_шаблоны_casey:
+- - - - - - 0x035854 0D:9844: 10        .byte con_шаблон_ai_10   ; 00
+- - - - - - 0x035855 0D:9845: 11        .byte con_шаблон_ai_11   ; 01
+- - - - - - 0x035856 0D:9846: 12        .byte con_шаблон_ai_12   ; 02
+- - - - - - 0x035857 0D:9847: 17        .byte con_шаблон_ai_17   ; 03
+- - - - - - 0x035858 0D:9848: 18        .byte con_шаблон_ai_18   ; 04
+- D 0 - - - 0x035859 0D:9849: 19        .byte con_шаблон_ai_19   ; 05
+- D 0 - - - 0x03585A 0D:984A: 14        .byte con_шаблон_ai_14   ; 06
+- - - - - - 0x03585B 0D:984B: 3A        .byte con_шаблон_ai_3A   ; 07
 
 
 
-tbl_984C:
-- D 0 - - - 0x03585C 0D:984C: 0D        .byte $0D   ; 00
-- D 0 - - - 0x03585D 0D:984D: 0B        .byte $0B   ; 01
-- D 0 - - - 0x03585E 0D:984E: 0C        .byte $0C   ; 02
-- D 0 - - - 0x03585F 0D:984F: 13        .byte $13   ; 03
-- D 0 - - - 0x035860 0D:9850: 14        .byte $14   ; 04
-- D 0 - - - 0x035861 0D:9851: 15        .byte $15   ; 05
-- D 0 - - - 0x035862 0D:9852: 31        .byte $31   ; 06
-- D 0 - - - 0x035863 0D:9853: 2D        .byte $2D   ; 07
+tbl_984C_шаблоны_casey:
+- D 0 - - - 0x03585C 0D:984C: 0D        .byte con_шаблон_ai_0D   ; 00
+- D 0 - - - 0x03585D 0D:984D: 0B        .byte con_шаблон_ai_0B   ; 01
+- D 0 - - - 0x03585E 0D:984E: 0C        .byte con_шаблон_ai_0C   ; 02
+- D 0 - - - 0x03585F 0D:984F: 13        .byte con_шаблон_ai_13   ; 03
+- D 0 - - - 0x035860 0D:9850: 14        .byte con_шаблон_ai_14   ; 04
+- D 0 - - - 0x035861 0D:9851: 15        .byte con_шаблон_ai_15   ; 05
+- D 0 - - - 0x035862 0D:9852: 31        .byte con_шаблон_ai_31   ; 06
+- D 0 - - - 0x035863 0D:9853: 2D        .byte con_шаблон_ai_2D   ; 07
 
 
 
-tbl_9854:
-- D 0 - - - 0x035864 0D:9854: 42        .byte $42   ; 00
-- D 0 - - - 0x035865 0D:9855: 07        .byte $07   ; 01
-- - - - - - 0x035866 0D:9856: 19        .byte $19   ; 02
-- - - - - - 0x035867 0D:9857: 37        .byte $37   ; 03
+tbl_9854_шаблоны_casey:
+- D 0 - - - 0x035864 0D:9854: 42        .byte con_шаблон_ai_42   ; 00
+- D 0 - - - 0x035865 0D:9855: 07        .byte con_шаблон_ai_07   ; 01
+- - - - - - 0x035866 0D:9856: 19        .byte con_шаблон_ai_19   ; 02
+- - - - - - 0x035867 0D:9857: 37        .byte con_шаблон_ai_37   ; 03
 
 
 
-tbl_9858:
-- - - - - - 0x035868 0D:9858: 19        .byte $19   ; 00
-- - - - - - 0x035869 0D:9859: 07        .byte $07   ; 01
-- - - - - - 0x03586A 0D:985A: 11        .byte $11   ; 02
-- - - - - - 0x03586B 0D:985B: 1D        .byte $1D   ; 03
+tbl_9858_шаблоны_casey:
+- - - - - - 0x035868 0D:9858: 19        .byte con_шаблон_ai_19   ; 00
+- - - - - - 0x035869 0D:9859: 07        .byte con_шаблон_ai_07   ; 01
+- - - - - - 0x03586A 0D:985A: 11        .byte con_шаблон_ai_11   ; 02
+- - - - - - 0x03586B 0D:985B: 1D        .byte con_шаблон_ai_1D   ; 03
 
 
 
@@ -4516,7 +4526,7 @@ C - - - - - 0x03587B 0D:986B: D0 0A     BNE bra_9877
 C - - - - - 0x03587D 0D:986D: 20 D8 ED  JSR sub_0x03EDE8
 C - - - - - 0x035880 0D:9870: C9 3C     CMP #$3C
 C - - - - - 0x035882 0D:9872: 90 03     BCC bra_9877
-C - - - - - 0x035884 0D:9874: A9 23     LDA #$23
+C - - - - - 0x035884 0D:9874: A9 23     LDA #con_шаблон_ai_23
 C - - - - - 0x035886 0D:9876: 60        RTS
 bra_9877:
 C - - - - - 0x035887 0D:9877: A5 13     LDA ram_0013
@@ -4549,30 +4559,30 @@ C - - - - - 0x0358B6 0D:98A6: F0 1C     BEQ bra_98C4
 C - - - - - 0x0358B8 0D:98A8: 20 D8 ED  JSR sub_0x03EDE8
 C - - - - - 0x0358BB 0D:98AB: C9 50     CMP #$50
 C - - - - - 0x0358BD 0D:98AD: B0 03     BCS bra_98B2
-C - - - - - 0x0358BF 0D:98AF: A9 07     LDA #$07
+C - - - - - 0x0358BF 0D:98AF: A9 07     LDA #con_шаблон_ai_07
 C - - - - - 0x0358C1 0D:98B1: 60        RTS
 bra_98B2:
 C - - - - - 0x0358C2 0D:98B2: 20 96 ED  JSR sub_0x03EDA6
-C - - - - - 0x0358C5 0D:98B5: A9 10     LDA #$10
+C - - - - - 0x0358C5 0D:98B5: A9 10     LDA #con_шаблон_ai_10
 C - - - - - 0x0358C7 0D:98B7: 60        RTS
 bra_98B8:
 C - - - - - 0x0358C8 0D:98B8: 20 96 ED  JSR sub_0x03EDA6
-C - - - - - 0x0358CB 0D:98BB: A9 2C     LDA #$2C
+C - - - - - 0x0358CB 0D:98BB: A9 2C     LDA #con_шаблон_ai_2C
 C - - - - - 0x0358CD 0D:98BD: 60        RTS
 bra_98BE:
 C - - - - - 0x0358CE 0D:98BE: 20 96 ED  JSR sub_0x03EDA6
-C - - - - - 0x0358D1 0D:98C1: A9 32     LDA #$32
+C - - - - - 0x0358D1 0D:98C1: A9 32     LDA #con_шаблон_ai_32
 C - - - - - 0x0358D3 0D:98C3: 60        RTS
 bra_98C4:
 C - - - - - 0x0358D4 0D:98C4: 20 96 ED  JSR sub_0x03EDA6
-C - - - - - 0x0358D7 0D:98C7: A9 17     LDA #$17
+C - - - - - 0x0358D7 0D:98C7: A9 17     LDA #con_шаблон_ai_17
 C - - - - - 0x0358D9 0D:98C9: 60        RTS
 
 
 
 bra_98D0:
 C - - - - - 0x0358E0 0D:98D0: 20 96 ED  JSR sub_0x03EDA6
-C - - - - - 0x0358E3 0D:98D3: A9 08     LDA #$08
+C - - - - - 0x0358E3 0D:98D3: A9 08     LDA #con_шаблон_ai_08
 C - - - - - 0x0358E5 0D:98D5: 60        RTS
 
 
@@ -4588,10 +4598,10 @@ C - - - - - 0x0358EC 0D:98DC: A5 11     LDA ram_0011
 C - - - - - 0x0358EE 0D:98DE: C9 07     CMP #$07
 C - - - - - 0x0358F0 0D:98E0: F0 03     BEQ bra_98E5
 bra_98E2:
-C - - - - - 0x0358F2 0D:98E2: A9 04     LDA #$04
+C - - - - - 0x0358F2 0D:98E2: A9 04     LDA #con_шаблон_ai_04
 C - - - - - 0x0358F4 0D:98E4: 60        RTS
 bra_98E5:
-- - - - - - 0x0358F5 0D:98E5: A9 02     LDA #$02
+- - - - - - 0x0358F5 0D:98E5: A9 02     LDA #con_шаблон_ai_02
 - - - - - - 0x0358F7 0D:98E7: 60        RTS
 
 
@@ -4614,14 +4624,14 @@ C - - - - - 0x035912 0D:9902: F0 2F     BEQ bra_9933
 C - - - - - 0x035914 0D:9904: A5 28     LDA ram_random_1
 C - - - - - 0x035916 0D:9906: 29 04     AND #$04
 C - - - - - 0x035918 0D:9908: D0 09     BNE bra_9913
-C - - - - - 0x03591A 0D:990A: A9 23     LDA #$23
+C - - - - - 0x03591A 0D:990A: A9 23     LDA #con_шаблон_ai_23
 C - - - - - 0x03591C 0D:990C: 60        RTS
 
 
 
 bra_990D:
 C - - - - - 0x03591D 0D:990D: 20 96 ED  JSR sub_0x03EDA6
-C - - - - - 0x035920 0D:9910: A9 23     LDA #$23
+C - - - - - 0x035920 0D:9910: A9 23     LDA #con_шаблон_ai_23
 C - - - - - 0x035922 0D:9912: 60        RTS
 
 
@@ -4631,7 +4641,7 @@ C - - - - - 0x035923 0D:9913: 20 FE ED  JSR sub_0x03EE0E
 C - - - - - 0x035926 0D:9916: B0 06     BCS bra_991E
 bra_9918:
 C - - - - - 0x035928 0D:9918: 20 96 ED  JSR sub_0x03EDA6
-C - - - - - 0x03592B 0D:991B: A9 16     LDA #$16
+C - - - - - 0x03592B 0D:991B: A9 16     LDA #con_шаблон_ai_16
 C - - - - - 0x03592D 0D:991D: 60        RTS
 bra_991E:
 C - - - - - 0x03592E 0D:991E: A5 11     LDA ram_0011
@@ -4643,7 +4653,7 @@ C - - - - - 0x035938 0D:9928: B0 2D     BCS bra_9957
 C - - - - - 0x03593A 0D:992A: A5 28     LDA ram_random_1
 C - - - - - 0x03593C 0D:992C: 29 03     AND #$03
 C - - - - - 0x03593E 0D:992E: A8        TAY
-C - - - - - 0x03593F 0D:992F: B9 BA 99  LDA tbl_99BA,Y
+C - - - - - 0x03593F 0D:992F: B9 BA 99  LDA tbl_99BA_шаблоны_hot,Y
 C - - - - - 0x035942 0D:9932: 60        RTS
 
 
@@ -4651,7 +4661,7 @@ C - - - - - 0x035942 0D:9932: 60        RTS
 bra_9933:
 - - - - - - 0x035943 0D:9933: 20 96 ED  JSR sub_0x03EDA6
 - - - - - - 0x035946 0D:9936: 20 C2 EC  JSR sub_0x03ECD2
-- - - - - - 0x035949 0D:9939: B9 C6 99  LDA tbl_99C6,Y
+- - - - - - 0x035949 0D:9939: B9 C6 99  LDA tbl_99C6_шаблоны_hot,Y
 - - - - - - 0x03594C 0D:993C: 60        RTS
 
 
@@ -4664,17 +4674,17 @@ C - - - - - 0x035955 0D:9945: B0 09     BCS bra_9950
 C - - - - - 0x035957 0D:9947: A5 12     LDA ram_0012
 C - - - - - 0x035959 0D:9949: C9 03     CMP #$03
 C - - - - - 0x03595B 0D:994B: B0 0A     BCS bra_9957
-- - - - - - 0x03595D 0D:994D: A9 0F     LDA #$0F
+- - - - - - 0x03595D 0D:994D: A9 0F     LDA #con_шаблон_ai_0F
 - - - - - - 0x03595F 0D:994F: 60        RTS
 bra_9950:
 C - - - - - 0x035960 0D:9950: 20 D8 ED  JSR sub_0x03EDE8
 C - - - - - 0x035963 0D:9953: C9 30     CMP #$30
 C - - - - - 0x035965 0D:9955: 90 03     BCC bra_995A
 bra_9957:
-C - - - - - 0x035967 0D:9957: A9 13     LDA #$13
+C - - - - - 0x035967 0D:9957: A9 13     LDA #con_шаблон_ai_13
 C - - - - - 0x035969 0D:9959: 60        RTS
 bra_995A:
-C - - - - - 0x03596A 0D:995A: A9 44     LDA #$44
+C - - - - - 0x03596A 0D:995A: A9 44     LDA #con_шаблон_ai_44
 C - - - - - 0x03596C 0D:995C: 60        RTS
 
 
@@ -4712,58 +4722,58 @@ C - - - - - 0x0359AA 0D:999A: A9 40     LDA #$40
 C - - - - - 0x0359AC 0D:999C: 20 3E EE  JSR sub_0x03EE4E
 C - - - - - 0x0359AF 0D:999F: B0 12     BCS bra_99B3
 C - - - - - 0x0359B1 0D:99A1: 20 96 ED  JSR sub_0x03EDA6
-C - - - - - 0x0359B4 0D:99A4: A9 0F     LDA #$0F
+C - - - - - 0x0359B4 0D:99A4: A9 0F     LDA #con_шаблон_ai_0F
 C - - - - - 0x0359B6 0D:99A6: 60        RTS
 
 
 
 loc_99A7:
 C D 0 - - - 0x0359B7 0D:99A7: 20 96 ED  JSR sub_0x03EDA6
-C - - - - - 0x0359BA 0D:99AA: A9 06     LDA #$06
+C - - - - - 0x0359BA 0D:99AA: A9 06     LDA #con_шаблон_ai_06
 C - - - - - 0x0359BC 0D:99AC: 60        RTS
 
 
 
 loc_99AD:
 C D 0 - - - 0x0359BD 0D:99AD: 20 96 ED  JSR sub_0x03EDA6
-C - - - - - 0x0359C0 0D:99B0: A9 3E     LDA #$3E
+C - - - - - 0x0359C0 0D:99B0: A9 3E     LDA #con_шаблон_ai_3E
 C - - - - - 0x0359C2 0D:99B2: 60        RTS
 
 
 
 bra_99B3:
 C - - - - - 0x0359C3 0D:99B3: 20 CD EC  JSR sub_0x03ECDD
-C - - - - - 0x0359C6 0D:99B6: B9 BE 99  LDA tbl_99BE,Y
+C - - - - - 0x0359C6 0D:99B6: B9 BE 99  LDA tbl_99BE_шаблоны_hot,Y
 C - - - - - 0x0359C9 0D:99B9: 60        RTS
 
 
 
-tbl_99BA:
-- D 0 - - - 0x0359CA 0D:99BA: 12        .byte $12   ; 00
-- D 0 - - - 0x0359CB 0D:99BB: 31        .byte $31   ; 01
-- D 0 - - - 0x0359CC 0D:99BC: 18        .byte $18   ; 02
-- D 0 - - - 0x0359CD 0D:99BD: 32        .byte $32   ; 03
+tbl_99BA_шаблоны_hot:
+- D 0 - - - 0x0359CA 0D:99BA: 12        .byte con_шаблон_ai_12   ; 00
+- D 0 - - - 0x0359CB 0D:99BB: 31        .byte con_шаблон_ai_31   ; 01
+- D 0 - - - 0x0359CC 0D:99BC: 18        .byte con_шаблон_ai_18   ; 02
+- D 0 - - - 0x0359CD 0D:99BD: 32        .byte con_шаблон_ai_32   ; 03
 
 
 
-tbl_99BE:
-- D 0 - - - 0x0359CE 0D:99BE: 0D        .byte $0D   ; 00
-- D 0 - - - 0x0359CF 0D:99BF: 0B        .byte $0B   ; 01
-- D 0 - - - 0x0359D0 0D:99C0: 0C        .byte $0C   ; 02
-- D 0 - - - 0x0359D1 0D:99C1: 13        .byte $13   ; 03
+tbl_99BE_шаблоны_hot:
+- D 0 - - - 0x0359CE 0D:99BE: 0D        .byte con_шаблон_ai_0D   ; 00
+- D 0 - - - 0x0359CF 0D:99BF: 0B        .byte con_шаблон_ai_0B   ; 01
+- D 0 - - - 0x0359D0 0D:99C0: 0C        .byte con_шаблон_ai_0C   ; 02
+- D 0 - - - 0x0359D1 0D:99C1: 13        .byte con_шаблон_ai_13   ; 03
 ; bzk garbage?
-- - - - - - 0x0359D2 0D:99C2: 14        .byte $14   ; 04
-- - - - - - 0x0359D3 0D:99C3: 15        .byte $15   ; 05
-- - - - - - 0x0359D4 0D:99C4: 1A        .byte $1A   ; 06
-- - - - - - 0x0359D5 0D:99C5: 1B        .byte $1B   ; 07
+- - - - - - 0x0359D2 0D:99C2: 14        .byte con_шаблон_ai_14   ; 04
+- - - - - - 0x0359D3 0D:99C3: 15        .byte con_шаблон_ai_15   ; 05
+- - - - - - 0x0359D4 0D:99C4: 1A        .byte con_шаблон_ai_1A   ; 06
+- - - - - - 0x0359D5 0D:99C5: 1B        .byte con_шаблон_ai_1B   ; 07
 
 
 
-tbl_99C6:
-- - - - - - 0x0359D6 0D:99C6: 11        .byte $11   ; 00
-- - - - - - 0x0359D7 0D:99C7: 1A        .byte $1A   ; 01
-- - - - - - 0x0359D8 0D:99C8: 12        .byte $12   ; 02
-- - - - - - 0x0359D9 0D:99C9: 23        .byte $23   ; 03
+tbl_99C6_шаблоны_hot:
+- - - - - - 0x0359D6 0D:99C6: 11        .byte con_шаблон_ai_11   ; 00
+- - - - - - 0x0359D7 0D:99C7: 1A        .byte con_шаблон_ai_1A   ; 01
+- - - - - - 0x0359D8 0D:99C8: 12        .byte con_шаблон_ai_12   ; 02
+- - - - - - 0x0359D9 0D:99C9: 23        .byte con_шаблон_ai_23   ; 03
 
 
 
@@ -4826,7 +4836,7 @@ C - - - - - 0x035A44 0D:9A34: 10 03     BPL bra_9A39
 C - - - - - 0x035A46 0D:9A36: 4C E2 9A  JMP loc_9AE2
 bra_9A39:
 loc_9A39:
-C D 0 - - - 0x035A49 0D:9A39: A9 07     LDA #$07
+C D 0 - - - 0x035A49 0D:9A39: A9 07     LDA #con_шаблон_ai_07
 C - - - - - 0x035A4B 0D:9A3B: 60        RTS
 bra_9A3C:
 C - - - - - 0x035A4C 0D:9A3C: 20 C6 ED  JSR sub_0x03EDD6
@@ -4836,18 +4846,18 @@ C - - - - - 0x035A53 0D:9A43: A9 00     LDA #$00
 C - - - - - 0x035A55 0D:9A45: 20 8E EC  JSR sub_0x03EC9E
 C - - - - - 0x035A58 0D:9A48: B0 06     BCS bra_9A50
 C - - - - - 0x035A5A 0D:9A4A: 20 96 ED  JSR sub_0x03EDA6
-C - - - - - 0x035A5D 0D:9A4D: A9 12     LDA #$12
+C - - - - - 0x035A5D 0D:9A4D: A9 12     LDA #con_шаблон_ai_12
 bra_9A4F_RTS:
 C - - - - - 0x035A5F 0D:9A4F: 60        RTS
 bra_9A50:
 - - - - - - 0x035A60 0D:9A50: 20 96 ED  JSR sub_0x03EDA6
-- - - - - - 0x035A63 0D:9A53: A9 18     LDA #$18
+- - - - - - 0x035A63 0D:9A53: A9 18     LDA #con_шаблон_ai_18
 - - - - - - 0x035A65 0D:9A55: 60        RTS
 
 
 
 loc_9A56:
-- - - - - - 0x035A66 0D:9A56: A9 45     LDA #$45
+- - - - - - 0x035A66 0D:9A56: A9 45     LDA #con_шаблон_ai_45
 - - - - - - 0x035A68 0D:9A58: 60        RTS
 
 
@@ -4858,7 +4868,7 @@ C - - - - - 0x035A6C 0D:9A5C: C9 60     CMP #$60
 C - - - - - 0x035A6E 0D:9A5E: B0 03     BCS bra_9A63
 C - - - - - 0x035A70 0D:9A60: 20 96 ED  JSR sub_0x03EDA6
 bra_9A63:
-C - - - - - 0x035A73 0D:9A63: A9 25     LDA #$25
+C - - - - - 0x035A73 0D:9A63: A9 25     LDA #con_шаблон_ai_25
 C - - - - - 0x035A75 0D:9A65: 60        RTS
 
 
@@ -4876,17 +4886,17 @@ C - - - - - 0x035A80 0D:9A70: 20 96 ED  JSR sub_0x03EDA6
 C - - - - - 0x035A83 0D:9A73: A5 11     LDA ram_0011
 C - - - - - 0x035A85 0D:9A75: C9 07     CMP #$07
 C - - - - - 0x035A87 0D:9A77: F0 03     BEQ bra_9A7C
-C - - - - - 0x035A89 0D:9A79: A9 04     LDA #$04
+C - - - - - 0x035A89 0D:9A79: A9 04     LDA #con_шаблон_ai_04
 C - - - - - 0x035A8B 0D:9A7B: 60        RTS
 bra_9A7C:
-C - - - - - 0x035A8C 0D:9A7C: A9 02     LDA #$02
+C - - - - - 0x035A8C 0D:9A7C: A9 02     LDA #con_шаблон_ai_02
 C - - - - - 0x035A8E 0D:9A7E: 60        RTS
 
 
 
 bra_9A7F:
 loc_9A7F:
-C D 0 - - - 0x035A8F 0D:9A7F: A9 13     LDA #$13
+C D 0 - - - 0x035A8F 0D:9A7F: A9 13     LDA #con_шаблон_ai_13
 C - - - - - 0x035A91 0D:9A81: 60        RTS
 
 
@@ -4894,7 +4904,7 @@ C - - - - - 0x035A91 0D:9A81: 60        RTS
 bra_9A82:
 loc_9A82:
 C D 0 - - - 0x035A92 0D:9A82: 20 96 ED  JSR sub_0x03EDA6
-C - - - - - 0x035A95 0D:9A85: A9 08     LDA #$08
+C - - - - - 0x035A95 0D:9A85: A9 08     LDA #con_шаблон_ai_08
 C - - - - - 0x035A97 0D:9A87: 60        RTS
 
 
@@ -4944,20 +4954,20 @@ bra_9ADD:
 C - - - - - 0x035AED 0D:9ADD: 20 8E EC  JSR sub_0x03EC9E
 C - - - - - 0x035AF0 0D:9AE0: B0 30     BCS bra_9B12
 loc_9AE2:
-C D 0 - - - 0x035AF2 0D:9AE2: A9 33     LDA #$33
+C D 0 - - - 0x035AF2 0D:9AE2: A9 33     LDA #con_шаблон_ai_33
 C - - - - - 0x035AF4 0D:9AE4: 60        RTS
 bra_9AE5:
 C - - - - - 0x035AF5 0D:9AE5: 20 CD EC  JSR sub_0x03ECDD
-C - - - - - 0x035AF8 0D:9AE8: B9 EC 9A  LDA tbl_9AEC,Y
+C - - - - - 0x035AF8 0D:9AE8: B9 EC 9A  LDA tbl_9AEC_шаблоны_shred,Y
 C - - - - - 0x035AFB 0D:9AEB: 60        RTS
 
 
 
-tbl_9AEC:
-- D 0 - - - 0x035AFC 0D:9AEC: 17        .byte $17   ; 00
-- D 0 - - - 0x035AFD 0D:9AED: 07        .byte $07   ; 01
-- D 0 - - - 0x035AFE 0D:9AEE: 19        .byte $19   ; 02
-- D 0 - - - 0x035AFF 0D:9AEF: 07        .byte $07   ; 03
+tbl_9AEC_шаблоны_shred:
+- D 0 - - - 0x035AFC 0D:9AEC: 17        .byte con_шаблон_ai_17   ; 00
+- D 0 - - - 0x035AFD 0D:9AED: 07        .byte con_шаблон_ai_07   ; 01
+- D 0 - - - 0x035AFE 0D:9AEE: 19        .byte con_шаблон_ai_19   ; 02
+- D 0 - - - 0x035AFF 0D:9AEF: 07        .byte con_шаблон_ai_07   ; 03
 
 
 
@@ -4967,7 +4977,7 @@ C D 0 - - - 0x035B00 0D:9AF0: A5 28     LDA ram_random_1
 C - - - - - 0x035B02 0D:9AF2: 30 8B     BMI bra_9A7F
 C - - - - - 0x035B04 0D:9AF4: 20 96 ED  JSR sub_0x03EDA6
 C - - - - - 0x035B07 0D:9AF7: 20 C2 EC  JSR sub_0x03ECD2
-C - - - - - 0x035B0A 0D:9AFA: B9 C6 9B  LDA tbl_9BC6,Y
+C - - - - - 0x035B0A 0D:9AFA: B9 C6 9B  LDA tbl_9BC6_шаблоны_shred,Y
 C - - - - - 0x035B0D 0D:9AFD: 60        RTS
 
 
@@ -4976,7 +4986,7 @@ bra_9B12:
 C - - - - - 0x035B22 0D:9B12: BC DE 06  LDY ram_06DE,X
 C - - - - - 0x035B25 0D:9B15: 20 FE ED  JSR sub_0x03EE0E
 C - - - - - 0x035B28 0D:9B18: B0 03     BCS bra_9B1D
-- - - - - - 0x035B2A 0D:9B1A: A9 16     LDA #$16
+- - - - - - 0x035B2A 0D:9B1A: A9 16     LDA #con_шаблон_ai_16
 - - - - - - 0x035B2C 0D:9B1C: 60        RTS
 bra_9B1D:
 C - - - - - 0x035B2D 0D:9B1D: 4C 4D A5  JMP loc_A54D
@@ -4989,7 +4999,7 @@ C - - - - - 0x035B32 0D:9B22: 90 02     BCC bra_9B26
 - - - - - - 0x035B34 0D:9B24: 09 04     ORA #$04
 bra_9B26:
 C - - - - - 0x035B36 0D:9B26: A8        TAY
-C - - - - - 0x035B37 0D:9B27: B9 F4 A7  LDA tbl_A7F4,Y
+C - - - - - 0x035B37 0D:9B27: B9 F4 A7  LDA tbl_A7F4_шаблоны_shred,Y
 C - - - - - 0x035B3A 0D:9B2A: 60        RTS
 
 
@@ -5020,7 +5030,7 @@ C - - - - - 0x035B68 0D:9B58: 4C 7F 9A  JMP loc_9A7F
 bra_9B5B:
 loc_9B5B:
 C D 0 - - - 0x035B6B 0D:9B5B: 20 96 ED  JSR sub_0x03EDA6
-C - - - - - 0x035B6E 0D:9B5E: A9 0F     LDA #$0F
+C - - - - - 0x035B6E 0D:9B5E: A9 0F     LDA #con_шаблон_ai_0F
 C - - - - - 0x035B70 0D:9B60: 60        RTS
 
 
@@ -5035,12 +5045,12 @@ C - - - - - 0x035B7C 0D:9B6C: B0 10     BCS bra_9B7E
 C - - - - - 0x035B7E 0D:9B6E: A5 13     LDA ram_0013
 C - - - - - 0x035B80 0D:9B70: C9 08     CMP #$08
 C - - - - - 0x035B82 0D:9B72: D0 03     BNE bra_9B77
-- - - - - - 0x035B84 0D:9B74: A9 01     LDA #$01
+- - - - - - 0x035B84 0D:9B74: A9 01     LDA #con_шаблон_ai_01
 - - - - - - 0x035B86 0D:9B76: 60        RTS
 bra_9B77:
 C - - - - - 0x035B87 0D:9B77: C9 01     CMP #$01
 C - - - - - 0x035B89 0D:9B79: D0 03     BNE bra_9B7E
-- - - - - - 0x035B8B 0D:9B7B: A9 05     LDA #$05
+- - - - - - 0x035B8B 0D:9B7B: A9 05     LDA #con_шаблон_ai_05
 - - - - - - 0x035B8D 0D:9B7D: 60        RTS
 bra_9B7E:
 C - - - - - 0x035B8E 0D:9B7E: BC DE 06  LDY ram_06DE,X
@@ -5077,36 +5087,36 @@ C - - - - - 0x035BC7 0D:9BB7: 20 FE ED  JSR sub_0x03EE0E
 C - - - - - 0x035BCA 0D:9BBA: 90 03     BCC bra_9BBF
 C - - - - - 0x035BCC 0D:9BBC: 4C 75 A4  JMP loc_A475
 bra_9BBF:
-C - - - - - 0x035BCF 0D:9BBF: A9 16     LDA #$16
+C - - - - - 0x035BCF 0D:9BBF: A9 16     LDA #con_шаблон_ai_16
 C - - - - - 0x035BD1 0D:9BC1: 60        RTS
 
 
 
-tbl_9BC6:
-- D 0 - - - 0x035BD6 0D:9BC6: 19        .byte $19   ; 00
-- D 0 - - - 0x035BD7 0D:9BC7: 11        .byte $11   ; 01
-- - - - - - 0x035BD8 0D:9BC8: 1B        .byte $1B   ; 02
-- - - - - - 0x035BD9 0D:9BC9: 06        .byte $06   ; 03
+tbl_9BC6_шаблоны_shred:
+- D 0 - - - 0x035BD6 0D:9BC6: 19        .byte con_шаблон_ai_19   ; 00
+- D 0 - - - 0x035BD7 0D:9BC7: 11        .byte con_шаблон_ai_11   ; 01
+- - - - - - 0x035BD8 0D:9BC8: 1B        .byte con_шаблон_ai_1B   ; 02
+- - - - - - 0x035BD9 0D:9BC9: 06        .byte con_шаблон_ai_06   ; 03
 
 
 
-tbl_9BCA:
-- D 0 - - - 0x035BDA 0D:9BCA: 0D        .byte $0D   ; 00
-- D 0 - - - 0x035BDB 0D:9BCB: 0B        .byte $0B   ; 01
-- D 0 - - - 0x035BDC 0D:9BCC: 0C        .byte $0C   ; 02
-- D 0 - - - 0x035BDD 0D:9BCD: 13        .byte $13   ; 03
-- D 0 - - - 0x035BDE 0D:9BCE: 14        .byte $14   ; 04
-- D 0 - - - 0x035BDF 0D:9BCF: 15        .byte $15   ; 05
-- D 0 - - - 0x035BE0 0D:9BD0: 1A        .byte $1A   ; 06
-- D 0 - - - 0x035BE1 0D:9BD1: 1B        .byte $1B   ; 07
+tbl_9BCA_шаблоны_shred:
+- D 0 - - - 0x035BDA 0D:9BCA: 0D        .byte con_шаблон_ai_0D   ; 00
+- D 0 - - - 0x035BDB 0D:9BCB: 0B        .byte con_шаблон_ai_0B   ; 01
+- D 0 - - - 0x035BDC 0D:9BCC: 0C        .byte con_шаблон_ai_0C   ; 02
+- D 0 - - - 0x035BDD 0D:9BCD: 13        .byte con_шаблон_ai_13   ; 03
+- D 0 - - - 0x035BDE 0D:9BCE: 14        .byte con_шаблон_ai_14   ; 04
+- D 0 - - - 0x035BDF 0D:9BCF: 15        .byte con_шаблон_ai_15   ; 05
+- D 0 - - - 0x035BE0 0D:9BD0: 1A        .byte con_шаблон_ai_1A   ; 06
+- D 0 - - - 0x035BE1 0D:9BD1: 1B        .byte con_шаблон_ai_1B   ; 07
 
 
 
 tbl_9BD2:
-- D 0 - - - 0x035BE2 0D:9BD2: 1C        .byte $1C   ; 00
-- D 0 - - - 0x035BE3 0D:9BD3: 24        .byte $24   ; 01
-- - - - - - 0x035BE4 0D:9BD4: 24        .byte $24   ; 02
-- - - - - - 0x035BE5 0D:9BD5: 07        .byte $07   ; 03
+- D 0 - - - 0x035BE2 0D:9BD2: 1C        .byte con_шаблон_ai_1C   ; 00
+- D 0 - - - 0x035BE3 0D:9BD3: 24        .byte con_шаблон_ai_24   ; 01
+- - - - - - 0x035BE4 0D:9BD4: 24        .byte con_шаблон_ai_24   ; 02
+- - - - - - 0x035BE5 0D:9BD5: 07        .byte con_шаблон_ai_07   ; 03
 
 
 
@@ -5123,7 +5133,7 @@ C - - - - - 0x035BF9 0D:9BE9: C9 07     CMP #con_plr_state_сидит
 C - - - - - 0x035BFB 0D:9BEB: D0 09     BNE bra_9BF6
 C - - - - - 0x035BFD 0D:9BED: B9 10 06  LDA ram_plr_0610,Y
 C - - - - - 0x035C00 0D:9BF0: F0 04     BEQ bra_9BF6
-C - - - - - 0x035C02 0D:9BF2: A9 19     LDA #$19
+C - - - - - 0x035C02 0D:9BF2: A9 19     LDA #con_шаблон_ai_19
 C - - - - - 0x035C04 0D:9BF4: D0 18     BNE bra_9C0E    ; jmp
 bra_9BF6:
 C - - - - - 0x035C06 0D:9BF6: BC DE 06  LDY ram_06DE,X
@@ -5138,7 +5148,7 @@ bra_9C09:
 C - - - - - 0x035C19 0D:9C09: A9 00     LDA #$00
 C - - - - - 0x035C1B 0D:9C0B: 60        RTS
 bra_9C0C:
-C - - - - - 0x035C1C 0D:9C0C: A9 04     LDA #$04
+C - - - - - 0x035C1C 0D:9C0C: A9 04     LDA #con_шаблон_ai_04
 bra_9C0E:
 C - - - - - 0x035C1E 0D:9C0E: 85 17     STA ram_0017
 C - - - - - 0x035C20 0D:9C10: 60        RTS
@@ -5146,7 +5156,7 @@ C - - - - - 0x035C20 0D:9C10: 60        RTS
 
 
 ofs_036_9C11_00_leo:
-C - - J - - 0x035C21 0D:9C11: A9 00     LDA #$00
+C - - J - - 0x035C21 0D:9C11: A9 00     LDA #$00    ; con_шаблон_ai_00 ???
 C - - - - - 0x035C23 0D:9C13: 85 17     STA ram_0017
 C - - - - - 0x035C25 0D:9C15: 20 D6 9B  JSR sub_9BD6
 C - - - - - 0x035C28 0D:9C18: F0 01     BEQ bra_9C1B
@@ -5193,16 +5203,16 @@ bra_9C60:
 C - - - - - 0x035C70 0D:9C60: A5 13     LDA ram_0013
 C - - - - - 0x035C72 0D:9C62: C9 02     CMP #$02
 C - - - - - 0x035C74 0D:9C64: 90 09     BCC bra_9C6F_RTS
-C - - - - - 0x035C76 0D:9C66: A9 41     LDA #$41
+C - - - - - 0x035C76 0D:9C66: A9 41     LDA #con_шаблон_ai_41
 C - - - - - 0x035C78 0D:9C68: 85 17     STA ram_0017
 C - - - - - 0x035C7A 0D:9C6A: 60        RTS
 bra_9C6B:
-- - - - - - 0x035C7B 0D:9C6B: A9 3C     LDA #$3C
+- - - - - - 0x035C7B 0D:9C6B: A9 3C     LDA #con_шаблон_ai_3C
 - - - - - - 0x035C7D 0D:9C6D: 85 17     STA ram_0017
 bra_9C6F_RTS:
 C - - - - - 0x035C7F 0D:9C6F: 60        RTS
 bra_9C70:
-C - - - - - 0x035C80 0D:9C70: A9 01     LDA #$01
+C - - - - - 0x035C80 0D:9C70: A9 01     LDA #con_шаблон_ai_01
 C - - - - - 0x035C82 0D:9C72: 85 17     STA ram_0017
 C - - - - - 0x035C84 0D:9C74: 60        RTS
 
@@ -5220,7 +5230,7 @@ C - - - - - 0x035C9A 0D:9C8A: A8        TAY
 C - - - - - 0x035C9B 0D:9C8B: B9 AB 9C  LDA tbl_9CAB,Y
 C - - - - - 0x035C9E 0D:9C8E: CD 38 06  CMP ram_0638
 C - - - - - 0x035CA1 0D:9C91: 90 17     BCC bra_9CAA_RTS
-- - - - - - 0x035CA3 0D:9C93: A9 16     LDA #$16
+- - - - - - 0x035CA3 0D:9C93: A9 16     LDA #con_шаблон_ai_16
 - - - - - - 0x035CA5 0D:9C95: 85 17     STA ram_0017
 - - - - - - 0x035CA7 0D:9C97: 60        RTS
 bra_9C98:
@@ -5230,7 +5240,7 @@ C - - - - - 0x035CAD 0D:9C9D: D0 0B     BNE bra_9CAA_RTS
 - - - - - - 0x035CAF 0D:9C9F: BD C6 06  LDA ram_06C6,X
 - - - - - - 0x035CB2 0D:9CA2: C9 36     CMP #con_btns_SS + con_btn_Left + con_btn_Down
 - - - - - - 0x035CB4 0D:9CA4: F0 04     BEQ bra_9CAA_RTS
-- - - - - - 0x035CB6 0D:9CA6: A9 36     LDA #$36
+- - - - - - 0x035CB6 0D:9CA6: A9 36     LDA #con_шаблон_ai_36
 - - - - - - 0x035CB8 0D:9CA8: 85 17     STA ram_0017
 bra_9CAA_RTS:
 C - - - - - 0x035CBA 0D:9CAA: 60        RTS
@@ -5265,7 +5275,7 @@ C - - - - - 0x035CC9 0D:9CB9: 4C 5F BF  JMP loc_BF5F
 loc_9CBD:
 C D 0 - - - 0x035CCD 0D:9CBD: B0 04     BCS bra_9CC3_RTS
 loc_9CBF:
-C - - - - - 0x035CCF 0D:9CBF: A9 01     LDA #$01
+C - - - - - 0x035CCF 0D:9CBF: A9 01     LDA #con_шаблон_ai_01
 C - - - - - 0x035CD1 0D:9CC1: 85 17     STA ram_0017
 bra_9CC3_RTS:
 C - - - - - 0x035CD3 0D:9CC3: 60        RTS
@@ -5276,7 +5286,7 @@ ofs_022_9CC5_05_hot:
 - - - - - - 0x035CD5 0D:9CC5: A5 11     LDA ram_0011
 - - - - - - 0x035CD7 0D:9CC7: C9 08     CMP #$08
 - - - - - - 0x035CD9 0D:9CC9: D0 04     BNE bra_9CCF_RTS
-- - - - - - 0x035CDB 0D:9CCB: A9 34     LDA #$34
+- - - - - - 0x035CDB 0D:9CCB: A9 34     LDA #con_шаблон_ai_34
 - - - - - - 0x035CDD 0D:9CCD: 85 17     STA ram_0017
 bra_9CCF_RTS:
 - - - - - - 0x035CDF 0D:9CCF: 60        RTS
@@ -5297,26 +5307,26 @@ ofs_022_9CD0_06_shred:
 bra_9CE8_RTS:
 - - - - - - 0x035CF8 0D:9CE8: 60        RTS
 bra_9CE9:
-- - - - - - 0x035CF9 0D:9CE9: A9 01     LDA #$01
+- - - - - - 0x035CF9 0D:9CE9: A9 01     LDA #con_шаблон_ai_01
 - - - - - - 0x035CFB 0D:9CEB: 85 17     STA ram_0017
 - - - - - - 0x035CFD 0D:9CED: 60        RTS
 
 
 
 tbl_9CEE:
-- - - - - - 0x035CFE 0D:9CEE: 11        .byte $11   ; 00
-- - - - - - 0x035CFF 0D:9CEF: 29        .byte $29   ; 01
-- - - - - - 0x035D00 0D:9CF0: 37        .byte $37   ; 02
-- - - - - - 0x035D01 0D:9CF1: 42        .byte $42   ; 03
-- - - - - - 0x035D02 0D:9CF2: 20        .byte $20   ; 04
-- - - - - - 0x035D03 0D:9CF3: 0C        .byte $0C   ; 05
-- - - - - - 0x035D04 0D:9CF4: 2A        .byte $2A   ; 06
-- - - - - - 0x035D05 0D:9CF5: 3F        .byte $3F   ; 07
+- - - - - - 0x035CFE 0D:9CEE: 11        .byte con_шаблон_ai_11   ; 00
+- - - - - - 0x035CFF 0D:9CEF: 29        .byte con_шаблон_ai_29   ; 01
+- - - - - - 0x035D00 0D:9CF0: 37        .byte con_шаблон_ai_37   ; 02
+- - - - - - 0x035D01 0D:9CF1: 42        .byte con_шаблон_ai_42   ; 03
+- - - - - - 0x035D02 0D:9CF2: 20        .byte con_шаблон_ai_20   ; 04
+- - - - - - 0x035D03 0D:9CF3: 0C        .byte con_шаблон_ai_0C   ; 05
+- - - - - - 0x035D04 0D:9CF4: 2A        .byte con_шаблон_ai_2A   ; 06
+- - - - - - 0x035D05 0D:9CF5: 3F        .byte con_шаблон_ai_3F   ; 07
 
 
 
 ofs_036_9CF6_01_raph:
-C - - J - - 0x035D06 0D:9CF6: A9 00     LDA #$00
+C - - J - - 0x035D06 0D:9CF6: A9 00     LDA #$00    ; con_шаблон_ai_00 ???
 C - - - - - 0x035D08 0D:9CF8: 85 17     STA ram_0017
 C - - - - - 0x035D0A 0D:9CFA: 20 D6 9B  JSR sub_9BD6
 C - - - - - 0x035D0D 0D:9CFD: F0 01     BEQ bra_9D00
@@ -5336,7 +5346,7 @@ C - - - - - 0x035D16 0D:9D06: 20 32 D0  JSR sub_0x03D042_поинтеры_пос
 
 
 ofs_036_9D1C_02_mike:
-C - - J - - 0x035D2C 0D:9D1C: A9 00     LDA #$00
+C - - J - - 0x035D2C 0D:9D1C: A9 00     LDA #$00    ; con_шаблон_ai_00 ???
 C - - - - - 0x035D2E 0D:9D1E: 85 17     STA ram_0017
 C - - - - - 0x035D30 0D:9D20: 20 D6 9B  JSR sub_9BD6
 C - - - - - 0x035D33 0D:9D23: F0 01     BEQ bra_9D26
@@ -5368,7 +5378,7 @@ C - - - - - 0x035D5F 0D:9D4F: B0 0B     BCS bra_9D5C
 C - - - - - 0x035D61 0D:9D51: A5 13     LDA ram_0013
 C - - - - - 0x035D63 0D:9D53: C9 02     CMP #$02
 C - - - - - 0x035D65 0D:9D55: 90 05     BCC bra_9D5C
-- - - - - - 0x035D67 0D:9D57: A9 29     LDA #$29
+- - - - - - 0x035D67 0D:9D57: A9 29     LDA #con_шаблон_ai_29
 - - - - - - 0x035D69 0D:9D59: 85 17     STA ram_0017
 - - - - - - 0x035D6B 0D:9D5B: 60        RTS
 bra_9D5C:
@@ -5377,7 +5387,7 @@ C - - - - - 0x035D6C 0D:9D5C: 4C 32 9C  JMP loc_9C32
 
 
 ofs_036_9D64_03_don:
-C - - J - - 0x035D74 0D:9D64: A9 00     LDA #$00
+C - - J - - 0x035D74 0D:9D64: A9 00     LDA #$00    ; con_шаблон_ai_00 ???
 C - - - - - 0x035D76 0D:9D66: 85 17     STA ram_0017
 C - - - - - 0x035D78 0D:9D68: 20 D6 9B  JSR sub_9BD6
 C - - - - - 0x035D7B 0D:9D6B: F0 01     BEQ bra_9D6E
@@ -5396,7 +5406,7 @@ C - - - - - 0x035D88 0D:9D78: B0 19     BCS bra_9D93
 - - - - - - 0x035D97 0D:9D87: A9 20     LDA #$20
 - - - - - - 0x035D99 0D:9D89: 20 3E EE  JSR sub_0x03EE4E
 - - - - - - 0x035D9C 0D:9D8C: B0 05     BCS bra_9D93
-- - - - - - 0x035D9E 0D:9D8E: A9 16     LDA #$16
+- - - - - - 0x035D9E 0D:9D8E: A9 16     LDA #con_шаблон_ai_16
 - - - - - - 0x035DA0 0D:9D90: 85 17     STA ram_0017
 - - - - - - 0x035DA2 0D:9D92: 60        RTS
 bra_9D93:
@@ -5414,7 +5424,7 @@ C - - - - - 0x035DA9 0D:9D99: 20 32 D0  JSR sub_0x03D042_поинтеры_пос
 
 
 ofs_036_9DAF_04_casey:
-C - - J - - 0x035DBF 0D:9DAF: A9 00     LDA #$00
+C - - J - - 0x035DBF 0D:9DAF: A9 00     LDA #$00    ; con_шаблон_ai_00 ???
 C - - - - - 0x035DC1 0D:9DB1: 85 17     STA ram_0017
 C - - - - - 0x035DC3 0D:9DB3: 20 D6 9B  JSR sub_9BD6
 C - - - - - 0x035DC6 0D:9DB6: F0 01     BEQ bra_9DB9
@@ -5461,7 +5471,7 @@ bra_9DFD:
 - - - - - - 0x035E14 0D:9E04: C9 38     CMP #$38
 - - - - - - 0x035E16 0D:9E06: 90 05     BCC bra_9E0D
 bra_9E08:
-- - - - - - 0x035E18 0D:9E08: A9 01     LDA #$01
+- - - - - - 0x035E18 0D:9E08: A9 01     LDA #con_шаблон_ai_01
 - - - - - - 0x035E1A 0D:9E0A: 85 17     STA ram_0017
 - - - - - - 0x035E1C 0D:9E0C: 60        RTS
 bra_9E0D:
@@ -5477,7 +5487,7 @@ bra_9E0D:
 - - - - - - 0x035E33 0D:9E23: 95 91     STA ram_btn_hold,X
 - - - - - - 0x035E35 0D:9E25: 95 8E     STA ram_btn_press,X
 bra_9E27:
-- - - - - - 0x035E37 0D:9E27: A9 06     LDA #$06
+- - - - - - 0x035E37 0D:9E27: A9 06     LDA #con_шаблон_ai_06
 - - - - - - 0x035E39 0D:9E29: 85 17     STA ram_0017
 bra_9E2B_RTS:
 - - - - - - 0x035E3B 0D:9E2B: 60        RTS
@@ -5485,7 +5495,7 @@ bra_9E2B_RTS:
 
 
 loc_9E31:
-C D 0 - - - 0x035E41 0D:9E31: A9 1C     LDA #$1C
+C D 0 - - - 0x035E41 0D:9E31: A9 1C     LDA #con_шаблон_ai_1C
 C - - - - - 0x035E43 0D:9E33: 85 17     STA ram_0017
 C - - - - - 0x035E45 0D:9E35: 60        RTS
 
@@ -5500,7 +5510,7 @@ C - - - - - 0x035E50 0D:9E40: C9 60     CMP #$60
 C - - - - - 0x035E52 0D:9E42: B0 09     BCS bra_9E4D
 C - - - - - 0x035E54 0D:9E44: C9 40     CMP #$40
 C - - - - - 0x035E56 0D:9E46: 90 05     BCC bra_9E4D
-- - - - - - 0x035E58 0D:9E48: A9 3A     LDA #$3A
+- - - - - - 0x035E58 0D:9E48: A9 3A     LDA #con_шаблон_ai_3A
 - - - - - - 0x035E5A 0D:9E4A: 85 17     STA ram_0017
 - - - - - - 0x035E5C 0D:9E4C: 60        RTS
 bra_9E4D:
@@ -5519,13 +5529,13 @@ C - - - - - 0x035E77 0D:9E67: 09 40     ORA #con_btn_B
 C - - - - - 0x035E79 0D:9E69: 9D C6 06  STA ram_06C6,X
 C - - - - - 0x035E7C 0D:9E6C: 9D C8 06  STA ram_06C8,X
 C - - - - - 0x035E7F 0D:9E6F: 20 8F ED  JSR sub_0x03ED9F_запись_кнопки_hold_и_press
-C - - - - - 0x035E82 0D:9E72: A9 42     LDA #$42
+C - - - - - 0x035E82 0D:9E72: A9 42     LDA #con_шаблон_ai_42
 C - - - - - 0x035E84 0D:9E74: 85 17     STA ram_0017
 C - - - - - 0x035E86 0D:9E76: 60        RTS
 bra_9E77:
 C - - - - - 0x035E87 0D:9E77: 4C A4 BF  JMP loc_BFA4
 bra_9E7A:
-C - - - - - 0x035E8A 0D:9E7A: A9 1D     LDA #$1D
+C - - - - - 0x035E8A 0D:9E7A: A9 1D     LDA #con_шаблон_ai_1D
 C - - - - - 0x035E8C 0D:9E7C: 85 17     STA ram_0017
 C - - - - - 0x035E8E 0D:9E7E: 60        RTS
 
@@ -5545,18 +5555,18 @@ ofs_018_9E7F_02_mike:
 - - - - - - 0x035EA6 0D:9E96: 20 D8 ED  JSR sub_0x03EDE8
 - - - - - - 0x035EA9 0D:9E99: C9 20     CMP #$20
 - - - - - - 0x035EAB 0D:9E9B: B0 05     BCS bra_9EA2
-- - - - - - 0x035EAD 0D:9E9D: A9 3A     LDA #$3A
+- - - - - - 0x035EAD 0D:9E9D: A9 3A     LDA #con_шаблон_ai_3A
 - - - - - - 0x035EAF 0D:9E9F: 85 17     STA ram_0017
 bra_9EA1_RTS:
 - - - - - - 0x035EB1 0D:9EA1: 60        RTS
 bra_9EA2:
 - - - - - - 0x035EB2 0D:9EA2: A5 28     LDA ram_random_1
 - - - - - - 0x035EB4 0D:9EA4: 30 05     BMI bra_9EAB
-- - - - - - 0x035EB6 0D:9EA6: A9 37     LDA #$37
+- - - - - - 0x035EB6 0D:9EA6: A9 37     LDA #con_шаблон_ai_37
 - - - - - - 0x035EB8 0D:9EA8: 85 17     STA ram_0017
 - - - - - - 0x035EBA 0D:9EAA: 60        RTS
 bra_9EAB:
-- - - - - - 0x035EBB 0D:9EAB: A9 1D     LDA #$1D
+- - - - - - 0x035EBB 0D:9EAB: A9 1D     LDA #con_шаблон_ai_1D
 - - - - - - 0x035EBD 0D:9EAD: 85 17     STA ram_0017
 - - - - - - 0x035EBF 0D:9EAF: 60        RTS
 
@@ -5569,7 +5579,7 @@ ofs_018_9EB2_05_hot:
 - - - - - - 0x035EC8 0D:9EB8: A5 11     LDA ram_0011
 - - - - - - 0x035ECA 0D:9EBA: C9 0A     CMP #$0A
 - - - - - - 0x035ECC 0D:9EBC: D0 04     BNE bra_9EC2_RTS
-- - - - - - 0x035ECE 0D:9EBE: A9 17     LDA #$17
+- - - - - - 0x035ECE 0D:9EBE: A9 17     LDA #con_шаблон_ai_17
 - - - - - - 0x035ED0 0D:9EC0: 85 17     STA ram_0017
 bra_9EC2_RTS:
 - - - - - - 0x035ED2 0D:9EC2: 60        RTS
@@ -5583,18 +5593,18 @@ bra_9EC3:
 - - - - - - 0x035EE2 0D:9ED2: AD 38 06  LDA ram_0638
 - - - - - - 0x035EE5 0D:9ED5: C9 30     CMP #$30
 - - - - - - 0x035EE7 0D:9ED7: B0 05     BCS bra_9EDE
-- - - - - - 0x035EE9 0D:9ED9: A9 06     LDA #$06
+- - - - - - 0x035EE9 0D:9ED9: A9 06     LDA #con_шаблон_ai_06
 - - - - - - 0x035EEB 0D:9EDB: 85 17     STA ram_0017
 - - - - - - 0x035EED 0D:9EDD: 60        RTS
 bra_9EDE:
-- - - - - - 0x035EEE 0D:9EDE: A9 05     LDA #$05
+- - - - - - 0x035EEE 0D:9EDE: A9 05     LDA #con_шаблон_ai_05
 - - - - - - 0x035EF0 0D:9EE0: 85 17     STA ram_0017
 - - - - - - 0x035EF2 0D:9EE2: 60        RTS
 
 
 
 ofs_036_9EE4_05_hot:
-C - - J - - 0x035EF4 0D:9EE4: A9 00     LDA #$00
+C - - J - - 0x035EF4 0D:9EE4: A9 00     LDA #$00    ; con_шаблон_ai_00 ???
 C - - - - - 0x035EF6 0D:9EE6: 85 17     STA ram_0017
 C - - - - - 0x035EF8 0D:9EE8: A5 13     LDA ram_0013
 C - - - - - 0x035EFA 0D:9EEA: D0 13     BNE bra_9EFF
@@ -5604,7 +5614,7 @@ C - - - - - 0x035F01 0D:9EF1: D0 0C     BNE bra_9EFF
 C - - - - - 0x035F03 0D:9EF3: BD 10 04  LDA ram_obj_pos_Y,X
 C - - - - - 0x035F06 0D:9EF6: C9 60     CMP #$60
 C - - - - - 0x035F08 0D:9EF8: B0 05     BCS bra_9EFF
-- - - - - - 0x035F0A 0D:9EFA: A9 2C     LDA #$2C
+- - - - - - 0x035F0A 0D:9EFA: A9 2C     LDA #con_шаблон_ai_2C
 - - - - - - 0x035F0C 0D:9EFC: 85 17     STA ram_0017
 - - - - - - 0x035F0E 0D:9EFE: 60        RTS
 bra_9EFF:
@@ -5631,7 +5641,7 @@ ofs_017_9F1C_00_leo:
 - - - - - - 0x035F31 0D:9F21: D0 09     BNE bra_9F2C
 - - - - - - 0x035F33 0D:9F23: A5 13     LDA ram_0013
 - - - - - - 0x035F35 0D:9F25: D0 05     BNE bra_9F2C
-- - - - - - 0x035F37 0D:9F27: A9 2C     LDA #$2C
+- - - - - - 0x035F37 0D:9F27: A9 2C     LDA #con_шаблон_ai_2C
 - - - - - - 0x035F39 0D:9F29: 85 17     STA ram_0017
 - - - - - - 0x035F3B 0D:9F2B: 60        RTS
 bra_9F2C:
@@ -5644,7 +5654,7 @@ bra_9F2C:
 - - - - - - 0x035F4A 0D:9F3A: B0 0A     BCS bra_9F46
 - - - - - - 0x035F4C 0D:9F3C: 20 8E EC  JSR sub_0x03EC9E
 - - - - - - 0x035F4F 0D:9F3F: B0 1D     BCS bra_9F5E
-- - - - - - 0x035F51 0D:9F41: A9 17     LDA #$17
+- - - - - - 0x035F51 0D:9F41: A9 17     LDA #con_шаблон_ai_17
 - - - - - - 0x035F53 0D:9F43: 85 17     STA ram_0017
 - - - - - - 0x035F55 0D:9F45: 60        RTS
 bra_9F46:
@@ -5657,16 +5667,16 @@ bra_9F46:
 - - - - - - 0x035F62 0D:9F52: AD 38 06  LDA ram_0638
 - - - - - - 0x035F65 0D:9F55: C9 50     CMP #$50
 - - - - - - 0x035F67 0D:9F57: B0 0A     BCS bra_9F63
-- - - - - - 0x035F69 0D:9F59: A9 0C     LDA #$0C
+- - - - - - 0x035F69 0D:9F59: A9 0C     LDA #con_шаблон_ai_0C
 - - - - - - 0x035F6B 0D:9F5B: 85 17     STA ram_0017
 bra_9F5D_RTS:
 - - - - - - 0x035F6D 0D:9F5D: 60        RTS
 bra_9F5E:
-- - - - - - 0x035F6E 0D:9F5E: A9 10     LDA #$10
+- - - - - - 0x035F6E 0D:9F5E: A9 10     LDA #con_шаблон_ai_10
 - - - - - - 0x035F70 0D:9F60: 85 17     STA ram_0017
 - - - - - - 0x035F72 0D:9F62: 60        RTS
 bra_9F63:
-- - - - - - 0x035F73 0D:9F63: A9 23     LDA #$23
+- - - - - - 0x035F73 0D:9F63: A9 23     LDA #con_шаблон_ai_23
 - - - - - - 0x035F75 0D:9F65: 85 17     STA ram_0017
 - - - - - - 0x035F77 0D:9F67: 60        RTS
 
@@ -5685,7 +5695,7 @@ ofs_017_9F68_01_raph:
 - - - - - - 0x035F8B 0D:9F7B: 9D C6 06  STA ram_06C6,X
 - - - - - - 0x035F8E 0D:9F7E: 9D C8 06  STA ram_06C8,X
 - - - - - - 0x035F91 0D:9F81: 20 8F ED  JSR sub_0x03ED9F_запись_кнопки_hold_и_press
-- - - - - - 0x035F94 0D:9F84: A9 42     LDA #$42
+- - - - - - 0x035F94 0D:9F84: A9 42     LDA #con_шаблон_ai_42
 - - - - - - 0x035F96 0D:9F86: 85 17     STA ram_0017
 - - - - - - 0x035F98 0D:9F88: 60        RTS
 bra_9F89:
@@ -5693,12 +5703,12 @@ bra_9F89:
 bra_9F8C:
 - - - - - - 0x035F9C 0D:9F8C: A5 28     LDA ram_random_1
 - - - - - - 0x035F9E 0D:9F8E: 30 05     BMI bra_9F95
-- - - - - - 0x035FA0 0D:9F90: A9 04     LDA #$04
+- - - - - - 0x035FA0 0D:9F90: A9 04     LDA #con_шаблон_ai_04
 - - - - - - 0x035FA2 0D:9F92: 85 17     STA ram_0017
 - - - - - - 0x035FA4 0D:9F94: 60        RTS
 bra_9F95:
 loc_9F95:
-- - - - - - 0x035FA5 0D:9F95: A9 01     LDA #$01
+- - - - - - 0x035FA5 0D:9F95: A9 01     LDA #con_шаблон_ai_01
 - - - - - - 0x035FA7 0D:9F97: 85 17     STA ram_0017
 - - - - - - 0x035FA9 0D:9F99: 60        RTS
 
@@ -5711,7 +5721,7 @@ C - - - - - 0x035FB2 0D:9FA2: D0 0A     BNE bra_9FAE_RTS
 C - - - - - 0x035FB4 0D:9FA4: A5 13     LDA ram_0013
 C - - - - - 0x035FB6 0D:9FA6: C9 03     CMP #$03
 C - - - - - 0x035FB8 0D:9FA8: B0 04     BCS bra_9FAE_RTS
-C - - - - - 0x035FBA 0D:9FAA: A9 02     LDA #$02
+C - - - - - 0x035FBA 0D:9FAA: A9 02     LDA #con_шаблон_ai_02
 C - - - - - 0x035FBC 0D:9FAC: 85 17     STA ram_0017
 bra_9FAE_RTS:
 C - - - - - 0x035FBE 0D:9FAE: 60        RTS
@@ -5741,7 +5751,7 @@ C - - - - - 0x035FE4 0D:9FD4: A5 13     LDA ram_0013
 C - - - - - 0x035FE6 0D:9FD6: C9 02     CMP #$02
 C - - - - - 0x035FE8 0D:9FD8: B0 1F     BCS bra_9FF9
 C - - - - - 0x035FEA 0D:9FDA: BD E2 06  LDA ram_06E2,X
-C - - - - - 0x035FED 0D:9FDD: C9 25     CMP #$25
+C - - - - - 0x035FED 0D:9FDD: C9 25     CMP #con_шаблон_ai_25
 C - - - - - 0x035FEF 0D:9FDF: D0 05     BNE bra_9FE6
 C - - - - - 0x035FF1 0D:9FE1: 4C 00 BE  JMP loc_BE00
 
@@ -5758,10 +5768,10 @@ C - - - - - 0x036002 0D:9FF2: 4C 90 BE  JMP loc_BE90
 
 
 tbl_9FF5:
-- D 0 - - - 0x036005 0D:9FF5: 12        .byte $12   ; 00
-- D 0 - - - 0x036006 0D:9FF6: 18        .byte $18   ; 01
-- - - - - - 0x036007 0D:9FF7: 10        .byte $10   ; 02
-- - - - - - 0x036008 0D:9FF8: 17        .byte $17   ; 03
+- D 0 - - - 0x036005 0D:9FF5: 12        .byte con_шаблон_ai_12   ; 00
+- D 0 - - - 0x036006 0D:9FF6: 18        .byte con_шаблон_ai_18   ; 01
+- - - - - - 0x036007 0D:9FF7: 10        .byte con_шаблон_ai_10   ; 02
+- - - - - - 0x036008 0D:9FF8: 17        .byte con_шаблон_ai_17   ; 03
 
 
 
@@ -5788,7 +5798,7 @@ ofs_016_A010_00_leo:
 - - - - - - 0x03602B 0D:A01B: A5 13     LDA ram_0013
 - - - - - - 0x03602D 0D:A01D: C9 03     CMP #$03
 - - - - - - 0x03602F 0D:A01F: D0 05     BNE bra_A026
-- - - - - - 0x036031 0D:A021: A9 25     LDA #$25
+- - - - - - 0x036031 0D:A021: A9 25     LDA #con_шаблон_ai_25
 - - - - - - 0x036033 0D:A023: 85 17     STA ram_0017
 - - - - - - 0x036035 0D:A025: 60        RTS
 bra_A026:
@@ -5801,12 +5811,12 @@ bra_A026:
 - - - - - - 0x036044 0D:A034: C9 07     CMP #con_plr_state_сидит
 - - - - - - 0x036046 0D:A036: D0 05     BNE bra_A03D
 bra_A038:
-- - - - - - 0x036048 0D:A038: A9 29     LDA #$29
+- - - - - - 0x036048 0D:A038: A9 29     LDA #con_шаблон_ai_29
 - - - - - - 0x03604A 0D:A03A: 85 17     STA ram_0017
 - - - - - - 0x03604C 0D:A03C: 60        RTS
 bra_A03D:
 loc_A03D:
-- - - - - - 0x03604D 0D:A03D: A9 02     LDA #$02
+- - - - - - 0x03604D 0D:A03D: A9 02     LDA #con_шаблон_ai_02
 - - - - - - 0x03604F 0D:A03F: 85 17     STA ram_0017
 - - - - - - 0x036051 0D:A041: 60        RTS
 bra_A042_RTS:
@@ -5834,14 +5844,14 @@ C - - - - - 0x036061 0D:A051: 90 1C     BCC bra_A06F
 loc_A05B:
 - - - - - - 0x03606B 0D:A05B: A9 80     LDA #$80
 - - - - - - 0x03606D 0D:A05D: 20 8F ED  JSR sub_0x03ED9F_запись_кнопки_hold_и_press
-- - - - - - 0x036070 0D:A060: A9 17     LDA #$17
+- - - - - - 0x036070 0D:A060: A9 17     LDA #con_шаблон_ai_17
 - - - - - - 0x036072 0D:A062: 85 17     STA ram_0017
 - - - - - - 0x036074 0D:A064: 60        RTS
 bra_A065:
 - - - - - - 0x036075 0D:A065: A9 40     LDA #$40
 - - - - - - 0x036077 0D:A067: 20 8F ED  JSR sub_0x03ED9F_запись_кнопки_hold_и_press
 loc_A06A:
-- - - - - - 0x03607A 0D:A06A: A9 42     LDA #$42
+- - - - - - 0x03607A 0D:A06A: A9 42     LDA #con_шаблон_ai_42
 - - - - - - 0x03607C 0D:A06C: 85 17     STA ram_0017
 - - - - - - 0x03607E 0D:A06E: 60        RTS
 bra_A06F:
@@ -5853,7 +5863,7 @@ bra_A072:
 loc_A072:
 - - - - - - 0x036082 0D:A072: 20 FE ED  JSR sub_0x03EE0E
 - - - - - - 0x036085 0D:A075: B0 05     BCS bra_A07C
-- - - - - - 0x036087 0D:A077: A9 16     LDA #$16
+- - - - - - 0x036087 0D:A077: A9 16     LDA #con_шаблон_ai_16
 - - - - - - 0x036089 0D:A079: 85 17     STA ram_0017
 - - - - - - 0x03608B 0D:A07B: 60        RTS
 bra_A07C:
@@ -5888,13 +5898,13 @@ bra_A08F:
 - - - - - - 0x0360B2 0D:A0A2: 90 EA     BCC bra_A08E_RTS
 - - - - - - 0x0360B4 0D:A0A4: A5 28     LDA ram_random_1
 - - - - - - 0x0360B6 0D:A0A6: 30 04     BMI bra_A0AC
-- - - - - - 0x0360B8 0D:A0A8: A9 17     LDA #$17
+- - - - - - 0x0360B8 0D:A0A8: A9 17     LDA #con_шаблон_ai_17
 - - - - - - 0x0360BA 0D:A0AA: D0 E0     BNE bra_A08C    ; jmp
 bra_A0AC:
-- - - - - - 0x0360BC 0D:A0AC: A9 10     LDA #$10
+- - - - - - 0x0360BC 0D:A0AC: A9 10     LDA #con_шаблон_ai_10
 - - - - - - 0x0360BE 0D:A0AE: D0 DC     BNE bra_A08C    ; jmp
 bra_A0B0:
-- - - - - - 0x0360C0 0D:A0B0: A9 04     LDA #$04
+- - - - - - 0x0360C0 0D:A0B0: A9 04     LDA #con_шаблон_ai_04
 - - - - - - 0x0360C2 0D:A0B2: 85 17     STA ram_0017
 - - - - - - 0x0360C4 0D:A0B4: 60        RTS
 
@@ -5907,13 +5917,13 @@ C - - - - - 0x036127 0D:A117: C9 08     CMP #$08
 C - - - - - 0x036129 0D:A119: D0 14     BNE bra_A12F_RTS
 C - - - - - 0x03612B 0D:A11B: BC DE 06  LDY ram_06DE,X
 C - - - - - 0x03612E 0D:A11E: B9 E2 06  LDA ram_06E2,Y
-C - - - - - 0x036131 0D:A121: C9 3A     CMP #$3A
+C - - - - - 0x036131 0D:A121: C9 3A     CMP #con_шаблон_ai_3A
 C - - - - - 0x036133 0D:A123: F0 06     BEQ bra_A12B
 C - - - - - 0x036135 0D:A125: A5 13     LDA ram_0013
 C - - - - - 0x036137 0D:A127: C9 02     CMP #$02
 C - - - - - 0x036139 0D:A129: B0 04     BCS bra_A12F_RTS
 bra_A12B:
-- - - - - - 0x03613B 0D:A12B: A9 01     LDA #$01
+- - - - - - 0x03613B 0D:A12B: A9 01     LDA #con_шаблон_ai_01
 - - - - - - 0x03613D 0D:A12D: 85 17     STA ram_0017
 bra_A12F_RTS:
 C - - - - - 0x03613F 0D:A12F: 60        RTS
@@ -5930,7 +5940,7 @@ C - - - - - 0x03614C 0D:A13C: D0 23     BNE bra_A161_RTS
 - - - - - - 0x03614E 0D:A13E: A5 13     LDA ram_0013
 - - - - - - 0x036150 0D:A140: C9 02     CMP #$02
 - - - - - - 0x036152 0D:A142: B0 04     BCS bra_A148
-- - - - - - 0x036154 0D:A144: A9 04     LDA #$04
+- - - - - - 0x036154 0D:A144: A9 04     LDA #con_шаблон_ai_04
 - - - - - - 0x036156 0D:A146: 85 17     STA ram_0017
 bra_A148:
 - - - - - - 0x036158 0D:A148: A5 13     LDA ram_0013
@@ -5942,12 +5952,12 @@ bra_A148:
 - - - - - - 0x036165 0D:A155: 20 D8 ED  JSR sub_0x03EDE8
 - - - - - - 0x036169 0D:A159: C9 50     CMP #$50
 - - - - - - 0x03616B 0D:A15B: B0 05     BCS bra_A162
-- - - - - - 0x03616D 0D:A15D: A9 25     LDA #$25
+- - - - - - 0x03616D 0D:A15D: A9 25     LDA #con_шаблон_ai_25
 - - - - - - 0x03616F 0D:A15F: 85 17     STA ram_0017
 bra_A161_RTS:
 C - - - - - 0x036171 0D:A161: 60        RTS
 bra_A162:
-- - - - - - 0x036172 0D:A162: A9 0C     LDA #$0C
+- - - - - - 0x036172 0D:A162: A9 0C     LDA #con_шаблон_ai_0C
 - - - - - - 0x036174 0D:A164: 85 17     STA ram_0017
 - - - - - - 0x036176 0D:A166: 60        RTS
 
@@ -5963,7 +5973,7 @@ ofs_016_A167_06_shred:
 - - - - - - 0x036185 0D:A175: B0 03     BCS bra_A17A
 - - - - - - 0x036187 0D:A177: 4C 3D A0  JMP loc_A03D
 bra_A17A:
-- - - - - - 0x03618A 0D:A17A: A9 18     LDA #$18
+- - - - - - 0x03618A 0D:A17A: A9 18     LDA #con_шаблон_ai_18
 - - - - - - 0x03618C 0D:A17C: 85 17     STA ram_0017
 bra_A17E_RTS:
 - - - - - - 0x03618E 0D:A17E: 60        RTS
@@ -5972,7 +5982,7 @@ bra_A17F:
 - - - - - - 0x036191 0D:A181: D0 FB     BNE bra_A17E_RTS
 - - - - - - 0x036193 0D:A183: A9 40     LDA #$40
 - - - - - - 0x036195 0D:A185: 20 8F ED  JSR sub_0x03ED9F_запись_кнопки_hold_и_press
-- - - - - - 0x036198 0D:A188: A9 24     LDA #$24
+- - - - - - 0x036198 0D:A188: A9 24     LDA #con_шаблон_ai_24
 - - - - - - 0x03619A 0D:A18A: 85 17     STA ram_0017
 - - - - - - 0x03619C 0D:A18C: 60        RTS
 
@@ -6002,7 +6012,7 @@ tbl_A195:
 
 sub_A1A6:
 - - - - - - 0x0361B6 0D:A1A6: AD 38 06  LDA ram_0638
-- - - - - - 0x0361B9 0D:A1A9: C9 46     CMP #$46
+- - - - - - 0x0361B9 0D:A1A9: C9 46     CMP #con_колво_шаблонов_ai + $01
 - - - - - - 0x0361BB 0D:A1AB: B0 11     BCS bra_A1BE_RTS
 sub_A1AD:
 C - - - - - 0x0361BD 0D:A1AD: BD 40 04  LDA ram_obj_pos_X,X
@@ -6151,8 +6161,8 @@ C - - - - - 0x0362CF 0D:A2BF: C9 04     CMP #$04
 C - - - - - 0x0362D1 0D:A2C1: D0 18     BNE bra_A2DB
 bra_A2C3:
 C - - - - - 0x0362D3 0D:A2C3: BC DE 06  LDY ram_06DE,X
-C - - - - - 0x0362D6 0D:A2C6: A9 01     LDA #$01
-C - - - - - 0x0362D8 0D:A2C8: 9D C0 06  STA ram_06C0,X
+C - - - - - 0x0362D6 0D:A2C6: A9 01     LDA #con_шаблон_ai_01
+C - - - - - 0x0362D8 0D:A2C8: 9D C0 06  STA ram_шаблон_ai,X
 C - - - - - 0x0362DB 0D:A2CB: 20 7C A3  JSR sub_A37C
 bra_A2CE:
 C - - - - - 0x0362DE 0D:A2CE: BD 50 05  LDA ram_obj_id,X
@@ -6306,7 +6316,7 @@ C - - - - - 0x03640E 0D:A3FE: F0 11     BEQ bra_A411
 C - - - - - 0x036410 0D:A400: C9 07     CMP #$07
 C - - - - - 0x036412 0D:A402: F0 0D     BEQ bra_A411
 bra_A404:
-C - - - - - 0x036414 0D:A404: BD C0 06  LDA ram_06C0,X
+C - - - - - 0x036414 0D:A404: BD C0 06  LDA ram_шаблон_ai,X
 C - - - - - 0x036417 0D:A407: 60        RTS
 bra_A408:
 - - - - - - 0x036418 0D:A408: A9 00     LDA #$00
@@ -6321,14 +6331,14 @@ bra_A411:
 - - - - - - 0x036426 0D:A416: 69 01     ADC #$01
 bra_A418:
 - - - - - - 0x036428 0D:A418: 20 99 A3  JSR sub_A399
-- - - - - - 0x03642B 0D:A41B: A9 01     LDA #$01
+- - - - - - 0x03642B 0D:A41B: A9 01     LDA #con_шаблон_ai_01
 - - - - - - 0x03642D 0D:A41D: 60        RTS
 bra_A41E:
 C - - - - - 0x03642E 0D:A41E: AD 38 06  LDA ram_0638
 C - - - - - 0x036431 0D:A421: C9 20     CMP #$20
 C - - - - - 0x036433 0D:A423: B0 DF     BCS bra_A404
 C - - - - - 0x036435 0D:A425: 20 74 A3  JSR sub_A374
-C - - - - - 0x036438 0D:A428: A9 01     LDA #$01
+C - - - - - 0x036438 0D:A428: A9 01     LDA #con_шаблон_ai_01
 C - - - - - 0x03643A 0D:A42A: 60        RTS
 
 
@@ -6377,7 +6387,7 @@ C - - - - - 0x0364AC 0D:A49C: 60        RTS
 
 sub_A4B4:
 - - - - - - 0x0364C4 0D:A4B4: BD E6 06  LDA ram_06E6,X
-- - - - - - 0x0364C7 0D:A4B7: C9 24     CMP #$24
+- - - - - - 0x0364C7 0D:A4B7: C9 24     CMP #con_шаблон_ai_24
 - - - - - - 0x0364C9 0D:A4B9: D0 58     BNE bra_A513
 - - - - - - 0x0364CB 0D:A4BB: BD 20 05  LDA ram_obj_0520,X
 - - - - - - 0x0364CE 0D:A4BE: C9 09     CMP #con_plr_state_бросает_соперника
@@ -6398,10 +6408,10 @@ bra_A4D4:
 - - - - - - 0x0364EE 0D:A4DE: 90 0D     BCC bra_A4ED
 - - - - - - 0x0364F0 0D:A4E0: BD 2C 06  LDA ram_plr_062C,X
 - - - - - - 0x0364F3 0D:A4E3: C9 14     CMP #$14
-- - - - - - 0x0364F5 0D:A4E5: A9 13     LDA #$13
+- - - - - - 0x0364F5 0D:A4E5: A9 13     LDA #con_шаблон_ai_13
 - - - - - - 0x0364F7 0D:A4E7: 90 5A     BCC bra_A543
 bra_A4E9:
-- - - - - - 0x0364F9 0D:A4E9: A9 01     LDA #$01
+- - - - - - 0x0364F9 0D:A4E9: A9 01     LDA #con_шаблон_ai_01
 - - - - - - 0x0364FB 0D:A4EB: D0 56     BNE bra_A543    ; jmp
 bra_A4ED:
 - - - - - - 0x0364FD 0D:A4ED: B9 20 05  LDA ram_obj_0520,Y
@@ -6412,16 +6422,16 @@ bra_A4ED:
 - - - - - - 0x036509 0D:A4F9: B0 18     BCS bra_A513
 - - - - - - 0x03650B 0D:A4FB: B9 80 04  LDA ram_obj_spd_X_hi,Y
 - - - - - - 0x03650E 0D:A4FE: D0 04     BNE bra_A504
-- - - - - - 0x036510 0D:A500: A9 24     LDA #$24
+- - - - - - 0x036510 0D:A500: A9 24     LDA #con_шаблон_ai_24
 - - - - - - 0x036512 0D:A502: D0 3F     BNE bra_A543    ; jmp
 bra_A504:
 - - - - - - 0x036514 0D:A504: 7D 10 05  ADC ram_obj_0510,X
 - - - - - - 0x036517 0D:A507: C9 41     CMP #$41
 - - - - - - 0x036519 0D:A509: B0 04     BCS bra_A50F
-- - - - - - 0x03651B 0D:A50B: A9 25     LDA #$25
+- - - - - - 0x03651B 0D:A50B: A9 25     LDA #con_шаблон_ai_25
 - - - - - - 0x03651D 0D:A50D: D0 34     BNE bra_A543    ; jmp
 bra_A50F:
-- - - - - - 0x03651F 0D:A50F: A9 0A     LDA #$0A
+- - - - - - 0x03651F 0D:A50F: A9 0A     LDA #con_шаблон_ai_0A
 - - - - - - 0x036521 0D:A511: D0 30     BNE bra_A543    ; jmp
 bra_A513:
 - - - - - - 0x036523 0D:A513: B9 50 05  LDA ram_obj_id,Y
@@ -6445,9 +6455,9 @@ bra_A533:
 - - - - - - 0x036549 0D:A539: D9 95 A1  CMP tbl_A195,Y
 - - - - - - 0x03654C 0D:A53C: B0 08     BCS bra_A546
 - - - - - - 0x03654E 0D:A53E: 20 9B ED  JSR sub_0x03EDAB
-- - - - - - 0x036551 0D:A541: A9 40     LDA #$40
+- - - - - - 0x036551 0D:A541: A9 40     LDA #con_шаблон_ai_40
 bra_A543:
-- - - - - - 0x036553 0D:A543: 9D C0 06  STA ram_06C0,X
+- - - - - - 0x036553 0D:A543: 9D C0 06  STA ram_шаблон_ai,X
 bra_A546:
 - - - - - - 0x036556 0D:A546: BC DE 06  LDY ram_06DE,X
 - - - - - - 0x036559 0D:A549: BD 20 05  LDA ram_obj_0520,X
@@ -6563,7 +6573,7 @@ bra_A617:
 - - - - - - 0x036632 0D:A622: C9 18     CMP #$18
 bra_A624:
 - - - - - - 0x036634 0D:A624: 90 34     BCC bra_A65A
-- - - - - - 0x036636 0D:A626: A9 42     LDA #$42
+- - - - - - 0x036636 0D:A626: A9 42     LDA #con_шаблон_ai_42
 - - - - - - 0x036638 0D:A628: DD E6 06  CMP ram_06E6,X
 - - - - - - 0x03663B 0D:A62B: D0 35     BNE bra_A662_RTS
 - - - - - - 0x03663D 0D:A62D: AD 38 06  LDA ram_0638
@@ -6582,27 +6592,27 @@ bra_A639:
 - - - - - - 0x036659 0D:A649: 90 03     BCC bra_A64E
 bra_A64B:
 loc_A64B:
-- - - - - - 0x03665B 0D:A64B: A9 42     LDA #$42
+- - - - - - 0x03665B 0D:A64B: A9 42     LDA #con_шаблон_ai_42
 - - - - - - 0x03665D 0D:A64D: 2C        .byte $2C   ; BIT
 bra_A64E:
-- - - - - - 0x03665E 0D:A64E: A9 0A     LDA #$0A
+- - - - - - 0x03665E 0D:A64E: A9 0A     LDA #con_шаблон_ai_0A
 - - - - - - 0x036660 0D:A650: 2C        .byte $2C   ; BIT
 bra_A651:
-- - - - - - 0x036661 0D:A651: A9 24     LDA #$24
+- - - - - - 0x036661 0D:A651: A9 24     LDA #con_шаблон_ai_24
 - - - - - - 0x036663 0D:A653: 2C        .byte $2C   ; BIT
 bra_A654:
 loc_A654:
-- - - - - - 0x036664 0D:A654: A9 01     LDA #$01
+- - - - - - 0x036664 0D:A654: A9 01     LDA #con_шаблон_ai_01
 - - - - - - 0x036666 0D:A656: 2C        .byte $2C   ; BIT
 bra_A657:
-- - - - - - 0x036667 0D:A657: A9 17     LDA #$17
+- - - - - - 0x036667 0D:A657: A9 17     LDA #con_шаблон_ai_17
 - - - - - - 0x036669 0D:A659: 2C        .byte $2C   ; BIT
 bra_A65A:
 loc_A65A:
-- - - - - - 0x03666A 0D:A65A: A9 0D     LDA #$0D
+- - - - - - 0x03666A 0D:A65A: A9 0D     LDA #con_шаблон_ai_0D
 bra_A65C:
 loc_A65C:
-- - - - - - 0x03666C 0D:A65C: 9D C0 06  STA ram_06C0,X
+- - - - - - 0x03666C 0D:A65C: 9D C0 06  STA ram_шаблон_ai,X
 - - - - - - 0x03666F 0D:A65F: 9D E2 06  STA ram_06E2,X
 bra_A662_RTS:
 - - - - - - 0x036672 0D:A662: 60        RTS
@@ -6634,8 +6644,8 @@ loc_A663:
 - - - - - - 0x03669F 0D:A68F: B9 F0 A7  LDA tbl_A7F0,Y
 - - - - - - 0x0366A2 0D:A692: D0 C8     BNE bra_A65C    ; jmp
 bra_A694:
-- - - - - - 0x0366A4 0D:A694: BD C0 06  LDA ram_06C0,X
-- - - - - - 0x0366A7 0D:A697: C9 25     CMP #$25
+- - - - - - 0x0366A4 0D:A694: BD C0 06  LDA ram_шаблон_ai,X
+- - - - - - 0x0366A7 0D:A697: C9 25     CMP #con_шаблон_ai_25
 - - - - - - 0x0366A9 0D:A699: D0 0E     BNE bra_A6A9
 - - - - - - 0x0366AB 0D:A69B: BD C0 04  LDA ram_obj_04C0,X
 - - - - - - 0x0366AE 0D:A69E: C9 09     CMP #$09
@@ -6697,7 +6707,7 @@ bra_A70A:
 - - - - - - 0x03671A 0D:A70A: 4C 4B A6  JMP loc_A64B
 bra_A70D:
 loc_A70D:
-- - - - - - 0x03671D 0D:A70D: A9 10     LDA #$10
+- - - - - - 0x03671D 0D:A70D: A9 10     LDA #con_шаблон_ai_10
 - - - - - - 0x03671F 0D:A70F: 4C 5C A6  JMP loc_A65C
 
 
@@ -6710,7 +6720,7 @@ bra_A715:
 ; 18-1D
 - - - - - - 0x03672D 0D:A71D: A5 8C     LDA ram_random_2
 - - - - - - 0x03672F 0D:A71F: 30 A3     BMI bra_A6C4
-- - - - - - 0x036731 0D:A721: A9 25     LDA #$25
+- - - - - - 0x036731 0D:A721: A9 25     LDA #con_шаблон_ai_25
 - - - - - - 0x036733 0D:A723: 4C 5C A6  JMP loc_A65C
 
 
@@ -6748,40 +6758,40 @@ C - - - - - 0x036775 0D:A765: 90 31     BCC bra_A798
 bra_A78D:
 - - - - - - 0x03679D 0D:A78D: B0 09     BCS bra_A798
 bra_A78F:
-- - - - - - 0x03679F 0D:A78F: A9 04     LDA #$04
+- - - - - - 0x03679F 0D:A78F: A9 04     LDA #con_шаблон_ai_04
 - - - - - - 0x0367A1 0D:A791: 2C        .byte $2C   ; BIT
 bra_A792:
-- - - - - - 0x0367A2 0D:A792: A9 05     LDA #$05
+- - - - - - 0x0367A2 0D:A792: A9 05     LDA #con_шаблон_ai_05
 - - - - - - 0x0367A4 0D:A794: 2C        .byte $2C   ; BIT
 bra_A795:
-- - - - - - 0x0367A5 0D:A795: A9 0D     LDA #$0D
+- - - - - - 0x0367A5 0D:A795: A9 0D     LDA #con_шаблон_ai_0D
 - - - - - - 0x0367A7 0D:A797: 2C        .byte $2C   ; BIT
 bra_A798:
-C - - - - - 0x0367A8 0D:A798: A9 24     LDA #$24
+C - - - - - 0x0367A8 0D:A798: A9 24     LDA #con_шаблон_ai_24
 C - - - - - 0x0367AA 0D:A79A: 85 17     STA ram_0017
 C - - - - - 0x0367AC 0D:A79C: 60        RTS
 
 
 
 tbl_A7F0:
-- - - - - - 0x036800 0D:A7F0: 3A        .byte $3A   ; 00
-- - - - - - 0x036801 0D:A7F1: 2A        .byte $2A   ; 01
-- - - - - - 0x036802 0D:A7F2: 2A        .byte $2A   ; 02
-- - - - - - 0x036803 0D:A7F3: 3A        .byte $3A   ; 03
+- - - - - - 0x036800 0D:A7F0: 3A        .byte con_шаблон_ai_3A   ; 00
+- - - - - - 0x036801 0D:A7F1: 2A        .byte con_шаблон_ai_2A   ; 01
+- - - - - - 0x036802 0D:A7F2: 2A        .byte con_шаблон_ai_2A   ; 02
+- - - - - - 0x036803 0D:A7F3: 3A        .byte con_шаблон_ai_3A   ; 03
 
 
 
-tbl_A7F4:
+tbl_A7F4_шаблоны_shred:
 ; 00
-- D 1 - - - 0x036804 0D:A7F4: 12        .byte $12   ; 00
-- D 1 - - - 0x036805 0D:A7F5: 27        .byte $27   ; 01
-- D 1 - - - 0x036806 0D:A7F6: 18        .byte $18   ; 02
-- D 1 - - - 0x036807 0D:A7F7: 33        .byte $33   ; 03
+- D 1 - - - 0x036804 0D:A7F4: 12        .byte con_шаблон_ai_12   ; 00
+- D 1 - - - 0x036805 0D:A7F5: 27        .byte con_шаблон_ai_27   ; 01
+- D 1 - - - 0x036806 0D:A7F6: 18        .byte con_шаблон_ai_18   ; 02
+- D 1 - - - 0x036807 0D:A7F7: 33        .byte con_шаблон_ai_33   ; 03
 ; 04
-- - - - - - 0x036808 0D:A7F8: 10        .byte $10   ; 00
-- - - - - - 0x036809 0D:A7F9: 27        .byte $27   ; 01
-- - - - - - 0x03680A 0D:A7FA: 17        .byte $17   ; 02
-- - - - - - 0x03680B 0D:A7FB: 33        .byte $33   ; 03
+- - - - - - 0x036808 0D:A7F8: 10        .byte con_шаблон_ai_10   ; 00
+- - - - - - 0x036809 0D:A7F9: 27        .byte con_шаблон_ai_27   ; 01
+- - - - - - 0x03680A 0D:A7FA: 17        .byte con_шаблон_ai_17   ; 02
+- - - - - - 0x03680B 0D:A7FB: 33        .byte con_шаблон_ai_33   ; 03
 
 
 
@@ -6795,7 +6805,7 @@ C - - - - - 0x036815 0D:A805: 90 09     BCC bra_A810
 - - - - - - 0x03681D 0D:A80D: B0 01     BCS bra_A810
 - - - - - - 0x03681F 0D:A80F: A8        TAY
 bra_A810:
-C - - - - - 0x036820 0D:A810: B9 CA 9B  LDA tbl_9BCA,Y
+C - - - - - 0x036820 0D:A810: B9 CA 9B  LDA tbl_9BCA_шаблоны_shred,Y
 C - - - - - 0x036823 0D:A813: 60        RTS
 bra_A814:
 - - - - - - 0x036824 0D:A814: BC DE 06  LDY ram_06DE,X
@@ -6880,13 +6890,13 @@ bra_BC34:
 - - - - - - 0x037C69 0D:BC59: A5 8C     LDA ram_random_2
 - - - - - - 0x037C6B 0D:BC5B: 29 04     AND #$04
 - - - - - - 0x037C6D 0D:BC5D: D0 03     BNE bra_BC62
-- - - - - - 0x037C6F 0D:BC5F: A9 04     LDA #$04
+- - - - - - 0x037C6F 0D:BC5F: A9 04     LDA #con_шаблон_ai_04
 - - - - - - 0x037C71 0D:BC61: 2C        .byte $2C   ; BIT
 bra_BC62:
-- - - - - - 0x037C72 0D:BC62: A9 1A     LDA #$1A
+- - - - - - 0x037C72 0D:BC62: A9 1A     LDA #con_шаблон_ai_1A
 - - - - - - 0x037C74 0D:BC64: 2C        .byte $2C   ; BIT
 bra_BC65:
-- - - - - - 0x037C75 0D:BC65: A9 24     LDA #$24
+- - - - - - 0x037C75 0D:BC65: A9 24     LDA #con_шаблон_ai_24
 - - - - - - 0x037C77 0D:BC67: 85 17     STA ram_0017
 - - - - - - 0x037C79 0D:BC69: 60        RTS
 
@@ -6896,8 +6906,8 @@ tbl_BD60:
 - - - - - - 0x037D70 0D:BD60: 00        .byte $00   ; 00 leo
 - - - - - - 0x037D71 0D:BD61: 00        .byte $00   ; 01 raph
 - - - - - - 0x037D72 0D:BD62: 00        .byte $00   ; 02 mike
-- - - - - - 0x037D73 0D:BD63: 01        .byte $01   ; 03 don
-- - - - - - 0x037D74 0D:BD64: 01        .byte $01   ; 04 casey
+- - - - - - 0x037D73 0D:BD63: 01        .byte con_шаблон_ai_01   ; 03 don
+- - - - - - 0x037D74 0D:BD64: 01        .byte con_шаблон_ai_01   ; 04 casey
 - - - - - - 0x037D75 0D:BD65: 00        .byte $00   ; 05 hot
 - - - - - - 0x037D76 0D:BD66: 00        .byte $00   ; 06 shred
 
@@ -7002,15 +7012,15 @@ bra_BE2B:
 - - - - - - 0x037E3B 0D:BE2B: B9 90 04  LDA ram_obj_spd_X_lo,Y
 - - - - - - 0x037E3E 0D:BE2E: D0 06     BNE bra_BE36
 bra_BE30:
-C - - - - - 0x037E40 0D:BE30: A9 24     LDA #$24
+C - - - - - 0x037E40 0D:BE30: A9 24     LDA #con_шаблон_ai_24
 C - - - - - 0x037E42 0D:BE32: 2C        .byte $2C   ; BIT
 bra_BE33:
-- - - - - - 0x037E43 0D:BE33: A9 25     LDA #$25
+- - - - - - 0x037E43 0D:BE33: A9 25     LDA #con_шаблон_ai_25
 C - - - - - 0x037E45 0D:BE35: 2C        .byte $2C   ; BIT
 bra_BE36:
-- - - - - - 0x037E46 0D:BE36: A9 0D     LDA #$0D
+- - - - - - 0x037E46 0D:BE36: A9 0D     LDA #con_шаблон_ai_0D
 C - - - - - 0x037E48 0D:BE38: 2C        .byte $2C   ; BIT
-- - - - - - 0x037E49 0D:BE39: A9 0A     LDA #$0A
+- - - - - - 0x037E49 0D:BE39: A9 0A     LDA #con_шаблон_ai_0A
 C - - - - - 0x037E4B 0D:BE3B: 85 17     STA ram_0017
 bra_BE3D_RTS:
 C - - - - - 0x037E4D 0D:BE3D: 60        RTS
@@ -7027,7 +7037,7 @@ C - - - - - 0x037EA7 0D:BE97: 90 4B     BCC bra_BEE4_RTS
 - - - - - - 0x037EAF 0D:BE9F: D0 43     BNE bra_BEE4_RTS
 - - - - - - 0x037EB1 0D:BEA1: 20 42 BF  JSR sub_BF42
 - - - - - - 0x037EB4 0D:BEA4: D0 04     BNE bra_BEAA
-- - - - - - 0x037EB6 0D:BEA6: A9 01     LDA #$01
+- - - - - - 0x037EB6 0D:BEA6: A9 01     LDA #con_шаблон_ai_01
 - - - - - - 0x037EB8 0D:BEA8: D0 38     BNE bra_BEE2   ; jmp
 bra_BEAA:
 - - - - - - 0x037EBA 0D:BEAA: B9 20 05  LDA ram_obj_0520,Y
@@ -7043,13 +7053,13 @@ bra_BEAA:
 - - - - - - 0x037ED2 0D:BEC2: B0 2A     BCS bra_BEEE
 - - - - - - 0x037ED4 0D:BEC4: B9 60 04  LDA ram_obj_spd_Z_hi,Y
 - - - - - - 0x037ED7 0D:BEC7: 10 04     BPL bra_BECD
-- - - - - - 0x037ED9 0D:BEC9: A9 25     LDA #$25
+- - - - - - 0x037ED9 0D:BEC9: A9 25     LDA #con_шаблон_ai_25
 - - - - - - 0x037EDB 0D:BECB: D0 15     BNE bra_BEE2   ; jmp
 bra_BECD:
 - - - - - - 0x037EDD 0D:BECD: F0 07     BEQ bra_BED6
 - - - - - - 0x037EDF 0D:BECF: B9 50 05  LDA ram_obj_id,Y
 - - - - - - 0x037EE2 0D:BED2: 49 04     EOR #$04
-- - - - - - 0x037EE4 0D:BED4: F0 0C     BEQ bra_BEE2
+- - - - - - 0x037EE4 0D:BED4: F0 0C     BEQ bra_BEE2    ; A = 00
 bra_BED6:
 - - - - - - 0x037EE6 0D:BED6: B9 0C 06  LDA ram_060C,Y
 - - - - - - 0x037EE9 0D:BED9: F0 0A     BEQ bra_BEE5
@@ -7077,7 +7087,7 @@ bra_BEEE:
 - - - - - - 0x037F0A 0D:BEFA: 90 08     BCC bra_BF04
 - - - - - - 0x037F0C 0D:BEFC: 20 C2 EC  JSR sub_0x03ECD2
 - - - - - - 0x037F0F 0D:BEFF: B9 EE BF  LDA tbl_BFEE,Y
-- - - - - - 0x037F12 0D:BF02: D0 DE     BNE bra_BEE2
+- - - - - - 0x037F12 0D:BF02: D0 DE     BNE bra_BEE2    ; jmp
 bra_BF04:
 - - - - - - 0x037F14 0D:BF04: B9 60 04  LDA ram_obj_spd_Z_hi,Y
 - - - - - - 0x037F17 0D:BF07: 30 DB     BMI bra_BEE4_RTS
@@ -7102,13 +7112,13 @@ bra_BF1F:
 - - - - - - 0x037F42 0D:BF32: 0D 38 06  ORA ram_0638
 - - - - - - 0x037F45 0D:BF35: F0 06     BEQ bra_BF3D
 bra_BF37:
-- - - - - - 0x037F47 0D:BF37: A9 42     LDA #$42
+- - - - - - 0x037F47 0D:BF37: A9 42     LDA #con_шаблон_ai_42
 - - - - - - 0x037F49 0D:BF39: 2C        .byte $2C   ; BIT
 bra_BF3A:
-- - - - - - 0x037F4A 0D:BF3A: A9 05     LDA #$05
+- - - - - - 0x037F4A 0D:BF3A: A9 05     LDA #con_шаблон_ai_05
 - - - - - - 0x037F4C 0D:BF3C: 2C        .byte $2C   ; BIT
 bra_BF3D:
-- - - - - - 0x037F4D 0D:BF3D: A9 0A     LDA #$0A
+- - - - - - 0x037F4D 0D:BF3D: A9 0A     LDA #con_шаблон_ai_0A
 - - - - - - 0x037F4F 0D:BF3F: 85 17     STA ram_0017
 bra_BF41_RTS:
 - - - - - - 0x037F51 0D:BF41: 60        RTS
@@ -7151,9 +7161,9 @@ bra_BF83:
 - - - - - - 0x037F99 0D:BF89: D9 FA BF  CMP tbl_BFFA,Y
 - - - - - - 0x037F9C 0D:BF8C: 90 13     BCC bra_BFA1
 - - - - - - 0x037F9E 0D:BF8E: D9 FC BF  CMP tbl_BFFC,Y
-- - - - - - 0x037FA1 0D:BF91: A9 24     LDA #$24
+- - - - - - 0x037FA1 0D:BF91: A9 24     LDA #con_шаблон_ai_24
 - - - - - - 0x037FA3 0D:BF93: 90 02     BCC bra_BF97
-- - - - - - 0x037FA5 0D:BF95: A9 25     LDA #$25
+- - - - - - 0x037FA5 0D:BF95: A9 25     LDA #con_шаблон_ai_25
 bra_BF97:
 - - - - - - 0x037FA7 0D:BF97: 85 17     STA ram_0017
 bra_BF99_RTS:
@@ -7187,10 +7197,10 @@ C - - - - - 0x037FC2 0D:BFB2: 60        RTS
 
 
 tbl_BFEE:
-- - - - - - 0x037FFE 0D:BFEE: 17        .byte $17   ; 
-- - - - - - 0x037FFF 0D:BFEF: 07        .byte $07   ; 
-- - - - - - 0x038000 0D:BFF0: 07        .byte $07   ; 
-- - - - - - 0x038001 0D:BFF1: 17        .byte $17   ; 
+- - - - - - 0x037FFE 0D:BFEE: 17        .byte con_шаблон_ai_17   ; 
+- - - - - - 0x037FFF 0D:BFEF: 07        .byte con_шаблон_ai_07   ; 
+- - - - - - 0x038000 0D:BFF0: 07        .byte con_шаблон_ai_07   ; 
+- - - - - - 0x038001 0D:BFF1: 17        .byte con_шаблон_ai_17   ; 
 tbl_BFF2:
 - D 1 - - - 0x038002 0D:BFF2: 07        .byte $07   ; 
 - D 1 - - - 0x038003 0D:BFF3: 16        .byte $16   ; 
