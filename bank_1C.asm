@@ -5788,11 +5788,10 @@ C - - - - - 0x03A505 0E:A4F5: F0 1A     BEQ bra_A511
 - - - - - - 0x03A511 0E:A501: 85 A1     STA ram_strength + $01
 - - - - - - 0x03A513 0E:A503: 88        DEY
 - - - - - - 0x03A514 0E:A504: 84 94     STY ram_0094
-- - - - - - 0x03A516 0E:A506: 4C 0E A5  JMP loc_A50E
+- - - - - - 0x03A516 0E:A506: 4C 0E A5  JMP loc_0x03E13E
 bra_A509:
 C - - - - - 0x03A519 0E:A509: 84 94     STY ram_0094
 C - - - - - 0x03A51B 0E:A50B: 20 09 DE  JSR sub_0x03DE19_очистить_00AE_00B5
-loc_A50E:   ; bzk optimize
 C - - - - - 0x03A51E 0E:A50E: 4C 2E E1  JMP loc_0x03E13E
 bra_A511:
 C - - - - - 0x03A521 0E:A511: 20 09 DE  JSR sub_0x03DE19_очистить_00AE_00B5
