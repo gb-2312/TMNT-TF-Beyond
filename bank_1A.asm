@@ -5972,6 +5972,8 @@ bra_A07C:
 - - - - - - 0x03608E 0D:A07E: C9 02     CMP #$02
 - - - - - - 0x036090 0D:A080: 90 75     BCC bra_A0F7
 - - - - - - 0x036092 0D:A082: B0 EB     BCS bra_A06F    ; jmp
+bra_A0F7:
+C D 1 - - - 0x036107 0D:A0F7: 4C 60 A7  JMP loc_A760
 
 
 
@@ -6006,11 +6008,6 @@ bra_A0B0:
 - - - - - - 0x0360C0 0D:A0B0: A9 04     LDA #$04
 - - - - - - 0x0360C2 0D:A0B2: 85 17     STA ram_0017
 - - - - - - 0x0360C4 0D:A0B4: 60        RTS
-
-
-
-bra_A0F7:
-C D 1 - - - 0x036107 0D:A0F7: 4C 60 A7  JMP loc_A760
 
 
 
