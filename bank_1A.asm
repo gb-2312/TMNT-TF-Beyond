@@ -99,13 +99,13 @@ C - - - - - 0x0340CD 0D:80BD: 8A        TXA
 C - - - - - 0x0340CE 0D:80BE: 0A        ASL
 C - - - - - 0x0340CF 0D:80BF: 0A        ASL
 C - - - - - 0x0340D0 0D:80C0: 85 10     STA ram_0010
-C - - - - - 0x0340D2 0D:80C2: BC 50 05  LDY ram_obj_id,X
+C - - - - - 0x0340D2 0D:80C2: BC 50 05  LDY ram_obj_id,X ; 0550 0551 
 C - - - - - 0x0340D5 0D:80C5: B9 1C DF  LDA tbl_0x03DF2C,Y
 C - - - - - 0x0340D8 0D:80C8: 38        SEC
 C - - - - - 0x0340D9 0D:80C9: E9 01     SBC #$01
 C - - - - - 0x0340DB 0D:80CB: A4 10     LDY ram_0010
 C - - - - - 0x0340DD 0D:80CD: 99 E8 06  STA ram_06E8,Y
-C - - - - - 0x0340E0 0D:80D0: BD 50 05  LDA ram_obj_id,X
+C - - - - - 0x0340E0 0D:80D0: BD 50 05  LDA ram_obj_id,X ; 0550 0551 
 C - - - - - 0x0340E3 0D:80D3: 0A        ASL
 C - - - - - 0x0340E4 0D:80D4: 0A        ASL
 C - - - - - 0x0340E5 0D:80D5: 85 11     STA ram_0011
@@ -235,7 +235,7 @@ C - - - - - 0x0341A1 0D:8191: D0 E7     BNE bra_817A    ; jmp
 
 
 sub_8193:
-C - - - - - 0x0341A3 0D:8193: BD 50 05  LDA ram_obj_id,X
+C - - - - - 0x0341A3 0D:8193: BD 50 05  LDA ram_obj_id,X ; 0550 0551 
 C - - - - - 0x0341A6 0D:8196: 20 32 D0  JSR sub_0x03D042_поинтеры_после_JSR
 - D 0 - I - 0x0341A9 0D:8199: 11 9C     .word ofs_036_9C11_00_leo
 - D 0 - I - 0x0341AB 0D:819B: F6 9C     .word ofs_036_9CF6_01_raph
@@ -248,7 +248,7 @@ C - - - - - 0x0341A6 0D:8196: 20 32 D0  JSR sub_0x03D042_поинтеры_пос
 
 
 sub_81A7_выбрать_шаблоны_ai_для_персов:
-C - - - - - 0x0341B7 0D:81A7: BD 50 05  LDA ram_obj_id,X
+C - - - - - 0x0341B7 0D:81A7: BD 50 05  LDA ram_obj_id,X ; 0550 0551 
 C - - - - - 0x0341BA 0D:81AA: 20 32 D0  JSR sub_0x03D042_поинтеры_после_JSR
 - D 0 - I - 0x0341BD 0D:81AD: EB 8D     .word ofs_035_8DEB_00_leo
 - D 0 - I - 0x0341BF 0D:81AF: BC 90     .word ofs_035_90BC_01_raph
@@ -439,7 +439,7 @@ bra_82A1_D0_FF:
 
 
 ofs_083_82ED_D4:
-C - - - - - 0x0342FD 0D:82ED: 20 9A A1  LDA ram_obj_id,X
+C - - - - - 0x0342FD 0D:82ED: 20 9A A1  LDA ram_obj_id,X ; 0550 0551 
 C - - - - - 0x034300 0D:82F0: 0A        ASL
 C - - - - - 0x034301 0D:82F1: 0A        ASL
 C - - - - - 0x034302 0D:82F2: 18        CLC
@@ -745,7 +745,7 @@ C - - - - - 0x03440A 0D:83FA: 60        RTS
 
 sub_A49D:
 ofs_084_841A_DF:
-C D 1 - - - 0x0364AD 0D:A49D: BD 50 05  LDA ram_obj_id,X
+C D 1 - - - 0x0364AD 0D:A49D: BD 50 05  LDA ram_obj_id,X ; 0550 0551 
 C - - - - - 0x0364B0 0D:A4A0: C9 06     CMP #$06
 C - - - - - 0x0364B2 0D:A4A2: D0 0A     BNE bra_A4AE
 C - - - - - 0x0364B4 0D:A4A4: BD C0 06  LDA ram_шаблон_ai,X
@@ -1610,9 +1610,9 @@ C - - J - - 0x0349AD 0D:899D: BD DA 06  LDA ram_06DA,X
 C - - - - - 0x0349B0 0D:89A0: D0 2B     BNE bra_89CD
 C - - - - - 0x0349B2 0D:89A2: AC 25 01  LDY ram_option_difficulty
 C - - - - - 0x0349B5 0D:89A5: B9 91 A1  LDA tbl_A191,Y
-C - - - - - 0x0349B8 0D:89A8: 9D DA 06  STA ram_06DA,X
-C - - - - - 0x0349BB 0D:89AB: BC DE 06  LDY ram_06DE,X
-C - - - - - 0x0349BE 0D:89AE: B9 50 05  LDA ram_obj_id,Y
+C - - - - - 0x0349B8 0D:89A8: 9D DA 06  STA ram_06DA,X ; 06DA 06DB 
+C - - - - - 0x0349BB 0D:89AB: BC DE 06  LDY ram_06DE,X ; 06DE 06DF 
+C - - - - - 0x0349BE 0D:89AE: B9 50 05  LDA ram_obj_id,Y ; 0550 0551 
 C - - - - - 0x0349C1 0D:89B1: C9 03     CMP #$03
 C - - - - - 0x0349C3 0D:89B3: D0 18     BNE bra_89CD
 C - - - - - 0x0349C5 0D:89B5: B9 7A 06  LDA ram_plr_067A,Y
@@ -4447,8 +4447,8 @@ C - - - - - 0x035833 0D:9823: A9 0B     LDA #con_шаблон_ai_0B
 C - - - - - 0x035835 0D:9825: 60        RTS
 bra_9826:
 loc_9826:
-C D 0 - - - 0x035836 0D:9826: BC DE 06  LDY ram_06DE,X
-C - - - - - 0x035839 0D:9829: B9 50 05  LDA ram_obj_id,Y
+C D 0 - - - 0x035836 0D:9826: BC DE 06  LDY ram_06DE,X ; 06DF 
+C - - - - - 0x035839 0D:9829: B9 50 05  LDA ram_obj_id,Y ; 0550 
 C - - - - - 0x03583C 0D:982C: C9 01     CMP #$01
 C - - - - - 0x03583E 0D:982E: F0 06     BEQ bra_9836
 C - - - - - 0x035840 0D:9830: 20 96 ED  JSR sub_0x03EDA6
@@ -5162,8 +5162,8 @@ C - - - - - 0x035C25 0D:9C15: 20 D6 9B  JSR sub_9BD6
 C - - - - - 0x035C28 0D:9C18: F0 01     BEQ bra_9C1B
 C - - - - - 0x035C2A 0D:9C1A: 60        RTS
 bra_9C1B:
-C - - - - - 0x035C2B 0D:9C1B: BC DE 06  LDY ram_06DE,X
-C - - - - - 0x035C2E 0D:9C1E: B9 50 05  LDA ram_obj_id,Y
+C - - - - - 0x035C2B 0D:9C1B: BC DE 06  LDY ram_06DE,X ; 06DE 06DF 
+C - - - - - 0x035C2E 0D:9C1E: B9 50 05  LDA ram_obj_id,Y ; 0550 0551 
 C - - - - - 0x035C31 0D:9C21: 20 32 D0  JSR sub_0x03D042_поинтеры_после_JSR
 - - - - - - 0x035C34 0D:9C24: 32 9C     .word ofs_022_9C32_00_leo
 - D 0 - I - 0x035C36 0D:9C26: 75 9C     .word ofs_022_9C75_01_raph
@@ -5225,7 +5225,7 @@ C - - - - - 0x035C8E 0D:9C7E: C9 10     CMP #$10
 C - - - - - 0x035C90 0D:9C80: 90 28     BCC bra_9CAA_RTS
 C - - - - - 0x035C92 0D:9C82: 20 FE ED  JSR sub_0x03EE0E
 C - - - - - 0x035C95 0D:9C85: B0 11     BCS bra_9C98
-C - - - - - 0x035C97 0D:9C87: BD 50 05  LDA ram_obj_id,X
+C - - - - - 0x035C97 0D:9C87: BD 50 05  LDA ram_obj_id,X ; 0551 
 C - - - - - 0x035C9A 0D:9C8A: A8        TAY
 C - - - - - 0x035C9B 0D:9C8B: B9 AB 9C  LDA tbl_9CAB,Y
 C - - - - - 0x035C9E 0D:9C8E: CD 38 06  CMP ram_0638
@@ -5332,8 +5332,8 @@ C - - - - - 0x035D0A 0D:9CFA: 20 D6 9B  JSR sub_9BD6
 C - - - - - 0x035D0D 0D:9CFD: F0 01     BEQ bra_9D00
 C - - - - - 0x035D0F 0D:9CFF: 60        RTS
 bra_9D00:
-C - - - - - 0x035D10 0D:9D00: BC DE 06  LDY ram_06DE,X
-C - - - - - 0x035D13 0D:9D03: B9 50 05  LDA ram_obj_id,Y
+C - - - - - 0x035D10 0D:9D00: BC DE 06  LDY ram_06DE,X ; 06DE 06DF 
+C - - - - - 0x035D13 0D:9D03: B9 50 05  LDA ram_obj_id,Y ; 0550 0551 
 C - - - - - 0x035D16 0D:9D06: 20 32 D0  JSR sub_0x03D042_поинтеры_после_JSR
 - D 0 - I - 0x035D19 0D:9D09: 32 9C     .word ofs_021_9C32_00_leo
 - - - - - - 0x035D1B 0D:9D0B: 75 9C     .word ofs_021_9C75_01_raph
@@ -5352,8 +5352,8 @@ C - - - - - 0x035D30 0D:9D20: 20 D6 9B  JSR sub_9BD6
 C - - - - - 0x035D33 0D:9D23: F0 01     BEQ bra_9D26
 C - - - - - 0x035D35 0D:9D25: 60        RTS
 bra_9D26:
-C - - - - - 0x035D36 0D:9D26: BC DE 06  LDY ram_06DE,X
-C - - - - - 0x035D39 0D:9D29: B9 50 05  LDA ram_obj_id,Y
+C - - - - - 0x035D36 0D:9D26: BC DE 06  LDY ram_06DE,X ; 06DE 06DF 
+C - - - - - 0x035D39 0D:9D29: B9 50 05  LDA ram_obj_id,Y ; 0550 0551 
 C - - - - - 0x035D3C 0D:9D2C: 20 32 D0  JSR sub_0x03D042_поинтеры_после_JSR
 - D 0 - I - 0x035D3F 0D:9D2F: 3D 9D     .word ofs_020_9D3D_00_leo
 - D 0 - I - 0x035D41 0D:9D31: 75 9C     .word ofs_020_9C75_01_raph
@@ -5410,8 +5410,8 @@ C - - - - - 0x035D88 0D:9D78: B0 19     BCS bra_9D93
 - - - - - - 0x035DA0 0D:9D90: 85 17     STA ram_0017
 - - - - - - 0x035DA2 0D:9D92: 60        RTS
 bra_9D93:
-C - - - - - 0x035DA3 0D:9D93: BC DE 06  LDY ram_06DE,X
-C - - - - - 0x035DA6 0D:9D96: B9 50 05  LDA ram_obj_id,Y
+C - - - - - 0x035DA3 0D:9D93: BC DE 06  LDY ram_06DE,X ; 06DF
+C - - - - - 0x035DA6 0D:9D96: B9 50 05  LDA ram_obj_id,Y ; 0550 
 C - - - - - 0x035DA9 0D:9D99: 20 32 D0  JSR sub_0x03D042_поинтеры_после_JSR
 - D 0 - I - 0x035DAC 0D:9D9C: 32 9C     .word ofs_019_9C32_00_leo
 - - - - - - 0x035DAE 0D:9D9E: 75 9C     .word ofs_019_9C75_01_raph
@@ -5444,8 +5444,8 @@ C - - - - - 0x035DE1 0D:9DD1: C9 02     CMP #$02
 C - - - - - 0x035DE3 0D:9DD3: D0 03     BNE bra_9DD8
 C - - - - - 0x035DE5 0D:9DD5: 4C 31 9E  JMP loc_9E31
 bra_9DD8:
-C - - - - - 0x035DE8 0D:9DD8: BC DE 06  LDY ram_06DE,X
-C - - - - - 0x035DEB 0D:9DDB: B9 50 05  LDA ram_obj_id,Y
+C - - - - - 0x035DE8 0D:9DD8: BC DE 06  LDY ram_06DE,X ; 06DF
+C - - - - - 0x035DEB 0D:9DDB: B9 50 05  LDA ram_obj_id,Y ; 0550 
 C - - - - - 0x035DEE 0D:9DDE: 20 32 D0  JSR sub_0x03D042_поинтеры_после_JSR
 - - - - - - 0x035DF1 0D:9DE1: EF 9D     .word ofs_018_9DEF_00_leo
 - D 0 - I - 0x035DF3 0D:9DE3: 36 9E     .word ofs_018_9E36_01_raph
@@ -5622,8 +5622,8 @@ C - - - - - 0x035F0F 0D:9EFF: 20 D6 9B  JSR sub_9BD6
 C - - - - - 0x035F12 0D:9F02: F0 01     BEQ bra_9F05
 C - - - - - 0x035F14 0D:9F04: 60        RTS
 bra_9F05:
-C - - - - - 0x035F15 0D:9F05: BC DE 06  LDY ram_06DE,X
-C - - - - - 0x035F18 0D:9F08: B9 50 05  LDA ram_obj_id,Y
+C - - - - - 0x035F15 0D:9F05: BC DE 06  LDY ram_06DE,X ; 06DE 06DF 
+C - - - - - 0x035F18 0D:9F08: B9 50 05  LDA ram_obj_id,Y ; 0550 0551 
 C - - - - - 0x035F1B 0D:9F0B: 20 32 D0  JSR sub_0x03D042_поинтеры_после_JSR
 - - - - - - 0x035F1E 0D:9F0E: 1C 9F     .word ofs_017_9F1C_00_leo
 - - - - - - 0x035F20 0D:9F10: 68 9F     .word ofs_017_9F68_01_raph
@@ -5777,7 +5777,7 @@ tbl_9FF5:
 
 bra_9FF9:
 C - - - - - 0x036009 0D:9FF9: BC DE 06  LDY ram_06DE,X
-C - - - - - 0x03600C 0D:9FFC: B9 50 05  LDA ram_obj_id,Y
+C - - - - - 0x03600C 0D:9FFC: B9 50 05  LDA ram_obj_id,Y ; 0550
 C - - - - - 0x03600F 0D:9FFF: 20 32 D0  JSR sub_0x03D042_поинтеры_после_JSR
 - - - - - - 0x036012 0D:A002: 10 A0     .word ofs_016_A010_00_leo
 - D 1 - I - 0x036014 0D:A004: 46 A0     .word ofs_016_A046_01_raph
@@ -6165,7 +6165,7 @@ C - - - - - 0x0362D6 0D:A2C6: A9 01     LDA #con_шаблон_ai_01
 C - - - - - 0x0362D8 0D:A2C8: 9D C0 06  STA ram_шаблон_ai,X
 C - - - - - 0x0362DB 0D:A2CB: 20 7C A3  JSR sub_A37C
 bra_A2CE:
-C - - - - - 0x0362DE 0D:A2CE: BD 50 05  LDA ram_obj_id,X
+C - - - - - 0x0362DE 0D:A2CE: BD 50 05  LDA ram_obj_id,X ; 0550 0551 
 C - - - - - 0x0362E1 0D:A2D1: 49 06     EOR #$06
 C - - - - - 0x0362E3 0D:A2D3: F0 5A     BEQ bra_A32F
 C - - - - - 0x0362E5 0D:A2D5: A5 8C     LDA ram_random_2
@@ -6191,13 +6191,13 @@ C - - - - - 0x036312 0D:A302: C9 01     CMP #con_plr_state_в_прыжке
 C - - - - - 0x036314 0D:A304: F0 2E     BEQ bra_A334
 C - - - - - 0x036316 0D:A306: C9 07     CMP #con_plr_state_сидит
 C - - - - - 0x036318 0D:A308: D0 3F     BNE bra_A349
-C - - - - - 0x03631A 0D:A30A: B9 50 05  LDA ram_obj_id,Y
+C - - - - - 0x03631A 0D:A30A: B9 50 05  LDA ram_obj_id,Y ; 0550 0551 
 C - - - - - 0x03631D 0D:A30D: D0 3A     BNE bra_A349
 C - - - - - 0x03631F 0D:A30F: B9 00 04  LDA ram_plr_anim_id,Y
 C - - - - - 0x036322 0D:A312: C9 9A     CMP #$9A
 C - - - - - 0x036324 0D:A314: F0 19     BEQ bra_A32F
 bra_A316:
-C - - - - - 0x036326 0D:A316: BD 50 05  LDA ram_obj_id,X
+C - - - - - 0x036326 0D:A316: BD 50 05  LDA ram_obj_id,X ; 0550 0551 
 C - - - - - 0x036329 0D:A319: 49 06     EOR #$06
 C - - - - - 0x03632B 0D:A31B: F0 09     BEQ bra_A326
 C - - - - - 0x03632D 0D:A31D: A5 8C     LDA ram_random_2
@@ -6216,7 +6216,7 @@ bra_A334:
 C - - - - - 0x036344 0D:A334: B9 20 05  LDA ram_obj_0520,Y ; 0520 0521 
 C - - - - - 0x036347 0D:A337: C9 04     CMP #con_plr_state_нокаут
 C - - - - - 0x036349 0D:A339: F0 0E     BEQ bra_A349
-C - - - - - 0x03634B 0D:A33B: BD 50 05  LDA ram_obj_id,X
+C - - - - - 0x03634B 0D:A33B: BD 50 05  LDA ram_obj_id,X ; 0550 0551 
 C - - - - - 0x03634E 0D:A33E: C9 06     CMP #$06
 C - - - - - 0x036350 0D:A340: D0 07     BNE bra_A349
 - - - - - - 0x036352 0D:A342: BD 10 04  LDA ram_obj_pos_Y,X
@@ -6285,7 +6285,7 @@ C - - - - - 0x0363CD 0D:A3BD: 90 45     BCC bra_A404
 C - - - - - 0x0363CF 0D:A3BF: BC DE 06  LDY ram_06DE,X
 C - - - - - 0x0363D2 0D:A3C2: 20 42 BF  JSR sub_BF42
 C - - - - - 0x0363D5 0D:A3C5: D0 1C     BNE bra_A3E3
-- - - - - - 0x0363D7 0D:A3C7: B9 50 05  LDA ram_obj_id,Y
+- - - - - - 0x0363D7 0D:A3C7: B9 50 05  LDA ram_obj_id,Y ; 0550 0551 
 - - - - - - 0x0363DA 0D:A3CA: C9 02     CMP #$02
 - - - - - - 0x0363DC 0D:A3CC: F0 04     BEQ bra_A3D2
 - - - - - - 0x0363DE 0D:A3CE: C9 05     CMP #$05
@@ -6365,7 +6365,7 @@ loc_A475:
 C D 1 - - - 0x036485 0D:A475: AD 25 01  LDA ram_option_difficulty
 C - - - - - 0x036488 0D:A478: C9 03     CMP #$03
 C - - - - - 0x03648A 0D:A47A: 90 1E     BCC bra_A49A
-- - - - - - 0x03648C 0D:A47C: B9 50 05  LDA ram_obj_id,Y
+- - - - - - 0x03648C 0D:A47C: B9 50 05  LDA ram_obj_id,Y ; 0551
 - - - - - - 0x03648F 0D:A47F: C9 01     CMP #$01
 - - - - - - 0x036491 0D:A481: D0 17     BNE bra_A49A
 - - - - - - 0x036493 0D:A483: AD 38 06  LDA ram_0638
@@ -6928,7 +6928,7 @@ loc_BD80:
 C - - - - - 0x037D93 0D:BD83: AD 25 01  LDA ram_option_difficulty
 C - - - - - 0x037D96 0D:BD86: C9 03     CMP #$03
 C - - - - - 0x037D98 0D:BD88: 90 58     BCC bra_BDE2
-C - - - - - 0x037D9A 0D:BD8A: BD 50 05  LDA ram_obj_id,X
+C - - - - - 0x037D9A 0D:BD8A: BD 50 05  LDA ram_obj_id,X ; 0550 0551 
 C - - - - - 0x037D9D 0D:BD8D: C9 06     CMP #$06
 C - - - - - 0x037D9F 0D:BD8F: D0 51     BNE bra_BDE2
 - - - - - - 0x037DA1 0D:BD91: BC DE 06  LDY ram_06DE,X

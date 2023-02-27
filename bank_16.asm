@@ -553,7 +553,7 @@ bra_A6EE:
 C - - - - - 0x02E6FE 0B:A6EE: A9 23     LDA #$23
 C - - - - - 0x02E700 0B:A6F0: 18        CLC
 bra_A6F1:
-C - - - - - 0x02E701 0B:A6F1: 7D 50 05  ADC ram_obj_id,X
+C - - - - - 0x02E701 0B:A6F1: 7D 50 05  ADC ram_obj_id,X ; 0550 0551 
 C - - - - - 0x02E704 0B:A6F4: 85 12     STA ram_0012
 C - - - - - 0x02E706 0B:A6F6: 4C 17 F6  JMP loc_0x03F627_restore_prg
 
@@ -574,7 +574,7 @@ sub_0x02E74B:
 ofs_0x02E7CA:
 ; бряк срабатывает после нанесения урона персу обычными ударами
 ; не суперкой, не мячом
-C - - - - - 0x02E7CA 0B:A7BA: BC 50 05  LDY ram_obj_id,X
+C - - - - - 0x02E7CA 0B:A7BA: BC 50 05  LDY ram_obj_id,X ; 0550 0551 
 C - - - - - 0x02E7CD 0B:A7BD: B9 E0 B5  LDA tbl_B5E0_lo,Y
 C - - - - - 0x02E7D0 0B:A7C0: 85 00     STA ram_0000
 C - - - - - 0x02E7D2 0B:A7C2: B9 E7 B5  LDA tbl_B5E7_hi,Y
@@ -609,7 +609,7 @@ ofs_0x02E830:
 C - - - - - 0x02E830 0B:A820: 8A        TXA
 C - - - - - 0x02E831 0B:A821: 49 05     EOR #$05
 C - - - - - 0x02E833 0B:A823: A8        TAY
-C - - - - - 0x02E834 0B:A824: B9 50 05  LDA ram_obj_id,Y
+C - - - - - 0x02E834 0B:A824: B9 50 05  LDA ram_obj_id,Y ; 0550 0551 
 C - - - - - 0x02E837 0B:A827: A8        TAY
 C - - - - - 0x02E838 0B:A828: B9 31 A8  LDA tbl_A831,Y
 C - - - - - 0x02E83B 0B:A82B: 9D B0 05  STA ram_obj_05B0,X
@@ -641,11 +641,11 @@ C - - - - - 0x02E880 0B:A870: C9 04     CMP #$04
 C - - - - - 0x02E882 0B:A872: B0 0C     BCS bra_A880
 C - - - - - 0x02E884 0B:A874: C9 02     CMP #$02
 C - - - - - 0x02E886 0B:A876: F0 08     BEQ bra_A880
-C - - - - - 0x02E888 0B:A878: BC 50 05  LDY ram_obj_id,X
+C - - - - - 0x02E888 0B:A878: BC 50 05  LDY ram_obj_id,X ; 0550 
 C - - - - - 0x02E88B 0B:A87B: B9 9C A8  LDA tbl_A89C,Y
 C - - - - - 0x02E88E 0B:A87E: D0 06     BNE bra_A886
 bra_A880:
-C - - - - - 0x02E890 0B:A880: BC 50 05  LDY ram_obj_id,X
+C - - - - - 0x02E890 0B:A880: BC 50 05  LDY ram_obj_id,X ; 0550 0551 
 C - - - - - 0x02E893 0B:A883: B9 A6 A8  LDA tbl_A8A6,Y
 bra_A886:
 C - - - - - 0x02E896 0B:A886: 9D 60 05  STA ram_obj_0560,X
@@ -739,7 +739,7 @@ C - - - - - 0x02EA77 0B:AA67: C9 FF     CMP #$FF
 C - - - - - 0x02EA79 0B:AA69: D0 02     BNE bra_AA6D
 C - - - - - 0x02EA7B 0B:AA6B: A9 06     LDA #$06
 bra_AA6D:
-C - - - - - 0x02EA7D 0B:AA6D: 95 A2     STA ram_plr_id,X
+C - - - - - 0x02EA7D 0B:AA6D: 95 A2     STA ram_plr_id,X ; 00A2 00A3 
 bra_AA6F_loop:
 C - - - - - 0x02EA7F 0B:AA6F: 8D 50 05  STA ram_obj_id
 C - - - - - 0x02EA82 0B:AA72: 8A        TXA
@@ -794,14 +794,14 @@ C - - - - - 0x02EB15 0B:AB05: 49 01     EOR #$01
 C - - - - - 0x02EB17 0B:AB07: A8        TAY
 C - - - - - 0x02EB18 0B:AB08: 84 1A     STY ram_001A
 ; * 07
-C - - - - - 0x02EB1A 0B:AB0A: B9 50 05  LDA ram_obj_id,Y
+C - - - - - 0x02EB1A 0B:AB0A: B9 50 05  LDA ram_obj_id,Y ; 0550 0551 
 C - - - - - 0x02EB1D 0B:AB0D: 0A        ASL
 C - - - - - 0x02EB1E 0B:AB0E: 0A        ASL
 C - - - - - 0x02EB1F 0B:AB0F: 0A        ASL
 C - - - - - 0x02EB20 0B:AB10: 38        SEC
-C - - - - - 0x02EB21 0B:AB11: F9 50 05  SBC ram_obj_id,Y
+C - - - - - 0x02EB21 0B:AB11: F9 50 05  SBC ram_obj_id,Y ; 0550 0551 
 C - - - - - 0x02EB24 0B:AB14: 18        CLC
-C - - - - - 0x02EB25 0B:AB15: 7D 50 05  ADC ram_obj_id,X
+C - - - - - 0x02EB25 0B:AB15: 7D 50 05  ADC ram_obj_id,X ; 0550 0551 
 C - - - - - 0x02EB28 0B:AB18: C9 21     CMP #$21
 C - - - - - 0x02EB2A 0B:AB1A: D0 29     BNE bra_AB45
 C - - - - - 0x02EB2C 0B:AB1C: 48        PHA

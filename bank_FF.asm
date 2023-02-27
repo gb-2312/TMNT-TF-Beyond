@@ -1853,7 +1853,7 @@ C - - - - - 0x03D7C5 0F:D7B5: 8A        TXA
 loc_D7B6:
 C D 2 - - - 0x03D7C6 0F:D7B6: 29 01     AND #$01
 C - - - - - 0x03D7C8 0F:D7B8: AA        TAX
-C - - - - - 0x03D7C9 0F:D7B9: BD 50 05  LDA ram_obj_id,X
+C - - - - - 0x03D7C9 0F:D7B9: BD 50 05  LDA ram_obj_id,X ; 0550 0551 
 C - - - - - 0x03D7CC 0F:D7BC: 0A        ASL
 C - - - - - 0x03D7CD 0F:D7BD: A8        TAY
 C - - - - - 0x03D7CE 0F:D7BE: B9 7E D8  LDA tbl_D87E_спрайты_персов,Y
@@ -2511,7 +2511,7 @@ C - - - - - 0x03DE5A 0F:DE4A: 26 19     ROL ram_0019
 C - - - - - 0x03DE5C 0F:DE4C: 85 18     STA ram_0018
 C - - - - - 0x03DE5E 0F:DE4E: B5 A0     LDA ram_strength,X
 C - - - - - 0x03DE60 0F:DE50: 0A        ASL
-C - - - - - 0x03DE61 0F:DE51: BC 50 05  LDY ram_obj_id,X
+C - - - - - 0x03DE61 0F:DE51: BC 50 05  LDY ram_obj_id,X ; 0550 0551 
 C - - - - - 0x03DE64 0F:DE54: 18        CLC
 C - - - - - 0x03DE65 0F:DE55: 79 34 F1  ADC tbl_F134,Y
 C - - - - - 0x03DE68 0F:DE58: BC 20 05  LDY ram_obj_0520,X
@@ -2590,7 +2590,7 @@ C - - - - - 0x03DED0 0F:DEC0: 18        CLC
 C - - - - - 0x03DED1 0F:DEC1: 7D 45 06  ADC ram_plr_0645,X ; 0645 0646 
 C - - - - - 0x03DED4 0F:DEC4: 9D 45 06  STA ram_plr_0645,X ; 0645 0646 
 C - - - - - 0x03DED7 0F:DEC7: A4 A9     LDY ram_global_obj_index
-C - - - - - 0x03DED9 0F:DEC9: B9 50 05  LDA ram_obj_id,Y
+C - - - - - 0x03DED9 0F:DEC9: B9 50 05  LDA ram_obj_id,Y ; 0550 0551 
 C - - - - - 0x03DEDC 0F:DECC: C9 04     CMP #$04
 C - - - - - 0x03DEDE 0F:DECE: F0 D9     BEQ bra_DEA9
 C - - - - - 0x03DEE0 0F:DED0: A9 80     LDA #$80
@@ -2659,13 +2659,13 @@ tbl_0x03DF2C:
 
 
 sub_0x03DF33:
-C - - - - - 0x03DF33 0F:DF23: BC 50 05  LDY ram_obj_id,X
+C - - - - - 0x03DF33 0F:DF23: BC 50 05  LDY ram_obj_id,X ; 0550 0551 
 C - - - - - 0x03DF36 0F:DF26: B9 41 DF  LDA tbl_DF41,Y
 C - - - - - 0x03DF39 0F:DF29: A8        TAY
 C - - - - - 0x03DF3A 0F:DF2A: 20 4F DF  JSR sub_DF4F
 C - - - - - 0x03DF3D 0F:DF2D: BD C0 05  LDA ram_obj_anim_timer,X
 C - - - - - 0x03DF40 0F:DF30: 10 0E     BPL bra_DF40_RTS
-C - - - - - 0x03DF42 0F:DF32: BC 50 05  LDY ram_obj_id,X
+C - - - - - 0x03DF42 0F:DF32: BC 50 05  LDY ram_obj_id,X ; 0550 0551 
 C - - - - - 0x03DF45 0F:DF35: B9 48 DF  LDA tbl_DF48,Y
 sub_DF38:
 loc_DF38:
@@ -2754,7 +2754,7 @@ C - - - - - 0x03DFB6 0F:DFA6: 4C 51 F7  JMP loc_F751
 
 
 sub_DFA9:
-C - - - - - 0x03DFB9 0F:DFA9: BC 50 05  LDY ram_obj_id,X
+C - - - - - 0x03DFB9 0F:DFA9: BC 50 05  LDY ram_obj_id,X ; 0550 0551 
 C - - - - - 0x03DFBC 0F:DFAC: B9 00 E1  LDA tbl_E100,Y
 C - - - - - 0x03DFBF 0F:DFAF: 20 38 DF  JSR sub_DF38
 C - - - - - 0x03DFC2 0F:DFB2: A9 00     LDA #$00
@@ -2789,7 +2789,7 @@ C - - - - - 0x03DFEC 0F:DFDC: 60        RTS
 
 
 sub_DFDD:
-C - - - - - 0x03DFED 0F:DFDD: BC 50 05  LDY ram_obj_id,X
+C - - - - - 0x03DFED 0F:DFDD: BC 50 05  LDY ram_obj_id,X ; 0550 0551 
 C - - - - - 0x03DFF0 0F:DFE0: B9 07 E1  LDA tbl_E107,Y
 C - - - - - 0x03DFF3 0F:DFE3: 4C 38 DF  JMP loc_DF38
 
@@ -3582,8 +3582,8 @@ C - - - - - 0x03E42A 0F:E41A: 10 F1     BPL bra_E40D_loop
 C - - - - - 0x03E42C 0F:E41C: 20 3F EB  JSR sub_EB3F
 C - - - - - 0x03E42F 0F:E41F: A2 01     LDX #$01
 bra_E421_loop:
-C - - - - - 0x03E431 0F:E421: B5 A2     LDA ram_plr_id,X
-C - - - - - 0x03E433 0F:E423: 9D 50 05  STA ram_obj_id,X
+C - - - - - 0x03E431 0F:E421: B5 A2     LDA ram_plr_id,X ; 00A2 00A3 
+C - - - - - 0x03E433 0F:E423: 9D 50 05  STA ram_obj_id,X ; 0550 0551 
 C - - - - - 0x03E436 0F:E426: BD 69 E4  LDA tbl_E469,X
 C - - - - - 0x03E439 0F:E429: 9D 40 04  STA ram_obj_pos_X,X
 C - - - - - 0x03E43C 0F:E42C: A9 B0     LDA #$B0
@@ -3605,7 +3605,7 @@ C - - - - - 0x03E45B 0F:E44B: E0 02     CPX #$02
 C - - - - - 0x03E45D 0F:E44D: B0 F8     BCS bra_E447_loop
 C - - - - - 0x03E45F 0F:E44F: A2 01     LDX #$01
 bra_E451_loop:
-C - - - - - 0x03E461 0F:E451: BC 50 05  LDY ram_obj_id,X
+C - - - - - 0x03E461 0F:E451: BC 50 05  LDY ram_obj_id,X ; 0550 0551 
 C - - - - - 0x03E464 0F:E454: B9 99 E9  LDA tbl_E999,Y
 C - - - - - 0x03E467 0F:E457: 20 0E E1  JSR sub_E10E
 C - - - - - 0x03E46A 0F:E45A: 9D 2E 01  STA ram_012E,X
@@ -4080,7 +4080,7 @@ C - - - - - 0x03E71E 0F:E70E: D0 12     BNE bra_E722
 bra_E710:
 C - - - - - 0x03E720 0F:E710: AE 71 06  LDX ram_0671
 C - - - - - 0x03E723 0F:E713: 18        CLC
-C - - - - - 0x03E724 0F:E714: BD 50 05  LDA ram_obj_id,X
+C - - - - - 0x03E724 0F:E714: BD 50 05  LDA ram_obj_id,X ; 0550 0551 
 C - - - - - 0x03E727 0F:E717: 69 04     ADC #$04
 C - - - - - 0x03E729 0F:E719: A8        TAY
 C - - - - - 0x03E72A 0F:E71A: 20 4F DF  JSR sub_DF4F
