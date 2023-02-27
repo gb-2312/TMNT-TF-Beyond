@@ -3794,9 +3794,11 @@ C - - - - - 0x0353E0 0D:93D0: F0 0C     BEQ bra_93DE
 C - - - - - 0x0353E2 0D:93D2: A5 28     LDA ram_random_1
 C - - - - - 0x0353E4 0D:93D4: 29 03     AND #$03
 C - - - - - 0x0353E6 0D:93D6: F0 03     BEQ bra_93DB
-C - - - - - 0x0353E8 0D:93D8: 4C B5 94  JMP loc_94B5
+C - - - - - 0x0353E8 0D:93D8: 4C B5 94  LDA #$21
+                                        RTS
 bra_93DB:
-C - - - - - 0x0353EB 0D:93DB: 4C C1 94  JMP loc_94C1
+C - - - - - 0x0353EB 0D:93DB: 4C C1 94  LDA #$07
+                                        RTS
 bra_93DE:
 - - - - - - 0x0353EE 0D:93DE: A5 11     LDA ram_0011
 - - - - - - 0x0353F0 0D:93E0: C9 01     CMP #$01
@@ -3946,18 +3948,6 @@ tbl_94AE:
 bra_94B2:
 C - - - - - 0x0354C2 0D:94B2: A9 2B     LDA #$2B
 C - - - - - 0x0354C4 0D:94B4: 60        RTS
-
-
-
-loc_94B5:   ; bzk optimize
-C D 0 - - - 0x0354C5 0D:94B5: A9 21     LDA #$21
-C - - - - - 0x0354C7 0D:94B7: 60        RTS
-
-
-
-loc_94C1:   ; bzk optimize
-C D 0 - - - 0x0354D1 0D:94C1: A9 07     LDA #$07
-C - - - - - 0x0354D3 0D:94C3: 60        RTS
 
 
 
