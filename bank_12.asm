@@ -7525,8 +7525,9 @@ C - - - - - 0x026BC3 09:ABB3: A9 07     LDA #$07
 C - - - - - 0x026BC5 09:ABB5: 28        PLP
 C - - - - - 0x026BC6 09:ABB6: 30 40     BMI bra_ABF8
 C - - - - - 0x026BC8 09:ABB8: A9 04     LDA #$04
-C - - - - - 0x026BCA 09:ABBA: C0 2F     CPY #con_колво_обычных_ударов ; con_0552_special_hot_огонь
+C - - - - - 0x026BCA 09:ABBA: C0 2F     CPY #con_0552_special_hot_огонь
 C - - - - - 0x026BCC 09:ABBC: F0 3A     BEQ bra_ABF8
+                                        CPY #con_колво_обычных_ударов
 C - - - - - 0x026BCE 09:ABBE: 90 14     BCC bra_ABD4
 ; if спешал удар
 C - - - - - 0x026BD0 09:ABC0: C0 36     CPY #con_0552_special_shred_мясо
