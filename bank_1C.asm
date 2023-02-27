@@ -4100,9 +4100,9 @@ tbl_995B:
 
 
 loc_996B_напечатать_credits:
-- - - - - - 0x03997B 0E:996B: AD E0 99  LDA tbl_99E0_credits
+- - - - - - 0x03997B 0E:996B: AD E0 99  LDA #< tbl_99E2_credits
 - - - - - - 0x03997E 0E:996E: 85 00     STA ram_0000
-- - - - - - 0x039980 0E:9970: AD E1 99  LDA tbl_99E0_credits + $01
+- - - - - - 0x039980 0E:9970: AD E1 99  LDA #> tbl_99E2_credits
 - - - - - - 0x039983 0E:9973: 85 01     STA ram_0001
 - - - - - - 0x039985 0E:9975: A0 00     LDY #$00
 - - - - - - 0x039987 0E:9977: AE 30 05  LDX ram_obj_0530
@@ -4172,11 +4172,6 @@ bra_99D8_FD:
 - - - - - - 0x0399EA 0E:99DA: A9 01     LDA #$01
 - - - - - - 0x0399EC 0E:99DC: 8D 60 05  STA ram_obj_0560
 - - - - - - 0x0399EF 0E:99DF: 60        RTS
-
-
-; bzk optimize
-tbl_99E0_credits:
-- - - - - - 0x0399F0 0E:99E0: E2 99     .word tbl_99E2_credits
 
 
 
