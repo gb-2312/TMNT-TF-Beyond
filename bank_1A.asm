@@ -1340,7 +1340,6 @@ ofs_033_87CE_0E:
 bra_87E7:
 - - - - - - 0x0347F7 0D:87E7: 4C 0E 8A  JMP loc_8A0E
 bra_87EA:
-loc_87EA:   ; bzk optimize
 C D 0 - - - 0x0347FA 0D:87EA: 4C FB 89  JMP loc_89FB
 
 
@@ -1405,7 +1404,7 @@ C - - - - - 0x03486E 0D:885E: F0 0A     BEQ bra_886A_RTS
 C - - - - - 0x034870 0D:8860: BD 40 04  LDA ram_obj_pos_X,X
 C - - - - - 0x034873 0D:8863: C9 19     CMP #$19
 C - - - - - 0x034875 0D:8865: B0 03     BCS bra_886A_RTS
-C - - - - - 0x034877 0D:8867: 4C EA 87  JMP loc_87EA
+C - - - - - 0x034877 0D:8867: 4C EA 87  JMP loc_89FB
 bra_886A_RTS:
 C - - - - - 0x03487A 0D:886A: 60        RTS
 
