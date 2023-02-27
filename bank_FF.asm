@@ -1884,14 +1884,9 @@ C - - - - - 0x03D7FB 0F:D7EB: F0 7F     BEQ bra_D86C_RTS
 C - - - - - 0x03D7FD 0F:D7ED: 29 7F     AND #$7F
 C - - - - - 0x03D7FF 0F:D7EF: 85 03     STA ram_0003
 C - - - - - 0x03D801 0F:D7F1: A6 2F     LDX ram_002F
-loc_D7F3_loop:
 bra_D7F3_loop:
 C D 2 - - - 0x03D803 0F:D7F3: C8        INY
 C - - - - - 0x03D804 0F:D7F4: B1 08     LDA (ram_0008),Y
-; bzk optimize, избавиться от 80 в 0x030355 (там их 7 штук)
-; заодно добавить там формулы счетчиков где они были удалены
-C - - - - - 0x03D806 0F:D7F6: C9 80     CMP #$80
-C - - - - - 0x03D808 0F:D7F8: F0 73     BEQ bra_D86D_80
 C - - - - - 0x03D80A 0F:D7FA: 18        CLC
 C - - - - - 0x03D80B 0F:D7FB: 24 06     BIT ram_0006
 C - - - - - 0x03D80D 0F:D7FD: 10 06     BPL bra_D805
@@ -1966,18 +1961,6 @@ C - - - - - 0x03D878 0F:D868: C6 03     DEC ram_0003
 C - - - - - 0x03D87A 0F:D86A: D0 87     BNE bra_D7F3_loop
 bra_D86C_RTS:
 C - - - - - 0x03D87C 0F:D86C: 60        RTS
-bra_D86D_80:
-; прочитать поинтеры
-C - - - - - 0x03D87D 0F:D86D: C8        INY
-C - - - - - 0x03D87E 0F:D86E: B1 08     LDA (ram_0008),Y
-C - - - - - 0x03D880 0F:D870: 48        PHA
-C - - - - - 0x03D881 0F:D871: C8        INY
-C - - - - - 0x03D882 0F:D872: B1 08     LDA (ram_0008),Y
-C - - - - - 0x03D884 0F:D874: 85 09     STA ram_0009
-C - - - - - 0x03D886 0F:D876: 68        PLA
-C - - - - - 0x03D887 0F:D877: 85 08     STA ram_0008
-C - - - - - 0x03D889 0F:D879: A0 FF     LDY #$FF
-C - - - - - 0x03D88B 0F:D87B: 4C F3 D7  JMP loc_D7F3_loop
 
 
 
