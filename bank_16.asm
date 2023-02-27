@@ -74,22 +74,12 @@ C - - - - - 0x02C113 0B:8103: 4C 6D D4  JMP loc_0x03D47D
 ofs_041_8106_01:
 C - - J - - 0x02C116 0B:8106: EE 3E 06  INC ram_063E
 C - - - - - 0x02C119 0B:8109: A4 2C     LDY ram_game_mode
-C - - - - - 0x02C11B 0B:810B: BE FA BF  LDX tbl_BFFA,Y
-C - - - - - 0x02C11E 0B:810E: 20 44 F0  JSR sub_0x03F054_отрисовать_экран
-C - - - - - 0x02C122 0B:8112: A5 2C     LDA ram_game_mode
 ; con_gm_story
 ; con_gm_vs_player
 ; con_gm_vs_cpu
 ; con_gm_vs_team
-C - - - - - 0x02C124 0B:8114: D0 05     BNE bra_811B
-; if con_gm_story
-; bzk optimize, сделать 2 разных версии экранов, удалить проверку
-C - - - - - 0x02C126 0B:8116: A2 1A     LDX #con_screen_player_select_4
-C - - - - - 0x02C128 0B:8118: 20 44 F0  JSR sub_0x03F054_отрисовать_экран
-bra_811B:
-; con_gm_vs_player
-; con_gm_vs_cpu
-; con_gm_vs_team
+C - - - - - 0x02C11B 0B:810B: BE FA BF  LDX tbl_BFFA,Y
+C - - - - - 0x02C11E 0B:810E: 20 44 F0  JSR sub_0x03F054_отрисовать_экран
 C - - - - - 0x02C12B 0B:811B: A0 06     LDY #$06
 C - - - - - 0x02C12D 0B:811D: A9 13     LDA #$13
 C - - - - - 0x02C12F 0B:811F: 20 94 D3  JSR sub_0x03D3A4
@@ -2378,7 +2368,7 @@ tbl_BFEA:
 
 
 tbl_BFFA:
-- D 1 - - - 0x03000A 0B:BFFA: 10        .byte con_screen_player_select_7   ; 00 story
+- D 1 - - - 0x03000A 0B:BFFA: 10        .byte con_screen_player_select_4   ; 00 story
 - D 1 - - - 0x03000B 0B:BFFB: 10        .byte con_screen_player_select_7   ; 01 vs player
 - D 1 - - - 0x03000C 0B:BFFC: 10        .byte con_screen_player_select_7   ; 02 vs cpu
 - D 1 - - - 0x03000D 0B:BFFD: 3C        .byte con_screen_player_select_vs   ; 03 vs team
