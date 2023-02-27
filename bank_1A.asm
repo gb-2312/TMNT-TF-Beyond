@@ -3922,6 +3922,11 @@ C - - - - - 0x0354AA 0D:949A: F0 0B     BEQ bra_94A7
 C - - - - - 0x0354AC 0D:949C: 20 C2 EC  JSR sub_0x03ECD2
 C - - - - - 0x0354AF 0D:949F: B9 A3 94  LDA tbl_94A3,Y
 C - - - - - 0x0354B2 0D:94A2: 60        RTS
+bra_94A7:
+; bzk optimize, возможно можно сделать сначала JSR, а потом проверку 0011
+C - - - - - 0x0354B7 0D:94A7: 20 C2 EC  JSR sub_0x03ECD2
+C - - - - - 0x0354BA 0D:94AA: B9 AE 94  LDA tbl_94AE,Y
+C - - - - - 0x0354BD 0D:94AD: 60        RTS
 
 
 
@@ -3930,13 +3935,6 @@ tbl_94A3:
 - D 0 - - - 0x0354B4 0D:94A4: 17        .byte $17   ; 01
 - D 0 - - - 0x0354B5 0D:94A5: 10        .byte $10   ; 02
 - D 0 - - - 0x0354B6 0D:94A6: 18        .byte $18   ; 03
-
-
-
-bra_94A7:
-C - - - - - 0x0354B7 0D:94A7: 20 C2 EC  JSR sub_0x03ECD2
-C - - - - - 0x0354BA 0D:94AA: B9 AE 94  LDA tbl_94AE,Y
-C - - - - - 0x0354BD 0D:94AD: 60        RTS
 
 
 
