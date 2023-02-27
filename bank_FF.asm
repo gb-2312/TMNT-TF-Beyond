@@ -1648,6 +1648,8 @@ tbl_D57A:
 
 
 sub_0x03D5FA:
+                                        LDA ram_option_misc
+                                        AND #$02
 C - - - - - 0x03D5FA 0F:D5EA: D0 0B     BNE bra_D5F7
 C - - - - - 0x03D5FC 0F:D5EC: B9 CA B2  LDA tbl_0x0272DA,Y
 C - - - - - 0x03D5FF 0F:D5EF: 95 34     STA ram_0034,X
