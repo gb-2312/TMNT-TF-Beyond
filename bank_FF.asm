@@ -2547,7 +2547,7 @@ C - - - - - 0x03DE8E 0F:DE7E: A9 04     LDA #$04
 C - - - - - 0x03DE90 0F:DE80: 9D 30 05  STA ram_obj_0530,X
 C - - - - - 0x03DE93 0F:DE83: A9 80     LDA #$80
 C - - - - - 0x03DE95 0F:DE85: 9D 80 05  STA ram_obj_0580,X
-C - - - - - 0x03DE98 0F:DE88: 0A        ASL ; 00    ; con_plr_state_на_земле
+C - - - - - 0x03DE98 0F:DE88: 0A        LDA #$00 ; con_plr_state_на_земле
 C - - - - - 0x03DE99 0F:DE89: 9D 20 05  STA ram_obj_0520,X
 C - - - - - 0x03DE9C 0F:DE8C: 9D 40 05  STA ram_obj_0540,X
 C - - - - - 0x03DE9F 0F:DE8F: 8D 0E 04  STA ram_040E

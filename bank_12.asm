@@ -1433,7 +1433,7 @@ C - - J - - 0x0249A3 09:8993: 20 20 DE  JSR sub_0x03DE30_удалить_объе
 C - - - - - 0x0249A6 09:8996: 20 67 D0  JSR sub_0x03DB48_очистить_spd_X_и_spd_Z
 C - - - - - 0x0249A9 09:8999: A9 80     LDA #$80    ; флаг замедления фпс после смерти
 C - - - - - 0x0249AB 09:899B: 85 AA     STA ram_таймер_задержки_фпс
-C - - - - - 0x0249AD 09:899D: 0A        ASL ; 00
+C - - - - - 0x0249AD 09:899D: 0A        LDA #$00
 C - - - - - 0x0249AE 09:899E: 9D C0 05  STA ram_obj_anim_timer,X
 C - - - - - 0x0249B1 09:89A1: A9 1E     LDA #$1E
 C - - - - - 0x0249B3 09:89A3: 9D F0 04  STA ram_obj_04F0,X
@@ -7668,7 +7668,7 @@ C - - - - - 0x026CD7 09:ACC7: A9 04     LDA #$04
 C - - - - - 0x026CD9 09:ACC9: 9D 30 05  STA ram_obj_0530,X ; 0530 0531 
 C - - - - - 0x026CDC 09:ACCC: A9 80     LDA #$80
 C - - - - - 0x026CDE 09:ACCE: 9D 80 05  STA ram_obj_0580,X ; 0580 0581 
-C - - - - - 0x026CE1 09:ACD1: 0A        ASL ; 00    con_plr_state_на_земле
+C - - - - - 0x026CE1 09:ACD1: 0A        LDA #$00 ; con_plr_state_на_земле
 C - - - - - 0x026CE2 09:ACD2: 9D 20 05  STA ram_obj_0520,X ; 0520 0521 
 C - - - - - 0x026CE5 09:ACD5: 9D 40 05  STA ram_obj_0540,X ; 0540 0541 
 C - - - - - 0x026CE8 09:ACD8: 8A        TXA
