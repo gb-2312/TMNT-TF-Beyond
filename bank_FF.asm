@@ -3336,7 +3336,6 @@ C - - - - - 0x03E2D5 0F:E2C5: D0 F5     BNE bra_E2BC_loop
 C - - - - - 0x03E2D7 0F:E2C7: C6 A8     DEC ram_00A8
 C - - - - - 0x03E2D9 0F:E2C9: 10 A2     BPL bra_E26D_loop
 bra_E2CB:
-C - - - - - 0x03E2DB 0F:E2CB: A9 04     LDA #$04
 C - - - - - 0x03E2DD 0F:E2CD: 20 A0 EB  JSR sub_EBA0_вывести_имя_перса_на_vs_экране
 C - - - - - 0x03E2E0 0F:E2D0: A9 00     LDA #$00
 C - - - - - 0x03E2E2 0F:E2D2: 20 D3 F7  JSR sub_F7D3
@@ -4842,8 +4841,9 @@ tbl_EB6E:
 
 sub_EB9E_вывести_имя_перса_над_шкалой_здоровья:
 C - - - - - 0x03EBAE 0F:EB9E: A9 00     LDA #$00
+                                        .byte $2C   ; BIT
 sub_EBA0_вывести_имя_перса_на_vs_экране:
-; bzk optimize, BIT + LDA 04
+                                        LDA #$04
 C - - - - - 0x03EBB0 0F:EBA0: 85 01     STA ram_0001
 C - - - - - 0x03EBB2 0F:EBA2: A2 01     LDX #$01
 C - - - - - 0x03EBB4 0F:EBA4: 86 A8     STX ram_00A8    ; счетчик цикла
