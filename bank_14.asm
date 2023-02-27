@@ -5960,7 +5960,7 @@ C - - - - - 0x02BD94 0A:BD84: 20 32 D0  JSR sub_0x03D042_поинтеры_пос
 - D 1 - I - 0x02BD99 0A:BD89: C4 BD     .word ofs_043_BDC4_01
 - D 1 - I - 0x02BD9B 0A:BD8B: 46 BE     .word ofs_043_BE46_02
 - D 1 - I - 0x02BD9D 0A:BD8D: B4 BE     .word ofs_043_BEB4_03
-- D 1 - I - 0x02BD9F 0A:BD8F: C2 BE     .word ofs_043_BEC2_04_RTS
+- D 1 - I - 0x02BD9F 0A:BD8F: C2 BE     .word _общий_RTS ; 04
 
 
 
@@ -6115,11 +6115,6 @@ C - - - - - 0x02BEC7 0A:BEB7: D0 8C     BNE bra_BE45_RTS
 C - - - - - 0x02BEC9 0A:BEB9: AD 46 04  LDA ram_obj_pos_X + $06
 C - - - - - 0x02BECC 0A:BEBC: 8D 41 04  STA ram_obj_pos_X + $01
 C - - - - - 0x02BECF 0A:BEBF: 4C 9B BD  JMP loc_BD9B
-
-
-; bzk optimize
-ofs_043_BEC2_04_RTS:
-C - - J - - 0x02BED2 0A:BEC2: 60        RTS
 
 
 
