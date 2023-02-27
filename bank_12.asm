@@ -4473,7 +4473,6 @@ tbl_99B9:
 
 
 tbl_99BC:
-; bzk optimize, одинаковые байты
 - D 0 - - - 0x0259CC 09:99BC: 13        .byte con_0x03D0C3_13   ; 00 leo
 - D 0 - - - 0x0259CD 09:99BD: 13        .byte con_0x03D0C3_13   ; 01 raph
 - D 0 - - - 0x0259CE 09:99BE: 13        .byte con_0x03D0C3_13   ; 02 mike
