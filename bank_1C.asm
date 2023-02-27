@@ -2067,8 +2067,6 @@ C - - - - - 0x038C5C 0E:8C4C: 90 F2     BCC bra_8C40_loop
 C - - - - - 0x038C5E 0E:8C4E: 20 5B D2  JSR sub_0x03D26B_записать_FF_в_буфер_с_чтением_индекса
 bra_8C51:
 C - - - - - 0x038C61 0E:8C51: A6 CF     LDX ram_00CF
-; bzk optimize, на выходе A из 00CF не используется, удалить TXA
-C - - - - - 0x038C63 0E:8C53: 8A        TXA
 C - - - - - 0x038C64 0E:8C54: 60        RTS
 
 
