@@ -5879,6 +5879,7 @@ C - - - - - 0x03F1F2 0F:F1E2: 88        DEY
 C - - - - - 0x03F1F3 0F:F1E3: 88        DEY
 C - - - - - 0x03F1F4 0F:F1E4: 88        DEY
 C - - - - - 0x03F1F5 0F:F1E5: 10 EE     BPL bra_F1D5_loop
+; A = 00
 C - - - - - 0x03F1F7 0F:F1E7: 85 31     STA ram_continue
 C - - - - - 0x03F1F9 0F:F1E9: A0 02     LDY #$02
 bra_F1EB_loop:

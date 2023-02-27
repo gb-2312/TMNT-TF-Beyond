@@ -7233,7 +7233,7 @@ bra_BF41_RTS:
 
 sub_BF42:
 C - - - - - 0x037F52 0D:BF42: B9 20 05  LDA ram_obj_0520,Y ; 0520 0521 
-C - - - - - 0x037F55 0D:BF45: C9 05     CMP #con_plr_state_труп
+C - - - - - 0x037F55 0D:BF45: C9 05     CMP #con_plr_state_запускает_мяч
 C - - - - - 0x037F57 0D:BF47: F0 0B     BEQ bra_BF54_RTS
 C - - - - - 0x037F59 0D:BF49: 98        TYA
 C - - - - - 0x037F5A 0D:BF4A: 09 80     ORA #$80

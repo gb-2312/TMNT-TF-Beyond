@@ -6102,7 +6102,7 @@ C - - - - - 0x02BEB1 0A:BEA1: A0 00     LDY #$00
 C - - - - - 0x02BEB3 0A:BEA3: 8C E1 05  STY ram_obj_05E0 + $01
 C - - - - - 0x02BEB6 0A:BEA6: 88        DEY
 C - - - - - 0x02BEB7 0A:BEA7: 8C 41 04  STY ram_obj_pos_X + $01
-C - - - - - 0x02BEBA 0A:BEAA: A9 05     LDA #con_plr_state_труп
+C - - - - - 0x02BEBA 0A:BEAA: A9 05     LDA #con_plr_state_запускает_мяч
 C - - - - - 0x02BEBC 0A:BEAC: 8D 21 05  STA ram_obj_0520 + $01
 C - - - - - 0x02BEBF 0A:BEAF: A9 1D     LDA #con_0x03F6AD_1D
 C - - - - - 0x02BEC1 0A:BEB1: 4C 8B F6  JMP loc_0x03F69B
