@@ -6,6 +6,7 @@
 
 
 
+.export _общий_RTS
 .export _off009_0x03CF50_2D
 .export _off009_0x03CF6B_01
 .export _off009_0x03CF6F_02
@@ -8116,6 +8117,11 @@ bra_FF6D:
 C - - - - - 0x03FF7D 0F:FF6D: 86 9D     STX ram_009D
 C - - - - - 0x03FF7F 0F:FF6F: 86 AD     STX ram_00AD
 C - - - - - 0x03FF81 0F:FF71: 60        RTS
+
+
+
+_общий_RTS:
+                                        RTS
 
 
 

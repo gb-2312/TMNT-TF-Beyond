@@ -5174,9 +5174,9 @@ C - - - - - 0x035C2E 0D:9C1E: B9 50 05  LDA ram_obj_id,Y
 C - - - - - 0x035C31 0D:9C21: 20 32 D0  JSR sub_0x03D042_поинтеры_после_JSR
 - - - - - - 0x035C34 0D:9C24: 32 9C     .word ofs_022_9C32_00_leo
 - D 0 - I - 0x035C36 0D:9C26: 75 9C     .word ofs_022_9C75_01_raph
-- D 0 - I - 0x035C38 0D:9C28: B2 9C     .word ofs_022_9CB2_02_RTS   ; mike
+- D 0 - I - 0x035C38 0D:9C28: B2 9C     .word _общий_RTS ; 02 mike
 - - - - - - 0x035C3A 0D:9C2A: B3 9C     .word ofs_022_9CB3_03_don
-- - - - - - 0x035C3C 0D:9C2C: C4 9C     .word ofs_022_9CC4_04_RTS   ; casey
+- - - - - - 0x035C3C 0D:9C2C: C4 9C     .word _общий_RTS ; 04 casey
 - - - - - - 0x035C3E 0D:9C2E: C5 9C     .word ofs_022_9CC5_05_hot
 - - - - - - 0x035C40 0D:9C30: D0 9C     .word ofs_022_9CD0_06_shred
 
@@ -5273,11 +5273,6 @@ tbl_9CAB:
 - D 0 - - - 0x035CC1 0D:9CB1: 10        .byte $10   ; 06 shred
 
 
-; bzk optimize
-ofs_022_9CB2_02_RTS:
-C - - J - - 0x035CC2 0D:9CB2: 60        RTS
-
-
 
 ofs_016_9CB3_03_don:
 ofs_017_9CB3_03_don:
@@ -5300,11 +5295,6 @@ C - - - - - 0x035CCF 0D:9CBF: A9 01     LDA #$01
 C - - - - - 0x035CD1 0D:9CC1: 85 17     STA ram_0017
 bra_9CC3_RTS:
 C - - - - - 0x035CD3 0D:9CC3: 60        RTS
-
-
-; bzk optimize
-ofs_022_9CC4_04_RTS:
-- - - - - - 0x035CD4 0D:9CC4: 60        RTS
 
 
 
@@ -5363,31 +5353,11 @@ C - - - - - 0x035D13 0D:9D03: B9 50 05  LDA ram_obj_id,Y
 C - - - - - 0x035D16 0D:9D06: 20 32 D0  JSR sub_0x03D042_поинтеры_после_JSR
 - D 0 - I - 0x035D19 0D:9D09: 32 9C     .word ofs_021_9C32_00_leo
 - - - - - - 0x035D1B 0D:9D0B: 75 9C     .word ofs_021_9C75_01_raph
-- D 0 - I - 0x035D1D 0D:9D0D: 17 9D     .word ofs_021_9D17_02_RTS   ; mike
+- D 0 - I - 0x035D1D 0D:9D0D: 17 9D     .word _общий_RTS ; 02 mike
 - - - - - - 0x035D1F 0D:9D0F: B3 9C     .word ofs_021_9CB3_03_don
-- - - - - - 0x035D21 0D:9D11: 19 9D     .word ofs_021_9D19_04_RTS   ; casey
-- - - - - - 0x035D23 0D:9D13: 1A 9D     .word ofs_021_9D1A_05_RTS   ; hot
-- - - - - - 0x035D25 0D:9D15: 1B 9D     .word ofs_021_9D1B_06_RTS   ; shred
-
-
-; bzk optimize
-ofs_021_9D17_02_RTS:
-C - - J - - 0x035D27 0D:9D17: 60        RTS
-
-
-
-ofs_021_9D19_04_RTS:
-- - - - - - 0x035D29 0D:9D19: 60        RTS
-
-
-
-ofs_021_9D1A_05_RTS:
-- - - - - - 0x035D2A 0D:9D1A: 60        RTS
-
-
-
-ofs_021_9D1B_06_RTS:
-- - - - - - 0x035D2B 0D:9D1B: 60        RTS
+- - - - - - 0x035D21 0D:9D11: 19 9D     .word _общий_RTS ; 04 casey
+- - - - - - 0x035D23 0D:9D13: 1A 9D     .word _общий_RTS ; 05 hot
+- - - - - - 0x035D25 0D:9D15: 1B 9D     .word _общий_RTS ; 06 shred
 
 
 
@@ -5403,11 +5373,11 @@ C - - - - - 0x035D39 0D:9D29: B9 50 05  LDA ram_obj_id,Y
 C - - - - - 0x035D3C 0D:9D2C: 20 32 D0  JSR sub_0x03D042_поинтеры_после_JSR
 - D 0 - I - 0x035D3F 0D:9D2F: 3D 9D     .word ofs_020_9D3D_00_leo
 - D 0 - I - 0x035D41 0D:9D31: 75 9C     .word ofs_020_9C75_01_raph
-- - - - - - 0x035D43 0D:9D33: 5F 9D     .word ofs_020_9D5F_02_RTS   ; mike
+- - - - - - 0x035D43 0D:9D33: 5F 9D     .word _общий_RTS ; 02 mike
 - D 0 - I - 0x035D45 0D:9D35: B3 9C     .word ofs_020_9CB3_03_don
-- - - - - - 0x035D47 0D:9D37: 61 9D     .word ofs_020_9D61_04_RTS   ; casey
-- - - - - - 0x035D49 0D:9D39: 62 9D     .word ofs_020_9D62_05_RTS   ; hot
-- - - - - - 0x035D4B 0D:9D3B: 63 9D     .word ofs_020_9D63_06_RTS   ; shred
+- - - - - - 0x035D47 0D:9D37: 61 9D     .word _общий_RTS ; 04 casey
+- - - - - - 0x035D49 0D:9D39: 62 9D     .word _общий_RTS ; 05 hot
+- - - - - - 0x035D4B 0D:9D3B: 63 9D     .word _общий_RTS ; 06 shred
 
 
 
@@ -5429,26 +5399,6 @@ C - - - - - 0x035D65 0D:9D55: 90 05     BCC bra_9D5C
 - - - - - - 0x035D6B 0D:9D5B: 60        RTS
 bra_9D5C:
 C - - - - - 0x035D6C 0D:9D5C: 4C 32 9C  JMP loc_9C32
-
-
-; bzk optimize
-ofs_020_9D5F_02_RTS:
-- - - - - - 0x035D6F 0D:9D5F: 60        RTS
-
-
-
-ofs_020_9D61_04_RTS:
-- - - - - - 0x035D71 0D:9D61: 60        RTS
-
-
-
-ofs_020_9D62_05_RTS:
-- - - - - - 0x035D72 0D:9D62: 60        RTS
-
-
-
-ofs_020_9D63_06_RTS:
-- - - - - - 0x035D73 0D:9D63: 60        RTS
 
 
 
@@ -5481,31 +5431,11 @@ C - - - - - 0x035DA6 0D:9D96: B9 50 05  LDA ram_obj_id,Y
 C - - - - - 0x035DA9 0D:9D99: 20 32 D0  JSR sub_0x03D042_поинтеры_после_JSR
 - D 0 - I - 0x035DAC 0D:9D9C: 32 9C     .word ofs_019_9C32_00_leo
 - - - - - - 0x035DAE 0D:9D9E: 75 9C     .word ofs_019_9C75_01_raph
-- D 0 - I - 0x035DB0 0D:9DA0: AA 9D     .word ofs_019_9DAA_02_RTS   ; mike
+- D 0 - I - 0x035DB0 0D:9DA0: AA 9D     .word _общий_RTS ; 02 mike
 - - - - - - 0x035DB2 0D:9DA2: B3 9C     .word ofs_019_9CB3_03_don
-- - - - - - 0x035DB4 0D:9DA4: AC 9D     .word ofs_019_9DAC_04_RTS   ; casey
-- - - - - - 0x035DB6 0D:9DA6: AD 9D     .word ofs_019_9DAD_05_RTS   ; hot
-- - - - - - 0x035DB8 0D:9DA8: AE 9D     .word ofs_019_9DAE_06_RTS   ; shred
-
-
-; bzk optimize
-ofs_019_9DAA_02_RTS:
-C - - J - - 0x035DBA 0D:9DAA: 60        RTS
-
-
-
-ofs_019_9DAC_04_RTS:
-- - - - - - 0x035DBC 0D:9DAC: 60        RTS
-
-
-
-ofs_019_9DAD_05_RTS:
-- - - - - - 0x035DBD 0D:9DAD: 60        RTS
-
-
-
-ofs_019_9DAE_06_RTS:
-- - - - - - 0x035DBE 0D:9DAE: 60        RTS
+- - - - - - 0x035DB4 0D:9DA4: AC 9D     .word _общий_RTS ; 04 casey
+- - - - - - 0x035DB6 0D:9DA6: AD 9D     .word _общий_RTS ; 05 hot
+- - - - - - 0x035DB8 0D:9DA8: AE 9D     .word _общий_RTS ; 06 shred
 
 
 
@@ -5537,9 +5467,9 @@ C - - - - - 0x035DEE 0D:9DDE: 20 32 D0  JSR sub_0x03D042_поинтеры_пос
 - D 0 - I - 0x035DF3 0D:9DE3: 36 9E     .word ofs_018_9E36_01_raph
 - - - - - - 0x035DF5 0D:9DE5: 7F 9E     .word ofs_018_9E7F_02_mike
 - D 0 - I - 0x035DF7 0D:9DE7: B3 9C     .word ofs_018_9CB3_03_don
-- - - - - - 0x035DF9 0D:9DE9: B1 9E     .word ofs_018_9EB1_04_RTS   ; casey
+- - - - - - 0x035DF9 0D:9DE9: B1 9E     .word _общий_RTS ; 04 casey
 - - - - - - 0x035DFB 0D:9DEB: B2 9E     .word ofs_018_9EB2_05_hot
-- - - - - - 0x035DFD 0D:9DED: E3 9E     .word ofs_018_9EE3_06_RTS   ; shred
+- - - - - - 0x035DFD 0D:9DED: E3 9E     .word _общий_RTS ; 06 shred
 
 
 
@@ -5657,11 +5587,6 @@ bra_9EAB:
 - - - - - - 0x035EBF 0D:9EAF: 60        RTS
 
 
-; bzk optimize
-ofs_018_9EB1_04_RTS:
-- - - - - - 0x035EC1 0D:9EB1: 60        RTS
-
-
 
 ofs_018_9EB2_05_hot:
 - - - - - - 0x035EC2 0D:9EB2: A5 11     LDA ram_0011
@@ -5693,11 +5618,6 @@ bra_9EDE:
 - - - - - - 0x035EF2 0D:9EE2: 60        RTS
 
 
-; bzk optimize
-ofs_018_9EE3_06_RTS:
-- - - - - - 0x035EF3 0D:9EE3: 60        RTS
-
-
 
 ofs_036_9EE4_05_hot:
 C - - J - - 0x035EF4 0D:9EE4: A9 00     LDA #$00
@@ -5726,7 +5646,7 @@ C - - - - - 0x035F1B 0D:9F0B: 20 32 D0  JSR sub_0x03D042_поинтеры_пос
 - - - - - - 0x035F22 0D:9F12: 84 A0     .word ofs_017_A084_02_mike
 - D 0 - I - 0x035F24 0D:9F14: B3 9C     .word ofs_017_9CB3_03_don
 - D 0 - I - 0x035F26 0D:9F16: 15 A1     .word ofs_017_A115_04_casey
-- - - - - - 0x035F28 0D:9F18: 9D 9F     .word ofs_017_9F9D_05_RTS   ; hot
+- - - - - - 0x035F28 0D:9F18: 9D 9F     .word _общий_RTS ; 05 hot
 - D 0 - I - 0x035F2A 0D:9F1A: 9E 9F     .word ofs_017_9F9E_06_shred
 
 
@@ -5807,11 +5727,6 @@ loc_9F95:
 - - - - - - 0x035FA5 0D:9F95: A9 01     LDA #$01
 - - - - - - 0x035FA7 0D:9F97: 85 17     STA ram_0017
 - - - - - - 0x035FA9 0D:9F99: 60        RTS
-
-
-; bzk optimize
-ofs_017_9F9D_05_RTS:
-- - - - - - 0x035FAD 0D:9F9D: 60        RTS
 
 
 
