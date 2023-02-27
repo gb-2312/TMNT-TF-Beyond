@@ -2456,8 +2456,6 @@ C - - - - - 0x0250C7 09:90B7: 20 5D 91  JSR sub_915D_записать_звук
 C - - - - - 0x0250CA 09:90BA: 4C 30 91  JMP loc_9130
 bra_90BD:
 C - - - - - 0x0250CD 09:90BD: 9D 00 04  STA ram_plr_anim_id,X
-; bzk optimize, нахрена тут CLC?
-C - - - - - 0x0250D0 09:90C0: 18        CLC
 C - - - - - 0x0250D1 09:90C1: B9 4E 97  LDA tbl_974C_броски + $02,Y
 C - - - - - 0x0250D4 09:90C4: 85 01     STA ram_0001
 C - - - - - 0x0250D6 09:90C6: 18        CLC
