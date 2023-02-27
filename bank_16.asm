@@ -580,7 +580,7 @@ C - - - - - 0x02E7D0 0B:A7C0: 85 00     STA ram_0000
 C - - - - - 0x02E7D2 0B:A7C2: B9 E7 B5  LDA tbl_B5E7_hi,Y
 C - - - - - 0x02E7D5 0B:A7C5: 85 01     STA ram_0001
 C - - - - - 0x02E7D7 0B:A7C7: A4 A9     LDY ram_global_obj_index
-C - - - - - 0x02E7D9 0B:A7C9: B9 12 06  LDA ram_plr_последняя_атака,Y
+C - - - - - 0x02E7D9 0B:A7C9: B9 12 06  LDA ram_plr_индекс_атаки,Y
 C - - - - - 0x02E7DC 0B:A7CC: 0A        ASL
 C - - - - - 0x02E7DD 0B:A7CD: A8        TAY
 C - - - - - 0x02E7DE 0B:A7CE: BD C0 04  LDA ram_obj_04C0,X ; 04C0 04C1 
@@ -1732,7 +1732,7 @@ bra_B791:
 C - - - - - 0x02F7A1 0B:B791: 20 65 B8  JSR sub_B865
 C - - - - - 0x02F7A4 0B:B794: 20 73 D0  JSR sub_0x03D083_очистить_spd_Z
 C - - - - - 0x02F7A7 0B:B797: BD 54 05  LDA ram_0554,X
-C - - - - - 0x02F7AA 0B:B79A: C9 39     CMP #$39
+C - - - - - 0x02F7AA 0B:B79A: C9 39     CMP #con_0552_special_casey_песок
 C - - - - - 0x02F7AC 0B:B79C: F0 5E     BEQ bra_B7FC
 C - - - - - 0x02F7AE 0B:B79E: A9 06     LDA #$06
 C - - - - - 0x02F7B0 0B:B7A0: 4C 48 B8  JMP loc_B848
@@ -1765,7 +1765,7 @@ C - - - - - 0x02F7E0 0B:B7D0: D0 0C     BNE bra_B7DE
 C - - - - - 0x02F7E2 0B:B7D2: BD D0 05  LDA ram_obj_05D0,X
 C - - - - - 0x02F7E5 0B:B7D5: C9 04     CMP #$04
 C - - - - - 0x02F7E7 0B:B7D7: D0 05     BNE bra_B7DE
-C - - - - - 0x02F7E9 0B:B7D9: A9 39     LDA #$39
+C - - - - - 0x02F7E9 0B:B7D9: A9 39     LDA #con_0552_special_casey_песок
 C - - - - - 0x02F7EB 0B:B7DB: 20 00 B9  JSR sub_B900
 bra_B7DE:
 C - - - - - 0x02F7EE 0B:B7DE: BC D0 05  LDY ram_obj_05D0,X

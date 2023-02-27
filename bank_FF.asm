@@ -4016,8 +4016,8 @@ C - - - - - 0x03E69E 0F:E68E: 60        RTS
 ofs_001_E68F_0B_ничья_во_время_боя:
 C - - J - - 0x03E69F 0F:E68F: A9 00     LDA #$00
 C - - - - - 0x03E6A1 0F:E691: 8D 07 04  STA ram_0407
-C - - - - - 0x03E6A4 0F:E694: 8D 10 06  STA ram_plr_флаг_последней_атаки
-C - - - - - 0x03E6A7 0F:E697: 8D 11 06  STA ram_plr_флаг_последней_атаки + $01
+C - - - - - 0x03E6A4 0F:E694: 8D 10 06  STA ram_plr_флаг_индекса_атаки
+C - - - - - 0x03E6A7 0F:E697: 8D 11 06  STA ram_plr_флаг_индекса_атаки + $01
 C - - - - - 0x03E6AA 0F:E69A: A2 01     LDX #$01
 C - - - - - 0x03E6AC 0F:E69C: 20 67 D0  JSR sub_D067_очистить_spd_X_и_spd_Z
 C - - - - - 0x03E6AF 0F:E69F: CA        DEX
@@ -4198,8 +4198,8 @@ C - - - - - 0x03E7EC 0F:E7DC: 8D 73 06  STA ram_время_единицы
 C - - - - - 0x03E7EF 0F:E7DF: 85 AA     STA ram_таймер_задержки_фпс
 C - - - - - 0x03E7F1 0F:E7E1: 8D 1A 06  STA ram_plr_061A
 C - - - - - 0x03E7F4 0F:E7E4: 8D 18 06  STA ram_plr_0618
-C - - - - - 0x03E7F7 0F:E7E7: 8D 10 06  STA ram_plr_флаг_последней_атаки
-C - - - - - 0x03E7FA 0F:E7EA: 8D 11 06  STA ram_plr_флаг_последней_атаки + $01
+C - - - - - 0x03E7F7 0F:E7E7: 8D 10 06  STA ram_plr_флаг_индекса_атаки
+C - - - - - 0x03E7FA 0F:E7EA: 8D 11 06  STA ram_plr_флаг_индекса_атаки + $01
 C - - - - - 0x03E7FD 0F:E7ED: 85 A6     STA ram_00A6
 C - - - - - 0x03E7FF 0F:E7EF: 85 98     STA ram_0098
 C - - - - - 0x03E801 0F:E7F1: A9 18     LDA #$18
@@ -4979,9 +4979,9 @@ tbl_EC53_ppu:
 sub_0x03EC6B:
 C - - - - - 0x03EC6B 0F:EC5B: BC DE 06  LDY ram_06DE,X
 C - - - - - 0x03EC6E 0F:EC5E: B9 54 05  LDA ram_0554,Y
-C - - - - - 0x03EC71 0F:EC61: C9 30     CMP #$30
+C - - - - - 0x03EC71 0F:EC61: C9 30     CMP #con_0552_special_shred_волна
 C - - - - - 0x03EC73 0F:EC63: F0 0A     BEQ bra_EC6F
-C - - - - - 0x03EC75 0F:EC65: C9 39     CMP #$39
+C - - - - - 0x03EC75 0F:EC65: C9 39     CMP #con_0552_special_casey_песок
 C - - - - - 0x03EC77 0F:EC67: F0 06     BEQ bra_EC6F
 C - - - - - 0x03EC79 0F:EC69: A9 FF     LDA #$FF
 C - - - - - 0x03EC7B 0F:EC6B: 8D F8 06  STA ram_06F8
