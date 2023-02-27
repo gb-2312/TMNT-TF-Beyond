@@ -1662,6 +1662,7 @@ C D 0 - - - 0x034A1E 0D:8A0E: BD C6 06  LDA ram_06C6,X
 C - - - - - 0x034A21 0D:8A11: 1D C8 06  ORA ram_06C8,X
 C - - - - - 0x034A24 0D:8A14: 95 91     STA ram_btn_hold,X
 C - - - - - 0x034A26 0D:8A16: 9D C6 06  STA ram_06C6,X
+                                        STA ram_06C8,X
 C - - - - - 0x034A29 0D:8A19: 4C BF A1  JMP loc_A1BF
 
 
@@ -6134,8 +6135,6 @@ C - - - - - 0x0361CE 0D:A1BE: 60        RTS
 
 
 loc_A1BF:
-; bzk optimize, добавить этот STA перед JMP
-C D 1 - - - 0x0361CF 0D:A1BF: 9D C8 06  STA ram_06C8,X
 C - - - - - 0x0361D2 0D:A1C2: BC DE 06  LDY ram_06DE,X
 C - - - - - 0x0361D5 0D:A1C5: AD 25 01  LDA ram_option_difficulty
 C - - - - - 0x0361D8 0D:A1C8: C9 03     CMP #$03
