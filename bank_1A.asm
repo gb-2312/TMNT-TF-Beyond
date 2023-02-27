@@ -6150,7 +6150,7 @@ C - - - - - 0x0362B8 0D:A2A8: C0 04     CPY #$04
 C - - - - - 0x0362BA 0D:A2AA: F0 22     BEQ bra_A2CE
 C - - - - - 0x0362BC 0D:A2AC: C0 03     CPY #$03
 C - - - - - 0x0362BE 0D:A2AE: D0 2B     BNE bra_A2DB
-C - - - - - 0x0362C0 0D:A2B0: BD C0 04  LDA ram_obj_04C0,X
+C - - - - - 0x0362C0 0D:A2B0: BD C0 04  LDA ram_obj_04C0,X ; 04C0 04C1 
 C - - - - - 0x0362C3 0D:A2B3: C9 08     CMP #$08
 C - - - - - 0x0362C5 0D:A2B5: F0 17     BEQ bra_A2CE
 C - - - - - 0x0362C7 0D:A2B7: C9 07     CMP #$07
@@ -6310,7 +6310,7 @@ C - - - - - 0x036400 0D:A3F0: F0 16     BEQ bra_A408
 C - - - - - 0x036402 0D:A3F2: BD 20 05  LDA ram_obj_0520,X ; 0520 0521 
 C - - - - - 0x036405 0D:A3F5: C9 03     CMP #con_plr_state_получает_урон
 C - - - - - 0x036407 0D:A3F7: D0 0B     BNE bra_A404
-C - - - - - 0x036409 0D:A3F9: BD C0 04  LDA ram_obj_04C0,X
+C - - - - - 0x036409 0D:A3F9: BD C0 04  LDA ram_obj_04C0,X ; 04C0 04C1 
 C - - - - - 0x03640C 0D:A3FC: C9 04     CMP #$04
 C - - - - - 0x03640E 0D:A3FE: F0 11     BEQ bra_A411
 C - - - - - 0x036410 0D:A400: C9 07     CMP #$07

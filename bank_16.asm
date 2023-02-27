@@ -583,7 +583,7 @@ C - - - - - 0x02E7D7 0B:A7C7: A4 A9     LDY ram_global_obj_index
 C - - - - - 0x02E7D9 0B:A7C9: B9 12 06  LDA ram_plr_0612,Y
 C - - - - - 0x02E7DC 0B:A7CC: 0A        ASL
 C - - - - - 0x02E7DD 0B:A7CD: A8        TAY
-C - - - - - 0x02E7DE 0B:A7CE: BD C0 04  LDA ram_obj_04C0,X
+C - - - - - 0x02E7DE 0B:A7CE: BD C0 04  LDA ram_obj_04C0,X ; 04C0 04C1 
 C - - - - - 0x02E7E1 0B:A7D1: 4A        LSR
 C - - - - - 0x02E7E2 0B:A7D2: B0 06     BCS bra_A7DA
 C - - - - - 0x02E7E4 0B:A7D4: C8        INY
@@ -636,7 +636,7 @@ C - - - - - 0x02E874 0B:A864: A4 A9     LDY ram_global_obj_index
 C - - - - - 0x02E876 0B:A866: B9 20 05  LDA ram_obj_0520,Y ; 0520 0521 
 C - - - - - 0x02E879 0B:A869: C9 03     CMP #con_plr_state_получает_урон
 C - - - - - 0x02E87B 0B:A86B: D0 13     BNE bra_A880
-C - - - - - 0x02E87D 0B:A86D: B9 C0 04  LDA ram_obj_04C0,Y
+C - - - - - 0x02E87D 0B:A86D: B9 C0 04  LDA ram_obj_04C0,Y ; 04C1 
 C - - - - - 0x02E880 0B:A870: C9 04     CMP #$04
 C - - - - - 0x02E882 0B:A872: B0 0C     BCS bra_A880
 C - - - - - 0x02E884 0B:A874: C9 02     CMP #$02
