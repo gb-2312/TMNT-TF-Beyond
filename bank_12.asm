@@ -2738,7 +2738,8 @@ C - - - - - 0x0252C3 09:92B3: B0 16     BCS bra_92CB
 C - - - - - 0x0252C5 09:92B5: A4 A9     LDY ram_global_obj_index
 C - - - - - 0x0252C7 09:92B7: B9 50 05  LDA ram_obj_id,Y
 C - - - - - 0x0252CA 09:92BA: A8        TAY
-C - - - - - 0x0252CB 09:92BB: 20 DD B7  JSR sub_B7DD
+C - - - - - 0x0252CB 09:92BB: 20 DD B7  LDA tbl_973E,Y
+                                        DEC ram_obj_04C0,X ; 04C0 04C1 
 C - - - - - 0x0252CE 09:92BE: 20 3C DE  JSR sub_0x03DE4C
 C - - - - - 0x0252D1 09:92C1: 20 BA DE  JSR sub_0x03DECA
 C - - - - - 0x0252D4 09:92C4: A0 FD     LDY #$FD
@@ -9629,14 +9630,6 @@ sub_B7D6:
 C - - - - - 0x0277E6 09:B7D6: 99 20 05  STA ram_obj_0520,Y ; 0520 0521 
 C - - - - - 0x0277E9 09:B7D9: 99 C0 04  STA ram_obj_04C0,Y ; 04C0 04C1 
 C - - - - - 0x0277EC 09:B7DC: 60        RTS
-
-
-
-sub_B7DD:
-; bzk optimize
-C - - - - - 0x0277ED 09:B7DD: B9 3E 97  LDA tbl_973E,Y
-C - - - - - 0x0277F0 09:B7E0: DE C0 04  DEC ram_obj_04C0,X ; 04C0 04C1 
-C - - - - - 0x0277F3 09:B7E3: 60        RTS
 
 
 
