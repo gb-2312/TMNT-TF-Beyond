@@ -7456,6 +7456,7 @@ C - - - - - 0x026B58 09:AB48: A9 82     LDA #$82
 C - - - - - 0x026B5A 09:AB4A: 85 08     STA ram_0008
 C - - - - - 0x026B5C 09:AB4C: 8D 04 01  STA ram_0104
 C - - - - - 0x026B5F 09:AB4F: A9 0D     LDA #con_0x03F6AD_0D
+                                        JSR sub_0x03F6A4_записать_звук
 C - - - - - 0x026B61 09:AB51: 20 24 AC  JSR sub_AC24_записать_звук_и_посчитать_урон
 C - - - - - 0x026B64 09:AB54: A9 06     LDA #$06
 C - - - - - 0x026B66 09:AB56: 20 F8 AB  JSR sub_ABF8
@@ -7500,6 +7501,7 @@ C - - - - - 0x026BAE 09:AB9E: B9 50 05  LDA ram_obj_id,Y ; 0552 0553 0554 0555 0
 C - - - - - 0x026BB1 09:ABA1: 29 7F     AND #$7F
 C - - - - - 0x026BB3 09:ABA3: A8        TAY
 C - - - - - 0x026BB4 09:ABA4: B9 BC AF  LDA tbl_AFBC_звук_получения_удара,Y
+                                        JSR sub_0x03F6A4_записать_звук
 C - - - - - 0x026BB7 09:ABA7: 20 1D AC  JSR sub_AC1D_записать_звук_и_посчитать_урон    ; возможен PLA PLA
 C - - - - - 0x026BBA 09:ABAA: A6 AC     LDX ram_00AC
 C - - - - - 0x026BBC 09:ABAC: A4 A9     LDY ram_global_obj_index
@@ -7573,14 +7575,12 @@ C - - - - - 0x026C2C 09:AC1C: 60        RTS
 
 
 sub_AC1D_записать_звук_и_посчитать_урон:
-C - - - - - 0x026C2D 09:AC1D: 20 94 F6  JSR sub_0x03F6A4_записать_звук
 C - - - - - 0x026C30 09:AC20: A9 80     LDA #$80
 C - - - - - 0x026C32 09:AC22: D0 05     BNE bra_AC29    ; jmp
 
 
 
 sub_AC24_записать_звук_и_посчитать_урон:
-C - - - - - 0x026C34 09:AC24: 20 94 F6  JSR sub_0x03F6A4_записать_звук
 C - - - - - 0x026C37 09:AC27: A9 00     LDA #$00
 bra_AC29:
 C - - - - - 0x026C39 09:AC29: 85 10     STA ram_0010
