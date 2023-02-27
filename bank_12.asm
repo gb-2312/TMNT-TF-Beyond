@@ -7195,11 +7195,8 @@ loc_A987:
 C D 1 - - - 0x026997 09:A987: A9 00     LDA #$00
 C - - - - - 0x026999 09:A989: 9D 00 04  STA ram_plr_anim_id,X ; 0407 
 C - - - - - 0x02699C 09:A98C: 9D 30 05  STA ram_obj_0530,X ; 0537 
-; bzk optimize
 bra_A98F_RTS:
 C - - - - - 0x02699F 09:A98F: 60        RTS
-bra_A990_RTS:
-C - - - - - 0x0269A0 09:A990: 60        RTS
 
 
 
@@ -7225,19 +7222,19 @@ C - - - - - 0x0269BE 09:A9AE: F0 07     BEQ bra_A9B7    ; jmp
 bra_A9B0:
 C - - - - - 0x0269C0 09:A9B0: A6 A8     LDX ram_00A8
 C - - - - - 0x0269C2 09:A9B2: BD 50 05  LDA ram_obj_id,X ; 0558 0559 
-C - - - - - 0x0269C5 09:A9B5: F0 D9     BEQ bra_A990_RTS
+C - - - - - 0x0269C5 09:A9B5: F0 D9     BEQ bra_A98F_RTS
 bra_A9B7:
 C - - - - - 0x0269C7 09:A9B7: A6 AC     LDX ram_00AC
 C - - - - - 0x0269C9 09:A9B9: BD F0 05  LDA ram_obj_05F0,X ; 05F0 05F1 
-C - - - - - 0x0269CC 09:A9BC: D0 D2     BNE bra_A990_RTS
+C - - - - - 0x0269CC 09:A9BC: D0 D2     BNE bra_A98F_RTS
 C - - - - - 0x0269CE 09:A9BE: BD 80 05  LDA ram_obj_0580,X ; 0580 0581 
-C - - - - - 0x0269D1 09:A9C1: 30 CD     BMI bra_A990_RTS
+C - - - - - 0x0269D1 09:A9C1: 30 CD     BMI bra_A98F_RTS
 C - - - - - 0x0269D3 09:A9C3: BD 20 05  LDA ram_obj_0520,X ; 0520 0521 
 C - - - - - 0x0269D6 09:A9C6: C9 03     CMP #con_plr_state_получает_урон
-C - - - - - 0x0269D8 09:A9C8: F0 C6     BEQ bra_A990_RTS
+C - - - - - 0x0269D8 09:A9C8: F0 C6     BEQ bra_A98F_RTS
 C - - - - - 0x0269DA 09:A9CA: A6 A8     LDX ram_00A8
 C - - - - - 0x0269DC 09:A9CC: BC 70 05  LDY ram_obj_0570,X ; 0570 0571 0578 0579 
-C - - - - - 0x0269DF 09:A9CF: F0 BF     BEQ bra_A990_RTS
+C - - - - - 0x0269DF 09:A9CF: F0 BF     BEQ bra_A98F_RTS
 C - - - - - 0x0269E1 09:A9D1: BD 40 04  LDA ram_obj_pos_X,X ; 0440 0441 0448 0449 
 C - - - - - 0x0269E4 09:A9D4: 85 00     STA ram_0000
 C - - - - - 0x0269E6 09:A9D6: 85 0E     STA ram_000E
@@ -7257,7 +7254,7 @@ C - - - - - 0x026A02 09:A9F2: 20 7C BD  JSR sub_BD7C
 bra_A9F5_loop:
 C - - - - - 0x026A05 09:A9F5: A6 AC     LDX ram_00AC
 C - - - - - 0x026A07 09:A9F7: BD 80 05  LDA ram_obj_0580,X ; 0580 0581 
-C - - - - - 0x026A0A 09:A9FA: 30 94     BMI bra_A990_RTS
+C - - - - - 0x026A0A 09:A9FA: 30 94     BMI bra_A98F_RTS
 C - - - - - 0x026A0C 09:A9FC: A4 A9     LDY ram_global_obj_index
 ; Y = 02-06
 C - - - - - 0x026A0E 09:A9FE: B9 50 05  LDA ram_obj_id,Y ; 0552 0553 0554 0555 0556 
