@@ -222,7 +222,7 @@ C - - - - - 0x034187 0D:8177: 20 A7 81  JSR sub_81A7_выбрать_шаблон
 bra_817A:
 C - - - - - 0x03418A 0D:817A: 9D C0 06  STA ram_шаблон_ai,X
 C - - - - - 0x03418D 0D:817D: 20 6E A5  JSR sub_A56E
-C - - - - - 0x034190 0D:8180: C9 46     CMP #con_колво_шаблонов_ai + $01
+C - - - - - 0x034190 0D:8180: C9 46     CMP #con_колво_шаблонов_ai
 C - - - - - 0x034192 0D:8182: B0 0B     BCS bra_818F
 C - - - - - 0x034194 0D:8184: A9 00     LDA #$00
 C - - - - - 0x034196 0D:8186: 9D D2 06  STA ram_06D2,X
@@ -4415,9 +4415,9 @@ C - - - - - 0x0357F3 0D:97E3: D9 0C 06  CMP ram_060C,Y
 C - - - - - 0x0357F6 0D:97E6: F0 3E     BEQ bra_9826
 bra_97E8:
 C - - - - - 0x0357F8 0D:97E8: B9 12 06  LDA ram_plr_индекс_атаки,Y
-C - - - - - 0x0357FB 0D:97EB: C9 0D     CMP #$0D
+C - - - - - 0x0357FB 0D:97EB: C9 0D     CMP #con_0612_0D
 C - - - - - 0x0357FD 0D:97ED: F0 2A     BEQ bra_9819
-C - - - - - 0x0357FF 0D:97EF: C9 0A     CMP #$0A
+C - - - - - 0x0357FF 0D:97EF: C9 0A     CMP #con_0612_0A
 C - - - - - 0x035801 0D:97F1: F0 26     BEQ bra_9819
 C - - - - - 0x035803 0D:97F3: B9 26 06  LDA ram_plr_0626,Y
 C - - - - - 0x035806 0D:97F6: C9 02     CMP #$02
@@ -4786,11 +4786,11 @@ C - - - - - 0x0359E2 0D:99D2: A5 13     LDA ram_0013
 C - - - - - 0x0359E4 0D:99D4: C9 03     CMP #$03
 C - - - - - 0x0359E6 0D:99D6: F0 11     BEQ bra_99E9
 C - - - - - 0x0359E8 0D:99D8: B9 12 06  LDA ram_plr_индекс_атаки,Y
-C - - - - - 0x0359EB 0D:99DB: C9 0D     CMP #$0D
+C - - - - - 0x0359EB 0D:99DB: C9 0D     CMP #con_0612_0D
 C - - - - - 0x0359ED 0D:99DD: D0 03     BNE bra_99E2
 C - - - - - 0x0359EF 0D:99DF: 4C E2 9A  JMP loc_9AE2
 bra_99E2:
-C - - - - - 0x0359F2 0D:99E2: C9 0A     CMP #$0A
+C - - - - - 0x0359F2 0D:99E2: C9 0A     CMP #con_0612_0A
 C - - - - - 0x0359F4 0D:99E4: D0 03     BNE bra_99E9
 - - - - - - 0x0359F6 0D:99E6: 4C E2 9A  JMP loc_9AE2
 bra_99E9:
@@ -5141,9 +5141,9 @@ C - - - - - 0x035C06 0D:9BF6: BC DE 06  LDY ram_06DE,X
 C - - - - - 0x035C09 0D:9BF9: B9 10 06  LDA ram_plr_флаг_индекса_атаки,Y
 C - - - - - 0x035C0C 0D:9BFC: F0 0B     BEQ bra_9C09
 C - - - - - 0x035C0E 0D:9BFE: B9 12 06  LDA ram_plr_индекс_атаки,Y
-C - - - - - 0x035C11 0D:9C01: C9 0D     CMP #$0D
+C - - - - - 0x035C11 0D:9C01: C9 0D     CMP #con_0612_0D
 C - - - - - 0x035C13 0D:9C03: F0 07     BEQ bra_9C0C
-C - - - - - 0x035C15 0D:9C05: C9 0A     CMP #$0A
+C - - - - - 0x035C15 0D:9C05: C9 0A     CMP #con_0612_0A
 C - - - - - 0x035C17 0D:9C07: F0 03     BEQ bra_9C0C
 bra_9C09:
 C - - - - - 0x035C19 0D:9C09: A9 00     LDA #$00
@@ -5740,11 +5740,11 @@ C - - - - - 0x035FCD 0D:9FBD: F0 15     BEQ bra_9FD4
 C - - - - - 0x035FCF 0D:9FBF: C9 03     CMP #$03
 C - - - - - 0x035FD1 0D:9FC1: B0 11     BCS bra_9FD4
 C - - - - - 0x035FD3 0D:9FC3: B9 12 06  LDA ram_plr_индекс_атаки,Y
-C - - - - - 0x035FD6 0D:9FC6: C9 0D     CMP #$0D
+C - - - - - 0x035FD6 0D:9FC6: C9 0D     CMP #con_0612_0D
 C - - - - - 0x035FD8 0D:9FC8: D0 03     BNE bra_9FCD
 C - - - - - 0x035FDA 0D:9FCA: 4C F7 A0  JMP loc_A760
 bra_9FCD:
-C - - - - - 0x035FDD 0D:9FCD: C9 0A     CMP #$0A
+C - - - - - 0x035FDD 0D:9FCD: C9 0A     CMP #con_0612_0A
 C - - - - - 0x035FDF 0D:9FCF: D0 03     BNE bra_9FD4
 C - - - - - 0x035FE1 0D:9FD1: 4C F7 A0  JMP loc_A760
 bra_9FD4:
@@ -6013,7 +6013,7 @@ tbl_A195:
 
 sub_A1A6:
 - - - - - - 0x0361B6 0D:A1A6: AD 38 06  LDA ram_0638
-- - - - - - 0x0361B9 0D:A1A9: C9 46     CMP #con_колво_шаблонов_ai + $01
+- - - - - - 0x0361B9 0D:A1A9: C9 46     CMP #con_колво_шаблонов_ai
 - - - - - - 0x0361BB 0D:A1AB: B0 11     BCS bra_A1BE_RTS
 sub_A1AD:
 C - - - - - 0x0361BD 0D:A1AD: BD 40 04  LDA ram_obj_pos_X,X
@@ -6106,7 +6106,7 @@ bra_A240:
 bra_A256:
 - - - - - - 0x036266 0D:A256: BD 12 06  LDA ram_plr_индекс_атаки,X
 - - - - - - 0x036269 0D:A259: 1D 10 06  ORA ram_plr_флаг_индекса_атаки,X
-- - - - - - 0x03626C 0D:A25C: C9 A5     CMP #$25 + $80
+- - - - - - 0x03626C 0D:A25C: C9 A5     CMP #con_0612_25 + $80
 - - - - - - 0x03626E 0D:A25E: D0 07     BNE bra_A267
 - - - - - - 0x036270 0D:A260: B9 54 05  LDA ram_0554,Y
 - - - - - - 0x036273 0D:A263: C9 32     CMP #con_0552_special_raph_сверло
@@ -6117,7 +6117,7 @@ bra_A267:
 - - - - - - 0x03627C 0D:A26C: B0 1C     BCS bra_A28A
 - - - - - - 0x03627E 0D:A26E: B9 12 06  LDA ram_plr_индекс_атаки,Y
 - - - - - - 0x036281 0D:A271: 19 10 06  ORA ram_plr_флаг_индекса_атаки,Y
-- - - - - - 0x036284 0D:A274: C9 88     CMP #$08 + $80
+- - - - - - 0x036284 0D:A274: C9 88     CMP #con_0612_08 + $80
 - - - - - - 0x036286 0D:A276: D0 12     BNE bra_A28A
 - - - - - - 0x036288 0D:A278: BD 00 06  LDA ram_plr_0600,X
 - - - - - - 0x03628B 0D:A27B: 29 10     AND #$10
@@ -6635,9 +6635,9 @@ loc_A663:
 - - - - - - 0x03668C 0D:A67C: 29 04     AND #$04
 - - - - - - 0x03668E 0D:A67E: F0 14     BEQ bra_A694
 - - - - - - 0x036690 0D:A680: A5 00     LDA ram_0000
-- - - - - - 0x036692 0D:A682: C9 84     CMP #$04 + $80
+- - - - - - 0x036692 0D:A682: C9 84     CMP #con_0612_04 + $80
 - - - - - - 0x036694 0D:A684: F0 C5     BEQ bra_A64B
-- - - - - - 0x036696 0D:A686: C9 90     CMP #$10 + $80
+- - - - - - 0x036696 0D:A686: C9 90     CMP #con_0612_10 + $80
 - - - - - - 0x036698 0D:A688: F0 C1     BEQ bra_A64B
 - - - - - - 0x03669A 0D:A68A: A5 28     LDA ram_random_1
 - - - - - - 0x03669C 0D:A68C: 29 03     AND #$03
@@ -6652,7 +6652,7 @@ bra_A694:
 - - - - - - 0x0366AE 0D:A69E: C9 09     CMP #$09
 - - - - - - 0x0366B0 0D:A6A0: F0 57     BEQ bra_A6F9
 - - - - - - 0x0366B2 0D:A6A2: B9 12 06  LDA ram_plr_индекс_атаки,Y
-- - - - - - 0x0366B5 0D:A6A5: C9 07     CMP #$07
+- - - - - - 0x0366B5 0D:A6A5: C9 07     CMP #con_0612_07
 - - - - - - 0x0366B7 0D:A6A7: F0 50     BEQ bra_A6F9
 bra_A6A9:
 - - - - - - 0x0366B9 0D:A6A9: BD 40 04  LDA ram_obj_pos_X,X
@@ -6665,10 +6665,10 @@ bra_A6A9:
 - - - - - - 0x0366C9 0D:A6B9: D0 2E     BNE bra_A6E9
 - - - - - - 0x0366CB 0D:A6BB: AC 38 06  LDY ram_0638
 - - - - - - 0x0366CE 0D:A6BE: A5 00     LDA ram_0000
-- - - - - - 0x0366D0 0D:A6C0: C9 87     CMP #$07 + $80
+- - - - - - 0x0366D0 0D:A6C0: C9 87     CMP #con_0612_07 + $80
 - - - - - - 0x0366D2 0D:A6C2: F0 51     BEQ bra_A715
 bra_A6C4:
-- - - - - - 0x0366D4 0D:A6C4: C9 80     CMP #$00 + $80
+- - - - - - 0x0366D4 0D:A6C4: C9 80     CMP #con_0612_00 + $80
 - - - - - - 0x0366D6 0D:A6C6: D0 09     BNE bra_A6D1
 - - - - - - 0x0366D8 0D:A6C8: C0 1A     CPY #$1A
 - - - - - - 0x0366DA 0D:A6CA: B0 05     BCS bra_A6D1
@@ -6690,7 +6690,7 @@ bra_A6E9:
 - - - - - - 0x0366FA 0D:A6EA: 60        RTS
 bra_A6EB:
 - - - - - - 0x0366FB 0D:A6EB: B9 12 06  LDA ram_plr_индекс_атаки,Y
-- - - - - - 0x0366FE 0D:A6EE: C9 05     CMP #$05
+- - - - - - 0x0366FE 0D:A6EE: C9 05     CMP #con_0612_05
 - - - - - - 0x036700 0D:A6F0: D0 0A     BNE bra_A6FC
 - - - - - - 0x036702 0D:A6F2: BD 2C 06  LDA ram_plr_062C,X
 - - - - - - 0x036705 0D:A6F5: 29 08     AND #$08
@@ -6699,7 +6699,7 @@ bra_A6F9:
 - - - - - - 0x036709 0D:A6F9: 4C 5A A6  JMP loc_A65A
 bra_A6FC:
 - - - - - - 0x03670C 0D:A6FC: 19 10 06  ORA ram_plr_флаг_индекса_атаки,Y
-- - - - - - 0x03670F 0D:A6FF: C9 81     CMP #$01 + $80
+- - - - - - 0x03670F 0D:A6FF: C9 81     CMP #con_0612_01 + $80
 - - - - - - 0x036711 0D:A701: D0 E6     BNE bra_A6E9
 - - - - - - 0x036713 0D:A703: AD 38 06  LDA ram_0638
 - - - - - - 0x036716 0D:A706: C9 15     CMP #$15
@@ -6961,9 +6961,9 @@ bra_BDBF:
 - - - - - - 0x037DD4 0D:BDC4: B9 00 06  LDA ram_plr_0600,Y
 - - - - - - 0x037DD7 0D:BDC7: 30 1C     BMI bra_BDE5
 - - - - - - 0x037DD9 0D:BDC9: B9 12 06  LDA ram_plr_индекс_атаки,Y
-- - - - - - 0x037DDC 0D:BDCC: C9 01     CMP #$01
+- - - - - - 0x037DDC 0D:BDCC: C9 01     CMP #con_0612_01
 - - - - - - 0x037DDE 0D:BDCE: F0 1B     BEQ bra_BDEB
-- - - - - - 0x037DE0 0D:BDD0: C9 08     CMP #$08
+- - - - - - 0x037DE0 0D:BDD0: C9 08     CMP #con_0612_08
 - - - - - - 0x037DE2 0D:BDD2: F0 17     BEQ bra_BDEB
 - - - - - - 0x037DE4 0D:BDD4: B9 0C 06  LDA ram_060C,Y
 - - - - - - 0x037DE7 0D:BDD7: F0 09     BEQ bra_BDE2
