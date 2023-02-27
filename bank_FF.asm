@@ -121,7 +121,6 @@
 .export sub_0x03E33A_выбрать_палитру_персу
 .export tbl_0x03E3E8
 .export tbl_0x03E479
-.export tbl_0x03E47B
 .export loc_0x03E61C
 .export loc_0x03E62D
 .export loc_0x03E67C
@@ -3621,13 +3620,6 @@ tbl_E469:
 tbl_0x03E479:
 - D 3 - - - 0x03E479 0F:E469: 58        .byte $58   ; 00
 - D 3 - - - 0x03E47A 0F:E46A: A8        .byte $A8   ; 01
-
-
-
-tbl_0x03E47B:
-; bzk optimize, переместить в другой банк
-- D 3 - - - 0x03E47B 0F:E46B: 00        .byte $00   ; 00
-- D 3 - - - 0x03E47C 0F:E46C: 40        .byte $40   ; 01
 
 
 

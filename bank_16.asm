@@ -690,7 +690,7 @@ tbl_A8A6:
 
 
 sub_0x02EA10:
-C - - - - - 0x02EA10 0B:AA00: BD 6B E4  LDA tbl_0x03E47B,X
+C - - - - - 0x02EA10 0B:AA00: BD 6B E4  LDA tbl_E46B,X
 C - - - - - 0x02EA13 0B:AA03: 9D 10 05  STA ram_obj_0510,X
 C - - - - - 0x02EA16 0B:AA06: A5 2C     LDA ram_game_mode
 ; con_gm_story
@@ -722,6 +722,13 @@ C - - - - - 0x02EA3A 0B:AA2A: 95 A0     STA ram_strength,X
 bra_AA2C:
 C - - - - - 0x02EA3C 0B:AA2C: A0 01     LDY #$01
 C - - - - - 0x02EA3E 0B:AA2E: 4C 68 F7  JMP loc_0x03F778
+
+
+
+tbl_E46B:
+; перемещено из банка FF
+- D 3 - - - 0x03E47B 0F:E46B: 00        .byte $00   ; 00
+- D 3 - - - 0x03E47C 0F:E46C: 40        .byte $40   ; 01
 
 
 
