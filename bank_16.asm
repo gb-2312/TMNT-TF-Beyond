@@ -580,7 +580,7 @@ C - - - - - 0x02E7D0 0B:A7C0: 85 00     STA ram_0000
 C - - - - - 0x02E7D2 0B:A7C2: B9 E7 B5  LDA tbl_B5E7_hi,Y
 C - - - - - 0x02E7D5 0B:A7C5: 85 01     STA ram_0001
 C - - - - - 0x02E7D7 0B:A7C7: A4 A9     LDY ram_global_obj_index
-C - - - - - 0x02E7D9 0B:A7C9: B9 12 06  LDA ram_plr_0612,Y
+C - - - - - 0x02E7D9 0B:A7C9: B9 12 06  LDA ram_plr_последняя_атака,Y
 C - - - - - 0x02E7DC 0B:A7CC: 0A        ASL
 C - - - - - 0x02E7DD 0B:A7CD: A8        TAY
 C - - - - - 0x02E7DE 0B:A7CE: BD C0 04  LDA ram_obj_04C0,X ; 04C0 04C1 
@@ -710,8 +710,8 @@ C - - - - - 0x02EA37 0B:AA27: B9 90 AA  LDA tbl_AA90_автобаланс,Y
 bra_AA2A:
 C - - - - - 0x02EA3A 0B:AA2A: 95 A0     STA ram_strength,X
 bra_AA2C:
-C - - - - - 0x02EA3C 0B:AA2C: A0 01     LDY #con_0x0258F8_01
-C - - - - - 0x02EA3E 0B:AA2E: 4C 68 F7  JMP loc_0x03F778
+C - - - - - 0x02EA3C 0B:AA2C: A0 01     LDY #con_init_anim_обычная_стойка
+C - - - - - 0x02EA3E 0B:AA2E: 4C 68 F7  JMP loc_0x03F778_выбор_начальной_анимации_персу
 
 
 
