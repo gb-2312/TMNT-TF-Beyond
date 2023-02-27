@@ -1173,7 +1173,7 @@ C - - - - - 0x0247E4 09:87D4: D0 EE     BNE bra_87C4
 bra_87D6:
 C - - - - - 0x0247E6 09:87D6: A9 01     LDA #$01
 C - - - - - 0x0247E8 09:87D8: 9D C0 04  STA ram_obj_04C0,X ; 04C0 04C1 
-C - - - - - 0x0247EB 09:87DB: 4A        LSR ; 00
+C - - - - - 0x0247EB 09:87DB: 4A        LDA #$00
 C - - - - - 0x0247EC 09:87DC: 8D 0E 04  STA ram_040E
 C - - - - - 0x0247EF 09:87DF: 8D 0F 04  STA ram_040F
 C - - - - - 0x0247F2 09:87E2: A9 03     LDA #con_plr_state_получает_урон
