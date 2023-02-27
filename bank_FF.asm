@@ -105,7 +105,6 @@
 .export loc_0x03DF48
 .export sub_0x03DF5F
 .export loc_0x03DF5F
-.export loc_0x03DFA4
 .export sub_0x03DFB3
 .export sub_0x03E11E
 .export loc_0x03E13E
@@ -2736,7 +2735,6 @@ C - - - - - 0x03DF9B 0F:DF8B: 79 E6 DF  ADC tbl_DFE6,Y
 C - - - - - 0x03DF9E 0F:DF8E: A8        TAY
 C - - - - - 0x03DF9F 0F:DF8F: B9 00 E0  LDA tbl_E000,Y
 C - - - - - 0x03DFA2 0F:DF92: F0 04     BEQ bra_DF98
-loc_0x03DFA4:   ; bzk optimize
 C D 2 - - - 0x03DFA4 0F:DF94: 9D 00 04  STA ram_plr_anim_id,X
 C - - - - - 0x03DFA7 0F:DF97: 60        RTS
 bra_DF98:

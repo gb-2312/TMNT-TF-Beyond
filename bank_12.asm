@@ -552,7 +552,8 @@ C - - - - - 0x0243AF 09:839F: 7D 18 06  ADC ram_plr_0618,X ; 0618 0619
 C - - - - - 0x0243B2 09:83A2: A8        TAY
 C - - - - - 0x0243B3 09:83A3: B9 E3 93  LDA tbl_93E3,Y
 C - - - - - 0x0243B6 09:83A6: F0 03     BEQ bra_83AB
-C - - - - - 0x0243B8 09:83A8: 4C 94 DF  JMP loc_0x03DFA4
+C - - - - - 0x0243B8 09:83A8: 4C 94 DF  STA ram_plr_anim_id,X
+                                        RTS
 bra_83AB:
 C - - - - - 0x0243BB 09:83AB: A9 00     LDA #$00
 C - - - - - 0x0243BD 09:83AD: 9D 18 06  STA ram_plr_0618,X ; 0618 0619 
@@ -1150,7 +1151,8 @@ C - - - - - 0x0247D7 09:87C7: 29 04     AND #$04
 C - - - - - 0x0247D9 09:87C9: 4A        LSR
 C - - - - - 0x0247DA 09:87CA: 4A        LSR
 C - - - - - 0x0247DB 09:87CB: 7D 00 04  ADC ram_plr_anim_id,X
-C - - - - - 0x0247DE 09:87CE: 4C 94 DF  JMP loc_0x03DFA4
+C - - - - - 0x0247DE 09:87CE: 4C 94 DF  STA ram_plr_anim_id,X
+                                        RTS
 bra_87D1:
 C - - - - - 0x0247E1 09:87D1: DE 60 05  DEC ram_obj_0560,X
 C - - - - - 0x0247E4 09:87D4: D0 EE     BNE bra_87C4
@@ -1609,7 +1611,8 @@ C - - - - - 0x024B00 09:8AF0: 18        CLC
 C - - - - - 0x024B01 09:8AF1: 7D 50 05  ADC ram_obj_id,X
 C - - - - - 0x024B04 09:8AF4: A8        TAY
 C - - - - - 0x024B05 09:8AF5: B9 E8 98  LDA tbl_98E8,Y
-C - - - - - 0x024B08 09:8AF8: 4C 94 DF  JMP loc_0x03DFA4
+C - - - - - 0x024B08 09:8AF8: 4C 94 DF  STA ram_plr_anim_id,X
+                                        RTS
 
 
 
@@ -9525,7 +9528,8 @@ C - - - - - 0x02772A 09:B71A: B9 49 BA  LDA tbl_BA49,Y
 C - - - - - 0x02772D 09:B71D: 20 0E E1  JSR sub_0x03E11E
 C - - - - - 0x027730 09:B720: 9D C0 05  STA ram_obj_anim_timer,X
 C - - - - - 0x027733 09:B723: B9 45 BA  LDA tbl_BA45,Y
-C - - - - - 0x027736 09:B726: 4C 94 DF  JMP loc_0x03DFA4
+C - - - - - 0x027736 09:B726: 4C 94 DF  STA ram_plr_anim_id,X
+                                        RTS
 bra_B729:
 C - - - - - 0x027739 09:B729: A9 38     LDA #$38
 C - - - - - 0x02773B 09:B72B: 20 CC B3  JSR sub_B3CC
@@ -9792,7 +9796,8 @@ C - - - - - 0x027918 09:B908: B9 5D BA  LDA tbl_BA5D,Y
 C - - - - - 0x02791B 09:B90B: F0 03     BEQ bra_B910
 bra_B90D:
 loc_B90D:
-C D 1 - - - 0x02791D 09:B90D: 4C 94 DF  JMP loc_0x03DFA4
+C D 1 - - - 0x02791D 09:B90D: 4C 94 DF  STA ram_plr_anim_id,X
+                                        RTS
 bra_B910:
 C - - - - - 0x027920 09:B910: A9 2F     LDA #$2F
 C - - - - - 0x027922 09:B912: 20 18 B9  JSR sub_B918
