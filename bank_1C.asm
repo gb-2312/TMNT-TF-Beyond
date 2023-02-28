@@ -6,18 +6,18 @@
 
 
 
-.export sub_0x038011
+.export sub_0x038011_обработчик_экрана_с_опциями
 .export sub_0x0382CB_отрисовать_турнирную_сетку
 .export sub_0x038462_нарисовать_рожи_персов_на_экране_выбора_карты
 .export sub_0x0385E6
 .export sub_0x0388A0
 .export sub_0x038A7A_подсчитать_время_и_здоровье_после_боя
-.export sub_0x038C8B
-.export sub_0x0390AF
-.export sub_0x039610
+.export sub_0x038C8B_обработчик_экрана_с_клавиатурой
+.export sub_0x0390AF_обработчик_opening
+.export sub_0x039610_обработчик_ending
 .export sub_0x039B46
 .export sub_0x039F3B
-.export sub_0x039FCF
+.export sub_0x039FCF_обработчик_экрана_topscore
 .export sub_0x03A0F3
 .export sub_0x03A37C_обработать_рожи_в_турнирной_сетке
 .export sub_0x03A437
@@ -30,12 +30,12 @@
 
 
 
-sub_0x038011:
+sub_0x038011_обработчик_экрана_с_опциями:
 C D 0 - - - 0x038011 0E:8001: A5 95     LDA ram_0095
 C - - - - - 0x038013 0E:8003: 20 32 D0  JSR sub_0x03D042_поинтеры_после_JSR
 - D 0 - I - 0x038016 0E:8006: 0C 80     .word ofs_015_800C_00_отрисовать_опции
-- D 0 - I - 0x038018 0E:8008: 5E 80     .word ofs_015_805E_01
-- D 0 - I - 0x03801A 0E:800A: 5E 80     .word ofs_015_805E_02
+- D 0 - I - 0x038018 0E:8008: 5E 80     .word ofs_015_805E_01_обработка_страницы_опций_1
+- D 0 - I - 0x03801A 0E:800A: 5E 80     .word ofs_015_805E_02_обработка_страницы_опций_2
 
 
 
@@ -63,15 +63,15 @@ C - - - - - 0x038047 0E:8037: 20 14 F8  JSR sub_0x03F824
 C - - - - - 0x03804A 0E:803A: A2 18     LDX #con_screen_options
 C - - - - - 0x03804C 0E:803C: 20 44 F0  JSR sub_0x03F054_отрисовать_экран
 C - - - - - 0x03804F 0E:803F: A9 07     LDA #$07
-C - - - - - 0x038051 0E:8041: A8        TAY
+C - - - - - 0x038051 0E:8041: A8        TAY ; 07
 C - - - - - 0x038052 0E:8042: 20 94 D3  JSR sub_0x03D3A4
 C - - - - - 0x038055 0E:8045: 20 BB 81  JSR sub_81BB_запись_нескольких_AA_атрибутов
 loc_8048:
-C D 0 - - - 0x038058 0E:8048: 20 26 81  JSR sub_8126
-C - - - - - 0x03805B 0E:804B: 20 4C 81  JSR sub_814C
-C - - - - - 0x03805E 0E:804E: 20 72 81  JSR sub_8172
-C - - - - - 0x038061 0E:8051: 20 13 81  JSR sub_8113
-loc_8054:
+C D 0 - - - 0x038058 0E:8048: 20 26 81  JSR sub_8126_отрисовать_вариант_speed
+C - - - - - 0x03805B 0E:804B: 20 4C 81  JSR sub_814C_отрисовать_вариант_timer
+C - - - - - 0x03805E 0E:804E: 20 72 81  JSR sub_8172_отрисовать_вариант_health
+C - - - - - 0x038061 0E:8051: 20 13 81  JSR sub_8113_отрисовать_вариант_misc
+loc_8054_отрисовать_вариант_difficulty:
 C D 0 - - - 0x038064 0E:8054: 18        CLC
 C - - - - - 0x038065 0E:8055: AD 25 01  LDA ram_option_difficulty
 C - - - - - 0x038068 0E:8058: 69 09     ADC #$09
@@ -83,13 +83,13 @@ C - - - - - 0x03806A 0E:805A: 4C E5 F6  JMP loc_0x03F6F5_написать_тек
 
 
 
-ofs_015_805E_01:
-ofs_015_805E_02:
+ofs_015_805E_01_обработка_страницы_опций_1:
+ofs_015_805E_02_обработка_страницы_опций_2:
 C - - J - - 0x03806E 0E:805E: A5 AD     LDA ram_00AD
 C - - - - - 0x038070 0E:8060: 30 03     BMI bra_8065
-C - - - - - 0x038072 0E:8062: 20 3B A6  JSR sub_A63B
+C - - - - - 0x038072 0E:8062: 20 3B A6  JSR sub_A63B_обновить_текст_опций
 bra_8065:
-C - - - - - 0x038075 0E:8065: 20 7C 81  JSR sub_817C
+C - - - - - 0x038075 0E:8065: 20 7C 81  JSR sub_817C_попытка_сделать_255_контов
 C - - - - - 0x038078 0E:8068: 29 10     AND #con_btn_Start
 C - - - - - 0x03807A 0E:806A: F0 03     BEQ bra_806F
 C - - - - - 0x03807C 0E:806C: 4C AE 81  JMP loc_81AE
@@ -136,11 +136,11 @@ bra_80B4:
 C - - - - - 0x0380C4 0E:80B4: 98        TYA
 C - - - - - 0x0380C5 0E:80B5: 29 C3     AND #con_btns_AB + con_btns_LR
 C - - - - - 0x0380C7 0E:80B7: F0 14     BEQ bra_80CD_RTS
-C - - - - - 0x0380C9 0E:80B9: 4C 70 A6  JMP loc_A670
+C - - - - - 0x0380C9 0E:80B9: 4C 70 A6  JMP loc_A670_обработка_страниц_опций
 
 
 
-loc_80BC:
+loc_80BC_обработка_первой_страницы_опций:
 ; A = ram_sum_btn_press AND C3
 ; bzk optimize, сделать таблицу с прыжками
 C D 0 - - - 0x0380CC 0E:80BC: F0 10     BEQ bra_80CE_option_difficulty
@@ -161,15 +161,15 @@ C - - - - - 0x0380E0 0E:80D0: D0 0E     BNE bra_80E0
 C - - - - - 0x0380E2 0E:80D2: AD 25 01  LDA ram_option_difficulty
 C - - - - - 0x0380E5 0E:80D5: F0 F6     BEQ bra_80CD_RTS
 C - - - - - 0x0380E7 0E:80D7: CE 25 01  DEC ram_option_difficulty
-C - - - - - 0x0380EA 0E:80DA: 20 A6 81  JSR sub_81A6
-C - - - - - 0x0380ED 0E:80DD: 4C 54 80  JMP loc_8054
+C - - - - - 0x0380EA 0E:80DA: 20 A6 81  JSR sub_81A6_воспроизвести_звук_25
+C - - - - - 0x0380ED 0E:80DD: 4C 54 80  JMP loc_8054_отрисовать_вариант_difficulty
 bra_80E0:
 C - - - - - 0x0380F0 0E:80E0: AD 25 01  LDA ram_option_difficulty
 C - - - - - 0x0380F3 0E:80E3: C9 03     CMP #$03
 C - - - - - 0x0380F5 0E:80E5: B0 E6     BCS bra_80CD_RTS
 C - - - - - 0x0380F7 0E:80E7: EE 25 01  INC ram_option_difficulty
-C - - - - - 0x0380FA 0E:80EA: 20 A9 81  JSR sub_81A9
-C - - - - - 0x0380FD 0E:80ED: 4C 54 80  JMP loc_8054
+C - - - - - 0x0380FA 0E:80EA: 20 A9 81  JSR sub_81A9_воспроизвести_звук_27
+C - - - - - 0x0380FD 0E:80ED: 4C 54 80  JMP loc_8054_отрисовать_вариант_difficulty
 bra_80F0_option_music:
 ; bzk optimize, в 0x0380C5 уже есть проверка на кнопки C3,
 ; так нахрена тут еще одна? она никогда не сработает.
@@ -193,7 +193,7 @@ C - - - - - 0x038119 0E:8109: 10 F8     BPL bra_8103_loop
 C - - - - - 0x03811B 0E:810B: 8D 2B 01  STA ram_option_misc
 C - - - - - 0x03811E 0E:810E: A9 27     LDA #con_0x03F6AD_27
 C - - - - - 0x038120 0E:8110: 20 90 F6  JSR sub_0x03F6A0_записать_звук_сохранив_X_Y
-sub_8113:
+sub_8113_отрисовать_вариант_misc:
 C - - - - - 0x038123 0E:8113: 18        CLC
 C - - - - - 0x038124 0E:8114: AD 2B 01  LDA ram_option_misc
 C - - - - - 0x038127 0E:8117: 29 07     AND #$07
@@ -206,7 +206,7 @@ bra_811E_option_speed:
 C - - - - - 0x03812E 0E:811E: AD 26 01  LDA ram_option_speed
 C - - - - - 0x038131 0E:8121: 49 01     EOR #$01
 C - - - - - 0x038133 0E:8123: 8D 26 01  STA ram_option_speed
-sub_8126:
+sub_8126_отрисовать_вариант_speed:
 C - - - - - 0x038136 0E:8126: 18        CLC
 C - - - - - 0x038137 0E:8127: AD 26 01  LDA ram_option_speed
 C - - - - - 0x03813A 0E:812A: 69 13     ADC #$13
@@ -232,7 +232,7 @@ C - - - - - 0x038152 0E:8142: B0 37     BCS bra_817B_RTS
 C - - - - - 0x038154 0E:8144: 8D 27 01  STA ram_option_timer
 C - - - - - 0x038157 0E:8147: A9 27     LDA #con_0x03F6AD_27
 C - - - - - 0x038159 0E:8149: 20 90 F6  JSR sub_0x03F6A0_записать_звук_сохранив_X_Y
-sub_814C:
+sub_814C_отрисовать_вариант_timer:
 C - - - - - 0x03815C 0E:814C: 18        CLC
 C - - - - - 0x03815D 0E:814D: AD 27 01  LDA ram_option_timer
 C - - - - - 0x038160 0E:8150: 69 1F     ADC #$1F
@@ -264,7 +264,7 @@ C - - - - - 0x038178 0E:8168: B0 11     BCS bra_817B_RTS
 C - - - - - 0x03817A 0E:816A: 8D 28 01  STA ram_option_health
 C - - - - - 0x03817D 0E:816D: A9 27     LDA #con_0x03F6AD_27
 C - - - - - 0x03817F 0E:816F: 20 90 F6  JSR sub_0x03F6A0_записать_звук_сохранив_X_Y
-sub_8172:
+sub_8172_отрисовать_вариант_health:
 C - - - - - 0x038182 0E:8172: 18        CLC
 C - - - - - 0x038183 0E:8173: AD 28 01  LDA ram_option_health
 C - - - - - 0x038186 0E:8176: 69 1B     ADC #$1B
@@ -278,18 +278,23 @@ C - - - - - 0x03818B 0E:817B: 60        RTS
 
 
 
-sub_817C:
+sub_817C_попытка_сделать_255_контов:
 C - - - - - 0x03818C 0E:817C: A5 31     LDA ram_continue
 C - - - - - 0x03818E 0E:817E: 30 1C     BMI bra_819C
+; if контов уже дохрена
 C - - - - - 0x038190 0E:8180: AD 25 01  LDA ram_option_difficulty
 C - - - - - 0x038193 0E:8183: D0 17     BNE bra_819C
+; if easy
 C - - - - - 0x038195 0E:8185: A5 91     LDA ram_btn_hold
 C - - - - - 0x038197 0E:8187: 29 40     AND #con_btn_B
 C - - - - - 0x038199 0E:8189: D0 03     BNE bra_818E
+; A = 00
 C - - - - - 0x03819B 0E:818B: 8D 50 01  STA ram_0150
 bra_818E:
+; удерживать B 2 секунды
 C - - - - - 0x03819E 0E:818E: EE 50 01  INC ram_0150
 C - - - - - 0x0381A1 0E:8191: 10 09     BPL bra_819C
+; записать 255 контов
 - - - - - - 0x0381A3 0E:8193: A9 FF     LDA #$FF
 - - - - - - 0x0381A5 0E:8195: 85 31     STA ram_continue
 - - - - - - 0x0381A7 0E:8197: A9 53     LDA #con_dpcm_warcry_turtle_1
@@ -309,10 +314,10 @@ C - - - - - 0x0381B5 0E:81A5: 60        RTS
 
 
 
-sub_81A6:
+sub_81A6_воспроизвести_звук_25:
 C - - - - - 0x0381B6 0E:81A6: A9 25     LDA #con_0x03F6AD_25
 C - - - - - 0x0381B8 0E:81A8: 2C        .byte $2C   ; BIT
-sub_81A9:
+sub_81A9_воспроизвести_звук_27:
 C - - - - - 0x0381B9 0E:81A9: A9 27     LDA #con_0x03F6AD_27
 C - - - - - 0x0381BB 0E:81AB: 4C 90 F6  JMP loc_0x03F6A0_записать_звук_сохранив_X_Y
 
@@ -388,54 +393,60 @@ tbl_8206:
 
 
 
-tbl_820D:
-- D 0 - - - 0x03821D 0E:820D: 0C        .byte $0C, $11, $17, $02, $00, $00, $00   ; 
+tbl_820D_название_варианта_music:
+; end token также входит в выводимый текст, особенно видно с примерами OPEN1 и OPEN2
+- D 0 - - - 0x03821D 0E:820D: 0C        .byte $0C, $11, $17, $02, $00, $00, $00   ; BGM1
 - D 0 - - - 0x038224 0E:8214: 80        .byte $80   ; end token
 
-- D 0 - - - 0x038225 0E:8215: 0C        .byte $0C, $11, $17, $03, $00, $00, $00   ; 
+- D 0 - - - 0x038225 0E:8215: 0C        .byte $0C, $11, $17, $03, $00, $00, $00   ; BGM2
 - D 0 - - - 0x03822C 0E:821C: 80        .byte $80   ; end token
 
-- D 0 - - - 0x03822D 0E:821D: 0C        .byte $0C, $11, $17, $04, $00, $00, $00   ; 
+- D 0 - - - 0x03822D 0E:821D: 0C        .byte $0C, $11, $17, $04, $00, $00, $00   ; BGM3
 - D 0 - - - 0x038234 0E:8224: 80        .byte $80   ; end token
 
-- D 0 - - - 0x038235 0E:8225: 0C        .byte $0C, $11, $17, $05, $00, $00, $00   ; 
+- D 0 - - - 0x038235 0E:8225: 0C        .byte $0C, $11, $17, $05, $00, $00, $00   ; BGM4
 - D 0 - - - 0x03823C 0E:822C: 80        .byte $80   ; end token
 
-- D 0 - - - 0x03823D 0E:822D: 19        .byte $19, $1A, $0F, $18, $82, $19, $1A, $0F, $18, $83, $1D, $0F, $02, $00, $00, $00   ; 
-- D 0 - - - 0x03824D 0E:823D: 00        .byte $00, $00, $00, $00, $00, $00, $00   ; 
+- D 0 - - - 0x03823D 0E:822D: 19        .byte $19, $1A, $0F, $18   ; OPEN1
+- D 0 - - - 0x038241 0E:8231: 82        .byte $82   ; end token
+
+- D 0 - - - 0x038242 0E:8232: 19        .byte $19, $1A, $0F, $18   ; OPEN2
+- D 0 - - - 0x038246 0E:8236: 83        .byte $83   ; end token
+
+- D 0 - - - 0x038247 0E:8237: 1D        .byte $1D, $0F, $02, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00   ; SE1
 - D 0 - - - 0x038254 0E:8244: 80        .byte $80   ; end token
 
-- D 0 - - - 0x038255 0E:8245: 1D        .byte $1D, $0F, $03, $00, $00, $00, $00   ; 
+- D 0 - - - 0x038255 0E:8245: 1D        .byte $1D, $0F, $03, $00, $00, $00, $00   ; SE2
 - D 0 - - - 0x03825C 0E:824C: 80        .byte $80   ; end token
 
-- D 0 - - - 0x03825D 0E:824D: 1D        .byte $1D, $0F, $04, $00, $00, $00, $00   ; 
+- D 0 - - - 0x03825D 0E:824D: 1D        .byte $1D, $0F, $04, $00, $00, $00, $00   ; SE3
 - D 0 - - - 0x038264 0E:8254: 80        .byte $80   ; end token
 
-- D 0 - - - 0x038265 0E:8255: 1D        .byte $1D, $0F, $05, $00, $00, $00, $00   ; 
+- D 0 - - - 0x038265 0E:8255: 1D        .byte $1D, $0F, $05, $00, $00, $00, $00   ; SE4
 - D 0 - - - 0x03826C 0E:825C: 80        .byte $80   ; end token
 
-- D 0 - - - 0x03826D 0E:825D: 1D        .byte $1D, $0F, $06, $00, $00, $00, $00   ; 
+- D 0 - - - 0x03826D 0E:825D: 1D        .byte $1D, $0F, $06, $00, $00, $00, $00   ; SE5
 - D 0 - - - 0x038274 0E:8264: 80        .byte $80   ; end token
 
-- D 0 - - - 0x038275 0E:8265: 1D        .byte $1D, $0F, $07, $00, $00, $00, $00   ; 
+- D 0 - - - 0x038275 0E:8265: 1D        .byte $1D, $0F, $07, $00, $00, $00, $00   ; SE6
 - D 0 - - - 0x03827C 0E:826C: 80        .byte $80   ; end token
 
-- D 0 - - - 0x03827D 0E:826D: 1D        .byte $1D, $0F, $08, $00, $00, $00, $00   ; 
+- D 0 - - - 0x03827D 0E:826D: 1D        .byte $1D, $0F, $08, $00, $00, $00, $00   ; SE7
 - D 0 - - - 0x038284 0E:8274: 80        .byte $80   ; end token
 
-- D 0 - - - 0x038285 0E:8275: 1D        .byte $1D, $0F, $09, $00, $00, $00, $00   ; 
+- D 0 - - - 0x038285 0E:8275: 1D        .byte $1D, $0F, $09, $00, $00, $00, $00   ; SE8
 - D 0 - - - 0x03828C 0E:827C: 80        .byte $80   ; end token
 
-- D 0 - - - 0x03828D 0E:827D: 1D        .byte $1D, $0F, $0A, $00, $00, $00, $00   ; 
+- D 0 - - - 0x03828D 0E:827D: 1D        .byte $1D, $0F, $0A, $00, $00, $00, $00   ; SE9
 - D 0 - - - 0x038294 0E:8284: 80        .byte $80   ; end token
 
-- D 0 - - - 0x038295 0E:8285: 1D        .byte $1D, $0F, $02, $01, $00, $00, $00   ; 
+- D 0 - - - 0x038295 0E:8285: 1D        .byte $1D, $0F, $02, $01, $00, $00, $00   ; SE10
 - D 0 - - - 0x03829C 0E:828C: 80        .byte $80   ; end token
 
-- D 0 - - - 0x03829D 0E:828D: 1D        .byte $1D, $0F, $02, $02, $00, $00, $00   ; 
+- D 0 - - - 0x03829D 0E:828D: 1D        .byte $1D, $0F, $02, $02, $00, $00, $00   ; SE11
 - D 0 - - - 0x0382A4 0E:8294: 80        .byte $80   ; end token
 
-- D 0 - - - 0x0382A5 0E:8295: 1D        .byte $1D, $0F, $02, $03, $00, $00, $00   ; 
+- D 0 - - - 0x0382A5 0E:8295: 1D        .byte $1D, $0F, $02, $03, $00, $00, $00   ; SE12
 - D 0 - - - 0x0382AC 0E:829C: 80        .byte $80   ; end token
 
 
@@ -2105,7 +2116,7 @@ tbl_8C66:
 
 
 
-sub_0x038C8B:
+sub_0x038C8B_обработчик_экрана_с_клавиатурой:
 C - - - - - 0x038C8B 0E:8C7B: AD 75 06  LDA ram_0675
 C - - - - - 0x038C8E 0E:8C7E: 20 32 D0  JSR sub_0x03D042_поинтеры_после_JSR
 - D 0 - I - 0x038C91 0E:8C81: 8D 8C     .word ofs_011_8C8D_00_отрисовать_клавиатуру
@@ -2153,7 +2164,7 @@ C - - - - - 0x038CD9 0E:8CC9: 8D C0 05  STA ram_obj_anim_timer
 C - - - - - 0x038CDC 0E:8CCC: 8D 00 04  STA ram_plr_anim_id
 C - - - - - 0x038CDF 0E:8CCF: 8D 77 06  STA ram_0677
 C - - - - - 0x038CE2 0E:8CD2: A9 0B     LDA #$0B
-C - - - - - 0x038CE4 0E:8CD4: A8        TAY
+C - - - - - 0x038CE4 0E:8CD4: A8        TAY ; 0B
 C - - - - - 0x038CE5 0E:8CD5: 20 94 D3  JSR sub_0x03D3A4
 C - - - - - 0x038CE8 0E:8CD8: 20 58 90  JSR sub_9058
 C - - - - - 0x038CEB 0E:8CDB: A9 20     LDA #> $2083
@@ -2757,8 +2768,6 @@ tbl_9090:
 
 - D 0 - - - 0x0390A5 0E:9095: FE        .byte $FE   ; end token
 
-
-
 ; 06
 - D 0 - - - 0x0390A6 0E:9096: 01        .byte con_buf_mode_01   ; 
 - D 0 - - - 0x0390A7 0E:9097: A8 21     .word $21A8
@@ -2768,7 +2777,7 @@ tbl_9090:
 
 
 
-sub_0x0390AF:
+sub_0x0390AF_обработчик_opening:
 C - - - - - 0x0390AF 0E:909F: A5 90     LDA ram_sum_btn_press
 C - - - - - 0x0390B1 0E:90A1: 05 A4     ORA ram_00A4
 C - - - - - 0x0390B3 0E:90A3: 29 30     AND #con_btns_SS
@@ -2900,7 +2909,7 @@ C - - - - - 0x039178 0E:9168: 20 8B F6  JSR sub_0x03F69B_выключить_зв
 C - - - - - 0x03917B 0E:916B: A9 02     LDA #$02
 C - - - - - 0x03917D 0E:916D: 85 B6     STA ram_00B6
 C - - - - - 0x03917F 0E:916F: A9 00     LDA #$00
-C - - - - - 0x039181 0E:9171: A8        TAY
+C - - - - - 0x039181 0E:9171: A8        TAY ; 00
 C - - - - - 0x039182 0E:9172: 20 94 D3  JSR sub_0x03D3A4
 C - - - - - 0x039185 0E:9175: E6 21     INC ram_script_draw_lo
 C - - - - - 0x039187 0E:9177: 4C C6 E8  JMP loc_0x03E8D6
@@ -3566,7 +3575,7 @@ tbl_95BC:
 
 
 
-sub_0x039610:
+sub_0x039610_обработчик_ending:
 C - - - - - 0x039610 0E:9600: A5 21     LDA ram_script_draw_lo
 C - - - - - 0x039612 0E:9602: 20 32 D0  JSR sub_0x03D042_поинтеры_после_JSR
 - D 0 - I - 0x039615 0E:9605: 23 96     .word ofs_007_9623_00
@@ -4811,7 +4820,7 @@ C - - - - - 0x039FCE 0E:9FBE: 60        RTS
 
 
 
-sub_0x039FCF:
+sub_0x039FCF_обработчик_экрана_topscore:
 C - - - - - 0x039FCF 0E:9FBF: A5 90     LDA ram_sum_btn_press
 C - - - - - 0x039FD1 0E:9FC1: 05 A4     ORA ram_00A4
 C - - - - - 0x039FD3 0E:9FC3: 29 30     AND #con_btns_SS
@@ -5978,7 +5987,7 @@ sub_A619:
 
 
 
-sub_A63B:
+sub_A63B_обновить_текст_опций:
 C - - - - - 0x03A64B 0E:A63B: F0 10     BEQ bra_A64D
 bra_A63D_loop:
 C - - - - - 0x03A64D 0E:A63D: A6 95     LDX ram_0095
@@ -6001,7 +6010,7 @@ C - - - - - 0x03A65A 0E:A64A: D0 F1     BNE bra_A63D_loop
 C - - - - - 0x03A65C 0E:A64C: 60        RTS
 bra_A64D:
 C - - - - - 0x03A65D 0E:A64D: C6 AD     DEC ram_00AD
-C - - - - - 0x03A65F 0E:A64F: 20 A9 81  JSR sub_81A9
+C - - - - - 0x03A65F 0E:A64F: 20 A9 81  JSR sub_81A9_воспроизвести_звук_27
 C - - - - - 0x03A662 0E:A652: A6 95     LDX ram_0095
 C - - - - - 0x03A664 0E:A654: CA        DEX
 C - - - - - 0x03A665 0E:A655: D0 03     BNE bra_A65A
@@ -6015,29 +6024,29 @@ C - - - - - 0x03A675 0E:A665: 4C FE A6  JMP loc_A6FE
 
 
 
-loc_A670:
+loc_A670_обработка_страниц_опций:
 ; A = ram_sum_btn_press AND C3
 C D 1 - - - 0x03A680 0E:A670: A6 95     LDX ram_0095
 C - - - - - 0x03A682 0E:A672: E0 02     CPX #$02
 C - - - - - 0x03A684 0E:A674: AE B0 04  LDX ram_obj_spd_Y_lo
 C - - - - - 0x03A687 0E:A677: B0 03     BCS bra_A67C
-C - - - - - 0x03A689 0E:A679: 4C BC 80  JMP loc_80BC
+C - - - - - 0x03A689 0E:A679: 4C BC 80  JMP loc_80BC_обработка_первой_страницы_опций
 bra_A67C:
-C - - - - - 0x03A68C 0E:A67C: F0 0A     BEQ bra_A688
+C - - - - - 0x03A68C 0E:A67C: F0 0A     BEQ bra_A688_misc
 C - - - - - 0x03A68E 0E:A67E: CA        DEX
-C - - - - - 0x03A68F 0E:A67F: F0 07     BEQ bra_A688
+C - - - - - 0x03A68F 0E:A67F: F0 07     BEQ bra_A688_misc
 C - - - - - 0x03A691 0E:A681: CA        DEX
-C - - - - - 0x03A692 0E:A682: F0 4A     BEQ bra_A6CE
+C - - - - - 0x03A692 0E:A682: F0 4A     BEQ bra_A6CE_bgm
 C - - - - - 0x03A694 0E:A684: CA        DEX
 C - - - - - 0x03A695 0E:A685: F0 21     BEQ bra_A6A8_option_team_keeps
 bra_A687_RTS:
 C - - - - - 0x03A697 0E:A687: 60        RTS
-bra_A688:
+bra_A688_misc:
 C - - - - - 0x03A698 0E:A688: AE B0 04  LDX ram_obj_spd_Y_lo
 C - - - - - 0x03A69B 0E:A68B: AD 2B 01  LDA ram_option_misc
 C - - - - - 0x03A69E 0E:A68E: 5D D6 BF  EOR tbl_BFD6,X
 C - - - - - 0x03A6A1 0E:A691: 8D 2B 01  STA ram_option_misc
-C - - - - - 0x03A6A4 0E:A694: 20 A9 81  JSR sub_81A9
+C - - - - - 0x03A6A4 0E:A694: 20 A9 81  JSR sub_81A9_воспроизвести_звук_27
 sub_A697:
 C - - - - - 0x03A6A7 0E:A697: AD 2B 01  LDA ram_option_misc
 C - - - - - 0x03A6AA 0E:A69A: 3D D6 BF  AND tbl_BFD6,X
@@ -6080,19 +6089,19 @@ C - - - - - 0x03A6D9 0E:A6C9: 69 34     ADC #$34
 ; con_0x030C10_37
 ; con_0x030C10_38
 C - - - - - 0x03A6DB 0E:A6CB: 4C E5 F6  JMP loc_0x03F6F5_написать_текст_на_экране
-bra_A6CE:
-C - - - - - 0x03A6DE 0E:A6CE: 29 C0     AND #$C0
+bra_A6CE_bgm:
+C - - - - - 0x03A6DE 0E:A6CE: 29 C0     AND #con_btns_AB
 C - - - - - 0x03A6E0 0E:A6D0: F0 11     BEQ bra_A6E3
-C - - - - - 0x03A6E2 0E:A6D2: 30 0C     BMI bra_A6E0
+C - - - - - 0x03A6E2 0E:A6D2: 30 0C     BMI bra_A6E0_нажата_A
 C - - - - - 0x03A6E4 0E:A6D4: 20 C2 F6  JSR sub_0x03F6D2_выключить_музыку_и_звуки
 C - - - - - 0x03A6E7 0E:A6D7: AC C0 04  LDY ram_obj_04C0
 C - - - - - 0x03A6EA 0E:A6DA: B9 9D 82  LDA tbl_829D,Y
 C - - - - - 0x03A6ED 0E:A6DD: 4C 90 F6  JMP loc_0x03F6A0_записать_звук_сохранив_X_Y
-bra_A6E0:
+bra_A6E0_нажата_A:
 C - - - - - 0x03A6F0 0E:A6E0: 4C C2 F6  JMP loc_0x03F6D2_выключить_музыку_и_звуки
 bra_A6E3:
 C - - - - - 0x03A6F3 0E:A6E3: 98        TYA
-C - - - - - 0x03A6F4 0E:A6E4: 29 01     AND #$01
+C - - - - - 0x03A6F4 0E:A6E4: 29 01     AND #con_btn_Right
 C - - - - - 0x03A6F6 0E:A6E6: D0 0C     BNE bra_A6F4
 C - - - - - 0x03A6F8 0E:A6E8: AD C0 04  LDA ram_obj_04C0
 C - - - - - 0x03A6FB 0E:A6EB: F0 11     BEQ bra_A6FE
@@ -6111,7 +6120,7 @@ C - - - - - 0x03A710 0E:A700: AE C0 04  LDX ram_obj_04C0
 C - - - - - 0x03A713 0E:A703: F0 0C     BEQ bra_A711
 ; bzk optimize, вместо вычисления поинтера по длине добавить таблицу с готовыми индексами
 bra_A705_loop:
-C - - - - - 0x03A715 0E:A705: B9 0D 82  LDA tbl_820D,Y
+C - - - - - 0x03A715 0E:A705: B9 0D 82  LDA tbl_820D_название_варианта_music,Y
 C - - - - - 0x03A718 0E:A708: 30 03     BMI bra_A70D
 C - - - - - 0x03A71A 0E:A70A: C8        INY
 C - - - - - 0x03A71B 0E:A70B: D0 F8     BNE bra_A705_loop
@@ -6126,7 +6135,7 @@ C - - - - - 0x03A725 0E:A715: A0 F4     LDY #< $20F4
 C - - - - - 0x03A727 0E:A717: 20 6B D2  JSR sub_0x03D27B_записать_адрес_2006_Y_и_A_в_буфер
 C - - - - - 0x03A72A 0E:A71A: A4 00     LDY ram_0000
 bra_A71C_loop:
-C - - - - - 0x03A72C 0E:A71C: B9 0D 82  LDA tbl_820D,Y
+C - - - - - 0x03A72C 0E:A71C: B9 0D 82  LDA tbl_820D_название_варианта_music,Y
 C - - - - - 0x03A72F 0E:A71F: 85 00     STA ram_0000
 C - - - - - 0x03A731 0E:A721: 09 80     ORA #$80
 C - - - - - 0x03A733 0E:A723: 20 66 D2  JSR sub_0x03D276_записать_A_в_буфер_без_сохранения_индекса

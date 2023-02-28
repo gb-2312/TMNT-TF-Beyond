@@ -1124,7 +1124,7 @@ ofs_002_D290_00:
 C - - J - - 0x03D2A0 0F:D290: 20 09 DE  JSR sub_DE09_очистить_00AE_00B5
 C - - - - - 0x03D2A3 0F:D293: A9 FF     LDA #$FF
 C - - - - - 0x03D2A5 0F:D295: 85 98     STA ram_0098
-; bzk optimize, удалить проверку на 3 конта если не нужно
+; проверка на чит с дохрена контами
                                         LDA ram_continue
                                         CMP #$03
                                         BCS bra_D29F
@@ -6124,9 +6124,6 @@ C - - - - - 0x03F396 0F:F386: 20 32 D0  JSR sub_D032_поинтеры_после
 - D 3 - I - 0x03F3AD 0F:F39D: AF F7     .word ofs_000_F7AF_0A_opening
 - D 3 - I - 0x03F3AF 0F:F39F: B8 F7     .word ofs_000_F7B8_0B_ending
 - D 3 - I - 0x03F3B1 0F:F3A1: CA F7     .word ofs_000_F7CA_0C_topscore
-
-
-
 bra_F3A3:
 C - - - - - 0x03F3B3 0F:F3A3: A5 90     LDA ram_sum_btn_press
 C - - - - - 0x03F3B5 0F:F3A5: 05 A4     ORA ram_00A4
@@ -6678,7 +6675,7 @@ C - - - - - 0x03F6E9 0F:F6D9: 4C 17 F6  JMP loc_F617_restore_prg
 
 ofs_000_F6DC_07_options:
 C - - J - - 0x03F6EC 0F:F6DC: 20 F3 F5  JSR sub_F5F3_swap_prg_1C
-C - - - - - 0x03F6EF 0F:F6DF: 20 01 80  JSR sub_0x038011
+C - - - - - 0x03F6EF 0F:F6DF: 20 01 80  JSR sub_0x038011_обработчик_экрана_с_опциями
 C - - - - - 0x03F6F2 0F:F6E2: 4C 17 F6  JMP loc_F617_restore_prg
 
 
@@ -6727,7 +6724,7 @@ C - - - - - 0x03F72A 0F:F71A: 4C 17 F6  JMP loc_F617_restore_prg
 
 ofs_000_F5A4_09_tournament_2:
 C D 3 - - - 0x03F72D 0F:F71D: 20 F3 F5  JSR sub_F5F3_swap_prg_1C
-C - - - - - 0x03F730 0F:F720: 20 7B 8C  JSR sub_0x038C8B
+C - - - - - 0x03F730 0F:F720: 20 7B 8C  JSR sub_0x038C8B_обработчик_экрана_с_клавиатурой
 C - - - - - 0x03F733 0F:F723: 4C 17 F6  JMP loc_F617_restore_prg
 
 
@@ -6839,14 +6836,14 @@ C - - - - - 0x03F7BC 0F:F7AC: 4C 17 F6  JMP loc_F617_restore_prg
 
 ofs_000_F7AF_0A_opening:
 C - - J - - 0x03F7BF 0F:F7AF: 20 F3 F5  JSR sub_F5F3_swap_prg_1C
-C - - - - - 0x03F7C2 0F:F7B2: 20 9F 90  JSR sub_0x0390AF
+C - - - - - 0x03F7C2 0F:F7B2: 20 9F 90  JSR sub_0x0390AF_обработчик_opening
 C - - - - - 0x03F7C5 0F:F7B5: 4C 17 F6  JMP loc_F617_restore_prg
 
 
 
 ofs_000_F7B8_0B_ending:
 C - - J - - 0x03F7C8 0F:F7B8: 20 F3 F5  JSR sub_F5F3_swap_prg_1C
-C - - - - - 0x03F7CB 0F:F7BB: 20 00 96  JSR sub_0x039610
+C - - - - - 0x03F7CB 0F:F7BB: 20 00 96  JSR sub_0x039610_обработчик_ending
 C - - - - - 0x03F7CE 0F:F7BE: 4C 17 F6  JMP loc_F617_restore_prg
 
 
@@ -6860,7 +6857,7 @@ C - - - - - 0x03F7D7 0F:F7C7: 4C 17 F6  JMP loc_F617_restore_prg
 
 ofs_000_F7CA_0C_topscore:
 C - - J - - 0x03F7DA 0F:F7CA: 20 F3 F5  JSR sub_F5F3_swap_prg_1C
-C - - - - - 0x03F7DD 0F:F7CD: 20 BF 9F  JSR sub_0x039FCF
+C - - - - - 0x03F7DD 0F:F7CD: 20 BF 9F  JSR sub_0x039FCF_обработчик_экрана_topscore
 C - - - - - 0x03F7E0 0F:F7D0: 4C 17 F6  JMP loc_F617_restore_prg
 
 
