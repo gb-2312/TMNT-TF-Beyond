@@ -5863,7 +5863,11 @@ C - - - - - 0x03F201 0F:F1F1: 88        DEY
 C - - - - - 0x03F202 0F:F1F2: 10 F7     BPL bra_F1EB_loop
 bra_F1F4:
 C - - - - - 0x03F204 0F:F1F4: 20 C2 F6  JSR sub_F6C2_выключить_музыку_и_звуки
-C - - - - - 0x03F207 0F:F1F7: 20 E1 F4  JSR sub_F4E1
+                                        LDY #$00    ; disable irq
+                                        STY ram_irq_flag
+                                        LDA #con_script_06
+C - - - - - 0x03F207 0F:F1F7: 20 E1 F4  JSR sub_F5AE_подготовить_скрипт
+                                        JSR sub_F6C2_выключить_музыку_и_звуки
 C - - - - - 0x03F20A 0F:F1FA: 20 C6 F2  JSR sub_F2C6_nmi_on
 C - - - - - 0x03F20D 0F:F1FD: 58        CLI
 loc_F1FE_infinite_loop:
@@ -6323,10 +6327,6 @@ bra_F4CF:
 
 
 
-sub_F4E1:
-C - - - - - 0x03F4F1 0F:F4E1: A9 06     LDA #con_script_06
-C - - - - - 0x03F4E7 0F:F4D7: A0 00     LDY #$00    ; disable irq
-C - - - - - 0x03F4E9 0F:F4D9: 84 49     STY ram_irq_flag
 sub_F4DB:
 loc_F4DB:
 C - - - - - 0x03F4EB 0F:F4DB: 20 AE F5  JSR sub_F5AE_подготовить_скрипт
