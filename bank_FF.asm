@@ -1682,9 +1682,18 @@ sub_D60F:
 C - - - - - 0x03D61F 0F:D60F: A5 31     LDA ram_continue
 C - - - - - 0x03D621 0F:D611: C9 03     CMP #$03
 C - - - - - 0x03D623 0F:D613: B0 03     BCS bra_D618_RTS
-C - - - - - 0x03D625 0F:D615: B9 FC BF  LDA tbl_0x02400C,Y
+C - - - - - 0x03D625 0F:D615: B9 FC BF  LDA tbl_BFFC,Y
 bra_D618_RTS:
 C - - - - - 0x03D628 0F:D618: 60        RTS
+
+
+
+tbl_BFFC:
+; перемещено из банка 10
+- D 1 - - - 0x02400C 08:BFFC: 02        .byte $02   ; 00
+- D 1 - - - 0x02400D 08:BFFD: 01        .byte $01   ; 01
+- - - - - - 0x02400E 08:BFFE: 00        .byte $00   ; 02
+- D 1 - - - 0x02400F 08:BFFF: 00        .byte $00   ; 03
 
 
 

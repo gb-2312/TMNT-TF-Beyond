@@ -9,7 +9,6 @@
 .export sub_0x020011_обновить_звуковой_движок
 .export sub_0x020E9D_воспроизвести_звук
 .export sub_0x02106D_выключить_музыку_и_звуки
-.export tbl_0x02400C
 
 
 
@@ -15405,16 +15404,6 @@ _off008_BFE1_46_03:
 - D 1 - I - 0x024009 08:BFF9: C2        .byte $C2   ; 
 - D 1 - I - 0x02400A 08:BFFA: B1        .byte $B1   ; 
 - D 1 - I - 0x02400B 08:BFFB: FF        .byte $FF   ; 
-
-
-
-
-tbl_0x02400C:
-; bzk optimize, переместить в другой банк
-- D 1 - - - 0x02400C 08:BFFC: 02        .byte $02   ; 00
-- D 1 - - - 0x02400D 08:BFFD: 01        .byte $01   ; 01
-- - - - - - 0x02400E 08:BFFE: 00        .byte $00   ; 02
-- D 1 - - - 0x02400F 08:BFFF: 00        .byte $00   ; 03
 
 
 
