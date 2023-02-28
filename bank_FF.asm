@@ -1124,9 +1124,14 @@ ofs_002_D290_00:
 C - - J - - 0x03D2A0 0F:D290: 20 09 DE  JSR sub_DE09_очистить_00AE_00B5
 C - - - - - 0x03D2A3 0F:D293: A9 FF     LDA #$FF
 C - - - - - 0x03D2A5 0F:D295: 85 98     STA ram_0098
+; bzk optimize, удалить проверку на 3 конта если не нужно
+                                        LDA ram_continue
+                                        CMP #$03
+                                        BCS bra_D29F
 C - - - - - 0x03D2A7 0F:D297: AC 25 01  LDY ram_option_difficulty
-C - - - - - 0x03D2AA 0F:D29A: 20 0F D6  JSR sub_D60F
+                                        LDA tbl_BFFC,Y
 C - - - - - 0x03D2AD 0F:D29D: 85 31     STA ram_continue
+bra_D29F:
 C - - - - - 0x03D2AF 0F:D29F: A9 00     LDA #$00
 C - - - - - 0x03D2B1 0F:D2A1: 85 89     STA ram_0089
 bra_D2A3:
@@ -1135,6 +1140,15 @@ C D 2 - - - 0x03D2B3 0F:D2A3: E6 94     INC ram_0094    ; 01 03
 C - - - - - 0x03D2B5 0F:D2A5: A9 00     LDA #$00
 C - - - - - 0x03D2B7 0F:D2A7: 85 95     STA ram_0095
 C - - - - - 0x03D2B9 0F:D2A9: 60        RTS
+
+
+
+tbl_BFFC:
+; перемещено из банка 10
+- D 1 - - - 0x02400C 08:BFFC: 02        .byte $02   ; 00
+- D 1 - - - 0x02400D 08:BFFD: 01        .byte $01   ; 01
+- - - - - - 0x02400E 08:BFFE: 00        .byte $00   ; 02
+- D 1 - - - 0x02400F 08:BFFF: 00        .byte $00   ; 03
 
 
 
@@ -1675,25 +1689,6 @@ bra_D60C:
 ; if night
 - - - - - - 0x03D61C 0F:D60C: A2 8F     LDX #con_chr_bank + $8F
 - - - - - - 0x03D61E 0F:D60E: 60        RTS
-
-
-
-sub_D60F:
-C - - - - - 0x03D61F 0F:D60F: A5 31     LDA ram_continue
-C - - - - - 0x03D621 0F:D611: C9 03     CMP #$03
-C - - - - - 0x03D623 0F:D613: B0 03     BCS bra_D618_RTS
-C - - - - - 0x03D625 0F:D615: B9 FC BF  LDA tbl_BFFC,Y
-bra_D618_RTS:
-C - - - - - 0x03D628 0F:D618: 60        RTS
-
-
-
-tbl_BFFC:
-; перемещено из банка 10
-- D 1 - - - 0x02400C 08:BFFC: 02        .byte $02   ; 00
-- D 1 - - - 0x02400D 08:BFFD: 01        .byte $01   ; 01
-- - - - - - 0x02400E 08:BFFE: 00        .byte $00   ; 02
-- D 1 - - - 0x02400F 08:BFFF: 00        .byte $00   ; 03
 
 
 
