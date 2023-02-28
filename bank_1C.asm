@@ -2672,7 +2672,7 @@ C - - - - - 0x039058 0E:9048: E8        INX
 C - - - - - 0x039059 0E:9049: E0 04     CPX #$04
 C - - - - - 0x03905B 0E:904B: 90 EF     BCC bra_903C_loop
 C - - - - - 0x03905D 0E:904D: A9 02     LDA #con_script_02
-C - - - - - 0x03905F 0E:904F: 20 AE F5  JSR sub_0x03F5BE
+C - - - - - 0x03905F 0E:904F: 20 AE F5  JSR sub_0x03F5BE_подготовить_скрипт
 C - - - - - 0x039062 0E:9052: 20 C2 F6  JSR sub_0x03F6D2_выключить_музыку_и_звуки
 C - - - - - 0x039065 0E:9055: 4C 2E E1  JMP loc_0x03E13E
 
@@ -3253,7 +3253,7 @@ bra_93B2:
 loc_93B2:
 ofs_010_93B2_11:
 C D 0 - - - 0x0393C2 0E:93B2: A9 00     LDA #con_script_00
-C - - - - - 0x0393C4 0E:93B4: 20 AE F5  JSR sub_0x03F5BE
+C - - - - - 0x0393C4 0E:93B4: 20 AE F5  JSR sub_0x03F5BE_подготовить_скрипт
 C - - - - - 0x0393C7 0E:93B7: 4C 3E E1  JMP loc_0x03E14E
 
 
@@ -4950,7 +4950,7 @@ C - - - - - 0x03A0DA 0E:A0CA: 60        RTS
 bra_A0CB:
 C - - - - - 0x03A0DB 0E:A0CB: 20 C2 F6  JSR sub_0x03F6D2_выключить_музыку_и_звуки
 C - - - - - 0x03A0DE 0E:A0CE: A9 05     LDA #con_script_05
-C - - - - - 0x03A0E0 0E:A0D0: 4C AE F5  JMP loc_0x03F5BE
+C - - - - - 0x03A0E0 0E:A0D0: 4C AE F5  JMP loc_0x03F5BE_подготовить_скрипт
 
 
 

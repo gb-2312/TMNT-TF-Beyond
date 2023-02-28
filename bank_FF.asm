@@ -179,8 +179,8 @@
 .export loc_0x03F052_отрисовать_пустой_экран
 .export sub_0x03F054_отрисовать_экран
 .export sub_0x03F214_генератор_рандома
-.export sub_0x03F5BE
-.export loc_0x03F5BE
+.export sub_0x03F5BE_подготовить_скрипт
+.export loc_0x03F5BE_подготовить_скрипт
 .export loc_0x03F5F7_swap_prg_16
 .export loc_0x03F627_restore_prg
 .export sub_0x03F69B_выключить_звуки_и_записать_новый
@@ -4158,7 +4158,7 @@ ofs_001_E78B_14:
 ofs_001_E799_15:
 C - - J - - 0x03E7A9 0F:E799: 20 3C F0  JSR sub_F03C
 C - - - - - 0x03E7AC 0F:E79C: A9 0B     LDA #con_script_0B
-C - - - - - 0x03E7AE 0F:E79E: 4C AE F5  JMP loc_F5AE
+C - - - - - 0x03E7AE 0F:E79E: 4C AE F5  JMP loc_F5AE_подготовить_скрипт
 
 
 
@@ -6155,7 +6155,7 @@ C - - - - - 0x03F3E9 0F:F3D9: A9 00     LDA #$00    ; con_gm_story
 C - - - - - 0x03F3EB 0F:F3DB: 85 27     STA ram_0027
 C - - - - - 0x03F3ED 0F:F3DD: 85 2C     STA ram_game_mode
                                         LDA #con_script_01
-C - - - - - 0x03F3EF 0F:F3DF: 20 A7 F5  JSR sub_F5AE
+C - - - - - 0x03F3EF 0F:F3DF: 20 A7 F5  JSR sub_F5AE_подготовить_скрипт
 C - - - - - 0x03F3F2 0F:F3E2: 4C 2E E1  JMP loc_E12E
 bra_F3E5:
 C - - - - - 0x03F3F5 0F:F3E5: CA        DEX
@@ -6285,7 +6285,7 @@ bra_F49F:
 ; con_gm_vs_cpu
 ; con_gm_vs_team
 C - - - - - 0x03F4AF 0F:F49F: A9 02     LDA #con_script_02
-C - - - - - 0x03F4B1 0F:F4A1: 4C AE F5  JMP loc_F5AE
+C - - - - - 0x03F4B1 0F:F4A1: 4C AE F5  JMP loc_F5AE_подготовить_скрипт
 
 
 
@@ -6328,13 +6328,13 @@ C - - - - - 0x03F4E7 0F:F4D7: A0 00     LDY #$00    ; disable irq
 C - - - - - 0x03F4E9 0F:F4D9: 84 49     STY ram_irq_flag
 sub_F4DB:
 loc_F4DB:
-C - - - - - 0x03F4EB 0F:F4DB: 20 AE F5  JSR sub_F5AE
+C - - - - - 0x03F4EB 0F:F4DB: 20 AE F5  JSR sub_F5AE_подготовить_скрипт
 C - - - - - 0x03F4EE 0F:F4DE: 4C C2 F6  JMP loc_F6C2_выключить_музыку_и_звуки
 
 
 
 sub_F4E1:
-C - - - - - 0x03F4F1 0F:F4E1: A9 06     LDA #$06
+C - - - - - 0x03F4F1 0F:F4E1: A9 06     LDA #con_script_06
 C - - - - - 0x03F4F3 0F:F4E3: D0 F2     BNE bra_F4D7    ; jmp
 
 
@@ -6347,7 +6347,7 @@ C - - - - - 0x03F4FE 0F:F4EE: E6 98     INC ram_0098
 C - - - - - 0x03F500 0F:F4F0: A9 00     LDA #$00
 C - - - - - 0x03F502 0F:F4F2: 85 26     STA ram_0026
                                         LDA #con_script_03
-C - - - - - 0x03F504 0F:F4F4: 20 08 D0  JMP loc_F5AE
+C - - - - - 0x03F504 0F:F4F4: 20 08 D0  JMP loc_F5AE_подготовить_скрипт
 
 
 
@@ -6359,7 +6359,7 @@ C - - - - - 0x03F511 0F:F501: A9 00     LDA #$00
 C - - - - - 0x03F513 0F:F503: 85 A0     STA ram_strength
 C - - - - - 0x03F515 0F:F505: 85 A1     STA ram_strength + $01
                                         LDA #con_script_04
-C - - - - - 0x03F517 0F:F507: F0 EE     JMP loc_F5AE
+C - - - - - 0x03F517 0F:F507: F0 EE     JMP loc_F5AE_подготовить_скрипт
 
 
 
@@ -6410,10 +6410,10 @@ C - - - - - 0x03F569 0F:F559: A5 FF     LDA ram_for_2000
 C - - - - - 0x03F56B 0F:F55B: 29 FC     AND #$FC
 C - - - - - 0x03F56D 0F:F55D: 85 FF     STA ram_for_2000
 C - - - - - 0x03F56F 0F:F55F: A9 0A     LDA #con_script_0A
-C - - - - - 0x03F571 0F:F561: 4C AE F5  JMP loc_F5AE
+C - - - - - 0x03F571 0F:F561: 4C AE F5  JMP loc_F5AE_подготовить_скрипт
 bra_F564:
 C - - - - - 0x03F574 0F:F564: A9 00     LDA #con_script_00
-C - - - - - 0x03F576 0F:F566: 20 AE F5  JSR sub_F5AE
+C - - - - - 0x03F576 0F:F566: 20 AE F5  JSR sub_F5AE_подготовить_скрипт
 C - - - - - 0x03F579 0F:F569: 20 C2 F6  JSR sub_F6C2_выключить_музыку_и_звуки
 C - - - - - 0x03F57C 0F:F56C: 4C 3E E1  JMP loc_E13E
 
@@ -6439,22 +6439,22 @@ bra_F590:
 C - - - - - 0x03F5A0 0F:F590: 20 B3 F5  JSR sub_F5B3
 C - - - - - 0x03F5A3 0F:F593: D0 B7     BNE bra_F54C_RTS
 C - - - - - 0x03F5A5 0F:F595: A9 05     LDA #con_script_05
-C - - - - - 0x03F5A7 0F:F597: 4C AE F5  JMP loc_F5AE
+C - - - - - 0x03F5A7 0F:F597: 4C AE F5  JMP loc_F5AE_подготовить_скрипт
 
 
 
 ofs_000_F59A_08:
 C - - J - - 0x03F5AA 0F:F59A: A9 00     LDA #$00
 C - - - - - 0x03F5AC 0F:F59C: 8D 75 06  STA ram_0675
-C - - - - - 0x03F5AF 0F:F59F: E6 20     INC ram_script    ; 09
+C - - - - - 0x03F5AF 0F:F59F: E6 20     INC ram_script    ; con_script_09
 C - - - - - 0x03F5B1 0F:F5A1: 4C 88 FB  JMP loc_FB88_disable_irq
 
 
 
-loc_F5AE:
-sub_F5AE:
-sub_0x03F5BE:
-loc_0x03F5BE:
+loc_F5AE_подготовить_скрипт:
+sub_F5AE_подготовить_скрипт:
+sub_0x03F5BE_подготовить_скрипт:
+loc_0x03F5BE_подготовить_скрипт:
 C D 3 - - - 0x03F5BE 0F:F5AE: 85 20     STA ram_script
 C - - - - - 0x03F5C0 0F:F5B0: 4C A9 F5  LDA #$00
                                         STA ram_subscript
@@ -7916,7 +7916,7 @@ C D 3 - - - 0x03FE68 0F:FE58: A9 00     LDA #$00
 C - - - - - 0x03FE6A 0F:FE5A: 85 27     STA ram_0027
 C - - - - - 0x03FE6C 0F:FE5C: 85 94     STA ram_0094
 C - - - - - 0x03FE6E 0F:FE5E: A9 00     LDA #con_script_00
-C - - - - - 0x03FE70 0F:FE60: 20 AE F5  JSR sub_F5AE
+C - - - - - 0x03FE70 0F:FE60: 20 AE F5  JSR sub_F5AE_подготовить_скрипт
 C - - - - - 0x03FE73 0F:FE63: 4C 3E E1  JMP loc_E13E
 
 
