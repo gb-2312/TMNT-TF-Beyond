@@ -550,7 +550,7 @@ C - - - - - 0x02E6F7 0B:A6E7: AC 38 06  LDY ram_0638
 C - - - - - 0x02E6FA 0B:A6EA: C0 10     CPY #$10
 C - - - - - 0x02E6FC 0B:A6EC: 90 03     BCC bra_A6F1
 bra_A6EE:
-C - - - - - 0x02E6FE 0B:A6EE: A9 23     LDA #$23
+C - - - - - 0x02E6FE 0B:A6EE: A9 23     LDA #con_колво_персов * $05    ; для дешей рукой
 C - - - - - 0x02E700 0B:A6F0: 18        CLC
 bra_A6F1:
 C - - - - - 0x02E701 0B:A6F1: 7D 50 05  ADC ram_obj_id,X ; 0550 0551 
