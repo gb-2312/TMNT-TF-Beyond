@@ -2671,7 +2671,7 @@ bra_9048:
 C - - - - - 0x039058 0E:9048: E8        INX
 C - - - - - 0x039059 0E:9049: E0 04     CPX #$04
 C - - - - - 0x03905B 0E:904B: 90 EF     BCC bra_903C_loop
-C - - - - - 0x03905D 0E:904D: A9 02     LDA #$02
+C - - - - - 0x03905D 0E:904D: A9 02     LDA #con_script_02
 C - - - - - 0x03905F 0E:904F: 20 AE F5  JSR sub_0x03F5BE
 C - - - - - 0x039062 0E:9052: 20 C2 F6  JSR sub_0x03F6D2_выключить_музыку_и_звуки
 C - - - - - 0x039065 0E:9055: 4C 2E E1  JMP loc_0x03E13E
@@ -2773,7 +2773,7 @@ C - - - - - 0x0390AF 0E:909F: A5 90     LDA ram_sum_btn_press
 C - - - - - 0x0390B1 0E:90A1: 05 A4     ORA ram_00A4
 C - - - - - 0x0390B3 0E:90A3: 29 30     AND #con_btns_SS
 C - - - - - 0x0390B5 0E:90A5: D0 29     BNE bra_90D0
-C - - - - - 0x0390B7 0E:90A7: A5 21     LDA ram_0021
+C - - - - - 0x0390B7 0E:90A7: A5 21     LDA ram_subscript
 C - - - - - 0x0390B9 0E:90A9: 20 32 D0  JSR sub_0x03D042_поинтеры_после_JSR
 - D 0 - I - 0x0390BC 0E:90AC: D6 90     .word ofs_010_90D6_00
 - D 0 - I - 0x0390BE 0E:90AE: E3 90     .word ofs_010_90E3_01_отрисовать_opening_1
@@ -2803,7 +2803,7 @@ C - - - - - 0x0390E3 0E:90D3: 4C B2 93  JMP loc_93B2
 
 
 ofs_010_90D6_00:
-C - - J - - 0x0390E6 0E:90D6: E6 21     INC ram_0021
+C - - J - - 0x0390E6 0E:90D6: E6 21     INC ram_subscript
 C - - - - - 0x0390E8 0E:90D8: 20 3C F0  JSR sub_0x03F04C
 C - - - - - 0x0390EB 0E:90DB: A9 0B     LDA #con_0x03F84C_0B
 C - - - - - 0x0390ED 0E:90DD: 20 14 F8  JSR sub_0x03F824
@@ -2833,7 +2833,7 @@ C - - - - - 0x039111 0E:9101: AD 31 06  LDA ram_0631
 C - - - - - 0x039114 0E:9104: D0 0A     BNE bra_9110_RTS
 C - - - - - 0x039116 0E:9106: A9 A0     LDA #$A0
 C - - - - - 0x039118 0E:9108: 8D 60 05  STA ram_obj_0560
-C - - - - - 0x03911B 0E:910B: E6 21     INC ram_0021
+C - - - - - 0x03911B 0E:910B: E6 21     INC ram_subscript
 C - - - - - 0x03911D 0E:910D: 4C 2E E1  JMP loc_0x03E13E
 bra_9110_RTS:
 C - - - - - 0x039120 0E:9110: 60        RTS
@@ -2867,7 +2867,7 @@ C - - - - - 0x03914B 0E:913B: A9 1F     LDA #$1F
 C - - - - - 0x03914D 0E:913D: 8D 10 04  STA ram_obj_pos_Y
 C - - - - - 0x039150 0E:9140: A9 21     LDA #$21
 C - - - - - 0x039152 0E:9142: 85 34     STA ram_0034
-C - - - - - 0x039154 0E:9144: E6 21     INC ram_0021
+C - - - - - 0x039154 0E:9144: E6 21     INC ram_subscript
 C - - - - - 0x039156 0E:9146: 4C 41 E1  JMP loc_0x03E151
 
 
@@ -2878,7 +2878,7 @@ C - - - - - 0x03915C 0E:914C: AD 31 06  LDA ram_0631
 C - - - - - 0x03915F 0E:914F: D0 07     BNE bra_9158_RTS
 C - - - - - 0x039161 0E:9151: A9 20     LDA #$20
 C - - - - - 0x039163 0E:9153: 8D 60 05  STA ram_obj_0560
-C - - - - - 0x039166 0E:9156: E6 21     INC ram_0021
+C - - - - - 0x039166 0E:9156: E6 21     INC ram_subscript
 bra_9158_RTS:
 C - - - - - 0x039168 0E:9158: 60        RTS
 
@@ -2888,7 +2888,7 @@ ofs_010_9159_05:
 C - - J - - 0x039169 0E:9159: CE 60 05  DEC ram_obj_0560
 C - - - - - 0x03916C 0E:915C: D0 FA     BNE bra_9158_RTS
 bra_915E:
-C - - - - - 0x03916E 0E:915E: E6 21     INC ram_0021
+C - - - - - 0x03916E 0E:915E: E6 21     INC ram_subscript
 C - - - - - 0x039170 0E:9160: 4C 2E E1  JMP loc_0x03E13E
 
 
@@ -2902,7 +2902,7 @@ C - - - - - 0x03917D 0E:916D: 85 B6     STA ram_00B6
 C - - - - - 0x03917F 0E:916F: A9 00     LDA #$00
 C - - - - - 0x039181 0E:9171: A8        TAY
 C - - - - - 0x039182 0E:9172: 20 94 D3  JSR sub_0x03D3A4
-C - - - - - 0x039185 0E:9175: E6 21     INC ram_0021
+C - - - - - 0x039185 0E:9175: E6 21     INC ram_subscript
 C - - - - - 0x039187 0E:9177: 4C C6 E8  JMP loc_0x03E8D6
 
 
@@ -2920,7 +2920,7 @@ C - - - - - 0x03919C 0E:918C: EE 30 05  INC ram_obj_0530
 C - - - - - 0x03919F 0E:918F: AD 30 05  LDA ram_obj_0530
 C - - - - - 0x0391A2 0E:9192: C9 06     CMP #$06
 C - - - - - 0x0391A4 0E:9194: 90 07     BCC bra_919D_RTS
-C - - - - - 0x0391A6 0E:9196: E6 21     INC ram_0021
+C - - - - - 0x0391A6 0E:9196: E6 21     INC ram_subscript
 C - - - - - 0x0391A8 0E:9198: A9 0B     LDA #con_0x03F84C_0B
 C - - - - - 0x0391AA 0E:919A: 4C 14 F8  JMP loc_0x03F824
 bra_919D_RTS:
@@ -2934,7 +2934,7 @@ C - - - - - 0x0391B1 0E:91A1: AD 31 06  LDA ram_0631
 C - - - - - 0x0391B4 0E:91A4: D0 F7     BNE bra_919D_RTS
 C - - - - - 0x0391B6 0E:91A6: A9 60     LDA #$60
 C - - - - - 0x0391B8 0E:91A8: 8D 60 05  STA ram_obj_0560
-C - - - - - 0x0391BB 0E:91AB: E6 21     INC ram_0021
+C - - - - - 0x0391BB 0E:91AB: E6 21     INC ram_subscript
 C - - - - - 0x0391BD 0E:91AD: 60        RTS
 
 
@@ -2968,7 +2968,7 @@ C - - - - - 0x0391ED 0E:91DD: 20 14 F8  JSR sub_0x03F824
 C - - - - - 0x0391F0 0E:91E0: A9 03     LDA #$03
 C - - - - - 0x0391F2 0E:91E2: 8D 0C 01  STA ram_010C
 loc_91E5:
-C D 0 - - - 0x0391F5 0E:91E5: E6 21     INC ram_0021
+C D 0 - - - 0x0391F5 0E:91E5: E6 21     INC ram_subscript
 C - - - - - 0x0391F7 0E:91E7: A9 00     LDA #$00
 C - - - - - 0x0391F9 0E:91E9: 8D C0 04  STA ram_obj_04C0
 C - - - - - 0x0391FC 0E:91EC: AD B0 04  LDA ram_obj_spd_Y_lo
@@ -3087,7 +3087,7 @@ sub_9297:
 C - - - - - 0x0392A7 0E:9297: A5 91     LDA ram_btn_hold
 C - - - - - 0x0392A9 0E:9299: 29 80     AND #con_btn_A
 C - - - - - 0x0392AB 0E:929B: D0 F9     BNE bra_9296_RTS
-C - - - - - 0x0392AD 0E:929D: A5 21     LDA ram_0021
+C - - - - - 0x0392AD 0E:929D: A5 21     LDA ram_subscript
 C - - - - - 0x0392AF 0E:929F: 38        SEC
 C - - - - - 0x0392B0 0E:92A0: E9 0B     SBC #$0B
 C - - - - - 0x0392B2 0E:92A2: 0A        ASL
@@ -3139,7 +3139,7 @@ C - - - - - 0x039305 0E:92F5: 38        SEC
 C - - - - - 0x039306 0E:92F6: E9 10     SBC #$10
 C - - - - - 0x039308 0E:92F8: 8D 10 04  STA ram_obj_pos_Y
 bra_92FB:
-C - - - - - 0x03930B 0E:92FB: A5 21     LDA ram_0021
+C - - - - - 0x03930B 0E:92FB: A5 21     LDA ram_subscript
 C - - - - - 0x03930D 0E:92FD: 38        SEC
 C - - - - - 0x03930E 0E:92FE: E9 0B     SBC #$0B
 C - - - - - 0x039310 0E:9300: 69 4E     ADC #$4E
@@ -3161,7 +3161,7 @@ ofs_008_9312_00:
 C - - J - - 0x039322 0E:9312: A9 00     LDA #$00
 C - - - - - 0x039324 0E:9314: 8D E0 04  STA ram_obj_04E0
 C - - - - - 0x039327 0E:9317: 38        SEC
-C - - - - - 0x039328 0E:9318: A5 21     LDA ram_0021
+C - - - - - 0x039328 0E:9318: A5 21     LDA ram_subscript
 C - - - - - 0x03932A 0E:931A: E9 0B     SBC #$0B
 C - - - - - 0x03932C 0E:931C: 8D D0 05  STA ram_obj_05D0
 C - - - - - 0x03932F 0E:931F: A8        TAY
@@ -3225,7 +3225,7 @@ C - - - - - 0x03939F 0E:938F: 8D 60 05  STA ram_obj_0560
 ofs_008_9392_02:
 C - - - - - 0x0393A2 0E:9392: CE 60 05  DEC ram_obj_0560
 C - - - - - 0x0393A5 0E:9395: D0 23     BNE bra_93BA_RTS
-C - - - - - 0x0393A7 0E:9397: A5 21     LDA ram_0021
+C - - - - - 0x0393A7 0E:9397: A5 21     LDA ram_subscript
 C - - - - - 0x0393A9 0E:9399: C9 10     CMP #$10
 C - - - - - 0x0393AB 0E:939B: B0 15     BCS bra_93B2
 C - - - - - 0x0393AD 0E:939D: EE C0 04  INC ram_obj_04C0    ; 02
@@ -3252,7 +3252,7 @@ C - - - - - 0x0393BF 0E:93AF: 4C E5 91  JMP loc_91E5
 bra_93B2:
 loc_93B2:
 ofs_010_93B2_11:
-C D 0 - - - 0x0393C2 0E:93B2: A9 00     LDA #$00
+C D 0 - - - 0x0393C2 0E:93B2: A9 00     LDA #con_script_00
 C - - - - - 0x0393C4 0E:93B4: 20 AE F5  JSR sub_0x03F5BE
 C - - - - - 0x0393C7 0E:93B7: 4C 3E E1  JMP loc_0x03E14E
 
@@ -3567,7 +3567,7 @@ tbl_95BC:
 
 
 sub_0x039610:
-C - - - - - 0x039610 0E:9600: A5 21     LDA ram_0021
+C - - - - - 0x039610 0E:9600: A5 21     LDA ram_subscript
 C - - - - - 0x039612 0E:9602: 20 32 D0  JSR sub_0x03D042_поинтеры_после_JSR
 - D 0 - I - 0x039615 0E:9605: 23 96     .word ofs_007_9623_00
 - D 0 - I - 0x039617 0E:9607: 2B 96     .word ofs_007_962B_01
@@ -3588,7 +3588,7 @@ C - - - - - 0x039612 0E:9602: 20 32 D0  JSR sub_0x03D042_поинтеры_пос
 
 
 ofs_007_9623_00:
-C - - J - - 0x039633 0E:9623: E6 21     INC ram_0021
+C - - J - - 0x039633 0E:9623: E6 21     INC ram_subscript
 C - - - - - 0x039635 0E:9625: 20 C2 F6  JSR sub_0x03F6D2_выключить_музыку_и_звуки
 C - - - - - 0x039638 0E:9628: 4C 2E E1  JMP loc_0x03E13E
 
@@ -3636,7 +3636,7 @@ C - - - - - 0x039691 0E:9681: A0 08     LDY #con_0x03DC39_08
 C - - - - - 0x039693 0E:9683: 20 04 DC  JSR sub_0x03DC14
 C - - - - - 0x039696 0E:9686: A9 52     LDA #$52
 C - - - - - 0x039698 0E:9688: 85 36     STA ram_0036
-C - - - - - 0x03969A 0E:968A: E6 21     INC ram_0021
+C - - - - - 0x03969A 0E:968A: E6 21     INC ram_subscript
 C - - - - - 0x03969C 0E:968C: 8A        TXA
 C - - - - - 0x03969D 0E:968D: 0A        ASL
 C - - - - - 0x03969E 0E:968E: A8        TAY
@@ -3656,11 +3656,11 @@ C - - - - - 0x0396B1 0E:96A1: AD 31 06  LDA ram_0631
 C - - - - - 0x0396B4 0E:96A4: D0 B2     BNE bra_9658_RTS
 C - - - - - 0x0396B6 0E:96A6: AD 25 01  LDA ram_option_difficulty
 C - - - - - 0x0396B9 0E:96A9: F0 05     BEQ bra_96B0
-C - - - - - 0x0396BB 0E:96AB: E6 21     INC ram_0021
+C - - - - - 0x0396BB 0E:96AB: E6 21     INC ram_subscript
 C - - - - - 0x0396BD 0E:96AD: 4C 2E E1  JMP loc_0x03E13E
 bra_96B0:
 - - - - - - 0x0396C0 0E:96B0: A9 0D     LDA #$0D
-- - - - - - 0x0396C2 0E:96B2: 85 21     STA ram_0021
+- - - - - - 0x0396C2 0E:96B2: 85 21     STA ram_subscript
 - - - - - - 0x0396C4 0E:96B4: A9 C0     LDA #$C0
 - - - - - - 0x0396C6 0E:96B6: 8D 60 05  STA ram_obj_0560
 - - - - - - 0x0396C9 0E:96B9: 60        RTS
@@ -3668,13 +3668,13 @@ bra_96B0:
 
 
 ofs_007_96BA_03:
-C - - J - - 0x0396CA 0E:96BA: E6 21     INC ram_0021
+C - - J - - 0x0396CA 0E:96BA: E6 21     INC ram_subscript
 C - - - - - 0x0396CC 0E:96BC: 4C 42 F0  JMP loc_0x03F052_отрисовать_пустой_экран
 
 
 
 ofs_007_96BF_04:
-C - - J - - 0x0396CF 0E:96BF: E6 21     INC ram_0021
+C - - J - - 0x0396CF 0E:96BF: E6 21     INC ram_subscript
 C - - - - - 0x0396D1 0E:96C1: A9 02     LDA #con_0x03F84C_02
 C - - - - - 0x0396D3 0E:96C3: 20 14 F8  JSR sub_0x03F824
 C - - - - - 0x0396D6 0E:96C6: A2 08     LDX #con_screen_stage_water_front
@@ -3884,7 +3884,7 @@ C - - - - - 0x039847 0E:9837: 60        RTS
 
 
 ofs_006_9838_0A:
-C - - J - - 0x039848 0E:9838: E6 21     INC ram_0021
+C - - J - - 0x039848 0E:9838: E6 21     INC ram_subscript
 C - - - - - 0x03984A 0E:983A: 4C 2E E1  JMP loc_0x03E13E
 
 
@@ -3893,7 +3893,7 @@ ofs_007_983D_06:
 C - - J - - 0x03984D 0E:983D: A2 2E     LDX #con_screen_ending_2
 C - - - - - 0x03984F 0E:983F: 20 44 F0  JSR sub_0x03F054_отрисовать_экран
 C - - - - - 0x039852 0E:9842: 20 BE DA  JSR sub_0x03DACE_удалить_все_объекты
-C - - - - - 0x039855 0E:9845: E6 21     INC ram_0021
+C - - - - - 0x039855 0E:9845: E6 21     INC ram_subscript
 C - - - - - 0x039857 0E:9847: A9 0B     LDA #con_0x03F84C_0B
 C - - - - - 0x039859 0E:9849: 20 14 F8  JSR sub_0x03F824
 C - - - - - 0x03985C 0E:984C: A0 1C     LDY #con_0x03DC39_1C
@@ -3910,7 +3910,7 @@ ofs_007_985D_07:
 C - - J - - 0x03986D 0E:985D: 20 36 9B  JSR sub_9B36
 C - - - - - 0x039870 0E:9860: AD 31 06  LDA ram_0631
 C - - - - - 0x039873 0E:9863: D0 2C     BNE bra_9891_RTS
-C - - - - - 0x039875 0E:9865: E6 21     INC ram_0021
+C - - - - - 0x039875 0E:9865: E6 21     INC ram_subscript
 C - - - - - 0x039877 0E:9867: 4C 2E E1  JMP loc_0x03E13E
 
 
@@ -3947,11 +3947,11 @@ C - - - - - 0x0398AD 0E:989D: 20 A4 A5  LDA ram_option_difficulty
                                         CMP #$03
 C - - - - - 0x0398B1 0E:98A1: 90 05     BCC bra_98A8
 ; if expert
-- - - - - - 0x0398B3 0E:98A3: E6 21     INC ram_0021
+- - - - - - 0x0398B3 0E:98A3: E6 21     INC ram_subscript
 - - - - - - 0x0398B5 0E:98A5: 4C 2E E1  JMP loc_0x03E13E
 bra_98A8:
 C - - - - - 0x0398B8 0E:98A8: A9 0E     LDA #$0E
-C - - - - - 0x0398BA 0E:98AA: 85 21     STA ram_0021
+C - - - - - 0x0398BA 0E:98AA: 85 21     STA ram_subscript
 C - - - - - 0x0398BC 0E:98AC: 60        RTS
 
 
@@ -3964,7 +3964,7 @@ ofs_007_98AD_0A:
 - - - - - - 0x0398C8 0E:98B8: A8        TAY
 - - - - - - 0x0398C9 0E:98B9: 20 94 D3  JSR sub_0x03D3A4
 - - - - - - 0x0398CC 0E:98BC: A9 0B     LDA #$0B
-- - - - - - 0x0398CE 0E:98BE: 85 21     STA ram_0021
+- - - - - - 0x0398CE 0E:98BE: 85 21     STA ram_subscript
 - - - - - - 0x0398D0 0E:98C0: 20 25 DC  JSR sub_0x03DC35
 - - - - - - 0x0398D3 0E:98C3: A9 42     LDA #con_music_ost_technodrome
 - - - - - - 0x0398D5 0E:98C5: 20 90 F6  JSR sub_0x03F6A0_записать_звук_сохранив_X_Y
@@ -4052,7 +4052,7 @@ C - - - - - 0x03994F 0E:993F: D0 BB     BNE bra_98FC_RTS
 C - - - - - 0x039951 0E:9941: A9 40     LDA #$40
 C - - - - - 0x039953 0E:9943: 8D 60 05  STA ram_obj_0560
 C - - - - - 0x039956 0E:9946: A9 0D     LDA #$0D
-C - - - - - 0x039958 0E:9948: 85 21     STA ram_0021
+C - - - - - 0x039958 0E:9948: 85 21     STA ram_subscript
 C - - - - - 0x03995A 0E:994A: 60        RTS
 
 
@@ -4164,7 +4164,7 @@ bra_99B9_FE:
 
 
 bra_99D8_FD:
-- - - - - - 0x0399E8 0E:99D8: E6 21     INC ram_0021
+- - - - - - 0x0399E8 0E:99D8: E6 21     INC ram_subscript
 - - - - - - 0x0399EA 0E:99DA: A9 01     LDA #$01
 - - - - - - 0x0399EC 0E:99DC: 8D 60 05  STA ram_obj_0560
 - - - - - - 0x0399EF 0E:99DF: 60        RTS
@@ -4816,7 +4816,7 @@ C - - - - - 0x039FCF 0E:9FBF: A5 90     LDA ram_sum_btn_press
 C - - - - - 0x039FD1 0E:9FC1: 05 A4     ORA ram_00A4
 C - - - - - 0x039FD3 0E:9FC3: 29 30     AND #con_btns_SS
 C - - - - - 0x039FD5 0E:9FC5: D0 09     BNE bra_9FD0
-C - - - - - 0x039FD7 0E:9FC7: A5 21     LDA ram_0021
+C - - - - - 0x039FD7 0E:9FC7: A5 21     LDA ram_subscript
 C - - - - - 0x039FD9 0E:9FC9: 20 32 D0  JSR sub_0x03D042_поинтеры_после_JSR
 - D 0 - I - 0x039FDC 0E:9FCC: D6 9F     .word ofs_004_9FD6_00_отрисовать_hiscore
 - D 0 - I - 0x039FDE 0E:9FCE: 80 A0     .word ofs_004_A080_01
@@ -4830,7 +4830,7 @@ ofs_004_9FD6_00_отрисовать_hiscore:
 C - - J - - 0x039FE6 0E:9FD6: A9 0C     LDA #con_0x03F84C_0C
 C - - - - - 0x039FE8 0E:9FD8: 20 14 F8  JSR sub_0x03F824
 C - - - - - 0x039FEB 0E:9FDB: 20 3F F0  JSR sub_0x03F04F
-C - - - - - 0x039FEE 0E:9FDE: E6 21     INC ram_0021
+C - - - - - 0x039FEE 0E:9FDE: E6 21     INC ram_subscript
 C - - - - - 0x039FF0 0E:9FE0: A2 26     LDX #con_screen_hiscore
 C - - - - - 0x039FF2 0E:9FE2: 20 44 F0  JSR sub_0x03F054_отрисовать_экран
 C - - - - - 0x039FF5 0E:9FE5: A9 04     LDA #$04
@@ -4949,7 +4949,7 @@ bra_A0CA_RTS:
 C - - - - - 0x03A0DA 0E:A0CA: 60        RTS
 bra_A0CB:
 C - - - - - 0x03A0DB 0E:A0CB: 20 C2 F6  JSR sub_0x03F6D2_выключить_музыку_и_звуки
-C - - - - - 0x03A0DE 0E:A0CE: A9 05     LDA #$05
+C - - - - - 0x03A0DE 0E:A0CE: A9 05     LDA #con_script_05
 C - - - - - 0x03A0E0 0E:A0D0: 4C AE F5  JMP loc_0x03F5BE
 
 

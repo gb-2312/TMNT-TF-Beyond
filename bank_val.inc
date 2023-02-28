@@ -67,6 +67,24 @@ con_buf_mode_05                         = $05 ; счетчик + запись б
 
 
 
+; ram_script                            = $0020
+; обработчик в 0x03F396
+con_script_00                           = $00 ; 
+con_script_01                           = $01 ; 
+con_script_02                           = $02 ; 
+con_script_03                           = $03 ; 
+con_script_04                           = $04 ; 
+con_script_05                           = $05 ; 
+con_script_06                           = $06 ; 
+con_script_07                           = $07 ; 
+con_script_08                           = $08 ; 
+con_script_09                           = $09 ; 
+con_script_0A                           = $0A ; 
+con_script_0B                           = $0B ; 
+con_script_0C                           = $0C ; 
+
+
+
 ; ram_plr_id                            = $00A2
 ; ram_obj_id                            = $0550
 ; con_fighter_leo                         = $00 ; 00 leo
