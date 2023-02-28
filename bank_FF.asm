@@ -6154,7 +6154,8 @@ bra_F3D9:
 C - - - - - 0x03F3E9 0F:F3D9: A9 00     LDA #$00    ; con_gm_story
 C - - - - - 0x03F3EB 0F:F3DB: 85 27     STA ram_0027
 C - - - - - 0x03F3ED 0F:F3DD: 85 2C     STA ram_game_mode
-C - - - - - 0x03F3EF 0F:F3DF: 20 A7 F5  JSR sub_F5A7
+                                        LDA #con_script_01
+C - - - - - 0x03F3EF 0F:F3DF: 20 A7 F5  JSR sub_F5AE
 C - - - - - 0x03F3F2 0F:F3E2: 4C 2E E1  JMP loc_E12E
 bra_F3E5:
 C - - - - - 0x03F3F5 0F:F3E5: CA        DEX
@@ -6345,7 +6346,8 @@ C - - - - - 0x03F4FB 0F:F4EB: 20 09 D0  JSR sub_D009_очистить_опера
 C - - - - - 0x03F4FE 0F:F4EE: E6 98     INC ram_0098
 C - - - - - 0x03F500 0F:F4F0: A9 00     LDA #$00
 C - - - - - 0x03F502 0F:F4F2: 85 26     STA ram_0026
-C - - - - - 0x03F504 0F:F4F4: 20 08 D0  JMP loc_F5A7
+                                        LDA #con_script_03
+C - - - - - 0x03F504 0F:F4F4: 20 08 D0  JMP loc_F5AE
 
 
 
@@ -6356,7 +6358,8 @@ C - - - - - 0x03F50E 0F:F4FE: 20 0D D0  JSR sub_D00D_очистить_опера
 C - - - - - 0x03F511 0F:F501: A9 00     LDA #$00
 C - - - - - 0x03F513 0F:F503: 85 A0     STA ram_strength
 C - - - - - 0x03F515 0F:F505: 85 A1     STA ram_strength + $01
-C - - - - - 0x03F517 0F:F507: F0 EE     JMP loc_F5A7
+                                        LDA #con_script_04
+C - - - - - 0x03F517 0F:F507: F0 EE     JMP loc_F5AE
 
 
 
@@ -6448,22 +6451,14 @@ C - - - - - 0x03F5B1 0F:F5A1: 4C 88 FB  JMP loc_FB88_disable_irq
 
 
 
-sub_F5A7:
-loc_F5A7:
-C D 3 - - - 0x03F5B7 0F:F5A7: E6 20     INC ram_script
-loc_F5A9:
-C D 3 - - - 0x03F5B9 0F:F5A9: A9 00     LDA #$00
-C - - - - - 0x03F5BB 0F:F5AB: 85 21     STA ram_subscript
-C - - - - - 0x03F5BD 0F:F5AD: 60        RTS
-
-
-
 loc_F5AE:
 sub_F5AE:
 sub_0x03F5BE:
 loc_0x03F5BE:
 C D 3 - - - 0x03F5BE 0F:F5AE: 85 20     STA ram_script
-C - - - - - 0x03F5C0 0F:F5B0: 4C A9 F5  JMP loc_F5A9
+C - - - - - 0x03F5C0 0F:F5B0: 4C A9 F5  LDA #$00
+                                        STA ram_subscript
+                                        RTS
 
 
 
