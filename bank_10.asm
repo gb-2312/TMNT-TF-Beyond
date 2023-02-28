@@ -22,7 +22,7 @@ C D 0 - - - 0x020011 08:8001: AD F4 07  LDA ram_07F4
 C - - - - - 0x020014 08:8004: F0 03     BEQ bra_8009
 C - - - - - 0x020016 08:8006: CE F4 07  DEC ram_07F4
 bra_8009:
-C - - - - - 0x020019 08:8009: A5 97     LDA ram_0097
+C - - - - - 0x020019 08:8009: A5 97     LDA ram_pause_flag
 C - - - - - 0x02001B 08:800B: CD C4 07  CMP ram_07C4
 C - - - - - 0x02001E 08:800E: F0 0D     BEQ bra_801D
 C - - - - - 0x020020 08:8010: 8D C4 07  STA ram_07C4
@@ -104,14 +104,14 @@ C - - - - - 0x02009E 08:808E: 60        RTS
 
 
 sub_808F:
-C - - - - - 0x02009F 08:808F: A5 97     LDA ram_0097
-C - - - - - 0x0200A1 08:8091: F0 08     BEQ bra_809B
+C - - - - - 0x02009F 08:808F: A5 97     LDA ram_pause_flag
+C - - - - - 0x0200A1 08:8091: F0 08     BEQ bra_809B_не_на_паузе
 C - - - - - 0x0200A3 08:8093: BD 0C 07  LDA ram_070C,X
 C - - - - - 0x0200A6 08:8096: C9 2D     CMP #$2D
 C - - - - - 0x0200A8 08:8098: F0 0B     BEQ bra_80A5
 bra_809A_RTS:
 C - - - - - 0x0200AA 08:809A: 60        RTS
-bra_809B:
+bra_809B_не_на_паузе:
 C - - - - - 0x0200AB 08:809B: B5 EA     LDA ram_00EA,X
 C - - - - - 0x0200AD 08:809D: 4A        LSR
 C - - - - - 0x0200AE 08:809E: B0 05     BCS bra_80A5
@@ -1904,8 +1904,9 @@ C - - - - - 0x020C00 08:8BF0: A9 30     LDA #$30
 C - - - - - 0x020C02 08:8BF2: 8D 00 40  STA $4000
 C - - - - - 0x020C05 08:8BF5: A9 7F     LDA #$7F
 C - - - - - 0x020C07 08:8BF7: 8D 01 40  STA $4001
-C - - - - - 0x020C0A 08:8BFA: A5 97     LDA ram_0097
+C - - - - - 0x020C0A 08:8BFA: A5 97     LDA ram_pause_flag
 C - - - - - 0x020C0C 08:8BFC: D0 0D     BNE bra_8C0B_RTS
+; if не на паузе
 C - - - - - 0x020C0E 08:8BFE: AD 0C 07  LDA ram_070C
 C - - - - - 0x020C11 08:8C01: F0 08     BEQ bra_8C0B_RTS
 C - - - - - 0x020C13 08:8C03: 20 25 8C  JSR sub_8C25

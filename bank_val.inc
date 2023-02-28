@@ -67,21 +67,21 @@ con_buf_mode_05                         = $05 ; счетчик + запись б
 
 
 
-; ram_script                            = $0020
+; ram_script_draw_hi                    = $0020
 ; обработчик в 0x03F396
-con_script_00                           = $00 ; 
-con_script_01                           = $01 ; 
-con_script_02                           = $02 ; 
-con_script_03                           = $03 ; 
-con_script_04                           = $04 ; 
-con_script_05                           = $05 ; 
-con_script_06                           = $06 ; 
-con_script_07                           = $07 ; 
-con_script_08                           = $08 ; 
-con_script_09                           = $09 ; 
-con_script_0A                           = $0A ; 
-con_script_0B                           = $0B ; 
-con_script_0C                           = $0C ; 
+con_script_draw_главное_меню            = $00 ; там где выбирать режим игры
+con_script_draw_vs_экран                = $01 ; 
+con_script_draw_очистка_1               = $02 ; отключает irq и делает очистку
+con_script_draw_очистка_2               = $03 ; тоже чета делает, но не много, потом идет 04
+con_script_draw_04                      = $04 ; хз как назвать, какой-то общий обработчик для разных экранов
+con_script_draw_konami                  = $05 ; экран с KONAMI
+con_script_draw_копирайты               = $06 ; самый первый экран
+con_script_draw_options                 = $07 ; экран с опциями
+con_script_draw_tournament_1            = $08 ; скрипт отключает irq перед 09
+con_script_draw_tournament_2            = $09 ; экран с клавиатурой
+con_script_draw_opening                 = $0A ; первая катсцена
+con_script_draw_ending                  = $0B ; финальная катсцена
+con_script_draw_topscore                = $0C ; телка с микрофоном
 
 
 
@@ -246,12 +246,12 @@ con_plr_state_победная_анимация         = $0C ; победная
 
 
 ; ram_game_mode                         = $002C
-con_gm_story                            = $00 ; story
-con_gm_vs_player                        = $01 ; vs player
-con_gm_vs_cpu                           = $02 ; vs cpu
-con_gm_vs_team                          = $03 ; vs team
-con_gm_tournament                       = $04 ; tournament
-con_gm_options                          = $05 ; options
+; con_gm_story                            = $00 ; story
+; con_gm_vs_player                        = $01 ; vs player
+; con_gm_vs_cpu                           = $02 ; vs cpu
+; con_gm_vs_team                          = $03 ; vs team
+; con_gm_tournament                       = $04 ; tournament
+; con_gm_options                          = $05 ; options
 
 
 
@@ -346,8 +346,8 @@ con_0x030C10_0A                         = $0A ;
 con_0x030C10_0B                         = $0B ; 
 con_0x030C10_0C                         = $0C ; 
 con_0x030C10_0D                         = $0D ; 
-con_0x030C10_0E                         = $0E ; ???
-con_0x030C10_0F                         = $0F ; ???
+con_0x030C10_0E                         = $0E ; ??? winner
+con_0x030C10_0F                         = $0F ; ??? player1 player2
 ; con_0x030C10_10                       = $10 ; unused
 con_0x030C10_11                         = $11 ; 
 con_0x030C10_12                         = $12 ; 
@@ -508,7 +508,7 @@ con_0x03F6AD_29                         = $29 ; выбор опции с ее м
 con_0x03F6AD_2A                         = $2A ; засчитывание победы в бою (увеличение счетчика)
 con_0x03F6AD_2B                         = $2B ; шум зрителей
 con_0x03F6AD_2C                         = $2C ; остается 20 секунд до конца боя
-con_0x03F6AD_2D                         = $2D ; пауза
+con_sfx_pause                           = $2D ; пауза
 
 ; 2E-46 0x021026 музыка и особые звуки с высоким приоритетом,
 ; при воспроизведении которых предварительно выключаются

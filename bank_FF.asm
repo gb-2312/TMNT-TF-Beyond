@@ -1104,12 +1104,12 @@ C - - - - - 0x03D286 0F:D276: 4C 5F D2  STA ram_ppu_buffer,X
 
 
 sub_D279:
-ofs_000_D279_04:
-C - - - - - 0x03D289 0F:D279: 20 04 D3  JSR sub_D304
-C - - - - - 0x03D28C 0F:D27C: A5 97     LDA ram_0097
-C - - - - - 0x03D28E 0F:D27E: F0 01     BEQ bra_D281
+ofs_000_D279_04_чтото_общее:
+C - - - - - 0x03D289 0F:D279: 20 04 D3  JSR sub_D304_попытка_поставить_паузу
+C - - - - - 0x03D28C 0F:D27C: A5 97     LDA ram_pause_flag
+C - - - - - 0x03D28E 0F:D27E: F0 01     BEQ bra_D281_не_на_паузе
 C - - - - - 0x03D290 0F:D280: 60        RTS
-bra_D281:
+bra_D281_не_на_паузе:
 C - - - - - 0x03D291 0F:D281: A5 94     LDA ram_0094
 C - - - - - 0x03D293 0F:D283: 20 32 D0  JSR sub_D032_поинтеры_после_JSR
 - D 2 - I - 0x03D296 0F:D286: 90 D2     .word ofs_002_D290_00
@@ -1131,7 +1131,7 @@ C - - - - - 0x03D2AF 0F:D29F: A9 00     LDA #$00
 C - - - - - 0x03D2B1 0F:D2A1: 85 89     STA ram_0089
 bra_D2A3:
 loc_D2A3:
-C D 2 - - - 0x03D2B3 0F:D2A3: E6 94     INC ram_0094
+C D 2 - - - 0x03D2B3 0F:D2A3: E6 94     INC ram_0094    ; 01 03
 C - - - - - 0x03D2B5 0F:D2A5: A9 00     LDA #$00
 C - - - - - 0x03D2B7 0F:D2A7: 85 95     STA ram_0095
 C - - - - - 0x03D2B9 0F:D2A9: 60        RTS
@@ -1142,7 +1142,7 @@ ofs_002_D2AD_01:
 C - - J - - 0x03D2BD 0F:D2AD: A9 36     LDA #con_prg_bank + $16
 C - - - - - 0x03D2BF 0F:D2AF: 20 00 F6  JSR sub_F600_swap_prg_16
 C - - - - - 0x03D2C2 0F:D2B2: 20 D4 BE  JSR sub_0x02FEE4
-C - - - - - 0x03D2C6 0F:D2B6: E6 94     INC ram_0094
+C - - - - - 0x03D2C6 0F:D2B6: E6 94     INC ram_0094    ; 02
 C - - - - - 0x03D2C8 0F:D2B8: 4C 88 FB  JMP loc_FB88_disable_irq
 
 
@@ -1206,7 +1206,7 @@ C - - - - - 0x03D313 0F:D303: 60        RTS
 
 
 
-sub_D304:
+sub_D304_попытка_поставить_паузу:
 C - - - - - 0x03D314 0F:D304: A5 26     LDA ram_0026
 C - - - - - 0x03D316 0F:D306: 05 98     ORA ram_0098
 C - - - - - 0x03D318 0F:D308: 05 24     ORA ram_0024
@@ -1229,16 +1229,16 @@ bra_D318:
 ; con_gm_story
 ; con_gm_vs_cpu
 C - - - - - 0x03D328 0F:D318: 98        TYA
-C - - - - - 0x03D329 0F:D319: A4 97     LDY ram_0097
-C - - - - - 0x03D32B 0F:D31B: D0 0D     BNE bra_D32A
+C - - - - - 0x03D329 0F:D319: A4 97     LDY ram_pause_flag
+C - - - - - 0x03D32B 0F:D31B: D0 0D     BNE bra_D32A_на_паузе
 C - - - - - 0x03D32D 0F:D31D: 29 10     AND #con_btn_Start
 C - - - - - 0x03D32F 0F:D31F: F0 11     BEQ bra_D332_RTS
 C - - - - - 0x03D331 0F:D321: A9 01     LDA #$01
 bra_D323:
-C - - - - - 0x03D333 0F:D323: 85 97     STA ram_0097
-C - - - - - 0x03D335 0F:D325: A9 2D     LDA #con_0x03F6AD_2D
+C - - - - - 0x03D333 0F:D323: 85 97     STA ram_pause_flag
+C - - - - - 0x03D335 0F:D325: A9 2D     LDA #con_sfx_pause
 C - - - - - 0x03D337 0F:D327: 4C 90 F6  JMP loc_F690_записать_звук_сохранив_X_Y
-bra_D32A:
+bra_D32A_на_паузе:
 C - - - - - 0x03D33A 0F:D32A: 29 10     AND #$10
 C - - - - - 0x03D33C 0F:D32C: F0 04     BEQ bra_D332_RTS
 C - - - - - 0x03D33E 0F:D32E: A9 00     LDA #$00
@@ -4157,7 +4157,7 @@ ofs_001_E78B_14:
 
 ofs_001_E799_15:
 C - - J - - 0x03E7A9 0F:E799: 20 3C F0  JSR sub_F03C
-C - - - - - 0x03E7AC 0F:E79C: A9 0B     LDA #con_script_0B
+C - - - - - 0x03E7AC 0F:E79C: A9 0B     LDA #con_script_draw_ending
 C - - - - - 0x03E7AE 0F:E79E: 4C AE F5  JMP loc_F5AE_подготовить_скрипт
 
 
@@ -5865,7 +5865,7 @@ bra_F1F4:
 C - - - - - 0x03F204 0F:F1F4: 20 C2 F6  JSR sub_F6C2_выключить_музыку_и_звуки
                                         LDY #$00    ; disable irq
                                         STY ram_irq_flag
-                                        LDA #con_script_06
+                                        LDA #con_script_draw_копирайты
 C - - - - - 0x03F207 0F:F1F7: 20 E1 F4  JSR sub_F5AE_подготовить_скрипт
                                         JSR sub_F6C2_выключить_музыку_и_звуки
 C - - - - - 0x03F20A 0F:F1FA: 20 C6 F2  JSR sub_F2C6_nmi_on
@@ -6105,21 +6105,21 @@ C - - - - - 0x03F38D 0F:F37D: 4C 38 D5  JMP loc_D538
 sub_F380:
 C - - - - - 0x03F390 0F:F380: A5 30     LDA ram_0030
 C - - - - - 0x03F392 0F:F382: D0 1F     BNE bra_F3A3
-C - - - - - 0x03F394 0F:F384: A5 20     LDA ram_script
+C - - - - - 0x03F394 0F:F384: A5 20     LDA ram_script_draw_hi
 C - - - - - 0x03F396 0F:F386: 20 32 D0  JSR sub_D032_поинтеры_после_JSR
 - D 3 - I - 0x03F399 0F:F389: BF F3     .word ofs_000_F3BF_00_главное_меню
-- D 3 - I - 0x03F39B 0F:F38B: AC F4     .word ofs_000_F4AC_01
-- D 3 - I - 0x03F39D 0F:F38D: E5 F4     .word ofs_000_F4E5_02
-- D 3 - I - 0x03F39F 0F:F38F: FA F4     .word ofs_000_F4FA_03
-- D 3 - I - 0x03F3A1 0F:F391: 79 D2     .word ofs_000_D279_04
-- D 3 - I - 0x03F3A3 0F:F393: 09 F5     .word ofs_000_F509_05_отрисовать_konami
-- D 3 - I - 0x03F3A5 0F:F395: 6F F5     .word ofs_000_F56F_06_отрисовать_копирайты
-- D 3 - I - 0x03F3A7 0F:F397: DC F6     .word ofs_000_F6DC_07
-- D 3 - I - 0x03F3A9 0F:F399: 9A F5     .word ofs_000_F59A_08
-- D 3 - I - 0x03F3AB 0F:F39B: A4 F5     .word ofs_000_F5A4_09
-- D 3 - I - 0x03F3AD 0F:F39D: AF F7     .word ofs_000_F7AF_0A
-- D 3 - I - 0x03F3AF 0F:F39F: B8 F7     .word ofs_000_F7B8_0B
-- D 3 - I - 0x03F3B1 0F:F3A1: CA F7     .word ofs_000_F7CA_0C
+- D 3 - I - 0x03F39B 0F:F38B: AC F4     .word ofs_000_F4AC_01_vs_экран
+- D 3 - I - 0x03F39D 0F:F38D: E5 F4     .word ofs_000_F4E5_02_очистка_1
+- D 3 - I - 0x03F39F 0F:F38F: FA F4     .word ofs_000_F4FA_03_очистка_2
+- D 3 - I - 0x03F3A1 0F:F391: 79 D2     .word ofs_000_D279_04_чтото_общее
+- D 3 - I - 0x03F3A3 0F:F393: 09 F5     .word ofs_000_F509_05_konami
+- D 3 - I - 0x03F3A5 0F:F395: 6F F5     .word ofs_000_F56F_06_копирайты
+- D 3 - I - 0x03F3A7 0F:F397: DC F6     .word ofs_000_F6DC_07_options
+- D 3 - I - 0x03F3A9 0F:F399: 9A F5     .word ofs_000_F59A_08_tournament_1
+- D 3 - I - 0x03F3AB 0F:F39B: A4 F5     .word ofs_000_F5A4_09_tournament_2
+- D 3 - I - 0x03F3AD 0F:F39D: AF F7     .word ofs_000_F7AF_0A_opening
+- D 3 - I - 0x03F3AF 0F:F39F: B8 F7     .word ofs_000_F7B8_0B_ending
+- D 3 - I - 0x03F3B1 0F:F3A1: CA F7     .word ofs_000_F7CA_0C_topscore
 
 
 
@@ -6144,7 +6144,7 @@ C - - - - - 0x03F3CC 0F:F3BC: 4C F9 D3  JMP loc_D3F9
 
 
 ofs_000_F3BF_00_главное_меню:
-C - - J - - 0x03F3CF 0F:F3BF: A6 21     LDX ram_subscript
+C - - J - - 0x03F3CF 0F:F3BF: A6 21     LDX ram_script_draw_lo
 C - - - - - 0x03F3D1 0F:F3C1: D0 22     BNE bra_F3E5
 C - - - - - 0x03F3D3 0F:F3C3: 86 26     STX ram_0026
 C - - - - - 0x03F3D5 0F:F3C5: 86 27     STX ram_0027
@@ -6158,13 +6158,13 @@ bra_F3D9:
 C - - - - - 0x03F3E9 0F:F3D9: A9 00     LDA #$00    ; con_gm_story
 C - - - - - 0x03F3EB 0F:F3DB: 85 27     STA ram_0027
 C - - - - - 0x03F3ED 0F:F3DD: 85 2C     STA ram_game_mode
-                                        LDA #con_script_01
+                                        LDA #con_script_draw_vs_экран
 C - - - - - 0x03F3EF 0F:F3DF: 20 A7 F5  JSR sub_F5AE_подготовить_скрипт
 C - - - - - 0x03F3F2 0F:F3E2: 4C 2E E1  JMP loc_E12E
 bra_F3E5:
 C - - - - - 0x03F3F5 0F:F3E5: CA        DEX
 C - - - - - 0x03F3F6 0F:F3E6: D0 07     BNE bra_F3EF
-C - - - - - 0x03F3F8 0F:F3E8: E6 21     INC ram_subscript
+C - - - - - 0x03F3F8 0F:F3E8: E6 21     INC ram_script_draw_lo
 C - - - - - 0x03F3FA 0F:F3EA: A9 24     LDA #con_0x03F6AD_24
 C - - - - - 0x03F3FC 0F:F3EC: 4C 8B F6  JMP loc_F68B_выключить_звуки_и_записать_новый
 bra_F3EF:
@@ -6213,7 +6213,7 @@ C - - - - - 0x03F44A 0F:F43A: 85 9C     STA ram_009C
 C - - - - - 0x03F44C 0F:F43C: 0A        ASL
 C - - - - - 0x03F44D 0F:F43D: 8D 11 01  STA ram_0111
 C - - - - - 0x03F450 0F:F440: 8D 12 01  STA ram_0112
-C - - - - - 0x03F453 0F:F443: E6 21     INC ram_subscript
+C - - - - - 0x03F453 0F:F443: E6 21     INC ram_script_draw_lo
 sub_F445:
 C - - - - - 0x03F455 0F:F445: A9 50     LDA #$50
 C - - - - - 0x03F457 0F:F447: 8D 40 04  STA ram_obj_pos_X
@@ -6248,7 +6248,7 @@ C - - - - - 0x03F479 0F:F469: 65 27     ADC ram_0027
 C - - - - - 0x03F47B 0F:F46B: 20 E5 F6  JSR sub_F6E5_написать_текст_на_экране
 C - - - - - 0x03F47E 0F:F46E: C6 9C     DEC ram_009C
 C - - - - - 0x03F480 0F:F470: D0 EB     BNE bra_F45D_RTS
-C - - - - - 0x03F482 0F:F472: E6 21     INC ram_subscript
+C - - - - - 0x03F482 0F:F472: E6 21     INC ram_script_draw_lo
 C - - - - - 0x03F484 0F:F474: A9 00     LDA #$00
 C - - - - - 0x03F486 0F:F476: 85 A2     STA ram_plr_id
 C - - - - - 0x03F488 0F:F478: 85 A3     STA ram_plr_id + $01
@@ -6256,7 +6256,7 @@ C - - - - - 0x03F48A 0F:F47A: 4C 2E E1  JMP loc_E12E
 bra_F47D:
 C - - - - - 0x03F48D 0F:F47D: CA        DEX
 C - - - - - 0x03F48E 0F:F47E: D0 09     BNE bra_F489
-C - - - - - 0x03F490 0F:F480: E6 21     INC ram_subscript
+C - - - - - 0x03F490 0F:F480: E6 21     INC ram_script_draw_lo
 C - - - - - 0x03F492 0F:F482: A5 FE     LDA ram_for_2001
 C - - - - - 0x03F494 0F:F484: 29 E7     AND #$E7
 C - - - - - 0x03F496 0F:F486: 85 FE     STA ram_for_2001
@@ -6277,18 +6277,18 @@ C - - - - - 0x03F4A3 0F:F493: C9 04     CMP #$04
 C - - - - - 0x03F4A5 0F:F495: F0 05     BEQ bra_F49C    ; if con_gm_tournament
 C - - - - - 0x03F4A7 0F:F497: 90 06     BCC bra_F49F
 ; if con_gm_options
-C - - - - - 0x03F4A9 0F:F499: A9 07     LDA #con_script_07
+C - - - - - 0x03F4A9 0F:F499: A9 07     LDA #con_script_draw_options
 C - - - - - 0x03F4AB 0F:F49B: 2C        .byte $2C   ; BIT
 bra_F49C:
 ; if con_gm_tournament
-C - - - - - 0x03F4AC 0F:F49C: A9 08     LDA #con_script_08
+C - - - - - 0x03F4AC 0F:F49C: A9 08     LDA #con_script_draw_tournament_1
 C - - - - - 0x03F4AE 0F:F49E: 2C        .byte $2C   ; BIT
 bra_F49F:
 ; con_gm_story
 ; con_gm_vs_player
 ; con_gm_vs_cpu
 ; con_gm_vs_team
-C - - - - - 0x03F4AF 0F:F49F: A9 02     LDA #con_script_02
+C - - - - - 0x03F4AF 0F:F49F: A9 02     LDA #con_script_draw_очистка_1
 C - - - - - 0x03F4B1 0F:F4A1: 4C AE F5  JMP loc_F5AE_подготовить_скрипт
 
 
@@ -6303,10 +6303,10 @@ tbl_F4A6:
 
 
 
-ofs_000_F4AC_01:
-C - - J - - 0x03F4BC 0F:F4AC: A6 21     LDX ram_subscript
+ofs_000_F4AC_01_vs_экран:
+C - - J - - 0x03F4BC 0F:F4AC: A6 21     LDX ram_script_draw_lo
 C - - - - - 0x03F4BE 0F:F4AE: D0 09     BNE bra_F4B9
-C - - - - - 0x03F4C0 0F:F4B0: E6 21     INC ram_subscript
+C - - - - - 0x03F4C0 0F:F4B0: E6 21     INC ram_script_draw_lo
 C - - - - - 0x03F4C2 0F:F4B2: A0 04     LDY #$04
 C - - - - - 0x03F4C4 0F:F4B4: 84 26     STY ram_0026
 C - - - - - 0x03F4C6 0F:F4B6: 4C C6 F5  JMP loc_F5C6
@@ -6317,47 +6317,47 @@ C - - - - - 0x03F4CD 0F:F4BD: D0 10     BNE bra_F4CF
 C - - - - - 0x03F4CF 0F:F4BF: 20 79 D2  JSR sub_D279
 C - - - - - 0x03F4D2 0F:F4C2: 20 B3 F5  JSR sub_F5B3
 C - - - - - 0x03F4D5 0F:F4C5: D0 96     BNE bra_F45D_RTS
-C - - - - - 0x03F4D7 0F:F4C7: A9 0C     LDA #con_script_0C
+C - - - - - 0x03F4D7 0F:F4C7: A9 0C     LDA #con_script_draw_topscore
 C - - - - - 0x03F4D9 0F:F4C9: 20 DB F4  JSR sub_F5AE_подготовить_скрипт
                                         JSR sub_F6C2_выключить_музыку_и_звуки
 C - - - - - 0x03F4DC 0F:F4CC: 4C 2E E1  JMP loc_E12E
 bra_F4CF:
 - - - - - - 0x03F4DF 0F:F4CF: 20 3E E1  JSR sub_E13E
-- - - - - - 0x03F4E2 0F:F4D2: A9 00     LDA #con_script_00
+- - - - - - 0x03F4E2 0F:F4D2: A9 00     LDA #con_script_draw_главное_меню
 C - - - - - 0x03F4EB 0F:F4DB: 20 AE F5  JSR sub_F5AE_подготовить_скрипт
 C - - - - - 0x03F4EE 0F:F4DE: 4C C2 F6  JMP loc_F6C2_выключить_музыку_и_звуки
 
 
 
-ofs_000_F4E5_02:
+ofs_000_F4E5_02_очистка_1:
 C - - J - - 0x03F4F5 0F:F4E5: 20 42 F0  JSR sub_F042_отрисовать_пустой_экран
 C - - - - - 0x03F4F8 0F:F4E8: 20 88 FB  JSR sub_FB88_disable_irq
 C - - - - - 0x03F4FB 0F:F4EB: 20 09 D0  JSR sub_D009_очистить_оперативку_1
 C - - - - - 0x03F4FE 0F:F4EE: E6 98     INC ram_0098
 C - - - - - 0x03F500 0F:F4F0: A9 00     LDA #$00
 C - - - - - 0x03F502 0F:F4F2: 85 26     STA ram_0026
-                                        LDA #con_script_03
+                                        LDA #con_script_draw_очистка_2
 C - - - - - 0x03F504 0F:F4F4: 20 08 D0  JMP loc_F5AE_подготовить_скрипт
 
 
 
-ofs_000_F4FA_03:
+ofs_000_F4FA_03_очистка_2:
 C - - J - - 0x03F50A 0F:F4FA: A9 00     LDA #$00
 C - - - - - 0x03F50C 0F:F4FC: 85 94     STA ram_0094
 C - - - - - 0x03F50E 0F:F4FE: 20 0D D0  JSR sub_D00D_очистить_оперативку_2
 C - - - - - 0x03F511 0F:F501: A9 00     LDA #$00
 C - - - - - 0x03F513 0F:F503: 85 A0     STA ram_strength
 C - - - - - 0x03F515 0F:F505: 85 A1     STA ram_strength + $01
-                                        LDA #con_script_04
+                                        LDA #con_script_draw_04
 C - - - - - 0x03F517 0F:F507: F0 EE     JMP loc_F5AE_подготовить_скрипт
 
 
 
-ofs_000_F509_05_отрисовать_konami:
+ofs_000_F509_05_konami:
 C - - J - - 0x03F519 0F:F509: A5 90     LDA ram_sum_btn_press
 C - - - - - 0x03F51B 0F:F50B: 29 30     AND #con_btns_SS
 C - - - - - 0x03F51D 0F:F50D: D0 55     BNE bra_F564
-C - - - - - 0x03F51F 0F:F50F: A6 21     LDX ram_subscript
+C - - - - - 0x03F51F 0F:F50F: A6 21     LDX ram_script_draw_lo
 C - - - - - 0x03F521 0F:F511: D0 2B     BNE bra_F53E
 C - - - - - 0x03F523 0F:F513: 20 88 FB  JSR sub_FB88_disable_irq
 C - - - - - 0x03F526 0F:F516: 20 09 D0  JSR sub_D009_очистить_оперативку_1
@@ -6377,7 +6377,7 @@ C - - - - - 0x03F546 0F:F536: 85 FF     STA ram_for_2000
 bra_F538:
 loc_F538:
 C D 3 - - - 0x03F548 0F:F538: 20 C4 F5  JSR sub_F5C4
-C - - - - - 0x03F54B 0F:F53B: E6 21     INC ram_subscript
+C - - - - - 0x03F54B 0F:F53B: E6 21     INC ram_script_draw_lo
 C - - - - - 0x03F54D 0F:F53D: 60        RTS
 bra_F53E:
 C - - - - - 0x03F54E 0F:F53E: CA        DEX
@@ -6399,18 +6399,18 @@ C - - - - - 0x03F566 0F:F556: 20 8C FC  JSR sub_FC8C_set_mirroring_V
 C - - - - - 0x03F569 0F:F559: A5 FF     LDA ram_for_2000
 C - - - - - 0x03F56B 0F:F55B: 29 FC     AND #$FC
 C - - - - - 0x03F56D 0F:F55D: 85 FF     STA ram_for_2000
-C - - - - - 0x03F56F 0F:F55F: A9 0A     LDA #con_script_0A
+C - - - - - 0x03F56F 0F:F55F: A9 0A     LDA #con_script_draw_opening
 C - - - - - 0x03F571 0F:F561: 4C AE F5  JMP loc_F5AE_подготовить_скрипт
 bra_F564:
-C - - - - - 0x03F574 0F:F564: A9 00     LDA #con_script_00
+C - - - - - 0x03F574 0F:F564: A9 00     LDA #con_script_draw_главное_меню
 C - - - - - 0x03F576 0F:F566: 20 AE F5  JSR sub_F5AE_подготовить_скрипт
 C - - - - - 0x03F579 0F:F569: 20 C2 F6  JSR sub_F6C2_выключить_музыку_и_звуки
 C - - - - - 0x03F57C 0F:F56C: 4C 3E E1  JMP loc_E13E
 
 
 
-ofs_000_F56F_06_отрисовать_копирайты:
-C - - J - - 0x03F57F 0F:F56F: A6 21     LDX ram_subscript
+ofs_000_F56F_06_копирайты:
+C - - J - - 0x03F57F 0F:F56F: A6 21     LDX ram_script_draw_lo
 C - - - - - 0x03F581 0F:F571: D0 1D     BNE bra_F590
 C - - - - - 0x03F583 0F:F573: 20 09 D0  JSR sub_D009_очистить_оперативку_1
 C - - - - - 0x03F586 0F:F576: A2 06     LDX #con_screen_копирайты
@@ -6428,15 +6428,15 @@ C - - - - - 0x03F59E 0F:F58E: D0 A8     BNE bra_F538    ; jmp
 bra_F590:
 C - - - - - 0x03F5A0 0F:F590: 20 B3 F5  JSR sub_F5B3
 C - - - - - 0x03F5A3 0F:F593: D0 B7     BNE bra_F54C_RTS
-C - - - - - 0x03F5A5 0F:F595: A9 05     LDA #con_script_05
+C - - - - - 0x03F5A5 0F:F595: A9 05     LDA #con_script_draw_konami
 C - - - - - 0x03F5A7 0F:F597: 4C AE F5  JMP loc_F5AE_подготовить_скрипт
 
 
 
-ofs_000_F59A_08:
+ofs_000_F59A_08_tournament_1:
 C - - J - - 0x03F5AA 0F:F59A: A9 00     LDA #$00
 C - - - - - 0x03F5AC 0F:F59C: 8D 75 06  STA ram_0675
-C - - - - - 0x03F5AF 0F:F59F: E6 20     INC ram_script    ; con_script_09
+C - - - - - 0x03F5AF 0F:F59F: E6 20     INC ram_script_draw_hi    ; con_script_draw_tournament_2
 C - - - - - 0x03F5B1 0F:F5A1: 4C 88 FB  JMP loc_FB88_disable_irq
 
 
@@ -6445,9 +6445,9 @@ loc_F5AE_подготовить_скрипт:
 sub_F5AE_подготовить_скрипт:
 sub_0x03F5BE_подготовить_скрипт:
 loc_0x03F5BE_подготовить_скрипт:
-C D 3 - - - 0x03F5BE 0F:F5AE: 85 20     STA ram_script
+C D 3 - - - 0x03F5BE 0F:F5AE: 85 20     STA ram_script_draw_hi
 C - - - - - 0x03F5C0 0F:F5B0: 4C A9 F5  LDA #$00
-                                        STA ram_subscript
+                                        STA ram_script_draw_lo
                                         RTS
 
 
@@ -6672,7 +6672,7 @@ C - - - - - 0x03F6E9 0F:F6D9: 4C 17 F6  JMP loc_F617_restore_prg
 
 
 
-ofs_000_F6DC_07:
+ofs_000_F6DC_07_options:
 C - - J - - 0x03F6EC 0F:F6DC: 20 F3 F5  JSR sub_F5F3_swap_prg_1C
 C - - - - - 0x03F6EF 0F:F6DF: 20 01 80  JSR sub_0x038011
 C - - - - - 0x03F6F2 0F:F6E2: 4C 17 F6  JMP loc_F617_restore_prg
@@ -6721,7 +6721,7 @@ C - - - - - 0x03F72A 0F:F71A: 4C 17 F6  JMP loc_F617_restore_prg
 
 
 
-ofs_000_F5A4_09:
+ofs_000_F5A4_09_tournament_2:
 C D 3 - - - 0x03F72D 0F:F71D: 20 F3 F5  JSR sub_F5F3_swap_prg_1C
 C - - - - - 0x03F730 0F:F720: 20 7B 8C  JSR sub_0x038C8B
 C - - - - - 0x03F733 0F:F723: 4C 17 F6  JMP loc_F617_restore_prg
@@ -6833,14 +6833,14 @@ C - - - - - 0x03F7BC 0F:F7AC: 4C 17 F6  JMP loc_F617_restore_prg
 
 
 
-ofs_000_F7AF_0A:
+ofs_000_F7AF_0A_opening:
 C - - J - - 0x03F7BF 0F:F7AF: 20 F3 F5  JSR sub_F5F3_swap_prg_1C
 C - - - - - 0x03F7C2 0F:F7B2: 20 9F 90  JSR sub_0x0390AF
 C - - - - - 0x03F7C5 0F:F7B5: 4C 17 F6  JMP loc_F617_restore_prg
 
 
 
-ofs_000_F7B8_0B:
+ofs_000_F7B8_0B_ending:
 C - - J - - 0x03F7C8 0F:F7B8: 20 F3 F5  JSR sub_F5F3_swap_prg_1C
 C - - - - - 0x03F7CB 0F:F7BB: 20 00 96  JSR sub_0x039610
 C - - - - - 0x03F7CE 0F:F7BE: 4C 17 F6  JMP loc_F617_restore_prg
@@ -6854,7 +6854,7 @@ C - - - - - 0x03F7D7 0F:F7C7: 4C 17 F6  JMP loc_F617_restore_prg
 
 
 
-ofs_000_F7CA_0C:
+ofs_000_F7CA_0C_topscore:
 C - - J - - 0x03F7DA 0F:F7CA: 20 F3 F5  JSR sub_F5F3_swap_prg_1C
 C - - - - - 0x03F7DD 0F:F7CD: 20 BF 9F  JSR sub_0x039FCF
 C - - - - - 0x03F7E0 0F:F7D0: 4C 17 F6  JMP loc_F617_restore_prg
@@ -7905,7 +7905,7 @@ loc_0x03FE68:
 C D 3 - - - 0x03FE68 0F:FE58: A9 00     LDA #$00
 C - - - - - 0x03FE6A 0F:FE5A: 85 27     STA ram_0027
 C - - - - - 0x03FE6C 0F:FE5C: 85 94     STA ram_0094
-C - - - - - 0x03FE6E 0F:FE5E: A9 00     LDA #con_script_00
+C - - - - - 0x03FE6E 0F:FE5E: A9 00     LDA #con_script_draw_главное_меню
 C - - - - - 0x03FE70 0F:FE60: 20 AE F5  JSR sub_F5AE_подготовить_скрипт
 C - - - - - 0x03FE73 0F:FE63: 4C 3E E1  JMP loc_E13E
 
