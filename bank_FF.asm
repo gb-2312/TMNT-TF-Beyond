@@ -6318,17 +6318,12 @@ C - - - - - 0x03F4CF 0F:F4BF: 20 79 D2  JSR sub_D279
 C - - - - - 0x03F4D2 0F:F4C2: 20 B3 F5  JSR sub_F5B3
 C - - - - - 0x03F4D5 0F:F4C5: D0 96     BNE bra_F45D_RTS
 C - - - - - 0x03F4D7 0F:F4C7: A9 0C     LDA #con_script_0C
-C - - - - - 0x03F4D9 0F:F4C9: 20 DB F4  JSR sub_F4DB
+C - - - - - 0x03F4D9 0F:F4C9: 20 DB F4  JSR sub_F5AE_подготовить_скрипт
+                                        JSR sub_F6C2_выключить_музыку_и_звуки
 C - - - - - 0x03F4DC 0F:F4CC: 4C 2E E1  JMP loc_E12E
 bra_F4CF:
 - - - - - - 0x03F4DF 0F:F4CF: 20 3E E1  JSR sub_E13E
 - - - - - - 0x03F4E2 0F:F4D2: A9 00     LDA #con_script_00
-- - - - - - 0x03F4E4 0F:F4D4: 4C DB F4  JMP loc_F4DB
-
-
-
-sub_F4DB:
-loc_F4DB:
 C - - - - - 0x03F4EB 0F:F4DB: 20 AE F5  JSR sub_F5AE_подготовить_скрипт
 C - - - - - 0x03F4EE 0F:F4DE: 4C C2 F6  JMP loc_F6C2_выключить_музыку_и_звуки
 
