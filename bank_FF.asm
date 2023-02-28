@@ -6323,19 +6323,14 @@ bra_F4CF:
 
 
 
-bra_F4D7:
+sub_F4E1:
+C - - - - - 0x03F4F1 0F:F4E1: A9 06     LDA #con_script_06
 C - - - - - 0x03F4E7 0F:F4D7: A0 00     LDY #$00    ; disable irq
 C - - - - - 0x03F4E9 0F:F4D9: 84 49     STY ram_irq_flag
 sub_F4DB:
 loc_F4DB:
 C - - - - - 0x03F4EB 0F:F4DB: 20 AE F5  JSR sub_F5AE_подготовить_скрипт
 C - - - - - 0x03F4EE 0F:F4DE: 4C C2 F6  JMP loc_F6C2_выключить_музыку_и_звуки
-
-
-
-sub_F4E1:
-C - - - - - 0x03F4F1 0F:F4E1: A9 06     LDA #con_script_06
-C - - - - - 0x03F4F3 0F:F4E3: D0 F2     BNE bra_F4D7    ; jmp
 
 
 
