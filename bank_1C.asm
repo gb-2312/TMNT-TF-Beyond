@@ -40,8 +40,6 @@ C - - - - - 0x038013 0E:8003: 20 32 D0  JSR sub_0x03D042_поинтеры_пос
 
 
 ofs_015_800C_00_отрисовать_опции:
-C - - J - - 0x03801C 0E:800C: E6 95     INC ram_0095
-C - - - - - 0x03801E 0E:800E: C6 AD     DEC ram_00AD
 C - - - - - 0x038020 0E:8010: 20 BE DA  JSR sub_0x03DACE_удалить_все_объекты
 C - - - - - 0x038023 0E:8013: A2 01     LDX #$01
 bra_8015_loop:
@@ -66,25 +64,594 @@ C - - - - - 0x03804F 0E:803F: A9 07     LDA #$07
 C - - - - - 0x038051 0E:8041: A8        TAY ; 07
 C - - - - - 0x038052 0E:8042: 20 94 D3  JSR sub_0x03D3A4
 C - - - - - 0x038055 0E:8045: 20 BB 81  JSR sub_81BB_запись_нескольких_AA_атрибутов
-loc_8048:
-C D 0 - - - 0x038058 0E:8048: 20 26 81  JSR sub_8126_отрисовать_вариант_speed
-C - - - - - 0x03805B 0E:804B: 20 4C 81  JSR sub_814C_отрисовать_вариант_timer
-C - - - - - 0x03805E 0E:804E: 20 72 81  JSR sub_8172_отрисовать_вариант_health
-C - - - - - 0x038061 0E:8051: 20 13 81  JSR sub_8113_отрисовать_вариант_misc
-loc_8054_отрисовать_вариант_difficulty:
-C D 0 - - - 0x038064 0E:8054: 18        CLC
-C - - - - - 0x038065 0E:8055: AD 25 01  LDA ram_option_difficulty
-C - - - - - 0x038068 0E:8058: 69 09     ADC #$09
-; con_0x030C10_09
-; con_0x030C10_0A
-; con_0x030C10_0B
-; con_0x030C10_0C
-C - - - - - 0x03806A 0E:805A: 4C E5 F6  JMP loc_0x03F6F5_написать_текст_на_экране
+                                        LDA #$01
+                                        STA ram_0095
+                                        LDA #$40
+                                        STA ram_00AD
+                                        JSR sub_8040_обновить_текст_опций_при_необходимости
+                                        RTS
+
+
+
+sub_8040_обновить_текст_опций_при_необходимости:
+; nmi будет делать ASL 00AD пока там не станет 00
+; а до тех пор эта подпрограмма будет в 2 этапа рисовать что нужно
+                                        LDA ram_00AD
+                                        BNE bra_8041
+                                        RTS
+bra_8041:
+                                        LDA ram_0095
+                                        CMP #$02
+                                        BEQ bra_8048_вторая_страница
+; if первая страница
+                                        LDA ram_00AD
+                                        BMI bra_8043_отрисовать_варианты_опций
+; if отрисовать название опций
+                                        LDA #con_0x030C10_26
+                                        JSR sub_0x03F6F5_написать_текст_на_экране
+                                        RTS
+bra_8043_отрисовать_варианты_опций:
+                                        JSR sub_809E_отрисовать_вариант_difficulty
+                                        JSR sub_80AE_отрисовать_вариант_skin
+                                        JSR sub_80BE_отрисовать_вариант_speed
+                                        JSR sub_80CE_отрисовать_вариант_timer
+                                        JSR sub_80DE_отрисовать_вариант_health
+                                        RTS
+bra_8048_вторая_страница:
+                                        LDA ram_00AD
+                                        BMI bra_804B_отрисовать_варианты_опций
+; if отрисовать название опций
+                                        LDA #con_0x030C10_2B
+                                        JSR sub_0x03F6F5_написать_текст_на_экране
+                                        RTS
+bra_804B_отрисовать_варианты_опций:
+                                        JSR sub_819E_отрисовать_вариант_balancing
+                                        JSR sub_81AE_отрисовать_вариант_shred_ctrl
+                                        JSR sub_81BE_отрисовать_вариант_bgm
+                                        JSR sub_81CE_отрисовать_вариант_team_keeps
+                                        RTS
 
 
 
 ofs_015_805E_01_обработка_страницы_опций_1:
+                                        JSR sub_8061_попытка_переключить_на_страницу_с_опциями_2
+                                        JSR sub_8040_обновить_текст_опций_при_необходимости
+                                        JSR sub_8050_перемещение_по_списку_опций_и_их_подсветка
+                                        JSR sub_8070_попытка_выйти_из_экрана_с_опциями    ; возможен PLA PLA
+                                        LDA ram_obj_spd_Y_lo
+                                        JSR sub_0x03D042_поинтеры_после_JSR
+                                        .word ofs_085_8060_00_difficulty
+                                        .word ofs_085_8060_01_skin
+                                        .word ofs_085_8060_02_speed
+                                        .word ofs_085_8060_03_timer
+                                        .word ofs_085_8060_04_health
+                                        .word ofs_085_8060_05_exit
+
+
+
+ofs_085_8060_00_difficulty:
+                                        JSR sub_817C_попытка_сделать_255_контов
+                                        LDA ram_btn_press
+                                        AND #con_btns_LR
+                                        BEQ bra_8093_RTS
+                                        AND #con_btn_Right
+                                        BNE bra_8090_right
+; if left
+                                        LDA ram_option_difficulty
+                                        BEQ bra_8093_RTS
+                                        DEC ram_option_difficulty
+                                        BPL bra_8092    ; jmp
+bra_8090_right:
+                                        LDA ram_option_difficulty
+                                        CMP #$03
+                                        BCS bra_8093_RTS
+                                        INC ram_option_difficulty
+bra_8092:
+                                        JSR sub_81A9_воспроизвести_звук_27
+                                        JSR sub_809E_отрисовать_вариант_difficulty
+bra_8093_RTS:
+                                        RTS
+
+
+
+sub_809E_отрисовать_вариант_difficulty:
+                                        LDY ram_option_difficulty
+                                        LDA tbl_809F_difficulty,Y
+                                        JSR sub_0x03F6F5_написать_текст_на_экране
+                                        RTS
+
+tbl_809F_difficulty:
+    .byte con_0x030C10_09   ; 00
+    .byte con_0x030C10_0A   ; 01
+    .byte con_0x030C10_0B   ; 02
+    .byte con_0x030C10_0C   ; 03
+
+
+
+ofs_085_8060_01_skin:
+                                        LDA ram_option_misc
+                                        AND #$03
+                                        TAX
+                                        LDA ram_btn_press
+                                        AND #con_btns_LR
+                                        BEQ bra_80A3_RTS
+                                        AND #con_btn_Right
+                                        BNE bra_80A0_right
+; if left
+                                        DEX
+                                        BPL bra_80A2
+                                        BMI bra_80A3_RTS    ; jmp
+bra_80A0_right:
+                                        CPX #$02
+                                        BCS bra_80A3_RTS
+                                        INX
+bra_80A2:
+                                        LDA ram_option_misc
+                                        AND #$FC
+                                        STA ram_option_misc
+                                        TXA
+                                        ORA ram_option_misc
+                                        STA ram_option_misc
+                                        JSR sub_81A9_воспроизвести_звук_27
+                                        JSR sub_80AE_отрисовать_вариант_skin
+bra_80A3_RTS:
+                                        RTS
+
+
+
+
+sub_80AE_отрисовать_вариант_skin:
+                                        LDA ram_option_misc
+                                        AND #$03
+                                        TAY
+                                        LDA tbl_80AF_skin,Y
+                                        JSR sub_0x03F6F5_написать_текст_на_экране
+                                        RTS
+
+tbl_80AF_skin:
+    .byte con_0x030C10_23   ; 00
+    .byte con_0x030C10_24   ; 01
+    .byte con_0x030C10_25   ; 02
+
+
+
+ofs_085_8060_02_speed:
+                                        LDA ram_btn_press
+                                        AND #con_btns_LR
+                                        BEQ bra_80B3_RTS
+                                        AND #con_btn_Right
+                                        BNE bra_80B0_right
+; if left
+                                        LDA ram_option_speed
+                                        BEQ bra_80B3_RTS
+                                        DEC ram_option_speed
+                                        BPL bra_80B2    ; jmp
+bra_80B0_right:
+                                        LDA ram_option_speed
+                                        CMP #$01
+                                        BCS bra_80B3_RTS
+                                        INC ram_option_speed
+bra_80B2:
+                                        JSR sub_81A9_воспроизвести_звук_27
+                                        JSR sub_80BE_отрисовать_вариант_speed
+bra_80B3_RTS:
+                                        RTS
+
+
+
+sub_80BE_отрисовать_вариант_speed:
+                                        LDY ram_option_speed
+                                        LDA tbl_80BF_speed,Y
+                                        JSR sub_0x03F6F5_написать_текст_на_экране
+                                        RTS
+
+tbl_80BF_speed:
+    .byte con_0x030C10_13   ; 00
+    .byte con_0x030C10_14   ; 01
+
+
+
+ofs_085_8060_03_timer:
+                                        LDA ram_btn_press
+                                        AND #con_btns_LR
+                                        BEQ bra_80C3_RTS
+                                        AND #con_btn_Right
+                                        BNE bra_80C0_right
+; if left
+                                        LDA ram_option_timer
+                                        BEQ bra_80C3_RTS
+                                        DEC ram_option_timer
+                                        BPL bra_80C2    ; jmp
+bra_80C0_right:
+                                        LDA ram_option_timer
+                                        CMP #$03
+                                        BCS bra_80C3_RTS
+                                        INC ram_option_timer
+bra_80C2:
+                                        JSR sub_81A9_воспроизвести_звук_27
+                                        JSR sub_80CE_отрисовать_вариант_timer
+bra_80C3_RTS:
+                                        RTS
+
+
+
+sub_80CE_отрисовать_вариант_timer:
+                                        LDY ram_option_timer
+                                        LDA tbl_80CF_timer,Y
+                                        JSR sub_0x03F6F5_написать_текст_на_экране
+                                        RTS
+
+tbl_80CF_timer:
+    .byte con_0x030C10_1F   ; 00
+    .byte con_0x030C10_20   ; 01
+    .byte con_0x030C10_21   ; 02
+    .byte con_0x030C10_22   ; 03
+
+
+
+ofs_085_8060_04_health:
+                                        LDA ram_btn_press
+                                        AND #con_btns_LR
+                                        BEQ bra_80D3_RTS
+                                        AND #con_btn_Right
+                                        BNE bra_80D0_right
+; if left
+                                        LDA ram_option_health
+                                        BEQ bra_80D3_RTS
+                                        DEC ram_option_health
+                                        BPL bra_80D2    ; jmp
+bra_80D0_right:
+                                        LDA ram_option_health
+                                        CMP #$03
+                                        BCS bra_80D3_RTS
+                                        INC ram_option_health
+bra_80D2:
+                                        JSR sub_81A9_воспроизвести_звук_27
+                                        JSR sub_80DE_отрисовать_вариант_health
+bra_80D3_RTS:
+                                        RTS
+
+
+
+sub_80DE_отрисовать_вариант_health:
+                                        LDY ram_option_health
+                                        LDA tbl_80DF_health,Y
+                                        JSR sub_0x03F6F5_написать_текст_на_экране
+                                        RTS
+
+tbl_80DF_health:
+    .byte con_0x030C10_1B   ; 00
+    .byte con_0x030C10_1C   ; 01
+    .byte con_0x030C10_1D   ; 02
+    .byte con_0x030C10_1E   ; 03
+
+
+
+ofs_085_8060_05_exit:                 
+ofs_086_8060_05_exit:
+                                        LDA ram_btn_press
+                                        AND #con_btns_AB
+                                        BEQ bra_8060_RTS
+                                        JMP loc_8071_выход_из_экрана_с_опциями
+bra_8060_RTS:
+                                        RTS
+
+
+
 ofs_015_805E_02_обработка_страницы_опций_2:
+                                        JSR sub_8061_попытка_переключить_на_страницу_с_опциями_1
+                                        JSR sub_8040_обновить_текст_опций_при_необходимости
+                                        JSR sub_8050_перемещение_по_списку_опций_и_их_подсветка
+                                        JSR sub_8070_попытка_выйти_из_экрана_с_опциями    ; возможен PLA PLA
+                                        LDA ram_obj_spd_Y_lo
+                                        JSR sub_0x03D042_поинтеры_после_JSR
+                                        .word ofs_086_8060_00_balancing
+                                        .word ofs_086_8060_01_shred_ctrl
+                                        .word ofs_086_8060_02_bgm
+                                        .word ofs_086_8060_03_team_keeps
+                                        .word ofs_086_8060_04_future_expansion
+                                        .word ofs_086_8060_05_exit
+
+
+
+ofs_086_8060_00_balancing:
+                                        LDA ram_option_misc
+                                        AND #$08
+                                        TAX
+                                        LDA ram_btn_press
+                                        AND #con_btns_LR
+                                        BEQ bra_8193_RTS
+                                        AND #con_btn_Right
+                                        BNE bra_8190_right
+; if left
+                                        CPX #$00
+                                        BEQ bra_8193_RTS
+                                        LDX #$00
+                                        BPL bra_8192    ; jmp
+bra_8190_right:
+                                        CPX #$08
+                                        BEQ bra_8193_RTS
+                                        LDX #$08
+bra_8192:
+                                        LDA ram_option_misc
+                                        AND #$F7
+                                        STA ram_option_misc
+                                        TXA
+                                        ORA ram_option_misc
+                                        STA ram_option_misc
+                                        JSR sub_81A9_воспроизвести_звук_27
+                                        JSR sub_819E_отрисовать_вариант_balancing
+bra_8193_RTS:
+                                        RTS
+
+
+
+sub_819E_отрисовать_вариант_balancing:
+                                        LDA ram_option_misc
+                                        AND #$08
+; / 08
+                                        LSR
+                                        LSR
+                                        LSR
+                                        TAY
+                                        LDA tbl_819F_balancing,Y
+                                        JSR sub_0x03F6F5_написать_текст_на_экране
+                                        RTS
+
+tbl_819F_balancing:
+    .byte con_0x030C10_30   ; 00
+    .byte con_0x030C10_31   ; 08
+
+
+
+
+ofs_086_8060_01_shred_ctrl:
+                                        LDA ram_option_misc
+                                        AND #$10
+                                        TAX
+                                        LDA ram_btn_press
+                                        AND #con_btns_LR
+                                        BEQ bra_81A3_RTS
+                                        AND #con_btn_Right
+                                        BNE bra_81A0_right
+; if left
+                                        CPX #$00
+                                        BEQ bra_81A3_RTS
+                                        LDX #$00
+                                        BPL bra_81A2    ; jmp
+bra_81A0_right:
+                                        CPX #$10
+                                        BEQ bra_81A3_RTS
+                                        LDX #$10
+bra_81A2:
+                                        LDA ram_option_misc
+                                        AND #$EF
+                                        STA ram_option_misc
+                                        TXA
+                                        ORA ram_option_misc
+                                        STA ram_option_misc
+                                        JSR sub_81A9_воспроизвести_звук_27
+                                        JSR sub_81AE_отрисовать_вариант_shred_ctrl
+bra_81A3_RTS:
+                                        RTS
+
+
+
+sub_81AE_отрисовать_вариант_shred_ctrl:
+                                        LDA ram_option_misc
+                                        AND #$10
+; / 10
+                                        LSR
+                                        LSR
+                                        LSR
+                                        LSR
+                                        TAY
+                                        LDA tbl_81AF_shred_ctrl,Y
+                                        JSR sub_0x03F6F5_написать_текст_на_экране
+                                        RTS
+
+tbl_81AF_shred_ctrl:
+    .byte con_0x030C10_32   ; 00
+    .byte con_0x030C10_33   ; 10
+
+
+
+
+ofs_086_8060_02_bgm:
+                                        LDA ram_btn_press
+                                        AND #con_btns_AB
+                                        BEQ bra_81B4
+                                        JSR sub_0x03F6D2_выключить_музыку_и_звуки
+                                        LDA ram_btn_press
+                                        AND #con_btn_B
+                                        BEQ bra_81B3_RTS
+                                        LDY ram_obj_04C0
+                                        LDA tbl_829E,Y
+                                        JMP loc_0x03F6A0_записать_звук_сохранив_X_Y
+bra_81B4:
+                                        LDA ram_btn_press
+                                        AND #con_btns_LR
+                                        BEQ bra_81B3_RTS
+                                        AND #con_btn_Right
+                                        BNE bra_81B0_right
+; if left
+                                        LDA ram_obj_04C0
+                                        BEQ bra_81B3_RTS
+                                        DEC ram_obj_04C0
+                                        BPL bra_81B2    ; jmp
+bra_81B0_right:
+                                        LDA ram_obj_04C0
+                                        CMP #$11
+                                        BCS bra_81B3_RTS
+                                        INC ram_obj_04C0
+bra_81B2:
+                                       ;JSR sub_81A9_воспроизвести_звук_27
+                                        JSR sub_81BE_отрисовать_вариант_bgm
+bra_81B3_RTS:
+                                        RTS
+
+
+
+tbl_829E:
+    .byte con_music_ost_sewer   ; 00
+    .byte con_music_ost_down_town   ; 01
+    .byte con_music_ost_pirate_ship   ; 02
+    .byte con_music_ost_water_front   ; 03
+    .byte con_0x03F6AD_3A   ; 04
+    .byte con_0x03F6AD_3C   ; 05
+    .byte con_dpcm_warcry_turtle_1   ; 06
+    .byte con_dpcm_warcry_casey_1   ; 07
+    .byte con_dpcm_warcry_hot_1   ; 08
+    .byte con_dpcm_warcry_shred_1   ; 09
+    .byte con_dpcm_warcry_turtle_2   ; 0A
+    .byte con_dpcm_warcry_casey_2   ; 0B
+    .byte con_dpcm_warcry_shred_2   ; 0C
+    .byte con_dpcm_warcry_shred_3   ; 0D
+    .byte con_dmcp_dead_turtle   ; 0E
+    .byte con_dmcp_dead_casey   ; 0F
+    .byte con_dmcp_dead_hot   ; 10
+    .byte con_dmcp_dead_shred   ; 11
+
+
+
+sub_81BE_отрисовать_вариант_bgm:
+                                        LDY ram_obj_04C0
+                                        LDA tbl_81BF_bgm,Y
+                                        JSR sub_0x03F6F5_написать_текст_на_экране
+                                        RTS
+
+tbl_81BF_bgm:
+    .byte con_0x030C10_40   ; 00
+    .byte con_0x030C10_41   ; 01
+    .byte con_0x030C10_42   ; 02
+    .byte con_0x030C10_43   ; 03
+    .byte con_0x030C10_44   ; 04
+    .byte con_0x030C10_45   ; 05
+    .byte con_0x030C10_46   ; 06
+    .byte con_0x030C10_47   ; 07
+    .byte con_0x030C10_48   ; 08
+    .byte con_0x030C10_49   ; 09
+    .byte con_0x030C10_4A   ; 0A
+    .byte con_0x030C10_4B   ; 0B
+    .byte con_0x030C10_4C   ; 0C
+    .byte con_0x030C10_4D   ; 0D
+    .byte con_0x030C10_4E   ; 0E
+    .byte con_0x030C10_4F   ; 0F
+    .byte con_0x030C10_50   ; 10
+    .byte con_0x030C10_51   ; 11
+
+
+
+
+ofs_086_8060_03_team_keeps:
+                                        LDA ram_btn_press
+                                        AND #con_btns_LR
+                                        BEQ bra_81C3_RTS
+                                        AND #con_btn_Right
+                                        BNE bra_81C0_right
+; if left
+                                        LDA ram_option_team_keeps
+                                        BEQ bra_81C3_RTS
+                                        DEC ram_option_team_keeps
+                                        BPL bra_81C2    ; jmp
+bra_81C0_right:
+                                        LDA ram_option_team_keeps
+                                        CMP #$04
+                                        BCS bra_81C3_RTS
+                                        INC ram_option_team_keeps
+bra_81C2:
+                                        JSR sub_81A9_воспроизвести_звук_27
+                                        JSR sub_81CE_отрисовать_вариант_team_keeps
+bra_81C3_RTS:
+                                        RTS
+
+
+
+sub_81CE_отрисовать_вариант_team_keeps:
+                                        LDY ram_option_team_keeps
+                                        LDA tbl_81CF_team_keeps,Y
+                                        JSR sub_0x03F6F5_написать_текст_на_экране
+                                        RTS
+
+tbl_81CF_team_keeps:
+    .byte con_0x030C10_34   ; 00
+    .byte con_0x030C10_35   ; 01
+    .byte con_0x030C10_36   ; 02
+    .byte con_0x030C10_37   ; 03
+    .byte con_0x030C10_38   ; 04
+
+
+
+
+ofs_086_8060_04_future_expansion:
+; - - - - - - -
+                                        RTS
+
+
+
+sub_8050_перемещение_по_списку_опций_и_их_подсветка:
+                                        LDA ram_sum_btn_press
+                                        AND #con_btns_UD
+                                        BEQ bra_8053_RTS
+                                        AND #con_btn_Down
+                                        BNE bra_8051_down
+; if up
+                                        DEC ram_obj_spd_Y_lo
+                                        BPL bra_8052
+                                        LDA #$05
+                                        STA ram_obj_spd_Y_lo
+                                        BPL bra_8052
+bra_8051_down:
+                                        INC ram_obj_spd_Y_lo
+                                        LDA ram_obj_spd_Y_lo
+                                        CMP #$06
+                                        BCC bra_8052
+                                        LDA #$00
+                                        STA ram_obj_spd_Y_lo
+bra_8052:
+                                        JSR sub_81A6_воспроизвести_звук_25
+                                        JSR sub_81D0_записать_атрибуты_фона
+bra_8053_RTS:
+                                        RTS
+
+
+
+sub_8070_попытка_выйти_из_экрана_с_опциями:
+                                        LDA ram_sum_btn_press
+                                        AND #con_btn_Start
+                                        BEQ bra_8074_RTS
+                                        PLA
+                                        PLA
+loc_8071_выход_из_экрана_с_опциями:
+; запись 00 требуется чтобы убрать EXIT и отобразить курсор в главном меню
+                                        LDA #$00    ; con_gm_story
+                                        STA ram_game_mode
+                                        JSR sub_0x03F6D2_выключить_музыку_и_звуки
+                                        JSR sub_0x03E14E
+                                        JSR sub_0x03FE68
+bra_8074_RTS:
+                                        RTS
+
+
+
+sub_8061_попытка_переключить_на_страницу_с_опциями_1:
+                                        LDX #$01
+                                        .byte $2C   ; BIT
+sub_8061_попытка_переключить_на_страницу_с_опциями_2:
+                                        LDX #$02
+                                        LDA ram_btn_press
+                                        AND #con_btn_Select
+                                        BEQ bra_8064_RTS
+                                        STX ram_0095
+                                        JSR sub_81A9_воспроизвести_звук_27
+                                        LDA #$40
+                                        STA ram_00AD
+bra_8064_RTS:
+                                        RTS
+
+
+
+
 C - - J - - 0x03806E 0E:805E: A5 AD     LDA ram_00AD
 C - - - - - 0x038070 0E:8060: 30 03     BMI bra_8065
 C - - - - - 0x038072 0E:8062: 20 3B A6  JSR sub_A63B_обновить_текст_опций
@@ -162,14 +729,14 @@ C - - - - - 0x0380E2 0E:80D2: AD 25 01  LDA ram_option_difficulty
 C - - - - - 0x0380E5 0E:80D5: F0 F6     BEQ bra_80CD_RTS
 C - - - - - 0x0380E7 0E:80D7: CE 25 01  DEC ram_option_difficulty
 C - - - - - 0x0380EA 0E:80DA: 20 A6 81  JSR sub_81A6_воспроизвести_звук_25
-C - - - - - 0x0380ED 0E:80DD: 4C 54 80  JMP loc_8054_отрисовать_вариант_difficulty
+C - - - - - 0x0380ED 0E:80DD: 4C 54 80  ;JMP loc_8054_отрисовать_вариант_difficulty
 bra_80E0:
 C - - - - - 0x0380F0 0E:80E0: AD 25 01  LDA ram_option_difficulty
 C - - - - - 0x0380F3 0E:80E3: C9 03     CMP #$03
 C - - - - - 0x0380F5 0E:80E5: B0 E6     BCS bra_80CD_RTS
 C - - - - - 0x0380F7 0E:80E7: EE 25 01  INC ram_option_difficulty
 C - - - - - 0x0380FA 0E:80EA: 20 A9 81  JSR sub_81A9_воспроизвести_звук_27
-C - - - - - 0x0380FD 0E:80ED: 4C 54 80  JMP loc_8054_отрисовать_вариант_difficulty
+C - - - - - 0x0380FD 0E:80ED: 4C 54 80  ;JMP loc_8054_отрисовать_вариант_difficulty
 bra_80F0_option_music:
 ; bzk optimize, в 0x0380C5 уже есть проверка на кнопки C3,
 ; так нахрена тут еще одна? она никогда не сработает.
@@ -280,12 +847,12 @@ C - - - - - 0x03818B 0E:817B: 60        RTS
 
 sub_817C_попытка_сделать_255_контов:
 C - - - - - 0x03818C 0E:817C: A5 31     LDA ram_continue
-C - - - - - 0x03818E 0E:817E: 30 1C     BMI bra_819C
+C - - - - - 0x03818E 0E:817E: 30 1C     BMI bra_819C_RTS
 ; if контов уже дохрена
 C - - - - - 0x038190 0E:8180: AD 25 01  LDA ram_option_difficulty
-C - - - - - 0x038193 0E:8183: D0 17     BNE bra_819C
+C - - - - - 0x038193 0E:8183: D0 17     BNE bra_819C_RTS
 ; if easy
-C - - - - - 0x038195 0E:8185: A5 91     LDA ram_btn_hold
+C - - - - - 0x038195 0E:8185: A5 91     LDA ram_sum_btn_hold
 C - - - - - 0x038197 0E:8187: 29 40     AND #con_btn_B
 C - - - - - 0x038199 0E:8189: D0 03     BNE bra_818E
 ; A = 00
@@ -293,15 +860,13 @@ C - - - - - 0x03819B 0E:818B: 8D 50 01  STA ram_0150
 bra_818E:
 ; удерживать B 2 секунды
 C - - - - - 0x03819E 0E:818E: EE 50 01  INC ram_0150
-C - - - - - 0x0381A1 0E:8191: 10 09     BPL bra_819C
+C - - - - - 0x0381A1 0E:8191: 10 09     BPL bra_819C_RTS
 ; записать 255 контов
 - - - - - - 0x0381A3 0E:8193: A9 FF     LDA #$FF
 - - - - - - 0x0381A5 0E:8195: 85 31     STA ram_continue
 - - - - - - 0x0381A7 0E:8197: A9 53     LDA #con_dpcm_warcry_turtle_1
 - - - - - - 0x0381A9 0E:8199: 20 90 F6  JSR sub_0x03F6A0_записать_звук_сохранив_X_Y
-bra_819C:
-C - - - - - 0x0381AC 0E:819C: A5 90     LDA ram_sum_btn_press
-C - - - - - 0x0381AE 0E:819E: A8        TAY
+bra_819C_RTS:
 C - - - - - 0x0381AF 0E:819F: 60        RTS
 
 
@@ -348,7 +913,8 @@ C - - - - - 0x0381DF 0E:81CF: 60        RTS
 
 
 loc_81D0_записать_атрибуты_фона:
-C D 0 - - - 0x0381E0 0E:81D0: AD B0 04  STA ram_obj_spd_Y_lo
+sub_81D0_записать_атрибуты_фона:
+C D 0 - - - 0x0381E0 0E:81D0: AD B0 04  LDA ram_obj_spd_Y_lo
 C - - - - - 0x0381E3 0E:81D3: A8        TAY
 C - - - - - 0x0381E4 0E:81D4: B9 06 82  LDA tbl_8206,Y
 C - - - - - 0x0381E7 0E:81D7: 8D 01 05  STA ram_obj_0500 + $01
@@ -6014,7 +6580,7 @@ C - - - - - 0x03A65F 0E:A64F: 20 A9 81  JSR sub_81A9_воспроизвести_
 C - - - - - 0x03A662 0E:A652: A6 95     LDX ram_0095
 C - - - - - 0x03A664 0E:A654: CA        DEX
 C - - - - - 0x03A665 0E:A655: D0 03     BNE bra_A65A
-C - - - - - 0x03A667 0E:A657: 4C 48 80  JMP loc_8048
+C - - - - - 0x03A667 0E:A657: 4C 48 80  ;JMP loc_8048
 bra_A65A:
 C - - - - - 0x03A66A 0E:A65A: 20 97 A6  JSR sub_A697
 C - - - - - 0x03A66D 0E:A65D: A2 00     LDX #$00

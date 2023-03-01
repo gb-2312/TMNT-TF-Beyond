@@ -209,6 +209,7 @@
 .export sub_0x03FC9C_set_mirroring_V
 .export sub_0x03FCA0_set_mirroring_H
 .export loc_0x03FE68
+.export sub_0x03FE68
 .export sub_0x03FE76
 .export sub_0x03FE8A
 .export loc_0x03FE93
@@ -7098,10 +7099,11 @@ C - - - - - 0x03F8D4 0F:F8C4: 49 05     EOR #$05    ; con_gm_options
 C - - - - - 0x03F8D6 0F:F8C6: D0 04     BNE bra_F8CC
 ; if con_gm_options
 C - - - - - 0x03F8D8 0F:F8C8: A5 AD     LDA ram_00AD
-C - - - - - 0x03F8DA 0F:F8CA: F0 03     BEQ bra_F8CF_RTS
+C - - - - - 0x03F8DA 0F:F8CA: F0 03     BEQ bra_F8CC
+                                        ASL ram_00AD    ; получится 80 или 00
+                                        RTS
 bra_F8CC:
 C - - - - - 0x03F8DC 0F:F8CC: 8C 14 40  STY $4014
-bra_F8CF_RTS:
 C - - - - - 0x03F8DF 0F:F8CF: 60        RTS
 
 
@@ -7903,6 +7905,7 @@ tbl_FE37:
 
 loc_FE58:
 loc_0x03FE68:
+sub_0x03FE68:
 C D 3 - - - 0x03FE68 0F:FE58: A9 00     LDA #$00
 C - - - - - 0x03FE6A 0F:FE5A: 85 27     STA ram_0027
 C - - - - - 0x03FE6C 0F:FE5C: 85 94     STA ram_0094
