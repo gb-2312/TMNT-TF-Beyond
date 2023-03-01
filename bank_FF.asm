@@ -70,8 +70,6 @@
 .export sub_0x03DCC1_добавить_A_Y_к_spdX
 .export sub_0x03DCE3
 .export sub_0x03DCE6
-.export sub_0x03DCF0_записать_spd_X
-.export loc_0x03DCF0_записать_spd_X
 .export sub_0x03DCFD
 .export sub_0x03DD0A
 .export sub_0x03DD14
@@ -2189,21 +2187,6 @@ C - - - - - 0x03DCE9 0F:DCD9: 98        TYA
 C - - - - - 0x03DCEA 0F:DCDA: 29 F0     AND #$F0
 C - - - - - 0x03DCEC 0F:DCDC: 9D 70 04  STA ram_obj_spd_Z_lo,X
 C - - - - - 0x03DCEF 0F:DCDF: 60        RTS
-
-
-
-sub_0x03DCF0_записать_spd_X:
-loc_0x03DCF0_записать_spd_X:
-; X = 01
-; bzk optimize, ебать чоткое сжатие от разрабов
-; переписать распакованным
-C D 2 - - - 0x03DCF0 0F:DCE0: A8        TAY
-C - - - - - 0x03DCF1 0F:DCE1: 29 0F     AND #$0F
-C - - - - - 0x03DCF3 0F:DCE3: 9D 80 04  STA ram_obj_spd_X_hi,X
-C - - - - - 0x03DCF6 0F:DCE6: 98        TYA
-C - - - - - 0x03DCF7 0F:DCE7: 29 F0     AND #$F0
-C - - - - - 0x03DCF9 0F:DCE9: 9D 90 04  STA ram_obj_spd_X_lo,X
-C - - - - - 0x03DCFC 0F:DCEC: 60        RTS
 
 
 

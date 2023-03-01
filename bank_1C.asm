@@ -4042,8 +4042,11 @@ bra_9752:
 C - - - - - 0x039762 0E:9752: EE 31 05  INC ram_obj_0530 + $01
 C - - - - - 0x039765 0E:9755: A9 00     LDA #$00
 C - - - - - 0x039767 0E:9757: 8D 11 05  STA ram_obj_0510 + $01
-C - - - - - 0x03976A 0E:975A: A9 41     LDA #$41
-C - - - - - 0x03976C 0E:975C: 4C E0 DC  JMP loc_0x03DCF0_записать_spd_X
+C - - - - - 0x03976A 0E:975A: A9 41     LDA #< $0140
+C - - - - - 0x03976C 0E:975C: 4C E0 DC  STA ram_obj_spd_X_lo + $01
+                                        LDA #> $0140
+                                        STA ram_obj_spd_X_hi + $01
+                                        RTS
 
 
 
@@ -4076,8 +4079,10 @@ C - - - - - 0x0397A4 0E:9794: EE 31 05  INC ram_obj_0530 + $01
 C - - - - - 0x0397A7 0E:9797: A9 00     LDA #$00
 C - - - - - 0x0397A9 0E:9799: 8D 41 04  STA ram_obj_pos_X + $01
 C - - - - - 0x0397AC 0E:979C: 8D 31 04  STA ram_obj_0430 + $01
-C - - - - - 0x0397AF 0E:979F: A9 A0     LDA #$A0
-C - - - - - 0x0397B1 0E:97A1: 20 E0 DC  JSR sub_0x03DCF0_записать_spd_X
+C - - - - - 0x0397AF 0E:979F: A9 A0     LDA #< $00A0
+C - - - - - 0x0397B1 0E:97A1: 20 E0 DC  STA ram_obj_spd_X_lo + $01
+                                        LDA #> $00A0
+                                        STA ram_obj_spd_X_hi + $01
 C - - - - - 0x0397B4 0E:97A4: A9 38     LDA #$38
 C - - - - - 0x0397B6 0E:97A6: 8D 11 04  STA ram_obj_pos_Y + $01
 C - - - - - 0x0397B9 0E:97A9: 8D 61 05  STA ram_obj_0560 + $01
