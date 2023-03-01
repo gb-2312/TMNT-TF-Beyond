@@ -26,7 +26,7 @@
 .export sub_0x03D212_ASLx4
 .export sub_0x03D217_LSRx4
 .export loc_0x03D217_LSRx4
-.export sub_0x03D21C
+.export sub_0x03D21C_получить_разницу_pos_X_двух_объектов
 .export sub_0x03D228
 .export loc_0x03D228
 .export loc_0x03D266_записать_A_и_FF_в_буфер
@@ -106,11 +106,11 @@
 .export loc_0x03DF5F
 .export sub_0x03DFB3
 .export sub_0x03E11E
-.export loc_0x03E13E
-.export sub_0x03E14E
-.export loc_0x03E14E
-.export sub_0x03E151
-.export loc_0x03E151
+.export loc_0x03E13E_подготовить_затемнение_из_цветного_в_черный
+.export sub_0x03E14E_подготовить_затемнение_из_белого_в_цветной
+.export loc_0x03E14E_подготовить_затемнение_из_белого_в_цветной
+.export sub_0x03E151_подготовить_осветление_из_черного_в_цветной
+.export loc_0x03E151_подготовить_осветление_из_черного_в_цветной
 .export sub_0x03E15C
 .export tbl_0x03E16E_звук_выбора_перса
 .export loc_0x03E229_отрисовать_турнирную_сетку
@@ -536,32 +536,32 @@ C - - - - - 0x03D0C2 0F:D0B2: 60        RTS
 
 tbl_D0B3_индекс:
 off_D101_start = tbl_D101_анимация
-- D 2 - - - 0x03D0C3 0F:D0B3: 00        .byte off_D101_00 - off_D101_start
+- D 2 - - - 0x03D0C3 0F:D0B3: 00        .byte off_D101_00_черепахи_ходьба_вперед - off_D101_start
 - - - - - - 0x03D0C4 0F:D0B4: 03        .byte off_D104_01 - off_D101_start
-- D 2 - - - 0x03D0C5 0F:D0B5: 0E        .byte off_D10F_02 - off_D101_start
-- D 2 - - - 0x03D0C6 0F:D0B6: 12        .byte off_D113_03 - off_D101_start
-- D 2 - - - 0x03D0C7 0F:D0B7: 15        .byte off_D116_04 - off_D101_start
-- D 2 - - - 0x03D0C8 0F:D0B8: 1B        .byte off_D11C_05 - off_D101_start
-- D 2 - - - 0x03D0C9 0F:D0B9: 21        .byte off_D122_06 - off_D101_start
-- D 2 - - - 0x03D0CA 0F:D0BA: 25        .byte off_D126_07 - off_D101_start
-- D 2 - - - 0x03D0CB 0F:D0BB: 25        .byte off_D126_08 - off_D101_start
-- D 2 - - - 0x03D0CC 0F:D0BC: 0E        .byte off_D10F_09 - off_D101_start
-- D 2 - - - 0x03D0CD 0F:D0BD: 29        .byte off_D12A_0A - off_D101_start
-- D 2 - - - 0x03D0CE 0F:D0BE: 33        .byte off_D134_0B - off_D101_start
-- D 2 - - - 0x03D0CF 0F:D0BF: 2F        .byte off_D130_0C - off_D101_start
-- D 2 - - - 0x03D0D0 0F:D0C0: 33        .byte off_D134_0D - off_D101_start
-- D 2 - - - 0x03D0D1 0F:D0C1: 37        .byte off_D138_0E - off_D101_start
-- D 2 - - - 0x03D0D2 0F:D0C2: 3D        .byte off_D13E_0F - off_D101_start
-- D 2 - - - 0x03D0D3 0F:D0C3: 41        .byte off_D142_10 - off_D101_start
-- D 2 - - - 0x03D0D4 0F:D0C4: 45        .byte off_D146_11 - off_D101_start
-- D 2 - - - 0x03D0D5 0F:D0C5: 49        .byte off_D14A_12 - off_D101_start
-- D 2 - - - 0x03D0D6 0F:D0C6: 4C        .byte off_D14D_13 - off_D101_start
-- D 2 - - - 0x03D0D7 0F:D0C7: 50        .byte off_D151_14 - off_D101_start
-- D 2 - - - 0x03D0D8 0F:D0C8: 54        .byte off_D155_15 - off_D101_start
-- D 2 - - - 0x03D0D9 0F:D0C9: 59        .byte off_D15A_16 - off_D101_start
-- D 2 - - - 0x03D0DA 0F:D0CA: 5E        .byte off_D15F_17 - off_D101_start
-- D 2 - - - 0x03D0DB 0F:D0CB: 61        .byte off_D162_18 - off_D101_start
-- D 2 - - - 0x03D0DC 0F:D0CC: 65        .byte off_D166_19 - off_D101_start
+- D 2 - - - 0x03D0C5 0F:D0B5: 0E        .byte off_D10F_02_черепахи_ходьба_назад - off_D101_start
+- D 2 - - - 0x03D0C6 0F:D0B6: 12        .byte off_D113_03_сверло_рафа - off_D101_start
+- D 2 - - - 0x03D0C7 0F:D0B7: 15        .byte off_D116_04_черепахи_бег_вперед - off_D101_start
+- D 2 - - - 0x03D0C8 0F:D0B8: 1B        .byte off_D11C_05_casey_бег_вперед - off_D101_start
+- D 2 - - - 0x03D0C9 0F:D0B9: 21        .byte off_D122_06_casey_ходьба_вперед - off_D101_start
+- D 2 - - - 0x03D0CA 0F:D0BA: 25        .byte off_D126_07_casey_ходьба_назад - off_D101_start
+- D 2 - - - 0x03D0CB 0F:D0BB: 25        .byte off_D126_08_casey_бег_назад - off_D101_start
+- D 2 - - - 0x03D0CC 0F:D0BC: 0E        .byte off_D10F_09_черепахи_бег_назад - off_D101_start
+- D 2 - - - 0x03D0CD 0F:D0BD: 29        .byte off_D12A_0A_hot_бег_вперед - off_D101_start
+- D 2 - - - 0x03D0CE 0F:D0BE: 33        .byte off_D134_0B_hot_бег_назад - off_D101_start
+- D 2 - - - 0x03D0CF 0F:D0BF: 2F        .byte off_D130_0C_hot_ходьба_вперед - off_D101_start
+- D 2 - - - 0x03D0D0 0F:D0C0: 33        .byte off_D134_0D_hot_ходьба_назад - off_D101_start
+- D 2 - - - 0x03D0D1 0F:D0C1: 37        .byte off_D138_0E_shred_бег_вперед - off_D101_start
+- D 2 - - - 0x03D0D2 0F:D0C2: 3D        .byte off_D13E_0F_shred_бег_назад - off_D101_start
+- D 2 - - - 0x03D0D3 0F:D0C3: 41        .byte off_D142_10_shred_ходьба_вперед - off_D101_start
+- D 2 - - - 0x03D0D4 0F:D0C4: 45        .byte off_D146_11_shred_ходьба_назад - off_D101_start
+- D 2 - - - 0x03D0D5 0F:D0C5: 49        .byte off_D14A_12_волна_шрушера - off_D101_start
+- D 2 - - - 0x03D0D6 0F:D0C6: 4C        .byte off_D14D_13_черепахи_сальто_вперед - off_D101_start
+- D 2 - - - 0x03D0D7 0F:D0C7: 50        .byte off_D151_14_черепахи_сальто_назад - off_D101_start
+- D 2 - - - 0x03D0D8 0F:D0C8: 54        .byte off_D155_15_casey_сальто_вперед - off_D101_start
+- D 2 - - - 0x03D0D9 0F:D0C9: 59        .byte off_D15A_16_casey_сальто_назад - off_D101_start
+- D 2 - - - 0x03D0DA 0F:D0CA: 5E        .byte off_D15F_17_мяч_хота - off_D101_start
+- D 2 - - - 0x03D0DB 0F:D0CB: 61        .byte off_D162_18_песок_казея - off_D101_start
+- D 2 - - - 0x03D0DC 0F:D0CC: 65        .byte off_D166_19_shred_съебывается - off_D101_start
 
 
 
@@ -598,56 +598,41 @@ tbl_D0CD_продолжительность_кадра_анимации:
 
 tbl_D0E7_колво_картинок_в_анимации:
 ; количество кадров
-; 00 черепахи
 - D 2 - - - 0x03D0F7 0F:D0E7: 02        .byte con_D101_00_len   ; 00
 - - - - - - 0x03D0F8 0F:D0E8: 0A        .byte con_D104_01_len   ; 01
 - D 2 - - - 0x03D0F9 0F:D0E9: 03        .byte con_D10F_02_len   ; 02
-; 03
 - D 2 - - - 0x03D0FA 0F:D0EA: 02        .byte con_D113_03_len   ; 03
-; 04 черепахи
 - D 2 - - - 0x03D0FB 0F:D0EB: 05        .byte con_D116_04_len   ; 04
 - D 2 - - - 0x03D0FC 0F:D0EC: 05        .byte con_D11C_05_len   ; 05
-; 06 casey
 - D 2 - - - 0x03D0FD 0F:D0ED: 03        .byte con_D122_06_len   ; 06
 - D 2 - - - 0x03D0FE 0F:D0EE: 03        .byte con_D126_07_len   ; 07
 - D 2 - - - 0x03D0FF 0F:D0EF: 03        .byte con_D126_08_len   ; 08
 - D 2 - - - 0x03D100 0F:D0F0: 03        .byte con_D10F_09_len   ; 09
-; 0A hot
 - D 2 - - - 0x03D101 0F:D0F1: 05        .byte con_D12A_0A_len   ; 0A
 - D 2 - - - 0x03D102 0F:D0F2: 03        .byte con_D134_0B_len   ; 0B
-; 0C hot
 - D 2 - - - 0x03D103 0F:D0F3: 03        .byte con_D130_0C_len   ; 0C
 - D 2 - - - 0x03D104 0F:D0F4: 03        .byte con_D134_0D_len   ; 0D
-; 0E
 - D 2 - - - 0x03D105 0F:D0F5: 05        .byte con_D138_0E_len   ; 0E
 - D 2 - - - 0x03D106 0F:D0F6: 03        .byte con_D13E_0F_len   ; 0F
-; 10 shred
 - D 2 - - - 0x03D107 0F:D0F7: 03        .byte con_D142_10_len   ; 10
 - D 2 - - - 0x03D108 0F:D0F8: 03        .byte con_D146_11_len   ; 11
-; 12
 - D 2 - - - 0x03D109 0F:D0F9: 02        .byte con_D14A_12_len   ; 12
-; 13 черепахи, hot, shred
 - D 2 - - - 0x03D10A 0F:D0FA: 03        .byte con_D14D_13_len   ; 13
-; 14
 - D 2 - - - 0x03D10B 0F:D0FB: 03        .byte con_D151_14_len   ; 14
-; 15 casey
 - D 2 - - - 0x03D10C 0F:D0FC: 04        .byte con_D155_15_len   ; 15
 - D 2 - - - 0x03D10D 0F:D0FD: 04        .byte con_D15A_16_len   ; 16
-; 17
 - D 2 - - - 0x03D10E 0F:D0FE: 02        .byte con_D15F_17_len   ; 17
-; 18
 - D 2 - - - 0x03D10F 0F:D0FF: 03        .byte con_D162_18_len   ; 18
-; 19
 - D 2 - - - 0x03D110 0F:D100: 03        .byte con_D166_19_len   ; 19
 
 
 
 tbl_D101_анимация:
-off_D101_00:
+off_D101_00_черепахи_ходьба_вперед:
 - D 2 - - - 0x03D111 0F:D101: 8A        .byte $8A   ; 00
 - D 2 - - - 0x03D112 0F:D102: 89        .byte $89   ; 01
 - D 2 - - - 0x03D113 0F:D103: 88        .byte $88   ; 02
-con_D101_00_len = * - off_D101_00 - $01
+con_D101_00_len = * - off_D101_00_черепахи_ходьба_вперед - $01
 
 
 
@@ -667,205 +652,205 @@ con_D104_01_len = * - off_D104_01 - $01
 
 
 
-off_D10F_02:
-off_D10F_09:
+off_D10F_02_черепахи_ходьба_назад:
+off_D10F_09_черепахи_бег_назад:
 - D 2 - - - 0x03D11F 0F:D10F: 8E        .byte $8E   ; 00
 - D 2 - - - 0x03D120 0F:D110: 8D        .byte $8D   ; 01
 - D 2 - - - 0x03D121 0F:D111: 8C        .byte $8C   ; 02
 - D 2 - - - 0x03D122 0F:D112: 8B        .byte $8B   ; 03
-con_D10F_02_len = * - off_D10F_02 - $01
-con_D10F_09_len = * - off_D10F_09 - $01
+con_D10F_02_len = * - off_D10F_02_черепахи_ходьба_назад - $01
+con_D10F_09_len = * - off_D10F_09_черепахи_бег_назад - $01
 
 
 
-off_D113_03:
+off_D113_03_сверло_рафа:
 - D 2 - - - 0x03D123 0F:D113: AD        .byte $AD   ; 00
 - D 2 - - - 0x03D124 0F:D114: AC        .byte $AC   ; 01
 - D 2 - - - 0x03D125 0F:D115: AB        .byte $AB   ; 02
-con_D113_03_len = * - off_D113_03 - $01
+con_D113_03_len = * - off_D113_03_сверло_рафа - $01
 
 
 
-off_D116_04:
+off_D116_04_черепахи_бег_вперед:
 - D 2 - - - 0x03D126 0F:D116: 87        .byte $87   ; 00
 - D 2 - - - 0x03D127 0F:D117: 86        .byte $86   ; 01
 - D 2 - - - 0x03D128 0F:D118: 83        .byte $83   ; 02
 - D 2 - - - 0x03D129 0F:D119: 85        .byte $85   ; 03
 - D 2 - - - 0x03D12A 0F:D11A: 84        .byte $84   ; 04
 - D 2 - - - 0x03D12B 0F:D11B: 83        .byte $83   ; 05
-con_D116_04_len = * - off_D116_04 - $01
+con_D116_04_len = * - off_D116_04_черепахи_бег_вперед - $01
 
 
 
-off_D11C_05:
+off_D11C_05_casey_бег_вперед:
 - D 2 - - - 0x03D12C 0F:D11C: 86        .byte $86   ; 00
 - D 2 - - - 0x03D12D 0F:D11D: 85        .byte $85   ; 01
 - D 2 - - - 0x03D12E 0F:D11E: 82        .byte $82   ; 02
 - D 2 - - - 0x03D12F 0F:D11F: 84        .byte $84   ; 03
 - D 2 - - - 0x03D130 0F:D120: 83        .byte $83   ; 04
 - D 2 - - - 0x03D131 0F:D121: 82        .byte $82   ; 05
-con_D11C_05_len = * - off_D11C_05 - $01
+con_D11C_05_len = * - off_D11C_05_casey_бег_вперед - $01
 
 
 
-off_D122_06:
+off_D122_06_casey_ходьба_вперед:
 - D 2 - - - 0x03D132 0F:D122: 8A        .byte $8A   ; 00
 - D 2 - - - 0x03D133 0F:D123: 89        .byte $89   ; 01
 - D 2 - - - 0x03D134 0F:D124: 88        .byte $88   ; 02
 - D 2 - - - 0x03D135 0F:D125: 87        .byte $87   ; 03
-con_D122_06_len = * - off_D122_06 - $01
+con_D122_06_len = * - off_D122_06_casey_ходьба_вперед - $01
 
 
 
-off_D126_07:
-off_D126_08:
+off_D126_07_casey_ходьба_назад:
+off_D126_08_casey_бег_назад:
 - D 2 - - - 0x03D136 0F:D126: 8D        .byte $8D   ; 00
 - D 2 - - - 0x03D137 0F:D127: 8C        .byte $8C   ; 01
 - D 2 - - - 0x03D138 0F:D128: 8B        .byte $8B   ; 02
 - D 2 - - - 0x03D139 0F:D129: 80        .byte $80   ; 03
-con_D126_07_len = * - off_D126_07 - $01
-con_D126_08_len = * - off_D126_08 - $01
+con_D126_07_len = * - off_D126_07_casey_ходьба_назад - $01
+con_D126_08_len = * - off_D126_08_casey_бег_назад - $01
 
 
 
-off_D12A_0A:
+off_D12A_0A_hot_бег_вперед:
 - D 2 - - - 0x03D13A 0F:D12A: 85        .byte $85   ; 00
 - D 2 - - - 0x03D13B 0F:D12B: 87        .byte $87   ; 01
 - D 2 - - - 0x03D13C 0F:D12C: 86        .byte $86   ; 02
 - D 2 - - - 0x03D13D 0F:D12D: 85        .byte $85   ; 03
 - D 2 - - - 0x03D13E 0F:D12E: 84        .byte $84   ; 04
 - D 2 - - - 0x03D13F 0F:D12F: 83        .byte $83   ; 05
-con_D12A_0A_len = * - off_D12A_0A - $01
+con_D12A_0A_len = * - off_D12A_0A_hot_бег_вперед - $01
 
 
 
-off_D130_0C:
+off_D130_0C_hot_ходьба_вперед:
 - D 2 - - - 0x03D140 0F:D130: 89        .byte $89   ; 00
 - D 2 - - - 0x03D141 0F:D131: 8A        .byte $8A   ; 01
 - D 2 - - - 0x03D142 0F:D132: 89        .byte $89   ; 02
 - D 2 - - - 0x03D143 0F:D133: 88        .byte $88   ; 03
-con_D130_0C_len = * - off_D130_0C - $01
+con_D130_0C_len = * - off_D130_0C_hot_ходьба_вперед - $01
 
 
 
-off_D134_0B:
-off_D134_0D:
+off_D134_0B_hot_бег_назад:
+off_D134_0D_hot_ходьба_назад:
 - D 2 - - - 0x03D144 0F:D134: 82        .byte $82   ; 00
 - D 2 - - - 0x03D145 0F:D135: 8D        .byte $8D   ; 01
 - D 2 - - - 0x03D146 0F:D136: 8C        .byte $8C   ; 02
 - D 2 - - - 0x03D147 0F:D137: 8B        .byte $8B   ; 03
-con_D134_0B_len = * - off_D134_0B - $01
-con_D134_0D_len = * - off_D134_0D - $01
+con_D134_0B_len = * - off_D134_0B_hot_бег_назад - $01
+con_D134_0D_len = * - off_D134_0D_hot_ходьба_назад - $01
 
 
 
-off_D138_0E:
+off_D138_0E_shred_бег_вперед:
 - D 2 - - - 0x03D148 0F:D138: 87        .byte $87   ; 00
 - D 2 - - - 0x03D149 0F:D139: 86        .byte $86   ; 01
 - D 2 - - - 0x03D14A 0F:D13A: 83        .byte $83   ; 02
 - D 2 - - - 0x03D14B 0F:D13B: 85        .byte $85   ; 03
 - D 2 - - - 0x03D14C 0F:D13C: 84        .byte $84   ; 04
 - D 2 - - - 0x03D14D 0F:D13D: 83        .byte $83   ; 05
-con_D138_0E_len = * - off_D138_0E - $01
+con_D138_0E_len = * - off_D138_0E_shred_бег_вперед - $01
 
 
 
-off_D13E_0F:
+off_D13E_0F_shred_бег_назад:
 - D 2 - - - 0x03D14E 0F:D13E: 88        .byte $88   ; 00
 - D 2 - - - 0x03D14F 0F:D13F: 89        .byte $89   ; 01
 - D 2 - - - 0x03D150 0F:D140: 8A        .byte $8A   ; 02
 - D 2 - - - 0x03D151 0F:D141: 8B        .byte $8B   ; 03
-con_D13E_0F_len = * - off_D13E_0F - $01
+con_D13E_0F_len = * - off_D13E_0F_shred_бег_назад - $01
 
 
 
-off_D142_10:
+off_D142_10_shred_ходьба_вперед:
 - D 2 - - - 0x03D152 0F:D142: 8B        .byte $8B   ; 00
 - D 2 - - - 0x03D153 0F:D143: 8A        .byte $8A   ; 01
 - D 2 - - - 0x03D154 0F:D144: 89        .byte $89   ; 02
 - D 2 - - - 0x03D155 0F:D145: 88        .byte $88   ; 03
-con_D142_10_len = * - off_D142_10 - $01
+con_D142_10_len = * - off_D142_10_shred_ходьба_вперед - $01
 
 
 
-off_D146_11:
+off_D146_11_shred_ходьба_назад:
 - D 2 - - - 0x03D156 0F:D146: 88        .byte $88   ; 00
 - D 2 - - - 0x03D157 0F:D147: 89        .byte $89   ; 01
 - D 2 - - - 0x03D158 0F:D148: 8A        .byte $8A   ; 02
 - D 2 - - - 0x03D159 0F:D149: 8B        .byte $8B   ; 03
-con_D146_11_len = * - off_D146_11 - $01
+con_D146_11_len = * - off_D146_11_shred_ходьба_назад - $01
 
 
 
-off_D14A_12:
+off_D14A_12_волна_шрушера:
 - D 2 - - - 0x03D15A 0F:D14A: AD        .byte $AD   ; 00
 - D 2 - - - 0x03D15B 0F:D14B: AC        .byte $AC   ; 01
 - D 2 - - - 0x03D15C 0F:D14C: AB        .byte $AB   ; 02
-con_D14A_12_len = * - off_D14A_12 - $01
+con_D14A_12_len = * - off_D14A_12_волна_шрушера - $01
 
 
 
-off_D14D_13:
+off_D14D_13_черепахи_сальто_вперед:
 - D 2 - - - 0x03D15D 0F:D14D: A0        .byte $A0   ; 00
 - D 2 - - - 0x03D15E 0F:D14E: 9F        .byte $9F   ; 01
 - D 2 - - - 0x03D15F 0F:D14F: 9E        .byte $9E   ; 02
 - D 2 - - - 0x03D160 0F:D150: 9D        .byte $9D   ; 03
-con_D14D_13_len = * - off_D14D_13 - $01
+con_D14D_13_len = * - off_D14D_13_черепахи_сальто_вперед - $01
 
 
 
-off_D151_14:
+off_D151_14_черепахи_сальто_назад:
 - D 2 - - - 0x03D161 0F:D151: 9D        .byte $9D   ; 00
 - D 2 - - - 0x03D162 0F:D152: 9E        .byte $9E   ; 01
 - D 2 - - - 0x03D163 0F:D153: 9F        .byte $9F   ; 02
 - D 2 - - - 0x03D164 0F:D154: A0        .byte $A0   ; 03
-con_D151_14_len = * - off_D151_14 - $01
+con_D151_14_len = * - off_D151_14_черепахи_сальто_назад - $01
 
 
 
-off_D155_15:
+off_D155_15_casey_сальто_вперед:
 - - - - - - 0x03D165 0F:D155: AA        .byte $AA   ; 00
 - - - - - - 0x03D166 0F:D156: D8        .byte $D8   ; 01
 - D 2 - - - 0x03D167 0F:D157: C4        .byte $C4   ; 02
 - D 2 - - - 0x03D168 0F:D158: D7        .byte $D7   ; 03
 - D 2 - - - 0x03D169 0F:D159: D6        .byte $D6   ; 04
-con_D155_15_len = * - off_D155_15 - $01
+con_D155_15_len = * - off_D155_15_casey_сальто_вперед - $01
 
 
 
-off_D15A_16:
+off_D15A_16_casey_сальто_назад:
 - - - - - - 0x03D16A 0F:D15A: D6        .byte $D6   ; 00
 - - - - - - 0x03D16B 0F:D15B: D7        .byte $D7   ; 01
 - D 2 - - - 0x03D16C 0F:D15C: C4        .byte $C4   ; 02
 - D 2 - - - 0x03D16D 0F:D15D: B5        .byte $B5   ; 03
 - D 2 - - - 0x03D16E 0F:D15E: AA        .byte $AA   ; 04
-con_D15A_16_len = * - off_D15A_16 - $01
+con_D15A_16_len = * - off_D15A_16_casey_сальто_назад - $01
 
 
 
-off_D15F_17:
+off_D15F_17_мяч_хота:
 - D 2 - - - 0x03D16F 0F:D15F: C2        .byte $C2   ; 00
 - D 2 - - - 0x03D170 0F:D160: C1        .byte $C1   ; 01
 - D 2 - - - 0x03D171 0F:D161: C0        .byte $C0   ; 02
-con_D15F_17_len = * - off_D15F_17 - $01
+con_D15F_17_len = * - off_D15F_17_мяч_хота - $01
 
 
 
-off_D162_18:
+off_D162_18_песок_казея:
 - D 2 - - - 0x03D172 0F:D162: CB        .byte $CB   ; 00
 - D 2 - - - 0x03D173 0F:D163: CA        .byte $CA   ; 01
 - D 2 - - - 0x03D174 0F:D164: C9        .byte $C9   ; 02
 - D 2 - - - 0x03D175 0F:D165: C8        .byte $C8   ; 03
-con_D162_18_len = * - off_D162_18 - $01
+con_D162_18_len = * - off_D162_18_песок_казея - $01
 
 
 
-off_D166_19:
+off_D166_19_shred_съебывается:
 - D 2 - - - 0x03D176 0F:D166: 81        .byte $81   ; 00
 - D 2 - - - 0x03D177 0F:D167: 82        .byte $82   ; 01
 - D 2 - - - 0x03D178 0F:D168: 81        .byte $81   ; 02
 - D 2 - - - 0x03D179 0F:D169: 80        .byte $80   ; 03
-con_D166_19_len = * - off_D166_19 - $01
+con_D166_19_len = * - off_D166_19_shred_съебывается - $01
 
 
 
@@ -994,8 +979,8 @@ C - - - - - 0x03D21B 0F:D20B: 60        RTS
 
 
 
-sub_D20C:
-sub_0x03D21C:
+sub_D20C_получить_разницу_pos_X_двух_объектов:
+sub_0x03D21C_получить_разницу_pos_X_двух_объектов:
 C - - - - - 0x03D21C 0F:D20C: BD 40 04  LDA ram_obj_pos_X,X
 C - - - - - 0x03D21F 0F:D20F: 38        SEC
 C - - - - - 0x03D220 0F:D210: F9 40 04  SBC ram_obj_pos_X,Y
@@ -1338,7 +1323,7 @@ C - - - - - 0x03D3C2 0F:D3B2: F0 E8     BEQ bra_D39C    ; jmp
 
 
 
-loc_D3B4:
+loc_D3B4_80_затемнение_из_цветного_в_черный:
 C D 2 - - - 0x03D3C4 0F:D3B4: AD 02 06  LDA ram_0602
 C - - - - - 0x03D3C7 0F:D3B7: D0 08     BNE bra_D3C1
 C - - - - - 0x03D3C9 0F:D3B9: EE 02 06  INC ram_0602
@@ -1379,13 +1364,14 @@ bra_D3F0_loop:
 C - - - - - 0x03D400 0F:D3F0: 9D 00 06  STA ram_plr_0600,X
 C - - - - - 0x03D403 0F:D3F3: CA        DEX
 C - - - - - 0x03D404 0F:D3F4: 10 FA     BPL bra_D3F0_loop
-C - - - - - 0x03D406 0F:D3F6: 85 30     STA ram_0030
+; A = 00
+C - - - - - 0x03D406 0F:D3F6: 85 30     STA ram_метод_изменения_яркости
 bra_D3F8_RTS:
 C - - - - - 0x03D408 0F:D3F8: 60        RTS
 
 
 
-loc_D3F9:
+loc_D3F9_01_осветление_из_черного_в_цветной:
 C D 2 - - - 0x03D409 0F:D3F9: AD 02 06  LDA ram_0602
 C - - - - - 0x03D40C 0F:D3FC: D0 1C     BNE bra_D41A
 C - - - - - 0x03D40E 0F:D3FE: A2 1F     LDX #$1F
@@ -1479,7 +1465,7 @@ C - - - - - 0x03D487 0F:D477: 30 EB     BMI bra_D464_запись_FF_в_066D    
 
 
 
-loc_D479:
+loc_D479_40_затемнение_из_белого_в_цветной:
 C D 2 - - - 0x03D489 0F:D479: AD 02 06  LDA ram_0602
 C - - - - - 0x03D48C 0F:D47C: D0 09     BNE bra_D487
 C - - - - - 0x03D48E 0F:D47E: EE 02 06  INC ram_0602
@@ -1529,7 +1515,7 @@ C - - - - - 0x03D4DA 0F:D4CA: 60        RTS
 
 
 
-loc_D4CB:
+loc_D4CB_20_осветление_из_цветного_в_белый:
 C D 2 - - - 0x03D4DB 0F:D4CB: AC 02 06  LDY ram_0602
 C - - - - - 0x03D4DE 0F:D4CE: D0 1B     BNE bra_D4EB
 C - - - - - 0x03D4E0 0F:D4D0: EE 02 06  INC ram_0602
@@ -3051,12 +3037,13 @@ C - - - - - 0x03E13D 0F:E12D: 60        RTS
 
 
 
-loc_E12E:
-sub_E12E:
-loc_0x03E13E:
+loc_E12E_подготовить_затемнение_из_цветного_в_черный:
+sub_E12E_подготовить_затемнение_из_цветного_в_черный:
+loc_0x03E13E_подготовить_затемнение_из_цветного_в_черный:
 C D 3 - - - 0x03E13E 0F:E12E: A9 80     LDA #$80
-C - - - - - 0x03E140 0F:E130: 85 30     STA ram_0030
-C - - - - - 0x03E142 0F:E132: 0A        ASL
+C - - - - - 0x03E140 0F:E130: 85 30     STA ram_метод_изменения_яркости
+; bzk optimize, нахрен этот ASL тут не нужен
+C - - - - - 0x03E142 0F:E132: 0A        ASL ; 00
 loc_E133:
 C D 3 - - - 0x03E143 0F:E133: A9 00     LDA #$00
 C - - - - - 0x03E145 0F:E135: 8D 6D 06  STA ram_066D
@@ -3066,23 +3053,23 @@ C - - - - - 0x03E14D 0F:E13D: 60        RTS
 
 
 
-loc_E13E:
-sub_E13E:
-sub_0x03E14E:
-loc_0x03E14E:
+loc_E13E_подготовить_затемнение_из_белого_в_цветной:
+sub_E13E_подготовить_затемнение_из_белого_в_цветной:
+sub_0x03E14E_подготовить_затемнение_из_белого_в_цветной:
+loc_0x03E14E_подготовить_затемнение_из_белого_в_цветной:
 C D 3 - - - 0x03E14E 0F:E13E: A9 40     LDA #$40
 C - - - - - 0x03E150 0F:E140: 2C        .byte $2C   ; BIT
-loc_E141:
-sub_0x03E151:
-loc_0x03E151:
+loc_E141_подготовить_осветление_из_черного_в_цветной:
+sub_0x03E151_подготовить_осветление_из_черного_в_цветной:
+loc_0x03E151_подготовить_осветление_из_черного_в_цветной:
 C - - - - - 0x03E151 0F:E141: A9 01     LDA #$01
 bra_E143:
-C - - - - - 0x03E153 0F:E143: 85 30     STA ram_0030
+C - - - - - 0x03E153 0F:E143: 85 30     STA ram_метод_изменения_яркости
 C - - - - - 0x03E155 0F:E145: 4C 33 E1  JMP loc_E133
 
 
 
-sub_E148:
+sub_E148_подготовить_затемнение_из_белого_в_цветной:
 C - - - - - 0x03E158 0F:E148: A9 20     LDA #$20
 C - - - - - 0x03E15A 0F:E14A: D0 F7     BNE bra_E143    ; jmp
 
@@ -3352,7 +3339,7 @@ C - - - - - 0x03E2F3 0F:E2E3: A2 00     LDX #$00
 C - - - - - 0x03E2F5 0F:E2E5: 86 56     STX ram_0056
 C - - - - - 0x03E2F7 0F:E2E7: A9 06     LDA #con_0x03F84C_06
 C - - - - - 0x03E2F9 0F:E2E9: 20 14 F8  JSR sub_F814
-C - - - - - 0x03E2FC 0F:E2EC: 4C 41 E1  JMP loc_E141
+C - - - - - 0x03E2FC 0F:E2EC: 4C 41 E1  JMP loc_E141_подготовить_осветление_из_черного_в_цветной
 
 
 
@@ -3507,7 +3494,7 @@ bra_E39A:
 C - - - - - 0x03E3AA 0F:E39A: 20 83 E3  JSR sub_E383
 C - - - - - 0x03E3AD 0F:E39D: A9 01     LDA #$01
 C - - - - - 0x03E3AF 0F:E39F: 8D 60 05  STA ram_obj_0560
-C - - - - - 0x03E3B2 0F:E3A2: 4C 2E E1  JMP loc_E12E
+C - - - - - 0x03E3B2 0F:E3A2: 4C 2E E1  JMP loc_E12E_подготовить_затемнение_из_цветного_в_черный
 bra_E3A5:
 C - - - - - 0x03E3B5 0F:E3A5: E6 95     INC ram_0095
 C - - - - - 0x03E3B7 0F:E3A7: A5 2C     LDA ram_game_mode
@@ -3614,7 +3601,7 @@ C - - - - - 0x03E46D 0F:E45D: CA        DEX
 C - - - - - 0x03E46E 0F:E45E: 10 F1     BPL bra_E451_loop
 C - - - - - 0x03E470 0F:E460: 20 14 F7  JSR sub_F714
 C - - - - - 0x03E473 0F:E463: 20 0B F8  JSR sub_F80B
-C - - - - - 0x03E476 0F:E466: 4C 41 E1  JMP loc_E141
+C - - - - - 0x03E476 0F:E466: 4C 41 E1  JMP loc_E141_подготовить_осветление_из_черного_в_цветной
 
 
 
@@ -3705,7 +3692,7 @@ C - - - - - 0x03E4EA 0F:E4DA: 85 95     STA ram_0095
 C - - - - - 0x03E4EC 0F:E4DC: A9 5B     LDA #$5B    ; con_music_volume_fade
 C - - - - - 0x03E4EE 0F:E4DE: 85 98     STA ram_0098
 C - - - - - 0x03E4F0 0F:E4E0: 20 90 F6  JSR sub_F690_записать_звук_сохранив_X_Y
-C - - - - - 0x03E4F3 0F:E4E3: 4C 2E E1  JMP loc_E12E
+C - - - - - 0x03E4F3 0F:E4E3: 4C 2E E1  JMP loc_E12E_подготовить_затемнение_из_цветного_в_черный
 bra_E4E6:
 C - - - - - 0x03E4F6 0F:E4E6: A5 2C     LDA ram_game_mode
 ; con_gm_story
@@ -3757,7 +3744,7 @@ loc_E522_перейти_в_режим_vs_player:
 - - - - - - 0x03E534 0F:E524: 20 8B F6  JSR sub_F68B_выключить_звуки_и_записать_новый
 - - - - - - 0x03E537 0F:E527: A9 13     LDA #$13
 - - - - - - 0x03E539 0F:E529: 85 95     STA ram_0095
-- - - - - - 0x03E53B 0F:E52B: 4C 2E E1  JMP loc_E12E
+- - - - - - 0x03E53B 0F:E52B: 4C 2E E1  JMP loc_E12E_подготовить_затемнение_из_цветного_в_черный
 
 
 
@@ -3818,7 +3805,7 @@ bra_E579:
 ; con_gm_vs_player
 ; con_gm_vs_team
 ; con_gm_tournament
-C - - - - - 0x03E589 0F:E579: 20 2E E1  JSR sub_E12E
+C - - - - - 0x03E589 0F:E579: 20 2E E1  JSR sub_E12E_подготовить_затемнение_из_цветного_в_черный
 C - - - - - 0x03E58C 0F:E57C: EE 40 06  INC ram_0640
 C - - - - - 0x03E58F 0F:E57F: AD 49 06  LDA ram_0649
 C - - - - - 0x03E592 0F:E582: 0D 4A 06  ORA ram_064A
@@ -4173,10 +4160,10 @@ C - - - - - 0x03E7BB 0F:E7AB: 20 E5 F6  JSR sub_F6E5_написать_текст
 C - - - - - 0x03E7BE 0F:E7AE: A9 20     LDA #$20
 C - - - - - 0x03E7C0 0F:E7B0: 8D 60 05  STA ram_obj_0560
 C - - - - - 0x03E7C3 0F:E7B3: A9 00     LDA #$00
-C - - - - - 0x03E7C5 0F:E7B5: A8        TAY
+C - - - - - 0x03E7C5 0F:E7B5: A8        TAY ; 00
 C - - - - - 0x03E7C6 0F:E7B6: 85 96     STA ram_0096
 C - - - - - 0x03E7C8 0F:E7B8: 20 94 D3  JSR sub_D394
-C - - - - - 0x03E7CB 0F:E7BB: 4C 41 E1  JMP loc_E141
+C - - - - - 0x03E7CB 0F:E7BB: 4C 41 E1  JMP loc_E141_подготовить_осветление_из_черного_в_цветной
 
 
 
@@ -4186,7 +4173,7 @@ C - - - - - 0x03E7D0 0F:E7C0: D0 0A     BNE bra_E7CC
 C - - - - - 0x03E7D2 0F:E7C2: CE 60 05  DEC ram_obj_0560
 C - - - - - 0x03E7D5 0F:E7C5: D0 A8     BNE bra_E76F_RTS
 C - - - - - 0x03E7D7 0F:E7C7: E6 96     INC ram_0096
-C - - - - - 0x03E7D9 0F:E7C9: 4C 2E E1  JMP loc_E12E
+C - - - - - 0x03E7D9 0F:E7C9: 4C 2E E1  JMP loc_E12E_подготовить_затемнение_из_цветного_в_черный
 bra_E7CC:
 C - - - - - 0x03E7DC 0F:E7CC: E6 95     INC ram_0095
 ; bzk optimize, нахрена эта запись, если чуть будет перезаписано?
@@ -4229,7 +4216,7 @@ C - - - - - 0x03E833 0F:E823: 20 94 D3  JSR sub_D394
 C - - - - - 0x03E836 0F:E826: A2 04     LDX #$04    ; tip_индекс_буфера_палитры + $04
 C - - - - - 0x03E838 0F:E828: B5 9E     LDA ram_plr_id
 C - - - - - 0x03E83A 0F:E82A: 20 2A E3  JSR sub_E32A_выбрать_палитру_персу
-C - - - - - 0x03E83D 0F:E82D: 4C 41 E1  JMP loc_E141
+C - - - - - 0x03E83D 0F:E82D: 4C 41 E1  JMP loc_E141_подготовить_осветление_из_черного_в_цветной
 
 
 
@@ -4306,7 +4293,7 @@ C - - - - - 0x03E8A8 0F:E898: CE 60 05  DEC ram_obj_0560
 C - - - - - 0x03E8AB 0F:E89B: D0 E3     BNE bra_E880_RTS
 C - - - - - 0x03E8AD 0F:E89D: A9 01     LDA #$01
 C - - - - - 0x03E8AF 0F:E89F: 85 95     STA ram_0095
-C - - - - - 0x03E8B1 0F:E8A1: 4C 2E E1  JMP loc_E12E
+C - - - - - 0x03E8B1 0F:E8A1: 4C 2E E1  JMP loc_E12E_подготовить_затемнение_из_цветного_в_черный
 
 
 
@@ -4322,7 +4309,7 @@ C - - - - - 0x03E8C2 0F:E8B2: 20 BF E8  JSR sub_E8BF
 C - - - - - 0x03E8C5 0F:E8B5: E6 95     INC ram_0095
 C - - - - - 0x03E8C7 0F:E8B7: A9 0B     LDA #con_0x03F84C_0B
 C - - - - - 0x03E8C9 0F:E8B9: 20 14 F8  JSR sub_F814
-C - - - - - 0x03E8CC 0F:E8BC: 4C 41 E1  JMP loc_E141
+C - - - - - 0x03E8CC 0F:E8BC: 4C 41 E1  JMP loc_E141_подготовить_осветление_из_черного_в_цветной
 
 
 
@@ -4361,7 +4348,7 @@ C - - - - - 0x03E8FE 0F:E8EE: 20 DE F7  JSR sub_F7DE
 C - - - - - 0x03E901 0F:E8F1: AD 31 06  LDA ram_0631
 C - - - - - 0x03E904 0F:E8F4: D0 8A     BNE bra_E880_RTS
 C - - - - - 0x03E906 0F:E8F6: 20 C4 E5  JSR sub_E5C4
-C - - - - - 0x03E909 0F:E8F9: 4C 2E E1  JMP loc_E12E
+C - - - - - 0x03E909 0F:E8F9: 4C 2E E1  JMP loc_E12E_подготовить_затемнение_из_цветного_в_черный
 
 
 
@@ -4372,7 +4359,7 @@ ofs_001_E8FC_20:
 - - - - - - 0x03E913 0F:E903: AD 31 06  LDA ram_0631
 - - - - - - 0x03E916 0F:E906: D0 89     BNE bra_E891_RTS
 - - - - - - 0x03E918 0F:E908: 20 8A E6  JSR sub_E68A
-- - - - - - 0x03E91B 0F:E90B: 4C 2E E1  JMP loc_E12E
+- - - - - - 0x03E91B 0F:E90B: 4C 2E E1  JMP loc_E12E_подготовить_затемнение_из_цветного_в_черный
 
 
 
@@ -6105,8 +6092,8 @@ C - - - - - 0x03F38D 0F:F37D: 4C 38 D5  JMP loc_D538
 
 
 sub_F380:
-C - - - - - 0x03F390 0F:F380: A5 30     LDA ram_0030
-C - - - - - 0x03F392 0F:F382: D0 1F     BNE bra_F3A3
+C - - - - - 0x03F390 0F:F380: A5 30     LDA ram_метод_изменения_яркости
+C - - - - - 0x03F392 0F:F382: D0 1F     BNE bra_F3A3_обработать_яркость
 C - - - - - 0x03F394 0F:F384: A5 20     LDA ram_script_draw_hi
 C - - - - - 0x03F396 0F:F386: 20 32 D0  JSR sub_D032_поинтеры_после_JSR
 - D 3 - I - 0x03F399 0F:F389: BF F3     .word ofs_000_F3BF_00_главное_меню
@@ -6122,23 +6109,24 @@ C - - - - - 0x03F396 0F:F386: 20 32 D0  JSR sub_D032_поинтеры_после
 - D 3 - I - 0x03F3AD 0F:F39D: AF F7     .word ofs_000_F7AF_0A_opening
 - D 3 - I - 0x03F3AF 0F:F39F: B8 F7     .word ofs_000_F7B8_0B_ending
 - D 3 - I - 0x03F3B1 0F:F3A1: CA F7     .word ofs_000_F7CA_0C_topscore
-bra_F3A3:
+bra_F3A3_обработать_яркость:
 C - - - - - 0x03F3B3 0F:F3A3: A5 90     LDA ram_sum_btn_press
 C - - - - - 0x03F3B5 0F:F3A5: 05 A4     ORA ram_00A4
 C - - - - - 0x03F3B7 0F:F3A7: 85 A4     STA ram_00A4
-C - - - - - 0x03F3B9 0F:F3A9: A5 30     LDA ram_0030
-C - - - - - 0x03F3BB 0F:F3AB: 30 09     BMI bra_F3B6
+C - - - - - 0x03F3B9 0F:F3A9: A5 30     LDA ram_метод_изменения_яркости
+C - - - - - 0x03F3BB 0F:F3AB: 30 09     BMI bra_F3B6_80
 C - - - - - 0x03F3BD 0F:F3AD: 0A        ASL
-C - - - - - 0x03F3BE 0F:F3AE: 30 09     BMI bra_F3B9
+C - - - - - 0x03F3BE 0F:F3AE: 30 09     BMI bra_F3B9_40
 C - - - - - 0x03F3C0 0F:F3B0: 0A        ASL
-C - - - - - 0x03F3C1 0F:F3B1: 10 09     BPL bra_F3BC
-C - - - - - 0x03F3C3 0F:F3B3: 4C CB D4  JMP loc_D4CB
-bra_F3B6:
-C - - - - - 0x03F3C6 0F:F3B6: 4C B4 D3  JMP loc_D3B4
-bra_F3B9:
-C - - - - - 0x03F3C9 0F:F3B9: 4C 79 D4  JMP loc_D479
-bra_F3BC:
-C - - - - - 0x03F3CC 0F:F3BC: 4C F9 D3  JMP loc_D3F9
+C - - - - - 0x03F3C1 0F:F3B1: 10 09     BPL bra_F3BC_01
+; if 20
+C - - - - - 0x03F3C3 0F:F3B3: 4C CB D4  JMP loc_D4CB_20_осветление_из_цветного_в_белый
+bra_F3B6_80:
+C - - - - - 0x03F3C6 0F:F3B6: 4C B4 D3  JMP loc_D3B4_80_затемнение_из_цветного_в_черный
+bra_F3B9_40:
+C - - - - - 0x03F3C9 0F:F3B9: 4C 79 D4  JMP loc_D479_40_затемнение_из_белого_в_цветной
+bra_F3BC_01:
+C - - - - - 0x03F3CC 0F:F3BC: 4C F9 D3  JMP loc_D3F9_01_осветление_из_черного_в_цветной
 
 
 
@@ -6151,7 +6139,7 @@ C - - - - - 0x03F3D7 0F:F3C7: 8E 11 01  STX ram_0111
 C - - - - - 0x03F3DA 0F:F3CA: 8E 12 01  STX ram_0112
 C - - - - - 0x03F3DD 0F:F3CD: 20 09 D0  JSR sub_D009_очистить_оперативку_1
 C - - - - - 0x03F3E0 0F:F3D0: 20 00 F0  JSR sub_F000_отрисовать_главное_меню
-C - - - - - 0x03F3E3 0F:F3D3: 20 48 E1  JSR sub_E148
+C - - - - - 0x03F3E3 0F:F3D3: 20 48 E1  JSR sub_E148_подготовить_затемнение_из_белого_в_цветной
 C - - - - - 0x03F3E6 0F:F3D6: 4C 38 F5  JMP loc_F538
 bra_F3D9:
 C - - - - - 0x03F3E9 0F:F3D9: A9 00     LDA #$00    ; con_gm_story
@@ -6159,7 +6147,7 @@ C - - - - - 0x03F3EB 0F:F3DB: 85 27     STA ram_0027
 C - - - - - 0x03F3ED 0F:F3DD: 85 2C     STA ram_game_mode
                                         LDA #con_script_draw_vs_экран
 C - - - - - 0x03F3EF 0F:F3DF: 20 A7 F5  JSR sub_F5AE_подготовить_скрипт
-C - - - - - 0x03F3F2 0F:F3E2: 4C 2E E1  JMP loc_E12E
+C - - - - - 0x03F3F2 0F:F3E2: 4C 2E E1  JMP loc_E12E_подготовить_затемнение_из_цветного_в_черный
 bra_F3E5:
 C - - - - - 0x03F3F5 0F:F3E5: CA        DEX
 C - - - - - 0x03F3F6 0F:F3E6: D0 07     BNE bra_F3EF
@@ -6251,7 +6239,7 @@ C - - - - - 0x03F482 0F:F472: E6 21     INC ram_script_draw_lo
 C - - - - - 0x03F484 0F:F474: A9 00     LDA #$00
 C - - - - - 0x03F486 0F:F476: 85 A2     STA ram_plr_id
 C - - - - - 0x03F488 0F:F478: 85 A3     STA ram_plr_id + $01
-C - - - - - 0x03F48A 0F:F47A: 4C 2E E1  JMP loc_E12E
+C - - - - - 0x03F48A 0F:F47A: 4C 2E E1  JMP loc_E12E_подготовить_затемнение_из_цветного_в_черный
 bra_F47D:
 C - - - - - 0x03F48D 0F:F47D: CA        DEX
 C - - - - - 0x03F48E 0F:F47E: D0 09     BNE bra_F489
@@ -6319,9 +6307,9 @@ C - - - - - 0x03F4D5 0F:F4C5: D0 96     BNE bra_F45D_RTS
 C - - - - - 0x03F4D7 0F:F4C7: A9 0C     LDA #con_script_draw_topscore
 C - - - - - 0x03F4D9 0F:F4C9: 20 DB F4  JSR sub_F5AE_подготовить_скрипт
                                         JSR sub_F6C2_выключить_музыку_и_звуки
-C - - - - - 0x03F4DC 0F:F4CC: 4C 2E E1  JMP loc_E12E
+C - - - - - 0x03F4DC 0F:F4CC: 4C 2E E1  JMP loc_E12E_подготовить_затемнение_из_цветного_в_черный
 bra_F4CF:
-- - - - - - 0x03F4DF 0F:F4CF: 20 3E E1  JSR sub_E13E
+- - - - - - 0x03F4DF 0F:F4CF: 20 3E E1  JSR sub_E13E_подготовить_затемнение_из_белого_в_цветной
 - - - - - - 0x03F4E2 0F:F4D2: A9 00     LDA #con_script_draw_главное_меню
 C - - - - - 0x03F4EB 0F:F4DB: 20 AE F5  JSR sub_F5AE_подготовить_скрипт
 C - - - - - 0x03F4EE 0F:F4DE: 4C C2 F6  JMP loc_F6C2_выключить_музыку_и_звуки
@@ -6404,7 +6392,7 @@ bra_F564:
 C - - - - - 0x03F574 0F:F564: A9 00     LDA #con_script_draw_главное_меню
 C - - - - - 0x03F576 0F:F566: 20 AE F5  JSR sub_F5AE_подготовить_скрипт
 C - - - - - 0x03F579 0F:F569: 20 C2 F6  JSR sub_F6C2_выключить_музыку_и_звуки
-C - - - - - 0x03F57C 0F:F56C: 4C 3E E1  JMP loc_E13E
+C - - - - - 0x03F57C 0F:F56C: 4C 3E E1  JMP loc_E13E_подготовить_затемнение_из_белого_в_цветной
 
 
 
@@ -6793,7 +6781,7 @@ sub_F775:
 sub_0x03F785:
 C - - - - - 0x03F785 0F:F775: A0 00     LDY #$00
 C - - - - - 0x03F787 0F:F777: A2 01     LDX #$01
-C - - - - - 0x03F789 0F:F779: 20 0C D2  JSR sub_D20C
+C - - - - - 0x03F789 0F:F779: 20 0C D2  JSR sub_D20C_получить_разницу_pos_X_двух_объектов
 C - - - - - 0x03F78C 0F:F77C: AC 70 05  LDY ram_obj_0570
 C - - - - - 0x03F78F 0F:F77F: 38        SEC
 C - - - - - 0x03F790 0F:F780: F9 4C AD  SBC tbl_0x026D5C,Y
@@ -7908,7 +7896,7 @@ C - - - - - 0x03FE6A 0F:FE5A: 85 27     STA ram_0027
 C - - - - - 0x03FE6C 0F:FE5C: 85 94     STA ram_0094
 C - - - - - 0x03FE6E 0F:FE5E: A9 00     LDA #con_script_draw_главное_меню
 C - - - - - 0x03FE70 0F:FE60: 20 AE F5  JSR sub_F5AE_подготовить_скрипт
-C - - - - - 0x03FE73 0F:FE63: 4C 3E E1  JMP loc_E13E
+C - - - - - 0x03FE73 0F:FE63: 4C 3E E1  JMP loc_E13E_подготовить_затемнение_из_белого_в_цветной
 
 
 

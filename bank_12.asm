@@ -1266,7 +1266,7 @@ C - - - - - 0x02488E 09:887E: 7D 10 04  ADC ram_obj_pos_Y,X
 C - - - - - 0x024891 09:8881: 9D 10 04  STA ram_obj_pos_Y,X
 bra_8884:
 C - - - - - 0x024894 09:8884: A4 A9     LDY ram_global_obj_index
-C - - - - - 0x024896 09:8886: 20 0C D2  JSR sub_0x03D21C
+C - - - - - 0x024896 09:8886: 20 0C D2  JSR sub_0x03D21C_получить_разницу_pos_X_двух_объектов
 C - - - - - 0x024899 09:8889: C9 1C     CMP #$1C
 C - - - - - 0x02489B 09:888B: B0 09     BCS bra_8896
 C - - - - - 0x02489D 09:888D: B9 40 04  LDA ram_obj_pos_X,Y
@@ -1363,7 +1363,7 @@ C - - - - - 0x024931 09:8921: F0 05     BEQ bra_8928
 C - - - - - 0x024933 09:8923: B9 10 06  LDA ram_plr_флаг_индекса_атаки,Y
 C - - - - - 0x024936 09:8926: F0 E4     BEQ bra_890C_RTS
 bra_8928:
-C - - - - - 0x024938 09:8928: 20 0C D2  JSR sub_0x03D21C
+C - - - - - 0x024938 09:8928: 20 0C D2  JSR sub_0x03D21C_получить_разницу_pos_X_двух_объектов
 C - - - - - 0x02493B 09:892B: C9 30     CMP #$30
 C - - - - - 0x02493D 09:892D: B0 DD     BCS bra_890C_RTS
 C - - - - - 0x02493F 09:892F: B9 40 04  LDA ram_obj_pos_X,Y
@@ -2054,7 +2054,7 @@ C - - - - - 0x024DC0 09:8DB0: DE 60 05  DEC ram_obj_0560,X
 C - - - - - 0x024DC3 09:8DB3: F0 18     BEQ bra_8DCD
 C - - - - - 0x024DC5 09:8DB5: A9 B0     LDA #$B0
 C - - - - - 0x024DC7 09:8DB7: 9D 10 04  STA ram_obj_pos_Y,X
-C - - - - - 0x024DCA 09:8DBA: A0 14     LDY #con_0x03D0C3_14
+C - - - - - 0x024DCA 09:8DBA: A0 14     LDY #con_0x03D0C3_черепахи_сальто_назад
 C - - - - - 0x024DCC 09:8DBC: 20 7C D0  JSR sub_0x03D08C
 C - - - - - 0x024DCF 09:8DBF: BC 60 05  LDY ram_obj_0560,X
 C - - - - - 0x024DD2 09:8DC2: A9 02     LDA #$02
@@ -2190,7 +2190,7 @@ C - - - - - 0x024E9C 09:8E8C: B0 01     BCS bra_8E8F
 C - - - - - 0x024E9E 09:8E8E: 4A        LSR
 bra_8E8F:
 C - - - - - 0x024E9F 09:8E8F: 20 6A D1  JSR sub_0x03D17A
-C - - - - - 0x024EA2 09:8E92: A0 14     LDY #con_0x03D0C3_14
+C - - - - - 0x024EA2 09:8E92: A0 14     LDY #con_0x03D0C3_черепахи_сальто_назад
 C - - - - - 0x024EA4 09:8E94: 20 7C D0  JSR sub_0x03D08C
 C - - - - - 0x024EA7 09:8E97: DE 60 05  DEC ram_obj_0560,X
 C - - - - - 0x024EAA 09:8E9A: 10 C5     BPL bra_8E61_RTS
@@ -3759,39 +3759,41 @@ tbl_96F8:
 
 
 tbl_970D:
-- D 0 - - - 0x02571D 09:970D: 00        .byte con_0x03D0C3_00   ; 00 leo
-- D 0 - - - 0x02571E 09:970E: 00        .byte con_0x03D0C3_00   ; 01 raph
-- D 0 - - - 0x02571F 09:970F: 00        .byte con_0x03D0C3_00   ; 02 mike
-- D 0 - - - 0x025720 09:9710: 00        .byte con_0x03D0C3_00   ; 03 don
-- D 0 - - - 0x025721 09:9711: 06        .byte con_0x03D0C3_06   ; 04 casey
-- D 0 - - - 0x025722 09:9712: 0C        .byte con_0x03D0C3_0C   ; 05 hot
-- D 0 - - - 0x025723 09:9713: 10        .byte con_0x03D0C3_10   ; 06 shred
+; ходьба вперед
+- D 0 - - - 0x02571D 09:970D: 00        .byte con_0x03D0C3_черепахи_ходьба_вперед   ; 00 leo
+- D 0 - - - 0x02571E 09:970E: 00        .byte con_0x03D0C3_черепахи_ходьба_вперед   ; 01 raph
+- D 0 - - - 0x02571F 09:970F: 00        .byte con_0x03D0C3_черепахи_ходьба_вперед   ; 02 mike
+- D 0 - - - 0x025720 09:9710: 00        .byte con_0x03D0C3_черепахи_ходьба_вперед   ; 03 don
+- D 0 - - - 0x025721 09:9711: 06        .byte con_0x03D0C3_casey_ходьба_вперед   ; 04 casey
+- D 0 - - - 0x025722 09:9712: 0C        .byte con_0x03D0C3_hot_ходьба_вперед   ; 05 hot
+- D 0 - - - 0x025723 09:9713: 10        .byte con_0x03D0C3_shred_ходьба_вперед   ; 06 shred
+; ходьба назад
+- D 0 - - - 0x025724 09:9714: 02        .byte con_0x03D0C3_черепахи_ходьба_назад   ; 00 leo
+- D 0 - - - 0x025725 09:9715: 02        .byte con_0x03D0C3_черепахи_ходьба_назад   ; 01 raph
+- D 0 - - - 0x025726 09:9716: 02        .byte con_0x03D0C3_черепахи_ходьба_назад   ; 02 mike
+- D 0 - - - 0x025727 09:9717: 02        .byte con_0x03D0C3_черепахи_ходьба_назад   ; 03 don
+- D 0 - - - 0x025728 09:9718: 07        .byte con_0x03D0C3_casey_ходьба_назад   ; 04 casey
+- D 0 - - - 0x025729 09:9719: 0D        .byte con_0x03D0C3_hot_ходьба_назад   ; 05 hot
+- D 0 - - - 0x02572A 09:971A: 11        .byte con_0x03D0C3_shred_ходьба_назад   ; 06 shred
 
-- D 0 - - - 0x025724 09:9714: 02        .byte con_0x03D0C3_02   ; 00 leo
-- D 0 - - - 0x025725 09:9715: 02        .byte con_0x03D0C3_02   ; 01 raph
-- D 0 - - - 0x025726 09:9716: 02        .byte con_0x03D0C3_02   ; 02 mike
-- D 0 - - - 0x025727 09:9717: 02        .byte con_0x03D0C3_02   ; 03 don
-- D 0 - - - 0x025728 09:9718: 07        .byte con_0x03D0C3_07   ; 04 casey
-- D 0 - - - 0x025729 09:9719: 0D        .byte con_0x03D0C3_0D   ; 05 hot
-- D 0 - - - 0x02572A 09:971A: 11        .byte con_0x03D0C3_11   ; 06 shred
 
 
-
-- D 0 - - - 0x02572B 09:971B: 04        .byte con_0x03D0C3_04   ; 00 leo
-- D 0 - - - 0x02572C 09:971C: 04        .byte con_0x03D0C3_04   ; 01 raph
-- D 0 - - - 0x02572D 09:971D: 04        .byte con_0x03D0C3_04   ; 02 mike
-- D 0 - - - 0x02572E 09:971E: 04        .byte con_0x03D0C3_04   ; 03 don
-- D 0 - - - 0x02572F 09:971F: 05        .byte con_0x03D0C3_05   ; 04 casey
-- D 0 - - - 0x025730 09:9720: 0A        .byte con_0x03D0C3_0A   ; 05 hot
-- D 0 - - - 0x025731 09:9721: 0E        .byte con_0x03D0C3_0E   ; 06 shred
-
-- D 0 - - - 0x025732 09:9722: 09        .byte con_0x03D0C3_09   ; 00 leo
-- D 0 - - - 0x025733 09:9723: 09        .byte con_0x03D0C3_09   ; 01 raph
-- D 0 - - - 0x025734 09:9724: 09        .byte con_0x03D0C3_09   ; 02 mike
-- D 0 - - - 0x025735 09:9725: 09        .byte con_0x03D0C3_09   ; 03 don
-- D 0 - - - 0x025736 09:9726: 08        .byte con_0x03D0C3_08   ; 04 casey
-- D 0 - - - 0x025737 09:9727: 0B        .byte con_0x03D0C3_0B   ; 05 hot
-- D 0 - - - 0x025738 09:9728: 0F        .byte con_0x03D0C3_0F   ; 06 shred
+; бег вперед
+- D 0 - - - 0x02572B 09:971B: 04        .byte con_0x03D0C3_черепахи_бег_вперед   ; 00 leo
+- D 0 - - - 0x02572C 09:971C: 04        .byte con_0x03D0C3_черепахи_бег_вперед   ; 01 raph
+- D 0 - - - 0x02572D 09:971D: 04        .byte con_0x03D0C3_черепахи_бег_вперед   ; 02 mike
+- D 0 - - - 0x02572E 09:971E: 04        .byte con_0x03D0C3_черепахи_бег_вперед   ; 03 don
+- D 0 - - - 0x02572F 09:971F: 05        .byte con_0x03D0C3_casey_бег_вперед   ; 04 casey
+- D 0 - - - 0x025730 09:9720: 0A        .byte con_0x03D0C3_hot_бег_вперед   ; 05 hot
+- D 0 - - - 0x025731 09:9721: 0E        .byte con_0x03D0C3_shred_бег_вперед   ; 06 shred
+; бег назад
+- D 0 - - - 0x025732 09:9722: 09        .byte con_0x03D0C3_черепахи_бег_назад   ; 00 leo
+- D 0 - - - 0x025733 09:9723: 09        .byte con_0x03D0C3_черепахи_бег_назад   ; 01 raph
+- D 0 - - - 0x025734 09:9724: 09        .byte con_0x03D0C3_черепахи_бег_назад   ; 02 mike
+- D 0 - - - 0x025735 09:9725: 09        .byte con_0x03D0C3_черепахи_бег_назад   ; 03 don
+- D 0 - - - 0x025736 09:9726: 08        .byte con_0x03D0C3_casey_бег_назад   ; 04 casey
+- D 0 - - - 0x025737 09:9727: 0B        .byte con_0x03D0C3_hot_бег_назад   ; 05 hot
+- D 0 - - - 0x025738 09:9728: 0F        .byte con_0x03D0C3_shred_бег_назад   ; 06 shred
 
 
 
@@ -4510,21 +4512,22 @@ tbl_99B9:
 
 
 tbl_99BC:
-- D 0 - - - 0x0259CC 09:99BC: 13        .byte con_0x03D0C3_13   ; 00 leo
-- D 0 - - - 0x0259CD 09:99BD: 13        .byte con_0x03D0C3_13   ; 01 raph
-- D 0 - - - 0x0259CE 09:99BE: 13        .byte con_0x03D0C3_13   ; 02 mike
-- D 0 - - - 0x0259CF 09:99BF: 13        .byte con_0x03D0C3_13   ; 03 don
-- D 0 - - - 0x0259D0 09:99C0: 15        .byte con_0x03D0C3_15   ; 04 casey
-- - - - - - 0x0259D1 09:99C1: 13        .byte con_0x03D0C3_13   ; 05 hot
-- - - - - - 0x0259D2 09:99C2: 13        .byte con_0x03D0C3_13   ; 06 shred
-
-- D 0 - - - 0x0259D3 09:99C3: 14        .byte con_0x03D0C3_14   ; 00 leo
-- D 0 - - - 0x0259D4 09:99C4: 14        .byte con_0x03D0C3_14   ; 01 raph
-- D 0 - - - 0x0259D5 09:99C5: 14        .byte con_0x03D0C3_14   ; 02 mike
-- D 0 - - - 0x0259D6 09:99C6: 14        .byte con_0x03D0C3_14   ; 03 don
-- D 0 - - - 0x0259D7 09:99C7: 16        .byte con_0x03D0C3_16   ; 04 casey
-- - - - - - 0x0259D8 09:99C8: 14        .byte con_0x03D0C3_14   ; 05 hot
-- - - - - - 0x0259D9 09:99C9: 14        .byte con_0x03D0C3_14   ; 06 shred
+; сальто вперед
+- D 0 - - - 0x0259CC 09:99BC: 13        .byte con_0x03D0C3_черепахи_сальто_вперед   ; 00 leo
+- D 0 - - - 0x0259CD 09:99BD: 13        .byte con_0x03D0C3_черепахи_сальто_вперед   ; 01 raph
+- D 0 - - - 0x0259CE 09:99BE: 13        .byte con_0x03D0C3_черепахи_сальто_вперед   ; 02 mike
+- D 0 - - - 0x0259CF 09:99BF: 13        .byte con_0x03D0C3_черепахи_сальто_вперед   ; 03 don
+- D 0 - - - 0x0259D0 09:99C0: 15        .byte con_0x03D0C3_casey_сальто_вперед   ; 04 casey
+- - - - - - 0x0259D1 09:99C1: 13        .byte con_0x03D0C3_черепахи_сальто_вперед   ; 05 hot
+- - - - - - 0x0259D2 09:99C2: 13        .byte con_0x03D0C3_черепахи_сальто_вперед   ; 06 shred
+; сальто назад
+- D 0 - - - 0x0259D3 09:99C3: 14        .byte con_0x03D0C3_черепахи_сальто_назад   ; 00 leo
+- D 0 - - - 0x0259D4 09:99C4: 14        .byte con_0x03D0C3_черепахи_сальто_назад   ; 01 raph
+- D 0 - - - 0x0259D5 09:99C5: 14        .byte con_0x03D0C3_черепахи_сальто_назад   ; 02 mike
+- D 0 - - - 0x0259D6 09:99C6: 14        .byte con_0x03D0C3_черепахи_сальто_назад   ; 03 don
+- D 0 - - - 0x0259D7 09:99C7: 16        .byte con_0x03D0C3_casey_сальто_назад   ; 04 casey
+- - - - - - 0x0259D8 09:99C8: 14        .byte con_0x03D0C3_черепахи_сальто_назад   ; 05 hot
+- - - - - - 0x0259D9 09:99C9: 14        .byte con_0x03D0C3_черепахи_сальто_назад   ; 06 shred
 
 
 
@@ -5562,7 +5565,7 @@ C - - - - - 0x02609C 09:A08C: 90 2C     BCC bra_A0BA
 C - - - - - 0x02609E 09:A08E: AD 26 05  LDA ram_obj_0520 + $06
 C - - - - - 0x0260A1 09:A091: 49 01     EOR #$01
 C - - - - - 0x0260A3 09:A093: A8        TAY
-C - - - - - 0x0260A4 09:A094: 20 0C D2  JSR sub_0x03D21C
+C - - - - - 0x0260A4 09:A094: 20 0C D2  JSR sub_0x03D21C_получить_разницу_pos_X_двух_объектов
 C - - - - - 0x0260A7 09:A097: C9 38     CMP #$38
 C - - - - - 0x0260A9 09:A099: B0 13     BCS bra_A0AE
 C - - - - - 0x0260AB 09:A09B: AD 66 04  LDA ram_obj_spd_Z_hi + $06
@@ -5676,7 +5679,7 @@ bra_A157:
 C - - - - - 0x026167 09:A157: 6D 46 04  ADC ram_obj_pos_X + $06
 C - - - - - 0x02616A 09:A15A: 8D 46 04  STA ram_obj_pos_X + $06
 bra_A15D:
-C - - - - - 0x02616D 09:A15D: A0 17     LDY #con_0x03D0C3_17
+C - - - - - 0x02616D 09:A15D: A0 17     LDY #con_0x03D0C3_мяч_хота
 C - - - - - 0x02616F 09:A15F: 20 7C D0  JSR sub_0x03D08C
 C - - - - - 0x026172 09:A162: 20 D6 A1  JSR sub_A1D6    ; возможен PLA PLA
 C - - - - - 0x026175 09:A165: 20 C7 A1  JSR sub_A1C7    ; возможен PLA PLA
@@ -6158,7 +6161,7 @@ ofs_072_A3F2_01:
 C - - J - - 0x026402 09:A3F2: DE 60 05  DEC ram_obj_0560,X ; 0564 0565 
 C - - - - - 0x026405 09:A3F5: F0 05     BEQ bra_A3FC
 bra_A3F7:
-C - - - - - 0x026407 09:A3F7: A0 12     LDY #con_0x03D0C3_12
+C - - - - - 0x026407 09:A3F7: A0 12     LDY #con_0x03D0C3_волна_шрушера
 C - - - - - 0x026409 09:A3F9: 4C 7C D0  JMP loc_0x03D08C
 bra_A3FC:
 C - - - - - 0x02640C 09:A3FC: A9 18     LDA #$18
@@ -6183,7 +6186,7 @@ C - - - - - 0x02642A 09:A41A: F0 04     BEQ bra_A420
 C - - - - - 0x02642C 09:A41C: C9 2F     CMP #con_0552_special_hot_огонь
 C - - - - - 0x02642E 09:A41E: D0 07     BNE bra_A427
 bra_A420:
-C - - - - - 0x026430 09:A420: 20 0C D2  JSR sub_0x03D21C
+C - - - - - 0x026430 09:A420: 20 0C D2  JSR sub_0x03D21C_получить_разницу_pos_X_двух_объектов
 C - - - - - 0x026433 09:A423: C9 10     CMP #$10
 C - - - - - 0x026435 09:A425: 90 0B     BCC bra_A432
 bra_A427:
@@ -6572,7 +6575,7 @@ _off011_A63B_39_special_casey_песок:
 
 ofs_082_A641_00:
 C - - J - - 0x026651 09:A641: A9 00     LDA #$00
-C - - - - - 0x026653 09:A643: A8        TAY
+C - - - - - 0x026653 09:A643: A8        TAY ; 00
 C - - - - - 0x026654 09:A644: 20 75 A4  JSR sub_A475
 C - - - - - 0x026657 09:A647: 20 13 A3  JSR sub_A313
 C - - - - - 0x02665C 09:A64C: 20 39 9E  JSR sub_9E39
@@ -6617,7 +6620,7 @@ C - - - - - 0x0266A6 09:A696: 20 B6 8B  JSR sub_8BB6
 C - - - - - 0x0266A9 09:A699: 9D 60 05  STA ram_obj_0560,X ; 0564 
 bra_A69C:
 C - - - - - 0x0266AC 09:A69C: 20 65 DB  JSR sub_0x03DB75_добавить_spd_X_к_pos_X
-C - - - - - 0x0266AF 09:A69F: A0 18     LDY #con_0x03D0C3_18
+C - - - - - 0x0266AF 09:A69F: A0 18     LDY #con_0x03D0C3_песок_казея
 C - - - - - 0x0266B1 09:A6A1: 20 7C D0  JSR sub_0x03D08C
 C - - - - - 0x0266B4 09:A6A4: 20 33 A6  JSR sub_A633
 C - - - - - 0x0266B7 09:A6A7: A5 22     LDA ram_0022
@@ -7884,7 +7887,7 @@ C - - - - - 0x026DD7 09:ADC7: CA        DEX
 C - - - - - 0x026DD8 09:ADC8: 10 DE     BPL bra_ADA8_loop
 C - - - - - 0x026DDA 09:ADCA: A2 00     LDX #$00
 C - - - - - 0x026DDC 09:ADCC: A0 01     LDY #$01
-C - - - - - 0x026DDE 09:ADCE: 20 0C D2  JSR sub_0x03D21C
+C - - - - - 0x026DDE 09:ADCE: 20 0C D2  JSR sub_0x03D21C_получить_разницу_pos_X_двух_объектов
 C - - - - - 0x026DE1 09:ADD1: C5 04     CMP ram_0004
 C - - - - - 0x026DE3 09:ADD3: B0 51     BCS bra_AE26_RTS
 C - - - - - 0x026DE5 09:ADD5: A5 02     LDA ram_0002
@@ -8506,7 +8509,7 @@ C - - - - - 0x02712F 09:B11F: AD A6 05  LDA ram_obj_05A0 + $06
 C - - - - - 0x027132 09:B122: 29 C0     AND #$C0
 C - - - - - 0x027134 09:B124: D0 1A     BNE bra_B140
 C - - - - - 0x027136 09:B126: A0 06     LDY #$06
-C - - - - - 0x027138 09:B128: 20 0C D2  JSR sub_0x03D21C
+C - - - - - 0x027138 09:B128: 20 0C D2  JSR sub_0x03D21C_получить_разницу_pos_X_двух_объектов
 C - - - - - 0x02713B 09:B12B: C9 14     CMP #$14
 C - - - - - 0x02713D 09:B12D: B0 10     BCS bra_B13F_RTS
 C - - - - - 0x02713F 09:B12F: AD 16 04  LDA ram_obj_pos_Y + $06
@@ -9276,7 +9279,7 @@ C - - - - - 0x027519 09:B509: 9D 10 04  STA ram_obj_pos_Y,X ; 0410 0411
 C - - - - - 0x02751C 09:B50C: A9 0B     LDA #con_sfx_сверло_рафа
 C - - - - - 0x02751E 09:B50E: 20 90 F6  JSR sub_0x03F6A0_записать_звук_сохранив_X_Y
 ofs_048_B511_02:
-C - - - - - 0x027521 09:B511: A0 03     LDY #con_0x03D0C3_03
+C - - - - - 0x027521 09:B511: A0 03     LDY #con_0x03D0C3_сверло_рафа
 C - - - - - 0x027523 09:B513: 20 7C D0  JSR sub_0x03D08C
 C - - - - - 0x027526 09:B516: A9 12     LDA #$12
 C - - - - - 0x027528 09:B518: 9D 70 05  STA ram_obj_0570,X ; 0570 0571 
@@ -10482,7 +10485,7 @@ C - - - - - 0x027CB2 09:BCA2: 85 02     STA ram_0002
 C - - - - - 0x027CB4 09:BCA4: B9 40 04  LDA ram_obj_pos_X,Y ; 0442 0444 
 C - - - - - 0x027CB7 09:BCA7: 85 0D     STA ram_000D
 C - - - - - 0x027CB9 09:BCA9: A6 A8     LDX ram_00A8
-C - - - - - 0x027CBB 09:BCAB: 20 0C D2  JSR sub_0x03D21C
+C - - - - - 0x027CBB 09:BCAB: 20 0C D2  JSR sub_0x03D21C_получить_разницу_pos_X_двух_объектов
 C - - - - - 0x027CBE 09:BCAE: C5 02     CMP ram_0002
 C - - - - - 0x027CC0 09:BCB0: B0 03     BCS bra_BCB5
 C - - - - - 0x027CC2 09:BCB2: 4C C0 BC  JMP loc_BCC0
@@ -10588,7 +10591,7 @@ C - - - - - 0x027D66 09:BD56: 69 0C     ADC #$0C
 C - - - - - 0x027D68 09:BD58: 85 04     STA ram_0004
 C - - - - - 0x027D6A 09:BD5A: A2 00     LDX #$00
 C - - - - - 0x027D6C 09:BD5C: A0 01     LDY #$01
-C - - - - - 0x027D6E 09:BD5E: 20 0C D2  JSR sub_0x03D21C
+C - - - - - 0x027D6E 09:BD5E: 20 0C D2  JSR sub_0x03D21C_получить_разницу_pos_X_двух_объектов
 C - - - - - 0x027D71 09:BD61: C5 04     CMP ram_0004
 C - - - - - 0x027D73 09:BD63: B0 16     BCS bra_BD7B_RTS
 C - - - - - 0x027D75 09:BD65: AD 41 04  LDA ram_obj_pos_X + $01
