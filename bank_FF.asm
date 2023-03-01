@@ -44,7 +44,6 @@
 .export sub_0x03D3C0
 .export sub_0x03D47D
 .export loc_0x03D47D
-.export sub_0x03D5FA
 .export sub_0x03DACE_удалить_все_объекты
 .export sub_0x03DAD7_удалить_объект_сохранив_XY
 .export sub_0x03DAE3_удалить_объект
@@ -1643,25 +1642,6 @@ tbl_D57A:
 
 
 
-sub_0x03D5FA:
-                                        LDA ram_option_misc
-                                        AND #$02
-C - - - - - 0x03D5FA 0F:D5EA: D0 0B     BNE bra_D5F7
-C - - - - - 0x03D5FC 0F:D5EC: B9 CA B2  LDA tbl_0x0272DA,Y
-C - - - - - 0x03D5FF 0F:D5EF: 95 34     STA ram_0034,X
-C - - - - - 0x03D601 0F:D5F1: B9 CB B2  LDA tbl_0x0272DA + $01,Y
-C - - - - - 0x03D604 0F:D5F4: 95 35     STA ram_0035,X
-C - - - - - 0x03D606 0F:D5F6: 60        RTS
-bra_D5F7:
-; night палитра
-- - - - - - 0x03D607 0F:D5F7: B9 9B D6  LDA tbl_D69B,Y
-- - - - - - 0x03D60A 0F:D5FA: 95 34     STA ram_0034,X
-- - - - - - 0x03D60C 0F:D5FC: B9 9C D6  LDA tbl_D69B + $01,Y
-- - - - - - 0x03D60F 0F:D5FF: 95 35     STA ram_0035,X
-- - - - - - 0x03D611 0F:D601: 60        RTS
-
-
-
 sub_D602_выбрать_chr_банк_на_основе_опции_skin:
 C - - - - - 0x03D612 0F:D602: AD 2B 01  LDA ram_option_misc
 C - - - - - 0x03D615 0F:D605: 29 02     AND #$02
@@ -1672,76 +1652,6 @@ bra_D60C:
 ; if night
 - - - - - - 0x03D61C 0F:D60C: A2 8F     LDX #con_chr_bank + $8F
 - - - - - - 0x03D61E 0F:D60E: 60        RTS
-
-
-
-tbl_D69B:
-- - - - - - 0x03D6AB 0F:D69B: 02        .byte $02, $8C   ; 00
-- - - - - - 0x03D6AD 0F:D69D: 03        .byte $03, $8C   ; 01
-- - - - - - 0x03D6AF 0F:D69F: 04        .byte $04, $8C   ; 02
-- - - - - - 0x03D6B1 0F:D6A1: 05        .byte $05, $8C   ; 03
-- - - - - - 0x03D6B3 0F:D6A3: 06        .byte $06, $8C   ; 04
-- - - - - - 0x03D6B5 0F:D6A5: 07        .byte $07, $8C   ; 05
-- - - - - - 0x03D6B7 0F:D6A7: 08        .byte $08, $8C   ; 06
-- - - - - - 0x03D6B9 0F:D6A9: 09        .byte $09, $8C   ; 07
-- - - - - - 0x03D6BB 0F:D6AB: 0A        .byte $0A, $8C   ; 08
-- - - - - - 0x03D6BD 0F:D6AD: 16        .byte $16, $8E   ; 09
-- - - - - - 0x03D6BF 0F:D6AF: 18        .byte $18, $8E   ; 0A
-- - - - - - 0x03D6C1 0F:D6B1: 17        .byte $17, $8E   ; 0B
-- - - - - - 0x03D6C3 0F:D6B3: 1A        .byte $1A, $8E   ; 0C
-- - - - - - 0x03D6C5 0F:D6B5: 1B        .byte $1B, $8E   ; 0D
-- - - - - - 0x03D6C7 0F:D6B7: 1C        .byte $1C, $8E   ; 0E
-- - - - - - 0x03D6C9 0F:D6B9: 19        .byte $19, $8E   ; 0F
-- - - - - - 0x03D6CB 0F:D6BB: 2A        .byte $2A, $90   ; 10
-- - - - - - 0x03D6CD 0F:D6BD: 2B        .byte $2B, $90   ; 11
-- - - - - - 0x03D6CF 0F:D6BF: 92        .byte $92, $90   ; 12
-- - - - - - 0x03D6D1 0F:D6C1: 2D        .byte $2D, $90   ; 13
-- - - - - - 0x03D6D3 0F:D6C3: 2E        .byte $2E, $90   ; 14
-- - - - - - 0x03D6D5 0F:D6C5: 2F        .byte $2F, $90   ; 15
-- - - - - - 0x03D6D7 0F:D6C7: 2A        .byte $2A, $91   ; 16
-- - - - - - 0x03D6D9 0F:D6C9: 92        .byte $92, $91   ; 17
-- - - - - - 0x03D6DB 0F:D6CB: 2D        .byte $2D, $91   ; 18
-- - - - - - 0x03D6DD 0F:D6CD: 30        .byte $30, $91   ; 19
-- - - - - - 0x03D6DF 0F:D6CF: 2B        .byte $2B, $91   ; 1A
-- - - - - - 0x03D6E1 0F:D6D1: 40        .byte $40, $93   ; 1B
-- - - - - - 0x03D6E3 0F:D6D3: 40        .byte $40, $94   ; 1C
-- - - - - - 0x03D6E5 0F:D6D5: 41        .byte $41, $93   ; 1D
-- - - - - - 0x03D6E7 0F:D6D7: 41        .byte $41, $94   ; 1E
-- - - - - - 0x03D6E9 0F:D6D9: 42        .byte $42, $98   ; 1F
-- - - - - - 0x03D6EB 0F:D6DB: 42        .byte $42, $94   ; 20
-- - - - - - 0x03D6ED 0F:D6DD: 42        .byte $42, $95   ; 21
-- - - - - - 0x03D6EF 0F:D6DF: 43        .byte $43, $93   ; 22
-- - - - - - 0x03D6F1 0F:D6E1: 43        .byte $43, $95   ; 23
-- - - - - - 0x03D6F3 0F:D6E3: 44        .byte $44, $94   ; 24
-- - - - - - 0x03D6F5 0F:D6E5: 96        .byte $96, $93   ; 25
-- - - - - - 0x03D6F7 0F:D6E7: 96        .byte $96, $94   ; 26
-- - - - - - 0x03D6F9 0F:D6E9: 46        .byte $46, $93   ; 27
-- - - - - - 0x03D6FB 0F:D6EB: 46        .byte $46, $95   ; 28
-- - - - - - 0x03D6FD 0F:D6ED: 44        .byte $44, $93   ; 29
-- - - - - - 0x03D6FF 0F:D6EF: 0D        .byte $0D, $8D   ; 2A
-- - - - - - 0x03D701 0F:D6F1: 0E        .byte $0E, $8C   ; 2B
-- - - - - - 0x03D703 0F:D6F3: 0C        .byte $0C, $8D   ; 2C
-- - - - - - 0x03D705 0F:D6F5: 0A        .byte $0A, $8D   ; 2D
-- - - - - - 0x03D707 0F:D6F7: 0B        .byte $0B, $8D   ; 2E
-- - - - - - 0x03D709 0F:D6F9: 0C        .byte $0C, $8C   ; 2F
-- - - - - - 0x03D70B 0F:D6FB: 0B        .byte $0B, $8D   ; 30
-- - - - - - 0x03D70D 0F:D6FD: 0B        .byte $0B, $8C   ; 31
-- - - - - - 0x03D70F 0F:D6FF: 1D        .byte $1D, $8E   ; 32
-- - - - - - 0x03D711 0F:D701: 1E        .byte $1E, $8E   ; 33
-- - - - - - 0x03D713 0F:D703: 1F        .byte $1F, $8E   ; 34
-- - - - - - 0x03D715 0F:D705: 20        .byte $20, $8E   ; 35
-- - - - - - 0x03D717 0F:D707: 31        .byte $31, $90   ; 36
-- - - - - - 0x03D719 0F:D709: 32        .byte $32, $90   ; 37
-- - - - - - 0x03D71B 0F:D70B: 33        .byte $33, $90   ; 38
-- - - - - - 0x03D71D 0F:D70D: 34        .byte $34, $90   ; 39
-- - - - - - 0x03D71F 0F:D70F: 35        .byte $35, $90   ; 3A
-- - - - - - 0x03D721 0F:D711: 3F        .byte $3F, $93   ; 3B
-- - - - - - 0x03D723 0F:D713: 43        .byte $43, $94   ; 3C
-- - - - - - 0x03D725 0F:D715: 46        .byte $46, $94   ; 3D
-- - - - - - 0x03D727 0F:D717: 47        .byte $47, $98   ; 3E
-- - - - - - 0x03D729 0F:D719: 4B        .byte $4B, $93   ; 3F
-- - - - - - 0x03D72B 0F:D71B: 0F        .byte $0F, $8C   ; 40
-- - - - - - 0x03D72D 0F:D71D: 15        .byte $15, $90   ; 41
 
 
 
