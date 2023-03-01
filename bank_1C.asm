@@ -1462,7 +1462,7 @@ ofs_014_8736_05:
 C - - J - - 0x038746 0E:8736: A9 01     LDA #$01
 C - - - - - 0x038748 0E:8738: 85 94     STA ram_0094
 C - - - - - 0x03874A 0E:873A: 20 3C F0  JSR sub_0x03F04C
-C - - - - - 0x03874D 0E:873D: 4C 09 DE  JMP loc_0x03DE19_очистить_00AE_00B5
+C - - - - - 0x03874D 0E:873D: 4C 09 DE  JMP loc_0x03DE19_очистить_очки_обоих_игроков
 
 
 
@@ -3092,7 +3092,7 @@ C - - - - - 0x0390F0 0E:90E0: 4C 6D D4  JMP loc_0x03D47D
 ofs_010_90E3_01_отрисовать_opening_1:
 C - - J - - 0x0390F3 0E:90E3: A9 3A     LDA #con_0x03F6AD_3A
 C - - - - - 0x0390F5 0E:90E5: 20 90 F6  JSR sub_0x03F6A0_записать_звук_сохранив_X_Y
-C - - - - - 0x0390F8 0E:90E8: A9 00     LDA #$00
+C - - - - - 0x0390F8 0E:90E8: A9 00     LDA #con_00B6_00
 C - - - - - 0x0390FA 0E:90EA: 85 B6     STA ram_00B6
 C - - - - - 0x0390FC 0E:90EC: A0 1E     LDY #con_0x03DC39_1E
 C - - - - - 0x0390FE 0E:90EE: 20 1A DC  JSR sub_0x03DC2A
@@ -3121,7 +3121,7 @@ C - - - - - 0x039120 0E:9110: 60        RTS
 ofs_010_9111_03_отрисовать_opening_2:
 C - - J - - 0x039121 0E:9111: A0 20     LDY #con_0x03DC39_20
 C - - - - - 0x039123 0E:9113: 20 1A DC  JSR sub_0x03DC2A
-C - - - - - 0x039126 0E:9116: A9 01     LDA #$01
+C - - - - - 0x039126 0E:9116: A9 01     LDA #con_00B6_01
 C - - - - - 0x039128 0E:9118: 85 B6     STA ram_00B6
 C - - - - - 0x03912A 0E:911A: A9 4E     LDA #$4E
 C - - - - - 0x03912C 0E:911C: 8D 00 04  STA ram_plr_anim_id
@@ -3175,7 +3175,7 @@ ofs_010_9163_06:
 C - - J - - 0x039173 0E:9163: 20 3C F0  JSR sub_0x03F04C
 C - - - - - 0x039176 0E:9166: A9 3B     LDA #con_0x03F6AD_3B
 C - - - - - 0x039178 0E:9168: 20 8B F6  JSR sub_0x03F69B_выключить_звуки_и_записать_новый
-C - - - - - 0x03917B 0E:916B: A9 02     LDA #$02
+C - - - - - 0x03917B 0E:916B: A9 02     LDA #con_00B6_02
 C - - - - - 0x03917D 0E:916D: 85 B6     STA ram_00B6
 C - - - - - 0x03917F 0E:916F: A9 00     LDA #$00
 C - - - - - 0x039181 0E:9171: A8        TAY ; 00
@@ -4176,7 +4176,7 @@ C - - - - - 0x039857 0E:9847: A9 0B     LDA #con_0x03F84C_0B
 C - - - - - 0x039859 0E:9849: 20 14 F8  JSR sub_0x03F824
 C - - - - - 0x03985C 0E:984C: A0 1C     LDY #con_0x03DC39_1C
 C - - - - - 0x03985E 0E:984E: 20 1A DC  JSR sub_0x03DC2A
-C - - - - - 0x039861 0E:9851: A9 04     LDA #$04
+C - - - - - 0x039861 0E:9851: A9 04     LDA #con_00B6_04
 C - - - - - 0x039863 0E:9853: 85 B6     STA ram_00B6
 C - - - - - 0x039865 0E:9855: A9 1A     LDA #$1A
 C - - - - - 0x039867 0E:9857: 20 B0 D3  JSR sub_0x03D3C0
@@ -4322,7 +4322,7 @@ C - - - - - 0x039942 0E:9932: 4C 90 F6  JMP loc_0x03F6A0_записать_зву
 
 
 ofs_007_9935_0E:
-C - - J - - 0x039945 0E:9935: A9 07     LDA #$07
+C - - J - - 0x039945 0E:9935: A9 07     LDA #con_00B6_07
 C - - - - - 0x039947 0E:9937: 85 B6     STA ram_00B6
 C - - - - - 0x039949 0E:9939: 20 36 9B  JSR sub_9B36
 C - - - - - 0x03994C 0E:993C: AD 31 06  LDA ram_0631
@@ -4348,8 +4348,8 @@ tbl_994F:
 - D 0 - - - 0x039960 0E:9950: 0C        .byte con_0x03DC39_0C   ; 01
 
 tbl_9951:
-- D 0 - - - 0x039961 0E:9951: 03        .byte $03   ; 00
-- D 0 - - - 0x039962 0E:9952: 04        .byte $04   ; 01
+- D 0 - - - 0x039961 0E:9951: 03        .byte con_00B6_03   ; 00
+- D 0 - - - 0x039962 0E:9952: 04        .byte con_00B6_04   ; 01
 
 tbl_9953:
 - D 0 - - - 0x039963 0E:9953: 0C        .byte $0C, $0D   ; 00
@@ -5024,13 +5024,13 @@ C - - - - - 0x039F4E 0E:9F3E: A5 A8     LDA ram_00A8
 C - - - - - 0x039F50 0E:9F40: 0A        ASL
 C - - - - - 0x039F51 0E:9F41: 0A        ASL
 C - - - - - 0x039F52 0E:9F42: AA        TAX
-C - - - - - 0x039F53 0E:9F43: B5 AE     LDA ram_00AE,X
+C - - - - - 0x039F53 0E:9F43: B5 AE     LDA ram_score,X ; 00AE 00B2 
 C - - - - - 0x039F55 0E:9F45: 20 02 D2  JSR sub_0x03D212_ASLx4
-C - - - - - 0x039F58 0E:9F48: 15 AF     ORA ram_00AF,X
+C - - - - - 0x039F58 0E:9F48: 15 AF     ORA ram_score + $01,X
 C - - - - - 0x039F5A 0E:9F4A: 85 00     STA ram_0000
-C - - - - - 0x039F5C 0E:9F4C: B5 B0     LDA ram_00B0,X
+C - - - - - 0x039F5C 0E:9F4C: B5 B0     LDA ram_score + $02,X
 C - - - - - 0x039F5E 0E:9F4E: 20 02 D2  JSR sub_0x03D212_ASLx4
-C - - - - - 0x039F61 0E:9F51: 15 B1     ORA ram_00B1,X
+C - - - - - 0x039F61 0E:9F51: 15 B1     ORA ram_score + $03,X
 C - - - - - 0x039F63 0E:9F53: 85 01     STA ram_0001
 C - - - - - 0x039F65 0E:9F55: AD 12 01  LDA ram_0112
 C - - - - - 0x039F68 0E:9F58: 20 02 D2  JSR sub_0x03D212_ASLx4
@@ -6060,10 +6060,10 @@ C - - - - - 0x03A505 0E:A4F5: F0 1A     BEQ bra_A511
 - - - - - - 0x03A516 0E:A506: 4C 0E A5  JMP loc_0x03E13E
 bra_A509:
 C - - - - - 0x03A519 0E:A509: 84 94     STY ram_0094
-C - - - - - 0x03A51B 0E:A50B: 20 09 DE  JSR sub_0x03DE19_очистить_00AE_00B5
+C - - - - - 0x03A51B 0E:A50B: 20 09 DE  JSR sub_0x03DE19_очистить_очки_обоих_игроков
 C - - - - - 0x03A51E 0E:A50E: 4C 2E E1  JMP loc_0x03E13E
 bra_A511:
-C - - - - - 0x03A521 0E:A511: 20 09 DE  JSR sub_0x03DE19_очистить_00AE_00B5
+C - - - - - 0x03A521 0E:A511: 20 09 DE  JSR sub_0x03DE19_очистить_очки_обоих_игроков
 C - - - - - 0x03A524 0E:A514: 4C 58 FE  JMP loc_0x03FE68
 bra_A517_RTS:
 C - - - - - 0x03A527 0E:A517: 60        RTS
@@ -6239,17 +6239,17 @@ C - - - - - 0x03A628 0E:A618: 60        RTS
 
 sub_A619:
 - - - - - - 0x03A629 0E:A619: 20 07 D2  JSR sub_0x03D217_LSRx4
-- - - - - - 0x03A62C 0E:A61C: 85 AE     STA ram_00AE
+- - - - - - 0x03A62C 0E:A61C: 85 AE     STA ram_p1_score
 - - - - - - 0x03A62E 0E:A61E: AD 0F 01  LDA ram_010F
 - - - - - - 0x03A631 0E:A621: 29 0F     AND #$0F
-- - - - - - 0x03A633 0E:A623: 85 AF     STA ram_00AF
+- - - - - - 0x03A633 0E:A623: 85 AF     STA ram_p1_score + $01
 - - - - - - 0x03A635 0E:A625: AD 10 01  LDA ram_0110
 - - - - - - 0x03A638 0E:A628: 29 F0     AND #$F0
 - - - - - - 0x03A63A 0E:A62A: 20 07 D2  JSR sub_0x03D217_LSRx4
-- - - - - - 0x03A63D 0E:A62D: 85 B0     STA ram_00B0
+- - - - - - 0x03A63D 0E:A62D: 85 B0     STA ram_p1_score + $02
 - - - - - - 0x03A63F 0E:A62F: AD 10 01  LDA ram_0110
 - - - - - - 0x03A642 0E:A632: 29 0F     AND #$0F
-- - - - - - 0x03A644 0E:A634: 85 B1     STA ram_00B1
+- - - - - - 0x03A644 0E:A634: 85 B1     STA ram_p1_score + $03
 - - - - - - 0x03A646 0E:A636: A9 00     LDA #$00
 - - - - - - 0x03A648 0E:A638: 85 A0     STA ram_strength
 - - - - - - 0x03A64A 0E:A63A: 60        RTS

@@ -560,13 +560,13 @@ C - - - - - 0x02E706 0B:A6F6: 4C 17 F6  JMP loc_0x03F627_restore_prg
 
 
 sub_0x02E74B:
-- - - - - - 0x02E74B 0B:A73B: 05 AF     ORA ram_00AF
+- - - - - - 0x02E74B 0B:A73B: 05 AF     ORA ram_p1_score + $01
 - - - - - - 0x02E74D 0B:A73D: 8D 0F 01  STA ram_010F
-- - - - - - 0x02E750 0B:A740: A5 B0     LDA ram_00B0
+- - - - - - 0x02E750 0B:A740: A5 B0     LDA ram_p1_score + $02
 - - - - - - 0x02E752 0B:A742: 20 02 D2  JSR sub_0x03D212_ASLx4
-- - - - - - 0x02E755 0B:A745: 05 B1     ORA ram_00B1
+- - - - - - 0x02E755 0B:A745: 05 B1     ORA ram_p1_score + $03
 - - - - - - 0x02E757 0B:A747: 8D 10 01  STA ram_0110
-- - - - - - 0x02E75A 0B:A74A: 20 09 DE  JSR sub_0x03DE19_очистить_00AE_00B5
+- - - - - - 0x02E75A 0B:A74A: 20 09 DE  JSR sub_0x03DE19_очистить_очки_обоих_игроков
 - - - - - - 0x02E75D 0B:A74D: 4C 17 F6  JMP loc_0x03F627_restore_prg
 
 
@@ -1058,7 +1058,7 @@ C - - - - - 0x02EEC0 0B:AEB0: 20 25 DC  JSR sub_0x03DC35
 C - - - - - 0x02EEC3 0B:AEB3: 20 BE DA  JSR sub_0x03DACE_удалить_все_объекты
 C - - - - - 0x02EEC6 0B:AEB6: E6 95     INC ram_0095
 C - - - - - 0x02EEC8 0B:AEB8: A9 60     LDA #$60
-C - - - - - 0x02EECA 0B:AEBA: 85 A6     STA ram_00A6
+C - - - - - 0x02EECA 0B:AEBA: 85 A6     STA ram_screen_pos_X
 C - - - - - 0x02EECC 0B:AEBC: A4 9E     LDY ram_009E
 C - - - - - 0x02EECE 0B:AEBE: BE 20 AE  LDX tbl_AE20_уровень_для_отрисовки,Y
 C - - - - - 0x02EED1 0B:AEC1: 60        RTS
