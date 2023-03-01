@@ -631,8 +631,10 @@ C - - - - - 0x024413 09:8403: 20 E7 8A  JSR sub_8AE7_выбор_начально
 C - - - - - 0x024416 09:8406: A9 68     LDA #$68
 C - - - - - 0x024418 09:8408: DD 10 04  CMP ram_obj_pos_Y,X
 C - - - - - 0x02441B 09:840B: 90 05     BCC bra_8412
-- - - - - - 0x02441D 09:840D: A9 80     LDA #$80
-- - - - - - 0x02441F 09:840F: 20 D3 DC  JSR sub_0x03DCE3
+- - - - - - 0x02441D 09:840D: A9 80     LDA #< $0080
+- - - - - - 0x02441F 09:840F: 20 D3 DC  STA ram_obj_spd_Z_lo,X
+                                        LDA #> $0080
+                                        STA ram_obj_spd_Z_hi,X
 bra_8412:
 C - - - - - 0x024422 09:8412: 20 92 DC  JSR sub_0x03DCA2_добавить_к_spd_Z_в_зависимости_от_опции_скорости
 C - - - - - 0x024425 09:8415: BD 60 04  LDA ram_obj_spd_Z_hi,X
@@ -5454,8 +5456,10 @@ C - - - - - 0x025FD6 09:9FC6: 20 67 D0  JSR sub_0x03DB48_очистить_spd_X_
 C - - - - - 0x025FD9 09:9FC9: A9 FD     LDA #$FD
 C - - - - - 0x025FDB 09:9FCB: 9D 60 04  STA ram_obj_spd_Z_hi,X ; 0466 
 loc_9FCE:
-C D 0 - - - 0x025FDE 09:9FCE: A9 00     LDA #$00
-C - - - - - 0x025FE0 09:9FD0: 20 D3 DC  JSR sub_0x03DCE3
+C D 0 - - - 0x025FDE 09:9FCE: A9 00     LDA #< $0000
+C - - - - - 0x025FE0 09:9FD0: 20 D3 DC  STA ram_obj_spd_Z_lo,X
+                                        LDA #> $0000
+                                        STA ram_obj_spd_Z_hi,X
 C - - - - - 0x025FE3 09:9FD3: A9 40     LDA #$40
 loc_9FD5:
 C D 0 - - - 0x025FE5 09:9FD5: 20 7D D1  JSR sub_0x03D18D
@@ -9637,8 +9641,10 @@ C - - J - - 0x0276E9 09:B6D9: 20 EE B6  JSR sub_B6EE
 C - - - - - 0x0276EC 09:B6DC: DE 60 05  DEC ram_obj_0560,X ; 0560 0561 
 C - - - - - 0x0276EF 09:B6DF: D0 28     BNE bra_B709
 C - - - - - 0x0276F1 09:B6E1: FE 40 05  INC ram_obj_0540,X ; 0540 0541 
-C - - - - - 0x0276F4 09:B6E4: A9 81     LDA #$81
-C - - - - - 0x0276F6 09:B6E6: 20 D3 DC  JSR sub_0x03DCE3
+C - - - - - 0x0276F4 09:B6E4: A9 81     LDA #< $0180
+C - - - - - 0x0276F6 09:B6E6: 20 D3 DC  STA ram_obj_spd_Z_lo,X
+                                        LDA #> $0180
+                                        STA ram_obj_spd_Z_hi,X
 C - - - - - 0x0276F9 09:B6E9: A9 83     LDA #$83
 C - - - - - 0x0276FB 09:B6EB: 4C A8 B3  JMP loc_B3A8
 

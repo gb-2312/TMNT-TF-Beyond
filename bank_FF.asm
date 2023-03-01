@@ -68,7 +68,6 @@
 .export sub_0x03DC79
 .export sub_0x03DCA2_добавить_к_spd_Z_в_зависимости_от_опции_скорости
 .export sub_0x03DCC1_добавить_A_Y_к_spdX
-.export sub_0x03DCE3
 .export sub_0x03DCE6
 .export sub_0x03DCFD
 .export sub_0x03DD0A
@@ -2142,8 +2141,10 @@ C - - - - - 0x03DC92 0F:DC82: B0 0C     BCS bra_DC90
 bra_DC84:
 C - - - - - 0x03DC94 0F:DC84: A9 B0     LDA #$B0
 C - - - - - 0x03DC96 0F:DC86: 9D 10 04  STA ram_obj_pos_Y,X
-C - - - - - 0x03DC99 0F:DC89: A9 00     LDA #$00
-C - - - - - 0x03DC9B 0F:DC8B: 20 D3 DC  JSR sub_DCD3
+C - - - - - 0x03DC99 0F:DC89: A9 00     LDA #< $0000
+C - - - - - 0x03DC9B 0F:DC8B: 20 D3 DC  STA ram_obj_spd_Z_lo,X
+                                        LDA #> $0000
+                                        STA ram_obj_spd_Z_hi,X
 C - - - - - 0x03DC9E 0F:DC8E: 38        SEC
 C - - - - - 0x03DC9F 0F:DC8F: 60        RTS
 bra_DC90:
@@ -2177,11 +2178,8 @@ C - - - - - 0x03DCCF 0F:DCBF: 60        RTS
 
 
 
-sub_DCD3:
-sub_0x03DCE3:
-C - - - - - 0x03DCE3 0F:DCD3: A8        TAY
-C - - - - - 0x03DCE4 0F:DCD4: 29 0F     AND #$0F
 sub_0x03DCE6:
+; bzk optimize, добавить все значения как lo и hi
 C - - - - - 0x03DCE6 0F:DCD6: 9D 60 04  STA ram_obj_spd_Z_hi,X
 C - - - - - 0x03DCE9 0F:DCD9: 98        TYA
 C - - - - - 0x03DCEA 0F:DCDA: 29 F0     AND #$F0
