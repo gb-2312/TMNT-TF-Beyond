@@ -477,7 +477,7 @@ con_0x03F84C_10                         = $10 ;
 
 
 ; смотреть 0x03DC3B
-; con_0x03DC39_00                       = $00 ; 
+; con_0x03DC39_00                       = $00 ; unused
 con_0x03DC39_02                         = $02 ; 
 con_0x03DC39_04                         = $04 ; 
 con_0x03DC39_06                         = $06 ; 
@@ -485,7 +485,7 @@ con_0x03DC39_08                         = $08 ;
 con_0x03DC39_0A                         = $0A ; 
 con_0x03DC39_0C                         = $0C ; 
 con_0x03DC39_0E                         = $0E ; 
-; con_0x03DC39_10                       = $10 ; 
+; con_0x03DC39_10                       = $10 ; unused
 con_0x03DC39_12                         = $12 ; 
 con_0x03DC39_14                         = $14 ; 
 con_0x03DC39_16                         = $16 ; 

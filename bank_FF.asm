@@ -40,8 +40,8 @@
 .export sub_0x03D27B_записать_адрес_2006_Y_и_A_в_буфер
 .export sub_0x03D356_записать_3_цвета_в_буфер
 .export loc_0x03D356_записать_3_цвета_в_буфер
-.export sub_0x03D3A4
-.export sub_0x03D3C0
+.export sub_0x03D3A4_записать_палитру_для_фона_и_спрайтов
+.export sub_0x03D3C0_записать_палитру_для_фона
 .export sub_0x03D47D
 .export loc_0x03D47D
 .export sub_0x03DACE_удалить_все_объекты
@@ -70,8 +70,8 @@
 .export sub_0x03DCC1_добавить_A_Y_к_spdX
 .export sub_0x03DCE3
 .export sub_0x03DCE6
-.export sub_0x03DCF0
-.export loc_0x03DCF0
+.export sub_0x03DCF0_записать_spd_X
+.export loc_0x03DCF0_записать_spd_X
 .export sub_0x03DCFD
 .export sub_0x03DD0A
 .export sub_0x03DD14
@@ -1283,12 +1283,18 @@ C - - - - - 0x03D383 0F:D373: 60        RTS
 
 
 
-sub_D394:
-sub_0x03D3A4:
+sub_D394_записать_палитру_для_фона_и_спрайтов:
+sub_0x03D3A4_записать_палитру_для_фона_и_спрайтов:
+; A = палитра спрайтов
+; Y = палитра фона
 C - - - - - 0x03D3A4 0F:D394: 48        PHA
 C - - - - - 0x03D3A5 0F:D395: 98        TYA
-C - - - - - 0x03D3A6 0F:D396: 20 B0 D3  JSR sub_D3B0
+C - - - - - 0x03D3A6 0F:D396: 20 B0 D3  JSR sub_D3B0_записать_палитру_для_фона
 C - - - - - 0x03D3A9 0F:D399: 68        PLA
+; tip_индекс_буфера_палитры + $04
+; tip_индекс_буфера_палитры + $05
+; tip_индекс_буфера_палитры + $06
+; tip_индекс_буфера_палитры + $07
 C - - - - - 0x03D3AA 0F:D39A: A2 04     LDX #$04
 bra_D39C:
 C - - - - - 0x03D3AC 0F:D39C: A0 04     LDY #$04
@@ -1298,10 +1304,6 @@ C - - - - - 0x03D3B1 0F:D3A1: 0A        ASL
 C - - - - - 0x03D3B2 0F:D3A2: A8        TAY
 bra_D3A3_loop:
 C - - - - - 0x03D3B3 0F:D3A3: B9 7A D5  LDA tbl_D57A,Y
-; tip_индекс_буфера_палитры + $04
-; tip_индекс_буфера_палитры + $05
-; tip_индекс_буфера_палитры + $06
-; tip_индекс_буфера_палитры + $07
 C - - - - - 0x03D3B6 0F:D3A6: 20 46 D3  JSR sub_D346_записать_3_цвета_в_буфер
 C - - - - - 0x03D3B9 0F:D3A9: E8        INX
 C - - - - - 0x03D3BA 0F:D3AA: C8        INY
@@ -1311,8 +1313,9 @@ C - - - - - 0x03D3BF 0F:D3AF: 60        RTS
 
 
 
-sub_D3B0:
-sub_0x03D3C0:
+sub_D3B0_записать_палитру_для_фона:
+sub_0x03D3C0_записать_палитру_для_фона:
+; A = палитра фона
 C - - - - - 0x03D3C0 0F:D3B0: A2 00     LDX #$00
 ; tip_индекс_буфера_палитры + $00
 ; tip_индекс_буфера_палитры + $01
@@ -2080,6 +2083,7 @@ C - - - - - 0x03DC34 0F:DC24: 60        RTS
 
 tbl_DC29:
 ; con_0x03DC39
+; наборы chr банков?
 - - - - - - 0x03DC39 0F:DC29: 0D        .byte $0D, $09   ; 00 индекс не существует
 - D 2 - - - 0x03DC3B 0F:DC2B: 56        .byte $56, $54   ; 02
 - D 2 - - - 0x03DC3D 0F:DC2D: 74        .byte $74, $58   ; 04
@@ -2188,8 +2192,11 @@ C - - - - - 0x03DCEF 0F:DCDF: 60        RTS
 
 
 
-sub_0x03DCF0:
-loc_0x03DCF0:
+sub_0x03DCF0_записать_spd_X:
+loc_0x03DCF0_записать_spd_X:
+; X = 01
+; bzk optimize, ебать чоткое сжатие от разрабов
+; переписать распакованным
 C D 2 - - - 0x03DCF0 0F:DCE0: A8        TAY
 C - - - - - 0x03DCF1 0F:DCE1: 29 0F     AND #$0F
 C - - - - - 0x03DCF3 0F:DCE3: 9D 80 04  STA ram_obj_spd_X_hi,X
@@ -3121,7 +3128,6 @@ C - - - - - 0x03E226 0F:E216: 4C 70 BF  JMP loc_0x02FF80
 
 
 loc_0x03E229_отрисовать_турнирную_сетку:
-; bzk optimize, многовато внутренних прыжков, можно все записать в одном месте
 C D 3 - - - 0x03E229 0F:E219: AD 54 01  LDA ram_0154
 C - - - - - 0x03E22C 0F:E21C: 0A        ASL
 C - - - - - 0x03E22D 0F:E21D: A8        TAY
@@ -4067,7 +4073,7 @@ C - - - - - 0x03E7C0 0F:E7B0: 8D 60 05  STA ram_obj_0560
 C - - - - - 0x03E7C3 0F:E7B3: A9 00     LDA #$00
 C - - - - - 0x03E7C5 0F:E7B5: A8        TAY ; 00
 C - - - - - 0x03E7C6 0F:E7B6: 85 96     STA ram_0096
-C - - - - - 0x03E7C8 0F:E7B8: 20 94 D3  JSR sub_D394
+C - - - - - 0x03E7C8 0F:E7B8: 20 94 D3  JSR sub_D394_записать_палитру_для_фона_и_спрайтов
 C - - - - - 0x03E7CB 0F:E7BB: 4C 41 E1  JMP loc_E141_подготовить_осветление_из_черного_в_цветной
 
 
@@ -4117,7 +4123,7 @@ C - - - - - 0x03E82A 0F:E81A: A9 3D     LDA #con_music_ost_bonus_stage
 C - - - - - 0x03E82C 0F:E81C: 20 90 F6  JSR sub_F690_записать_звук_сохранив_X_Y
 C - - - - - 0x03E82F 0F:E81F: A9 10     LDA #$10
 C - - - - - 0x03E831 0F:E821: A0 0A     LDY #$0A
-C - - - - - 0x03E833 0F:E823: 20 94 D3  JSR sub_D394
+C - - - - - 0x03E833 0F:E823: 20 94 D3  JSR sub_D394_записать_палитру_для_фона_и_спрайтов
 C - - - - - 0x03E836 0F:E826: A2 04     LDX #$04    ; tip_индекс_буфера_палитры + $04
 C - - - - - 0x03E838 0F:E828: B5 9E     LDA ram_plr_id
 C - - - - - 0x03E83A 0F:E82A: 20 2A E3  JSR sub_E32A_выбрать_палитру_персу
@@ -5532,7 +5538,7 @@ C - - - - - 0x03F01C 0F:F00C: A2 02     LDX #con_screen_главное_меню
 C - - - - - 0x03F01E 0F:F00E: 20 44 F0  JSR sub_F044_отрисовать_экран
 C - - - - - 0x03F021 0F:F011: A0 04     LDY #$04
 C - - - - - 0x03F023 0F:F013: A9 1B     LDA #$1B
-C - - - - - 0x03F025 0F:F015: 20 94 D3  JSR sub_D394
+C - - - - - 0x03F025 0F:F015: 20 94 D3  JSR sub_D394_записать_палитру_для_фона_и_спрайтов
 C - - - - - 0x03F029 0F:F019: EE 6D 06  INC ram_066D
 C - - - - - 0x03F02C 0F:F01C: 20 02 D6  JSR sub_D602_выбрать_chr_банк_на_основе_опции_skin
 C - - - - - 0x03F02F 0F:F01F: 86 35     STX ram_0035
@@ -6257,7 +6263,7 @@ C - - - - - 0x03F529 0F:F519: 20 42 F0  JSR sub_F042_отрисовать_пус
 C - - - - - 0x03F52C 0F:F51C: A2 04     LDX #con_screen_konami
 C - - - - - 0x03F52E 0F:F51E: 20 44 F0  JSR sub_F044_отрисовать_экран
 C - - - - - 0x03F531 0F:F521: A9 00     LDA #$00
-C - - - - - 0x03F533 0F:F523: 20 B0 D3  JSR sub_D3B0
+C - - - - - 0x03F533 0F:F523: 20 B0 D3  JSR sub_D3B0_записать_палитру_для_фона
 C - - - - - 0x03F536 0F:F526: 20 90 FC  JSR sub_FC90_set_mirroring_H
 C - - - - - 0x03F539 0F:F529: 20 90 FC  JSR sub_FC90_set_mirroring_H
 C - - - - - 0x03F53C 0F:F52C: A9 78     LDA #$78
@@ -6308,7 +6314,7 @@ C - - - - - 0x03F583 0F:F573: 20 09 D0  JSR sub_D009_очистить_опера
 C - - - - - 0x03F586 0F:F576: A2 06     LDX #con_screen_копирайты
 C - - - - - 0x03F588 0F:F578: 20 44 F0  JSR sub_F044_отрисовать_экран
 C - - - - - 0x03F58B 0F:F57B: A9 00     LDA #$00
-C - - - - - 0x03F58D 0F:F57D: 20 B0 D3  JSR sub_D3B0
+C - - - - - 0x03F58D 0F:F57D: 20 B0 D3  JSR sub_D3B0_записать_палитру_для_фона
 C - - - - - 0x03F590 0F:F580: A5 FF     LDA ram_for_2000
 C - - - - - 0x03F592 0F:F582: 29 FC     AND #$FC
 C - - - - - 0x03F594 0F:F584: 85 FF     STA ram_for_2000
