@@ -3750,7 +3750,6 @@ C - - - - - 0x03E529 0F:E519: 10 FA     BPL bra_E515_loop
 C - - - - - 0x03E52B 0F:E51B: A9 0B     LDA #$0B
 C - - - - - 0x03E52D 0F:E51D: 85 95     STA ram_0095
 C - - - - - 0x03E52F 0F:E51F: 85 98     STA ram_0098
-bra_E521_RTS:
 C - - - - - 0x03E531 0F:E521: 60        RTS
 bra_E522_перейти_в_режим_vs_player:
 loc_E522_перейти_в_режим_vs_player:
@@ -3776,15 +3775,16 @@ C - - - - - 0x03E551 0F:E541: 20 51 F7  JSR sub_F751
 C - - - - - 0x03E554 0F:E544: AD 71 06  LDA ram_0671
 C - - - - - 0x03E557 0F:E547: F0 08     BEQ bra_E551
 C - - - - - 0x03E559 0F:E549: C9 02     CMP #$02
-C - - - - - 0x03E55B 0F:E54B: B0 D4     BCS bra_E521_RTS
+C - - - - - 0x03E55B 0F:E54B: B0 D4     BCS bra_E55C_RTS
 C - - - - - 0x03E55D 0F:E54D: C6 89     DEC ram_0089
 C - - - - - 0x03E55F 0F:E54F: C6 89     DEC ram_0089
 bra_E551:
 C - - - - - 0x03E561 0F:E551: E6 89     INC ram_0089
-C - - - - - 0x03E563 0F:E553: 10 CC     BPL bra_E521_RTS
+C - - - - - 0x03E563 0F:E553: 10 CC     BPL bra_E55C_RTS
 C - - - - - 0x03E565 0F:E555: A9 00     LDA #$00
 C - - - - - 0x03E567 0F:E557: 85 89     STA ram_0089
 C - - - - - 0x03E569 0F:E559: 4E B0 04  LSR ram_obj_spd_Y_lo
+bra_E55C_RTS:
 C - - - - - 0x03E56C 0F:E55C: 60        RTS
 
 
