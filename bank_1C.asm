@@ -55,8 +55,8 @@ C - - - - - 0x038036 0E:8026: A9 82     LDA #$82
 C - - - - - 0x038038 0E:8028: 9D 00 05  STA ram_obj_0500,X
 C - - - - - 0x03803B 0E:802B: CA        DEX
 C - - - - - 0x03803C 0E:802C: D0 E7     BNE bra_8015_loop
-C - - - - - 0x03803E 0E:802E: A9 55     LDA #$55
-C - - - - - 0x038040 0E:8030: 85 34     STA ram_0034
+C - - - - - 0x03803E 0E:802E: A9 55     LDA #con_chr_bank_spr + $55
+C - - - - - 0x038040 0E:8030: 85 34     STA ram_chr_bank_spr
 C - - - - - 0x038042 0E:8032: 20 25 DC  JSR sub_0x03DC35
 C - - - - - 0x038045 0E:8035: A9 0E     LDA #con_0x03F84C_0E
 C - - - - - 0x038047 0E:8037: 20 14 F8  JSR sub_0x03F824
@@ -2434,8 +2434,8 @@ C - - - - - 0x038C9F 0E:8C8F: 20 44 F0  JSR sub_0x03F054_отрисовать_э
 C - - - - - 0x038CA2 0E:8C92: 20 BE DA  JSR sub_0x03DACE_удалить_все_объекты
 C - - - - - 0x038CA5 0E:8C95: 8D 54 01  STA ram_0154
 C - - - - - 0x038CA8 0E:8C98: 8D 5D 01  STA ram_015D
-C - - - - - 0x038CAB 0E:8C9B: A9 54     LDA #$54
-C - - - - - 0x038CAD 0E:8C9D: 85 37     STA ram_0037
+C - - - - - 0x038CAB 0E:8C9B: A9 54     LDA #con_chr_bank_spr + $54
+C - - - - - 0x038CAD 0E:8C9D: 85 37     STA ram_chr_bank_spr + $03
 C - - - - - 0x038CAF 0E:8C9F: A9 00     LDA #$00
 C - - - - - 0x038CB1 0E:8CA1: A0 05     LDY #$05
 bra_8CA3_loop:
@@ -3174,8 +3174,8 @@ C - - - - - 0x039146 0E:9136: A9 00     LDA #$00
 C - - - - - 0x039148 0E:9138: 8D 31 06  STA ram_0631
 C - - - - - 0x03914B 0E:913B: A9 1F     LDA #$1F
 C - - - - - 0x03914D 0E:913D: 8D 10 04  STA ram_obj_pos_Y
-C - - - - - 0x039150 0E:9140: A9 21     LDA #$21
-C - - - - - 0x039152 0E:9142: 85 34     STA ram_0034
+C - - - - - 0x039150 0E:9140: A9 21     LDA #con_chr_bank_spr + $21
+C - - - - - 0x039152 0E:9142: 85 34     STA ram_chr_bank_spr
 C - - - - - 0x039154 0E:9144: E6 21     INC ram_script_draw_lo
 C - - - - - 0x039156 0E:9146: 4C 41 E1  JMP loc_0x03E151_подготовить_осветление_из_черного_в_цветной
 
@@ -3294,13 +3294,13 @@ C - - - - - 0x039203 0E:91F3: 20 44 F0  JSR sub_0x03F054_отрисовать_э
 C - - - - - 0x039206 0E:91F6: AD B0 04  LDA ram_obj_spd_Y_lo
 C - - - - - 0x039209 0E:91F9: 0A        ASL
 C - - - - - 0x03920A 0E:91FA: A8        TAY
-C - - - - - 0x03920B 0E:91FB: BE 6D 95  LDX tbl_956D,Y
-C - - - - - 0x03920E 0E:91FE: 86 32     STX ram_0032
+C - - - - - 0x03920B 0E:91FB: BE 6D 95  LDX tbl_956D_chr_банки,Y
+C - - - - - 0x03920E 0E:91FE: 86 32     STX ram_chr_bank_bg
 C - - - - - 0x039210 0E:9200: E8        INX
 C - - - - - 0x039211 0E:9201: E8        INX
-C - - - - - 0x039212 0E:9202: 86 33     STX ram_0033
-C - - - - - 0x039214 0E:9204: B9 6E 95  LDA tbl_956D + $01,Y
-C - - - - - 0x039217 0E:9207: 85 34     STA ram_0034
+C - - - - - 0x039212 0E:9202: 86 33     STX ram_chr_bank_bg + $01
+C - - - - - 0x039214 0E:9204: B9 6E 95  LDA tbl_956D_chr_банки + $01,Y
+C - - - - - 0x039217 0E:9207: 85 34     STA ram_chr_bank_spr
 C - - - - - 0x039219 0E:9209: AC B0 04  LDY ram_obj_spd_Y_lo
 C - - - - - 0x03921C 0E:920C: B9 51 95  LDA tbl_9551,Y
 C - - - - - 0x03921F 0E:920F: 85 FC     STA ram_scroll_Y
@@ -3765,13 +3765,13 @@ tbl_955D:
 
 
 
-tbl_956D:
-- D 0 - - - 0x03957D 0E:956D: 38        .byte $38, $35   ; 00
-- D 0 - - - 0x03957F 0E:956F: 38        .byte $38, $45   ; 01
-- D 0 - - - 0x039581 0E:9571: 38        .byte $38, $4B   ; 02
-- D 0 - - - 0x039583 0E:9573: 38        .byte $38, $4A   ; 03
-- D 0 - - - 0x039585 0E:9575: 4C        .byte $4C, $4A   ; 04
-- D 0 - - - 0x039587 0E:9577: 4C        .byte $4C, $4A   ; 05
+tbl_956D_chr_банки:
+- D 0 - - - 0x03957D 0E:956D: 38        .byte con_chr_bank_bg + $38, con_chr_bank_spr + $35   ; 00
+- D 0 - - - 0x03957F 0E:956F: 38        .byte con_chr_bank_bg + $38, con_chr_bank_spr + $45   ; 01
+- D 0 - - - 0x039581 0E:9571: 38        .byte con_chr_bank_bg + $38, con_chr_bank_spr + $4B   ; 02
+- D 0 - - - 0x039583 0E:9573: 38        .byte con_chr_bank_bg + $38, con_chr_bank_spr + $4A   ; 03
+- D 0 - - - 0x039585 0E:9575: 4C        .byte con_chr_bank_bg + $4C, con_chr_bank_spr + $4A   ; 04
+- D 0 - - - 0x039587 0E:9577: 4C        .byte con_chr_bank_bg + $4C, con_chr_bank_spr + $4A   ; 05
 
 
 
@@ -3943,8 +3943,8 @@ C - - - - - 0x03968B 0E:967B: BC 4F 99  LDY tbl_994F,X
 C - - - - - 0x03968E 0E:967E: 20 1A DC  JSR sub_0x03DC2A
 C - - - - - 0x039691 0E:9681: A0 08     LDY #con_0x03DC39_08
 C - - - - - 0x039693 0E:9683: 20 04 DC  JSR sub_0x03DC14
-C - - - - - 0x039696 0E:9686: A9 52     LDA #$52
-C - - - - - 0x039698 0E:9688: 85 36     STA ram_0036
+C - - - - - 0x039696 0E:9686: A9 52     LDA #con_chr_bank_spr + $52
+C - - - - - 0x039698 0E:9688: 85 36     STA ram_chr_bank_spr + $02
 C - - - - - 0x03969A 0E:968A: E6 21     INC ram_script_draw_lo
 C - - - - - 0x03969C 0E:968C: 8A        TXA
 C - - - - - 0x03969D 0E:968D: 0A        ASL
@@ -5213,8 +5213,8 @@ C - - - - - 0x03A056 0E:A046: C6 00     DEC ram_0000
 C - - - - - 0x03A058 0E:A048: 10 9F     BPL bra_9FE9_loop
 C - - - - - 0x03A05A 0E:A04A: A9 C0     LDA #$C0
 C - - - - - 0x03A05C 0E:A04C: 8D 60 05  STA ram_obj_0560
-C - - - - - 0x03A05F 0E:A04F: A9 57     LDA #$57
-C - - - - - 0x03A061 0E:A051: 85 34     STA ram_0034
+C - - - - - 0x03A05F 0E:A04F: A9 57     LDA #con_chr_bank_spr + $57
+C - - - - - 0x03A061 0E:A051: 85 34     STA ram_chr_bank_spr
 C - - - - - 0x03A063 0E:A053: A0 12     LDY #con_0x03DC39_12
 C - - - - - 0x03A065 0E:A055: 20 1A DC  JSR sub_0x03DC2A
 C - - - - - 0x03A068 0E:A058: A9 30     LDA #$30
@@ -5302,7 +5302,7 @@ sub_0x03A0F3:
 C - - - - - 0x03A0F3 0E:A0E3: C9 02     CMP #$02
 C - - - - - 0x03A0F5 0E:A0E5: F0 16     BEQ bra_A0FD
 C - - - - - 0x03A0F7 0E:A0E7: 20 ED A0  JSR sub_A0ED
-C - - - - - 0x03A0FA 0E:A0EA: 4C C1 A1  JMP loc_A1C1
+C - - - - - 0x03A0FA 0E:A0EA: 4C C1 A1  JMP loc_A1C1_палитра_и_chr_банки_на_vs_экране
 
 
 
@@ -5458,7 +5458,7 @@ C - - - - - 0x03A1D0 0E:A1C0: 60        RTS
 
 
 
-loc_A1C1:
+loc_A1C1_палитра_и_chr_банки_на_vs_экране:
 C D 1 - - - 0x03A1D1 0E:A1C1: 20 6D D4  JSR sub_0x03D47D
 C - - - - - 0x03A1D4 0E:A1C4: A9 14     LDA #$14
 C - - - - - 0x03A1D6 0E:A1C6: 20 B0 D3  JSR sub_0x03D3C0_записать_палитру_для_фона
@@ -5467,7 +5467,7 @@ C - - - - - 0x03A1DB 0E:A1CB: 86 A8     STX ram_00A8
 bra_A1CD_loop:
 C - - - - - 0x03A1DD 0E:A1CD: A6 A8     LDX ram_00A8
 C - - - - - 0x03A1DF 0E:A1CF: B4 A2     LDY ram_plr_id,X
-C - - - - - 0x03A1E1 0E:A1D1: 20 0B BF  JSR sub_BF0B
+C - - - - - 0x03A1E1 0E:A1D1: 20 0B BF  JSR sub_BF0B_конвертация_индекса
 C - - - - - 0x03A1E4 0E:A1D4: A8        TAY
 C - - - - - 0x03A1E5 0E:A1D5: B9 1E A3  LDA tbl_A31E,Y
 C - - - - - 0x03A1E8 0E:A1D8: 95 4E     STA ram_004E,X
@@ -5501,14 +5501,16 @@ C - - - - - 0x03A218 0E:A208: B9 2F A3  LDA tbl_A32E_индекс_палитры
 C - - - - - 0x03A21B 0E:A20B: 20 46 D3  JSR sub_0x03D356_записать_3_цвета_в_буфер
 C - - - - - 0x03A21E 0E:A20E: C6 A8     DEC ram_00A8
 C - - - - - 0x03A220 0E:A210: 10 BB     BPL bra_A1CD_loop
+; bzk optimize, для чего нужен цикл, если пишутся банки только X = 00?
+; разобрать код получше
 C - - - - - 0x03A222 0E:A212: A5 4E     LDA ram_004E
-C - - - - - 0x03A224 0E:A214: 85 32     STA ram_0032
+C - - - - - 0x03A224 0E:A214: 85 32     STA ram_chr_bank_bg
 C - - - - - 0x03A226 0E:A216: A5 50     LDA ram_0050
-C - - - - - 0x03A228 0E:A218: 85 33     STA ram_0033
+C - - - - - 0x03A228 0E:A218: 85 33     STA ram_chr_bank_bg + $01
 C - - - - - 0x03A22A 0E:A21A: A5 52     LDA ram_0052
-C - - - - - 0x03A22C 0E:A21C: 85 34     STA ram_0034
+C - - - - - 0x03A22C 0E:A21C: 85 34     STA ram_chr_bank_spr
 C - - - - - 0x03A22E 0E:A21E: A5 54     LDA ram_0054
-C - - - - - 0x03A230 0E:A220: 85 35     STA ram_0035
+C - - - - - 0x03A230 0E:A220: 85 35     STA ram_chr_bank_spr + $01
 C - - - - - 0x03A232 0E:A222: 60        RTS
 
 
@@ -5785,10 +5787,26 @@ tbl_A317_индекс:
 
 
 tbl_A31E:
-- D 1 - - - 0x03A32E 0E:A31E: 22        .byte $22, $22, $26, $27   ; 00 черепахи
-- D 1 - - - 0x03A332 0E:A322: 22        .byte $22, $24, $0E, $0E   ; 04 casey
-- D 1 - - - 0x03A336 0E:A326: 24        .byte $24, $26, $13, $13   ; 08 hot
-- D 1 - - - 0x03A33A 0E:A32A: 22        .byte $22, $24, $26, $27   ; 0C shred
+; 00 черепахи
+- D 1 - - - 0x03A32E 0E:A31E: 22        .byte con_chr_bank_bg + $22   ; 
+- D 1 - - - 0x03A32F 0E:A31F: 22        .byte con_chr_bank_bg + $22   ; 
+- D 1 - - - 0x03A330 0E:A320: 26        .byte con_chr_bank_spr + $26   ; 
+- D 1 - - - 0x03A331 0E:A321: 27        .byte con_chr_bank_spr + $27   ; 
+; 04 casey
+- D 1 - - - 0x03A332 0E:A322: 22        .byte con_chr_bank_bg + $22   ; 
+- D 1 - - - 0x03A333 0E:A323: 24        .byte con_chr_bank_bg + $24   ; 
+- D 1 - - - 0x03A334 0E:A324: 0E        .byte con_chr_bank_spr + $0E   ; 
+- D 1 - - - 0x03A335 0E:A325: 0E        .byte con_chr_bank_spr + $0E   ; 
+; 08 hot
+- D 1 - - - 0x03A336 0E:A326: 24        .byte con_chr_bank_bg + $24   ; 
+- D 1 - - - 0x03A337 0E:A327: 26        .byte con_chr_bank_bg + $26   ; 
+- D 1 - - - 0x03A338 0E:A328: 13        .byte con_chr_bank_spr + $13   ; 
+- D 1 - - - 0x03A339 0E:A329: 13        .byte con_chr_bank_spr + $13   ; 
+; 0C shred
+- D 1 - - - 0x03A33A 0E:A32A: 22        .byte con_chr_bank_bg + $22   ; 
+- D 1 - - - 0x03A33B 0E:A32B: 24        .byte con_chr_bank_bg + $24   ; 
+- D 1 - - - 0x03A33C 0E:A32C: 26        .byte con_chr_bank_spr + $26   ; 
+- D 1 - - - 0x03A33D 0E:A32D: 27        .byte con_chr_bank_spr + $27   ; 
 
 
 
@@ -6441,7 +6459,7 @@ C - - - - - 0x03BF18 0E:BF08: 4C 5C A1  JMP loc_A15C
 
 
 
-sub_BF0B:
+sub_BF0B_конвертация_индекса:
 ; Y = ram_plr_id,X
 C - - - - - 0x03BF1B 0E:BF0B: 20 33 BF  JSR sub_BF33
 C - - - - - 0x03BF1E 0E:BF0E: D0 03     BNE bra_BF13

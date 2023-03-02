@@ -1684,11 +1684,11 @@ sub_D602_выбрать_chr_банк_на_основе_опции_skin:
 C - - - - - 0x03D612 0F:D602: AD 2B 01  LDA ram_option_misc
 C - - - - - 0x03D615 0F:D605: 29 02     AND #$02
 C - - - - - 0x03D617 0F:D607: D0 03     BNE bra_D60C
-C - - - - - 0x03D619 0F:D609: A2 21     LDX #con_chr_bank + $21
+C - - - - - 0x03D619 0F:D609: A2 21     LDX #con_chr_bank_spr + $21
 C - - - - - 0x03D61B 0F:D60B: 60        RTS
 bra_D60C:
 ; if night
-- - - - - - 0x03D61C 0F:D60C: A2 8F     LDX #con_chr_bank + $8F
+- - - - - - 0x03D61C 0F:D60C: A2 8F     LDX #con_chr_bank_spr + $8F
 - - - - - - 0x03D61E 0F:D60E: 60        RTS
 
 
@@ -2085,9 +2085,9 @@ C - - - - - 0x03DBE3 0F:DBD3: 60        RTS
 loc_DC04:
 sub_0x03DC14:
 C D 2 - - - 0x03DC14 0F:DC04: B9 29 DC  LDA tbl_DC29,Y
-C - - - - - 0x03DC17 0F:DC07: 85 34     STA ram_0034
+C - - - - - 0x03DC17 0F:DC07: 85 34     STA ram_chr_bank_spr
 C - - - - - 0x03DC19 0F:DC09: B9 2A DC  LDA tbl_DC29 + $01,Y
-C - - - - - 0x03DC1C 0F:DC0C: 85 35     STA ram_0035
+C - - - - - 0x03DC1C 0F:DC0C: 85 35     STA ram_chr_bank_spr + $01
 C - - - - - 0x03DC1E 0F:DC0E: 60        RTS
 
 
@@ -2095,9 +2095,9 @@ C - - - - - 0x03DC1E 0F:DC0E: 60        RTS
 sub_0x03DC1F:
 ; Y = 0E
 C - - - - - 0x03DC1F 0F:DC0F: B9 29 DC  LDA tbl_DC29,Y
-C - - - - - 0x03DC22 0F:DC12: 85 36     STA ram_0036
+C - - - - - 0x03DC22 0F:DC12: 85 36     STA ram_chr_bank_spr + $02
 C - - - - - 0x03DC24 0F:DC14: B9 2A DC  LDA tbl_DC29 + $01,Y
-C - - - - - 0x03DC27 0F:DC17: 85 37     STA ram_0037
+C - - - - - 0x03DC27 0F:DC17: 85 37     STA ram_chr_bank_spr + $03
 C - - - - - 0x03DC29 0F:DC19: 60        RTS
 
 
@@ -2109,33 +2109,32 @@ C D 2 - - - 0x03DC35 0F:DC25: A0 06     LDY #con_0x03DC39_06
 sub_DC1A:
 sub_0x03DC2A:
 C - - - - - 0x03DC2A 0F:DC1A: B9 29 DC  LDA tbl_DC29,Y
-C - - - - - 0x03DC2D 0F:DC1D: 85 32     STA ram_0032
+C - - - - - 0x03DC2D 0F:DC1D: 85 32     STA ram_chr_bank_bg
 C - - - - - 0x03DC2F 0F:DC1F: B9 2A DC  LDA tbl_DC29 + $01,Y
-C - - - - - 0x03DC32 0F:DC22: 85 33     STA ram_0033
+C - - - - - 0x03DC32 0F:DC22: 85 33     STA ram_chr_bank_bg + $01
 C - - - - - 0x03DC34 0F:DC24: 60        RTS
 
 
 
 tbl_DC29:
 ; con_0x03DC39
-; наборы chr банков?
-- - - - - - 0x03DC39 0F:DC29: 0D        .byte $0D, $09   ; 00 индекс не существует
-- D 2 - - - 0x03DC3B 0F:DC2B: 56        .byte $56, $54   ; 02
-- D 2 - - - 0x03DC3D 0F:DC2D: 74        .byte $74, $58   ; 04
-- D 2 - - - 0x03DC3F 0F:DC2F: 7C        .byte $7C, $7E   ; 06
-- D 2 - - - 0x03DC41 0F:DC31: 50        .byte $50, $51   ; 08
-- D 2 - - - 0x03DC43 0F:DC33: 48        .byte $48, $4A   ; 0A
-- D 2 - - - 0x03DC45 0F:DC35: 10        .byte $10, $12   ; 0C
-- D 2 - - - 0x03DC47 0F:DC37: 52        .byte $52, $53   ; 0E
-- - - - - - 0x03DC49 0F:DC39: 5C        .byte $5C, $5E   ; 10 индекс не существует
-- D 2 - - - 0x03DC4B 0F:DC3B: 5A        .byte $5A, $58   ; 12
-- D 2 - - - 0x03DC4D 0F:DC3D: 70        .byte $70, $76   ; 14
-- D 2 - - - 0x03DC4F 0F:DC3F: 22        .byte $22, $24   ; 16
-- D 2 - - - 0x03DC51 0F:DC41: 26        .byte $26, $27   ; 18
-- D 2 - - - 0x03DC53 0F:DC43: 57        .byte $57, $55   ; 1A
-- D 2 - - - 0x03DC55 0F:DC45: 7C        .byte $7C, $72   ; 1C
-- D 2 - - - 0x03DC57 0F:DC47: 4C        .byte $4C, $4E   ; 1E
-- D 2 - - - 0x03DC59 0F:DC49: 36        .byte $36, $34   ; 20
+- - - - - - 0x03DC39 0F:DC29: 0D        .byte con_chr_bank + $0D, con_chr_bank + $09   ; 00 индекс не существует
+- D 2 - - - 0x03DC3B 0F:DC2B: 56        .byte con_chr_bank + $56, con_chr_bank + $54   ; 02
+- D 2 - - - 0x03DC3D 0F:DC2D: 74        .byte con_chr_bank + $74, con_chr_bank + $58   ; 04
+- D 2 - - - 0x03DC3F 0F:DC2F: 7C        .byte con_chr_bank + $7C, con_chr_bank + $7E   ; 06
+- D 2 - - - 0x03DC41 0F:DC31: 50        .byte con_chr_bank + $50, con_chr_bank + $51   ; 08
+- D 2 - - - 0x03DC43 0F:DC33: 48        .byte con_chr_bank + $48, con_chr_bank + $4A   ; 0A
+- D 2 - - - 0x03DC45 0F:DC35: 10        .byte con_chr_bank + $10, con_chr_bank + $12   ; 0C
+- D 2 - - - 0x03DC47 0F:DC37: 52        .byte con_chr_bank + $52, con_chr_bank + $53   ; 0E
+- - - - - - 0x03DC49 0F:DC39: 5C        .byte con_chr_bank + $5C, con_chr_bank + $5E   ; 10 индекс не существует
+- D 2 - - - 0x03DC4B 0F:DC3B: 5A        .byte con_chr_bank + $5A, con_chr_bank + $58   ; 12
+- D 2 - - - 0x03DC4D 0F:DC3D: 70        .byte con_chr_bank + $70, con_chr_bank + $76   ; 14
+- D 2 - - - 0x03DC4F 0F:DC3F: 22        .byte con_chr_bank + $22, con_chr_bank + $24   ; 16
+- D 2 - - - 0x03DC51 0F:DC41: 26        .byte con_chr_bank + $26, con_chr_bank + $27   ; 18
+- D 2 - - - 0x03DC53 0F:DC43: 57        .byte con_chr_bank + $57, con_chr_bank + $55   ; 1A
+- D 2 - - - 0x03DC55 0F:DC45: 7C        .byte con_chr_bank + $7C, con_chr_bank + $72   ; 1C
+- D 2 - - - 0x03DC57 0F:DC47: 4C        .byte con_chr_bank + $4C, con_chr_bank + $4E   ; 1E
+- D 2 - - - 0x03DC59 0F:DC49: 36        .byte con_chr_bank + $36, con_chr_bank + $34   ; 20
 
 
 
@@ -3463,13 +3462,13 @@ C - - - - - 0x03E3F6 0F:E3E6: 4A        LSR
 C - - - - - 0x03E3F7 0F:E3E7: 4A        LSR
 C - - - - - 0x03E3F8 0F:E3E8: A8        TAY
 C - - - - - 0x03E3F9 0F:E3E9: B9 EF E3  LDA tbl_E3EF,Y
-C - - - - - 0x03E3FC 0F:E3EC: 4C 25 FA  JMP loc_FA25
+C - - - - - 0x03E3FC 0F:E3EC: 4C 25 FA  JMP loc_FA25_запись_банков_фона_из_A
 
 
 
 tbl_E3EF:
-- D 3 - - - 0x03E3FF 0F:E3EF: 80        .byte con_chr_bank + $80   ; 00
-- D 3 - - - 0x03E400 0F:E3F0: 84        .byte con_chr_bank + $84   ; 04
+- D 3 - - - 0x03E3FF 0F:E3EF: 80        .byte con_chr_bank_bg + $80   ; 00
+- D 3 - - - 0x03E400 0F:E3F0: 84        .byte con_chr_bank_bg + $84   ; 04
 
 
 
@@ -4130,10 +4129,10 @@ C - - - - - 0x03E80D 0F:E7FD: 20 14 F8  JSR sub_F814
 C - - - - - 0x03E810 0F:E800: 20 BE DA  JSR sub_DABE_удалить_все_объекты
 C - - - - - 0x03E813 0F:E803: A2 1C     LDX #con_screen_bonus_stage
 C - - - - - 0x03E815 0F:E805: 20 44 F0  JSR sub_F044_отрисовать_экран
-C - - - - - 0x03E818 0F:E808: A9 7C     LDA #$7C
-C - - - - - 0x03E81A 0F:E80A: 85 32     STA ram_0032
-C - - - - - 0x03E81C 0F:E80C: A9 20     LDA #$20
-C - - - - - 0x03E81E 0F:E80E: 85 37     STA ram_0037
+C - - - - - 0x03E818 0F:E808: A9 7C     LDA #con_chr_bank_bg + $7C
+C - - - - - 0x03E81A 0F:E80A: 85 32     STA ram_chr_bank_bg
+C - - - - - 0x03E81C 0F:E80C: A9 20     LDA #con_chr_bank_spr + $20
+C - - - - - 0x03E81E 0F:E80E: 85 37     STA ram_chr_bank_spr + $03
 C - - - - - 0x03E820 0F:E810: A2 1E     LDX #con_screen_bonus_tmnt
 C - - - - - 0x03E822 0F:E812: 20 44 F0  JSR sub_F044_отрисовать_экран
 C - - - - - 0x03E825 0F:E815: A9 0D     LDA #con_print_time_bonus_game
@@ -5146,7 +5145,7 @@ C - - - - - 0x03EDB2 0F:EDA2: 9D CC 06  STA ram_06CC,X
 C - - - - - 0x03EDB5 0F:EDA5: 9D D2 06  STA ram_06D2,X
 C - - - - - 0x03EDB8 0F:EDA8: 9D C8 06  STA ram_06C8,X
 C - - - - - 0x03EDBB 0F:EDAB: 9D C6 06  STA ram_06C6,X
-C - - - - - 0x03EDBE 0F:EDAE: 9D DA 06  STA ram_06DA,X
+C - - - - - 0x03EDBE 0F:EDAE: 9D DA 06  STA ram_plr_06DA,X
 C - - - - - 0x03EDC1 0F:EDB1: 95 91     STA ram_btn_hold,X
 C - - - - - 0x03EDC3 0F:EDB3: 9D DC 06  STA ram_06DC,X
 C - - - - - 0x03EDC6 0F:EDB6: 9D C2 06  STA ram_06C2,X
@@ -5560,11 +5559,11 @@ C - - - - - 0x03F023 0F:F013: A9 1B     LDA #$1B
 C - - - - - 0x03F025 0F:F015: 20 94 D3  JSR sub_D394_записать_палитру_для_фона_и_спрайтов
 C - - - - - 0x03F029 0F:F019: EE 6D 06  INC ram_066D
 C - - - - - 0x03F02C 0F:F01C: 20 02 D6  JSR sub_D602_выбрать_chr_банк_на_основе_опции_skin
-C - - - - - 0x03F02F 0F:F01F: 86 35     STX ram_0035
-C - - - - - 0x03F031 0F:F021: A9 78     LDA #$78
-C - - - - - 0x03F033 0F:F023: 85 32     STA ram_0032
-C - - - - - 0x03F035 0F:F025: A9 7A     LDA #$7A
-C - - - - - 0x03F037 0F:F027: 85 33     STA ram_0033
+C - - - - - 0x03F02F 0F:F01F: 86 35     STX ram_chr_bank_spr + $01
+C - - - - - 0x03F031 0F:F021: A9 78     LDA #con_chr_bank_bg + $78
+C - - - - - 0x03F033 0F:F023: 85 32     STA ram_chr_bank_bg
+C - - - - - 0x03F035 0F:F025: A9 7A     LDA #con_chr_bank_bg + $7A
+C - - - - - 0x03F037 0F:F027: 85 33     STA ram_chr_bank_bg + $01
 C - - - - - 0x03F039 0F:F029: A9 08     LDA #con_0x03F84C_08
 C - - - - - 0x03F03B 0F:F02B: 20 14 F8  JSR sub_F814
 C - - - - - 0x03F03E 0F:F02E: A9 05     LDA #$05
@@ -6286,9 +6285,9 @@ C - - - - - 0x03F531 0F:F521: A9 00     LDA #$00
 C - - - - - 0x03F533 0F:F523: 20 B0 D3  JSR sub_D3B0_записать_палитру_для_фона
 C - - - - - 0x03F536 0F:F526: 20 90 FC  JSR sub_FC90_set_mirroring_H
 C - - - - - 0x03F539 0F:F529: 20 90 FC  JSR sub_FC90_set_mirroring_H
-C - - - - - 0x03F53C 0F:F52C: A9 78     LDA #$78
-C - - - - - 0x03F53E 0F:F52E: 85 32     STA ram_0032
-C - - - - - 0x03F540 0F:F530: 85 33     STA ram_0033
+C - - - - - 0x03F53C 0F:F52C: A9 78     LDA #con_chr_bank_bg + $78
+C - - - - - 0x03F53E 0F:F52E: 85 32     STA ram_chr_bank_bg
+C - - - - - 0x03F540 0F:F530: 85 33     STA ram_chr_bank_bg + $01
 C - - - - - 0x03F542 0F:F532: A5 FF     LDA ram_for_2000
 C - - - - - 0x03F544 0F:F534: 09 02     ORA #$02
 C - - - - - 0x03F546 0F:F536: 85 FF     STA ram_for_2000
@@ -6338,10 +6337,10 @@ C - - - - - 0x03F58D 0F:F57D: 20 B0 D3  JSR sub_D3B0_записать_палит
 C - - - - - 0x03F590 0F:F580: A5 FF     LDA ram_for_2000
 C - - - - - 0x03F592 0F:F582: 29 FC     AND #$FC
 C - - - - - 0x03F594 0F:F584: 85 FF     STA ram_for_2000
-C - - - - - 0x03F596 0F:F586: A9 7C     LDA #$7C
-C - - - - - 0x03F598 0F:F588: 85 32     STA ram_0032
-C - - - - - 0x03F59A 0F:F58A: A9 7E     LDA #$7E
-C - - - - - 0x03F59C 0F:F58C: 85 33     STA ram_0033
+C - - - - - 0x03F596 0F:F586: A9 7C     LDA #con_chr_bank_bg + $7C
+C - - - - - 0x03F598 0F:F588: 85 32     STA ram_chr_bank_bg
+C - - - - - 0x03F59A 0F:F58A: A9 7E     LDA #con_chr_bank_bg + $7E
+C - - - - - 0x03F59C 0F:F58C: 85 33     STA ram_chr_bank_bg + $01
 C - - - - - 0x03F59E 0F:F58E: D0 A8     BNE bra_F538    ; jmp
 bra_F590:
 C - - - - - 0x03F5A0 0F:F590: 20 B3 F5  JSR sub_F5B3
@@ -6474,27 +6473,27 @@ C - - - - - 0x03F630 0F:F620: A5 23     LDA ram_0023
 ; bzk optimize, бесполезный адрес 003C
 C - - - - - 0x03F632 0F:F622: 85 3C     STA ram_003C
 C - - - - - 0x03F634 0F:F624: D0 10     BNE bra_F636
-C - - - - - 0x03F636 0F:F626: A5 34     LDA ram_0034
-C - - - - - 0x03F638 0F:F628: 85 38     STA ram_0038
-C - - - - - 0x03F63A 0F:F62A: A5 35     LDA ram_0035
-C - - - - - 0x03F63C 0F:F62C: 85 39     STA ram_0039
-C - - - - - 0x03F63E 0F:F62E: A5 36     LDA ram_0036
-C - - - - - 0x03F640 0F:F630: 85 3A     STA ram_003A
-C - - - - - 0x03F642 0F:F632: A5 37     LDA ram_0037
-C - - - - - 0x03F644 0F:F634: 85 3B     STA ram_003B
+C - - - - - 0x03F636 0F:F626: A5 34     LDA ram_chr_bank_spr
+C - - - - - 0x03F638 0F:F628: 85 38     STA ram_copy_chr_bank_spr
+C - - - - - 0x03F63A 0F:F62A: A5 35     LDA ram_chr_bank_spr + $01
+C - - - - - 0x03F63C 0F:F62C: 85 39     STA ram_copy_chr_bank_spr + $01
+C - - - - - 0x03F63E 0F:F62E: A5 36     LDA ram_chr_bank_spr + $02
+C - - - - - 0x03F640 0F:F630: 85 3A     STA ram_copy_chr_bank_spr + $02
+C - - - - - 0x03F642 0F:F632: A5 37     LDA ram_chr_bank_spr + $03
+C - - - - - 0x03F644 0F:F634: 85 3B     STA ram_copy_chr_bank_spr + $03
 bra_F636:
-C - - - - - 0x03F646 0F:F636: A5 32     LDA ram_0032
+C - - - - - 0x03F646 0F:F636: A5 32     LDA ram_chr_bank_bg
 C - - - - - 0x03F648 0F:F638: A2 00     LDX #$00
 C - - - - - 0x03F64A 0F:F63A: 8E 00 80  STX $8000
 C - - - - - 0x03F64D 0F:F63D: 8D 01 80  STA $8001
-C - - - - - 0x03F650 0F:F640: E8        INX
-C - - - - - 0x03F651 0F:F641: A5 33     LDA ram_0033
+C - - - - - 0x03F650 0F:F640: E8        INX ; 01
+C - - - - - 0x03F651 0F:F641: A5 33     LDA ram_chr_bank_bg + $01
 C - - - - - 0x03F653 0F:F643: 8E 00 80  STX $8000
 C - - - - - 0x03F656 0F:F646: 8D 01 80  STA $8001
-C - - - - - 0x03F659 0F:F649: E8        INX
+C - - - - - 0x03F659 0F:F649: E8        INX ; 02
 C - - - - - 0x03F65A 0F:F64A: A0 03     LDY #$03
 bra_F64C_loop:
-C - - - - - 0x03F65C 0F:F64C: B5 36     LDA ram_0036,X
+C - - - - - 0x03F65C 0F:F64C: B5 36     LDA ram_copy_chr_bank_spr - $02,X
 C - - - - - 0x03F65E 0F:F64E: 8E 00 80  STX $8000
 C - - - - - 0x03F661 0F:F651: 8D 01 80  STA $8001
 C - - - - - 0x03F664 0F:F654: E8        INX
@@ -7177,7 +7176,7 @@ C - - - - - 0x03FA1C 0F:FA0C: 4C 8D FB  JMP loc_FB8D
 
 
 bra_FA0F:
-loc_FA0F:
+loc_FA0F_запись_скролла_и_банков_фона:
 C D 3 - - - 0x03FA1F 0F:FA0F: 84 4E     STY ram_004E
 C - - - - - 0x03FA21 0F:FA11: 8E 00 C0  STX $C000
 C - - - - - 0x03FA24 0F:FA14: 86 4A     STX ram_copy_C000
@@ -7188,8 +7187,8 @@ C - - - - - 0x03FA2E 0F:FA1E: A5 FC     LDA ram_scroll_Y
 C - - - - - 0x03FA30 0F:FA20: 8D 05 20  STA $2005
 C - - - - - 0x03FA33 0F:FA23: A5 4E     LDA ram_004E
 bra_FA25:
-loc_FA25:
-sub_FA25:
+loc_FA25_запись_банков_фона_из_A:
+sub_FA25_запись_банков_фона_из_A:
 C D 3 - - - 0x03FA35 0F:FA25: A2 00     LDX #$00
 C - - - - - 0x03FA37 0F:FA27: 8E 00 80  STX $8000
 C - - - - - 0x03FA3A 0F:FA2A: 8D 01 80  STA $8001
@@ -7209,13 +7208,15 @@ C - - - - - 0x03FA4D 0F:FA3D: A4 4D     LDY ram_004D
 C - - - - - 0x03FA4F 0F:FA3F: D0 08     BNE bra_FA49
 C - - - - - 0x03FA51 0F:FA41: A9 00     LDA #$00
 C - - - - - 0x03FA53 0F:FA43: A2 3C     LDX #$3C
-C - - - - - 0x03FA55 0F:FA45: A0 74     LDY #$74
+C - - - - - 0x03FA55 0F:FA45: A0 74     LDY #con_chr_bank_bg + $74
+; bzk optimize, JMP для безопасности
 C - - - - - 0x03FA57 0F:FA47: D0 C6     BNE bra_FA0F    ; jmp
 bra_FA49:
 C - - - - - 0x03FA59 0F:FA49: 88        DEY
 C - - - - - 0x03FA5A 0F:FA4A: D0 07     BNE bra_FA53
 C - - - - - 0x03FA5C 0F:FA4C: 20 67 FA  JSR sub_FA67
-C - - - - - 0x03FA5F 0F:FA4F: A9 7C     LDA #$7C
+C - - - - - 0x03FA5F 0F:FA4F: A9 7C     LDA #con_chr_bank_bg + $7C
+; bzk optimize, JMP для безопасности
 C - - - - - 0x03FA61 0F:FA51: D0 D2     BNE bra_FA25    ; jmp
 bra_FA53:
 C - - - - - 0x03FA63 0F:FA53: 88        DEY
@@ -7281,8 +7282,8 @@ C - - - - - 0x03FAB9 0F:FAA9: 20 81 F8  JSR sub_F881_garbage_loop
 C - - - - - 0x03FABC 0F:FAAC: A2 02     LDX #$02
 C - - - - - 0x03FABE 0F:FAAE: 20 81 F8  JSR sub_F881_garbage_loop
 ofs_067_FAB2_08:
-C - - J - - 0x03FAC2 0F:FAB2: A9 7C     LDA #con_chr_bank + $7C
-C - - - - - 0x03FAC4 0F:FAB4: 20 25 FA  JSR sub_FA25
+C - - J - - 0x03FAC2 0F:FAB2: A9 7C     LDA #con_chr_bank_bg + $7C
+C - - - - - 0x03FAC4 0F:FAB4: 20 25 FA  JSR sub_FA25_запись_банков_фона_из_A
 C - - - - - 0x03FAC7 0F:FAB7: 4C 8D FB  JMP loc_FB8D
 
 
@@ -7294,8 +7295,8 @@ C - - - - - 0x03FACF 0F:FABF: A4 4D     LDY ram_004D
 C - - - - - 0x03FAD1 0F:FAC1: D0 09     BNE bra_FACC
 C - - - - - 0x03FAD3 0F:FAC3: A5 A6     LDA ram_screen_pos_X
 C - - - - - 0x03FAD5 0F:FAC5: A2 9A     LDX #$9A
-C - - - - - 0x03FAD7 0F:FAC7: A0 6C     LDY #$6C
-C - - - - - 0x03FAD9 0F:FAC9: 4C 0F FA  JMP loc_FA0F
+C - - - - - 0x03FAD7 0F:FAC7: A0 6C     LDY #con_chr_bank_bg + $6C
+C - - - - - 0x03FAD9 0F:FAC9: 4C 0F FA  JMP loc_FA0F_запись_скролла_и_банков_фона
 bra_FACC:
 C - - - - - 0x03FADC 0F:FACC: A2 02     LDX #$02
 C - - - - - 0x03FADE 0F:FACE: 20 81 F8  JSR sub_F881_garbage_loop
@@ -7320,10 +7321,10 @@ C - - - - - 0x03FAFA 0F:FAEA: 85 4A     STA ram_copy_C000
 C - - - - - 0x03FAFC 0F:FAEC: E6 4D     INC ram_004D
 C - - - - - 0x03FAFE 0F:FAEE: 88        DEY
 C - - - - - 0x03FAFF 0F:FAEF: F0 05     BEQ bra_FAF6
-C - - - - - 0x03FB01 0F:FAF1: A9 7C     LDA #con_chr_bank + $7C
-C - - - - - 0x03FB03 0F:FAF3: 4C 25 FA  JMP loc_FA25
+C - - - - - 0x03FB01 0F:FAF1: A9 7C     LDA #con_chr_bank_bg + $7C
+C - - - - - 0x03FB03 0F:FAF3: 4C 25 FA  JMP loc_FA25_запись_банков_фона_из_A
 bra_FAF6:
-C - - - - - 0x03FB06 0F:FAF6: 4C 34 FC  JMP loc_FC34
+C - - - - - 0x03FB06 0F:FAF6: 4C 34 FC  JMP loc_FC34_запись_банков_фона_из_адресов
 
 
 
@@ -7334,7 +7335,7 @@ C - - - - - 0x03FB0B 0F:FAFB: CA        DEX
 C - - - - - 0x03FB0C 0F:FAFC: 10 FD     BPL bra_FAFB_garbage_loop
 bra_FAFE:
 loc_FAFE:
-C D 3 - - - 0x03FB0E 0F:FAFE: 20 34 FC  JSR sub_FC34
+C D 3 - - - 0x03FB0E 0F:FAFE: 20 34 FC  JSR sub_FC34_запись_банков_фона_из_адресов
 C - - - - - 0x03FB11 0F:FB01: 4C 8D FB  JMP loc_FB8D
 
 
@@ -7370,12 +7371,12 @@ C - - - - - 0x03FB3C 0F:FB2C: 60        RTS
 ofs_067_FB2D_0E:
 C - - J - - 0x03FB3D 0F:FB2D: A2 01     LDX #$01
 C - - - - - 0x03FB3F 0F:FB2F: 20 81 F8  JSR sub_F881_garbage_loop
-C - - - - - 0x03FB42 0F:FB32: A9 6C     LDA #$6C
+C - - - - - 0x03FB42 0F:FB32: A9 6C     LDA #con_chr_bank_bg + $6C
 C - - - - - 0x03FB44 0F:FB34: 2C        .byte $2C   ; BIT
 bra_FB35:
 ofs_067_FB35_0D:
-C - - - - - 0x03FB45 0F:FB35: A9 7C     LDA #con_chr_bank + $7C
-C - - - - - 0x03FB47 0F:FB37: 20 25 FA  JSR sub_FA25
+C - - - - - 0x03FB45 0F:FB35: A9 7C     LDA #con_chr_bank_bg + $7C
+C - - - - - 0x03FB47 0F:FB37: 20 25 FA  JSR sub_FA25_запись_банков_фона_из_A
 C - - - - - 0x03FB4A 0F:FB3A: 4C 8D FB  JMP loc_FB8D
 
 
@@ -7481,15 +7482,15 @@ C - - - - - 0x03FBFF 0F:FBEF: 60        RTS
 
 
 
-loc_FC34:
-sub_FC34:
+loc_FC34_запись_банков_фона_из_адресов:
+sub_FC34_запись_банков_фона_из_адресов:
 C D 3 - - - 0x03FC44 0F:FC34: A9 00     LDA #$00
 C - - - - - 0x03FC46 0F:FC36: 8D 00 80  STA $8000
-C - - - - - 0x03FC49 0F:FC39: A5 32     LDA ram_0032
+C - - - - - 0x03FC49 0F:FC39: A5 32     LDA ram_chr_bank_bg
 C - - - - - 0x03FC4B 0F:FC3B: 8D 01 80  STA $8001
 C - - - - - 0x03FC4E 0F:FC3E: A9 01     LDA #$01
 C - - - - - 0x03FC50 0F:FC40: 8D 00 80  STA $8000
-C - - - - - 0x03FC53 0F:FC43: A5 33     LDA ram_0033
+C - - - - - 0x03FC53 0F:FC43: A5 33     LDA ram_chr_bank_bg + $01
 C - - - - - 0x03FC55 0F:FC45: 8D 01 80  STA $8001
 C - - - - - 0x03FC58 0F:FC48: 60        RTS
 

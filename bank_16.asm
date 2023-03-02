@@ -48,8 +48,8 @@ C - - - - - 0x02C0E7 0B:80D7: 20 32 D0  JSR sub_0x03D042_поинтеры_пос
 ofs_041_80E4_00:
 C - - J - - 0x02C0F4 0B:80E4: 20 BE DA  JSR sub_0x03DACE_удалить_все_объекты
 C - - - - - 0x02C0F7 0B:80E7: EE 3E 06  INC ram_063E
-C - - - - - 0x02C0FA 0B:80EA: A9 74     LDA #$74
-C - - - - - 0x02C0FC 0B:80EC: 85 32     STA ram_0032
+C - - - - - 0x02C0FA 0B:80EA: A9 74     LDA #con_chr_bank_bg + $74
+C - - - - - 0x02C0FC 0B:80EC: 85 32     STA ram_chr_bank_bg
 C - - - - - 0x02C0FE 0B:80EE: 20 00 AC  JSR sub_AC00
 C - - - - - 0x02C102 0B:80F2: A0 02     LDY #con_0x03DC39_02
 C - - - - - 0x02C104 0B:80F4: 20 04 DC  JSR sub_0x03DC14
@@ -848,17 +848,17 @@ C - - - - - 0x02EB9D 0B:AB8D: 60        RTS
 
 
 tbl_ABFC:
-- D 1 - - - 0x02EC0C 0B:ABFC: 58        .byte $58   ; 00 story
-- D 1 - - - 0x02EC0D 0B:ABFD: 58        .byte $58   ; 01 vs player
-- D 1 - - - 0x02EC0E 0B:ABFE: 58        .byte $58   ; 02 vs cpu
-- D 1 - - - 0x02EC0F 0B:ABFF: 76        .byte $76   ; 03 vs team
+- D 1 - - - 0x02EC0C 0B:ABFC: 58        .byte con_chr_bank_bg + $58   ; 00 story
+- D 1 - - - 0x02EC0D 0B:ABFD: 58        .byte con_chr_bank_bg + $58   ; 01 vs player
+- D 1 - - - 0x02EC0E 0B:ABFE: 58        .byte con_chr_bank_bg + $58   ; 02 vs cpu
+- D 1 - - - 0x02EC0F 0B:ABFF: 76        .byte con_chr_bank_bg + $76   ; 03 vs team
 
 
 
 sub_AC00:
 C - - - - - 0x02EC10 0B:AC00: A4 2C     LDY ram_game_mode
 C - - - - - 0x02EC12 0B:AC02: B9 FC AB  LDA tbl_ABFC,Y
-C - - - - - 0x02EC15 0B:AC05: 85 33     STA ram_0033
+C - - - - - 0x02EC15 0B:AC05: 85 33     STA ram_chr_bank_bg + $01
 C - - - - - 0x02EC17 0B:AC07: 60        RTS
 
 

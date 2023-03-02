@@ -81,7 +81,7 @@ C - - - - - 0x03409B 0D:808B: 9D F6 06  STA ram_06F6,X
 C - - - - - 0x03409E 0D:808E: 9D F1 06  STA ram_06F1,X
 C - - - - - 0x0340A1 0D:8091: 9D E4 06  STA ram_06E4,X
 C - - - - - 0x0340A4 0D:8094: 9D DC 06  STA ram_06DC,X
-C - - - - - 0x0340A7 0D:8097: 9D DA 06  STA ram_06DA,X
+C - - - - - 0x0340A7 0D:8097: 9D DA 06  STA ram_plr_06DA,X
 C - - - - - 0x0340AA 0D:809A: 9D C0 06  STA ram_шаблон_ai,X
 C - - - - - 0x0340AD 0D:809D: 9D C2 06  STA ram_06C2,X
 C - - - - - 0x0340B0 0D:80A0: 9D C4 06  STA ram_06C4,X
@@ -483,7 +483,7 @@ C - - - - - 0x03439B 0D:838B: 18        CLC
 C - - - - - 0x03439C 0D:838C: 65 16     ADC ram_0016
 C - - - - - 0x03439E 0D:838E: A8        TAY
 C - - - - - 0x03439F 0D:838F: B9 E8 06  LDA ram_06E8,Y
-C - - - - - 0x0343A2 0D:8392: 9D DA 06  STA ram_06DA,X
+C - - - - - 0x0343A2 0D:8392: 9D DA 06  STA ram_plr_06DA,X
 C - - - - - 0x0343A5 0D:8395: A4 17     LDY ram_0017
 C - - - - - 0x0343A7 0D:8397: A9 0A     LDA #$0A
 C - - - - - 0x0343A9 0D:8399: D0 D5     JMP loc_8370
@@ -495,7 +495,7 @@ C - - - - - 0x0343AF 0D:839F: FE C2 06  INC ram_06C2,X
                                         LDY ram_0004
 C - - - - - 0x0343B2 0D:83A2: C8        INY
 C - - - - - 0x0343B3 0D:83A3: 20 20 ED  JSR sub_0x03ED30_чтение_cpu_btn
-C - - - - - 0x0343B6 0D:83A6: 9D DA 06  STA ram_06DA,X
+C - - - - - 0x0343B6 0D:83A6: 9D DA 06  STA ram_plr_06DA,X
 C - - - - - 0x0343B9 0D:83A9: A9 15     LDA #$15
 C - - - - - 0x0343BB 0D:83AB: 4C 70 83  JMP loc_8370
 
@@ -542,7 +542,7 @@ C - - - - - 0x034374 0D:8364: FE C2 06  INC ram_06C2,X
                                         LDY ram_0004
 C - - - - - 0x034377 0D:8367: C8        INY
 C - - - - - 0x034378 0D:8368: 20 20 ED  JSR sub_0x03ED30_чтение_cpu_btn
-C - - - - - 0x03437B 0D:836B: 9D DA 06  STA ram_06DA,X
+C - - - - - 0x03437B 0D:836B: 9D DA 06  STA ram_plr_06DA,X
 C - - - - - 0x03437E 0D:836E: A9 0A     LDA #$0A
 loc_8370:
 C D 0 - - - 0x034380 0D:8370: 9D D4 06  STA ram_06D4,X
@@ -577,7 +577,7 @@ C - - - - - 0x0342E5 0D:82D5: C8        INY
 C - - - - - 0x0342E6 0D:82D6: 20 20 ED  JSR sub_0x03ED30_чтение_cpu_btn
 C - - - - - 0x0342E9 0D:82D9: 9D D4 06  STA ram_06D4,X
 C - - - - - 0x0342EC 0D:82DC: A9 00     LDA #$00
-C - - - - - 0x0342EE 0D:82DE: 9D DA 06  STA ram_06DA,X
+C - - - - - 0x0342EE 0D:82DE: 9D DA 06  STA ram_plr_06DA,X
 C - - - - - 0x0342F1 0D:82E1: A9 03     LDA #$03
 C - - - - - 0x0342F3 0D:82E3: 9D D2 06  STA ram_06D2,X
 C - - - - - 0x0342F6 0D:82E6: 4C 6E 82  JMP loc_826E
@@ -908,17 +908,17 @@ C - - - - - 0x034502 0D:84F2: F0 03     BEQ bra_84F7
 bra_84F4:
 C - - - - - 0x034504 0D:84F4: 4C FB 89  JMP loc_89FB
 bra_84F7:
-C - - - - - 0x034507 0D:84F7: BD DA 06  LDA ram_06DA,X
+C - - - - - 0x034507 0D:84F7: BD DA 06  LDA ram_plr_06DA,X
 C - - - - - 0x03450A 0D:84FA: D0 14     BNE bra_8510
-C - - - - - 0x03450C 0D:84FC: FE DA 06  INC ram_06DA,X
+C - - - - - 0x03450C 0D:84FC: FE DA 06  INC ram_plr_06DA,X
 C - - - - - 0x03450F 0D:84FF: 20 D8 ED  JSR sub_0x03EDE8
 C - - - - - 0x034512 0D:8502: C9 10     CMP #$10
 C - - - - - 0x034514 0D:8504: B0 03     BCS bra_8509
-C - - - - - 0x034516 0D:8506: FE DA 06  INC ram_06DA,X
+C - - - - - 0x034516 0D:8506: FE DA 06  INC ram_plr_06DA,X
 bra_8509:
 C - - - - - 0x034519 0D:8509: C9 20     CMP #$20
 C - - - - - 0x03451B 0D:850B: 90 03     BCC bra_8510
-C - - - - - 0x03451D 0D:850D: FE DA 06  INC ram_06DA,X
+C - - - - - 0x03451D 0D:850D: FE DA 06  INC ram_plr_06DA,X
 bra_8510:
 C - - - - - 0x034520 0D:8510: BC DE 06  LDY ram_06DE,X
 C - - - - - 0x034523 0D:8513: B9 40 05  LDA ram_obj_0540,Y
@@ -928,12 +928,12 @@ C - - - - - 0x03452A 0D:851A: C9 06     CMP #$06
 C - - - - - 0x03452C 0D:851C: F0 03     BEQ bra_8521
 C - - - - - 0x03452E 0D:851E: 4C 9A 89  JMP loc_899A
 bra_8521:
-C - - - - - 0x034531 0D:8521: BD DA 06  LDA ram_06DA,X
+C - - - - - 0x034531 0D:8521: BD DA 06  LDA ram_plr_06DA,X
 C - - - - - 0x034534 0D:8524: C9 03     CMP #$03
 C - - - - - 0x034536 0D:8526: D0 0D     BNE bra_8535
 - - - - - - 0x034538 0D:8528: 4C FB 89  JMP loc_89FB
 bra_852B:
-C - - - - - 0x03453B 0D:852B: BD DA 06  LDA ram_06DA,X
+C - - - - - 0x03453B 0D:852B: BD DA 06  LDA ram_plr_06DA,X
 C - - - - - 0x03453E 0D:852E: C9 02     CMP #$02
 C - - - - - 0x034540 0D:8530: D0 03     BNE bra_8535
 C - - - - - 0x034542 0D:8532: 4C FB 89  JMP loc_89FB
@@ -1056,7 +1056,7 @@ C - - - - - 0x034617 0D:8607: 4C 0E 8A  JMP loc_8A0E
 
 
 ofs_033_860A_15:
-C - - J - - 0x03461A 0D:860A: BD DA 06  LDA ram_06DA,X ; 06DA 06DB 
+C - - J - - 0x03461A 0D:860A: BD DA 06  LDA ram_plr_06DA,X ; 06DA 06DB 
 C - - - - - 0x03461D 0D:860D: 20 32 D0  JSR sub_0x03D042_поинтеры_после_JSR
 - - - - - - 0x034620 0D:8610: 08 87     .word ofs_032_8708_00
 - - - - - - 0x034622 0D:8612: D8 86     .word ofs_032_86D8_01
@@ -1361,18 +1361,18 @@ C - - - - - 0x034816 0D:8806: A9 02     LDA #$02
 C - - - - - 0x034818 0D:8808: 85 0D     STA ram_000D
 bra_880A:
 C - - - - - 0x03481A 0D:880A: AD 38 06  LDA ram_0638
-C - - - - - 0x03481D 0D:880D: DD DA 06  CMP ram_06DA,X
+C - - - - - 0x03481D 0D:880D: DD DA 06  CMP ram_plr_06DA,X
 C - - - - - 0x034820 0D:8810: F0 D8     BEQ bra_87EA
 C - - - - - 0x034822 0D:8812: AD 38 06  LDA ram_0638
 C - - - - - 0x034825 0D:8815: F0 1B     BEQ bra_8832
 C - - - - - 0x034827 0D:8817: 18        CLC
 C - - - - - 0x034828 0D:8818: 69 01     ADC #$01
-C - - - - - 0x03482A 0D:881A: DD DA 06  CMP ram_06DA,X
+C - - - - - 0x03482A 0D:881A: DD DA 06  CMP ram_plr_06DA,X
 C - - - - - 0x03482D 0D:881D: F0 CB     BEQ bra_87EA
 C - - - - - 0x03482F 0D:881F: AD 38 06  LDA ram_0638
 C - - - - - 0x034832 0D:8822: 38        SEC
 C - - - - - 0x034833 0D:8823: E9 01     SBC #$01
-C - - - - - 0x034835 0D:8825: DD DA 06  CMP ram_06DA,X
+C - - - - - 0x034835 0D:8825: DD DA 06  CMP ram_plr_06DA,X
 C - - - - - 0x034838 0D:8828: F0 C0     BEQ bra_87EA
 C - - - - - 0x03483A 0D:882A: 90 06     BCC bra_8832
 C - - - - - 0x03483C 0D:882C: A5 0D     LDA ram_000D
@@ -1457,7 +1457,7 @@ ofs_033_88A2_04:
 C - - J - - 0x0348B2 0D:88A2: BD 20 05  LDA ram_obj_0520,X ; 0520 0521 
 C - - - - - 0x0348B5 0D:88A5: C9 03     CMP #con_plr_state_получает_урон
 C - - - - - 0x0348B7 0D:88A7: F0 1E     BEQ bra_88C7
-C - - - - - 0x0348B9 0D:88A9: BD DA 06  LDA ram_06DA,X
+C - - - - - 0x0348B9 0D:88A9: BD DA 06  LDA ram_plr_06DA,X
 C - - - - - 0x0348BC 0D:88AC: 20 32 D0  JSR sub_0x03D042_поинтеры_после_JSR
 - D 0 - I - 0x0348BF 0D:88AF: B5 88     .word ofs_031_88B5_00
 - D 0 - I - 0x0348C1 0D:88B1: CA 88     .word ofs_031_88CA_01
@@ -1473,7 +1473,7 @@ C - - - - - 0x0348CA 0D:88BA: A9 04     LDA #con_btn_Down
 C - - - - - 0x0348CC 0D:88BC: 9D C8 06  STA ram_06C8,X
 C - - - - - 0x0348CF 0D:88BF: 95 8E     STA ram_btn_press,X
 C - - - - - 0x0348D1 0D:88C1: 95 91     STA ram_btn_hold,X
-C - - - - - 0x0348D3 0D:88C3: FE DA 06  INC ram_06DA,X
+C - - - - - 0x0348D3 0D:88C3: FE DA 06  INC ram_plr_06DA,X
 C - - - - - 0x0348D6 0D:88C6: 60        RTS
 bra_88C7:
 C - - - - - 0x0348D7 0D:88C7: 4C 96 ED  JMP loc_0x03EDA6
@@ -1491,7 +1491,7 @@ C - - - - - 0x0348E2 0D:88D2: 1D C8 06  ORA ram_06C8,X
 C - - - - - 0x0348E5 0D:88D5: 95 91     STA ram_btn_hold,X
 C - - - - - 0x0348E7 0D:88D7: 9D C6 06  STA ram_06C6,X
 C - - - - - 0x0348EA 0D:88DA: A9 02     LDA #$02
-C - - - - - 0x0348EC 0D:88DC: 9D DA 06  STA ram_06DA,X
+C - - - - - 0x0348EC 0D:88DC: 9D DA 06  STA ram_plr_06DA,X
 C - - - - - 0x0348EF 0D:88DF: 60        RTS
 
 
@@ -1509,7 +1509,7 @@ C - - - - - 0x034904 0D:88F4: 9D CC 06  STA ram_06CC,X
 C - - - - - 0x034907 0D:88F7: A9 02     LDA #$02
 C - - - - - 0x034909 0D:88F9: 9D D2 06  STA ram_06D2,X
 C - - - - - 0x03490C 0D:88FC: A9 00     LDA #$00
-C - - - - - 0x03490E 0D:88FE: 9D DA 06  STA ram_06DA,X
+C - - - - - 0x03490E 0D:88FE: 9D DA 06  STA ram_plr_06DA,X
 C - - - - - 0x034911 0D:8901: 9D C4 06  STA ram_06C4,X
 C - - - - - 0x034914 0D:8904: 4C 0E 8A  JMP loc_8A0E
 
@@ -1540,7 +1540,7 @@ bra_892D:
 C - - J - - 0x03493D 0D:892D: BD 20 05  LDA ram_obj_0520,X ; 0520 0521 
 C - - - - - 0x034940 0D:8930: C9 03     CMP #con_plr_state_получает_урон
 C - - - - - 0x034942 0D:8932: F0 93     BEQ bra_88C7
-C - - - - - 0x034944 0D:8934: BD DA 06  LDA ram_06DA,X
+C - - - - - 0x034944 0D:8934: BD DA 06  LDA ram_plr_06DA,X
 C - - - - - 0x034947 0D:8937: C9 04     CMP #$04
 C - - - - - 0x034949 0D:8939: B0 0B     BCS bra_8946
 C - - - - - 0x03494B 0D:893B: 20 32 D0  JSR sub_0x03D042_поинтеры_после_JSR
@@ -1550,7 +1550,7 @@ C - - - - - 0x03494B 0D:893B: 20 32 D0  JSR sub_0x03D042_поинтеры_пос
 - D 0 - I - 0x034954 0D:8944: 59 89     .word ofs_030_8959_03
 bra_8946:
 - - - - - - 0x034956 0D:8946: A9 00     LDA #$00
-- - - - - - 0x034958 0D:8948: 9D DA 06  STA ram_06DA,X
+- - - - - - 0x034958 0D:8948: 9D DA 06  STA ram_plr_06DA,X
 - - - - - - 0x03495B 0D:894B: F0 E0     BEQ bra_892D   ; jmp
 
 
@@ -1560,7 +1560,7 @@ C - - J - - 0x03495D 0D:894D: BD 10 06  LDA ram_plr_флаг_индекса_ат
 C - - - - - 0x034960 0D:8950: D0 03     BNE bra_8955
 C - - - - - 0x034962 0D:8952: 4C CA 88  JMP loc_88CA
 bra_8955:
-C - - - - - 0x034965 0D:8955: FE DA 06  INC ram_06DA,X
+C - - - - - 0x034965 0D:8955: FE DA 06  INC ram_plr_06DA,X
 C - - - - - 0x034968 0D:8958: 60        RTS
 
 
@@ -1570,7 +1570,7 @@ C - - J - - 0x034969 0D:8959: BD 10 06  LDA ram_plr_флаг_индекса_ат
 C - - - - - 0x03496C 0D:895C: F0 03     BEQ bra_8961
 C - - - - - 0x03496E 0D:895E: 4C 0E 8A  JMP loc_8A0E
 bra_8961:
-C - - - - - 0x034971 0D:8961: 9D DA 06  STA ram_06DA,X
+C - - - - - 0x034971 0D:8961: 9D DA 06  STA ram_plr_06DA,X
 C - - - - - 0x034974 0D:8964: A9 04     LDA #con_btn_Down
 C - - - - - 0x034976 0D:8966: 9D C8 06  STA ram_06C8,X
 C - - - - - 0x034979 0D:8969: 9D C6 06  STA ram_06C6,X
@@ -1579,19 +1579,19 @@ C - - - - - 0x03497C 0D:896C: 4C FB 89  JMP loc_89FB
 
 
 ofs_033_896F_00:
-C - - J - - 0x03497F 0D:896F: BD DA 06  LDA ram_06DA,X
+C - - J - - 0x03497F 0D:896F: BD DA 06  LDA ram_plr_06DA,X
 C - - - - - 0x034982 0D:8972: D0 59     BNE bra_89CD
 C - - - - - 0x034984 0D:8974: A5 11     LDA ram_0011
 C - - - - - 0x034986 0D:8976: C9 08     CMP #$08
 C - - - - - 0x034988 0D:8978: D0 0B     BNE bra_8985
 C - - - - - 0x03498A 0D:897A: AC 25 01  LDY ram_option_difficulty
 C - - - - - 0x03498D 0D:897D: B9 91 A1  LDA tbl_A191,Y
-C - - - - - 0x034990 0D:8980: 9D DA 06  STA ram_06DA,X
-C - - - - - 0x034993 0D:8983: D0 09     BNE bra_898E
+C - - - - - 0x034990 0D:8980: 9D DA 06  STA ram_plr_06DA,X
+C - - - - - 0x034993 0D:8983: D0 09     BNE bra_898E    ; jmp
 bra_8985:
 C - - - - - 0x034995 0D:8985: AC 25 01  LDY ram_option_difficulty
 C - - - - - 0x034998 0D:8988: B9 8D A1  LDA tbl_A18D,Y
-C - - - - - 0x03499B 0D:898B: 9D DA 06  STA ram_06DA,X
+C - - - - - 0x03499B 0D:898B: 9D DA 06  STA ram_plr_06DA,X
 bra_898E:
 C - - - - - 0x03499E 0D:898E: AD 38 06  LDA ram_0638
 C - - - - - 0x0349A1 0D:8991: 8A        TXA
@@ -1607,11 +1607,11 @@ C D 0 - - - 0x0349AA 0D:899A: 4C F9 EC  JMP loc_0x03ED09
 
 
 ofs_033_899D_0D:
-C - - J - - 0x0349AD 0D:899D: BD DA 06  LDA ram_06DA,X
+C - - J - - 0x0349AD 0D:899D: BD DA 06  LDA ram_plr_06DA,X
 C - - - - - 0x0349B0 0D:89A0: D0 2B     BNE bra_89CD
 C - - - - - 0x0349B2 0D:89A2: AC 25 01  LDY ram_option_difficulty
 C - - - - - 0x0349B5 0D:89A5: B9 91 A1  LDA tbl_A191,Y
-C - - - - - 0x0349B8 0D:89A8: 9D DA 06  STA ram_06DA,X ; 06DA 06DB 
+C - - - - - 0x0349B8 0D:89A8: 9D DA 06  STA ram_plr_06DA,X ; 06DA 06DB 
 C - - - - - 0x0349BB 0D:89AB: BC DE 06  LDY ram_06DE,X ; 06DE 06DF 
 C - - - - - 0x0349BE 0D:89AE: B9 50 05  LDA ram_obj_id,Y ; 0550 0551 
 C - - - - - 0x0349C1 0D:89B1: C9 03     CMP #$03
@@ -1624,7 +1624,7 @@ C - - - - - 0x0349CE 0D:89BE: D0 0D     BNE bra_89CD
 C - - - - - 0x0349D0 0D:89C0: A9 19     LDA #$19
 C - - - - - 0x0349D2 0D:89C2: 9D D4 06  STA ram_06D4,X
 C - - - - - 0x0349D5 0D:89C5: A9 00     LDA #$00
-C - - - - - 0x0349D7 0D:89C7: 9D DA 06  STA ram_06DA,X
+C - - - - - 0x0349D7 0D:89C7: 9D DA 06  STA ram_plr_06DA,X
 C - - - - - 0x0349DA 0D:89CA: 4C F9 EC  JMP loc_0x03ED09
 bra_89CD:
 C - - - - - 0x0349DD 0D:89CD: BC DE 06  LDY ram_06DE,X
@@ -1645,7 +1645,7 @@ C - - - - - 0x0349FD 0D:89ED: C9 03     CMP #con_plr_state_получает_ур
 C - - - - - 0x0349FF 0D:89EF: F0 A9     BEQ bra_899A
 C - - - - - 0x034A01 0D:89F1: 20 2F EE  JSR sub_0x03EE3F
 C - - - - - 0x034A04 0D:89F4: 90 A4     BCC bra_899A
-C - - - - - 0x034A06 0D:89F6: DE DA 06  DEC ram_06DA,X
+C - - - - - 0x034A06 0D:89F6: DE DA 06  DEC ram_plr_06DA,X
 C - - - - - 0x034A09 0D:89F9: D0 9F     BNE bra_899A
 bra_89FB:
 loc_89FB:
@@ -1653,7 +1653,7 @@ C D 0 - - - 0x034A0B 0D:89FB: A9 00     LDA #$00
 C - - - - - 0x034A0D 0D:89FD: 9D D2 06  STA ram_06D2,X
 C - - - - - 0x034A10 0D:8A00: 9D C4 06  STA ram_06C4,X
 C - - - - - 0x034A13 0D:8A03: 9D C6 06  STA ram_06C6,X
-C - - - - - 0x034A16 0D:8A06: 9D DA 06  STA ram_06DA,X
+C - - - - - 0x034A16 0D:8A06: 9D DA 06  STA ram_plr_06DA,X
 C - - - - - 0x034A19 0D:8A09: A9 C0     LDA #$C0
 C - - - - - 0x034A1B 0D:8A0B: 9D E0 06  STA ram_06E0,X
 bra_8A0E:
