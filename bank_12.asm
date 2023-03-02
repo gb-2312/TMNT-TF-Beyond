@@ -6260,6 +6260,35 @@ C - - - - - 0x02649C 09:A48C: 60        RTS
 
 
 
+sub_A4C7:
+C - - - - - 0x0264D7 09:A4C7: 20 36 A3  JSR sub_A336
+C - - - - - 0x0264DA 09:A4CA: C0 32     CPY #con_0552_special_raph_сверло
+C - - - - - 0x0264DC 09:A4CC: D0 BE     BNE bra_A82E_RTS
+; перемещено из банка 16
+C - - - - - 0x02E830 0B:A820: 8A        TXA
+C - - - - - 0x02E831 0B:A821: 49 05     EOR #$05
+C - - - - - 0x02E833 0B:A823: A8        TAY
+C - - - - - 0x02E834 0B:A824: B9 50 05  LDA ram_obj_id,Y ; 0550 0551 
+C - - - - - 0x02E837 0B:A827: A8        TAY
+C - - - - - 0x02E838 0B:A828: B9 31 A8  LDA tbl_A831,Y
+C - - - - - 0x02E83B 0B:A82B: 9D B0 05  STA ram_obj_05B0,X
+bra_A82E_RTS:
+C - - - - - 0x02E83E 0B:A82E: 4C 17 F6  RTS
+
+
+
+tbl_A831:
+; перемещено из банка 16
+- D 1 - - - 0x02E841 0B:A831: 20        .byte $20   ; 00 leo
+- - - - - - 0x02E842 0B:A832: 20        .byte $20   ; 01 raph
+- D 1 - - - 0x02E843 0B:A833: 20        .byte $20   ; 02 mike
+- - - - - - 0x02E844 0B:A834: 20        .byte $20   ; 03 don
+- D 1 - - - 0x02E845 0B:A835: 24        .byte $24   ; 04 casey
+- - - - - - 0x02E846 0B:A836: 24        .byte $24   ; 05 hot
+- D 1 - - - 0x02E847 0B:A837: 22        .byte $22   ; 06 shred
+
+
+
 ofs_073_A48D_01:
 C - - J - - 0x02649D 09:A48D: BD D0 04  LDA ram_obj_04D0,X ; 04D4 04D5 
 C - - - - - 0x0264A0 09:A490: F0 0A     BEQ bra_A49C
@@ -6300,35 +6329,6 @@ C - - - - - 0x0264D1 09:A4C1: D0 EC     BNE bra_A4AF    ; jmp
 ofs_076_A4C3_01:
 C - - J - - 0x0264D3 09:A4C3: A9 BE     LDA #$BE
 C - - - - - 0x0264D5 09:A4C5: D0 E8     BNE bra_A4AF    ; jmp
-
-
-
-sub_A4C7:
-C - - - - - 0x0264D7 09:A4C7: 20 36 A3  JSR sub_A336
-C - - - - - 0x0264DA 09:A4CA: C0 32     CPY #con_0552_special_raph_сверло
-C - - - - - 0x0264DC 09:A4CC: D0 BE     BNE bra_A82E_RTS
-; перемещено из банка 16
-C - - - - - 0x02E830 0B:A820: 8A        TXA
-C - - - - - 0x02E831 0B:A821: 49 05     EOR #$05
-C - - - - - 0x02E833 0B:A823: A8        TAY
-C - - - - - 0x02E834 0B:A824: B9 50 05  LDA ram_obj_id,Y ; 0550 0551 
-C - - - - - 0x02E837 0B:A827: A8        TAY
-C - - - - - 0x02E838 0B:A828: B9 31 A8  LDA tbl_A831,Y
-C - - - - - 0x02E83B 0B:A82B: 9D B0 05  STA ram_obj_05B0,X
-bra_A82E_RTS:
-C - - - - - 0x02E83E 0B:A82E: 4C 17 F6  RTS
-
-
-
-tbl_A831:
-; перемещено из банка 16
-- D 1 - - - 0x02E841 0B:A831: 20        .byte $20   ; 00 leo
-- - - - - - 0x02E842 0B:A832: 20        .byte $20   ; 01 raph
-- D 1 - - - 0x02E843 0B:A833: 20        .byte $20   ; 02 mike
-- - - - - - 0x02E844 0B:A834: 20        .byte $20   ; 03 don
-- D 1 - - - 0x02E845 0B:A835: 24        .byte $24   ; 04 casey
-- - - - - - 0x02E846 0B:A836: 24        .byte $24   ; 05 hot
-- D 1 - - - 0x02E847 0B:A837: 22        .byte $22   ; 06 shred
 
 
 
