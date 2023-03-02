@@ -28,7 +28,7 @@
 .export loc_0x027079
 .export sub_0x0270C3
 .export sub_0x027152
-.export ofs_0x0278CB
+.export ofs_0x0278CB_суперка_casey_песок_финальная_стадия
 .export sub_0x027AF8
 .export sub_0x027B61
 .export sub_0x027BC7
@@ -1086,17 +1086,17 @@ ofs_060_8753_08_делает_суперку:
 ; бабочка хота суперкой не является
 C - - J - - 0x024763 09:8753: BD 50 05  LDA ram_obj_id,X ; 0550 0551 
 C - - - - - 0x024766 09:8756: 20 32 D0  JSR sub_0x03D042_поинтеры_после_JSR
-- D 0 - I - 0x024769 09:8759: 5C B3     .word ofs_058_B35C_00_leo
-- D 0 - I - 0x02476B 09:875B: A8 B4     .word ofs_058_B4A8_01_raph
-- D 0 - I - 0x02476D 09:875D: A5 B5     .word ofs_058_B5A5_02_mike
-- D 0 - I - 0x02476F 09:875F: 78 B6     .word ofs_058_B678_03_don
-- D 0 - I - 0x024771 09:8761: 27 BA     .word ofs_058_BA27_04_casey
-- D 0 - I - 0x024773 09:8763: DA B8     .word ofs_058_B8DA_05_hot
-- D 0 - I - 0x024775 09:8765: 67 87     .word ofs_058_8767_06_shred
+- D 0 - I - 0x024769 09:8759: 5C B3     .word ofs_058_B35C_00_суперка_leo
+- D 0 - I - 0x02476B 09:875B: A8 B4     .word ofs_058_B4A8_01_суперка_raph
+- D 0 - I - 0x02476D 09:875D: A5 B5     .word ofs_058_B5A5_02_суперка_mike
+- D 0 - I - 0x02476F 09:875F: 78 B6     .word ofs_058_B678_03_суперка_don
+- D 0 - I - 0x024771 09:8761: 27 BA     .word ofs_058_BA27_04_суперка_casey
+- D 0 - I - 0x024773 09:8763: DA B8     .word ofs_058_B8DA_05_суперка_hot
+- D 0 - I - 0x024775 09:8765: 67 87     .word ofs_058_8767_06_суперка_shred
 
 
 
-ofs_058_8767_06_shred:
+ofs_058_8767_06_суперка_shred:
 C - - J - - 0x024777 09:8767: BD A0 04  LDA ram_obj_spd_Y_hi,X
 C - - - - - 0x02477A 09:876A: D0 03     BNE bra_876F
 C - - - - - 0x02477C 09:876C: 4C 25 B9  JMP loc_B925
@@ -9091,7 +9091,7 @@ tbl_B34E:
 
 
 
-ofs_058_B35C_00_leo:
+ofs_058_B35C_00_суперка_leo:
 C - - J - - 0x02736C 09:B35C: BD 40 05  LDA ram_obj_0540,X ; 0540 0541 
 C - - - - - 0x02736F 09:B35F: 20 32 D0  JSR sub_0x03D042_поинтеры_после_JSR
 - D 1 - I - 0x027372 09:B362: 6A B3     .word ofs_049_B36A_00
@@ -9312,11 +9312,11 @@ tbl_B4A4:
 
 
 
-ofs_058_B4A8_01_raph:
+ofs_058_B4A8_01_суперка_raph:
 C - - J - - 0x0274B8 09:B4A8: BD 40 05  LDA ram_obj_0540,X ; 0540 0541 
 C - - - - - 0x0274BB 09:B4AB: 20 32 D0  JSR sub_0x03D042_поинтеры_после_JSR
 - D 1 - I - 0x0274BE 09:B4AE: BA B4     .word ofs_048_B4BA_00
-- D 1 - I - 0x0274C0 09:B4B0: CE B4     .word ofs_048_B4CE_01_сверло_рафа
+- D 1 - I - 0x0274C0 09:B4B0: CE B4     .word ofs_048_B4CE_01
 - D 1 - I - 0x0274C2 09:B4B2: 11 B5     .word ofs_048_B511_02
 - D 1 - I - 0x0274C4 09:B4B4: 6F B5     .word ofs_048_B56F_03
 - D 1 - I - 0x0274C6 09:B4B6: 9C B5     .word ofs_048_B59C_04
@@ -9340,7 +9340,7 @@ C - - - - - 0x0274DD 09:B4CD: 60        RTS
 
 
 
-ofs_048_B4CE_01_сверло_рафа:
+ofs_048_B4CE_01:
 C - - J - - 0x0274DE 09:B4CE: DE 60 05  DEC ram_obj_0560,X ; 0560 0561 
 C - - - - - 0x0274E1 09:B4D1: D0 0F     BNE bra_B4E2
 C - - - - - 0x0274E3 09:B4D3: 20 C5 B4  JSR sub_B4C5
@@ -9460,7 +9460,7 @@ C - - - - - 0x0275B3 09:B5A3: D0 D4     BNE bra_B579    ; jmp
 
 
 
-ofs_058_B5A5_02_mike:
+ofs_058_B5A5_02_суперка_mike:
 C - - J - - 0x0275B5 09:B5A5: BD 40 05  LDA ram_obj_0540,X ; 0540 0541 
 C - - - - - 0x0275B8 09:B5A8: 20 32 D0  JSR sub_0x03D042_поинтеры_после_JSR
 - D 1 - I - 0x0275BB 09:B5AB: B5 B5     .word ofs_047_B5B5_00
@@ -9538,10 +9538,10 @@ C - - - - - 0x02762E 09:B61E: 60        RTS
 ofs_047_B61F_02:
 C - - J - - 0x02762F 09:B61F: BD E0 04  LDA ram_obj_04E0,X ; 04E0 04E1 
 C - - - - - 0x027632 09:B622: F0 03     BEQ bra_B627
-C - - - - - 0x027634 09:B624: A9 E4     LDA #$E4
+C - - - - - 0x027634 09:B624: A9 E4     LDA #$E4    ; ракеты понизу
 C - - - - - 0x027636 09:B626: 2C        .byte $2C   ; BIT
 bra_B627:
-C - - - - - 0x027637 09:B627: A9 B0     LDA #$B0
+C - - - - - 0x027637 09:B627: A9 B0     LDA #$B0    ; ракеты поверху
 C - - - - - 0x027639 09:B629: 9D 00 04  STA ram_plr_anim_id,X ; 0400 0401 
 C - - - - - 0x02763C 09:B62C: 20 B8 B3  JSR sub_B3B8
 C - - - - - 0x02763F 09:B62F: DE A0 04  DEC ram_obj_spd_Y_hi,X ; 04A0 04A1 
@@ -9586,7 +9586,7 @@ C - - - - - 0x027685 09:B675: 4C 6D 84  JMP loc_846D
 
 
 
-ofs_058_B678_03_don:
+ofs_058_B678_03_суперка_don:
 C - - J - - 0x027688 09:B678: BD 40 05  LDA ram_obj_0540,X ; 0540 0541 
 C - - - - - 0x02768B 09:B67B: 20 32 D0  JSR sub_0x03D042_поинтеры_после_JSR
 - D 1 - I - 0x02768E 09:B67E: BA B4     .word ofs_046_B4BA_00
@@ -9803,7 +9803,7 @@ C - - - - - 0x02782F 09:B81F: 4C 6D 84  JMP loc_846D
 
 
 
-loc_B822:
+loc_B822_суперка_casey_клюшка:
 C D 1 - - - 0x027832 09:B822: 20 69 DC  JSR sub_0x03DC79
 C - - - - - 0x027835 09:B825: BD 40 05  LDA ram_obj_0540,X ; 0540 0541 
 C - - - - - 0x027838 09:B828: 20 32 D0  JSR sub_0x03D042_поинтеры_после_JSR
@@ -9887,7 +9887,7 @@ C - - J - - 0x0278C1 09:B8B1: BD 10 04  LDA ram_obj_pos_Y,X
 C - - - - - 0x0278C4 09:B8B4: C9 B0     CMP #$B0
 C - - - - - 0x0278C6 09:B8B6: 90 F8     BCC bra_B8B0_RTS
 C - - - - - 0x0278C8 09:B8B8: 20 67 D0  JSR sub_0x03DB48_очистить_spd_X_и_spd_Z
-ofs_0x0278CB:
+ofs_0x0278CB_суперка_casey_песок_финальная_стадия:
 C - - - - - 0x0278CB 09:B8BB: A9 A2     LDA #$A2
 C - - - - - 0x0278CD 09:B8BD: 9D 00 04  STA ram_plr_anim_id,X
 C - - - - - 0x0278D0 09:B8C0: DE 60 05  DEC ram_obj_0560,X
@@ -9906,7 +9906,7 @@ C - - - - - 0x0278E9 09:B8D9: 60        RTS
 
 
 
-ofs_058_B8DA_05_hot:
+ofs_058_B8DA_05_суперка_hot:
 C - - J - - 0x0278EA 09:B8DA: BC 40 05  LDY ram_obj_0540,X
 C - - - - - 0x0278ED 09:B8DD: D0 10     BNE bra_B8EF
 C - - - - - 0x0278EF 09:B8DF: FE 40 05  INC ram_obj_0540,X
@@ -10099,14 +10099,14 @@ tbl_BA25:
 
 
 
-ofs_058_BA27_04_casey:
+ofs_058_BA27_04_суперка_casey:
 C - - J - - 0x027A37 09:BA27: BD A0 04  LDA ram_obj_spd_Y_hi,X
 C - - - - - 0x027A3A 09:BA2A: D0 03     BNE bra_BA2F
-C - - - - - 0x027A3C 09:BA2C: 4C 22 B8  JMP loc_B822
+C - - - - - 0x027A3C 09:BA2C: 4C 22 B8  JMP loc_B822_суперка_casey_клюшка
 bra_BA2F:
-C - - - - - 0x027A3F 09:BA2F: A9 B7     LDA #> (ofs_0x02F73B - $01)
+C - - - - - 0x027A3F 09:BA2F: A9 B7     LDA #> (ofs_0x02F73B_суперка_casey_песок - $01)
 C - - - - - 0x027A41 09:BA31: 48        PHA
-C - - - - - 0x027A42 09:BA32: A9 2A     LDA #< (ofs_0x02F73B - $01)
+C - - - - - 0x027A42 09:BA32: A9 2A     LDA #< (ofs_0x02F73B_суперка_casey_песок - $01)
 C - - - - - 0x027A44 09:BA34: 48        PHA
 C - - - - - 0x027A45 09:BA35: 4C E7 F5  JMP loc_0x03F5F7_swap_prg_16
 

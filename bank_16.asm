@@ -17,7 +17,7 @@
 .export sub_0x02EE60_выбрать_палитру_уровня
 .export sub_0x02EF50_записать_3_цвета_в_буфер
 .export loc_0x02EFA0
-.export ofs_0x02F73B
+.export ofs_0x02F73B_суперка_casey_песок
 .export loc_0x02FC90
 .export sub_0x02FD40
 .export sub_0x02FEE4
@@ -1669,8 +1669,8 @@ _off013_B6B0_06_shred:
 
 
 
-ofs_0x02F73B:
-C - - - - - 0x02F73B 0B:B72B: BD 40 05  LDA ram_obj_0540,X
+ofs_0x02F73B_суперка_casey_песок:
+C - - - - - 0x02F73B 0B:B72B: BD 40 05  LDA ram_obj_0540,X ; 0540 0541 
 C - - - - - 0x02F73E 0B:B72E: 20 32 D0  JSR sub_0x03D042_поинтеры_после_JSR
 - D 1 - I - 0x02F741 0B:B731: 3D B7     .word ofs_038_B73D_00
 - D 1 - I - 0x02F743 0B:B733: 50 B7     .word ofs_038_B750_01
@@ -1824,9 +1824,9 @@ C - - - - - 0x02F85B 0B:B84B: 4C 17 F6  JMP loc_0x03F627_restore_prg
 
 
 ofs_038_B84E_05:
-C - - J - - 0x02F85E 0B:B84E: A9 B8     LDA #> (ofs_0x0278CB - $01)
+C - - J - - 0x02F85E 0B:B84E: A9 B8     LDA #> (ofs_0x0278CB_суперка_casey_песок_финальная_стадия - $01)
 C - - - - - 0x02F860 0B:B850: 48        PHA
-C - - - - - 0x02F861 0B:B851: A9 BA     LDA #< (ofs_0x0278CB - $01)
+C - - - - - 0x02F861 0B:B851: A9 BA     LDA #< (ofs_0x0278CB_суперка_casey_песок_финальная_стадия - $01)
 C - - - - - 0x02F863 0B:B853: 48        PHA
 C - - - - - 0x02F864 0B:B854: 4C 17 F6  JMP loc_0x03F627_restore_prg
 
