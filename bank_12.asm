@@ -7928,7 +7928,9 @@ bra_ADF3:
 C - - - - - 0x026E03 09:ADF3: 20 E3 AE  JSR sub_AEE3    ; возможен PLA PLA
 C - - - - - 0x026E06 09:ADF6: E8        INX
 C - - - - - 0x026E07 09:ADF7: 88        DEY
+; bzk bug? почему ссылка на 058F?
 C - - - - - 0x026E08 09:ADF8: B9 90 04  LDA ram_obj_spd_X_lo,Y ; 0490 0491 058F 
+; bzk bug? почему ссылка на 057F?
 C - - - - - 0x026E0B 09:ADFB: 19 80 04  ORA ram_obj_spd_X_hi,Y ; 0480 0481 057F 
 C - - - - - 0x026E0E 09:ADFE: F0 4B     BEQ bra_AE4B
 C - - - - - 0x026E10 09:AE00: BD 90 04  LDA ram_obj_spd_X_lo,X ; 0490 0491 0492 
