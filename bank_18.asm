@@ -256,27 +256,6 @@ _off014_8198_14_turbo:
 
 
 
-_off014_81A1_0E_winner:
-- - - - - - 0x0301B1 0C:81A1: ED 20     .word $20ED
-- - - - - - 0x0301B3 0C:81A3: A1        .byte $A1, $93, $98, $98, $8F, $9C   ; WINNER
-
-- - - - - - 0x0301B9 0C:81A9: FF        .byte $FF   ; end token
-
-
-
-_off014_81AA_0F_player1_player2:
-- - - - - - 0x0301BA 0C:81AA: 02 25     .word $2502
-- - - - - - 0x0301BC 0C:81AC: 9A        .byte $9A, $96, $8B, $A3, $8F, $9C, $82   ; PLAYER1
-
-- - - - - - 0x0301C3 0C:81B3: FE        .byte $FE   ; continue
-
-- - - - - - 0x0301C4 0C:81B4: 1A 23     .word $231A
-- - - - - - 0x0301C6 0C:81B6: 9A        .byte $9A, $96, $8B, $A3, $8F, $9C, $83   ; PLAYER2
-
-- - - - - - 0x0301CD 0C:81BD: FF        .byte $FF   ; end token
-
-
-
 _off014_81BE_11:
 - D 0 - I - 0x0301CE 0C:81BE: AB 23     .word $23AB
 - D 0 - I - 0x0301D0 0C:81C0: C9        .byte $C9, $CA, $CB, $CC, $00, $D9, $DA, $DB, $DC, $DD   ; 
@@ -1589,8 +1568,8 @@ tbl_8C00:
 - D 0 - - - 0x030C26 0C:8C16: 86 81     .word _off014_8186_0B_hard
 - D 0 - - - 0x030C28 0C:8C18: 2C 82     .word _off014_822C_0C_expert
 - D 0 - - - 0x030C2A 0C:8C1A: 18 82     .word _off014_8218_0D_time_bonus_game
-- - - - - - 0x030C2C 0C:8C1C: A1 81     .word _off014_81A1_0E_winner
-- - - - - - 0x030C2E 0C:8C1E: AA 81     .word _off014_81AA_0F_player1_player2
+- - - - - - 0x030C2C 0C:8C1C: A1 81     .word $FFFF      ; 0E индекс не существует
+- - - - - - 0x030C2E 0C:8C1E: AA 81     .word $FFFF      ; 0F индекс не существует
 - - - - - - 0x030C30 0C:8C20: FF FF     .word $FFFF      ; 10 индекс не существует
 - D 0 - - - 0x030C32 0C:8C22: BE 81     .word _off014_81BE_11
 - D 0 - - - 0x030C34 0C:8C24: CB 81     .word _off014_81CB_12_cpu
