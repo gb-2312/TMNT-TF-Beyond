@@ -6729,8 +6729,6 @@ tbl_A6DF:
 - D 1 - - - 0x02671A 09:A70A: 1D        .byte $1D   ; 2C shred нога в воздухе
 - D 1 - - - 0x02671B 09:A70B: 25        .byte $26   ; 2D shred нога сидя
 - D 1 - - - 0x02671C 09:A70C: 1E        .byte $1E   ; 2E shred нога антиэйр
-; bzk garbage?
-- - - - - - 0x02671D 09:A70D: 10        .byte $10   ; 2F
 
 
 
@@ -6781,8 +6779,6 @@ tbl_A70E:
 - D 1 - - - 0x026749 09:A739: F6        .byte $F6   ; 2C shred нога в воздухе
 - D 1 - - - 0x02674A 09:A73A: EF        .byte $EF   ; 2D shred нога сидя
 - D 1 - - - 0x02674B 09:A73B: C0        .byte $C0   ; 2E shred нога антиэйр
-; bzk garbage?
-- - - - - - 0x02674C 09:A73C: E8        .byte $E8   ; 2F
 
 
 
@@ -6833,8 +6829,6 @@ tbl_A73D_продолжительность_атаки:
 - D 1 - - - 0x026778 09:A768: 10        .byte $10   ; 2C shred нога в воздухе
 - D 1 - - - 0x026779 09:A769: 05        .byte $05   ; 2D shred нога сидя
 - D 1 - - - 0x02677A 09:A76A: 0D        .byte $0D   ; 2E shred нога антиэйр
-; bzk garbage?
-- - - - - - 0x02677B 09:A76B: 40        .byte $40   ; 2F
 
 
 
