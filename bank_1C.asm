@@ -136,10 +136,10 @@ sub_809E_отрисовать_вариант_difficulty:
                                         RTS
 
 tbl_809F_difficulty:
-    .byte con_0x030C10_09   ; 00
-    .byte con_0x030C10_0A   ; 01
-    .byte con_0x030C10_0B   ; 02
-    .byte con_0x030C10_0C   ; 03
+    .byte con_print_diff_easy   ; 00
+    .byte con_print_diff_normal   ; 01
+    .byte con_print_diff_hard   ; 02
+    .byte con_print_diff_expert   ; 03
 
 
 
@@ -184,9 +184,9 @@ sub_80AE_отрисовать_вариант_skin:
                                         RTS
 
 tbl_80AF_skin:
-    .byte con_0x030C10_23   ; 00
-    .byte con_0x030C10_24   ; 01
-    .byte con_0x030C10_25   ; 02
+    .byte con_print_green   ; 00
+    .byte con_print_original   ; 01
+    .byte con_print_night   ; 02
 
 
 
@@ -221,8 +221,8 @@ sub_80BE_отрисовать_вариант_speed:
                                         RTS
 
 tbl_80BF_speed:
-    .byte con_0x030C10_13   ; 00
-    .byte con_0x030C10_14   ; 01
+    .byte con_print_spd_normal   ; 00
+    .byte con_print_spd_turbo   ; 01
 
 
 
@@ -257,10 +257,10 @@ sub_80CE_отрисовать_вариант_timer:
                                         RTS
 
 tbl_80CF_timer:
-    .byte con_0x030C10_1F   ; 00
-    .byte con_0x030C10_20   ; 01
-    .byte con_0x030C10_21   ; 02
-    .byte con_0x030C10_22   ; 03
+    .byte con_print_time_45   ; 00
+    .byte con_print_time_60   ; 01
+    .byte con_print_time_99   ; 02
+    .byte con_print_time_бесконечное   ; 03
 
 
 
@@ -295,10 +295,10 @@ sub_80DE_отрисовать_вариант_health:
                                         RTS
 
 tbl_80DF_health:
-    .byte con_0x030C10_1B   ; 00
-    .byte con_0x030C10_1C   ; 01
-    .byte con_0x030C10_1D   ; 02
-    .byte con_0x030C10_1E   ; 03
+    .byte con_print_hp_100   ; 00
+    .byte con_print_hp_150   ; 01
+    .byte con_print_hp_200   ; 02
+    .byte con_print_hp_бесконечное   ; 03
 
 
 
@@ -373,8 +373,8 @@ sub_819E_отрисовать_вариант_balancing:
                                         RTS
 
 tbl_819F_balancing:
-    .byte con_0x030C10_30   ; 00
-    .byte con_0x030C10_31   ; 08
+    .byte con_print_balancing_off   ; 00
+    .byte con_print_balancing_on   ; 08
 
 
 
@@ -425,8 +425,8 @@ sub_81AE_отрисовать_вариант_shred_ctrl:
                                         RTS
 
 tbl_81AF_shred_ctrl:
-    .byte con_0x030C10_32   ; 00
-    .byte con_0x030C10_33   ; 10
+    .byte con_print_shred_ctrl_off   ; 00
+    .byte con_print_shred_ctrl_on   ; 10
 
 
 
@@ -495,24 +495,24 @@ sub_81BE_отрисовать_вариант_bgm:
                                         RTS
 
 tbl_81BF_bgm:
-    .byte con_0x030C10_40   ; 00
-    .byte con_0x030C10_41   ; 01
-    .byte con_0x030C10_42   ; 02
-    .byte con_0x030C10_43   ; 03
-    .byte con_0x030C10_44   ; 04
-    .byte con_0x030C10_45   ; 05
-    .byte con_0x030C10_46   ; 06
-    .byte con_0x030C10_47   ; 07
-    .byte con_0x030C10_48   ; 08
-    .byte con_0x030C10_49   ; 09
-    .byte con_0x030C10_4A   ; 0A
-    .byte con_0x030C10_4B   ; 0B
-    .byte con_0x030C10_4C   ; 0C
-    .byte con_0x030C10_4D   ; 0D
-    .byte con_0x030C10_4E   ; 0E
-    .byte con_0x030C10_4F   ; 0F
-    .byte con_0x030C10_50   ; 10
-    .byte con_0x030C10_51   ; 11
+    .byte con_print_bgm1   ; 00
+    .byte con_print_bgm2   ; 01
+    .byte con_print_bgm3   ; 02
+    .byte con_print_bgm4   ; 03
+    .byte con_print_open1   ; 04
+    .byte con_print_open2   ; 05
+    .byte con_print_se01   ; 06
+    .byte con_print_se02   ; 07
+    .byte con_print_se03   ; 08
+    .byte con_print_se04   ; 09
+    .byte con_print_se05   ; 0A
+    .byte con_print_se06   ; 0B
+    .byte con_print_se07   ; 0C
+    .byte con_print_se08   ; 0D
+    .byte con_print_se09   ; 0E
+    .byte con_print_se10   ; 0F
+    .byte con_print_se11   ; 10
+    .byte con_print_se12   ; 11
 
 
 
@@ -548,11 +548,11 @@ sub_81CE_отрисовать_вариант_team_keeps:
                                         RTS
 
 tbl_81CF_team_keeps:
-    .byte con_0x030C10_34   ; 00
-    .byte con_0x030C10_35   ; 01
-    .byte con_0x030C10_36   ; 02
-    .byte con_0x030C10_37   ; 03
-    .byte con_0x030C10_38   ; 04
+    .byte con_print_no_one   ; 00
+    .byte con_print__loser   ; 01
+    .byte con_print_losermix   ; 02
+    .byte con_print_winner   ; 03
+    .byte con_print_survival   ; 04
 
 
 
@@ -1312,7 +1312,7 @@ C - - - - - 0x03861F 0E:860F: C9 02     CMP #$02
 C - - - - - 0x038621 0E:8611: B0 51     BCS bra_8664
 C - - - - - 0x038623 0E:8613: A5 31     LDA ram_continue
 C - - - - - 0x038625 0E:8615: F0 4D     BEQ bra_8664
-C - - - - - 0x038627 0E:8617: A9 07     LDA #con_0x030C10_07
+C - - - - - 0x038627 0E:8617: A9 07     LDA #con_print_continue
 C - - - - - 0x038629 0E:8619: 20 E5 F6  JSR sub_0x03F6F5_написать_текст_на_экране
 C - - - - - 0x03862C 0E:861C: A9 03     LDA #$03
 C - - - - - 0x03862E 0E:861E: 8D 30 05  STA ram_obj_0530
@@ -1369,7 +1369,7 @@ C - - - - - 0x03867C 0E:866C: 8D 30 05  STA ram_obj_0530
 C - - - - - 0x03867F 0E:866F: A9 03     LDA #$03
 C - - - - - 0x038681 0E:8671: 8D 60 05  STA ram_obj_0560
 C - - - - - 0x038684 0E:8674: 8D 61 05  STA ram_obj_0560 + $01
-C - - - - - 0x038687 0E:8677: A9 06     LDA #con_0x030C10_06
+C - - - - - 0x038687 0E:8677: A9 06     LDA #con_print_game_over
 C - - - - - 0x038689 0E:8679: 20 E5 F6  JSR sub_0x03F6F5_написать_текст_на_экране
 C - - - - - 0x03868C 0E:867C: A9 39     LDA #con_music_game_over
 C - - - - - 0x03868E 0E:867E: 4C 90 F6  JMP loc_0x03F6A0_записать_звук_сохранив_X_Y
@@ -1477,7 +1477,7 @@ C - - - - - 0x03872F 0E:871F: 29 08     AND #$08
 C - - - - - 0x038731 0E:8721: 20 02 D2  JSR sub_0x03D212_ASLx4
 C - - - - - 0x038734 0E:8724: 09 07     ORA #$07
 C - - - - - 0x038736 0E:8726: 48        PHA
-; con_0x030C10_07
+; con_print_continue
 ; возможен индекс +80
 C - - - - - 0x038737 0E:8727: 20 E5 F6  JSR sub_0x03F6F5_написать_текст_на_экране
 C - - - - - 0x03873A 0E:872A: 68        PLA
@@ -1757,7 +1757,7 @@ C - - - - - 0x0388D4 0E:88C4: A5 2C     LDA ram_game_mode
 C - - - - - 0x0388D6 0E:88C6: C9 02     CMP #$02
 C - - - - - 0x0388D8 0E:88C8: D0 05     BNE bra_88CF
 ; con_gm_vs_cpu
-C - - - - - 0x0388DA 0E:88CA: A9 12     LDA #con_0x030C10_12
+C - - - - - 0x0388DA 0E:88CA: A9 12     LDA #con_print_cpu
 C - - - - - 0x0388DC 0E:88CC: 20 E5 F6  JSR sub_0x03F6F5_написать_текст_на_экране
 bra_88CF:
 ; con_gm_vs_player
@@ -1888,7 +1888,7 @@ C - - - - - 0x0389BD 0E:89AD: 0A        ASL
 C - - - - - 0x0389BE 0E:89AE: 0A        ASL
 C - - - - - 0x0389BF 0E:89AF: 29 80     AND #$80
 C - - - - - 0x0389C1 0E:89B1: 09 11     ORA #$11
-; con_0x030C10_11
+; con_print_push_start
 ; возможен индекс +80
 C - - - - - 0x0389C3 0E:89B3: 4C E5 F6  JMP loc_0x03F6F5_написать_текст_на_экране
 
@@ -2092,7 +2092,7 @@ C - - - - - 0x038AB8 0E:8AA8: C8        INY
 C - - - - - 0x038AB9 0E:8AA9: D0 F3     BNE bra_8A9E_loop
 bra_8AAB_FF:
 C - - - - - 0x038ABB 0E:8AAB: EE 24 06  INC ram_plr_0624
-C - - - - - 0x038ABE 0E:8AAE: A9 15     LDA #con_0x030C10_15
+C - - - - - 0x038ABE 0E:8AAE: A9 15     LDA #con_print_bonus_00
 C - - - - - 0x038AC0 0E:8AB0: 20 E5 F6  JSR sub_0x03F6F5_написать_текст_на_экране
 C - - - - - 0x038AC3 0E:8AB3: 20 9C A5  LDA ram_game_mode
 ; con_gm_story
@@ -2194,8 +2194,8 @@ C - - - - - 0x038B36 0E:8B26: 0A        ASL
 C - - - - - 0x038B37 0E:8B27: 0A        ASL
 C - - - - - 0x038B38 0E:8B28: 29 80     AND #$80
 C - - - - - 0x038B3A 0E:8B2A: 05 00     ORA ram_0000
-; con_0x030C10_16
-; con_0x030C10_18
+; con_print__time
+; con_print_life
 ; возможен индекс +80
 C - - - - - 0x038B3C 0E:8B2C: 4C E5 F6  JMP loc_0x03F6F5_написать_текст_на_экране
 
@@ -2215,9 +2215,9 @@ C - - - - - 0x038B4E 0E:8B3E: 18        CLC
 C - - - - - 0x038B4F 0E:8B3F: AD 24 06  LDA ram_plr_0624
 C - - - - - 0x038B52 0E:8B42: 69 15     ADC #$15
 bra_8B44:
-; con_0x030C10_16
-; con_0x030C10_17
-; con_0x030C10_18
+; con_print__time
+; con_print_perfect
+; con_print_life
 C - - - - - 0x038B54 0E:8B44: 20 E5 F6  JSR sub_0x03F6F5_написать_текст_на_экране
 C - - - - - 0x038B57 0E:8B47: A9 10     LDA #$10
 C - - - - - 0x038B59 0E:8B49: 8D 2F 06  STA ram_062F
@@ -6009,9 +6009,9 @@ C - - - - - 0x03A44F 0E:A43F: 20 5D D2  JSR sub_0x03D26D_записать_A_в_�
 C - - - - - 0x03A452 0E:A442: C8        INY
 C - - - - - 0x03A453 0E:A443: D0 F5     BNE bra_A43A_loop
 bra_A445_00:
-C - - - - - 0x03A455 0E:A445: A9 19     LDA #con_0x030C10_19
+C - - - - - 0x03A455 0E:A445: A9 19     LDA #con_print_rematch
 C - - - - - 0x03A457 0E:A447: 20 E5 F6  JSR sub_0x03F6F5_написать_текст_на_экране
-C - - - - - 0x03A45A 0E:A44A: A9 1A     LDA #con_0x030C10_1A
+C - - - - - 0x03A45A 0E:A44A: A9 1A     LDA #con_print_end
 C - - - - - 0x03A45C 0E:A44C: 4C E5 F6  JMP loc_0x03F6F5_написать_текст_на_экране
 bra_A44F:
 C - - - - - 0x03A45F 0E:A44F: A9 00     LDA #$00
@@ -6085,7 +6085,7 @@ C - - - - - 0x03A4E9 0E:A4D9: 29 08     AND #$08
 C - - - - - 0x03A4EB 0E:A4DB: 20 02 D2  JSR sub_0x03D212_ASLx4
 C - - - - - 0x03A4EE 0E:A4DE: 09 19     ORA #$19
 C - - - - - 0x03A4F0 0E:A4E0: 6D 30 06  ADC ram_0630
-; con_0x030C10_19
+; con_print_rematch
 ; возможен индекс +80
 C - - - - - 0x03A4F3 0E:A4E3: 4C E5 F6  JMP loc_0x03F6F5_написать_текст_на_экране
 bra_A4E6:

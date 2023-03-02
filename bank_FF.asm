@@ -4085,7 +4085,7 @@ ofs_001_E7A1_17:
 C - - J - - 0x03E7B1 0F:E7A1: E6 95     INC ram_0095
 C - - - - - 0x03E7B3 0F:E7A3: 20 3C F0  JSR sub_F03C
 C - - - - - 0x03E7B6 0F:E7A6: 20 25 DC  JSR sub_DC25
-C - - - - - 0x03E7B9 0F:E7A9: A9 08     LDA #con_0x030C10_08
+C - - - - - 0x03E7B9 0F:E7A9: A9 08     LDA #con_print_bonus_game
 C - - - - - 0x03E7BB 0F:E7AB: 20 E5 F6  JSR sub_F6E5_написать_текст_на_экране
 C - - - - - 0x03E7BE 0F:E7AE: A9 20     LDA #$20
 C - - - - - 0x03E7C0 0F:E7B0: 8D 60 05  STA ram_obj_0560
@@ -4136,7 +4136,7 @@ C - - - - - 0x03E81C 0F:E80C: A9 20     LDA #$20
 C - - - - - 0x03E81E 0F:E80E: 85 37     STA ram_0037
 C - - - - - 0x03E820 0F:E810: A2 1E     LDX #con_screen_bonus_tmnt
 C - - - - - 0x03E822 0F:E812: 20 44 F0  JSR sub_F044_отрисовать_экран
-C - - - - - 0x03E825 0F:E815: A9 0D     LDA #con_0x030C10_0D
+C - - - - - 0x03E825 0F:E815: A9 0D     LDA #con_print_time_bonus_game
 C - - - - - 0x03E827 0F:E817: 20 E5 F6  JSR sub_F6E5_написать_текст_на_экране
 C - - - - - 0x03E82A 0F:E81A: A9 3D     LDA #con_music_ost_bonus_stage
 C - - - - - 0x03E82C 0F:E81C: 20 90 F6  JSR sub_F690_записать_звук_сохранив_X_Y
@@ -5571,12 +5571,12 @@ C - - - - - 0x03F03E 0F:F02E: A9 05     LDA #$05
 C - - - - - 0x03F040 0F:F030: 85 08     STA ram_0008
 bra_F032_loop:
 C - - - - - 0x03F042 0F:F032: A5 08     LDA ram_0008
-; con_0x030C10_00
-; con_0x030C10_01
-; con_0x030C10_02
-; con_0x030C10_03
-; con_0x030C10_04
-; con_0x030C10_05
+; con_print_story
+; con_print_vs_player
+; con_print_vs_cpu
+; con_print_vs_team
+; con_print_tournament
+; con_print_option
 C - - - - - 0x03F044 0F:F034: 20 E5 F6  JSR sub_F6E5_написать_текст_на_экране
 C - - - - - 0x03F047 0F:F037: C6 08     DEC ram_0008
 C - - - - - 0x03F049 0F:F039: 10 F7     BPL bra_F032_loop
@@ -6156,12 +6156,12 @@ C - - - - - 0x03F476 0F:F466: 0A        ASL
 C - - - - - 0x03F477 0F:F467: 0A        ASL
 C - - - - - 0x03F478 0F:F468: 0A        ASL
 C - - - - - 0x03F479 0F:F469: 65 27     ADC ram_0027
-; con_0x030C10_00
-; con_0x030C10_01
-; con_0x030C10_02
-; con_0x030C10_03
-; con_0x030C10_04
-; con_0x030C10_05
+; con_print_story
+; con_print_vs_player
+; con_print_vs_cpu
+; con_print_vs_team
+; con_print_tournament
+; con_print_option
 ; возможен индекс +80
 C - - - - - 0x03F47B 0F:F46B: 20 E5 F6  JSR sub_F6E5_написать_текст_на_экране
 C - - - - - 0x03F47E 0F:F46E: C6 9C     DEC ram_009C

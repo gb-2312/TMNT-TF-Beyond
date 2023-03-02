@@ -1293,7 +1293,7 @@ tbl_8C00:
 - - - - - - 0x030C2C 0C:8C1C: A1 81     .word $FFFF      ; 0E индекс не существует
 - - - - - - 0x030C2E 0C:8C1E: AA 81     .word $FFFF      ; 0F индекс не существует
 - - - - - - 0x030C30 0C:8C20: FF FF     .word $FFFF      ; 10 индекс не существует
-- D 0 - - - 0x030C32 0C:8C22: BE 81     .word _off014_81BE_11
+- D 0 - - - 0x030C32 0C:8C22: BE 81     .word _off014_81BE_11_push_start
 - D 0 - - - 0x030C34 0C:8C24: CB 81     .word _off014_81CB_12_cpu
 - D 0 - - - 0x030C36 0C:8C26: 8F 81     .word _off014_818F_13_normal
 - D 0 - - - 0x030C38 0C:8C28: 98 81     .word _off014_8198_14_turbo
@@ -1480,9 +1480,9 @@ _off014_8218_0D_time_bonus_game:
 
 
 
-_off014_81BE_11:
+_off014_81BE_11_push_start:
 - D 0 - I - 0x0301CE 0C:81BE: AB 23     .word $23AB
-- D 0 - I - 0x0301D0 0C:81C0: C9        .byte $C9, $CA, $CB, $CC, $00, $D9, $DA, $DB, $DC, $DD   ; 
+- D 0 - I - 0x0301D0 0C:81C0: C9        .byte $C9, $CA, $CB, $CC, $00, $D9, $DA, $DB, $DC, $DD   ; PUSH START
 
 - D 0 - I - 0x0301DA 0C:81CA: FF        .byte $FF   ; end token
 
