@@ -150,210 +150,6 @@ C - - - - - 0x0300C4 0C:80B4: 4C 5B D2  JMP loc_0x03D26B_записать_FF_в_
 
 
 
-_off014_811A_00_story:
-- D 0 - I - 0x03012A 0C:811A: 0C 22     .word $220C
-- D 0 - I - 0x03012C 0C:811C: 9D        .byte $9D, $9E, $99, $9C, $A3   ; STORY
-
-- D 0 - I - 0x030131 0C:8121: FF        .byte $FF   ; end token
-
-
-
-_off014_8122_01_vs_player:
-- D 0 - I - 0x030132 0C:8122: 4C 22     .word $224C
-- D 0 - I - 0x030134 0C:8124: A0        .byte $A0, $9D, $00, $9A, $96, $8B, $A3, $8F, $9C   ; VS PLAYER
-
-- D 0 - I - 0x03013D 0C:812D: FF        .byte $FF   ; end token
-
-
-
-_off014_812E_02_vs_cpu:
-- D 0 - I - 0x03013E 0C:812E: 8C 22     .word $228C
-- D 0 - I - 0x030140 0C:8130: A0        .byte $A0, $9D, $00, $8D, $9A, $9F   ; VS CPU
-
-- D 0 - I - 0x030146 0C:8136: FF        .byte $FF   ; end token
-
-
-
-_off014_8137_03_vs_team:
-- D 0 - I - 0x030147 0C:8137: CC 22     .word $22CC
-- D 0 - I - 0x030149 0C:8139: A0        .byte $A0, $9D, $00, $9E, $8F, $8B, $97   ; VS TEAM
-
-- D 0 - I - 0x030150 0C:8140: FF        .byte $FF   ; end token
-
-
-
-_off014_8141_04_tournament:
-- D 0 - I - 0x030151 0C:8141: 0C 23     .word $230C
-- D 0 - I - 0x030153 0C:8143: 9E        .byte $9E, $99, $9F, $9C, $98, $8B, $97, $8F, $98, $9E   ; TOURNAMENT
-
-- D 0 - I - 0x03015D 0C:814D: FF        .byte $FF   ; end token
-
-
-
-_off014_814E_05_option:
-- D 0 - I - 0x03015E 0C:814E: 4C 23     .word $234C
-- D 0 - I - 0x030160 0C:8150: 99        .byte $99, $9A, $9E, $93, $99, $98   ; OPTION
-
-- D 0 - I - 0x030166 0C:8156: FF        .byte $FF   ; end token
-
-
-
-_off014_8157_06_game_over:
-; bzk optimize, лишние пробелы в конце
-- D 0 - I - 0x030167 0C:8157: 2C 22     .word $222C
-- D 0 - I - 0x030169 0C:8159: 91        .byte $91, $8B, $97, $8F, $00, $99, $A0, $8F, $9C, $00, $00, $00   ; GAME OVER
-
-- D 0 - I - 0x030175 0C:8165: FF        .byte $FF   ; end token
-
-
-
-_off014_8166_07_continue:
-; bzk optimize, лишние пробелы в конце
-- D 0 - I - 0x030176 0C:8166: 2C 22     .word $222C
-- D 0 - I - 0x030178 0C:8168: 8D        .byte $8D, $99, $98, $9E, $93, $98, $9F, $8F, $00, $00, $00   ; CONTINUE
-
-- D 0 - I - 0x030183 0C:8173: FF        .byte $FF   ; end token
-
-
-
-_off014_8174_09_easy:
-- D 0 - I - 0x030184 0C:8174: 74 20     .word $2074
-- D 0 - I - 0x030186 0C:8176: 8F        .byte $8F, $8B, $9D, $A3, $00, $00   ; EASY
-
-- D 0 - I - 0x03018C 0C:817C: FF        .byte $FF   ; end token
-
-
-
-_off014_817D_0A_normal:
-- D 0 - I - 0x03018D 0C:817D: 74 20     .word $2074
-- D 0 - I - 0x03018F 0C:817F: 98        .byte $98, $99, $9C, $97, $8B, $96   ; NORMAL
-
-- D 0 - I - 0x030195 0C:8185: FF        .byte $FF   ; end token
-
-
-
-_off014_8186_0B_hard:
-- D 0 - I - 0x030196 0C:8186: 74 20     .word $2074
-- D 0 - I - 0x030198 0C:8188: 92        .byte $92, $8B, $9C, $8E, $00, $00   ; HARD
-
-- D 0 - I - 0x03019E 0C:818E: FF        .byte $FF   ; end token
-
-
-
-_off014_818F_13_normal:
-- D 0 - I - 0x03019F 0C:818F: F4 20     .word $20F4
-- D 0 - I - 0x0301A1 0C:8191: 98        .byte $98, $99, $9C, $97, $8B, $96   ; NORMAL
-
-- D 0 - I - 0x0301A7 0C:8197: FF        .byte $FF   ; end token
-
-
-
-_off014_8198_14_turbo:
-- D 0 - I - 0x0301A8 0C:8198: F4 20     .word $20F4
-- D 0 - I - 0x0301AA 0C:819A: 9E        .byte $9E, $9F, $9C, $8C, $99, $00   ; TURBO
-
-- D 0 - I - 0x0301B0 0C:81A0: FF        .byte $FF   ; end token
-
-
-
-_off014_81BE_11:
-- D 0 - I - 0x0301CE 0C:81BE: AB 23     .word $23AB
-- D 0 - I - 0x0301D0 0C:81C0: C9        .byte $C9, $CA, $CB, $CC, $00, $D9, $DA, $DB, $DC, $DD   ; 
-
-- D 0 - I - 0x0301DA 0C:81CA: FF        .byte $FF   ; end token
-
-
-
-_off014_81CB_12_cpu:
-- D 0 - I - 0x0301DB 0C:81CB: 74 20     .word $2074
-- D 0 - I - 0x0301DD 0C:81CD: 00        .byte $00, $00, $8D, $9A, $9F, $00, $00, $00   ; CPU
-
-- D 0 - I - 0x0301E5 0C:81D5: FF        .byte $FF   ; end token
-
-
-
-_off014_81D6_15_bonus:
-- D 0 - I - 0x0301E6 0C:81D6: 6A 23     .word $236A
-- D 0 - I - 0x0301E8 0C:81D8: 8C        .byte $8C, $99, $98, $9F, $9D   ; BONUS
-
-- D 0 - I - 0x0301ED 0C:81DD: FE        .byte $FE   ; continue
-
-- D 0 - I - 0x0301EE 0C:81DE: 75 23     .word $2375
-- D 0 - I - 0x0301F0 0C:81E0: 81        .byte $81, $81   ; 00
-
-- D 0 - I - 0x0301F2 0C:81E2: FF        .byte $FF   ; end token
-
-
-
-_off014_81E3_16_time:
-- D 0 - I - 0x0301F3 0C:81E3: 2A 23     .word $232A
-- D 0 - I - 0x0301F5 0C:81E5: 9E        .byte $9E, $93, $97, $8F   ; TIME
-
-- D 0 - I - 0x0301F9 0C:81E9: FF        .byte $FF   ; end token
-
-
-
-_off014_81EA_17_perfect:
-- D 0 - I - 0x0301FA 0C:81EA: 4A 23     .word $234A
-- D 0 - I - 0x0301FC 0C:81EC: 9A        .byte $9A, $8F, $9C, $90, $8F, $8D, $9E   ; PERFECT
-
-- D 0 - I - 0x030203 0C:81F3: FF        .byte $FF   ; end token
-
-
-
-_off014_81F4_18_life:
-- D 0 - I - 0x030204 0C:81F4: 4A 23     .word $234A
-- D 0 - I - 0x030206 0C:81F6: 96        .byte $96, $93, $90, $8F   ; LIFE
-
-- D 0 - I - 0x03020A 0C:81FA: FF        .byte $FF   ; end token
-
-
-
-_off014_81FB_19_rematch:
-- D 0 - I - 0x03020B 0C:81FB: 0D 23     .word $230D
-- D 0 - I - 0x03020D 0C:81FD: 9C        .byte $9C, $8F, $97, $8B, $9E, $8D, $92   ; REMATCH
-
-- D 0 - I - 0x030214 0C:8204: FF        .byte $FF   ; end token
-
-
-
-_off014_8205_1A_end:
-- D 0 - I - 0x030215 0C:8205: 4D 23     .word $234D
-- D 0 - I - 0x030217 0C:8207: 8F        .byte $8F, $98, $8E   ; END
-
-- D 0 - I - 0x03021A 0C:820A: FF        .byte $FF   ; end token
-
-
-
-_off014_820B_08_bonus_game:
-- D 0 - I - 0x03021B 0C:820B: 0C 22     .word $220C
-- D 0 - I - 0x03021D 0C:820D: 8C        .byte $8C, $99, $98, $9F, $9D, $00, $91, $8B, $97, $8F   ; BONUS GAME
-
-- D 0 - I - 0x030227 0C:8217: FF        .byte $FF   ; end token
-
-
-
-_off014_8218_0D_time_bonus_game:
-- D 0 - I - 0x030228 0C:8218: 89 20     .word $2089
-- D 0 - I - 0x03022A 0C:821A: 9E        .byte $9E, $93, $97, $8F   ; TIME
-
-- D 0 - I - 0x03022E 0C:821E: FE        .byte $FE   ; continue
-
-- D 0 - I - 0x03022F 0C:821F: 94 20     .word $2094
-- D 0 - I - 0x030231 0C:8221: 8C        .byte $8C, $99, $98, $9F, $9D, $00, $91, $8B, $97, $8F   ; BONUS GAME
-
-- D 0 - I - 0x03023B 0C:822B: FF        .byte $FF   ; end token
-
-
-
-_off014_822C_0C_expert:
-- D 0 - I - 0x03023C 0C:822C: 74 20     .word $2074
-- D 0 - I - 0x03023E 0C:822E: 8F        .byte $8F, $A2, $9A, $8F, $9C, $9E   ; EXPERT
-
-- D 0 - I - 0x030244 0C:8234: FF        .byte $FF   ; end token
-
-
-
 tbl_0x030245_спрайты_объектов:
 - D 0 - - - 0x030245 0C:8235: 05 83     .word _off001_8305_01
 - - - - - - 0x030247 0C:8237: 0E 83     .word _off001_830E_02
@@ -1477,80 +1273,6 @@ _off001_8AD6_59:
 
 
 
-_off014_8AF8_30_off:
-- D 0 - I - 0x030B08 0C:8AF8: 74 20     .word $2474
-- D 0 - I - 0x030B0A 0C:8AFA: 99        .byte $99, $90, $90   ; OFF
-
-- D 0 - I - 0x030B10 0C:8B00: FF        .byte $FF   ; end token
-
-
-
-_off014_8B01_31_on:
-; bzk optimize, лишние пробелы в конце
-- D 0 - I - 0x030B11 0C:8B01: 74 20     .word $2474
-- D 0 - I - 0x030B13 0C:8B03: 99        .byte $99, $98, $00   ; ON
-
-- D 0 - I - 0x030B19 0C:8B09: FF        .byte $FF   ; end token
-
-
-
-_off014_8B0A_32_off:
-; bzk optimize, лишние пробелы в конце
-- D 0 - I - 0x030B1A 0C:8B0A: B4 20     .word $24B4
-- D 0 - I - 0x030B1C 0C:8B0C: 99        .byte $99, $90, $90   ; OFF
-
-- D 0 - I - 0x030B24 0C:8B14: FF        .byte $FF   ; end token
-
-
-
-_off014_8B15_33_on:
-- D 0 - I - 0x030B25 0C:8B15: B4 20     .word $24B4
-- D 0 - I - 0x030B27 0C:8B17: 99        .byte $99, $98, $00   ; ON
-
-- D 0 - I - 0x030B2F 0C:8B1F: FF        .byte $FF   ; end token
-
-
-
-_off014_8BAD_36_losermix:
-- D 0 - I - 0x030BBD 0C:8BAD: 34 21     .word $2534
-- D 0 - I - 0x030BBF 0C:8BAF: 96        .byte $96, $99, $9D, $8F, $9C, $97, $93, $A2   ; LOSERMIX
-
-- D 0 - I - 0x030BC7 0C:8BB7: FF        .byte $FF   ; end token
-
-
-
-_off014_8BB8_35_loser:
-- D 0 - I - 0x030BC8 0C:8BB8: 34 21     .word $2534
-- D 0 - I - 0x030BCA 0C:8BBA: 96        .byte $96, $99, $9D, $8F, $9C, $00, $00, $00   ; LOSER
-
-- D 0 - I - 0x030BD2 0C:8BC2: FF        .byte $FF   ; end token
-
-
-
-_off014_8BC3_37_winner:
-- D 0 - I - 0x030BD3 0C:8BC3: 34 21     .word $2534
-- D 0 - I - 0x030BD5 0C:8BC5: A1        .byte $A1, $93, $98, $98, $8F, $9C, $00, $00   ; WINNER
-
-- D 0 - I - 0x030BDD 0C:8BCD: FF        .byte $FF   ; end token
-
-
-
-_off014_8BCE_38_survival:
-- D 0 - I - 0x030BDE 0C:8BCE: 34 21     .word $2534
-- D 0 - I - 0x030BE0 0C:8BD0: 9D        .byte $9D, $9F, $9C, $A0, $93, $A0, $8B, $96   ; SURVIVAL
-
-- D 0 - I - 0x030BE8 0C:8BD8: FF        .byte $FF   ; end token
-
-
-
-_off014_8BD9_34_no_one:
-- D 0 - I - 0x030BE9 0C:8BD9: 34 21     .word $2534
-- D 0 - I - 0x030BEB 0C:8BDB: 98        .byte $98, $99, $00, $99, $98, $8F, $00, $00   ; NO ONE
-
-- D 0 - I - 0x030BF3 0C:8BE3: FF        .byte $FF   ; end token
-
-
-
 tbl_8C00:
 ; bzk garbage, проверить чтоб нигде не было лишних пробелов в конце, если это не необходимо
 ; также проверить чтобы все пробелы были 00 а не 80
@@ -1636,6 +1358,370 @@ tbl_8C00:
                                         .word _off014_8FD0_4F_se10
                                         .word _off014_8FD0_50_se11
                                         .word _off014_8FD0_51_se12
+
+
+
+_off014_811A_00_story:
+- D 0 - I - 0x03012A 0C:811A: 0C 22     .word $220C
+- D 0 - I - 0x03012C 0C:811C: 9D        .byte $9D, $9E, $99, $9C, $A3   ; STORY
+
+- D 0 - I - 0x030131 0C:8121: FF        .byte $FF   ; end token
+
+
+
+_off014_8122_01_vs_player:
+- D 0 - I - 0x030132 0C:8122: 4C 22     .word $224C
+- D 0 - I - 0x030134 0C:8124: A0        .byte $A0, $9D, $00, $9A, $96, $8B, $A3, $8F, $9C   ; VS PLAYER
+
+- D 0 - I - 0x03013D 0C:812D: FF        .byte $FF   ; end token
+
+
+
+_off014_812E_02_vs_cpu:
+- D 0 - I - 0x03013E 0C:812E: 8C 22     .word $228C
+- D 0 - I - 0x030140 0C:8130: A0        .byte $A0, $9D, $00, $8D, $9A, $9F   ; VS CPU
+
+- D 0 - I - 0x030146 0C:8136: FF        .byte $FF   ; end token
+
+
+
+_off014_8137_03_vs_team:
+- D 0 - I - 0x030147 0C:8137: CC 22     .word $22CC
+- D 0 - I - 0x030149 0C:8139: A0        .byte $A0, $9D, $00, $9E, $8F, $8B, $97   ; VS TEAM
+
+- D 0 - I - 0x030150 0C:8140: FF        .byte $FF   ; end token
+
+
+
+_off014_8141_04_tournament:
+- D 0 - I - 0x030151 0C:8141: 0C 23     .word $230C
+- D 0 - I - 0x030153 0C:8143: 9E        .byte $9E, $99, $9F, $9C, $98, $8B, $97, $8F, $98, $9E   ; TOURNAMENT
+
+- D 0 - I - 0x03015D 0C:814D: FF        .byte $FF   ; end token
+
+
+
+_off014_814E_05_option:
+- D 0 - I - 0x03015E 0C:814E: 4C 23     .word $234C
+- D 0 - I - 0x030160 0C:8150: 99        .byte $99, $9A, $9E, $93, $99, $98   ; OPTION
+
+- D 0 - I - 0x030166 0C:8156: FF        .byte $FF   ; end token
+
+
+
+_off014_8157_06_game_over:
+; bzk optimize, лишние пробелы в конце
+- D 0 - I - 0x030167 0C:8157: 2C 22     .word $222C
+- D 0 - I - 0x030169 0C:8159: 91        .byte $91, $8B, $97, $8F, $00, $99, $A0, $8F, $9C, $00, $00, $00   ; GAME OVER
+
+- D 0 - I - 0x030175 0C:8165: FF        .byte $FF   ; end token
+
+
+
+_off014_8166_07_continue:
+; bzk optimize, лишние пробелы в конце
+- D 0 - I - 0x030176 0C:8166: 2C 22     .word $222C
+- D 0 - I - 0x030178 0C:8168: 8D        .byte $8D, $99, $98, $9E, $93, $98, $9F, $8F, $00, $00, $00   ; CONTINUE
+
+- D 0 - I - 0x030183 0C:8173: FF        .byte $FF   ; end token
+
+
+
+_off014_820B_08_bonus_game:
+- D 0 - I - 0x03021B 0C:820B: 0C 22     .word $220C
+- D 0 - I - 0x03021D 0C:820D: 8C        .byte $8C, $99, $98, $9F, $9D, $00, $91, $8B, $97, $8F   ; BONUS GAME
+
+- D 0 - I - 0x030227 0C:8217: FF        .byte $FF   ; end token
+
+
+
+_off014_8174_09_easy:
+- D 0 - I - 0x030184 0C:8174: 74 20     .word $2074
+- D 0 - I - 0x030186 0C:8176: 8F        .byte $8F, $8B, $9D, $A3, $00, $00   ; EASY
+
+- D 0 - I - 0x03018C 0C:817C: FF        .byte $FF   ; end token
+
+
+
+_off014_817D_0A_normal:
+- D 0 - I - 0x03018D 0C:817D: 74 20     .word $2074
+- D 0 - I - 0x03018F 0C:817F: 98        .byte $98, $99, $9C, $97, $8B, $96   ; NORMAL
+
+- D 0 - I - 0x030195 0C:8185: FF        .byte $FF   ; end token
+
+
+
+_off014_8186_0B_hard:
+- D 0 - I - 0x030196 0C:8186: 74 20     .word $2074
+- D 0 - I - 0x030198 0C:8188: 92        .byte $92, $8B, $9C, $8E, $00, $00   ; HARD
+
+- D 0 - I - 0x03019E 0C:818E: FF        .byte $FF   ; end token
+
+
+
+_off014_822C_0C_expert:
+- D 0 - I - 0x03023C 0C:822C: 74 20     .word $2074
+- D 0 - I - 0x03023E 0C:822E: 8F        .byte $8F, $A2, $9A, $8F, $9C, $9E   ; EXPERT
+
+- D 0 - I - 0x030244 0C:8234: FF        .byte $FF   ; end token
+
+
+
+_off014_8218_0D_time_bonus_game:
+- D 0 - I - 0x030228 0C:8218: 89 20     .word $2089
+- D 0 - I - 0x03022A 0C:821A: 9E        .byte $9E, $93, $97, $8F   ; TIME
+
+- D 0 - I - 0x03022E 0C:821E: FE        .byte $FE   ; continue
+
+- D 0 - I - 0x03022F 0C:821F: 94 20     .word $2094
+- D 0 - I - 0x030231 0C:8221: 8C        .byte $8C, $99, $98, $9F, $9D, $00, $91, $8B, $97, $8F   ; BONUS GAME
+
+- D 0 - I - 0x03023B 0C:822B: FF        .byte $FF   ; end token
+
+
+
+_off014_81BE_11:
+- D 0 - I - 0x0301CE 0C:81BE: AB 23     .word $23AB
+- D 0 - I - 0x0301D0 0C:81C0: C9        .byte $C9, $CA, $CB, $CC, $00, $D9, $DA, $DB, $DC, $DD   ; 
+
+- D 0 - I - 0x0301DA 0C:81CA: FF        .byte $FF   ; end token
+
+
+
+_off014_81CB_12_cpu:
+- D 0 - I - 0x0301DB 0C:81CB: 74 20     .word $2074
+- D 0 - I - 0x0301DD 0C:81CD: 00        .byte $00, $00, $8D, $9A, $9F, $00, $00, $00   ; CPU
+
+- D 0 - I - 0x0301E5 0C:81D5: FF        .byte $FF   ; end token
+
+
+
+_off014_818F_13_normal:
+- D 0 - I - 0x03019F 0C:818F: F4 20     .word $20F4
+- D 0 - I - 0x0301A1 0C:8191: 98        .byte $98, $99, $9C, $97, $8B, $96   ; NORMAL
+
+- D 0 - I - 0x0301A7 0C:8197: FF        .byte $FF   ; end token
+
+
+
+_off014_8198_14_turbo:
+- D 0 - I - 0x0301A8 0C:8198: F4 20     .word $20F4
+- D 0 - I - 0x0301AA 0C:819A: 9E        .byte $9E, $9F, $9C, $8C, $99, $00   ; TURBO
+
+- D 0 - I - 0x0301B0 0C:81A0: FF        .byte $FF   ; end token
+
+
+
+_off014_81D6_15_bonus:
+- D 0 - I - 0x0301E6 0C:81D6: 6A 23     .word $236A
+- D 0 - I - 0x0301E8 0C:81D8: 8C        .byte $8C, $99, $98, $9F, $9D   ; BONUS
+
+- D 0 - I - 0x0301ED 0C:81DD: FE        .byte $FE   ; continue
+
+- D 0 - I - 0x0301EE 0C:81DE: 75 23     .word $2375
+- D 0 - I - 0x0301F0 0C:81E0: 81        .byte $81, $81   ; 00
+
+- D 0 - I - 0x0301F2 0C:81E2: FF        .byte $FF   ; end token
+
+
+
+_off014_81E3_16_time:
+- D 0 - I - 0x0301F3 0C:81E3: 2A 23     .word $232A
+- D 0 - I - 0x0301F5 0C:81E5: 9E        .byte $9E, $93, $97, $8F   ; TIME
+
+- D 0 - I - 0x0301F9 0C:81E9: FF        .byte $FF   ; end token
+
+
+
+_off014_81EA_17_perfect:
+- D 0 - I - 0x0301FA 0C:81EA: 4A 23     .word $234A
+- D 0 - I - 0x0301FC 0C:81EC: 9A        .byte $9A, $8F, $9C, $90, $8F, $8D, $9E   ; PERFECT
+
+- D 0 - I - 0x030203 0C:81F3: FF        .byte $FF   ; end token
+
+
+
+_off014_81F4_18_life:
+- D 0 - I - 0x030204 0C:81F4: 4A 23     .word $234A
+- D 0 - I - 0x030206 0C:81F6: 96        .byte $96, $93, $90, $8F   ; LIFE
+
+- D 0 - I - 0x03020A 0C:81FA: FF        .byte $FF   ; end token
+
+
+
+_off014_81FB_19_rematch:
+- D 0 - I - 0x03020B 0C:81FB: 0D 23     .word $230D
+- D 0 - I - 0x03020D 0C:81FD: 9C        .byte $9C, $8F, $97, $8B, $9E, $8D, $92   ; REMATCH
+
+- D 0 - I - 0x030214 0C:8204: FF        .byte $FF   ; end token
+
+
+
+_off014_8205_1A_end:
+- D 0 - I - 0x030215 0C:8205: 4D 23     .word $234D
+- D 0 - I - 0x030217 0C:8207: 8F        .byte $8F, $98, $8E   ; END
+
+- D 0 - I - 0x03021A 0C:820A: FF        .byte $FF   ; end token
+
+
+
+_off014_B01D_1B_100:
+- D 1 - I - 0x03302D 0C:B01D: 74 21     .word $2174
+- D 1 - I - 0x03302F 0C:B01F: 82        .byte $82, $81, $81, $BC   ; 100%
+
+- D 1 - I - 0x033033 0C:B023: FF        .byte $FF   ; end token
+
+
+
+_off014_B024_1C_150:
+- D 1 - I - 0x033034 0C:B024: 74 21     .word $2174
+- D 1 - I - 0x033036 0C:B026: 82        .byte $82, $86, $81, $BC   ; 150%
+
+- D 1 - I - 0x03303A 0C:B02A: FF        .byte $FF   ; end token
+
+
+
+_off014_B02B_1D_200:
+- D 1 - I - 0x03303B 0C:B02B: 74 21     .word $2174
+- D 1 - I - 0x03303D 0C:B02D: 83        .byte $83, $81, $81, $BC   ; 200%
+
+- D 1 - I - 0x033041 0C:B031: FF        .byte $FF   ; end token
+
+
+
+_off014_B032_1E_бесконечность:
+- D 1 - I - 0x033042 0C:B032: 74 21     .word $2174
+- D 1 - I - 0x033044 0C:B034: 80        .byte $00, $BA, $BB, $00   ; бесконечность
+
+- D 1 - I - 0x033048 0C:B038: FF        .byte $FF   ; end token
+
+
+
+_off014_AFF1_1F_45:
+- D 1 - I - 0x033001 0C:AFF1: 34 21     .word $2135
+- D 1 - I - 0x033003 0C:AFF3: 00        .byte $85, $86   ; 45
+
+- D 1 - I - 0x03300B 0C:AFFB: FF        .byte $FF   ; end token
+
+
+
+_off014_AFFC_20_60:
+- D 1 - I - 0x03300C 0C:AFFC: 34 21     .word $2135
+- D 1 - I - 0x03300E 0C:AFFE: 00        .byte $87, $81   ; 60
+
+- D 1 - I - 0x033016 0C:B006: FF        .byte $FF   ; end token
+
+
+
+_off014_B007_21_99:
+- D 1 - I - 0x033017 0C:B007: 34 21     .word $2135
+- D 1 - I - 0x033019 0C:B009: 00        .byte $8A, $8A   ; 99
+
+- D 1 - I - 0x033021 0C:B011: FF        .byte $FF   ; end token
+
+
+
+_off014_B012_22_бесконечность:
+- D 1 - I - 0x033022 0C:B012: 34 21     .word $2135
+- D 1 - I - 0x033024 0C:B014: 00        .byte $BA, $BB   ; бесконечность
+
+- D 1 - I - 0x03302C 0C:B01C: FF        .byte $FF   ; end token
+
+
+
+_off014_B039_23_green:
+- D 1 - I - 0x033049 0C:B039: B4 20     .word $20B4
+- D 1 - I - 0x03304B 0C:B03B: 91        .byte $91, $9C, $8F, $8F, $98, $00, $00, $00   ; GREEN
+
+- D 1 - I - 0x033053 0C:B043: FF        .byte $FF   ; end token
+
+
+
+_off014_B044_24_original:
+- D 1 - I - 0x033054 0C:B044: B4 20     .word $20B4
+- D 1 - I - 0x033056 0C:B046: 99        .byte $99, $9C, $93, $91, $93, $98, $8B, $96   ; ORIGINAL
+
+- D 1 - I - 0x03305E 0C:B04E: FF        .byte $FF   ; end token
+
+
+
+_off014_B04F_25_night:
+- D 1 - I - 0x03305F 0C:B04F: B4 20     .word $20B4
+- D 1 - I - 0x033061 0C:B051: 98        .byte $98, $93, $91, $92, $9E, $00, $00, $00   ; NIGHT
+
+- D 1 - I - 0x033069 0C:B059: FF        .byte $FF   ; end token
+
+
+
+_off014_8AF8_30_off:
+- D 0 - I - 0x030B08 0C:8AF8: 74 20     .word $2474
+- D 0 - I - 0x030B0A 0C:8AFA: 99        .byte $99, $90, $90   ; OFF
+
+- D 0 - I - 0x030B10 0C:8B00: FF        .byte $FF   ; end token
+
+
+
+_off014_8B01_31_on:
+- D 0 - I - 0x030B11 0C:8B01: 74 20     .word $2474
+- D 0 - I - 0x030B13 0C:8B03: 99        .byte $99, $98, $00   ; ON
+
+- D 0 - I - 0x030B19 0C:8B09: FF        .byte $FF   ; end token
+
+
+
+_off014_8B0A_32_off:
+- D 0 - I - 0x030B1A 0C:8B0A: B4 20     .word $24B4
+- D 0 - I - 0x030B1C 0C:8B0C: 99        .byte $99, $90, $90   ; OFF
+
+- D 0 - I - 0x030B24 0C:8B14: FF        .byte $FF   ; end token
+
+
+
+_off014_8B15_33_on:
+- D 0 - I - 0x030B25 0C:8B15: B4 20     .word $24B4
+- D 0 - I - 0x030B27 0C:8B17: 99        .byte $99, $98, $00   ; ON
+
+- D 0 - I - 0x030B2F 0C:8B1F: FF        .byte $FF   ; end token
+
+
+
+_off014_8BD9_34_no_one:
+- D 0 - I - 0x030BE9 0C:8BD9: 34 21     .word $2534
+- D 0 - I - 0x030BEB 0C:8BDB: 98        .byte $98, $99, $00, $99, $98, $8F, $00, $00   ; NO ONE
+
+- D 0 - I - 0x030BF3 0C:8BE3: FF        .byte $FF   ; end token
+
+
+
+_off014_8BB8_35_loser:
+- D 0 - I - 0x030BC8 0C:8BB8: 34 21     .word $2534
+- D 0 - I - 0x030BCA 0C:8BBA: 96        .byte $96, $99, $9D, $8F, $9C, $00, $00, $00   ; LOSER
+
+- D 0 - I - 0x030BD2 0C:8BC2: FF        .byte $FF   ; end token
+
+
+
+_off014_8BAD_36_losermix:
+- D 0 - I - 0x030BBD 0C:8BAD: 34 21     .word $2534
+- D 0 - I - 0x030BBF 0C:8BAF: 96        .byte $96, $99, $9D, $8F, $9C, $97, $93, $A2   ; LOSERMIX
+
+- D 0 - I - 0x030BC7 0C:8BB7: FF        .byte $FF   ; end token
+
+
+
+_off014_8BC3_37_winner:
+- D 0 - I - 0x030BD3 0C:8BC3: 34 21     .word $2534
+- D 0 - I - 0x030BD5 0C:8BC5: A1        .byte $A1, $93, $98, $98, $8F, $9C, $00, $00   ; WINNER
+
+- D 0 - I - 0x030BDD 0C:8BCD: FF        .byte $FF   ; end token
+
+
+
+_off014_8BCE_38_survival:
+- D 0 - I - 0x030BDE 0C:8BCE: 34 21     .word $2534
+- D 0 - I - 0x030BE0 0C:8BD0: 9D        .byte $9D, $9F, $9C, $A0, $93, $A0, $8B, $96   ; SURVIVAL
+
+- D 0 - I - 0x030BE8 0C:8BD8: FF        .byte $FF   ; end token
 
 
 
@@ -1876,94 +1962,6 @@ C - - - - - 0x031075 0C:9065: F0 A9     BEQ bra_9010    ; if найден end to
 C - - - - - 0x031077 0C:9067: E8        INX
 C - - - - - 0x031078 0C:9068: C8        INY
 C - - - - - 0x031079 0C:9069: D0 F4     BNE bra_905F_loop    ; jmp
-
-
-
-_off014_AFF1_1F_45:
-- D 1 - I - 0x033001 0C:AFF1: 34 21     .word $2135
-- D 1 - I - 0x033003 0C:AFF3: 00        .byte $85, $86   ; 45
-
-- D 1 - I - 0x03300B 0C:AFFB: FF        .byte $FF   ; end token
-
-
-
-_off014_AFFC_20_60:
-- D 1 - I - 0x03300C 0C:AFFC: 34 21     .word $2135
-- D 1 - I - 0x03300E 0C:AFFE: 00        .byte $87, $81   ; 60
-
-- D 1 - I - 0x033016 0C:B006: FF        .byte $FF   ; end token
-
-
-
-_off014_B007_21_99:
-- D 1 - I - 0x033017 0C:B007: 34 21     .word $2135
-- D 1 - I - 0x033019 0C:B009: 00        .byte $8A, $8A   ; 99
-
-- D 1 - I - 0x033021 0C:B011: FF        .byte $FF   ; end token
-
-
-
-_off014_B012_22_бесконечность:
-- D 1 - I - 0x033022 0C:B012: 34 21     .word $2135
-- D 1 - I - 0x033024 0C:B014: 00        .byte $BA, $BB   ; бесконечность
-
-- D 1 - I - 0x03302C 0C:B01C: FF        .byte $FF   ; end token
-
-
-
-_off014_B01D_1B_100:
-- D 1 - I - 0x03302D 0C:B01D: 74 21     .word $2174
-- D 1 - I - 0x03302F 0C:B01F: 82        .byte $82, $81, $81, $BC   ; 100%
-
-- D 1 - I - 0x033033 0C:B023: FF        .byte $FF   ; end token
-
-
-
-_off014_B024_1C_150:
-- D 1 - I - 0x033034 0C:B024: 74 21     .word $2174
-- D 1 - I - 0x033036 0C:B026: 82        .byte $82, $86, $81, $BC   ; 150%
-
-- D 1 - I - 0x03303A 0C:B02A: FF        .byte $FF   ; end token
-
-
-
-_off014_B02B_1D_200:
-- D 1 - I - 0x03303B 0C:B02B: 74 21     .word $2174
-- D 1 - I - 0x03303D 0C:B02D: 83        .byte $83, $81, $81, $BC   ; 200%
-
-- D 1 - I - 0x033041 0C:B031: FF        .byte $FF   ; end token
-
-
-
-_off014_B032_1E_бесконечность:
-- D 1 - I - 0x033042 0C:B032: 74 21     .word $2174
-- D 1 - I - 0x033044 0C:B034: 80        .byte $00, $BA, $BB, $00   ; бесконечность
-
-- D 1 - I - 0x033048 0C:B038: FF        .byte $FF   ; end token
-
-
-
-_off014_B039_23_green:
-- D 1 - I - 0x033049 0C:B039: B4 20     .word $20B4
-- D 1 - I - 0x03304B 0C:B03B: 91        .byte $91, $9C, $8F, $8F, $98, $00, $00, $00   ; GREEN
-
-- D 1 - I - 0x033053 0C:B043: FF        .byte $FF   ; end token
-
-
-
-_off014_B044_24_original:
-- D 1 - I - 0x033054 0C:B044: B4 20     .word $20B4
-- D 1 - I - 0x033056 0C:B046: 99        .byte $99, $9C, $93, $91, $93, $98, $8B, $96   ; ORIGINAL
-
-- D 1 - I - 0x03305E 0C:B04E: FF        .byte $FF   ; end token
-
-
-
-_off014_B04F_25_night:
-- D 1 - I - 0x03305F 0C:B04F: B4 20     .word $20B4
-- D 1 - I - 0x033061 0C:B051: 98        .byte $98, $93, $91, $92, $9E, $00, $00, $00   ; NIGHT
-
-- D 1 - I - 0x033069 0C:B059: FF        .byte $FF   ; end token
 
 
 
