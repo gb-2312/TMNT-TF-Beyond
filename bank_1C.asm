@@ -722,6 +722,16 @@ bra_81DF_RTS:
 
 
 
+tbl_8206:
+- D 0 - - - 0x038216 0E:8206: 82        .byte $82   ; 00
+- D 0 - - - 0x038217 0E:8207: 82        .byte $82   ; 01
+- D 0 - - - 0x038218 0E:8208: 82        .byte $82   ; 02
+- D 0 - - - 0x038219 0E:8209: 82        .byte $82   ; 03
+- D 0 - - - 0x03821A 0E:820A: 82        .byte $82   ; 04
+- D 0 - - - 0x03821B 0E:820B: 80        .byte $80   ; 05
+
+
+
 tbl_81D9_атрибут:
                                         .byte $00   ; 00
                                         .byte $A0   ; 01
@@ -767,48 +777,6 @@ tbl_81D1_ppu:
                                         .word $27C8 ; 02
                                         .word $27D0 ; 03
                                         .word $27D0 ; 04
-                                        
-
-
-C D 0 - - - 0x0381E0 0E:81D0: AD B0 04  LDA ram_obj_spd_Y_lo
-C - - - - - 0x0381E3 0E:81D3: A8        TAY
-C - - - - - 0x0381E4 0E:81D4: B9 06 82  LDA tbl_8206,Y
-C - - - - - 0x0381E7 0E:81D7: 8D 01 05  STA ram_obj_0500 + $01
-C - - - - - 0x0381EA 0E:81DA: AD B0 04  LDA ram_obj_spd_Y_lo
-C - - - - - 0x0381ED 0E:81DD: 0A        ASL
-C - - - - - 0x0381EE 0E:81DE: A8        TAY
-C - - - - - 0x0381EF 0E:81DF: B9 F8 81  LDA tbl_81F8,Y
-C - - - - - 0x0381F2 0E:81E2: 85 00     STA ram_0000
-C - - - - - 0x0381F4 0E:81E4: B9 F9 81  LDA tbl_81F8 + $01,Y
-C - - - - - 0x0381F7 0E:81E7: 85 01     STA ram_0001
-C - - - - - 0x0381F9 0E:81E9: A0 00     LDY #$00
-bra_81EB_loop:
-C - - - - - 0x0381FB 0E:81EB: B1 00     LDA (ram_0000),Y
-C - - - - - 0x0381FD 0E:81ED: C9 FF     CMP #$FF
-C - - - - - 0x0381FF 0E:81EF: F0 06     BEQ bra_81F7_RTS
-C - - - - - 0x038201 0E:81F1: 20 5D D2  JSR sub_0x03D26D_записать_A_в_буфер_с_чтением_индекса
-C - - - - - 0x038204 0E:81F4: C8        INY
-C - - - - - 0x038205 0E:81F5: D0 F4     BNE bra_81EB_loop
-bra_81F7_RTS:
-C - - - - - 0x038207 0E:81F7: 60        RTS
-
-
-
-tbl_81F8:
-- D 0 - - - 0x038208 0E:81F8: 00 A8     .word _off016_A800_00
-- D 0 - - - 0x03820A 0E:81FA: 0B A8     .word _off016_A80B_01
-- D 0 - - - 0x03820C 0E:81FC: 16 A8     .word _off016_A816_02
-- D 0 - - - 0x03820E 0E:81FE: 21 A8     .word _off016_A821_03
-- D 0 - - - 0x038210 0E:8200: 2C A8     .word _off016_A82C_04
-- D 0 - - - 0x038212 0E:8202: 37 A8     .word _off016_A837_05
-
-tbl_8206:
-- D 0 - - - 0x038216 0E:8206: 82        .byte $82   ; 00
-- D 0 - - - 0x038217 0E:8207: 82        .byte $82   ; 01
-- D 0 - - - 0x038218 0E:8208: 82        .byte $82   ; 02
-- D 0 - - - 0x038219 0E:8209: 82        .byte $82   ; 03
-- D 0 - - - 0x03821A 0E:820A: 82        .byte $82   ; 04
-- D 0 - - - 0x03821B 0E:820B: 80        .byte $80   ; 05
 
 
 
@@ -6394,84 +6362,6 @@ tbl_A790:
 - - - - - - 0x03A7AC 0E:A79C: 93 9E     .word _off018_9E93_06
 - D 1 - - - 0x03A7AE 0E:A79E: D6 9E     .word _off018_9ED6_07
 - - - - - - 0x03A7B0 0E:A7A0: 60 A8     .word _off018_A860_08
-
-
-
-_off016_A800_00:
-- D 1 - I - 0x03A810 0E:A800: 03        .byte con_buf_mode_03   ; 
-- D 1 - I - 0x03A811 0E:A801: C1 23     .word $23C1
-- D 1 - I - 0x03A813 0E:A803: 06        .byte $06, $00   ; 
-
-- D 1 - I - 0x03A815 0E:A805: 03        .byte con_buf_mode_03   ; 
-- D 1 - I - 0x03A816 0E:A806: C9 23     .word $23C9
-- D 1 - I - 0x03A818 0E:A808: 0E        .byte $0E, $AA   ; 
-
-- D 1 - I - 0x03A81A 0E:A80A: FF        .byte $FF   ; 
-
-
-
-_off016_A80B_01:
-- D 1 - I - 0x03A81B 0E:A80B: 03        .byte con_buf_mode_03   ; 
-- D 1 - I - 0x03A81C 0E:A80C: C1 23     .word $23C1
-- D 1 - I - 0x03A81E 0E:A80E: 06        .byte $06, $A0   ; 
-
-- D 1 - I - 0x03A820 0E:A810: 03        .byte con_buf_mode_03   ; 
-- D 1 - I - 0x03A821 0E:A811: C9 23     .word $23C9
-- D 1 - I - 0x03A823 0E:A813: 06        .byte $06, $A0   ; 
-
-- D 1 - I - 0x03A825 0E:A815: FF        .byte $FF   ; 
-
-
-
-_off016_A816_02:
-- D 1 - I - 0x03A826 0E:A816: 03        .byte con_buf_mode_03   ; 
-- D 1 - I - 0x03A827 0E:A817: C9 23     .word $23C9
-- D 1 - I - 0x03A829 0E:A819: 06        .byte $06, $0A   ; 
-
-- D 1 - I - 0x03A82B 0E:A81B: 03        .byte con_buf_mode_03   ; 
-- D 1 - I - 0x03A82C 0E:A81C: D1 23     .word $23D1
-- D 1 - I - 0x03A82E 0E:A81E: 06        .byte $06, $AA   ; 
-
-- D 1 - I - 0x03A830 0E:A820: FF        .byte $FF   ; 
-
-
-
-_off016_A821_03:
-- D 1 - I - 0x03A831 0E:A821: 03        .byte con_buf_mode_03   ; 
-- D 1 - I - 0x03A832 0E:A822: C9 23     .word $23C9
-- D 1 - I - 0x03A834 0E:A824: 06        .byte $06, $AA   ; 
-
-- D 1 - I - 0x03A836 0E:A826: 03        .byte con_buf_mode_03   ; 
-- D 1 - I - 0x03A837 0E:A827: D1 23     .word $23D1
-- D 1 - I - 0x03A839 0E:A829: 06        .byte $06, $A0   ; 
-
-- D 1 - I - 0x03A83B 0E:A82B: FF        .byte $FF   ; 
-
-
-
-_off016_A82C_04:
-- D 1 - I - 0x03A83C 0E:A82C: 03        .byte con_buf_mode_03   ; 
-- D 1 - I - 0x03A83D 0E:A82D: C1 23     .word $23C1
-- D 1 - I - 0x03A83F 0E:A82F: 06        .byte $06, $A0   ; 
-
-- D 1 - I - 0x03A841 0E:A831: 03        .byte con_buf_mode_03   ; 
-- D 1 - I - 0x03A842 0E:A832: D1 23     .word $23D1
-- D 1 - I - 0x03A844 0E:A834: 06        .byte $06, $0A   ; 
-
-- D 1 - I - 0x03A846 0E:A836: FF        .byte $FF   ; 
-
-
-
-_off016_A837_05:
-- D 1 - I - 0x03A847 0E:A837: 03        .byte con_buf_mode_03   ; 
-- D 1 - I - 0x03A848 0E:A838: C1 23     .word $23C1
-- D 1 - I - 0x03A84A 0E:A83A: 06        .byte $06, $A0   ; 
-
-- D 1 - I - 0x03A84C 0E:A83C: 03        .byte con_buf_mode_03   ; 
-- D 1 - I - 0x03A84D 0E:A83D: C9 23     .word $23C9
-- D 1 - I - 0x03A84F 0E:A83F: 0E        .byte $0E, $AA   ; 
-
-- D 1 - I - 0x03A851 0E:A841: FF        .byte $FF   ; 
 
 
 
