@@ -8,6 +8,7 @@
 
 .export _off006_screen_1F
 .export _off006_screen_0E
+.export _off006_screen_0C
 .export tbl_0x03F0EF_начальный_адрес_экрана
 .export tbl_0x03F0EF_размер_экрана
 .export tbl_0x03F0EE_поинтеры_на_экраны
@@ -20,6 +21,9 @@ _off006_screen_1F:
 
 _off006_screen_0E:
     .incbin "incbin/screens/0E.bin"
+
+_off006_screen_0C:
+    .incbin "incbin/screens/0C.bin"
 
 
 
@@ -72,7 +76,7 @@ tbl_0x03F0EF_размер_экрана:
     .word $0400 ; 09
     .word $0800 ; 0A
     .word $0400 ; 0B
-    .word $0400 ; 0C
+    .word $0800 ; 0C
     .word $0400 ; 0D
     .word $0800 ; 0E
     .word $0080 ; 0F
@@ -146,7 +150,7 @@ tbl_0x03E3C8_prg_bank_с_данными_экрана:
     .byte con_prg_bank + $00   ; 09
     .byte con_prg_bank + $06   ; 0A
     .byte con_prg_bank + $00   ; 0B
-    .byte con_prg_bank + $00   ; 0C
+    .byte con_prg_bank + $08   ; 0C
     .byte con_prg_bank + $02   ; 0D
     .byte con_prg_bank + $08   ; 0E
     .byte con_prg_bank + $02   ; 0F

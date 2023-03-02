@@ -1499,7 +1499,7 @@ _off001_8AD6_59:
 
 
 _off014_8AF8_30_off:
-- D 0 - I - 0x030B08 0C:8AF8: 74 20     .word $2074
+- D 0 - I - 0x030B08 0C:8AF8: 74 20     .word $2474
 - D 0 - I - 0x030B0A 0C:8AFA: 99        .byte $99, $90, $90, $00, $00, $00   ; OFF
 
 - D 0 - I - 0x030B10 0C:8B00: FF        .byte $FF   ; end token
@@ -1508,7 +1508,7 @@ _off014_8AF8_30_off:
 
 _off014_8B01_31_on:
 ; bzk optimize, лишние пробелы в конце
-- D 0 - I - 0x030B11 0C:8B01: 74 20     .word $2074
+- D 0 - I - 0x030B11 0C:8B01: 74 20     .word $2474
 - D 0 - I - 0x030B13 0C:8B03: 99        .byte $99, $98, $00, $00, $00, $00   ; ON
 
 - D 0 - I - 0x030B19 0C:8B09: FF        .byte $FF   ; end token
@@ -1517,7 +1517,7 @@ _off014_8B01_31_on:
 
 _off014_8B0A_32_off:
 ; bzk optimize, лишние пробелы в конце
-- D 0 - I - 0x030B1A 0C:8B0A: B4 20     .word $20B4
+- D 0 - I - 0x030B1A 0C:8B0A: B4 20     .word $24B4
 - D 0 - I - 0x030B1C 0C:8B0C: 99        .byte $99, $90, $90, $00, $00, $00, $00, $00   ; OFF
 
 - D 0 - I - 0x030B24 0C:8B14: FF        .byte $FF   ; end token
@@ -1525,73 +1525,15 @@ _off014_8B0A_32_off:
 
 
 _off014_8B15_33_on:
-- D 0 - I - 0x030B25 0C:8B15: B4 20     .word $20B4
+- D 0 - I - 0x030B25 0C:8B15: B4 20     .word $24B4
 - D 0 - I - 0x030B27 0C:8B17: 99        .byte $99, $98, $00, $00, $00, $00, $00, $00   ; ON
 
 - D 0 - I - 0x030B2F 0C:8B1F: FF        .byte $FF   ; end token
 
 
 
-_off014_8B20_26_опции_страница_1:
-- D 0 - I - 0x030B30 0C:8B20: 66 20     .word $2066
-- D 0 - I - 0x030B32 0C:8B22: 8E        .byte $8E, $93, $90, $90, $93, $8D, $9F, $96, $9E, $A3   ; DIFFICULTY
-                                        
-                                        .byte $FE   ; continue
-                                        
-- D 0 - I - 0x030B3D 0C:8B2D: A6 20     .word $20A6
-- D 0 - I - 0x030B3F 0C:8B2F: 9D        .byte $9D, $95, $93, $98, $00, $00, $00, $00, $00, $00   ; SKIN
-                                        
-                                        .byte $FE   ; continue
-                                        
-- D 0 - I - 0x030B4A 0C:8B3A: E6 20     .word $20E6
-- D 0 - I - 0x030B4C 0C:8B3C: 9D        .byte $9D, $9A, $8F, $8F, $8E   ; SPEED
-                                        
-                                        .byte $FE   ; continue
-                                        
-- D 0 - I - 0x030B52 0C:8B42: 26 21     .word $2126
-- D 0 - I - 0x030B54 0C:8B44: 9E        .byte $9E, $93, $97, $8F, $9C, $00, $00, $00, $00, $00, $00, $00, $00   ; TIMER
-                                        
-                                        .byte $FE   ; continue
-                                        
-- D 0 - I - 0x030B62 0C:8B52: 66 21     .word $2166
-- D 0 - I - 0x030B64 0C:8B54: 92        .byte $92, $8F, $8B, $96, $9E, $92, $00, $00, $00, $00, $00, $00, $00   ; HEALTH
-                                        
-- D 0 - I - 0x030B3C 0C:8B2C: FF        .byte $FF   ; end token
-
-
-
-_off014_8B62_2B_опции_страница_2:
-- D 0 - I - 0x030B72 0C:8B62: 66 20     .word $2066
-- D 0 - I - 0x030B74 0C:8B64: 8C        .byte $8C, $8B, $96, $8B, $98, $8D, $93, $98, $91, $00   ; BALANCING
-                                        
-                                        .byte $FE   ; continue
-                                        
-- D 0 - I - 0x030B7F 0C:8B6F: A6 20     .word $20A6
-- D 0 - I - 0x030B81 0C:8B71: 9D        .byte $9D, $92, $9C, $8F, $8E, $00, $8D, $9E, $9C, $96   ; SHRED CTRL
-                                        
-                                        .byte $FE   ; continue
-                                        
-- D 0 - I - 0x030B8C 0C:8B7C: E6 20     .word $20E6
-- D 0 - I - 0x030B8E 0C:8B7E: 8C        .byte $8C, $91, $97, $00, $00   ; BGM
-                                        
-                                        .byte $FE   ; continue
-                                        
-- D 0 - I - 0x030B94 0C:8B84: 26 21     .word $2126
-- D 0 - I - 0x030B96 0C:8B86: 9E        .byte $9E, $8F, $8B, $97, $00, $95, $8F, $8F, $9A, $9D   ; TEAM KEEPS
-                                        
-                                        .byte $FE   ; continue
-                                        
-- D 0 - I - 0x030BA8 0C:8B98: 66 21     .word $2166
-- D 0 - I - 0x030BAA 0C:8B9A: 00        .byte $00, $00, $00, $00, $00, $00   ; 
-- D 0 - I - 0x030BB0 0C:8BA0: BD        .byte $BD, $BD, $BD, $BD, $BD, $BD, $BD   ; -------
-- D 0 - I - 0x030BB7 0C:8BA7: 00        .byte $00, $00, $00, $00, $00   ; 
-                                        
-- D 0 - I - 0x030B7E 0C:8B6E: FF        .byte $FF   ; end token
-
-
-
 _off014_8BAD_36_losermix:
-- D 0 - I - 0x030BBD 0C:8BAD: 34 21     .word $2134
+- D 0 - I - 0x030BBD 0C:8BAD: 34 21     .word $2534
 - D 0 - I - 0x030BBF 0C:8BAF: 96        .byte $96, $99, $9D, $8F, $9C, $97, $93, $A2   ; LOSERMIX
 
 - D 0 - I - 0x030BC7 0C:8BB7: FF        .byte $FF   ; end token
@@ -1599,7 +1541,7 @@ _off014_8BAD_36_losermix:
 
 
 _off014_8BB8_35_loser:
-- D 0 - I - 0x030BC8 0C:8BB8: 34 21     .word $2134
+- D 0 - I - 0x030BC8 0C:8BB8: 34 21     .word $2534
 - D 0 - I - 0x030BCA 0C:8BBA: 96        .byte $96, $99, $9D, $8F, $9C, $00, $00, $00   ; LOSER
 
 - D 0 - I - 0x030BD2 0C:8BC2: FF        .byte $FF   ; end token
@@ -1607,7 +1549,7 @@ _off014_8BB8_35_loser:
 
 
 _off014_8BC3_37_winner:
-- D 0 - I - 0x030BD3 0C:8BC3: 34 21     .word $2134
+- D 0 - I - 0x030BD3 0C:8BC3: 34 21     .word $2534
 - D 0 - I - 0x030BD5 0C:8BC5: A1        .byte $A1, $93, $98, $98, $8F, $9C, $00, $00   ; WINNER
 
 - D 0 - I - 0x030BDD 0C:8BCD: FF        .byte $FF   ; end token
@@ -1615,7 +1557,7 @@ _off014_8BC3_37_winner:
 
 
 _off014_8BCE_38_survival:
-- D 0 - I - 0x030BDE 0C:8BCE: 34 21     .word $2134
+- D 0 - I - 0x030BDE 0C:8BCE: 34 21     .word $2534
 - D 0 - I - 0x030BE0 0C:8BD0: 9D        .byte $9D, $9F, $9C, $A0, $93, $A0, $8B, $96   ; SURVIVAL
 
 - D 0 - I - 0x030BE8 0C:8BD8: FF        .byte $FF   ; end token
@@ -1623,7 +1565,7 @@ _off014_8BCE_38_survival:
 
 
 _off014_8BD9_34_no_one:
-- D 0 - I - 0x030BE9 0C:8BD9: 34 21     .word $2134
+- D 0 - I - 0x030BE9 0C:8BD9: 34 21     .word $2534
 - D 0 - I - 0x030BEB 0C:8BDB: 98        .byte $98, $99, $00, $99, $98, $8F, $00, $00   ; NO ONE
 
 - D 0 - I - 0x030BF3 0C:8BE3: FF        .byte $FF   ; end token
@@ -1671,12 +1613,12 @@ tbl_8C00:
 - D 0 - - - 0x030C56 0C:8C46: 39 B0     .word _off014_B039_23_green
 - D 0 - - - 0x030C58 0C:8C48: 44 B0     .word _off014_B044_24_original
 - D 0 - - - 0x030C5A 0C:8C4A: 4F B0     .word _off014_B04F_25_night
-- D 0 - - - 0x030C5C 0C:8C4C: 20 8B     .word _off014_8B20_26_опции_страница_1
+- D 0 - - - 0x030C5C 0C:8C4C: 20 8B     .word $FFFF      ; 26 индекс не существует
 - D 0 - - - 0x030C5E 0C:8C4E: 2D 8B     .word $FFFF      ; 27 индекс не существует
 - D 0 - - - 0x030C60 0C:8C50: 3A 8B     .word $FFFF      ; 28 индекс не существует
 - D 0 - - - 0x030C62 0C:8C52: 42 8B     .word $FFFF      ; 29 индекс не существует
 - D 0 - - - 0x030C64 0C:8C54: 52 8B     .word $FFFF      ; 2A индекс не существует
-- D 0 - - - 0x030C66 0C:8C56: 62 8B     .word _off014_8B62_2B_опции_страница_2
+- D 0 - - - 0x030C66 0C:8C56: 62 8B     .word $FFFF      ; 2B индекс не существует
 - D 0 - - - 0x030C68 0C:8C58: 6F 8B     .word $FFFF      ; 2C индекс не существует
 - D 0 - - - 0x030C6A 0C:8C5A: 7C 8B     .word $FFFF      ; 2D индекс не существует
 - D 0 - - - 0x030C6C 0C:8C5C: 84 8B     .word $FFFF      ; 2E индекс не существует
@@ -1719,7 +1661,7 @@ tbl_8C00:
 
 
 _off014_8FD0_40_bgm1:
-                                        .word $20F4
+                                        .word $24F4
                                         .byte $8C, $91, $97, $82, $80, $80   ; BGM1
                                         
                                         .byte $FF   ; end token
@@ -1727,7 +1669,7 @@ _off014_8FD0_40_bgm1:
 
 
 _off014_8FD0_41_bgm2:
-                                        .word $20F4
+                                        .word $24F4
                                         .byte $8C, $91, $97, $83, $80, $80   ; BGM2
                                         
                                         .byte $FF   ; end token
@@ -1735,7 +1677,7 @@ _off014_8FD0_41_bgm2:
 
 
 _off014_8FD0_42_bgm3:
-                                        .word $20F4
+                                        .word $24F4
                                         .byte $8C, $91, $97, $84, $80, $80   ; BGM3
                                         
                                         .byte $FF   ; end token
@@ -1743,7 +1685,7 @@ _off014_8FD0_42_bgm3:
 
 
 _off014_8FD0_43_bgm4:
-                                        .word $20F4
+                                        .word $24F4
                                         .byte $8C, $91, $97, $85, $80, $80   ; BGM4
                                         
                                         .byte $FF   ; end token
@@ -1751,7 +1693,7 @@ _off014_8FD0_43_bgm4:
 
 
 _off014_8FD0_44_open1:
-                                        .word $20F4
+                                        .word $24F4
                                         .byte $99, $9A, $8F, $98, $82, $00   ; OPEN1
                                         
                                         .byte $FF   ; end token
@@ -1759,7 +1701,7 @@ _off014_8FD0_44_open1:
 
 
 _off014_8FD0_45_open2:
-                                        .word $20F4
+                                        .word $24F4
                                         .byte $99, $9A, $8F, $98, $83, $00   ; OPEN2
                                         
                                         .byte $FF   ; end token
@@ -1767,7 +1709,7 @@ _off014_8FD0_45_open2:
 
 
 _off014_8FD0_46_se1:
-                                        .word $20F4
+                                        .word $24F4
                                         .byte $9D, $8F, $82, $80, $80, $80   ; SE1
                                         
                                         .byte $FF   ; end token
@@ -1775,7 +1717,7 @@ _off014_8FD0_46_se1:
 
 
 _off014_8FD0_47_se2:
-                                        .word $20F4
+                                        .word $24F4
                                         .byte $9D, $8F, $83, $80, $80, $80   ; SE2
                                         
                                         .byte $FF   ; end token
@@ -1783,7 +1725,7 @@ _off014_8FD0_47_se2:
 
 
 _off014_8FD0_48_se3:
-                                        .word $20F4
+                                        .word $24F4
                                         .byte $9D, $8F, $84, $80, $80, $80   ; SE3
                                         
                                         .byte $FF   ; end token
@@ -1791,7 +1733,7 @@ _off014_8FD0_48_se3:
 
 
 _off014_8FD0_49_se4:
-                                        .word $20F4
+                                        .word $24F4
                                         .byte $9D, $8F, $85, $80, $80, $80   ; SE4
                                         
                                         .byte $FF   ; end token
@@ -1799,7 +1741,7 @@ _off014_8FD0_49_se4:
 
 
 _off014_8FD0_4A_se5:
-                                        .word $20F4
+                                        .word $24F4
                                         .byte $9D, $8F, $86, $80, $80, $80   ; SE5
                                         
                                         .byte $FF   ; end token
@@ -1807,7 +1749,7 @@ _off014_8FD0_4A_se5:
 
 
 _off014_8FD0_4B_se6:
-                                        .word $20F4
+                                        .word $24F4
                                         .byte $9D, $8F, $87, $80, $80, $80   ; SE6
                                         
                                         .byte $FF   ; end token
@@ -1815,7 +1757,7 @@ _off014_8FD0_4B_se6:
 
 
 _off014_8FD0_4C_se7:
-                                        .word $20F4
+                                        .word $24F4
                                         .byte $9D, $8F, $88, $80, $80, $80   ; SE7
                                         
                                         .byte $FF   ; end token
@@ -1823,7 +1765,7 @@ _off014_8FD0_4C_se7:
 
 
 _off014_8FD0_4D_se8:
-                                        .word $20F4
+                                        .word $24F4
                                         .byte $9D, $8F, $89, $80, $80, $80   ; SE8
                                         
                                         .byte $FF   ; end token
@@ -1831,7 +1773,7 @@ _off014_8FD0_4D_se8:
 
 
 _off014_8FD0_4E_se9:
-                                        .word $20F4
+                                        .word $24F4
                                         .byte $9D, $8F, $8A, $80, $80, $80   ; SE9
                                         
                                         .byte $FF   ; end token
@@ -1839,7 +1781,7 @@ _off014_8FD0_4E_se9:
 
 
 _off014_8FD0_4F_se10:
-                                        .word $20F4
+                                        .word $24F4
                                         .byte $9D, $8F, $82, $81, $80, $80   ; SE10
                                         
                                         .byte $FF   ; end token
@@ -1847,7 +1789,7 @@ _off014_8FD0_4F_se10:
 
 
 _off014_8FD0_50_se11:
-                                        .word $20F4
+                                        .word $24F4
                                         .byte $9D, $8F, $82, $82, $80, $80   ; SE11
                                         
                                         .byte $FF   ; end token
@@ -1855,7 +1797,7 @@ _off014_8FD0_50_se11:
 
 
 _off014_8FD0_51_se12:
-                                        .word $20F4
+                                        .word $24F4
                                         .byte $9D, $8F, $82, $83, $80, $80   ; SE12
                                         
                                         .byte $FF   ; end token

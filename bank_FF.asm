@@ -5825,7 +5825,7 @@ C - - - - - 0x03F236 0F:F226: 20 D6 F2  JSR sub_F2D6_nmi_off
 C - - - - - 0x03F239 0F:F229: A9 00     LDA #< ram_oam
 C - - - - - 0x03F23B 0F:F22B: 8D 03 20  STA $2003
 C - - - - - 0x03F23E 0F:F22E: A0 02     LDY #> ram_oam
-C - - - - - 0x03F240 0F:F230: 20 C2 F8  JSR sub_F8C2_попытка_выключить_обновление_oam
+C - - - - - 0x03F240 0F:F230: 20 C2 F8  STY $4014
 C - - - - - 0x03F243 0F:F233: 20 02 F7  JSR sub_F702_запись_буферов_в_ppu
 C - - - - - 0x03F246 0F:F236: A5 FE     LDA ram_for_2001
 C - - - - - 0x03F248 0F:F238: A6 24     LDX ram_0024
@@ -5853,6 +5853,7 @@ C - - - - - 0x03F272 0F:F262: 05 8F     ORA ram_btn_press + $01
 C - - - - - 0x03F274 0F:F264: 85 90     STA ram_sum_btn_press
 C - - - - - 0x03F276 0F:F266: 20 78 F3  JSR sub_F378_обработать_скрипт
 C - - - - - 0x03F279 0F:F269: 20 D3 F6  JSR sub_F6D3_спрайтовый_движок
+; закрыть буфер
 C - - - - - 0x03F27C 0F:F26C: A9 00     LDA #$00
 C - - - - - 0x03F27E 0F:F26E: 20 5D D2  JSR sub_D25D_записать_A_в_буфер_с_чтением_индекса
 C - - - - - 0x03F281 0F:F271: 85 23     STA ram_0023
@@ -7002,23 +7003,6 @@ C - - - - - 0x03F8C8 0F:F8B8: 48        PHA
 C - - - - - 0x03F8C9 0F:F8B9: A9 36     LDA #con_prg_bank + $16
 C - - - - - 0x03F8CB 0F:F8BB: 20 00 F6  JSR sub_F600_swap_prg_16
 C - - - - - 0x03F8CE 0F:F8BE: 4C 90 AF  JMP loc_0x02EFA0
-
-
-
-sub_F8C2_попытка_выключить_обновление_oam:
-; насколько я помню, используется только в момент
-; переключения экрана с опциями на кнопку select (моя была идея иииииии)
-C - - - - - 0x03F8D2 0F:F8C2: A5 2C     LDA ram_game_mode
-C - - - - - 0x03F8D4 0F:F8C4: 49 05     EOR #$05    ; con_gm_options
-C - - - - - 0x03F8D6 0F:F8C6: D0 04     BNE bra_F8CC
-; if con_gm_options
-C - - - - - 0x03F8D8 0F:F8C8: A5 AD     LDA ram_00AD
-C - - - - - 0x03F8DA 0F:F8CA: F0 03     BEQ bra_F8CC
-                                        ASL ram_00AD    ; получится 80 или 00
-                                        RTS
-bra_F8CC:
-C - - - - - 0x03F8DC 0F:F8CC: 8C 14 40  STY $4014
-C - - - - - 0x03F8DF 0F:F8CF: 60        RTS
 
 
 
