@@ -10,7 +10,6 @@
 .export loc_0x02E6E6
 .export sub_0x02E74B
 .export ofs_0x02E7CA
-.export ofs_0x02E830
 .export ofs_0x02E86E
 .export sub_0x02EA10
 .export loc_0x02EB10
@@ -602,29 +601,6 @@ bra_A7EC:
 C - - - - - 0x02E7FC 0B:A7EC: 29 EF     AND #$EF
 C - - - - - 0x02E7FE 0B:A7EE: 9D 00 06  STA ram_plr_0600,X
 C - - - - - 0x02E801 0B:A7F1: 4C 17 F6  JMP loc_0x03F627_restore_prg
-
-
-
-ofs_0x02E830:
-C - - - - - 0x02E830 0B:A820: 8A        TXA
-C - - - - - 0x02E831 0B:A821: 49 05     EOR #$05
-C - - - - - 0x02E833 0B:A823: A8        TAY
-C - - - - - 0x02E834 0B:A824: B9 50 05  LDA ram_obj_id,Y ; 0550 0551 
-C - - - - - 0x02E837 0B:A827: A8        TAY
-C - - - - - 0x02E838 0B:A828: B9 31 A8  LDA tbl_A831,Y
-C - - - - - 0x02E83B 0B:A82B: 9D B0 05  STA ram_obj_05B0,X
-C - - - - - 0x02E83E 0B:A82E: 4C 17 F6  JMP loc_0x03F627_restore_prg
-
-
-
-tbl_A831:
-- D 1 - - - 0x02E841 0B:A831: 20        .byte $20   ; 00 leo
-- - - - - - 0x02E842 0B:A832: 20        .byte $20   ; 01 raph
-- D 1 - - - 0x02E843 0B:A833: 20        .byte $20   ; 02 mike
-- - - - - - 0x02E844 0B:A834: 20        .byte $20   ; 03 don
-- D 1 - - - 0x02E845 0B:A835: 24        .byte $24   ; 04 casey
-- - - - - - 0x02E846 0B:A836: 24        .byte $24   ; 05 hot
-- D 1 - - - 0x02E847 0B:A837: 22        .byte $22   ; 06 shred
 
 
 
