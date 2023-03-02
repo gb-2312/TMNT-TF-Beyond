@@ -299,7 +299,9 @@ C - - - - - 0x0241D7 09:81C7: F0 24     BEQ bra_81ED
 C - - - - - 0x0241D9 09:81C9: B5 8E     LDA ram_btn_press,X
 C - - - - - 0x0241DB 09:81CB: A8        TAY
 C - - - - - 0x0241DC 09:81CC: 29 C0     AND #con_btns_AB
-C - - - - - 0x0241DE 09:81CE: D0 51     BNE bra_8221
+C - - - - - 0x0241DE 09:81CE: D0 51     BEQ bra_81D0
+                                        JMP loc_8221
+bra_81D0:
 C - - - - - 0x0241E0 09:81D0: B5 91     LDA ram_btn_hold,X
 C - - - - - 0x0241E2 09:81D2: 29 08     AND #con_btn_Up
 C - - - - - 0x0241E4 09:81D4: D0 1D     BNE bra_81F3
@@ -339,7 +341,9 @@ bra_8210:
 - - - - - - 0x02422D 09:821D: 9D B0 04  STA ram_obj_spd_Y_lo,X
 bra_8220_RTS:
 C - - - - - 0x024230 09:8220: 60        RTS
-bra_8221:
+
+
+
 sub_8221:
 loc_8221:
 C D 0 - - - 0x024231 09:8221: A4 A9     LDY ram_global_obj_index
