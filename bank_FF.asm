@@ -210,7 +210,6 @@
 .export loc_0x03FEAF
 .export loc_0x03FEEF
 .export sub_0x03FF04
-.export sub_0x03FF13
 .export sub_0x03FF1D
 .export loc_0x03FF38
 .export sub_0x03FF4B
@@ -7937,16 +7936,7 @@ C - - - - - 0x03FF09 0F:FEF9: 9D 0A 06  STA ram_060A,X ; 060A 060B
 C - - - - - 0x03FF0C 0F:FEFC: BC 20 05  LDY ram_obj_0520,X ; 0520 0521 
 bra_FEFF:
 C - - - - - 0x03FF0F 0F:FEFF: BD 50 05  LDA ram_obj_id,X ; 0550 0551 
-bra_FF02_RTS:
 C - - - - - 0x03FF12 0F:FF02: 60        RTS
-
-
-
-sub_0x03FF13:
-C - - - - - 0x03FF13 0F:FF03: BD 20 05  LDA ram_obj_0520,X ; 0520 0521 
-C - - - - - 0x03FF16 0F:FF06: 49 09     EOR #con_plr_state_бросает_соперника
-C - - - - - 0x03FF18 0F:FF08: D0 F8     BNE bra_FF02_RTS
-C - - - - - 0x03FF1A 0F:FF0A: 4C 69 B0  JMP loc_0x027079
 
 
 

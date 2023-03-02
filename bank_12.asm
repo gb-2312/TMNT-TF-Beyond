@@ -25,7 +25,6 @@
 .export loc_0x027026
 .export loc_0x027033
 .export loc_0x02706E
-.export loc_0x027079
 .export sub_0x0270C3
 .export sub_0x027152
 .export ofs_0x0278CB_суперка_casey_песок_финальная_стадия
@@ -2460,7 +2459,11 @@ C - - - - - 0x025091 09:9081: A9 20     LDA #$20
 C - - - - - 0x025093 09:9083: 8D 30 06  STA ram_0630
 bra_9086:
 C - - - - - 0x025096 09:9086: 90 1B     BCC bra_90A3_RTS
-C - - - - - 0x025098 09:9088: 20 03 FF  JSR sub_0x03FF13
+C - - - - - 0x025098 09:9088: 20 03 FF  LDA ram_obj_0520,X ; 0520 0521 
+                                        EOR #con_plr_state_бросает_соперника
+                                        BNE bra_908B
+                                        JSR sub_B069
+bra_908B:
 C - - - - - 0x02509B 09:908B: A9 1C     LDA #con_0x03F6AD_1C
 C - - - - - 0x02509D 09:908D: 20 94 F6  JSR sub_0x03F6A4_записать_звук
 C - - - - - 0x0250A0 09:9090: A6 AD     LDX ram_00AD
@@ -8354,7 +8357,6 @@ C - - - - - 0x027078 09:B068: 60        RTS
 
 
 sub_B069:
-loc_0x027079:
 C D 1 - - - 0x027079 09:B069: 86 17     STX ram_0017
 C - - - - - 0x02707B 09:B06B: 84 16     STY ram_0016
 C - - - - - 0x02707D 09:B06D: BC 50 05  LDY ram_obj_id,X ; 0550 0551 
