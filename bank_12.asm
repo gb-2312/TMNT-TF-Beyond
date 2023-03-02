@@ -313,7 +313,9 @@ C - - - - - 0x0241EF 09:81DF: D0 0F     BNE bra_81F0
 C - - - - - 0x0241F1 09:81E1: 20 0D 89  JSR sub_890D    ; возможен PLA PLA
 C - - - - - 0x0241F4 09:81E4: B5 91     LDA ram_btn_hold,X
 C - - - - - 0x0241F6 09:81E6: 29 03     AND #con_btns_LR
-C - - - - - 0x0241F8 09:81E8: D0 0C     BNE bra_81F6
+C - - - - - 0x0241F8 09:81E8: D0 0C     BEQ bra_81EA
+                                        JMP loc_81F6
+bra_81EA:
 C - - - - - 0x0241FA 09:81EA: 20 F9 81  JSR sub_81F9
 bra_81ED:
 C - - - - - 0x0241FD 09:81ED: 4C 7E 83  JMP loc_837E
@@ -321,7 +323,10 @@ bra_81F0:
 C - - - - - 0x024200 09:81F0: 4C 5B 83  JMP loc_835B
 bra_81F3:
 C - - - - - 0x024203 09:81F3: 4C 4F 83  JMP loc_834F
-bra_81F6:
+
+
+
+loc_81F6:
 C - - - - - 0x024206 09:81F6: 20 DB 80  JSR sub_80DB
 sub_81F9:
 C - - - - - 0x024209 09:81F9: BD 10 05  LDA ram_obj_0510,X ; 0510 0511 
