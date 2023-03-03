@@ -6194,7 +6194,7 @@ C - - - - - 0x036316 0D:A306: C9 07     CMP #con_plr_state_сидит
 C - - - - - 0x036318 0D:A308: D0 3F     BNE bra_A349
 C - - - - - 0x03631A 0D:A30A: B9 50 05  LDA ram_obj_id,Y ; 0550 0551 
 C - - - - - 0x03631D 0D:A30D: D0 3A     BNE bra_A349
-C - - - - - 0x03631F 0D:A30F: B9 00 04  LDA ram_plr_anim_id,Y
+C - - - - - 0x03631F 0D:A30F: B9 00 04  LDA ram_obj_anim_id,Y
 C - - - - - 0x036322 0D:A312: C9 9A     CMP #$9A
 C - - - - - 0x036324 0D:A314: F0 19     BEQ bra_A32F
 bra_A316:
@@ -6876,7 +6876,7 @@ bra_BC34:
 - - - - - - 0x037C44 0D:BC34: BD 20 05  LDA ram_obj_0520,X
 - - - - - - 0x037C47 0D:BC37: C9 0A     CMP #con_plr_state_брошен_соперником
 - - - - - - 0x037C49 0D:BC39: F0 C2     BEQ bra_BBFD
-- - - - - - 0x037C4B 0D:BC3B: B9 00 04  LDA ram_plr_anim_id,Y
+- - - - - - 0x037C4B 0D:BC3B: B9 00 04  LDA ram_obj_anim_id,Y
 - - - - - - 0x037C4E 0D:BC3E: C9 C4     CMP #$C4
 - - - - - - 0x037C50 0D:BC40: F0 BB     BEQ bra_BBFD
 - - - - - - 0x037C52 0D:BC42: B9 54 05  LDA ram_0554,Y

@@ -6198,7 +6198,7 @@ C - - - - - 0x02BF4C 0A:BF3C: 9D 60 04  STA ram_obj_spd_Z_hi,X ; 0463 0465 0467 
 C - - - - - 0x02BF4F 0A:BF3F: B9 EA BF  LDA tbl_BFEA,Y
 C - - - - - 0x02BF52 0A:BF42: 9D 80 04  STA ram_obj_spd_X_hi,X ; 0483 0485 0487 0489 048B 
 C - - - - - 0x02BF55 0A:BF45: B9 EF BF  LDA tbl_BFEF_анимация,Y
-C - - - - - 0x02BF58 0A:BF48: 9D 00 04  STA ram_plr_anim_id,X ; 0403 0405 0407 0409 040B 
+C - - - - - 0x02BF58 0A:BF48: 9D 00 04  STA ram_obj_anim_id,X ; 0403 0405 0407 0409 040B 
 C - - - - - 0x02BF5B 0A:BF4B: B9 F4 BF  LDA tbl_BFF4,Y
 C - - - - - 0x02BF5E 0A:BF4E: 9D 10 05  STA ram_obj_0510,X ; 0513 0515 0517 0519 051B 
 C - - - - - 0x02BF61 0A:BF51: FE 30 05  INC ram_obj_0530,X ; 0533 0535 0537 0539 053B 
