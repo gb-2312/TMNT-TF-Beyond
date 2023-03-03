@@ -2286,6 +2286,8 @@ C - - - - - 0x02FF78 0B:BF68: 60        RTS
 
 
 loc_0x02FF80:
+                                        LDA ram_random_1
+                                        AND #$0F
 C D 1 - - - 0x02FF80 0B:BF70: A8        TAY
 C - - - - - 0x02FF81 0B:BF71: B9 EA BF  LDA tbl_BFEA,Y
 C - - - - - 0x02FF84 0B:BF74: CD 5C 01  CMP ram_tournament_индекс_игрока + $07

@@ -3151,8 +3151,6 @@ C - - - - - 0x03E21B 0F:E20B: 90 39     BCC bra_E246
 ; con_gm_tournament
 C - - - - - 0x03E21D 0F:E20D: A9 36     LDA #con_prg_bank + $16
 C - - - - - 0x03E21F 0F:E20F: 20 00 F6  JSR sub_F600_swap_prg_16
-C - - - - - 0x03E222 0F:E212: A5 28     LDA ram_random_1
-C - - - - - 0x03E224 0F:E214: 29 0F     AND #$0F
 C - - - - - 0x03E226 0F:E216: 4C 70 BF  JMP loc_0x02FF80
 
 
