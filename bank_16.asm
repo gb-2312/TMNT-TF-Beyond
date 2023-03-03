@@ -982,8 +982,8 @@ C - - - - - 0x02EE62 0B:AE52: 8D 5C 01  STA ram_015C
 C - - - - - 0x02EE65 0B:AE55: EE 52 01  INC ram_0152
 C - - - - - 0x02EE68 0B:AE58: 20 8C FC  JSR sub_0x03FC9C_set_mirroring_V
                                         LDA #$00
-C - - - - - 0x02EE6B 0B:AE5B: 8D CA 06  STA ram_06CA
-C - - - - - 0x02EE6E 0B:AE5E: 8D CB 06  STA ram_06CB
+C - - - - - 0x02EE6B 0B:AE5B: 8D CA 06  STA ram_plr_06CA
+C - - - - - 0x02EE6E 0B:AE5E: 8D CB 06  STA ram_plr_06CA + $01
 C - - - - - 0x02EE71 0B:AE61: 8D 71 06  STA ram_0671
 C - - - - - 0x02EE74 0B:AE64: 85 AA     STA ram_таймер_задержки_фпс
 C - - - - - 0x02EE76 0B:AE66: 85 86     STA ram_0086

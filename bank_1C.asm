@@ -2427,7 +2427,7 @@ C - - - - - 0x038CAD 0E:8C9D: 85 37     STA ram_chr_bank_spr + $03
 C - - - - - 0x038CAF 0E:8C9F: A9 00     LDA #$00
 C - - - - - 0x038CB1 0E:8CA1: A0 05     LDY #$05
 bra_8CA3_loop:
-C - - - - - 0x038CB3 0E:8CA3: 99 76 06  STA ram_0676,Y
+C - - - - - 0x038CB3 0E:8CA3: 99 76 06  STA ram_0676,Y ; 0676 0677 0678 0679 067A 067B 
 C - - - - - 0x038CB6 0E:8CA6: 88        DEY
 C - - - - - 0x038CB7 0E:8CA7: 10 FA     BPL bra_8CA3_loop
 C - - - - - 0x038CB9 0E:8CA9: A2 1F     LDX #$1F
