@@ -46,13 +46,13 @@ C - - - - - 0x038020 0E:8010: 20 BE DA  JSR sub_0x03DACE_удалить_все_�
 C - - - - - 0x038023 0E:8013: A2 01     LDX #$01
 bra_8015_loop:
 C - - - - - 0x038025 0E:8015: BD B7 82  LDA tbl_82B7_анимация,X
-C - - - - - 0x038028 0E:8018: 9D 00 04  STA ram_plr_anim_id,X
+C - - - - - 0x038028 0E:8018: 9D 00 04  STA ram_plr_anim_id,X ; 0401 
 C - - - - - 0x03802B 0E:801B: BD B9 82  LDA tbl_82B9,X
-C - - - - - 0x03802E 0E:801E: 9D 10 04  STA ram_obj_pos_Y,X
+C - - - - - 0x03802E 0E:801E: 9D 10 04  STA ram_obj_pos_Y,X ; 0411 
 C - - - - - 0x038031 0E:8021: A9 30     LDA #$30
-C - - - - - 0x038033 0E:8023: 9D 40 04  STA ram_obj_pos_X,X
+C - - - - - 0x038033 0E:8023: 9D 40 04  STA ram_obj_pos_X,X ; 0441 
 C - - - - - 0x038036 0E:8026: A9 82     LDA #$82
-C - - - - - 0x038038 0E:8028: 9D 00 05  STA ram_obj_0500,X
+C - - - - - 0x038038 0E:8028: 9D 00 05  STA ram_obj_0500,X ; 0501 
 C - - - - - 0x03803B 0E:802B: CA        DEX
 C - - - - - 0x03803C 0E:802C: D0 E7     BNE bra_8015_loop
 C - - - - - 0x03803E 0E:802E: A9 55     LDA #con_chr_bank_spr + $55
