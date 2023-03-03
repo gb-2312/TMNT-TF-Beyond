@@ -954,7 +954,7 @@ bra_8548:
 - - - - - - 0x03455B 0D:854B: BD 20 05  LDA ram_obj_0520,X
 - - - - - - 0x03455E 0D:854E: C9 03     CMP #con_plr_state_получает_урон
 - - - - - - 0x034560 0D:8550: F0 0A     BEQ bra_855C
-- - - - - - 0x034562 0D:8552: BD 0C 06  LDA ram_060C,X
+- - - - - - 0x034562 0D:8552: BD 0C 06  LDA ram_plr_таймер_для_суперки,X
 - - - - - - 0x034565 0D:8555: DD 2E 01  CMP ram_012E,X
 - - - - - - 0x034568 0D:8558: F0 34     BEQ bra_858E
 - - - - - - 0x03456A 0D:855A: B0 32     BCS bra_858E
@@ -1013,7 +1013,7 @@ C - - - - - 0x0345CB 0D:85BB: C9 02     CMP #$02
 C - - - - - 0x0345CD 0D:85BD: 90 10     BCC bra_85CF
 bra_85BF:
 C - - - - - 0x0345CF 0D:85BF: 20 81 84  JSR sub_8481
-C - - - - - 0x0345D2 0D:85C2: BD 0C 06  LDA ram_060C,X
+C - - - - - 0x0345D2 0D:85C2: BD 0C 06  LDA ram_plr_таймер_для_суперки,X
 C - - - - - 0x0345D5 0D:85C5: DD 2E 01  CMP ram_012E,X
 C - - - - - 0x0345D8 0D:85C8: F0 05     BEQ bra_85CF
 C - - - - - 0x0345DA 0D:85CA: B0 03     BCS bra_85CF
@@ -3807,7 +3807,7 @@ C - - - - - 0x0353CF 0D:93BF: 20 32 D0  JSR sub_0x03D042_поинтеры_пос
 
 ofs_026_93CA_00:
 C - - J - - 0x0353DA 0D:93CA: BD 2E 01  LDA ram_012E,X
-C - - - - - 0x0353DD 0D:93CD: DD 0C 06  CMP ram_060C,X
+C - - - - - 0x0353DD 0D:93CD: DD 0C 06  CMP ram_plr_таймер_для_суперки,X
 C - - - - - 0x0353E0 0D:93D0: F0 0C     BEQ bra_93DE
 C - - - - - 0x0353E2 0D:93D2: A5 28     LDA ram_random_1
 C - - - - - 0x0353E4 0D:93D4: 29 03     AND #$03
@@ -4411,7 +4411,7 @@ C - - - - - 0x0357E8 0D:97D8: B9 60 04  LDA ram_obj_spd_Z_hi,Y
 C - - - - - 0x0357EB 0D:97DB: 10 0B     BPL bra_97E8
 C - - - - - 0x0357ED 0D:97DD: BC DE 06  LDY ram_06DE,X ; 06DF 
 C - - - - - 0x0357F0 0D:97E0: B9 2E 01  LDA ram_012E,Y ; 012E 
-C - - - - - 0x0357F3 0D:97E3: D9 0C 06  CMP ram_060C,Y ; 060C 
+C - - - - - 0x0357F3 0D:97E3: D9 0C 06  CMP ram_plr_таймер_для_суперки,Y ; 060C 
 C - - - - - 0x0357F6 0D:97E6: F0 3E     BEQ bra_9826
 bra_97E8:
 C - - - - - 0x0357F8 0D:97E8: B9 12 06  LDA ram_plr_индекс_атаки,Y
@@ -6372,7 +6372,7 @@ C - - - - - 0x03648A 0D:A47A: 90 1E     BCC bra_A49A
 - - - - - - 0x036493 0D:A483: AD 38 06  LDA ram_0638
 - - - - - - 0x036496 0D:A486: C9 60     CMP #$60
 - - - - - - 0x036498 0D:A488: B0 10     BCS bra_A49A
-- - - - - - 0x03649A 0D:A48A: B9 0C 06  LDA ram_060C,Y
+- - - - - - 0x03649A 0D:A48A: B9 0C 06  LDA ram_plr_таймер_для_суперки,Y
 - - - - - - 0x03649D 0D:A48D: C9 08     CMP #$08
 - - - - - - 0x03649F 0D:A48F: 90 09     BCC bra_A49A
 - - - - - - 0x0364A1 0D:A491: A5 8C     LDA ram_random_2
@@ -6544,7 +6544,7 @@ bra_A5E1:
 - - - - - - 0x0365F1 0D:A5E1: B9 10 04  LDA ram_obj_pos_Y,Y
 - - - - - - 0x0365F4 0D:A5E4: C9 B0     CMP #$B0
 - - - - - - 0x0365F6 0D:A5E6: D0 11     BNE bra_A5F9
-- - - - - - 0x0365F8 0D:A5E8: B9 0C 06  LDA ram_060C,Y
+- - - - - - 0x0365F8 0D:A5E8: B9 0C 06  LDA ram_plr_таймер_для_суперки,Y
 - - - - - - 0x0365FB 0D:A5EB: F0 0C     BEQ bra_A5F9
 - - - - - - 0x0365FD 0D:A5ED: B9 50 05  LDA ram_obj_id,Y
 - - - - - - 0x036600 0D:A5F0: A8        TAY
@@ -6965,7 +6965,7 @@ bra_BDBF:
 - - - - - - 0x037DDE 0D:BDCE: F0 1B     BEQ bra_BDEB
 - - - - - - 0x037DE0 0D:BDD0: C9 08     CMP #con_0612_черепаха_нога_дальняя_raph
 - - - - - - 0x037DE2 0D:BDD2: F0 17     BEQ bra_BDEB
-- - - - - - 0x037DE4 0D:BDD4: B9 0C 06  LDA ram_060C,Y
+- - - - - - 0x037DE4 0D:BDD4: B9 0C 06  LDA ram_plr_таймер_для_суперки,Y
 - - - - - - 0x037DE7 0D:BDD7: F0 09     BEQ bra_BDE2
 - - - - - - 0x037DE9 0D:BDD9: B9 50 05  LDA ram_obj_id,Y
 - - - - - - 0x037DEC 0D:BDDC: A8        TAY
@@ -7064,7 +7064,7 @@ bra_BECD:
 - - - - - - 0x037EE2 0D:BED2: 49 04     EOR #$04
 - - - - - - 0x037EE4 0D:BED4: F0 0C     BEQ bra_BEE2    ; A = 00
 bra_BED6:
-- - - - - - 0x037EE6 0D:BED6: B9 0C 06  LDA ram_060C,Y
+- - - - - - 0x037EE6 0D:BED6: B9 0C 06  LDA ram_plr_таймер_для_суперки,Y
 - - - - - - 0x037EE9 0D:BED9: F0 0A     BEQ bra_BEE5
 - - - - - - 0x037EEB 0D:BEDB: B9 50 05  LDA ram_obj_id,Y
 - - - - - - 0x037EEE 0D:BEDE: A8        TAY

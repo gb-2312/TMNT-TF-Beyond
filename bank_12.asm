@@ -125,7 +125,7 @@ C - - - - - 0x0240B4 09:80A4: 9D 45 06  STA ram_plr_damage,X ; 0645 0646
 C - - - - - 0x0240B7 09:80A7: 9D 43 06  STA ram_plr_0643,X ; 0643 0644 
 C - - - - - 0x0240BA 09:80AA: 9D 08 06  STA ram_0608,X ; 0608 0609 
 C - - - - - 0x0240BD 09:80AD: 9D 0A 06  STA ram_060A,X ; 060A 060B 
-C - - - - - 0x0240C0 09:80B0: 9D 0C 06  STA ram_060C,X ; 060C 060D 
+C - - - - - 0x0240C0 09:80B0: 9D 0C 06  STA ram_plr_таймер_для_суперки,X ; 060C 060D 
 C - - - - - 0x0240C3 09:80B3: 9D 0E 06  STA ram_060E,X ; 060E 060F 
 C - - - - - 0x0240C6 09:80B6: 9D 06 06  STA ram_0606,X ; 0606 0607 
 C - - - - - 0x0240C9 09:80B9: 9D 04 06  STA ram_0604,X ; 0604 0605 
@@ -1009,7 +1009,7 @@ C - - - - - 0x0246C7 09:86B7: 09 80     ORA #$80
 C - - - - - 0x0246C9 09:86B9: 8D A6 05  STA ram_obj_05A0 + $06
 C - - - - - 0x0246CC 09:86BC: A9 80     LDA #$80
 C - - - - - 0x0246CE 09:86BE: 8D E6 05  STA ram_obj_05E0 + $06
-C - - - - - 0x0246D1 09:86C1: 0A        ASL
+C - - - - - 0x0246D1 09:86C1: 0A        ASL ; 00
 C - - - - - 0x0246D2 09:86C2: 8D 04 06  STA ram_0604
 C - - - - - 0x0246D5 09:86C5: 8D 06 06  STA ram_0606
 C - - - - - 0x0246D8 09:86C8: 9D 00 06  STA ram_plr_0600,X ; 0600 0601 
@@ -4615,9 +4615,9 @@ C - - - - - 0x025A39 09:9A29: A5 09     LDA ram_0009    ; dpad btns
 C - - - - - 0x025A3B 09:9A2B: C9 04     CMP #con_btn_Down
 C - - - - - 0x025A3D 09:9A2D: D0 05     BNE bra_9A34
 C - - - - - 0x025A3F 09:9A2F: A9 14     LDA #$14
-C - - - - - 0x025A41 09:9A31: 9D 0C 06  STA ram_060C,X ; 060C 060D 
+C - - - - - 0x025A41 09:9A31: 9D 0C 06  STA ram_plr_таймер_для_суперки,X ; 060C 060D 
 bra_9A34:
-C - - - - - 0x025A44 09:9A34: DE 0C 06  DEC ram_060C,X ; 060C 060D 
+C - - - - - 0x025A44 09:9A34: DE 0C 06  DEC ram_plr_таймер_для_суперки,X ; 060C 060D 
 C - - - - - 0x025A47 09:9A37: F0 1A     BEQ bra_9A53
 C - - - - - 0x025A49 09:9A39: 20 AD 9A  JSR sub_9AAD_реверснуть_кнопку_в_0008
 C - - - - - 0x025A4C 09:9A3C: B5 8E     LDA ram_btn_press,X
@@ -4632,7 +4632,7 @@ C - - - - - 0x025A5C 09:9A4C: 4C D3 9A  JMP loc_9AD3
 bra_9A4F_RTS:
 C - - - - - 0x025A5F 09:9A4F: 60        RTS
 bra_9A50:
-C - - - - - 0x025A60 09:9A50: DE 0C 06  DEC ram_060C,X ; 060C 060D 
+C - - - - - 0x025A60 09:9A50: DE 0C 06  DEC ram_plr_таймер_для_суперки,X ; 060C 060D 
 bra_9A53:
 C - - - - - 0x025A63 09:9A53: F0 68     BEQ bra_9ABD
 C - - - - - 0x025A65 09:9A55: BD 10 04  LDA ram_obj_pos_Y,X ; 0410 0411 
@@ -4707,20 +4707,20 @@ C D 0 - - - 0x025ACD 09:9ABD: A9 00     LDA #$00
 C - - - - - 0x025ACF 09:9ABF: 9D 08 06  STA ram_0608,X ; 0608 0609 
 C - - - - - 0x025AD2 09:9AC2: 9D 31 06  STA ram_0631,X ; 0631 0632 
 bra_9AC5:
-C - - - - - 0x025AD5 09:9AC5: 9D 0C 06  STA ram_060C,X ; 060C 060D 
+C - - - - - 0x025AD5 09:9AC5: 9D 0C 06  STA ram_plr_таймер_для_суперки,X ; 060C 060D 
 C - - - - - 0x025AD8 09:9AC8: 60        RTS
 
 
 
 bra_9AC9:
 loc_9AC9:
-C D 0 - - - 0x025AD9 09:9AC9: FE 0C 06  INC ram_060C,X ; 060C 060D 
+C D 0 - - - 0x025AD9 09:9AC9: FE 0C 06  INC ram_plr_таймер_для_суперки,X ; 060C 060D 
 C - - - - - 0x025ADC 09:9ACC: 60        RTS
 
 
 
 sub_9ACD:
-C - - - - - 0x025ADD 09:9ACD: BD 0C 06  LDA ram_060C,X ; 060C 060D 
+C - - - - - 0x025ADD 09:9ACD: BD 0C 06  LDA ram_plr_таймер_для_суперки,X ; 060C 060D 
 C - - - - - 0x025AE0 09:9AD0: 9D 41 06  STA ram_plr_0641,X
 loc_9AD3:
 sub_9AD3:
@@ -4741,12 +4741,12 @@ C - - - - - 0x025AF5 09:9AE5: 35 91     AND ram_btn_hold,X
 C - - - - - 0x025AF7 09:9AE7: F0 0B     BEQ bra_9AF4
 C - - - - - 0x025AF9 09:9AE9: A9 76     LDA #$76
 C - - - - - 0x025AFB 09:9AEB: 20 0E E1  JSR sub_0x03E11E
-C - - - - - 0x025AFE 09:9AEE: DD 0C 06  CMP ram_060C,X
+C - - - - - 0x025AFE 09:9AEE: DD 0C 06  CMP ram_plr_таймер_для_суперки,X
 C - - - - - 0x025B01 09:9AF1: B0 D6     BCS bra_9AC9
 C - - - - - 0x025B03 09:9AF3: 60        RTS
 bra_9AF4:
 C - - - - - 0x025B04 09:9AF4: BD 2E 01  LDA ram_012E,X
-C - - - - - 0x025B07 09:9AF7: DD 0C 06  CMP ram_060C,X
+C - - - - - 0x025B07 09:9AF7: DD 0C 06  CMP ram_plr_таймер_для_суперки,X
 C - - - - - 0x025B0A 09:9AFA: F0 02     BEQ bra_9AFE
 C - - - - - 0x025B0C 09:9AFC: B0 BF     BCS bra_9ABD
 bra_9AFE:
@@ -4767,17 +4767,17 @@ C - - - - - 0x025B23 09:9B13: B5 91     LDA ram_btn_hold,X
 C - - - - - 0x025B25 09:9B15: 25 08     AND ram_0008    ; right/left
 C - - - - - 0x025B27 09:9B17: F0 09     BEQ bra_9B22
 C - - - - - 0x025B29 09:9B19: BD 2E 01  LDA ram_012E,X
-C - - - - - 0x025B2C 09:9B1C: DD 0C 06  CMP ram_060C,X
+C - - - - - 0x025B2C 09:9B1C: DD 0C 06  CMP ram_plr_таймер_для_суперки,X
 C - - - - - 0x025B2F 09:9B1F: B0 A8     BCS bra_9AC9
 C - - - - - 0x025B31 09:9B21: 60        RTS
 bra_9B22:
 C - - - - - 0x025B32 09:9B22: BD 2E 01  LDA ram_012E,X
-C - - - - - 0x025B35 09:9B25: DD 0C 06  CMP ram_060C,X
+C - - - - - 0x025B35 09:9B25: DD 0C 06  CMP ram_plr_таймер_для_суперки,X
 C - - - - - 0x025B38 09:9B28: B0 93     BCS bra_9ABD
 C - - - - - 0x025B3A 09:9B2A: 20 D3 9A  JSR sub_9AD3
 C - - - - - 0x025B3D 09:9B2D: 20 AD 9A  JSR sub_9AAD_реверснуть_кнопку_в_0008
 bra_9B30:
-C - - - - - 0x025B40 09:9B30: DE 0C 06  DEC ram_060C,X
+C - - - - - 0x025B40 09:9B30: DE 0C 06  DEC ram_plr_таймер_для_суперки,X
 C - - - - - 0x025B43 09:9B33: F0 88     BEQ bra_9ABD
 C - - - - - 0x025B45 09:9B35: B5 8E     LDA ram_btn_press,X
 C - - - - - 0x025B47 09:9B37: 25 08     AND ram_0008    ; right/left
@@ -4796,7 +4796,7 @@ C - - - - - 0x025B64 09:9B54: 4C 7C 9A  JMP loc_9A7C
 bra_9B57:
 loc_9B57:
 C D 0 - - - 0x025B67 09:9B57: A9 40     LDA #con_btn_B
-C - - - - - 0x025B69 09:9B59: DE 0C 06  DEC ram_060C,X
+C - - - - - 0x025B69 09:9B59: DE 0C 06  DEC ram_plr_таймер_для_суперки,X
 C - - - - - 0x025B6C 09:9B5C: D0 03     BNE bra_9B61
 C - - - - - 0x025B6E 09:9B5E: 4C BD 9A  JMP loc_9ABD
 bra_9B61:
@@ -4811,7 +4811,7 @@ C - - - - - 0x025B7F 09:9B6F: D0 3C     BNE bra_FE9B_RTS
 C D 3 - - - 0x03FE9D 0F:FE8D: BD 52 05  LDA ram_0552,X ; 0552 0553 
 C - - - - - 0x03FEA0 0F:FE90: C9 0E     CMP #$0E
 C - - - - - 0x03FEA2 0F:FE92: F0 08     BEQ bra_FE9C
-C - - - - - 0x03FEA4 0F:FE94: BD 0C 06  LDA ram_060C,X ; 060C 060D 
+C - - - - - 0x03FEA4 0F:FE94: BD 0C 06  LDA ram_plr_таймер_для_суперки,X ; 060C 060D 
 C - - - - - 0x03FEA7 0F:FE97: C9 09     CMP #$09
 C - - - - - 0x03FEA9 0F:FE99: B0 01     BCS bra_FE9C
 bra_FE9B_RTS:
@@ -4846,17 +4846,17 @@ bra_9B8E:
 C - - - - - 0x025B9E 09:9B8E: B5 91     LDA ram_btn_hold,X
 C - - - - - 0x025BA0 09:9B90: 29 04     AND #con_btn_Down
 C - - - - - 0x025BA2 09:9B92: F0 0A     BEQ bra_9B9E
-C - - - - - 0x025BA4 09:9B94: BD 0C 06  LDA ram_060C,X ; 060C 060D 
+C - - - - - 0x025BA4 09:9B94: BD 0C 06  LDA ram_plr_таймер_для_суперки,X ; 060C 060D 
 C - - - - - 0x025BA7 09:9B97: C5 00     CMP ram_0000
 C - - - - - 0x025BA9 09:9B99: B0 12     BCS bra_9BAD_RTS
 C - - - - - 0x025BAB 09:9B9B: 4C C9 9A  JMP loc_9AC9
 bra_9B9E:
-C - - - - - 0x025BAE 09:9B9E: BD 0C 06  LDA ram_060C,X ; 060C 060D 
+C - - - - - 0x025BAE 09:9B9E: BD 0C 06  LDA ram_plr_таймер_для_суперки,X ; 060C 060D 
 C - - - - - 0x025BB1 09:9BA1: C5 00     CMP ram_0000
 C - - - - - 0x025BB3 09:9BA3: 90 62     BCC bra_9C07
 C - - - - - 0x025BB5 09:9BA5: 20 D3 9A  JSR sub_9AD3
 C - - - - - 0x025BB8 09:9BA8: A9 10     LDA #$10
-C - - - - - 0x025BBA 09:9BAA: 9D 0C 06  STA ram_060C,X ; 060C 060D 
+C - - - - - 0x025BBA 09:9BAA: 9D 0C 06  STA ram_plr_таймер_для_суперки,X ; 060C 060D 
 bra_9BAD_RTS:
 C - - - - - 0x025BBD 09:9BAD: 60        RTS
 bra_9BAE:
@@ -4865,7 +4865,7 @@ C - - - - - 0x025BC0 09:9BB0: 2C        .byte $2C   ; BIT
 bra_9BB1:
 C - - - - - 0x025BC1 09:9BB1: A9 48     LDA #$48
 C - - - - - 0x025BC3 09:9BB3: 85 00     STA ram_0000
-C - - - - - 0x025BC5 09:9BB5: DE 0C 06  DEC ram_060C,X ; 060C 060D 
+C - - - - - 0x025BC5 09:9BB5: DE 0C 06  DEC ram_plr_таймер_для_суперки,X ; 060C 060D 
 C - - - - - 0x025BC8 09:9BB8: D0 03     BNE bra_9BBD
 C - - - - - 0x025BCA 09:9BBA: 4C BD 9A  JMP loc_9ABD
 bra_9BBD:
@@ -4896,7 +4896,7 @@ C - - - - - 0x025BF4 09:9BE4: C9 04     CMP #con_btn_Down
 C - - - - - 0x025BF6 09:9BE6: D0 48     BNE bra_9C30_RTS
 C - - - - - 0x025BF8 09:9BE8: 4C D3 9A  JMP loc_9AD3
 bra_9BEB:
-C - - - - - 0x025BFB 09:9BEB: DE 0C 06  DEC ram_060C,X
+C - - - - - 0x025BFB 09:9BEB: DE 0C 06  DEC ram_plr_таймер_для_суперки,X
 C - - - - - 0x025BFE 09:9BEE: F0 17     BEQ bra_9C07
 C - - - - - 0x025C00 09:9BF0: 88        DEY
 C - - - - - 0x025C01 09:9BF1: D0 17     BNE bra_9C0A
@@ -4946,7 +4946,7 @@ C - - - - - 0x025C50 09:9C40: D0 EE     BNE bra_9C30_RTS
 bra_9C42:
 C - - - - - 0x025C52 09:9C42: 4C D3 9A  JMP loc_9AD3
 bra_9C45:
-C - - - - - 0x025C55 09:9C45: DE 0C 06  DEC ram_060C,X
+C - - - - - 0x025C55 09:9C45: DE 0C 06  DEC ram_plr_таймер_для_суперки,X
 C - - - - - 0x025C58 09:9C48: F0 BD     BEQ bra_9C07
 C - - - - - 0x025C5A 09:9C4A: 88        DEY
 C - - - - - 0x025C5B 09:9C4B: D0 11     BNE bra_9C5E
