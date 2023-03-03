@@ -1660,7 +1660,7 @@ C - - - - - 0x02F73E 0B:B72E: 20 32 D0  JSR sub_0x03D042_поинтеры_пос
 ofs_038_B73D_00:
 C - - J - - 0x02F74D 0B:B73D: A9 0C     LDA #$0C
 loc_B73F:
-C D 1 - - - 0x02F74F 0B:B73F: 20 0E E1  JSR sub_0x03E11E
+C D 1 - - - 0x02F74F 0B:B73F: 20 0E E1  JSR sub_0x03E11E_корректировка_значения_A_для_turbo
 C - - - - - 0x02F752 0B:B742: 9D 60 05  STA ram_obj_0560,X ; 0560 0561 
 C - - - - - 0x02F755 0B:B745: A9 A2     LDA #$A2
 C - - - - - 0x02F757 0B:B747: 9D 00 04  STA ram_obj_anim_id,X ; 0400 0401 
@@ -1865,7 +1865,7 @@ C - - - - - 0x02FBCA 0B:BBBA: D0 39     BNE bra_BBF5_RTS
 - - - - - - 0x02FBE3 0B:BBD3: 85 00     STA ram_0000
 - - - - - - 0x02FBE5 0B:BBD5: BD 40 01  LDA ram_0140,X
 - - - - - - 0x02FBE8 0B:BBD8: FD 42 01  SBC ram_0142,X
-- - - - - - 0x02FBEB 0B:BBDB: 25 22     AND ram_0022
+- - - - - - 0x02FBEB 0B:BBDB: 25 22     AND ram_счетчик_кадров
 - - - - - - 0x02FBED 0B:BBDD: 18        CLC
 - - - - - - 0x02FBEE 0B:BBDE: 7D 42 01  ADC ram_0142,X
 - - - - - - 0x02FBF1 0B:BBE1: 65 03     ADC ram_0003

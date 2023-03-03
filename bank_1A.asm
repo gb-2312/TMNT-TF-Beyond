@@ -6998,7 +6998,7 @@ loc_BE07:
 - - - - - - 0x037E1C 0D:BE0C: B0 2F     BCS bra_BE3D_RTS
 - - - - - - 0x037E1E 0D:BE0E: C9 01     CMP #con_plr_state_в_прыжке
 - - - - - - 0x037E20 0D:BE10: D0 05     BNE bra_BE17
-- - - - - - 0x037E22 0D:BE12: A5 22     LDA ram_0022
+- - - - - - 0x037E22 0D:BE12: A5 22     LDA ram_счетчик_кадров
 - - - - - - 0x037E24 0D:BE14: 4A        LSR
 - - - - - - 0x037E25 0D:BE15: B0 1F     BCS bra_BE36
 bra_BE17:

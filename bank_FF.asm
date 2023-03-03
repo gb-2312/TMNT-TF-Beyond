@@ -101,7 +101,7 @@
 .export sub_0x03DF5F
 .export loc_0x03DF5F
 .export sub_0x03DFB3
-.export sub_0x03E11E
+.export sub_0x03E11E_корректировка_значения_A_для_turbo
 .export loc_0x03E13E_подготовить_затемнение_из_цветного_в_черный
 .export sub_0x03E14E_подготовить_затемнение_из_белого_в_цветной
 .export loc_0x03E14E_подготовить_затемнение_из_белого_в_цветной
@@ -513,7 +513,7 @@ C - - - - - 0x03D0A6 0F:D096: B9 E7 D0  LDA tbl_D101_колво_картинок
 C - - - - - 0x03D0A9 0F:D099: 9D D0 05  STA ram_obj_05D0,X ; 05D0 05D1 05D4 05D5 05D6 
 bra_D09C:
 C - - - - - 0x03D0AC 0F:D09C: B9 CD D0  LDA tbl_D101_продолжительность_кадра_анимации + $01,Y
-C - - - - - 0x03D0AF 0F:D09F: 20 0E E1  JSR sub_E10E
+C - - - - - 0x03D0AF 0F:D09F: 20 0E E1  JSR sub_E10E_корректировка_значения_A_для_turbo
 C - - - - - 0x03D0B2 0F:D0A2: 9D C0 05  STA ram_obj_anim_timer,X ; 05C0 05C1 05C4 05C5 05C6 
 bra_D0A5:
 C - - - - - 0x03D0B5 0F:D0A5: 18        CLC
@@ -2437,8 +2437,8 @@ C - - - - - 0x03DE54 0F:DE44: 26 19     ROL ram_0019
 C - - - - - 0x03DE56 0F:DE46: 0A        ASL
 C - - - - - 0x03DE57 0F:DE47: 26 19     ROL ram_0019
 C - - - - - 0x03DE59 0F:DE49: 0A        ASL
-C - - - - - 0x03DE5A 0F:DE4A: 26 19     ROL ram_0019
-C - - - - - 0x03DE5C 0F:DE4C: 85 18     STA ram_0018
+C - - - - - 0x03DE5A 0F:DE4A: 26 19     ROL ram_0019    ; делимое hi
+C - - - - - 0x03DE5C 0F:DE4C: 85 18     STA ram_0018    ; делимое lo
 C - - - - - 0x03DE5E 0F:DE4E: B5 A0     LDA ram_strength,X
 C - - - - - 0x03DE60 0F:DE50: 0A        ASL
 C - - - - - 0x03DE61 0F:DE51: BC 50 05  LDY ram_obj_id,X ; 0550 0551 
@@ -2447,7 +2447,7 @@ C - - - - - 0x03DE65 0F:DE55: 79 34 F1  ADC tbl_F134,Y
 C - - - - - 0x03DE68 0F:DE58: BC 20 05  LDY ram_obj_0520,X ; 0520 0521 
 C - - - - - 0x03DE6B 0F:DE5B: C0 0A     CPY #$0A
 C - - - - - 0x03DE6D 0F:DE5D: D0 08     BNE bra_DE67
-C - - - - - 0x03DE6F 0F:DE5F: 48        PHA
+C - - - - - 0x03DE6F 0F:DE5F: 48        PHA ; делитель lo
 C - - - - - 0x03DE70 0F:DE60: 20 E7 F5  JSR sub_F5E7_swap_prg_16
 C - - - - - 0x03DE73 0F:DE63: 4C 00 AB  JMP loc_0x02EB10
 
@@ -2457,7 +2457,7 @@ ofs_0x03DE76:
 C - - - - - 0x03DE76 0F:DE66: 68        PLA
 bra_DE67:
 C - - - - - 0x03DE79 0F:DE69: 20 00 D9  JSR sub_D900_деление_16бит_на_16бит
-C - - - - - 0x03DE7C 0F:DE6C: A5 18     LDA ram_0018
+C - - - - - 0x03DE7C 0F:DE6C: A5 18     LDA ram_0018    ; частное lo
 C - - - - - 0x03DE7E 0F:DE6E: D0 02     BNE bra_DE72_RTS
 C - - - - - 0x03DE80 0F:DE70: A9 03     LDA #$03
 bra_DE72_RTS:
@@ -2957,21 +2957,24 @@ tbl_E107:
 
 
 
-sub_E10E:
-sub_0x03E11E:
+sub_E10E_корректировка_значения_A_для_turbo:
+sub_0x03E11E_корректировка_значения_A_для_turbo:
+; если скорость turbo, уменьшить значение в 1.5 раза
+; на выходе A = частное lo
 C - - - - - 0x03E11E 0F:E10E: 84 1E     STY ram_001E
 C - - - - - 0x03E120 0F:E110: AC 26 01  LDY ram_option_speed
 C - - - - - 0x03E123 0F:E113: F0 16     BEQ bra_E12B
 C - - - - - 0x03E125 0F:E115: A4 95     LDY ram_0095
 C - - - - - 0x03E127 0F:E117: C0 07     CPY #$07
 C - - - - - 0x03E129 0F:E119: D0 10     BNE bra_E12B
+; умножить на 02 и поделить на 03
 C - - - - - 0x03E12B 0F:E11B: 0A        ASL
-C - - - - - 0x03E12C 0F:E11C: 85 18     STA ram_0018
+C - - - - - 0x03E12C 0F:E11C: 85 18     STA ram_0018    ; делимое lo
 C - - - - - 0x03E12E 0F:E11E: A9 00     LDA #$00
-C - - - - - 0x03E130 0F:E120: 85 19     STA ram_0019
-C - - - - - 0x03E132 0F:E122: A9 03     LDA #$03
+C - - - - - 0x03E130 0F:E120: 85 19     STA ram_0019    ; делимое hi
+C - - - - - 0x03E132 0F:E122: A9 03     LDA #$03    ; делитель lo
 C - - - - - 0x03E136 0F:E126: 20 00 D9  JSR sub_D900_деление_16бит_на_16бит
-C - - - - - 0x03E139 0F:E129: A5 18     LDA ram_0018
+C - - - - - 0x03E139 0F:E129: A5 18     LDA ram_0018    ; частное lo
 bra_E12B:
 C - - - - - 0x03E13B 0F:E12B: A4 1E     LDY ram_001E
 C - - - - - 0x03E13D 0F:E12D: 60        RTS
@@ -3535,7 +3538,7 @@ C - - - - - 0x03E45F 0F:E44F: A2 01     LDX #$01
 bra_E451_loop:
 C - - - - - 0x03E461 0F:E451: BC 50 05  LDY ram_obj_id,X ; 0550 0551 
 C - - - - - 0x03E464 0F:E454: B9 99 E9  LDA tbl_E999,Y
-C - - - - - 0x03E467 0F:E457: 20 0E E1  JSR sub_E10E
+C - - - - - 0x03E467 0F:E457: 20 0E E1  JSR sub_E10E_корректировка_значения_A_для_turbo
 C - - - - - 0x03E46A 0F:E45A: 9D 2E 01  STA ram_012E,X
 C - - - - - 0x03E46D 0F:E45D: CA        DEX
 C - - - - - 0x03E46E 0F:E45E: 10 F1     BPL bra_E451_loop
@@ -3715,7 +3718,7 @@ C - - - - - 0x03E56C 0F:E55C: 60        RTS
 ofs_001_E55D_09:
 C - - J - - 0x03E56D 0F:E55D: AD B0 04  LDA ram_obj_spd_Y_lo
 C - - - - - 0x03E570 0F:E560: F0 09     BEQ bra_E56B
-C - - - - - 0x03E572 0F:E562: A5 22     LDA ram_0022
+C - - - - - 0x03E572 0F:E562: A5 22     LDA ram_счетчик_кадров
 C - - - - - 0x03E574 0F:E564: 4A        LSR
 C - - - - - 0x03E575 0F:E565: 90 03     BCC bra_E56A_RTS
 C - - - - - 0x03E577 0F:E567: CE B0 04  DEC ram_obj_spd_Y_lo
@@ -4225,7 +4228,7 @@ bra_E891_RTS:
 
 
 ofs_001_E892_1C:
-C - - J - - 0x03E8A2 0F:E892: A5 22     LDA ram_0022
+C - - J - - 0x03E8A2 0F:E892: A5 22     LDA ram_счетчик_кадров
 C - - - - - 0x03E8A4 0F:E894: 29 03     AND #$03
 C - - - - - 0x03E8A6 0F:E896: D0 E8     BNE bra_E880_RTS
 C - - - - - 0x03E8A8 0F:E898: CE 60 05  DEC ram_obj_0560
@@ -4619,7 +4622,7 @@ C - - - - - 0x03EACD 0F:EABD: F0 73     BEQ bra_EB32_RTS    ; if время вы
 C - - - - - 0x03EACF 0F:EABF: CE 74 06  DEC ram_время_милисекунды
 C - - - - - 0x03EAD2 0F:EAC2: 10 6E     BPL bra_EB32_RTS
 C - - - - - 0x03EAD4 0F:EAC4: A9 4E     LDA #$4E
-C - - - - - 0x03EAD6 0F:EAC6: 20 0E E1  JSR sub_E10E
+C - - - - - 0x03EAD6 0F:EAC6: 20 0E E1  JSR sub_E10E_корректировка_значения_A_для_turbo
 C - - - - - 0x03EAD9 0F:EAC9: 8D 74 06  STA ram_время_милисекунды
 C - - - - - 0x03EADC 0F:EACC: CE 73 06  DEC ram_время_единицы
 C - - - - - 0x03EADF 0F:EACF: 30 1A     BMI bra_EAEB
@@ -5822,7 +5825,7 @@ sub_0x03F214_генератор_рандома:
 C - - - - - 0x03F214 0F:F204: E6 28     INC ram_random_1
 C - - - - - 0x03F216 0F:F206: 18        CLC
 C - - - - - 0x03F217 0F:F207: A5 28     LDA ram_random_1
-C - - - - - 0x03F219 0F:F209: 65 22     ADC ram_0022
+C - - - - - 0x03F219 0F:F209: 65 22     ADC ram_счетчик_кадров
 C - - - - - 0x03F21B 0F:F20B: 85 28     STA ram_random_1
 C - - - - - 0x03F21D 0F:F20D: A4 28     LDY ram_random_1
 C - - - - - 0x03F21F 0F:F20F: B9 00 00  LDA ram_0000,Y
@@ -6038,7 +6041,7 @@ tbl_F375:
 
 
 sub_F378_обработать_скрипт:
-C - - - - - 0x03F388 0F:F378: E6 22     INC ram_0022
+C - - - - - 0x03F388 0F:F378: E6 22     INC ram_счетчик_кадров
 C - - - - - 0x03F38A 0F:F37A: 20 80 F3  JSR sub_F380
 C - - - - - 0x03F38D 0F:F37D: 4C 38 D5  JMP loc_D538
 
@@ -6150,14 +6153,14 @@ C - - - - - 0x03F443 0F:F433: 85 98     STA ram_0098
 C - - - - - 0x03F445 0F:F435: 20 90 F6  JSR sub_F690_записать_звук_сохранив_X_Y
 C - - - - - 0x03F448 0F:F438: A9 80     LDA #$80
 C - - - - - 0x03F44A 0F:F43A: 85 9C     STA ram_009C
-C - - - - - 0x03F44C 0F:F43C: 0A        ASL
+C - - - - - 0x03F44C 0F:F43C: 0A        ASL ; 00
 C - - - - - 0x03F44D 0F:F43D: 8D 11 01  STA ram_0111
 C - - - - - 0x03F450 0F:F440: 8D 12 01  STA ram_0112
 C - - - - - 0x03F453 0F:F443: E6 21     INC ram_script_draw_lo
 sub_F445:
 C - - - - - 0x03F455 0F:F445: A9 50     LDA #$50
 C - - - - - 0x03F457 0F:F447: 8D 40 04  STA ram_obj_pos_X
-C - - - - - 0x03F45A 0F:F44A: A5 22     LDA ram_0022
+C - - - - - 0x03F45A 0F:F44A: A5 22     LDA ram_счетчик_кадров
 C - - - - - 0x03F45C 0F:F44C: 29 0C     AND #$0C
 C - - - - - 0x03F45E 0F:F44E: 4A        LSR
 C - - - - - 0x03F45F 0F:F44F: 4A        LSR

@@ -1384,7 +1384,7 @@ C - - - - - 0x0386AB 0E:869B: 60        RTS
 
 
 ofs_014_869C_03:
-C - - J - - 0x0386AC 0E:869C: A5 22     LDA ram_0022
+C - - J - - 0x0386AC 0E:869C: A5 22     LDA ram_счетчик_кадров
 C - - - - - 0x0386AE 0E:869E: 29 07     AND #$07
 C - - - - - 0x0386B0 0E:86A0: D0 06     BNE bra_86A8
 C - - - - - 0x0386B2 0E:86A2: A5 93     LDA ram_sum_btn_hold
@@ -1776,7 +1776,7 @@ C - - - - - 0x03891B 0E:890B: 4C 41 E1  JMP loc_0x03E151_подготовить_
 
 
 ofs_013_890E_02:
-C - - J - - 0x03891E 0E:890E: A5 22     LDA ram_0022
+C - - J - - 0x03891E 0E:890E: A5 22     LDA ram_счетчик_кадров
 C - - - - - 0x038920 0E:8910: 20 AC 89  JSR sub_89AC
 C - - - - - 0x038923 0E:8913: A5 90     LDA ram_sum_btn_press
 C - - - - - 0x038925 0E:8915: 29 10     AND #con_btn_Start
@@ -1846,7 +1846,7 @@ C - - - - - 0x03899A 0E:898A: 4C 8B F6  JMP loc_0x03F69B_выключить_зв
 
 
 ofs_013_898D_03:
-C - - J - - 0x03899D 0E:898D: A5 22     LDA ram_0022
+C - - J - - 0x03899D 0E:898D: A5 22     LDA ram_счетчик_кадров
 C - - - - - 0x03899F 0E:898F: 0A        ASL
 C - - - - - 0x0389A0 0E:8990: 0A        ASL
 C - - - - - 0x0389A1 0E:8991: 20 AC 89  JSR sub_89AC
@@ -1891,7 +1891,7 @@ C - - - - - 0x0389CD 0E:89BD: 9D 00 04  STA ram_obj_anim_id,X ; 0400 0401
 C - - - - - 0x0389D0 0E:89C0: AD 30 05  LDA ram_obj_0530
 C - - - - - 0x0389D3 0E:89C3: 4A        LSR
 C - - - - - 0x0389D4 0E:89C4: B0 09     BCS bra_89CF
-C - - - - - 0x0389D6 0E:89C6: A5 22     LDA ram_0022
+C - - - - - 0x0389D6 0E:89C6: A5 22     LDA ram_счетчик_кадров
 C - - - - - 0x0389D8 0E:89C8: 29 08     AND #$08
 C - - - - - 0x0389DA 0E:89CA: D0 03     BNE bra_89CF
 C - - - - - 0x0389DC 0E:89CC: 9D 00 04  STA ram_obj_anim_id,X ; 0400 0401 
@@ -1922,7 +1922,7 @@ C - - - - - 0x038A04 0E:89F4: 8D 04 04  STA ram_obj_anim_id + $04
 C - - - - - 0x038A07 0E:89F7: AD 30 05  LDA ram_obj_0530
 C - - - - - 0x038A0A 0E:89FA: 4A        LSR
 C - - - - - 0x038A0B 0E:89FB: 90 09     BCC bra_8A06_RTS
-C - - - - - 0x038A0D 0E:89FD: A5 22     LDA ram_0022
+C - - - - - 0x038A0D 0E:89FD: A5 22     LDA ram_счетчик_кадров
 C - - - - - 0x038A0F 0E:89FF: 29 08     AND #$08
 C - - - - - 0x038A11 0E:8A01: D0 03     BNE bra_8A06_RTS
 C - - - - - 0x038A13 0E:8A03: 8D 04 04  STA ram_obj_anim_id + $04
@@ -2119,7 +2119,7 @@ ofs_012_8AD6_01_подсчет_оставшегося_времени_после_
 C - - J - - 0x038AE6 0E:8AD6: 20 19 8B  JSR sub_8B19    ; возможен PLA PLA
 C - - - - - 0x038AE9 0E:8AD9: A9 16     LDA #$16
 C - - - - - 0x038AEB 0E:8ADB: 20 21 8B  JSR sub_8B21
-C - - - - - 0x038AEE 0E:8ADE: A5 22     LDA ram_0022
+C - - - - - 0x038AEE 0E:8ADE: A5 22     LDA ram_счетчик_кадров
 C - - - - - 0x038AF0 0E:8AE0: 29 10     AND #$10
 C - - - - - 0x038AF2 0E:8AE2: 0A        ASL
 C - - - - - 0x038AF3 0E:8AE3: 0A        ASL
@@ -2163,7 +2163,7 @@ C - - - - - 0x038B26 0E:8B16: 4C 90 F6  JMP loc_0x03F6A0_записать_зву
 
 
 sub_8B19:
-C - - - - - 0x038B29 0E:8B19: A5 22     LDA ram_0022
+C - - - - - 0x038B29 0E:8B19: A5 22     LDA ram_счетчик_кадров
 C - - - - - 0x038B2B 0E:8B1B: 4A        LSR
 C - - - - - 0x038B2C 0E:8B1C: 90 02     BCC bra_8B20_RTS
 C - - - - - 0x038B2E 0E:8B1E: 68        PLA
@@ -2175,7 +2175,7 @@ C - - - - - 0x038B30 0E:8B20: 60        RTS
 
 sub_8B21:
 C - - - - - 0x038B31 0E:8B21: 85 00     STA ram_0000
-C - - - - - 0x038B33 0E:8B23: A5 22     LDA ram_0022
+C - - - - - 0x038B33 0E:8B23: A5 22     LDA ram_счетчик_кадров
 C - - - - - 0x038B35 0E:8B25: 0A        ASL
 C - - - - - 0x038B36 0E:8B26: 0A        ASL
 C - - - - - 0x038B37 0E:8B27: 0A        ASL
@@ -2371,7 +2371,7 @@ C - - - - - 0x038C64 0E:8C54: 60        RTS
 sub_8C55:
 C - - - - - 0x038C65 0E:8C55: AD 2F 06  LDA ram_062F
 C - - - - - 0x038C68 0E:8C58: F0 0B     BEQ bra_8C65_RTS
-C - - - - - 0x038C6A 0E:8C5A: A5 22     LDA ram_0022
+C - - - - - 0x038C6A 0E:8C5A: A5 22     LDA ram_счетчик_кадров
 C - - - - - 0x038C6C 0E:8C5C: 29 03     AND #$03
 C - - - - - 0x038C6E 0E:8C5E: D0 03     BNE bra_8C63
 C - - - - - 0x038C70 0E:8C60: CE 2F 06  DEC ram_062F
@@ -2503,7 +2503,7 @@ C - - - - - 0x038D44 0E:8D34: A9 25     LDA #con_0x03F6AD_25
 C - - - - - 0x038D46 0E:8D36: 20 94 F6  JSR sub_0x03F6A4_записать_звук
 bra_8D39:
 C - - - - - 0x038D49 0E:8D39: 20 24 8F  JSR sub_8F24
-C - - - - - 0x038D4C 0E:8D3C: A5 22     LDA ram_0022
+C - - - - - 0x038D4C 0E:8D3C: A5 22     LDA ram_счетчик_кадров
 C - - - - - 0x038D4E 0E:8D3E: 29 08     AND #$08
 C - - - - - 0x038D50 0E:8D40: D0 D5     BNE bra_8D17_RTS
 C - - - - - 0x038D52 0E:8D42: 8D 02 04  STA ram_obj_anim_id + $02
@@ -2612,7 +2612,7 @@ bra_8DE2:
 C - - - - - 0x038DF2 0E:8DE2: 20 12 8D  JSR sub_8D12
 bra_8DE5:
 C - - - - - 0x038DF5 0E:8DE5: 20 04 8F  JSR sub_8F04
-C - - - - - 0x038DF8 0E:8DE8: A5 22     LDA ram_0022
+C - - - - - 0x038DF8 0E:8DE8: A5 22     LDA ram_счетчик_кадров
 C - - - - - 0x038DFA 0E:8DEA: 29 10     AND #$10
 C - - - - - 0x038DFC 0E:8DEC: D0 06     BNE bra_8DF4_RTS
 C - - - - - 0x038DFE 0E:8DEE: 8D 03 04  STA ram_obj_anim_id + $03
@@ -4251,7 +4251,7 @@ C - - - - - 0x0398A1 0E:9891: 60        RTS
 
 
 ofs_007_9892_09:
-C - - J - - 0x0398A2 0E:9892: A5 22     LDA ram_0022
+C - - J - - 0x0398A2 0E:9892: A5 22     LDA ram_счетчик_кадров
 C - - - - - 0x0398A4 0E:9894: 29 03     AND #$03
 C - - - - - 0x0398A6 0E:9896: D0 F9     BNE bra_9891_RTS
 C - - - - - 0x0398A8 0E:9898: CE 60 05  DEC ram_obj_0560
@@ -4291,7 +4291,7 @@ C - - - - - 0x0398DD 0E:98CD: 60        RTS
 
 ofs_007_98CE_0B_credits:
 - - - - - - 0x0398DE 0E:98CE: 20 E1 98  JSR sub_98E1
-- - - - - - 0x0398E1 0E:98D1: A5 22     LDA ram_0022
+- - - - - - 0x0398E1 0E:98D1: A5 22     LDA ram_счетчик_кадров
 - - - - - - 0x0398E3 0E:98D3: 4A        LSR
 - - - - - - 0x0398E4 0E:98D4: 90 F7     BCC bra_98CD_RTS
 - - - - - - 0x0398E6 0E:98D6: CE 60 05  DEC ram_obj_0560
@@ -4325,7 +4325,7 @@ C - - - - - 0x03990C 0E:98FC: 60        RTS
 ofs_007_98FD_0C:
 - - - - - - 0x03990D 0E:98FD: AD 60 05  LDA ram_obj_0560
 - - - - - - 0x039910 0E:9900: F0 0B     BEQ bra_990D
-- - - - - - 0x039912 0E:9902: A5 22     LDA ram_0022
+- - - - - - 0x039912 0E:9902: A5 22     LDA ram_счетчик_кадров
 - - - - - - 0x039914 0E:9904: 29 03     AND #$03
 - - - - - - 0x039916 0E:9906: D0 D9     BNE bra_98E1
 - - - - - - 0x039918 0E:9908: CE 60 05  DEC ram_obj_0560
@@ -4344,7 +4344,7 @@ C - - - - - 0x039921 0E:9911: F0 BA     BEQ bra_98CD_RTS
 ofs_007_991C_0D:
 C - - J - - 0x03992C 0E:991C: AD 60 05  LDA ram_obj_0560
 C - - - - - 0x03992F 0E:991F: F0 EC     BEQ bra_990D
-C - - - - - 0x039931 0E:9921: A5 22     LDA ram_0022
+C - - - - - 0x039931 0E:9921: A5 22     LDA ram_счетчик_кадров
 C - - - - - 0x039933 0E:9923: 4A        LSR
 C - - - - - 0x039934 0E:9924: 90 D6     BCC bra_98FC_RTS
 C - - - - - 0x039936 0E:9926: CE 60 05  DEC ram_obj_0560
@@ -5236,7 +5236,7 @@ C - - - - - 0x03A0A2 0E:A092: 90 05     BCC bra_A099
 C - - - - - 0x03A0A4 0E:A094: A9 30     LDA #$30
 C - - - - - 0x03A0A6 0E:A096: 8D 00 04  STA ram_obj_anim_id
 bra_A099:
-C - - - - - 0x03A0A9 0E:A099: A5 22     LDA ram_0022
+C - - - - - 0x03A0A9 0E:A099: A5 22     LDA ram_счетчик_кадров
 C - - - - - 0x03A0AB 0E:A09B: 29 03     AND #$03
 C - - - - - 0x03A0AD 0E:A09D: D0 2B     BNE bra_A0CA_RTS
 C - - - - - 0x03A0AF 0E:A09F: CE 60 05  DEC ram_obj_0560
@@ -5878,7 +5878,7 @@ C - - - - - 0x03A380 0E:A370: B0 16     BCS bra_A388
 C - - - - - 0x03A382 0E:A372: A5 90     LDA ram_sum_btn_press
 C - - - - - 0x03A384 0E:A374: 29 10     AND #con_btn_Start
 C - - - - - 0x03A386 0E:A376: D0 0B     BNE bra_A383
-C - - - - - 0x03A388 0E:A378: A5 22     LDA ram_0022
+C - - - - - 0x03A388 0E:A378: A5 22     LDA ram_счетчик_кадров
 C - - - - - 0x03A38A 0E:A37A: 29 03     AND #$03
 C - - - - - 0x03A38C 0E:A37C: D0 0A     BNE bra_A388
 C - - - - - 0x03A38E 0E:A37E: CE 60 05  DEC ram_obj_0560
@@ -5893,7 +5893,7 @@ C - - - - - 0x03A39C 0E:A38C: 69 03     ADC #$03
 C - - - - - 0x03A39E 0E:A38E: AA        TAX
 C - - - - - 0x03A39F 0E:A38F: 85 00     STA ram_0000
 bra_A391_loop:
-C - - - - - 0x03A3A1 0E:A391: A5 22     LDA ram_0022
+C - - - - - 0x03A3A1 0E:A391: A5 22     LDA ram_счетчик_кадров
 C - - - - - 0x03A3A3 0E:A393: 20 07 D2  JSR sub_0x03D217_LSRx4
 C - - - - - 0x03A3A6 0E:A396: 4A        LSR
 C - - - - - 0x03A3A7 0E:A397: BC 4C 01  LDY ram_014C,X
@@ -6069,7 +6069,7 @@ C - - - - - 0x03A4B9 0E:A4A9: B9 18 A5  LDA tbl_A518,Y
 C - - - - - 0x03A4BC 0E:A4AC: 8D 12 04  STA ram_obj_pos_Y + $02
 C - - - - - 0x03A4BF 0E:A4AF: A9 58     LDA #$58
 C - - - - - 0x03A4C1 0E:A4B1: 8D 42 04  STA ram_obj_pos_X + $02
-C - - - - - 0x03A4C4 0E:A4B4: A5 22     LDA ram_0022
+C - - - - - 0x03A4C4 0E:A4B4: A5 22     LDA ram_счетчик_кадров
 C - - - - - 0x03A4C6 0E:A4B6: 29 0C     AND #$0C
 C - - - - - 0x03A4C8 0E:A4B8: 4A        LSR
 C - - - - - 0x03A4C9 0E:A4B9: 4A        LSR
