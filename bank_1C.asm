@@ -816,7 +816,7 @@ C - - - - - 0x03830F 0E:82FF: 0A        ASL
 C - - - - - 0x038310 0E:8300: 0A        ASL
 C - - - - - 0x038311 0E:8301: 65 01     ADC ram_0001
 C - - - - - 0x038313 0E:8303: A8        TAY
-C - - - - - 0x038314 0E:8304: B9 30 01  LDA ram_0130,Y ; 0130 0131 0132 0133 0134 0135 0136 0137 0138 0139 013A 013B 013C 013D 013E 013F 
+C - - - - - 0x038314 0E:8304: B9 30 01  LDA ram_tournament_name,Y ; 0130 0131 0132 0133 0134 0135 0136 0137 0138 0139 013A 013B 013C 013D 013E 013F 
 C - - - - - 0x038317 0E:8307: 20 5D D2  JSR sub_0x03D26D_записать_A_в_буфер_с_чтением_индекса
 C - - - - - 0x03831A 0E:830A: E6 01     INC ram_0001
 C - - - - - 0x03831C 0E:830C: A4 01     LDY ram_0001
@@ -879,7 +879,7 @@ C - - - - - 0x03837F 0E:836F: 69 04     ADC #$04
 ; если бы писалось напрямую в ppu, то похер, это был бы tip_индекс_буфера_палитры + $00,
 ; но в данном случае пишется в буфер
 C - - - - - 0x038381 0E:8371: AA        TAX
-C - - - - - 0x038382 0E:8372: B9 4C 01  LDA ram_014C,Y ; 014C 014D 014E 014F 0150 
+C - - - - - 0x038382 0E:8372: B9 4C 01  LDA ram_tournament_fighter,Y ; 014C 014D 014E 014F 0150 
 C - - - - - 0x038385 0E:8375: A8        TAY
 C - - - - - 0x038386 0E:8376: B9 83 83  LDA tbl_8383,Y
 C - - - - - 0x038389 0E:8379: 20 46 D3  JSR sub_0x03D356_записать_3_цвета_в_буфер
@@ -2430,14 +2430,14 @@ C - - - - - 0x038CB3 0E:8CA3: 99 76 06  STA ram_0676
                                         STA ram_0678
                                         STA ram_plr_067A
                                         STA ram_plr_067A + $01
-                                        STA ram_014C
-                                        STA ram_014D
-                                        STA ram_014E
-                                        STA ram_014F
+                                        STA ram_tournament_fighter
+                                        STA ram_tournament_fighter + $01
+                                        STA ram_tournament_fighter + $02
+                                        STA ram_tournament_fighter + $03
 ; очистить 0130-014B
 C - - - - - 0x038CB9 0E:8CA9: A2 1F     LDX #$1B
 bra_8CAB_loop:
-C - - - - - 0x038CBB 0E:8CAB: 9D 30 01  STA ram_0130,X
+C - - - - - 0x038CBB 0E:8CAB: 9D 30 01  STA ram_tournament_name,X
 C - - - - - 0x038CBE 0E:8CAE: CA        DEX
 C - - - - - 0x038CBF 0E:8CAF: 10 FA     BPL bra_8CAB_loop
 C - - - - - 0x038CC1 0E:8CB1: A2 03     LDX #$03
@@ -2526,10 +2526,10 @@ C - - - - - 0x038D5F 0E:8D4F: 0A        ASL
 C - - - - - 0x038D60 0E:8D50: 0A        ASL
 C - - - - - 0x038D61 0E:8D51: A8        TAY
 C - - - - - 0x038D62 0E:8D52: A9 00     LDA #$00
-C - - - - - 0x038D64 0E:8D54: 99 30 01  STA ram_0130,Y ; 0130 0134 0138 013C 
-C - - - - - 0x038D67 0E:8D57: 99 31 01  STA ram_0131,Y ; 0131 0135 0139 013D 
-C - - - - - 0x038D6A 0E:8D5A: 99 32 01  STA ram_0132,Y ; 0132 0136 013A 013E 
-C - - - - - 0x038D6D 0E:8D5D: 99 33 01  STA ram_0133,Y ; 0133 0137 013B 013F 
+C - - - - - 0x038D64 0E:8D54: 99 30 01  STA ram_tournament_name,Y ; 0130 0134 0138 013C 
+C - - - - - 0x038D67 0E:8D57: 99 31 01  STA ram_tournament_name + $01,Y ; 0131 0135 0139 013D 
+C - - - - - 0x038D6A 0E:8D5A: 99 32 01  STA ram_tournament_name + $02,Y ; 0132 0136 013A 013E 
+C - - - - - 0x038D6D 0E:8D5D: 99 33 01  STA ram_tournament_name + $03,Y ; 0133 0137 013B 013F 
 C - - - - - 0x038D70 0E:8D60: A0 06     LDY #$06
 bra_8D62:
 bra_8D62_loop:
@@ -2720,7 +2720,7 @@ C - - - - - 0x038E9D 0E:8E8D: B9 70 90  LDA tbl_9070,Y
 C - - - - - 0x038EA0 0E:8E90: 18        CLC
 C - - - - - 0x038EA1 0E:8E91: 65 00     ADC ram_0000
 bra_8E93:
-C - - - - - 0x038EA3 0E:8E93: 9D 30 01  STA ram_0130,X ; 0130 0131 0132 013C 013D 013E 013F 
+C - - - - - 0x038EA3 0E:8E93: 9D 30 01  STA ram_tournament_name,X ; 0130 0131 0132 013C 013D 013E 013F 
 C - - - - - 0x038EA6 0E:8E96: 20 B1 8E  JSR sub_8EB1
 C - - - - - 0x038EA9 0E:8E99: EE 77 06  INC ram_0677
 C - - - - - 0x038EAC 0E:8E9C: AD 77 06  LDA ram_0677
@@ -2871,7 +2871,7 @@ bra_8F89_loop:
 C - - - - - 0x038F99 0E:8F89: 18        CLC
 C - - - - - 0x038F9A 0E:8F8A: 98        TYA
 C - - - - - 0x038F9B 0E:8F8B: 85 00     STA ram_0000
-C - - - - - 0x038F9D 0E:8F8D: 7D 4C 01  ADC ram_014C,X ; 014C 014D 014E 014F 
+C - - - - - 0x038F9D 0E:8F8D: 7D 4C 01  ADC ram_tournament_fighter,X ; 014C 014D 014E 014F 
 C - - - - - 0x038FA0 0E:8F90: C9 07     CMP #$07
 C - - - - - 0x038FA2 0E:8F92: 90 08     BCC bra_8F9C
 C - - - - - 0x038FA4 0E:8F94: 0A        ASL
@@ -2894,7 +2894,7 @@ bra_8FA0_loop:
 - - - - - - 0x038FBF 0E:8FAF: D0 D8     BNE bra_8F89_loop
 bra_8FB1:
 C - - - - - 0x038FC1 0E:8FB1: A6 A8     LDX ram_local_obj_index
-C - - - - - 0x038FC3 0E:8FB3: 9D 4C 01  STA ram_014C,X ; 014C 014D 014E 014F 
+C - - - - - 0x038FC3 0E:8FB3: 9D 4C 01  STA ram_tournament_fighter,X ; 014C 014D 014E 014F 
 C - - - - - 0x038FC6 0E:8FB6: 8D 50 05  STA ram_obj_id
 C - - - - - 0x038FC9 0E:8FB9: A9 27     LDA #con_0x03F6AD_27
 C - - - - - 0x038FCB 0E:8FBB: 20 90 F6  JSR sub_0x03F6A0_записать_звук_сохранив_X_Y
@@ -2905,7 +2905,7 @@ C - - - - - 0x038FD6 0E:8FC6: 8D C0 05  STA ram_obj_anim_timer
 C - - - - - 0x038FD9 0E:8FC9: A6 A8     LDX ram_local_obj_index
 bra_8FCB:
 sub_8FCB:
-C - - - - - 0x038FDB 0E:8FCB: BC 4C 01  LDY ram_014C,X ; 014C 014D 014E 014F 
+C - - - - - 0x038FDB 0E:8FCB: BC 4C 01  LDY ram_tournament_fighter,X ; 014C 014D 014E 014F 
 C - - - - - 0x038FDE 0E:8FCE: 8C 50 05  STY ram_obj_id
 C - - - - - 0x038FE1 0E:8FD1: B9 7A 90  LDA tbl_907A,Y
 C - - - - - 0x038FE4 0E:8FD4: 8D 10 04  STA ram_obj_pos_Y
@@ -2943,14 +2943,14 @@ C - - - - - 0x03901E 0E:900E: 10 17     BPL bra_9027
 C - - - - - 0x039020 0E:9010: 0A        ASL
 C - - - - - 0x039021 0E:9011: 0A        ASL
 C - - - - - 0x039022 0E:9012: A8        TAY
-C - - - - - 0x039023 0E:9013: A9 8D     LDA #$8D
-C - - - - - 0x039025 0E:9015: 99 30 01  STA ram_0130,Y ; 0130 0134 0138 013C 
-C - - - - - 0x039028 0E:9018: A9 9A     LDA #$9A
-C - - - - - 0x03902A 0E:901A: 99 31 01  STA ram_0131,Y ; 0131 0135 0139 013D 
-C - - - - - 0x03902D 0E:901D: A9 9F     LDA #$9F
-C - - - - - 0x03902F 0E:901F: 99 32 01  STA ram_0132,Y ; 0132 0136 013A 013E 
-C - - - - - 0x039032 0E:9022: 8A        TXA
-C - - - - - 0x039033 0E:9023: 99 33 01  STA ram_0133,Y ; 0133 0137 013B 013F 
+C - - - - - 0x039023 0E:9013: A9 8D     LDA #$8D    ; C
+C - - - - - 0x039025 0E:9015: 99 30 01  STA ram_tournament_name,Y ; 0130 0134 0138 013C 
+C - - - - - 0x039028 0E:9018: A9 9A     LDA #$9A    ; P
+C - - - - - 0x03902A 0E:901A: 99 31 01  STA ram_tournament_name + $01,Y ; 0131 0135 0139 013D 
+C - - - - - 0x03902D 0E:901D: A9 9F     LDA #$9F    ; U
+C - - - - - 0x03902F 0E:901F: 99 32 01  STA ram_tournament_name + $02,Y ; 0132 0136 013A 013E 
+C - - - - - 0x039032 0E:9022: 8A        TXA ; номер игрока
+C - - - - - 0x039033 0E:9023: 99 33 01  STA ram_tournament_name + $03,Y ; 0133 0137 013B 013F 
 C - - - - - 0x039036 0E:9026: E8        INX
 bra_9027:
 C - - - - - 0x039037 0E:9027: E6 00     INC ram_0000
@@ -2985,7 +2985,7 @@ C - - - - - 0x039065 0E:9055: 4C 2E E1  JMP loc_0x03E13E_подготовить_
 sub_9058:
 C - - - - - 0x039068 0E:9058: AC 76 06  LDY ram_0676
 C - - - - - 0x03906B 0E:905B: 18        CLC
-C - - - - - 0x03906C 0E:905C: B9 4C 01  LDA ram_014C,Y ; 014C 014D 014E 014F 
+C - - - - - 0x03906C 0E:905C: B9 4C 01  LDA ram_tournament_fighter,Y ; 014C 014D 014E 014F 
 C - - - - - 0x03906F 0E:905F: 69 0D     ADC #$0D
 C - - - - - 0x039071 0E:9061: A2 04     LDX #$04    ; tip_индекс_буфера_палитры + $04
 C - - - - - 0x039073 0E:9063: 20 46 D3  JSR sub_0x03D356_записать_3_цвета_в_буфер
@@ -5901,7 +5901,7 @@ bra_A391_loop:
 C - - - - - 0x03A3A1 0E:A391: A5 22     LDA ram_счетчик_кадров
 C - - - - - 0x03A3A3 0E:A393: 20 07 D2  JSR sub_0x03D217_LSRx4
 C - - - - - 0x03A3A6 0E:A396: 4A        LSR
-C - - - - - 0x03A3A7 0E:A397: BC 4C 01  LDY ram_014C,X ; 014C 014D 014E 014F 0150 0151 0152 
+C - - - - - 0x03A3A7 0E:A397: BC 4C 01  LDY ram_tournament_fighter,X ; 014C 014D 014E 014F 0150 0151 0152 
 C - - - - - 0x03A3AA 0E:A39A: A9 00     LDA #$00
 C - - - - - 0x03A3AC 0E:A39C: 79 12 A4  ADC tbl_A412_анимация,Y
 C - - - - - 0x03A3AF 0E:A39F: 9D 00 04  STA ram_obj_anim_id,X ; 0400 0401 0402 0403 0404 0405 0406 

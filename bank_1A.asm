@@ -1013,8 +1013,8 @@ C - - - - - 0x0345CB 0D:85BB: C9 02     CMP #$02
 C - - - - - 0x0345CD 0D:85BD: 90 10     BCC bra_85CF
 bra_85BF:
 C - - - - - 0x0345CF 0D:85BF: 20 81 84  JSR sub_8481
-C - - - - - 0x0345D2 0D:85C2: BD 0C 06  LDA ram_plr_таймер_для_суперки,X
-C - - - - - 0x0345D5 0D:85C5: DD 2E 01  CMP ram_012E,X
+C - - - - - 0x0345D2 0D:85C2: BD 0C 06  LDA ram_plr_таймер_для_суперки,X ; 060C 060D 
+C - - - - - 0x0345D5 0D:85C5: DD 2E 01  CMP ram_012E,X ; 012E 012F 
 C - - - - - 0x0345D8 0D:85C8: F0 05     BEQ bra_85CF
 C - - - - - 0x0345DA 0D:85CA: B0 03     BCS bra_85CF
 bra_85CC:
@@ -3806,8 +3806,8 @@ C - - - - - 0x0353CF 0D:93BF: 20 32 D0  JSR sub_0x03D042_поинтеры_пос
 
 
 ofs_026_93CA_00:
-C - - J - - 0x0353DA 0D:93CA: BD 2E 01  LDA ram_012E,X
-C - - - - - 0x0353DD 0D:93CD: DD 0C 06  CMP ram_plr_таймер_для_суперки,X
+C - - J - - 0x0353DA 0D:93CA: BD 2E 01  LDA ram_012E,X ; 012E 012F 
+C - - - - - 0x0353DD 0D:93CD: DD 0C 06  CMP ram_plr_таймер_для_суперки,X ; 060C 060D 
 C - - - - - 0x0353E0 0D:93D0: F0 0C     BEQ bra_93DE
 C - - - - - 0x0353E2 0D:93D2: A5 28     LDA ram_random_1
 C - - - - - 0x0353E4 0D:93D4: 29 03     AND #$03

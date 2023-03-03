@@ -3161,9 +3161,9 @@ loc_0x03E229_отрисовать_турнирную_сетку:
 C D 3 - - - 0x03E229 0F:E219: AD 54 01  LDA ram_0154
 C - - - - - 0x03E22C 0F:E21C: 0A        ASL
 C - - - - - 0x03E22D 0F:E21D: A8        TAY
-C - - - - - 0x03E22E 0F:E21E: B9 4C 01  LDA ram_014C,Y ; 014C 014E 0150 
+C - - - - - 0x03E22E 0F:E21E: B9 4C 01  LDA ram_tournament_fighter,Y ; 014C 014E 0150 
 C - - - - - 0x03E231 0F:E221: 85 A2     STA ram_plr_id
-C - - - - - 0x03E233 0F:E223: B9 4D 01  LDA ram_014D,Y ; 014D 014F 0151 
+C - - - - - 0x03E233 0F:E223: B9 4D 01  LDA ram_tournament_fighter + $01,Y ; 014D 014F 0151 
 C - - - - - 0x03E236 0F:E226: 85 A3     STA ram_plr_id + $01
 C - - - - - 0x03E238 0F:E228: 20 26 F7  JSR sub_F726_отрисовать_турнирную_сетку
 C - - - - - 0x03E23B 0F:E22B: A9 40     LDA #$40
@@ -3292,7 +3292,7 @@ C - - - - - 0x003F10 00:BF00: A5 2C     LDA ram_game_mode
 C - - - - - 0x003F12 00:BF02: 4A        LSR
 C - - - - - 0x003F13 00:BF03: B0 04     BCS bra_BF09
 ; con_gm_tournament
-C - - - - - 0x003F15 00:BF05: B9 30 01  LDA ram_0130,Y ; 0130 0131 0132 0133 0134 0135 0136 0137 0138 0139 013A 013B 013C 013D 013E 013F 0140 0141 0142 0143 0144 0145 0146 0147 
+C - - - - - 0x003F15 00:BF05: B9 30 01  LDA ram_tournament_name,Y ; 0130 0131 0132 0133 0134 0135 0136 0137 0138 0139 013A 013B 013C 013D 013E 013F 0140 0141 0142 0143 0144 0145 0146 0147 
 C - - - - - 0x003F18 00:BF08: 60        RTS
 bra_BF09:
 ; con_gm_vs_team
@@ -3537,7 +3537,7 @@ bra_E451_loop:
 C - - - - - 0x03E461 0F:E451: BC 50 05  LDY ram_obj_id,X ; 0550 0551 
 C - - - - - 0x03E464 0F:E454: B9 99 E9  LDA tbl_E999,Y
 C - - - - - 0x03E467 0F:E457: 20 0E E1  JSR sub_E10E_корректировка_значения_A_для_turbo
-C - - - - - 0x03E46A 0F:E45A: 9D 2E 01  STA ram_012E,X
+C - - - - - 0x03E46A 0F:E45A: 9D 2E 01  STA ram_012E,X ; 012E 012F 
 C - - - - - 0x03E46D 0F:E45D: CA        DEX
 C - - - - - 0x03E46E 0F:E45E: 10 F1     BPL bra_E451_loop
 C - - - - - 0x03E470 0F:E460: 20 14 F7  JSR sub_F714
@@ -3878,8 +3878,8 @@ C - - - - - 0x03E63F 0F:E62F: A8        TAY
 C - - - - - 0x03E640 0F:E630: A9 03     LDA #$03
 C - - - - - 0x03E642 0F:E632: 85 02     STA ram_0002
 bra_E634_loop:
-C - - - - - 0x03E644 0F:E634: B9 30 01  LDA ram_0130,Y ; 0130 0131 0132 0133 0134 0135 0136 0137 0138 0139 013A 013B 013C 013D 013E 013F 0140 0141 0142 0143 0144 0145 0146 0147 
-C - - - - - 0x03E647 0F:E637: 9D 40 01  STA ram_0140,X ; 0140 0141 0142 0143 0144 0145 0146 0147 0148 0149 014A 014B 
+C - - - - - 0x03E644 0F:E634: B9 30 01  LDA ram_tournament_name,Y ; 0130 0131 0132 0133 0134 0135 0136 0137 0138 0139 013A 013B 013C 013D 013E 013F 0140 0141 0142 0143 0144 0145 0146 0147 
+C - - - - - 0x03E647 0F:E637: 9D 40 01  STA ram_tournament_name + $10,X ; 0140 0141 0142 0143 0144 0145 0146 0147 0148 0149 014A 014B 
 C - - - - - 0x03E64A 0F:E63A: C8        INY
 C - - - - - 0x03E64B 0F:E63B: E8        INX
 C - - - - - 0x03E64C 0F:E63C: C6 02     DEC ram_0002
@@ -3889,7 +3889,7 @@ C - - - - - 0x03E653 0F:E643: 0A        ASL
 C - - - - - 0x03E654 0F:E644: 65 08     ADC ram_0008
 C - - - - - 0x03E656 0F:E646: A8        TAY
 C - - - - - 0x03E657 0F:E647: AE 54 01  LDX ram_0154
-C - - - - - 0x03E65A 0F:E64A: B9 4C 01  LDA ram_014C,Y ; 014C 014D 014E 014F 0150 0151 
+C - - - - - 0x03E65A 0F:E64A: B9 4C 01  LDA ram_tournament_fighter,Y ; 014C 014D 014E 014F 0150 0151 
 C - - - - - 0x03E65D 0F:E64D: 9D 50 01  STA ram_0150,X ; 0150 0151 0152 
 C - - - - - 0x03E660 0F:E650: B9 55 01  LDA ram_0155,Y ; 0155 0156 0157 0158 0159 015A 
 C - - - - - 0x03E663 0F:E653: 9D 59 01  STA ram_0159,X ; 0159 015A 015B 
@@ -4334,7 +4334,7 @@ bra_E92B:
 sub_E930:
 C - - - - - 0x03E940 0F:E930: E0 02     CPX #$02
 C - - - - - 0x03E942 0F:E932: B0 05     BCS bra_E939
-C - - - - - 0x03E944 0F:E934: AC 4F 01  LDY ram_014F
+C - - - - - 0x03E944 0F:E934: AC 4F 01  LDY ram_014F    ; ram_tournament_fighter + $03 ???
 C - - - - - 0x03E947 0F:E937: 30 03     BMI bra_E93C_RTS
 bra_E939:
 C - - - - - 0x03E949 0F:E939: 9D 90 05  STA ram_obj_0590,X ; 0590 0591 0592 0593 0594 0595 0596 0597 0598 0599 059A 059B 059C 059D 059E 059F 
