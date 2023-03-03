@@ -2430,9 +2430,14 @@ C - - - - - 0x038CB3 0E:8CA3: 99 76 06  STA ram_0676
                                         STA ram_0678
                                         STA ram_plr_067A
                                         STA ram_plr_067A + $01
-C - - - - - 0x038CB9 0E:8CA9: A2 1F     LDX #$1F
+                                        STA ram_014C
+                                        STA ram_014D
+                                        STA ram_014E
+                                        STA ram_014F
+; очистить 0130-014B
+C - - - - - 0x038CB9 0E:8CA9: A2 1F     LDX #$1B
 bra_8CAB_loop:
-C - - - - - 0x038CBB 0E:8CAB: 9D 30 01  STA ram_0130,X ; 0130 0131 0132 0133 0134 0135 0136 0137 0138 0139 013A 013B 013C 013D 013E 013F 0140 0141 0142 0143 0144 0145 0146 0147 0148 0149 014A 014B 014C 014D 014E 014F 
+C - - - - - 0x038CBB 0E:8CAB: 9D 30 01  STA ram_0130,X
 C - - - - - 0x038CBE 0E:8CAE: CA        DEX
 C - - - - - 0x038CBF 0E:8CAF: 10 FA     BPL bra_8CAB_loop
 C - - - - - 0x038CC1 0E:8CB1: A2 03     LDX #$03
