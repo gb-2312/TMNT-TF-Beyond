@@ -3556,6 +3556,7 @@ C - - - - - 0x03E489 0F:E479: 8D 36 05  STA ram_obj_0530 + $06
 C - - - - - 0x03E48C 0F:E47C: A9 00     LDA #$00
 C - - - - - 0x03E48E 0F:E47E: 8D 30 05  STA ram_obj_0530
 C - - - - - 0x03E491 0F:E481: 8D 31 05  STA ram_obj_0530 + $01
+; очистить 0600-063B
 C - - - - - 0x03E494 0F:E484: A0 3B     LDY #$3B
 bra_E486_loop:
 C - - - - - 0x03E496 0F:E486: 99 00 06  STA ram_plr_0600,Y
