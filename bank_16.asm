@@ -599,7 +599,7 @@ C - - - - - 0x02E7F9 0B:A7E9: 09 10     ORA #$10
 C - - - - - 0x02E7FB 0B:A7EB: 2C        .byte $2C   ; BIT
 bra_A7EC:
 C - - - - - 0x02E7FC 0B:A7EC: 29 EF     AND #$EF
-C - - - - - 0x02E7FE 0B:A7EE: 9D 00 06  STA ram_plr_0600,X
+C - - - - - 0x02E7FE 0B:A7EE: 9D 00 06  STA ram_plr_0600,X ; 0600 0601 
 C - - - - - 0x02E801 0B:A7F1: 4C 17 F6  JMP loc_0x03F627_restore_prg
 
 
@@ -1027,7 +1027,7 @@ C - - - - - 0x02EEB3 0B:AEA3: 10 F8     BPL bra_AE9D_loop
 C - - - - - 0x02EEB5 0B:AEA5: A0 13     LDY #$13
 bra_AEA7_loop:
 C - - - - - 0x02EEB7 0B:AEA7: B9 D0 AC  LDA tbl_ACD0_палитра,Y
-C - - - - - 0x02EEBA 0B:AEAA: 99 59 06  STA ram_0659,Y
+C - - - - - 0x02EEBA 0B:AEAA: 99 59 06  STA ram_pal_buffer + $0C,Y
 C - - - - - 0x02EEBD 0B:AEAD: 88        DEY
 C - - - - - 0x02EEBE 0B:AEAE: 10 F7     BPL bra_AEA7_loop
 C - - - - - 0x02EEC0 0B:AEB0: 20 25 DC  JSR sub_0x03DC35

@@ -3906,9 +3906,9 @@ C - - - - - 0x039654 0E:9644: A0 00     LDY #$00
 C - - - - - 0x039656 0E:9646: 20 5C 96  JSR sub_965C
 C - - - - - 0x039659 0E:9649: AC 50 05  LDY ram_obj_id
 C - - - - - 0x03965C 0E:964C: B9 57 99  LDA tbl_9957,Y
-C - - - - - 0x03965F 0E:964F: 8D 54 06  STA ram_0654
-C - - - - - 0x039662 0E:9652: 8D 60 06  STA ram_0660
-C - - - - - 0x039665 0E:9655: 8D 64 06  STA ram_0664
+C - - - - - 0x03965F 0E:964F: 8D 54 06  STA ram_pal_buffer + $07
+C - - - - - 0x039662 0E:9652: 8D 60 06  STA ram_pal_buffer + $13
+C - - - - - 0x039665 0E:9655: 8D 64 06  STA ram_pal_buffer + $17
 bra_9658_RTS:
 C - - - - - 0x039668 0E:9658: 60        RTS
 
@@ -4238,13 +4238,13 @@ C - - - - - 0x039886 0E:9876: 0A        ASL
 C - - - - - 0x039887 0E:9877: 0A        ASL
 C - - - - - 0x039888 0E:9878: A8        TAY
 C - - - - - 0x039889 0E:9879: B9 5B 99  LDA tbl_995B,Y
-C - - - - - 0x03988C 0E:987C: 8D 60 06  STA ram_0660
+C - - - - - 0x03988C 0E:987C: 8D 60 06  STA ram_pal_buffer + $13
 C - - - - - 0x03988F 0E:987F: B9 5C 99  LDA tbl_995B + $01,Y
-C - - - - - 0x039892 0E:9882: 8D 64 06  STA ram_0664
+C - - - - - 0x039892 0E:9882: 8D 64 06  STA ram_pal_buffer + $17
 C - - - - - 0x039895 0E:9885: B9 5D 99  LDA tbl_995B + $02,Y
-C - - - - - 0x039898 0E:9888: 8D 68 06  STA ram_0668
+C - - - - - 0x039898 0E:9888: 8D 68 06  STA ram_pal_buffer + $1B
 C - - - - - 0x03989B 0E:988B: B9 5E 99  LDA tbl_995B + $03,Y
-C - - - - - 0x03989E 0E:988E: 8D 6C 06  STA ram_066C
+C - - - - - 0x03989E 0E:988E: 8D 6C 06  STA ram_pal_buffer + $1F
 bra_9891_RTS:
 C - - - - - 0x0398A1 0E:9891: 60        RTS
 
@@ -5255,7 +5255,7 @@ C - - - - - 0x03A0CB 0E:A0BB: A0 FF     LDY #$FF
 C - - - - - 0x03A0CD 0E:A0BD: 8C A0 04  STY ram_obj_spd_Y_hi
 C - - - - - 0x03A0D0 0E:A0C0: 29 7F     AND #$7F
 bra_A0C2:
-C - - - - - 0x03A0D2 0E:A0C2: 8D 52 06  STA ram_0652
+C - - - - - 0x03A0D2 0E:A0C2: 8D 52 06  STA ram_pal_buffer + $05
 C - - - - - 0x03A0D5 0E:A0C5: A9 FF     LDA #$FF
 C - - - - - 0x03A0D7 0E:A0C7: 8D 6D 06  STA ram_066D
 bra_A0CA_RTS:
@@ -5282,7 +5282,7 @@ tbl_A0DD:
 - D 1 - - - 0x03A0EF 0E:A0DF: 15        .byte $15   ; 02
 - D 1 - - - 0x03A0F0 0E:A0E0: 17        .byte $17   ; 03
 - D 1 - - - 0x03A0F1 0E:A0E1: 19        .byte $19   ; 04
-- D 1 - - - 0x03A0F2 0E:A0E2: 9B        .byte $9B   ; 05
+- D 1 - - - 0x03A0F2 0E:A0E2: 9B        .byte $1B + $80   ; 05
 
 
 

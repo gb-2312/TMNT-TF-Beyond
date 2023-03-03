@@ -210,7 +210,7 @@ C - - - - - 0x024148 09:8138: F0 05     BEQ bra_813F
 C - - - - - 0x02414A 09:813A: A9 F0     LDA #$F0
 C - - - - - 0x02414C 09:813C: 20 4E 81  JSR sub_814E
 bra_813F:
-C - - - - - 0x02414F 09:813F: BD 00 06  LDA ram_plr_0600,X
+C - - - - - 0x02414F 09:813F: BD 00 06  LDA ram_plr_0600,X ; 0600 0601 
 C - - - - - 0x024152 09:8142: 10 05     BPL bra_8149
 C - - - - - 0x024154 09:8144: A9 F0     LDA #$F0
 C - - - - - 0x024156 09:8146: 20 4E 81  JSR sub_814E
@@ -4913,7 +4913,7 @@ C - - - - - 0x025C14 09:9C04: 4C D3 9A  JMP loc_9AD3
 bra_9C07:
 C - - - - - 0x025C17 09:9C07: 4C BD 9A  JMP loc_9ABD
 bra_9C0A:
-C - - - - - 0x025C1A 09:9C0A: BD 00 06  LDA ram_plr_0600,X
+C - - - - - 0x025C1A 09:9C0A: BD 00 06  LDA ram_plr_0600,X ; 0600 0601 
 C - - - - - 0x025C1D 09:9C0D: 30 21     BMI bra_9C30_RTS
 C - - - - - 0x025C1F 09:9C0F: A9 80     LDA #con_btn_A
 C - - - - - 0x025C21 09:9C11: 05 08     ORA ram_0008    ; right/left
@@ -5073,12 +5073,12 @@ C - - - - - 0x025D2C 09:9D1C: 4C A4 9C  JMP loc_9CA4
 
 
 sub_9D1F_проверить_кнопки_для_запуска_мяча:
-C - - - - - 0x025D2F 09:9D1F: BD 00 06  LDA ram_plr_0600,X
+C - - - - - 0x025D2F 09:9D1F: BD 00 06  LDA ram_plr_0600,X ; 0600 0601 
 C - - - - - 0x025D32 09:9D22: 30 03     BMI bra_9D27
 C - - - - - 0x025D34 09:9D24: 4C D2 9D  JMP loc_9DD2_очистить_таймер_запуска_мяча
 bra_9D27:
 C - - - - - 0x025D37 09:9D27: 20 C7 9D  JSR sub_9DC7
-C - - - - - 0x025D3A 09:9D2A: BC 04 06  LDY ram_0604,X
+C - - - - - 0x025D3A 09:9D2A: BC 04 06  LDY ram_0604,X ; 0604 0605 
 C - - - - - 0x025D3D 09:9D2D: F0 06     BEQ bra_9D35_RTS
 C - - - - - 0x025D3F 09:9D2F: 88        DEY
 C - - - - - 0x025D40 09:9D30: D0 04     BNE bra_9D36
@@ -5175,12 +5175,12 @@ C - - - - - 0x025DE0 09:9DD0: 10 08     BPL bra_9DDA_RTS
 loc_9DD2_очистить_таймер_запуска_мяча:
 C D 0 - - - 0x025DE2 09:9DD2: A9 00     LDA #$00
 C - - - - - 0x025DE4 09:9DD4: 9D 06 06  STA ram_plr_таймер_для_запуска_мяча,X ; 0606 0607 
-C - - - - - 0x025DE7 09:9DD7: 9D 04 06  STA ram_0604,X
+C - - - - - 0x025DE7 09:9DD7: 9D 04 06  STA ram_0604,X ; 0604 0605 
 bra_9DDA_RTS:
 C - - - - - 0x025DEA 09:9DDA: 60        RTS
 bra_9DDB:
 C - - - - - 0x025DEB 09:9DDB: A9 01     LDA #$01
-C - - - - - 0x025DED 09:9DDD: 9D 04 06  STA ram_0604,X
+C - - - - - 0x025DED 09:9DDD: 9D 04 06  STA ram_0604,X ; 0604 0605 
 bra_9DE0:
 C - - - - - 0x025DF0 09:9DE0: A9 0C     LDA #$0C
 C - - - - - 0x025DF2 09:9DE2: 9D 06 06  STA ram_plr_таймер_для_запуска_мяча,X ; 0606 0607 
