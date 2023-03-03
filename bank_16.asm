@@ -579,7 +579,7 @@ C - - - - - 0x02E7D0 0B:A7C0: 85 00     STA ram_0000
 C - - - - - 0x02E7D2 0B:A7C2: B9 E7 B5  LDA tbl_B5E7_hi,Y
 C - - - - - 0x02E7D5 0B:A7C5: 85 01     STA ram_0001
 C - - - - - 0x02E7D7 0B:A7C7: A4 A9     LDY ram_global_obj_index
-C - - - - - 0x02E7D9 0B:A7C9: B9 12 06  LDA ram_plr_индекс_атаки,Y
+C - - - - - 0x02E7D9 0B:A7C9: B9 12 06  LDA ram_plr_индекс_атаки,Y ; 0612 0613 
 C - - - - - 0x02E7DC 0B:A7CC: 0A        ASL
 C - - - - - 0x02E7DD 0B:A7CD: A8        TAY
 C - - - - - 0x02E7DE 0B:A7CE: BD C0 04  LDA ram_obj_04C0,X ; 04C0 04C1 
@@ -1852,7 +1852,7 @@ C - - - - - 0x02FBC8 0B:BBB8: C0 02     CPY #$02
 C - - - - - 0x02FBCA 0B:BBBA: D0 39     BNE bra_BBF5_RTS
 - - - - - - 0x02FBCC 0B:BBBC: AC 50 01  LDY ram_0150
 - - - - - - 0x02FBCF 0B:BBBF: F0 34     BEQ bra_BBF5_RTS
-- - - - - - 0x02FBD1 0B:BBC1: BC 49 06  LDY ram_0649,X
+- - - - - - 0x02FBD1 0B:BBC1: BC 49 06  LDY ram_plr_колво_побед_в_раундах,X ; 0649 064A 
 - - - - - - 0x02FBD4 0B:BBC4: C0 02     CPY #$02
 - - - - - - 0x02FBD6 0B:BBC6: F0 2D     BEQ bra_BBF5_RTS
 - - - - - - 0x02FBD8 0B:BBC8: 85 01     STA ram_0001
