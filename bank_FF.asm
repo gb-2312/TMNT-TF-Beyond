@@ -206,7 +206,6 @@
 .export sub_0x03FE76
 .export sub_0x03FE8A
 .export loc_0x03FE93
-.export loc_0x03FE9D
 .export loc_0x03FEAF
 .export loc_0x03FEEF
 .export sub_0x03FF04
@@ -7856,19 +7855,6 @@ C D 3 - - - 0x03FE93 0F:FE83: BC 20 05  LDY ram_obj_0520,X ; 0520 0521
 C - - - - - 0x03FE96 0F:FE86: C0 08     CPY #$08
 C - - - - - 0x03FE98 0F:FE88: B0 F8     BCS bra_FE82_RTS
 C - - - - - 0x03FE9A 0F:FE8A: 4C 95 9A  JMP loc_0x025AA5
-
-
-
-loc_0x03FE9D:
-C D 3 - - - 0x03FE9D 0F:FE8D: BD 52 05  LDA ram_0552,X ; 0552 0553 
-C - - - - - 0x03FEA0 0F:FE90: C9 0E     CMP #$0E
-C - - - - - 0x03FEA2 0F:FE92: F0 08     BEQ bra_FE9C
-C - - - - - 0x03FEA4 0F:FE94: BD 0C 06  LDA ram_060C,X ; 060C 060D 
-C - - - - - 0x03FEA7 0F:FE97: C9 09     CMP #$09
-C - - - - - 0x03FEA9 0F:FE99: B0 01     BCS bra_FE9C
-C - - - - - 0x03FEAB 0F:FE9B: 60        RTS
-bra_FE9C:
-C - - - - - 0x03FEAC 0F:FE9C: 4C 7C 9A  JMP loc_0x025A8C
 
 
 

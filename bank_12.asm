@@ -11,7 +11,6 @@
 .export sub_0x024018
 .export ofs_0x024635
 .export sub_0x024AF7_выбор_начальной_анимации_персу
-.export loc_0x025A8C
 .export loc_0x025AA5
 .export sub_0x025E5F
 .export sub_0x02624F
@@ -4655,7 +4654,6 @@ C - - - - - 0x025A85 09:9A75: 09 80     ORA #con_btn_A
 C - - - - - 0x025A87 09:9A77: DD 31 06  CMP ram_0631,X
 C - - - - - 0x025A8A 09:9A7A: D0 D3     BNE bra_9A4F_RTS
 loc_9A7C:
-loc_0x025A8C:
 C D 0 - - - 0x025A8C 09:9A7C: BD 20 05  LDA ram_obj_0520,X ; 0520 0521 
 C - - - - - 0x025A8F 09:9A7F: F0 05     BEQ bra_9A86    ; if con_plr_state_на_земле
 C - - - - - 0x025A91 09:9A81: 4A        LSR
@@ -4810,8 +4808,18 @@ C - - - - - 0x025B75 09:9B65: 35 8E     AND ram_btn_press,X
 C - - - - - 0x025B77 09:9B67: 1D 31 06  ORA ram_0631,X
 C - - - - - 0x025B7A 09:9B6A: 9D 31 06  STA ram_0631,X
 C - - - - - 0x025B7D 09:9B6D: C5 00     CMP ram_0000
-C - - - - - 0x025B7F 09:9B6F: D0 3C     BNE bra_9BAD_RTS
-C - - - - - 0x025B81 09:9B71: 4C 8D FE  JMP loc_0x03FE9D
+C - - - - - 0x025B7F 09:9B6F: D0 3C     BNE bra_FE9B_RTS
+; перемещено из банка FF
+C D 3 - - - 0x03FE9D 0F:FE8D: BD 52 05  LDA ram_0552,X ; 0552 0553 
+C - - - - - 0x03FEA0 0F:FE90: C9 0E     CMP #$0E
+C - - - - - 0x03FEA2 0F:FE92: F0 08     BEQ bra_FE9C
+C - - - - - 0x03FEA4 0F:FE94: BD 0C 06  LDA ram_060C,X ; 060C 060D 
+C - - - - - 0x03FEA7 0F:FE97: C9 09     CMP #$09
+C - - - - - 0x03FEA9 0F:FE99: B0 01     BCS bra_FE9C
+bra_FE9B_RTS:
+C - - - - - 0x03FEAB 0F:FE9B: 60        RTS
+bra_FE9C:
+C - - - - - 0x03FEAC 0F:FE9C: 4C 7C 9A  JMP loc_9A7C
 
 
 
