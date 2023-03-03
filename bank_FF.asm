@@ -5029,6 +5029,7 @@ loc_0x03ED09:
 C D 3 - - - 0x03ED09 0F:ECF9: BD C6 06  LDA ram_06C6,X ; 06C6 06C7 
 C - - - - - 0x03ED0C 0F:ECFC: 1D C8 06  ORA ram_06C8,X ; 06C8 06C9 
 C - - - - - 0x03ED0F 0F:ECFF: 95 91     STA ram_btn_hold,X
+                                        STA ram_06C6,X ; 06C6 06C7 
 C - - - - - 0x03ED11 0F:ED01: 4C 4C A3  JMP loc_0x03635C
 
 

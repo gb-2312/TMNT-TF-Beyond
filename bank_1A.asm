@@ -6230,7 +6230,6 @@ C - - - - - 0x036359 0D:A349: 4C 57 80  JMP loc_8057
 
 
 loc_0x03635C:
-C D 1 - - - 0x03635C 0D:A34C: 9D C6 06  STA ram_06C6,X ; 06C6 06C7 
 C - - - - - 0x03635F 0D:A34F: AD 25 01  LDA ram_option_difficulty
 C - - - - - 0x036362 0D:A352: C9 03     CMP #$03
 C - - - - - 0x036364 0D:A354: 90 4B     BCC bra_A3A1_RTS
