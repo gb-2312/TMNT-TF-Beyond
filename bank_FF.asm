@@ -1911,11 +1911,11 @@ sub_D900_деление_16бит_на_16бит:
 ; ram_0018 = делимое lo
 ; ram_0019 = делимое hi
 ; A = делитель lo
-; Y = делитель hi
-    ; bzk optimize, Y = 00
+; Y = делитель hi (по умолчанию 00)
 ; ram_0018 = частное lo
 ; ram_0019 = частное hi
 C - - - - - 0x03D910 0F:D900: 85 1A     STA ram_001A
+                                        LDY #$00
 C - - - - - 0x03D912 0F:D902: 84 1B     STY ram_001B
 C - - - - - 0x03D914 0F:D904: A9 00     LDA #$00
 C - - - - - 0x03D916 0F:D906: 85 1C     STA ram_001C
@@ -2456,7 +2456,6 @@ C - - - - - 0x03DE73 0F:DE63: 4C 00 AB  JMP loc_0x02EB10
 ofs_0x03DE76:
 C - - - - - 0x03DE76 0F:DE66: 68        PLA
 bra_DE67:
-C - - - - - 0x03DE77 0F:DE67: A0 00     LDY #$00
 C - - - - - 0x03DE79 0F:DE69: 20 00 D9  JSR sub_D900_деление_16бит_на_16бит
 C - - - - - 0x03DE7C 0F:DE6C: A5 18     LDA ram_0018
 C - - - - - 0x03DE7E 0F:DE6E: D0 02     BNE bra_DE72_RTS
@@ -2971,7 +2970,6 @@ C - - - - - 0x03E12C 0F:E11C: 85 18     STA ram_0018
 C - - - - - 0x03E12E 0F:E11E: A9 00     LDA #$00
 C - - - - - 0x03E130 0F:E120: 85 19     STA ram_0019
 C - - - - - 0x03E132 0F:E122: A9 03     LDA #$03
-C - - - - - 0x03E134 0F:E124: A0 00     LDY #$00
 C - - - - - 0x03E136 0F:E126: 20 00 D9  JSR sub_D900_деление_16бит_на_16бит
 C - - - - - 0x03E139 0F:E129: A5 18     LDA ram_0018
 bra_E12B:
