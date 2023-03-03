@@ -4745,7 +4745,7 @@ C - - - - - 0x025AFE 09:9AEE: DD 0C 06  CMP ram_plr_таймер_для_супе
 C - - - - - 0x025B01 09:9AF1: B0 D6     BCS bra_9AC9
 C - - - - - 0x025B03 09:9AF3: 60        RTS
 bra_9AF4:
-C - - - - - 0x025B04 09:9AF4: BD 2E 01  LDA ram_012E,X ; 012E 012F 
+C - - - - - 0x025B04 09:9AF4: BD 2E 01  LDA ram_plr_012E,X ; 012E 012F 
 C - - - - - 0x025B07 09:9AF7: DD 0C 06  CMP ram_plr_таймер_для_суперки,X ; 060C 060D 
 C - - - - - 0x025B0A 09:9AFA: F0 02     BEQ bra_9AFE
 C - - - - - 0x025B0C 09:9AFC: B0 BF     BCS bra_9ABD
@@ -4766,12 +4766,12 @@ C - - - - - 0x025B21 09:9B11: F0 0F     BEQ bra_9B22
 C - - - - - 0x025B23 09:9B13: B5 91     LDA ram_btn_hold,X
 C - - - - - 0x025B25 09:9B15: 25 08     AND ram_0008    ; right/left
 C - - - - - 0x025B27 09:9B17: F0 09     BEQ bra_9B22
-C - - - - - 0x025B29 09:9B19: BD 2E 01  LDA ram_012E,X ; 012E 012F 
+C - - - - - 0x025B29 09:9B19: BD 2E 01  LDA ram_plr_012E,X ; 012E 012F 
 C - - - - - 0x025B2C 09:9B1C: DD 0C 06  CMP ram_plr_таймер_для_суперки,X ; 060C 060D 
 C - - - - - 0x025B2F 09:9B1F: B0 A8     BCS bra_9AC9
 C - - - - - 0x025B31 09:9B21: 60        RTS
 bra_9B22:
-C - - - - - 0x025B32 09:9B22: BD 2E 01  LDA ram_012E,X ; 012E 012F 
+C - - - - - 0x025B32 09:9B22: BD 2E 01  LDA ram_plr_012E,X ; 012E 012F 
 C - - - - - 0x025B35 09:9B25: DD 0C 06  CMP ram_plr_таймер_для_суперки,X ; 060C 060D 
 C - - - - - 0x025B38 09:9B28: B0 93     BCS bra_9ABD
 C - - - - - 0x025B3A 09:9B2A: 20 D3 9A  JSR sub_9AD3
@@ -4822,7 +4822,7 @@ C - - - - - 0x03FEAC 0F:FE9C: 4C 7C 9A  JMP loc_9A7C
 
 
 ofs_053_9B74_03_don:
-C - - J - - 0x025B84 09:9B74: BD 2E 01  LDA ram_012E,X ; 012E 012F 
+C - - J - - 0x025B84 09:9B74: BD 2E 01  LDA ram_plr_012E,X ; 012E 012F 
 C - - - - - 0x025B87 09:9B77: 85 00     STA ram_0000
 C - - - - - 0x025B89 09:9B79: 98        TYA
 C - - - - - 0x025B8A 09:9B7A: F0 12     BEQ bra_9B8E
@@ -4837,7 +4837,7 @@ C - - - - - 0x025B91 09:9B81: 4C B9 9C  JMP loc_9CB9
 
 
 sub_9B84:
-C - - - - - 0x025B94 09:9B84: BD 2E 01  LDA ram_012E,X ; 012E 012F 
+C - - - - - 0x025B94 09:9B84: BD 2E 01  LDA ram_plr_012E,X ; 012E 012F 
 C - - - - - 0x025B97 09:9B87: 85 00     STA ram_0000
 C - - - - - 0x025B99 09:9B89: 98        TYA
 C - - - - - 0x025B9A 09:9B8A: F0 02     BEQ bra_9B8E

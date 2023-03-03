@@ -3537,7 +3537,7 @@ bra_E451_loop:
 C - - - - - 0x03E461 0F:E451: BC 50 05  LDY ram_obj_id,X ; 0550 0551 
 C - - - - - 0x03E464 0F:E454: B9 99 E9  LDA tbl_E999,Y
 C - - - - - 0x03E467 0F:E457: 20 0E E1  JSR sub_E10E_корректировка_значения_A_для_turbo
-C - - - - - 0x03E46A 0F:E45A: 9D 2E 01  STA ram_012E,X ; 012E 012F 
+C - - - - - 0x03E46A 0F:E45A: 9D 2E 01  STA ram_plr_012E,X ; 012E 012F 
 C - - - - - 0x03E46D 0F:E45D: CA        DEX
 C - - - - - 0x03E46E 0F:E45E: 10 F1     BPL bra_E451_loop
 C - - - - - 0x03E470 0F:E460: 20 14 F7  JSR sub_F714

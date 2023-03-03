@@ -955,7 +955,7 @@ bra_8548:
 - - - - - - 0x03455E 0D:854E: C9 03     CMP #con_plr_state_получает_урон
 - - - - - - 0x034560 0D:8550: F0 0A     BEQ bra_855C
 - - - - - - 0x034562 0D:8552: BD 0C 06  LDA ram_plr_таймер_для_суперки,X
-- - - - - - 0x034565 0D:8555: DD 2E 01  CMP ram_012E,X
+- - - - - - 0x034565 0D:8555: DD 2E 01  CMP ram_plr_012E,X
 - - - - - - 0x034568 0D:8558: F0 34     BEQ bra_858E
 - - - - - - 0x03456A 0D:855A: B0 32     BCS bra_858E
 bra_855C:
@@ -1014,7 +1014,7 @@ C - - - - - 0x0345CD 0D:85BD: 90 10     BCC bra_85CF
 bra_85BF:
 C - - - - - 0x0345CF 0D:85BF: 20 81 84  JSR sub_8481
 C - - - - - 0x0345D2 0D:85C2: BD 0C 06  LDA ram_plr_таймер_для_суперки,X ; 060C 060D 
-C - - - - - 0x0345D5 0D:85C5: DD 2E 01  CMP ram_012E,X ; 012E 012F 
+C - - - - - 0x0345D5 0D:85C5: DD 2E 01  CMP ram_plr_012E,X ; 012E 012F 
 C - - - - - 0x0345D8 0D:85C8: F0 05     BEQ bra_85CF
 C - - - - - 0x0345DA 0D:85CA: B0 03     BCS bra_85CF
 bra_85CC:
@@ -3806,7 +3806,7 @@ C - - - - - 0x0353CF 0D:93BF: 20 32 D0  JSR sub_0x03D042_поинтеры_пос
 
 
 ofs_026_93CA_00:
-C - - J - - 0x0353DA 0D:93CA: BD 2E 01  LDA ram_012E,X ; 012E 012F 
+C - - J - - 0x0353DA 0D:93CA: BD 2E 01  LDA ram_plr_012E,X ; 012E 012F 
 C - - - - - 0x0353DD 0D:93CD: DD 0C 06  CMP ram_plr_таймер_для_суперки,X ; 060C 060D 
 C - - - - - 0x0353E0 0D:93D0: F0 0C     BEQ bra_93DE
 C - - - - - 0x0353E2 0D:93D2: A5 28     LDA ram_random_1
@@ -4410,7 +4410,7 @@ C - - - - - 0x0357E6 0D:97D6: D0 10     BNE bra_97E8
 C - - - - - 0x0357E8 0D:97D8: B9 60 04  LDA ram_obj_spd_Z_hi,Y
 C - - - - - 0x0357EB 0D:97DB: 10 0B     BPL bra_97E8
 C - - - - - 0x0357ED 0D:97DD: BC DE 06  LDY ram_plr_06DE,X ; 06DF 
-C - - - - - 0x0357F0 0D:97E0: B9 2E 01  LDA ram_012E,Y ; 012E 
+C - - - - - 0x0357F0 0D:97E0: B9 2E 01  LDA ram_plr_012E,Y ; 012E 
 C - - - - - 0x0357F3 0D:97E3: D9 0C 06  CMP ram_plr_таймер_для_суперки,Y ; 060C 
 C - - - - - 0x0357F6 0D:97E6: F0 3E     BEQ bra_9826
 bra_97E8:
