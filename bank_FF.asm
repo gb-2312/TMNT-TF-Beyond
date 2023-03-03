@@ -205,7 +205,6 @@
 .export sub_0x03FE68
 .export sub_0x03FE76
 .export sub_0x03FE8A
-.export loc_0x03FE93
 .export loc_0x03FEAF
 .export loc_0x03FEEF
 .export sub_0x03FF04
@@ -7847,14 +7846,6 @@ C - - - - - 0x03FE8D 0F:FE7D: D0 03     BNE bra_FE82_RTS
 C - - - - - 0x03FE8F 0F:FE7F: BD 90 05  LDA ram_obj_0590,X ; 0590 0591 
 bra_FE82_RTS:
 C - - - - - 0x03FE92 0F:FE82: 60        RTS
-
-
-
-loc_0x03FE93:
-C D 3 - - - 0x03FE93 0F:FE83: BC 20 05  LDY ram_obj_0520,X ; 0520 0521 
-C - - - - - 0x03FE96 0F:FE86: C0 08     CPY #$08
-C - - - - - 0x03FE98 0F:FE88: B0 F8     BCS bra_FE82_RTS
-C - - - - - 0x03FE9A 0F:FE8A: 4C 95 9A  JMP loc_0x025AA5
 
 
 

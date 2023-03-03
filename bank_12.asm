@@ -11,7 +11,6 @@
 .export sub_0x024018
 .export ofs_0x024635
 .export sub_0x024AF7_выбор_начальной_анимации_персу
-.export loc_0x025AA5
 .export sub_0x025E5F
 .export sub_0x02624F
 .export sub_0x0268BB
@@ -4668,11 +4667,10 @@ C - - - - - 0x025A99 09:9A89: A9 01     LDA #$01
 C - - - - - 0x025A9B 09:9A8B: BC 30 05  LDY ram_obj_0530,X ; 0530 0531 
 C - - - - - 0x025A9E 09:9A8E: C0 03     CPY #$03
 C - - - - - 0x025AA0 09:9A90: D0 25     BNE bra_9AB7_RTS
-C - - - - - 0x025AA2 09:9A92: 4C 83 FE  JMP loc_0x03FE93
-
-
-
-loc_0x025AA5:
+; перемещено из банка FF
+C D 3 - - - 0x03FE93 0F:FE83: BC 20 05  LDY ram_obj_0520,X ; 0520 0521 
+C - - - - - 0x03FE96 0F:FE86: C0 08     CPY #$08
+C - - - - - 0x03FE98 0F:FE88: B0 F8     BCS bra_9AB7_RTS
 C D 0 - - - 0x025AA5 09:9A95: C0 04     CPY #$04
 C - - - - - 0x025AA7 09:9A97: F0 1E     BEQ bra_9AB7_RTS
 C - - - - - 0x025AA9 09:9A99: C0 03     CPY #$03
