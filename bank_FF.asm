@@ -2005,11 +2005,13 @@ C - - - - - 0x03DB38 0F:DB28: 9D F0 04  STA ram_obj_04F0,X
 sub_D067_очистить_spd_X_и_spd_Z:
 sub_0x03DB48_очистить_spd_X_и_spd_Z:
 loc_0x03DB48_очистить_spd_X_и_spd_Z:
+; X = индекс объекта
                                         LDA #$00
 C - - - - - 0x03DB3B 0F:DB2B: 9D 60 04  STA ram_obj_spd_Z_hi,X
 C - - - - - 0x03DB3E 0F:DB2E: 9D 70 04  STA ram_obj_spd_Z_lo,X
 loc_0x03DB4C_очистить_spd_X:
 sub_0x03DB4C_очистить_spd_X:
+; X = индекс объекта
                                         LDA #$00
 C - - - - - 0x03DB41 0F:DB31: 9D 80 04  STA ram_obj_spd_X_hi,X
 C - - - - - 0x03DB44 0F:DB34: 9D 90 04  STA ram_obj_spd_X_lo,X
@@ -2020,6 +2022,7 @@ C - - - - - 0x03DB47 0F:DB37: 60        RTS
 sub_D073_очистить_spd_Z:
 sub_0x03D083_очистить_spd_Z:
 loc_0x03D083_очистить_spd_Z:
+; X = индекс объекта
 C D 2 - - - 0x03D083 0F:D073: A9 00     LDA #$00
 C - - - - - 0x03D085 0F:D075: 9D 60 04  STA ram_obj_spd_Z_hi,X ; 0460 0461 0463 0464 0465 0466 0467 0469 046B 
 C - - - - - 0x03D088 0F:D078: 9D 70 04  STA ram_obj_spd_Z_lo,X ; 0470 0471 0473 0474 0475 0476 0477 0479 047B 
@@ -2028,10 +2031,12 @@ C - - - - - 0x03D08B 0F:D07B: 60        RTS
 
 
 sub_0x03DB59_добавить_spd_X_к_pos_X___spd_Z_к_pos_Y:
+; X = индекс объекта
 C - - - - - 0x03DB59 0F:DB49: 20 65 DB  JSR sub_DB65_добавить_spd_X_к_pos_X
 sub_DB4C_добавить_spd_Z_к_pos_Y:
 sub_0x03DB5C_добавить_spd_Z_к_pos_Y:
 loc_0x03DB5C_добавить_spd_Z_к_pos_Y:
+; X = индекс объекта
 C D 2 - - - 0x03DB5C 0F:DB4C: A0 00     LDY #$00
 C - - - - - 0x03DB5E 0F:DB4E: 18        CLC
 C - - - - - 0x03DB5F 0F:DB4F: BD 70 04  LDA ram_obj_spd_Z_lo,X ; 0470 0471 0473 0475 0476 0477 0479 047B 
@@ -2049,6 +2054,7 @@ C - - - - - 0x03DB74 0F:DB64: 60        RTS
 
 sub_DB65_добавить_spd_X_к_pos_X:
 sub_0x03DB75_добавить_spd_X_к_pos_X:
+; X = индекс объекта
 C - - - - - 0x03DB75 0F:DB65: A0 00     LDY #$00
 C - - - - - 0x03DB77 0F:DB67: 18        CLC
 C - - - - - 0x03DB78 0F:DB68: BD 90 04  LDA ram_obj_spd_X_lo,X ; 0490 0491 0493 0494 0495 0496 0497 0499 049B 
