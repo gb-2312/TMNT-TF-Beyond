@@ -7,7 +7,7 @@
 
 
 .export sub_0x02C0DE
-.export loc_0x02E6E6
+.export sub_0x02E6E6
 .export sub_0x02E74B
 .export ofs_0x02E7CA
 .export ofs_0x02E86E
@@ -537,7 +537,7 @@ C - - - - - 0x02E5B0 0B:A5A0: 60        RTS
 
 
 
-loc_0x02E6E6:
+sub_0x02E6E6:
 C D 1 - - - 0x02E6E6 0B:A6D6: 20 91 A5  JSR sub_A591
 C - - - - - 0x02E6E9 0B:A6D9: D0 13     BNE bra_A6EE
 C - - - - - 0x02E6EB 0B:A6DB: B9 10 04  LDA ram_obj_pos_Y,Y ; 0410 0411 
@@ -554,7 +554,7 @@ C - - - - - 0x02E700 0B:A6F0: 18        CLC
 bra_A6F1:
 C - - - - - 0x02E701 0B:A6F1: 7D 50 05  ADC ram_obj_id,X ; 0550 0551 
 C - - - - - 0x02E704 0B:A6F4: 85 12     STA ram_0012
-C - - - - - 0x02E706 0B:A6F6: 4C 17 F6  JMP loc_0x03F627_restore_prg
+C - - - - - 0x02E706 0B:A6F6: 4C 17 F6  RTS
 
 
 

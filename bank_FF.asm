@@ -7916,7 +7916,8 @@ C - - - - - 0x03FF12 0F:FF02: 60        RTS
 
 sub_0x03FF1D:
 C - - - - - 0x03FF1D 0F:FF0D: 20 E7 F5  JSR sub_F5E7_swap_prg_16
-C - - - - - 0x03FF20 0F:FF10: 4C D6 A6  JMP loc_0x02E6E6
+C - - - - - 0x03FF20 0F:FF10: 4C D6 A6  JSR sub_0x02E6E6
+                                        JMP loc_F617_restore_prg
 
 
 
