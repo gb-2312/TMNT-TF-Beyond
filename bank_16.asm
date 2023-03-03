@@ -18,7 +18,7 @@
 .export loc_0x02EFA0
 .export ofs_0x02F73B_суперка_casey_песок
 .export loc_0x02FC90
-.export sub_0x02FD40
+.export sub_0x02FD40_отрисовать_колво_побед_в_матчах
 .export sub_0x02FEE4
 .export loc_0x02FF80
 
@@ -51,7 +51,7 @@ C - - - - - 0x02C0F7 0B:80E7: EE 3E 06  INC ram_063E
 C - - - - - 0x02C0FA 0B:80EA: A9 74     LDA #con_chr_bank_bg + $74
 C - - - - - 0x02C0FC 0B:80EC: 85 32     STA ram_chr_bank_bg
 C - - - - - 0x02C0FE 0B:80EE: 20 00 AC  JSR sub_AC00
-C - - - - - 0x02C102 0B:80F2: A0 02     LDY #con_0x03DC39_02
+C - - - - - 0x02C102 0B:80F2: A0 02     LDY #con_chr_pair_02
 C - - - - - 0x02C104 0B:80F4: 20 04 DC  JSR sub_0x03DC14
 C - - - - - 0x02C107 0B:80F7: A5 2C     LDA ram_game_mode
 ; con_gm_story
@@ -965,20 +965,20 @@ tbl_AE20_уровень_для_отрисовки:
 
 
 tbl_AE30:
-- D 1 - - - 0x02EE40 0B:AE30: 68        .byte $68, $6A   ; 00
-- D 1 - - - 0x02EE42 0B:AE32: 64        .byte $64, $66   ; 01
-- D 1 - - - 0x02EE44 0B:AE34: 68        .byte $68, $6A   ; 02
-- D 1 - - - 0x02EE46 0B:AE36: 64        .byte $64, $66   ; 03
-- D 1 - - - 0x02EE48 0B:AE38: 60        .byte $60, $62   ; 04
-- D 1 - - - 0x02EE4A 0B:AE3A: 60        .byte $60, $62   ; 05
-- D 1 - - - 0x02EE4C 0B:AE3C: 5C        .byte $5C, $5E   ; 06
-- D 1 - - - 0x02EE4E 0B:AE3E: 88        .byte $88, $8A   ; 07
+- D 1 - - - 0x02EE40 0B:AE30: 68        .byte con_chr_bank_bg + $68, con_chr_bank_bg + $6A   ; 00
+- D 1 - - - 0x02EE42 0B:AE32: 64        .byte con_chr_bank_bg + $64, con_chr_bank_bg + $66   ; 01
+- D 1 - - - 0x02EE44 0B:AE34: 68        .byte con_chr_bank_bg + $68, con_chr_bank_bg + $6A   ; 02
+- D 1 - - - 0x02EE46 0B:AE36: 64        .byte con_chr_bank_bg + $64, con_chr_bank_bg + $66   ; 03
+- D 1 - - - 0x02EE48 0B:AE38: 60        .byte con_chr_bank_bg + $60, con_chr_bank_bg + $62   ; 04
+- D 1 - - - 0x02EE4A 0B:AE3A: 60        .byte con_chr_bank_bg + $60, con_chr_bank_bg + $62   ; 05
+- D 1 - - - 0x02EE4C 0B:AE3C: 5C        .byte con_chr_bank_bg + $5C, con_chr_bank_bg + $5E   ; 06
+- D 1 - - - 0x02EE4E 0B:AE3E: 88        .byte con_chr_bank_bg + $88, con_chr_bank_bg + $8A   ; 07
 
 
 
 sub_0x02EE60_выбрать_палитру_уровня:
 C - - - - - 0x02EE60 0B:AE50: A5 9E     LDA ram_009E
-C - - - - - 0x02EE62 0B:AE52: 8D 5C 01  STA ram_015C
+C - - - - - 0x02EE62 0B:AE52: 8D 5C 01  STA ram_tournament_индекс_игрока + $07
 C - - - - - 0x02EE65 0B:AE55: EE 52 01  INC ram_0152
 C - - - - - 0x02EE68 0B:AE58: 20 8C FC  JSR sub_0x03FC9C_set_mirroring_V
                                         LDA #$00
@@ -999,9 +999,9 @@ C - - - - - 0x02EE86 0B:AE76: 85 4B     STA ram_004B
 C - - - - - 0x02EE88 0B:AE78: A9 F8     LDA #> ofs_0x03F8E0
 C - - - - - 0x02EE8A 0B:AE7A: 85 4C     STA ram_004C
 C - - - - - 0x02EE8C 0B:AE7C: B9 30 AE  LDA tbl_AE30,Y
-C - - - - - 0x02EE8F 0B:AE7F: 85 4E     STA ram_004E
+C - - - - - 0x02EE8F 0B:AE7F: 85 4E     STA ram_alt_chr_bank_bg_1
 C - - - - - 0x02EE91 0B:AE81: B9 31 AE  LDA tbl_AE30 + $01,Y
-C - - - - - 0x02EE94 0B:AE84: 85 4F     STA ram_004F
+C - - - - - 0x02EE94 0B:AE84: 85 4F     STA ram_alt_chr_bank_bg_1 + $01
 C - - - - - 0x02EE9A 0B:AE8A: AD 2B 01  LDA ram_option_misc
 C - - - - - 0x02EE9D 0B:AE8D: 29 02     AND #$02
 C - - - - - 0x02EE9F 0B:AE8F: F0 02     BEQ bra_AE93
@@ -1129,16 +1129,16 @@ C - - - - - 0x02EFA6 0B:AF96: A4 2C     LDY ram_game_mode
 C - - - - - 0x02EFA8 0B:AF98: C0 01     CPY #$01
 C - - - - - 0x02EFAA 0B:AF9A: D0 17     BNE bra_AFB3_RTS    ; if con_gm_vs_player
 - - - - - - 0x02EFAC 0B:AF9C: AA        TAX
-- - - - - - 0x02EFAD 0B:AF9D: BD 29 01  LDA ram_0129,X
+- - - - - - 0x02EFAD 0B:AF9D: BD 29 01  LDA ram_plr_колво_побед_в_матчах,X
 - - - - - - 0x02EFB0 0B:AFA0: 29 0F     AND #$0F
 - - - - - - 0x02EFB2 0B:AFA2: 49 09     EOR #$09
 - - - - - - 0x02EFB4 0B:AFA4: D0 0A     BNE bra_AFB0
-- - - - - - 0x02EFB6 0B:AFA6: BD 29 01  LDA ram_0129,X
+- - - - - - 0x02EFB6 0B:AFA6: BD 29 01  LDA ram_plr_колво_побед_в_матчах,X
 - - - - - - 0x02EFB9 0B:AFA9: 29 F0     AND #$F0
 - - - - - - 0x02EFBB 0B:AFAB: 69 0E     ADC #$0E
-- - - - - - 0x02EFBD 0B:AFAD: 9D 29 01  STA ram_0129,X
+- - - - - - 0x02EFBD 0B:AFAD: 9D 29 01  STA ram_plr_колво_побед_в_матчах,X
 bra_AFB0:
-- - - - - - 0x02EFC0 0B:AFB0: FE 29 01  INC ram_0129,X
+- - - - - - 0x02EFC0 0B:AFB0: FE 29 01  INC ram_plr_колво_побед_в_матчах,X
 bra_AFB3_RTS:
 C - - - - - 0x02EFC3 0B:AFB3: 60        RTS
 
@@ -1967,7 +1967,7 @@ bra_BD0C_loop:
 
 
 
-sub_0x02FD40:
+sub_0x02FD40_отрисовать_колво_побед_в_матчах:
 C - - - - - 0x02FD40 0B:BD30: A5 2C     LDA ram_game_mode
 ; con_gm_vs_player
 ; con_gm_vs_team
@@ -1977,7 +1977,7 @@ C - - - - - 0x02FD45 0B:BD35: 4C A0 BE  JMP loc_BEA0
 bra_BD38:
 ; if con_gm_vs_player
 C - - - - - 0x02FD48 0B:BD38: A4 00     LDY ram_0000
-C - - - - - 0x02FD4A 0B:BD3A: B9 29 01  LDA ram_0129,Y
+C - - - - - 0x02FD4A 0B:BD3A: B9 29 01  LDA ram_plr_колво_побед_в_матчах,Y ; 0129 012A 
 C - - - - - 0x02FD4D 0B:BD3D: 29 F0     AND #$F0
 C - - - - - 0x02FD4F 0B:BD3F: 4A        LSR
 C - - - - - 0x02FD50 0B:BD40: 4A        LSR
@@ -1986,7 +1986,7 @@ C - - - - - 0x02FD52 0B:BD42: 4A        LSR
 C - - - - - 0x02FD53 0B:BD43: 18        CLC
 C - - - - - 0x02FD54 0B:BD44: 69 81     ADC #$81
 C - - - - - 0x02FD56 0B:BD46: 20 66 D2  JSR sub_0x03D276_записать_A_в_буфер_без_сохранения_индекса
-C - - - - - 0x02FD59 0B:BD49: B9 29 01  LDA ram_0129,Y
+C - - - - - 0x02FD59 0B:BD49: B9 29 01  LDA ram_plr_колво_побед_в_матчах,Y ; 0129 012A 
 C - - - - - 0x02FD5C 0B:BD4C: 29 0F     AND #$0F
 C - - - - - 0x02FD5E 0B:BD4E: 18        CLC
 C - - - - - 0x02FD5F 0B:BD4F: 69 81     ADC #$81
@@ -1994,9 +1994,9 @@ C - - - - - 0x02FD61 0B:BD51: 20 5F D2  JSR sub_0x03D26F_записать_A_в_�
 C - - - - - 0x02FD64 0B:BD54: 98        TYA
 C - - - - - 0x02FD65 0B:BD55: 49 01     EOR #$01
 C - - - - - 0x02FD67 0B:BD57: AA        TAX
-C - - - - - 0x02FD68 0B:BD58: B9 29 01  LDA ram_0129,Y
-C - - - - - 0x02FD6B 0B:BD5B: A0 75     LDY #$75
-C - - - - - 0x02FD6D 0B:BD5D: DD 29 01  CMP ram_0129,X
+C - - - - - 0x02FD68 0B:BD58: B9 29 01  LDA ram_plr_колво_побед_в_матчах,Y ; 0129 012A 
+C - - - - - 0x02FD6B 0B:BD5B: A0 75     LDY #$75    ; тайл сердечка
+C - - - - - 0x02FD6D 0B:BD5D: DD 29 01  CMP ram_plr_колво_побед_в_матчах,X ; 0129 012A 
 C - - - - - 0x02FD70 0B:BD60: 4C BC BE  JMP loc_BEBC
 
 
@@ -2070,9 +2070,9 @@ C - - - - - 0x02FDDA 0B:BDCA: 90 03     BCC bra_BDCF
 C - - - - - 0x02FDDC 0B:BDCC: 8D 31 05  STA ram_obj_0530 + $01
 bra_BDCF:
 C - - - - - 0x02FDDF 0B:BDCF: B9 74 BD  LDA tbl_BD74,Y
-C - - - - - 0x02FDE2 0B:BDD2: 8D 55 01  STA ram_0155
+C - - - - - 0x02FDE2 0B:BDD2: 8D 55 01  STA ram_tournament_индекс_игрока
 C - - - - - 0x02FDE5 0B:BDD5: B9 77 BD  LDA tbl_BD77,Y
-C - - - - - 0x02FDE8 0B:BDD8: 8D 56 01  STA ram_0156
+C - - - - - 0x02FDE8 0B:BDD8: 8D 56 01  STA ram_tournament_индекс_игрока + $01
 C - - - - - 0x02FDEB 0B:BDDB: B9 7A BD  LDA tbl_BD7A_анимация,Y
 C - - - - - 0x02FDEE 0B:BDDE: 8D 00 04  STA ram_obj_anim_id
 C - - - - - 0x02FDF1 0B:BDE1: B9 7D BD  LDA tbl_BD7D,Y
@@ -2217,22 +2217,22 @@ C - - - - - 0x02FEFC 0B:BEEC: C0 03     CPY #$03
 C - - - - - 0x02FEFE 0B:BEEE: D0 0D     BNE bra_BEFD
 C - - - - - 0x02FF00 0B:BEF0: A9 01     LDA #$01
 C - - - - - 0x02FF02 0B:BEF2: 8D 06 01  STA ram_0106
-C - - - - - 0x02FF05 0B:BEF5: 8D 56 01  STA ram_0156
+C - - - - - 0x02FF05 0B:BEF5: 8D 56 01  STA ram_tournament_индекс_игрока + $01
 bra_BEF8:
 C - - - - - 0x02FF08 0B:BEF8: A9 FF     LDA #$FF
-C - - - - - 0x02FF0A 0B:BEFA: 8D 5C 01  STA ram_015C
+C - - - - - 0x02FF0A 0B:BEFA: 8D 5C 01  STA ram_tournament_индекс_игрока + $07
 bra_BEFD:
 C - - - - - 0x02FF0D 0B:BEFD: A2 80     LDX #$80
 C - - - - - 0x02FF0F 0B:BEFF: A5 26     LDA ram_0026
 C - - - - - 0x02FF11 0B:BF01: F0 03     BEQ bra_BF06
-C - - - - - 0x02FF13 0B:BF03: 8E 55 01  STX ram_0155
+C - - - - - 0x02FF13 0B:BF03: 8E 55 01  STX ram_tournament_индекс_игрока
 bra_BF06:
 C - - - - - 0x02FF16 0B:BF06: 98        TYA
 C - - - - - 0x02FF17 0B:BF07: F0 04     BEQ bra_BF0D
 C - - - - - 0x02FF19 0B:BF09: C0 02     CPY #$02
 C - - - - - 0x02FF1B 0B:BF0B: D0 03     BNE bra_BF10_RTS
 bra_BF0D:
-C - - - - - 0x02FF1D 0B:BF0D: 8E 56 01  STX ram_0156
+C - - - - - 0x02FF1D 0B:BF0D: 8E 56 01  STX ram_tournament_индекс_игрока + $01
 bra_BF10_RTS:
 C - - - - - 0x02FF20 0B:BF10: 60        RTS
 
@@ -2288,7 +2288,7 @@ C - - - - - 0x02FF78 0B:BF68: 60        RTS
 loc_0x02FF80:
 C D 1 - - - 0x02FF80 0B:BF70: A8        TAY
 C - - - - - 0x02FF81 0B:BF71: B9 EA BF  LDA tbl_BFEA,Y
-C - - - - - 0x02FF84 0B:BF74: CD 5C 01  CMP ram_015C
+C - - - - - 0x02FF84 0B:BF74: CD 5C 01  CMP ram_tournament_индекс_игрока + $07
 C - - - - - 0x02FF87 0B:BF77: D0 02     BNE bra_BF7B
 C - - - - - 0x02FF89 0B:BF79: 49 01     EOR #$01
 bra_BF7B:

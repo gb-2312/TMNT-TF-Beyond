@@ -481,23 +481,23 @@ con_0048_10                                 = $10 ;
 
 ; смотреть 0x03DC3B
 ; пары банков chr
-; con_0x03DC39_00                       = $00 ; unused
-con_0x03DC39_02                         = $02 ; 
-con_0x03DC39_04                         = $04 ; 
-con_0x03DC39_06                         = $06 ; 
-con_0x03DC39_08                         = $08 ; 
-con_0x03DC39_0A                         = $0A ; 
-con_0x03DC39_0C                         = $0C ; 
-con_0x03DC39_0E                         = $0E ; 
-; con_0x03DC39_10                       = $10 ; unused
-con_0x03DC39_12                         = $12 ; 
-con_0x03DC39_14                         = $14 ; 
-con_0x03DC39_16                         = $16 ; 
-con_0x03DC39_18                         = $18 ; 
-con_0x03DC39_1A                         = $1A ; 
-con_0x03DC39_1C                         = $1C ; 
-con_0x03DC39_1E                         = $1E ; 
-con_0x03DC39_20                         = $20 ; 
+; con_chr_pair_00                       = $00 ; unused
+con_chr_pair_02                         = $02 ; 
+con_chr_pair_04                         = $04 ; 
+con_chr_pair_06                         = $06 ; 
+con_chr_pair_08                         = $08 ; 
+con_chr_pair_0A                         = $0A ; 
+con_chr_pair_0C                         = $0C ; 
+con_chr_pair_0E                         = $0E ; 
+; con_chr_pair_10                       = $10 ; unused
+con_chr_pair_12                         = $12 ; 
+con_chr_pair_14                         = $14 ; 
+con_chr_pair_16                         = $16 ; 
+con_chr_pair_18                         = $18 ; 
+con_chr_pair_1A                         = $1A ; 
+con_chr_pair_1C                         = $1C ; 
+con_chr_pair_1E                         = $1E ; 
+con_chr_pair_20                         = $20 ; 
 
 
 

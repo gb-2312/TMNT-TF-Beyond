@@ -122,7 +122,7 @@
 .export loc_0x03E69A
 .export ofs_0x03E6C5
 .export loc_0x03E8D6
-.export loc_0x03E91E
+.export loc_0x03E91E_отрисовать_инфу_в_статусбаре
 .export tbl_0x03E995
 .export tbl_0x03E99C
 .export sub_0x03EA42
@@ -2117,7 +2117,7 @@ C - - - - - 0x03DC29 0F:DC19: 60        RTS
 loc_DC25:
 sub_DC25:
 sub_0x03DC35:
-C D 2 - - - 0x03DC35 0F:DC25: A0 06     LDY #con_0x03DC39_06
+C D 2 - - - 0x03DC35 0F:DC25: A0 06     LDY #con_chr_pair_06
 sub_DC1A:
 sub_0x03DC2A:
 C - - - - - 0x03DC2A 0F:DC1A: B9 29 DC  LDA tbl_DC29,Y
@@ -2129,7 +2129,7 @@ C - - - - - 0x03DC34 0F:DC24: 60        RTS
 
 
 tbl_DC29:
-; con_0x03DC39
+; con_chr_pair
 - - - - - - 0x03DC39 0F:DC29: 0D        .byte con_chr_bank + $0D, con_chr_bank + $09   ; 00 индекс не существует
 - D 2 - - - 0x03DC3B 0F:DC2B: 56        .byte con_chr_bank + $56, con_chr_bank + $54   ; 02
 - D 2 - - - 0x03DC3D 0F:DC2D: 74        .byte con_chr_bank + $74, con_chr_bank + $58   ; 04
@@ -3248,8 +3248,9 @@ C - - - - - 0x03E2B3 0F:E2A3: A5 02     LDA ram_0002
 C - - - - - 0x03E2B5 0F:E2A5: A4 03     LDY ram_0003
 C - - - - - 0x03E2B7 0F:E2A7: 20 6B D2  JSR sub_D26B_записать_адрес_2006_Y_и_A_в_буфер
 C - - - - - 0x03E2BA 0F:E2AA: A4 01     LDY ram_0001
-C - - - - - 0x03E2BC 0F:E2AC: B9 55 01  LDA ram_0155,Y ; 0155 0156 0157 0158 0159 015A 
-C - - - - - 0x03E2BF 0F:E2AF: 30 04     BMI bra_E2B5
+C - - - - - 0x03E2BC 0F:E2AC: B9 55 01  LDA ram_tournament_индекс_игрока,Y ; 0155 0156 0157 0158 0159 015A 
+C - - - - - 0x03E2BF 0F:E2AF: 30 04     BMI bra_E2B5    ; if cpu
+; if not cpu
 C - - - - - 0x03E2C1 0F:E2B1: B9 05 01  LDA ram_0105,Y ; 0105 0106 0109 
 C - - - - - 0x03E2C4 0F:E2B4: 2C        .byte $2C   ; BIT
 bra_E2B5:
@@ -3297,8 +3298,9 @@ C - - - - - 0x003F18 00:BF08: 60        RTS
 bra_BF09:
 ; con_gm_vs_team
 C - - - - - 0x003F19 00:BF09: A6 A8     LDX ram_local_obj_index
-C - - - - - 0x003F1B 00:BF0B: BD 55 01  LDA ram_0155,X ; 0155 0156 
-C - - - - - 0x003F1E 00:BF0E: 30 02     BMI bra_BF12
+C - - - - - 0x003F1B 00:BF0B: BD 55 01  LDA ram_tournament_индекс_игрока,X ; 0155 0156 
+C - - - - - 0x003F1E 00:BF0E: 30 02     BMI bra_BF12    ; if cpu
+; if not cpu
 C - - - - - 0x003F20 00:BF10: 4A        LSR
 C - - - - - 0x003F21 00:BF11: 60        RTS
 bra_BF12:
@@ -3609,8 +3611,8 @@ C - - - - - 0x03E4C5 0F:E4B5: F0 2F     BEQ bra_E4E6
 C - - - - - 0x03E4C7 0F:E4B7: AD 54 01  LDA ram_0154
 C - - - - - 0x03E4CA 0F:E4BA: 0A        ASL
 C - - - - - 0x03E4CB 0F:E4BB: A8        TAY
-C - - - - - 0x03E4CC 0F:E4BC: B9 55 01  LDA ram_0155,Y ; 0155 0157 
-C - - - - - 0x03E4CF 0F:E4BF: 39 56 01  AND ram_0156,Y ; 0156 0158 
+C - - - - - 0x03E4CC 0F:E4BC: B9 55 01  LDA ram_tournament_индекс_игрока,Y ; 0155 0157 
+C - - - - - 0x03E4CF 0F:E4BF: 39 56 01  AND ram_tournament_индекс_игрока + $01,Y ; 0156 0158 
 C - - - - - 0x03E4D2 0F:E4C2: 10 22     BPL bra_E4E6    ; if один из соперников (или оба) не cpu
 ; скнипнуть бой
 C - - - - - 0x03E4D4 0F:E4C4: A0 00     LDY #$00
@@ -3891,13 +3893,13 @@ C - - - - - 0x03E656 0F:E646: A8        TAY
 C - - - - - 0x03E657 0F:E647: AE 54 01  LDX ram_0154
 C - - - - - 0x03E65A 0F:E64A: B9 4C 01  LDA ram_tournament_fighter,Y ; 014C 014D 014E 014F 0150 0151 
 C - - - - - 0x03E65D 0F:E64D: 9D 50 01  STA ram_0150,X ; 0150 0151 0152 
-C - - - - - 0x03E660 0F:E650: B9 55 01  LDA ram_0155,Y ; 0155 0156 0157 0158 0159 015A 
-C - - - - - 0x03E663 0F:E653: 9D 59 01  STA ram_0159,X ; 0159 015A 015B 
+C - - - - - 0x03E660 0F:E650: B9 55 01  LDA ram_tournament_индекс_игрока,Y ; 0155 0156 0157 0158 0159 015A 
+C - - - - - 0x03E663 0F:E653: 9D 59 01  STA ram_tournament_индекс_игрока + $04,X ; 0159 015A 015B 
 C - - - - - 0x03E666 0F:E656: B9 05 01  LDA ram_0105,Y ; 0105 0106 0107 0108 0109 010A 
 C - - - - - 0x03E669 0F:E659: 9D 09 01  STA ram_0109,X ; 0109 010A 010B 
 C - - - - - 0x03E66C 0F:E65C: B9 93 E9  LDA tbl_E993,Y
-C - - - - - 0x03E66F 0F:E65F: 0D 5D 01  ORA ram_015D
-C - - - - - 0x03E672 0F:E662: 8D 5D 01  STA ram_015D
+C - - - - - 0x03E66F 0F:E65F: 0D 5D 01  ORA ram_tournament_биты_сетки
+C - - - - - 0x03E672 0F:E662: 8D 5D 01  STA ram_tournament_биты_сетки
 C - - - - - 0x03E675 0F:E665: EE 54 01  INC ram_0154
 C - - - - - 0x03E678 0F:E668: E0 02     CPX #$02
 C - - - - - 0x03E67A 0F:E66A: B0 05     BCS bra_E671
@@ -4275,9 +4277,9 @@ C - - - - - 0x03E8E6 0F:E8D6: A9 2F     LDA #$2F
 C - - - - - 0x03E8E8 0F:E8D8: 8D 10 04  STA ram_obj_pos_Y
 C - - - - - 0x03E8EB 0F:E8DB: A9 60     LDA #$60
 C - - - - - 0x03E8ED 0F:E8DD: 8D 40 04  STA ram_obj_pos_X
-C - - - - - 0x03E8F0 0F:E8E0: A0 16     LDY #con_0x03DC39_16
+C - - - - - 0x03E8F0 0F:E8E0: A0 16     LDY #con_chr_pair_16
 C - - - - - 0x03E8F2 0F:E8E2: 20 1A DC  JSR sub_DC1A
-C - - - - - 0x03E8F5 0F:E8E5: A0 18     LDY #con_0x03DC39_18
+C - - - - - 0x03E8F5 0F:E8E5: A0 18     LDY #con_chr_pair_18
 C - - - - - 0x03E8F7 0F:E8E7: 4C 04 DC  JMP loc_DC04
 
 
@@ -4303,7 +4305,7 @@ ofs_001_E8FC_20_expected_tougher:
 
 
 
-loc_0x03E91E:
+loc_0x03E91E_отрисовать_инфу_в_статусбаре:
 C D 3 - - - 0x03E91E 0F:E90E: A9 20     LDA #$20
 C - - - - - 0x03E920 0F:E910: 20 6B D2  JSR sub_D26B_записать_адрес_2006_Y_и_A_в_буфер
 C - - - - - 0x03E923 0F:E913: A5 2C     LDA ram_game_mode
@@ -4315,19 +4317,20 @@ C - - - - - 0x03E925 0F:E915: 4A        LSR
 C - - - - - 0x03E926 0F:E916: B0 03     BCS bra_E91B
 ; con_gm_story
 ; con_gm_vs_cpu
-C - - - - - 0x03E928 0F:E918: 4C 16 B0  JMP loc_0x027026
+C - - - - - 0x03E928 0F:E918: 4C 16 B0  JMP loc_0x027026_отрисовать_1p_2p_в_статусбаре_и_очки
 bra_E91B:
 ; con_gm_vs_player
 ; con_gm_vs_team
 C - - - - - 0x03E92B 0F:E91B: 20 E7 F5  JSR sub_F5E7_swap_prg_16
-C - - - - - 0x03E92E 0F:E91E: 20 30 BD  JSR sub_0x02FD40
+C - - - - - 0x03E92E 0F:E91E: 20 30 BD  JSR sub_0x02FD40_отрисовать_колво_побед_в_матчах
 C - - - - - 0x03E931 0F:E921: A4 00     LDY ram_0000
-C - - - - - 0x03E933 0F:E923: B9 55 01  LDA ram_0155,Y ; 0155 0156 
-C - - - - - 0x03E936 0F:E926: 30 03     BMI bra_E92B
-C - - - - - 0x03E938 0F:E928: 4C 23 B0  JMP loc_0x027033
+C - - - - - 0x03E933 0F:E923: B9 55 01  LDA ram_tournament_индекс_игрока,Y ; 0155 0156 
+C - - - - - 0x03E936 0F:E926: 30 03     BMI bra_E92B    ; if cpu
+; if not cpu
+C - - - - - 0x03E938 0F:E928: 4C 23 B0  JMP loc_0x027033_отрисовать_очки_в_статусбаре
 bra_E92B:
 - - - - - - 0x03E93B 0F:E92B: A9 00     LDA #$00
-- - - - - - 0x03E93D 0F:E92D: 4C 5E B0  JMP loc_0x02706E
+- - - - - - 0x03E93D 0F:E92D: 4C 5E B0  JMP loc_0x02706E_ничего_не_рисовать_в_статусбаре
 
 
 
@@ -5769,28 +5772,31 @@ C - - - - - 0x03F1C1 0F:F1B1: D0 E5     BNE bra_F198_loop
 C - - - - - 0x03F1C3 0F:F1B3: E6 01     INC ram_0001
 C - - - - - 0x03F1C5 0F:F1B5: E4 01     CPX ram_0001
 C - - - - - 0x03F1C7 0F:F1B7: D0 DF     BNE bra_F198_loop
+; проверка на тип reset
 C - - - - - 0x03F1C9 0F:F1B9: A0 02     LDY #$02
 bra_F1BB_loop:
-C - - - - - 0x03F1CB 0F:F1BB: B9 22 01  LDA ram_0122,Y
-C - - - - - 0x03F1CE 0F:F1BE: D9 75 F3  CMP tbl_F375,Y
-C - - - - - 0x03F1D1 0F:F1C1: D0 05     BNE bra_F1C8
+C - - - - - 0x03F1CB 0F:F1BB: B9 22 01  LDA ram_reset_check,Y
+C - - - - - 0x03F1CE 0F:F1BE: D9 75 F3  CMP tbl_F375_reset_check,Y
+C - - - - - 0x03F1D1 0F:F1C1: D0 05     BNE bra_F1C8_hard_reset
 C - - - - - 0x03F1D3 0F:F1C3: 88        DEY
 C - - - - - 0x03F1D4 0F:F1C4: 10 F5     BPL bra_F1BB_loop
-C - - - - - 0x03F1D6 0F:F1C6: 30 2C     BMI bra_F1F4    ; jmp
-bra_F1C8:
+C - - - - - 0x03F1D6 0F:F1C6: 30 2C     BMI bra_F1F4_soft_reset    ; jmp
+bra_F1C8_hard_reset:
+; выставить значения по умолчанию
 C - - - - - 0x03F1D8 0F:F1C8: A0 07     LDY #$07
 bra_F1CA_loop:
 C - - - - - 0x03F1DA 0F:F1CA: B9 BB F9  LDA tbl_F9BB_опции_по_умолчанию,Y
 C - - - - - 0x03F1DD 0F:F1CD: 99 25 01  STA ram_options,Y
 C - - - - - 0x03F1E0 0F:F1D0: 88        DEY
 C - - - - - 0x03F1E1 0F:F1D1: 10 F7     BPL bra_F1CA_loop
+; запись рекорда очков
 C - - - - - 0x03F1E3 0F:F1D3: A0 0C     LDY #$0C
 bra_F1D5_loop:
 C - - - - - 0x03F1E5 0F:F1D5: A9 05     LDA #$05
-C - - - - - 0x03F1E7 0F:F1D7: 99 13 01  STA ram_0113,Y
-C - - - - - 0x03F1EA 0F:F1DA: A9 00     LDA #$00
-C - - - - - 0x03F1EC 0F:F1DC: 99 14 01  STA ram_0114,Y
-C - - - - - 0x03F1EF 0F:F1DF: 99 15 01  STA ram_0115,Y
+C - - - - - 0x03F1E7 0F:F1D7: 99 13 01  STA ram_topscore,Y ; 0113 0116 0119 011C 011F 
+C - - - - - 0x03F1EA 0F:F1DA: A9 00     LDA #$00      
+C - - - - - 0x03F1EC 0F:F1DC: 99 14 01  STA ram_topscore + $01,Y ; 0114 0117 011A 011D 0120 
+C - - - - - 0x03F1EF 0F:F1DF: 99 15 01  STA ram_topscore + $02,Y ; 0115 0118 011B 011E 0121 
 C - - - - - 0x03F1F2 0F:F1E2: 88        DEY
 C - - - - - 0x03F1F3 0F:F1E3: 88        DEY
 C - - - - - 0x03F1F4 0F:F1E4: 88        DEY
@@ -5799,11 +5805,11 @@ C - - - - - 0x03F1F5 0F:F1E5: 10 EE     BPL bra_F1D5_loop
 C - - - - - 0x03F1F7 0F:F1E7: 85 31     STA ram_continue
 C - - - - - 0x03F1F9 0F:F1E9: A0 02     LDY #$02
 bra_F1EB_loop:
-C - - - - - 0x03F1FB 0F:F1EB: B9 75 F3  LDA tbl_F375,Y
-C - - - - - 0x03F1FE 0F:F1EE: 99 22 01  STA ram_0122,Y
+C - - - - - 0x03F1FB 0F:F1EB: B9 75 F3  LDA tbl_F375_reset_check,Y
+C - - - - - 0x03F1FE 0F:F1EE: 99 22 01  STA ram_reset_check,Y
 C - - - - - 0x03F201 0F:F1F1: 88        DEY
 C - - - - - 0x03F202 0F:F1F2: 10 F7     BPL bra_F1EB_loop
-bra_F1F4:
+bra_F1F4_soft_reset:
 C - - - - - 0x03F204 0F:F1F4: 20 C2 F6  JSR sub_F6C2_выключить_музыку_и_звуки
                                         LDY #$00    ; disable irq
                                         STY ram_irq_flag
@@ -6031,10 +6037,8 @@ C - - - - - 0x03F384 0F:F374: 60        RTS
 
 
 
-tbl_F375:
-- D 3 - - - 0x03F385 0F:F375: 91        .byte $91   ; 00
-- D 3 - - - 0x03F386 0F:F376: 8B        .byte $8B   ; 01
-- D 3 - - - 0x03F387 0F:F377: 99        .byte $99   ; 02
+tbl_F375_reset_check:
+- D 3 - - - 0x03F385 0F:F375: 91        .byte $91, $8B, $99   ; 
 
 
 
@@ -6714,7 +6718,7 @@ C - - - - - 0x03F76A 0F:F75A: 48        PHA
 C - - - - - 0x03F76B 0F:F75B: 20 DF F5  JSR sub_F5DF_swap_prg_12
 C - - - - - 0x03F76E 0F:F75E: 68        PLA
 C - - - - - 0x03F76F 0F:F75F: 20 B3 B0  JSR sub_0x0270C3
-C - - - - - 0x03F772 0F:F762: 20 F6 AF  JSR sub_0x027006
+C - - - - - 0x03F772 0F:F762: 20 F6 AF  JSR sub_0x027006_отрисовать_инфу_в_статусбаре
 C - - - - - 0x03F775 0F:F765: 4C 17 F6  JMP loc_F617_restore_prg
 
 
@@ -6850,7 +6854,7 @@ C - - - - - 0x03F818 0F:F808: 4C 17 F6  JMP loc_F617_restore_prg
 
 sub_F80B:
 C - - - - - 0x03F81B 0F:F80B: 20 DF F5  JSR sub_F5DF_swap_prg_12
-C - - - - - 0x03F81E 0F:F80E: 20 F6 AF  JSR sub_0x027006
+C - - - - - 0x03F81E 0F:F80E: 20 F6 AF  JSR sub_0x027006_отрисовать_инфу_в_статусбаре
 C - - - - - 0x03F821 0F:F811: 4C 17 F6  JMP loc_F617_restore_prg
 
 
@@ -7062,11 +7066,11 @@ C - - - - - 0x03F916 0F:F906: A0 A0     LDY #< $20A0
 C - - - - - 0x03F918 0F:F908: 8D 06 20  STA $2006
 C - - - - - 0x03F91B 0F:F90B: 8C 06 20  STY $2006
 C - - - - - 0x03F91E 0F:F90E: A2 00     LDX #$00
-C - - - - - 0x03F920 0F:F910: A5 4E     LDA ram_004E
+C - - - - - 0x03F920 0F:F910: A5 4E     LDA ram_alt_chr_bank_bg_1
 C - - - - - 0x03F922 0F:F912: 8E 00 80  STX $8000
 C - - - - - 0x03F925 0F:F915: 8D 01 80  STA $8001
-C - - - - - 0x03F928 0F:F918: E8        INX
-C - - - - - 0x03F929 0F:F919: A5 4F     LDA ram_004F
+C - - - - - 0x03F928 0F:F918: E8        INX ; 01
+C - - - - - 0x03F929 0F:F919: A5 4F     LDA ram_alt_chr_bank_bg_1 + $01
 C - - - - - 0x03F92B 0F:F91B: 8E 00 80  STX $8000
 C - - - - - 0x03F92E 0F:F91E: 8D 01 80  STA $8001
 bra_F921_RTS:
@@ -7128,23 +7132,23 @@ C - - - - - 0x03F995 0F:F985: 8D 05 20  STA $2005
 C - - - - - 0x03F998 0F:F988: A5 FC     LDA ram_scroll_Y
 C - - - - - 0x03F99A 0F:F98A: 8D 05 20  STA $2005
 C - - - - - 0x03F99D 0F:F98D: A0 00     LDY #$00
-sub_F98F:
-loc_F98F:
+sub_F98F:   ; Y = 01
+loc_F98F:   ; Y = 01
 C D 3 - - - 0x03F99F 0F:F98F: A2 00     LDX #$00
 C - - - - - 0x03F9A1 0F:F991: 8E 00 80  STX $8000
-C - - - - - 0x03F9A4 0F:F994: B9 4E 00  LDA ram_004E,Y
+C - - - - - 0x03F9A4 0F:F994: B9 4E 00  LDA ram_alt_chr_bank_bg_1,Y
 C - - - - - 0x03F9A7 0F:F997: 8D 01 80  STA $8001
-C - - - - - 0x03F9AA 0F:F99A: E8        INX
-C - - - - - 0x03F9AB 0F:F99B: B9 50 00  LDA ram_0050,Y
+C - - - - - 0x03F9AA 0F:F99A: E8        INX ; 01
+C - - - - - 0x03F9AB 0F:F99B: B9 50 00  LDA ram_alt_chr_bank_bg_2,Y
 C - - - - - 0x03F9AE 0F:F99E: 8E 00 80  STX $8000
 C - - - - - 0x03F9B1 0F:F9A1: 8D 01 80  STA $8001
 C - - - - - 0x03F9B4 0F:F9A4: A9 02     LDA #$02
 C - - - - - 0x03F9B6 0F:F9A6: 8D 00 80  STA $8000
-C - - - - - 0x03F9B9 0F:F9A9: B9 52 00  LDA ram_0052,Y
+C - - - - - 0x03F9B9 0F:F9A9: B9 52 00  LDA ram_alt_chr_bank_spr_1,Y
 C - - - - - 0x03F9BC 0F:F9AC: 8D 01 80  STA $8001
 C - - - - - 0x03F9BF 0F:F9AF: A9 03     LDA #$03
 C - - - - - 0x03F9C1 0F:F9B1: 8D 00 80  STA $8000
-C - - - - - 0x03F9C4 0F:F9B4: B9 54 00  LDA ram_0054,Y
+C - - - - - 0x03F9C4 0F:F9B4: B9 54 00  LDA ram_alt_chr_bank_spr_2,Y
 C - - - - - 0x03F9C7 0F:F9B7: 8D 01 80  STA $8001
 C - - - - - 0x03F9CA 0F:F9BA: 60        RTS
 
@@ -7155,8 +7159,8 @@ tbl_F9BB_опции_по_умолчанию:
 - D 3 - - - 0x03F9CC 0F:F9BC: 01        .byte $01   ; 01 ram_option_speed
 - D 3 - - - 0x03F9CD 0F:F9BD: 01        .byte $01   ; 02 ram_option_timer
 - D 3 - - - 0x03F9CE 0F:F9BE: 01        .byte $01   ; 03 ram_option_health
-- D 3 - - - 0x03F9CF 0F:F9BF: 00        .byte $00   ; 04 ram_0129
-- D 3 - - - 0x03F9D0 0F:F9C0: 00        .byte $00   ; 05 ram_0129 + $01
+- D 3 - - - 0x03F9CF 0F:F9BF: 00        .byte $00   ; 04 ram_plr_колво_побед_в_матчах
+- D 3 - - - 0x03F9D0 0F:F9C0: 00        .byte $00   ; 05 ram_plr_колво_побед_в_матчах + $01
 - D 3 - - - 0x03F9D1 0F:F9C1: 08        .byte $08   ; 06 ram_option_misc
 - D 3 - - - 0x03F9D2 0F:F9C2: 02        .byte $02   ; 07 ram_option_team_keeps
 
@@ -7201,7 +7205,7 @@ C - - - - - 0x03FA1C 0F:FA0C: 4C 8D FB  JMP loc_FB8D
 
 bra_FA0F:
 loc_FA0F_запись_скролла_и_банков_фона:
-C D 3 - - - 0x03FA1F 0F:FA0F: 84 4E     STY ram_004E
+C D 3 - - - 0x03FA1F 0F:FA0F: 84 4E     STY ram_alt_chr_bank_bg_1
 C - - - - - 0x03FA21 0F:FA11: 8E 00 C0  STX $C000
 C - - - - - 0x03FA24 0F:FA14: 86 4A     STX ram_copy_C000
 C - - - - - 0x03FA26 0F:FA16: E6 4D     INC ram_004D
@@ -7209,14 +7213,14 @@ C - - - - - 0x03FA28 0F:FA18: AC 02 20  LDY $2002
 C - - - - - 0x03FA2B 0F:FA1B: 8D 05 20  STA $2005
 C - - - - - 0x03FA2E 0F:FA1E: A5 FC     LDA ram_scroll_Y
 C - - - - - 0x03FA30 0F:FA20: 8D 05 20  STA $2005
-C - - - - - 0x03FA33 0F:FA23: A5 4E     LDA ram_004E
+C - - - - - 0x03FA33 0F:FA23: A5 4E     LDA ram_alt_chr_bank_bg_1
 bra_FA25:
 loc_FA25_запись_банков_фона_из_A:
 sub_FA25_запись_банков_фона_из_A:
 C D 3 - - - 0x03FA35 0F:FA25: A2 00     LDX #$00
 C - - - - - 0x03FA37 0F:FA27: 8E 00 80  STX $8000
 C - - - - - 0x03FA3A 0F:FA2A: 8D 01 80  STA $8001
-C - - - - - 0x03FA3D 0F:FA2D: E8        INX
+C - - - - - 0x03FA3D 0F:FA2D: E8        INX ; 01
 C - - - - - 0x03FA3E 0F:FA2E: 18        CLC
 C - - - - - 0x03FA3F 0F:FA2F: 69 02     ADC #$02
 C - - - - - 0x03FA41 0F:FA31: 8E 00 80  STX $8000
@@ -7751,7 +7755,7 @@ C D 3 - - - 0x03FDFC 0F:FDEC: AD 35 06  LDA ram_0635
 C - - - - - 0x03FDFF 0F:FDEF: F0 08     BEQ bra_FDF9
 C - - - - - 0x03FE01 0F:FDF1: A9 00     LDA #$00
 C - - - - - 0x03FE03 0F:FDF3: 8D 35 06  STA ram_0635
-C - - - - - 0x03FE06 0F:FDF6: 20 F6 AF  JSR sub_0x027006
+C - - - - - 0x03FE06 0F:FDF6: 20 F6 AF  JSR sub_0x027006_отрисовать_инфу_в_статусбаре
 bra_FDF9:
 C - - - - - 0x03FE09 0F:FDF9: 20 42 B1  JSR sub_0x027152
 C - - - - - 0x03FE0C 0F:FDFC: 20 4F 9E  JSR sub_0x025E5F
@@ -7976,9 +7980,10 @@ C - - - - - 0x03FF4B 0F:FF3B: A2 01     LDX #$01
 C - - - - - 0x03FF4D 0F:FF3D: AD 54 01  LDA ram_0154
 C - - - - - 0x03FF50 0F:FF40: 0A        ASL
 C - - - - - 0x03FF51 0F:FF41: A8        TAY
-C - - - - - 0x03FF52 0F:FF42: B9 56 01  LDA ram_0156,Y ; 0156 0158 015A 
-C - - - - - 0x03FF55 0F:FF45: 59 55 01  EOR ram_0155,Y ; 0155 0157 0159 
-C - - - - - 0x03FF58 0F:FF48: 30 23     BMI bra_FF6D
+C - - - - - 0x03FF52 0F:FF42: B9 56 01  LDA ram_tournament_индекс_игрока + $01,Y ; 0156 0158 015A 
+C - - - - - 0x03FF55 0F:FF45: 59 55 01  EOR ram_tournament_индекс_игрока,Y ; 0155 0157 0159 
+C - - - - - 0x03FF58 0F:FF48: 30 23     BMI bra_FF6D    ; if лишь 1 из соперников cpu
+; if никто из соперников cpu, либо оба cpu
 C - - - - - 0x03FF5A 0F:FF4A: AD 0D 01  LDA ram_plr_hp_hi
 C - - - - - 0x03FF5D 0F:FF4D: 0D 0E 01  ORA ram_plr_hp_hi + $01
 C - - - - - 0x03FF60 0F:FF50: F0 09     BEQ bra_FF5B
@@ -7996,7 +8001,7 @@ C - - - - - 0x03FF78 0F:FF68: D0 02     BNE bra_FF6C
 bra_FF6A:
 C - - - - - 0x03FF7A 0F:FF6A: B0 01     BCS bra_FF6D
 bra_FF6C:
-C - - - - - 0x03FF7C 0F:FF6C: CA        DEX
+C - - - - - 0x03FF7C 0F:FF6C: CA        DEX ; 00
 bra_FF6D:
 C - - - - - 0x03FF7D 0F:FF6D: 86 9D     STX ram_009D
 C - - - - - 0x03FF7F 0F:FF6F: 86 AD     STX ram_00AD
