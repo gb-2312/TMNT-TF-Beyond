@@ -6153,7 +6153,7 @@ C - - - - - 0x03F443 0F:F433: 85 98     STA ram_0098
 C - - - - - 0x03F445 0F:F435: 20 90 F6  JSR sub_F690_записать_звук_сохранив_X_Y
 C - - - - - 0x03F448 0F:F438: A9 80     LDA #$80
 C - - - - - 0x03F44A 0F:F43A: 85 9C     STA ram_009C
-C - - - - - 0x03F44C 0F:F43C: 0A        ASL ; 00
+C - - - - - 0x03F44C 0F:F43C: 0A        LDA #$00
 C - - - - - 0x03F44D 0F:F43D: 8D 11 01  STA ram_0111
 C - - - - - 0x03F450 0F:F440: 8D 12 01  STA ram_0112
 C - - - - - 0x03F453 0F:F443: E6 21     INC ram_script_draw_lo
