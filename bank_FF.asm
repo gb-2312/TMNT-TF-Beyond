@@ -1391,16 +1391,17 @@ C - - - - - 0x03D3F5 0F:D3E5: CA        DEX
 C - - - - - 0x03D3F6 0F:D3E6: 10 E4     BPL bra_D3CC_loop
 C - - - - - 0x03D3F8 0F:D3E8: A5 00     LDA ram_0000
 C - - - - - 0x03D3FA 0F:D3EA: D0 0C     BNE bra_D3F8_RTS
-loc_D3EC_очистить_0600_063B:
+loc_D3F6_очистить_0600_063B_и_флаг_яркости:
+sub_D3F6_очистить_0600_063B_и_флаг_яркости:
+                                        LDA #$00
+C - - - - - 0x03D406 0F:D3F6: 85 30     STA ram_метод_изменения_яркости
 sub_D3EC_очистить_0600_063B:
 C D 2 - - - 0x03D3FC 0F:D3EC: A9 00     LDA #$00
-C - - - - - 0x03D3FE 0F:D3EE: A2 3B     LDX #$3B
+C - - - - - 0x03D3FE 0F:D3EE: A2 3B     LDY #$3B
 bra_D3F0_loop:
-C - - - - - 0x03D400 0F:D3F0: 9D 00 06  STA ram_plr_0600,X
-C - - - - - 0x03D403 0F:D3F3: CA        DEX
+C - - - - - 0x03D400 0F:D3F0: 9D 00 06  STA ram_plr_0600,Y
+C - - - - - 0x03D403 0F:D3F3: CA        DEY
 C - - - - - 0x03D404 0F:D3F4: 10 FA     BPL bra_D3F0_loop
-; A = 00
-C - - - - - 0x03D406 0F:D3F6: 85 30     STA ram_метод_изменения_яркости
 bra_D3F8_RTS:
 C - - - - - 0x03D408 0F:D3F8: 60        RTS
 
@@ -1457,7 +1458,7 @@ C - - - - - 0x03D45E 0F:D44E: C9 05     CMP #$05
 C - - - - - 0x03D460 0F:D450: B0 01     BCS bra_D453
 C - - - - - 0x03D462 0F:D452: 60        RTS
 bra_D453:
-C - - - - - 0x03D463 0F:D453: 4C EC D3  JMP loc_D3EC_очистить_0600_063B
+C - - - - - 0x03D463 0F:D453: 4C EC D3  JMP loc_D3F6_очистить_0600_063B_и_флаг_яркости
 
 
 
@@ -1544,7 +1545,7 @@ C - - - - - 0x03D4CD 0F:D4BD: EE 02 06  INC ram_0602
 C - - - - - 0x03D4D0 0F:D4C0: AD 02 06  LDA ram_0602
 C - - - - - 0x03D4D3 0F:D4C3: C9 05     CMP #$05
 C - - - - - 0x03D4D5 0F:D4C5: 90 03     BCC bra_D4CA_RTS
-C - - - - - 0x03D4D7 0F:D4C7: 4C EC D3  JMP loc_D3EC_очистить_0600_063B
+C - - - - - 0x03D4D7 0F:D4C7: 4C EC D3  JMP loc_D3F6_очистить_0600_063B_и_флаг_яркости
 bra_D4CA_RTS:
 C - - - - - 0x03D4DA 0F:D4CA: 60        RTS
 
@@ -1602,7 +1603,7 @@ C - - - - - 0x03D533 0F:D523: EE 02 06  INC ram_0602
 C - - - - - 0x03D536 0F:D526: AD 02 06  LDA ram_0602
 C - - - - - 0x03D539 0F:D529: C9 06     CMP #$06
 C - - - - - 0x03D53B 0F:D52B: 90 03     BCC bra_D530
-C - - - - - 0x03D53D 0F:D52D: 20 EC D3  JSR sub_D3EC_очистить_0600_063B
+C - - - - - 0x03D53D 0F:D52D: 20 EC D3  JSR sub_D3F6_очистить_0600_063B_и_флаг_яркости
 bra_D530:
 C - - - - - 0x03D540 0F:D530: 4C 64 D4  JMP loc_D464_запись_FF_в_066D
 bra_D533_RTS:
@@ -3556,12 +3557,7 @@ C - - - - - 0x03E489 0F:E479: 8D 36 05  STA ram_obj_0530 + $06
 C - - - - - 0x03E48C 0F:E47C: A9 00     LDA #$00
 C - - - - - 0x03E48E 0F:E47E: 8D 30 05  STA ram_obj_0530
 C - - - - - 0x03E491 0F:E481: 8D 31 05  STA ram_obj_0530 + $01
-; очистить 0600-063B
-C - - - - - 0x03E494 0F:E484: A0 3B     LDY #$3B
-bra_E486_loop:
-C - - - - - 0x03E496 0F:E486: 99 00 06  STA ram_plr_0600,Y
-C - - - - - 0x03E499 0F:E489: 88        DEY
-C - - - - - 0x03E49A 0F:E48A: 10 FA     BPL bra_E486_loop
+C - - - - - 0x03E494 0F:E484: A0 3B     JSR sub_D3EC_очистить_0600_063B
 C - - - - - 0x03E49C 0F:E48C: 8A        TXA
 C - - - - - 0x03E49D 0F:E48D: A4 2C     LDY ram_game_mode
 ; con_gm_story
