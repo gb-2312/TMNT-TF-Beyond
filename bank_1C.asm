@@ -43,18 +43,15 @@ C - - - - - 0x038013 0E:8003: 20 32 D0  JSR sub_0x03D042_поинтеры_пос
 
 ofs_015_800C_00_отрисовать_опции:
 C - - - - - 0x038020 0E:8010: 20 BE DA  JSR sub_0x03DACE_удалить_все_объекты
-C - - - - - 0x038023 0E:8013: A2 01     LDX #$01
-bra_8015_loop:
-C - - - - - 0x038025 0E:8015: BD B7 82  LDA tbl_82B7_анимация,X
-C - - - - - 0x038028 0E:8018: 9D 00 04  STA ram_plr_anim_id,X ; 0401 
-C - - - - - 0x03802B 0E:801B: BD B9 82  LDA tbl_82B9,X
-C - - - - - 0x03802E 0E:801E: 9D 10 04  STA ram_obj_pos_Y,X ; 0411 
+; X свободен
+C - - - - - 0x038025 0E:8015: BD B7 82  LDA #$43
+C - - - - - 0x038028 0E:8018: 9D 00 04  STA ram_plr_anim_id + $01
+C - - - - - 0x03802B 0E:801B: BD B9 82  LDA #$68
+C - - - - - 0x03802E 0E:801E: 9D 10 04  STA ram_obj_pos_Y + $01
 C - - - - - 0x038031 0E:8021: A9 30     LDA #$30
-C - - - - - 0x038033 0E:8023: 9D 40 04  STA ram_obj_pos_X,X ; 0441 
+C - - - - - 0x038033 0E:8023: 9D 40 04  STA ram_obj_pos_X + $01
 C - - - - - 0x038036 0E:8026: A9 82     LDA #$82
-C - - - - - 0x038038 0E:8028: 9D 00 05  STA ram_obj_0500,X ; 0501 
-C - - - - - 0x03803B 0E:802B: CA        DEX
-C - - - - - 0x03803C 0E:802C: D0 E7     BNE bra_8015_loop
+C - - - - - 0x038038 0E:8028: 9D 00 05  STA ram_obj_0500 + $01
 C - - - - - 0x03803E 0E:802E: A9 55     LDA #con_chr_bank_spr + $55
 C - - - - - 0x038040 0E:8030: 85 34     STA ram_chr_bank_spr
 C - - - - - 0x038042 0E:8032: 20 25 DC  JSR sub_0x03DC35
@@ -777,16 +774,6 @@ tbl_81D1_ppu:
                                         .word $27C8 ; 02
                                         .word $27D0 ; 03
                                         .word $27D0 ; 04
-
-
-
-tbl_82B7_анимация:
-- - - - - - 0x0382C7 0E:82B7: 3E        .byte $3E   ; 00
-- D 0 - - - 0x0382C8 0E:82B8: 43        .byte $43   ; 01
-
-tbl_82B9:
-- - - - - - 0x0382C9 0E:82B9: 47        .byte $47   ; 00
-- D 0 - - - 0x0382CA 0E:82BA: 68        .byte $68   ; 01
 
 
 
