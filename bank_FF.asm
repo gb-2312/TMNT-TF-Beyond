@@ -1359,11 +1359,11 @@ C - - - - - 0x03D3C2 0F:D3B2: F0 E8     BEQ bra_D39C    ; jmp
 
 
 loc_D3B4_80_затемнение_из_цветного_в_черный:
-C D 2 - - - 0x03D3C4 0F:D3B4: AD 02 06  LDA ram_0602
+C D 2 - - - 0x03D3C4 0F:D3B4: AD 02 06  LDA ram_015E
 C - - - - - 0x03D3C7 0F:D3B7: D0 08     BNE bra_D3C1
-C - - - - - 0x03D3C9 0F:D3B9: EE 02 06  INC ram_0602
+C - - - - - 0x03D3C9 0F:D3B9: EE 02 06  INC ram_015E
 C - - - - - 0x03D3CC 0F:D3BC: A9 08     LDA #$08
-C - - - - - 0x03D3CE 0F:D3BE: 8D 03 06  STA ram_0603
+C - - - - - 0x03D3CE 0F:D3BE: 8D 03 06  STA ram_015F
 bra_D3C1:
 C - - - - - 0x03D3D1 0F:D3C1: A9 08     LDA #$08
 C - - - - - 0x03D3D3 0F:D3C3: 20 5C D4  JSR sub_D45C    ; возможен PLA PLA
@@ -1408,32 +1408,32 @@ C - - - - - 0x03D408 0F:D3F8: 60        RTS
 
 
 loc_D3F9_01_осветление_из_черного_в_цветной:
-C D 2 - - - 0x03D409 0F:D3F9: AD 02 06  LDA ram_0602
+C D 2 - - - 0x03D409 0F:D3F9: AD 02 06  LDA ram_015E
 C - - - - - 0x03D40C 0F:D3FC: D0 1C     BNE bra_D41A
 C - - - - - 0x03D40E 0F:D3FE: A2 1F     LDX #$1F
 bra_D400_loop:
 C - - - - - 0x03D410 0F:D400: BD 4D 06  LDA ram_pal_buffer,X
-C - - - - - 0x03D413 0F:D403: 9D 04 06  STA ram_0604,X
+C - - - - - 0x03D413 0F:D403: 9D 04 06  STA ram_0160,X
 C - - - - - 0x03D416 0F:D406: A9 0F     LDA #$0F
 C - - - - - 0x03D418 0F:D408: 9D 4D 06  STA ram_pal_buffer,X
 C - - - - - 0x03D41B 0F:D40B: CA        DEX
 C - - - - - 0x03D41C 0F:D40C: 10 F2     BPL bra_D400_loop
 sub_D40E:
-C - - - - - 0x03D41E 0F:D40E: EE 02 06  INC ram_0602
+C - - - - - 0x03D41E 0F:D40E: EE 02 06  INC ram_015E
 C - - - - - 0x03D421 0F:D411: 20 64 D4  JSR sub_D464_запись_FF_в_066D
 C - - - - - 0x03D424 0F:D414: A9 08     LDA #$08
-C - - - - - 0x03D426 0F:D416: 8D 03 06  STA ram_0603
+C - - - - - 0x03D426 0F:D416: 8D 03 06  STA ram_015F
 bra_D419_RTS:
 C - - - - - 0x03D429 0F:D419: 60        RTS
 bra_D41A:
-C - - - - - 0x03D42A 0F:D41A: CE 03 06  DEC ram_0603
+C - - - - - 0x03D42A 0F:D41A: CE 03 06  DEC ram_015F
 C - - - - - 0x03D42D 0F:D41D: 10 FA     BPL bra_D419_RTS
-C - - - - - 0x03D42F 0F:D41F: AC 02 06  LDY ram_0602
+C - - - - - 0x03D42F 0F:D41F: AC 02 06  LDY ram_015E
 C - - - - - 0x03D432 0F:D422: B9 55 D4  LDA tbl_D456 - $01,Y
 C - - - - - 0x03D435 0F:D425: 85 00     STA ram_0000
 C - - - - - 0x03D437 0F:D427: A2 1F     LDX #$1F
 bra_D429_loop:
-C - - - - - 0x03D439 0F:D429: BD 04 06  LDA ram_0604,X
+C - - - - - 0x03D439 0F:D429: BD 04 06  LDA ram_0160,X
 C - - - - - 0x03D43C 0F:D42C: A8        TAY
 C - - - - - 0x03D43D 0F:D42D: 29 F0     AND #$F0
 C - - - - - 0x03D43F 0F:D42F: C5 00     CMP ram_0000
@@ -1453,7 +1453,7 @@ bra_D445:
 C - - - - - 0x03D455 0F:D445: CA        DEX
 C - - - - - 0x03D456 0F:D446: 10 E1     BPL bra_D429_loop
 C - - - - - 0x03D458 0F:D448: 20 0E D4  JSR sub_D40E
-C - - - - - 0x03D45B 0F:D44B: AD 02 06  LDA ram_0602
+C - - - - - 0x03D45B 0F:D44B: AD 02 06  LDA ram_015E
 C - - - - - 0x03D45E 0F:D44E: C9 05     CMP #$05
 C - - - - - 0x03D460 0F:D450: B0 01     BCS bra_D453
 C - - - - - 0x03D462 0F:D452: 60        RTS
@@ -1471,9 +1471,9 @@ tbl_D456:
 
 
 sub_D45C:
-C - - - - - 0x03D46C 0F:D45C: CE 03 06  DEC ram_0603
+C - - - - - 0x03D46C 0F:D45C: CE 03 06  DEC ram_015F
 C - - - - - 0x03D46F 0F:D45F: 10 09     BPL bra_D46A
-C - - - - - 0x03D471 0F:D461: 8D 03 06  STA ram_0603
+C - - - - - 0x03D471 0F:D461: 8D 03 06  STA ram_015F
 bra_D464_запись_FF_в_066D:
 sub_D464_запись_FF_в_066D:
 loc_D464_запись_FF_в_066D:
@@ -1502,11 +1502,11 @@ C - - - - - 0x03D487 0F:D477: 30 EB     BMI bra_D464_запись_FF_в_066D    
 
 
 loc_D479_40_затемнение_из_белого_в_цветной:
-C D 2 - - - 0x03D489 0F:D479: AD 02 06  LDA ram_0602
+C D 2 - - - 0x03D489 0F:D479: AD 02 06  LDA ram_015E
 C - - - - - 0x03D48C 0F:D47C: D0 09     BNE bra_D487
-C - - - - - 0x03D48E 0F:D47E: EE 02 06  INC ram_0602
+C - - - - - 0x03D48E 0F:D47E: EE 02 06  INC ram_015E
 C - - - - - 0x03D491 0F:D481: A9 06     LDA #$06
-C - - - - - 0x03D493 0F:D483: 8D 03 06  STA ram_0603
+C - - - - - 0x03D493 0F:D483: 8D 03 06  STA ram_015F
 C - - - - - 0x03D496 0F:D486: 60        RTS
 bra_D487:
 C - - - - - 0x03D497 0F:D487: A9 0C     LDA #$0C
@@ -1541,8 +1541,8 @@ C - - - - - 0x03D4C4 0F:D4B4: 10 DE     BPL bra_D494_loop
 C - - - - - 0x03D4C6 0F:D4B6: C6 00     DEC ram_0000
 C - - - - - 0x03D4C8 0F:D4B8: 10 D6     BPL bra_D490_loop
 C - - - - - 0x03D4CA 0F:D4BA: 20 64 D4  JSR sub_D464_запись_FF_в_066D
-C - - - - - 0x03D4CD 0F:D4BD: EE 02 06  INC ram_0602
-C - - - - - 0x03D4D0 0F:D4C0: AD 02 06  LDA ram_0602
+C - - - - - 0x03D4CD 0F:D4BD: EE 02 06  INC ram_015E
+C - - - - - 0x03D4D0 0F:D4C0: AD 02 06  LDA ram_015E
 C - - - - - 0x03D4D3 0F:D4C3: C9 05     CMP #$05
 C - - - - - 0x03D4D5 0F:D4C5: 90 03     BCC bra_D4CA_RTS
 C - - - - - 0x03D4D7 0F:D4C7: 4C EC D3  JMP loc_D3F6_очистить_0600_063B_и_флаг_яркости
@@ -1552,15 +1552,15 @@ C - - - - - 0x03D4DA 0F:D4CA: 60        RTS
 
 
 loc_D4CB_20_осветление_из_цветного_в_белый:
-C D 2 - - - 0x03D4DB 0F:D4CB: AC 02 06  LDY ram_0602
+C D 2 - - - 0x03D4DB 0F:D4CB: AC 02 06  LDY ram_015E
 C - - - - - 0x03D4DE 0F:D4CE: D0 1B     BNE bra_D4EB
-C - - - - - 0x03D4E0 0F:D4D0: EE 02 06  INC ram_0602
+C - - - - - 0x03D4E0 0F:D4D0: EE 02 06  INC ram_015E
 C - - - - - 0x03D4E3 0F:D4D3: A9 08     LDA #$08
-C - - - - - 0x03D4E5 0F:D4D5: 8D 03 06  STA ram_0603
+C - - - - - 0x03D4E5 0F:D4D5: 8D 03 06  STA ram_015F
 C - - - - - 0x03D4E8 0F:D4D8: A2 1F     LDX #$1F
 bra_D4DA_loop:
 C - - - - - 0x03D4EA 0F:D4DA: BD 4D 06  LDA ram_pal_buffer,X
-C - - - - - 0x03D4ED 0F:D4DD: 9D 04 06  STA ram_0604,X
+C - - - - - 0x03D4ED 0F:D4DD: 9D 04 06  STA ram_0160,X
 C - - - - - 0x03D4F0 0F:D4E0: A9 30     LDA #$30
 C - - - - - 0x03D4F2 0F:D4E2: 9D 4D 06  STA ram_pal_buffer,X
 C - - - - - 0x03D4F5 0F:D4E5: CA        DEX
@@ -1573,7 +1573,7 @@ C - - - - - 0x03D500 0F:D4F0: 88        DEY
 C - - - - - 0x03D501 0F:D4F1: D0 19     BNE bra_D50C
 C - - - - - 0x03D503 0F:D4F3: A2 1F     LDX #$1F
 bra_D4F5_loop:
-C - - - - - 0x03D505 0F:D4F5: BD 04 06  LDA ram_0604,X
+C - - - - - 0x03D505 0F:D4F5: BD 04 06  LDA ram_0160,X
 C - - - - - 0x03D508 0F:D4F8: 09 30     ORA #$30
 C - - - - - 0x03D50A 0F:D4FA: C9 3F     CMP #$3F
 C - - - - - 0x03D50C 0F:D4FC: D0 02     BNE bra_D500
@@ -1582,13 +1582,13 @@ bra_D500:
 C - - - - - 0x03D510 0F:D500: 9D 4D 06  STA ram_pal_buffer,X
 C - - - - - 0x03D513 0F:D503: CA        DEX
 C - - - - - 0x03D514 0F:D504: 10 EF     BPL bra_D4F5_loop
-C - - - - - 0x03D516 0F:D506: EE 02 06  INC ram_0602
+C - - - - - 0x03D516 0F:D506: EE 02 06  INC ram_015E
 C - - - - - 0x03D519 0F:D509: 4C 64 D4  JMP loc_D464_запись_FF_в_066D
 bra_D50C:
 C - - - - - 0x03D51C 0F:D50C: A2 1F     LDX #$1F
 bra_D50E_loop:
 C - - - - - 0x03D51E 0F:D50E: BD 4D 06  LDA ram_pal_buffer,X
-C - - - - - 0x03D521 0F:D511: DD 04 06  CMP ram_0604,X
+C - - - - - 0x03D521 0F:D511: DD 04 06  CMP ram_0160,X
 C - - - - - 0x03D524 0F:D514: F0 0A     BEQ bra_D520
 C - - - - - 0x03D526 0F:D516: 38        SEC
 C - - - - - 0x03D527 0F:D517: E9 10     SBC #$10
@@ -1599,8 +1599,8 @@ C - - - - - 0x03D52D 0F:D51D: 9D 4D 06  STA ram_pal_buffer,X
 bra_D520:
 C - - - - - 0x03D530 0F:D520: CA        DEX
 C - - - - - 0x03D531 0F:D521: 10 EB     BPL bra_D50E_loop
-C - - - - - 0x03D533 0F:D523: EE 02 06  INC ram_0602
-C - - - - - 0x03D536 0F:D526: AD 02 06  LDA ram_0602
+C - - - - - 0x03D533 0F:D523: EE 02 06  INC ram_015E
+C - - - - - 0x03D536 0F:D526: AD 02 06  LDA ram_015E
 C - - - - - 0x03D539 0F:D529: C9 06     CMP #$06
 C - - - - - 0x03D53B 0F:D52B: 90 03     BCC bra_D530
 C - - - - - 0x03D53D 0F:D52D: 20 EC D3  JSR sub_D3F6_очистить_0600_063B_и_флаг_яркости
@@ -2983,7 +2983,7 @@ C - - - - - 0x03E142 0F:E132: 0A        ASL ; 00
 loc_E133:
 C D 3 - - - 0x03E143 0F:E133: A9 00     LDA #$00
 C - - - - - 0x03E145 0F:E135: 8D 6D 06  STA ram_066D
-C - - - - - 0x03E148 0F:E138: 8D 02 06  STA ram_0602
+C - - - - - 0x03E148 0F:E138: 8D 02 06  STA ram_015E
 C - - - - - 0x03E14B 0F:E13B: 85 A4     STA ram_00A4
 C - - - - - 0x03E14D 0F:E13D: 60        RTS
 
