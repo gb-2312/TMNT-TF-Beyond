@@ -65,7 +65,7 @@ bra_8031:
 C - - - - - 0x024041 09:8031: BD 45 06  LDA ram_plr_damage,X ; 0645 0646 
 C - - - - - 0x024044 09:8034: F0 0B     BEQ bra_8041
 C - - - - - 0x024046 09:8036: DE 45 06  DEC ram_plr_damage,X ; 0645 0646 
-C - - - - - 0x024049 09:8039: BD 90 05  LDA ram_obj_0590,X
+C - - - - - 0x024049 09:8039: BD 90 05  LDA ram_obj_0590,X ; 0590 0591 
 C - - - - - 0x02404C 09:803C: F0 03     BEQ bra_8041
 C - - - - - 0x02404E 09:803E: 20 66 FE  JSR sub_0x03FE76
 bra_8041:
@@ -88,22 +88,23 @@ bra_8061:
 C - - - - - 0x024071 09:8061: 8A        TXA
 loc_8062:
 C D 0 - - - 0x024072 09:8062: 09 80     ORA #$80
-C - - - - - 0x024074 09:8064: 9D 00 05  STA ram_obj_0500,X
+; bzk bug? найти почему ссылается на 0518
+C - - - - - 0x024074 09:8064: 9D 00 05  STA ram_obj_0500,X ; 0500 0501 050C 0518 
 C - - - - - 0x024077 09:8067: 4C 28 FF  JMP loc_0x03FF38
 
 
 
 sub_806C:
 C - - - - - 0x02407C 09:806C: 20 7A FE  JSR sub_0x03FE8A
-C - - - - - 0x02407F 09:806F: DD 47 06  CMP ram_plr_0647,X
+C - - - - - 0x02407F 09:806F: DD 47 06  CMP ram_plr_0647,X ; 0647 0648 
 C - - - - - 0x024082 09:8072: F0 0C     BEQ bra_8080
-C - - - - - 0x024084 09:8074: 9D 47 06  STA ram_plr_0647,X
+C - - - - - 0x024084 09:8074: 9D 47 06  STA ram_plr_0647,X ; 0647 0648 
 C - - - - - 0x024087 09:8077: A5 95     LDA ram_0095
 C - - - - - 0x024089 09:8079: C9 10     CMP #$10
 C - - - - - 0x02408B 09:807B: B0 03     BCS bra_8080
 C - - - - - 0x02408D 09:807D: 20 3B EA  JSR sub_0x03EA4B
 bra_8080:
-C - - - - - 0x024090 09:8080: BD 30 05  LDA ram_obj_0530,X
+C - - - - - 0x024090 09:8080: BD 30 05  LDA ram_obj_0530,X ; 0530 0531 
 C - - - - - 0x024093 09:8083: 20 32 D0  JSR sub_0x03D042_поинтеры_после_JSR
 - D 0 - I - 0x024096 09:8086: 90 80     .word ofs_061_8090_00
 - D 0 - I - 0x024098 09:8088: D0 80     .word ofs_061_80D0_01
@@ -4707,23 +4708,23 @@ C - - - - - 0x025AC7 09:9AB7: 60        RTS
 bra_9ABD:
 loc_9ABD:
 C D 0 - - - 0x025ACD 09:9ABD: A9 00     LDA #$00
-C - - - - - 0x025ACF 09:9ABF: 9D 08 06  STA ram_0608,X
-C - - - - - 0x025AD2 09:9AC2: 9D 31 06  STA ram_0631,X
+C - - - - - 0x025ACF 09:9ABF: 9D 08 06  STA ram_0608,X ; 0608 0609 
+C - - - - - 0x025AD2 09:9AC2: 9D 31 06  STA ram_0631,X ; 0631 0632 
 bra_9AC5:
-C - - - - - 0x025AD5 09:9AC5: 9D 0C 06  STA ram_060C,X
+C - - - - - 0x025AD5 09:9AC5: 9D 0C 06  STA ram_060C,X ; 060C 060D 
 C - - - - - 0x025AD8 09:9AC8: 60        RTS
 
 
 
 bra_9AC9:
 loc_9AC9:
-C D 0 - - - 0x025AD9 09:9AC9: FE 0C 06  INC ram_060C,X
+C D 0 - - - 0x025AD9 09:9AC9: FE 0C 06  INC ram_060C,X ; 060C 060D 
 C - - - - - 0x025ADC 09:9ACC: 60        RTS
 
 
 
 sub_9ACD:
-C - - - - - 0x025ADD 09:9ACD: BD 0C 06  LDA ram_060C,X
+C - - - - - 0x025ADD 09:9ACD: BD 0C 06  LDA ram_060C,X ; 060C 060D 
 C - - - - - 0x025AE0 09:9AD0: 9D 41 06  STA ram_plr_0641,X
 loc_9AD3:
 sub_9AD3:
