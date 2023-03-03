@@ -95,17 +95,17 @@ con_script_draw_topscore                = $0C ; телка с микрофоно
 
 
 
-; ram_00B6
+; ram_speech
 ; для 0x039B53
-con_00B6_00                             = $00 ; 
-con_00B6_01                             = $01 ; 
-con_00B6_02                             = $02 ; 
-con_00B6_03                             = $03 ; 
-con_00B6_04                             = $04 ; 
-con_00B6_05                             = $05 ; 
-con_00B6_06                             = $06 ; 
-con_00B6_07                             = $07 ; 
-con_00B6_08                             = $08 ; 
+con_speech_manhattan                    = $00 ; 
+con_speech_strange_letter               = $01 ; 
+con_speech_offer_challenge              = $02 ; 
+con_speech_lousy_tricks                 = $03 ; 
+con_speech_celebrate                    = $04 ; 
+con_speech_taste_defeat                 = $05 ; 
+con_speech_expected_tougher             = $06 ; 
+con_speech_try_hard_mode                = $07 ; 
+con_speech_true_power                   = $08 ; 
 
 
 
@@ -459,23 +459,23 @@ con_init_anim_прыжок_от_земли           = $16 ; прыжок (са�
 
 
 ; смотреть 0x03F84E и 0x03FCAB
-; con_0x03F84C_00                       = $00 ; unused
-; con_0x03F84C_01                       = $01 ; unused
-con_0x03F84C_02                         = $02 ; 
-; con_0x03F84C_03                       = $03 ; unused
-; con_0x03F84C_04                       = $04 ; unused
-con_0x03F84C_05                         = $05 ; 
-con_0x03F84C_06                         = $06 ; 
-con_0x03F84C_07                         = $07 ; 
-con_0x03F84C_08                         = $08 ; 
-con_0x03F84C_09                         = $09 ; 
-con_0x03F84C_0A                         = $0A ; 
-con_0x03F84C_0B                         = $0B ; 
-con_0x03F84C_0C                         = $0C ; 
-con_0x03F84C_0D                         = $0D ; 
-con_0x03F84C_0E                         = $0E ; 
-con_0x03F84C_0F                         = $0F ; 
-con_0x03F84C_10                         = $10 ; 
+; con_0048_00                               = $00 ; unused
+; con_0048_01                               = $01 ; unused
+con_0048_02                                 = $02 ; 
+; con_0048_03                               = $03 ; unused
+; con_0048_04                               = $04 ; unused
+con_0048_05                                 = $05 ; 
+con_0048_06                                 = $06 ; 
+con_0048_07                                 = $07 ; 
+con_0048_08                                 = $08 ; 
+con_0048_09                                 = $09 ; 
+con_0048_0A                                 = $0A ; 
+con_0048_0B                                 = $0B ; 
+con_0048_0C                                 = $0C ; 
+con_0048_0D                                 = $0D ; 
+con_0048_0E                                 = $0E ; 
+con_0048_0F                                 = $0F ; 
+con_0048_10                                 = $10 ; 
 
 
 

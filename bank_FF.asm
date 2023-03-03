@@ -1276,15 +1276,15 @@ C - - - - - 0x03D342 0F:D332: 60        RTS
 
 
 
-sub_D333:
+sub_D333_выбрать_речь_перед_финальным_боем_в_story:
 C - - - - - 0x03D343 0F:D333: AD 25 01  LDA ram_option_difficulty
 C - - - - - 0x03D346 0F:D336: C9 03     CMP #$03
 C - - - - - 0x03D348 0F:D338: B0 03     BCS bra_D33D
-C - - - - - 0x03D34A 0F:D33A: A9 05     LDA #con_00B6_05
+C - - - - - 0x03D34A 0F:D33A: A9 05     LDA #con_speech_taste_defeat
 C - - - - - 0x03D34C 0F:D33C: 2C        .byte $2C   ; BIT
 bra_D33D:
-C - - - - - 0x03D34D 0F:D33D: A9 08     LDA #con_00B6_08
-C - - - - - 0x03D34F 0F:D33F: 85 B6     STA ram_00B6
+C - - - - - 0x03D34D 0F:D33D: A9 08     LDA #con_speech_true_power
+C - - - - - 0x03D34F 0F:D33F: 85 B6     STA ram_speech
 C - - - - - 0x03D351 0F:D341: 60        RTS
 
 
@@ -3098,7 +3098,7 @@ C - - - - - 0x03E199 0F:E189: 20 32 D0  JSR sub_D032_поинтеры_после
 - D 3 - I - 0x03E1D6 0F:E1C6: A4 E8     .word ofs_001_E8A4_1D
 - D 3 - I - 0x03E1D8 0F:E1C8: EA E8     .word ofs_001_E8EA_1E
 - - - - - - 0x03E1DA 0F:E1CA: A7 E8     .word ofs_001_E8A7_1F
-- - - - - - 0x03E1DC 0F:E1CC: FC E8     .word ofs_001_E8FC_20
+- - - - - - 0x03E1DC 0F:E1CC: FC E8     .word ofs_001_E8FC_20_expected_tougher
 
 
 
@@ -3161,9 +3161,9 @@ loc_0x03E229_отрисовать_турнирную_сетку:
 C D 3 - - - 0x03E229 0F:E219: AD 54 01  LDA ram_0154
 C - - - - - 0x03E22C 0F:E21C: 0A        ASL
 C - - - - - 0x03E22D 0F:E21D: A8        TAY
-C - - - - - 0x03E22E 0F:E21E: B9 4C 01  LDA ram_014C,Y
+C - - - - - 0x03E22E 0F:E21E: B9 4C 01  LDA ram_014C,Y ; 014C 014E 0150 
 C - - - - - 0x03E231 0F:E221: 85 A2     STA ram_plr_id
-C - - - - - 0x03E233 0F:E223: B9 4D 01  LDA ram_014D,Y
+C - - - - - 0x03E233 0F:E223: B9 4D 01  LDA ram_014D,Y ; 014D 014F 0151 
 C - - - - - 0x03E236 0F:E226: 85 A3     STA ram_plr_id + $01
 C - - - - - 0x03E238 0F:E228: 20 26 F7  JSR sub_F726_отрисовать_турнирную_сетку
 C - - - - - 0x03E23B 0F:E22B: A9 40     LDA #$40
@@ -3215,9 +3215,9 @@ C - - - - - 0x03E277 0F:E267: 90 62     BCC bra_E2CB
 ; con_gm_vs_team
 ; con_gm_tournament
 C - - - - - 0x03E279 0F:E269: A9 01     LDA #$01
-C - - - - - 0x03E27B 0F:E26B: 85 A8     STA ram_00A8
+C - - - - - 0x03E27B 0F:E26B: 85 A8     STA ram_local_obj_index
 bra_E26D_loop:
-C - - - - - 0x03E27D 0F:E26D: A5 A8     LDA ram_00A8
+C - - - - - 0x03E27D 0F:E26D: A5 A8     LDA ram_local_obj_index
 C - - - - - 0x03E27F 0F:E26F: 0A        ASL
 C - - - - - 0x03E280 0F:E270: AA        TAX
 C - - - - - 0x03E281 0F:E271: BD 4F E9  LDA tbl_E94E + $01,X
@@ -3229,7 +3229,7 @@ C - - - - - 0x03E28E 0F:E27E: BC 4A E9  LDY tbl_E94A,X
 C - - - - - 0x03E291 0F:E281: 20 6B D2  JSR sub_D26B_записать_адрес_2006_Y_и_A_в_буфер
 C - - - - - 0x03E294 0F:E284: AD 54 01  LDA ram_0154
 C - - - - - 0x03E297 0F:E287: 0A        ASL
-C - - - - - 0x03E298 0F:E288: 65 A8     ADC ram_00A8
+C - - - - - 0x03E298 0F:E288: 65 A8     ADC ram_local_obj_index
 C - - - - - 0x03E29A 0F:E28A: 85 01     STA ram_0001
 C - - - - - 0x03E29C 0F:E28C: 0A        ASL
 C - - - - - 0x03E29D 0F:E28D: 0A        ASL
@@ -3248,9 +3248,9 @@ C - - - - - 0x03E2B3 0F:E2A3: A5 02     LDA ram_0002
 C - - - - - 0x03E2B5 0F:E2A5: A4 03     LDY ram_0003
 C - - - - - 0x03E2B7 0F:E2A7: 20 6B D2  JSR sub_D26B_записать_адрес_2006_Y_и_A_в_буфер
 C - - - - - 0x03E2BA 0F:E2AA: A4 01     LDY ram_0001
-C - - - - - 0x03E2BC 0F:E2AC: B9 55 01  LDA ram_0155,Y
+C - - - - - 0x03E2BC 0F:E2AC: B9 55 01  LDA ram_0155,Y ; 0155 0156 0157 0158 0159 015A 
 C - - - - - 0x03E2BF 0F:E2AF: 30 04     BMI bra_E2B5
-C - - - - - 0x03E2C1 0F:E2B1: B9 05 01  LDA ram_0105,Y
+C - - - - - 0x03E2C1 0F:E2B1: B9 05 01  LDA ram_0105,Y ; 0105 0106 0109 
 C - - - - - 0x03E2C4 0F:E2B4: 2C        .byte $2C   ; BIT
 bra_E2B5:
 C - - - - - 0x03E2C5 0F:E2B5: A9 04     LDA #$04
@@ -3264,7 +3264,7 @@ C - - - - - 0x03E2D2 0F:E2C2: C8        INY
 C - - - - - 0x03E2D3 0F:E2C3: C9 FF     CMP #$FF
 C - - - - - 0x03E2D5 0F:E2C5: D0 F5     BNE bra_E2BC_loop
 ; FF
-C - - - - - 0x03E2D7 0F:E2C7: C6 A8     DEC ram_00A8
+C - - - - - 0x03E2D7 0F:E2C7: C6 A8     DEC ram_local_obj_index
 C - - - - - 0x03E2D9 0F:E2C9: 10 A2     BPL bra_E26D_loop
 bra_E2CB:
 C - - - - - 0x03E2DD 0F:E2CD: 20 A0 EB  JSR sub_EBA0_вывести_имя_перса_на_vs_экране
@@ -3278,7 +3278,7 @@ C - - - - - 0x03E2EF 0F:E2DF: A2 FF     LDX #$FF
 C - - - - - 0x03E2F1 0F:E2E1: 86 57     STX ram_0056 + $01
 C - - - - - 0x03E2F3 0F:E2E3: A2 00     LDX #$00
 C - - - - - 0x03E2F5 0F:E2E5: 86 56     STX ram_0056
-C - - - - - 0x03E2F7 0F:E2E7: A9 06     LDA #con_0x03F84C_06
+C - - - - - 0x03E2F7 0F:E2E7: A9 06     LDA #con_0048_06
 C - - - - - 0x03E2F9 0F:E2E9: 20 14 F8  JSR sub_F814
 C - - - - - 0x03E2FC 0F:E2EC: 4C 41 E1  JMP loc_E141_подготовить_осветление_из_черного_в_цветной
 
@@ -3292,12 +3292,12 @@ C - - - - - 0x003F10 00:BF00: A5 2C     LDA ram_game_mode
 C - - - - - 0x003F12 00:BF02: 4A        LSR
 C - - - - - 0x003F13 00:BF03: B0 04     BCS bra_BF09
 ; con_gm_tournament
-C - - - - - 0x003F15 00:BF05: B9 30 01  LDA ram_0130,Y
+C - - - - - 0x003F15 00:BF05: B9 30 01  LDA ram_0130,Y ; 0130 0131 0132 0133 0134 0135 0136 0137 0138 0139 013A 013B 013C 013D 013E 013F 0140 0141 0142 0143 0144 0145 0146 0147 
 C - - - - - 0x003F18 00:BF08: 60        RTS
 bra_BF09:
 ; con_gm_vs_team
-C - - - - - 0x003F19 00:BF09: A6 A8     LDX ram_00A8
-C - - - - - 0x003F1B 00:BF0B: BD 55 01  LDA ram_0155,X
+C - - - - - 0x003F19 00:BF09: A6 A8     LDX ram_local_obj_index
+C - - - - - 0x003F1B 00:BF0B: BD 55 01  LDA ram_0155,X ; 0155 0156 
 C - - - - - 0x003F1E 00:BF0E: 30 02     BMI bra_BF12
 C - - - - - 0x003F20 00:BF10: 4A        LSR
 C - - - - - 0x003F21 00:BF11: 60        RTS
@@ -3496,9 +3496,9 @@ C - - - - - 0x03E413 0F:E403: 20 44 F0  JSR sub_F044_отрисовать_экр
                                         JSR sub_F044_отрисовать_экран
 C - - - - - 0x03E416 0F:E406: 20 9E EB  JSR sub_EB9E_вывести_имя_перса_над_шкалой_здоровья
 C - - - - - 0x03E419 0F:E409: A2 01     LDX #$01
-C - - - - - 0x03E41B 0F:E40B: 86 A8     STX ram_00A8
+C - - - - - 0x03E41B 0F:E40B: 86 A8     STX ram_local_obj_index
 bra_E40D_loop:
-C - - - - - 0x03E41D 0F:E40D: A6 A8     LDX ram_00A8
+C - - - - - 0x03E41D 0F:E40D: A6 A8     LDX ram_local_obj_index
 C - - - - - 0x03E41F 0F:E40F: 8A        TXA
 C - - - - - 0x03E420 0F:E410: 09 04     ORA #$04
 C - - - - - 0x03E422 0F:E412: AA        TAX
@@ -3506,7 +3506,7 @@ C - - - - - 0x03E423 0F:E413: B5 9E     LDA ram_plr_id - $04,X ; 00A2 00A3
 ; tip_индекс_буфера_палитры + $04
 ; tip_индекс_буфера_палитры + $05
 C - - - - - 0x03E425 0F:E415: 20 2A E3  JSR sub_E32A_выбрать_палитру_персу
-C - - - - - 0x03E428 0F:E418: C6 A8     DEC ram_00A8
+C - - - - - 0x03E428 0F:E418: C6 A8     DEC ram_local_obj_index
 C - - - - - 0x03E42A 0F:E41A: 10 F1     BPL bra_E40D_loop
 C - - - - - 0x03E42C 0F:E41C: 20 3F EB  JSR sub_EB3F
 C - - - - - 0x03E42F 0F:E41F: A2 01     LDX #$01
@@ -3609,8 +3609,8 @@ C - - - - - 0x03E4C5 0F:E4B5: F0 2F     BEQ bra_E4E6
 C - - - - - 0x03E4C7 0F:E4B7: AD 54 01  LDA ram_0154
 C - - - - - 0x03E4CA 0F:E4BA: 0A        ASL
 C - - - - - 0x03E4CB 0F:E4BB: A8        TAY
-C - - - - - 0x03E4CC 0F:E4BC: B9 55 01  LDA ram_0155,Y
-C - - - - - 0x03E4CF 0F:E4BF: 39 56 01  AND ram_0156,Y
+C - - - - - 0x03E4CC 0F:E4BC: B9 55 01  LDA ram_0155,Y ; 0155 0157 
+C - - - - - 0x03E4CF 0F:E4BF: 39 56 01  AND ram_0156,Y ; 0156 0158 
 C - - - - - 0x03E4D2 0F:E4C2: 10 22     BPL bra_E4E6    ; if один из соперников (или оба) не cpu
 ; скнипнуть бой
 C - - - - - 0x03E4D4 0F:E4C4: A0 00     LDY #$00
@@ -3878,8 +3878,8 @@ C - - - - - 0x03E63F 0F:E62F: A8        TAY
 C - - - - - 0x03E640 0F:E630: A9 03     LDA #$03
 C - - - - - 0x03E642 0F:E632: 85 02     STA ram_0002
 bra_E634_loop:
-C - - - - - 0x03E644 0F:E634: B9 30 01  LDA ram_0130,Y
-C - - - - - 0x03E647 0F:E637: 9D 40 01  STA ram_0140,X
+C - - - - - 0x03E644 0F:E634: B9 30 01  LDA ram_0130,Y ; 0130 0131 0132 0133 0134 0135 0136 0137 0138 0139 013A 013B 013C 013D 013E 013F 0140 0141 0142 0143 0144 0145 0146 0147 
+C - - - - - 0x03E647 0F:E637: 9D 40 01  STA ram_0140,X ; 0140 0141 0142 0143 0144 0145 0146 0147 0148 0149 014A 014B 
 C - - - - - 0x03E64A 0F:E63A: C8        INY
 C - - - - - 0x03E64B 0F:E63B: E8        INX
 C - - - - - 0x03E64C 0F:E63C: C6 02     DEC ram_0002
@@ -3889,12 +3889,12 @@ C - - - - - 0x03E653 0F:E643: 0A        ASL
 C - - - - - 0x03E654 0F:E644: 65 08     ADC ram_0008
 C - - - - - 0x03E656 0F:E646: A8        TAY
 C - - - - - 0x03E657 0F:E647: AE 54 01  LDX ram_0154
-C - - - - - 0x03E65A 0F:E64A: B9 4C 01  LDA ram_014C,Y
-C - - - - - 0x03E65D 0F:E64D: 9D 50 01  STA ram_0150,X
-C - - - - - 0x03E660 0F:E650: B9 55 01  LDA ram_0155,Y
-C - - - - - 0x03E663 0F:E653: 9D 59 01  STA ram_0159,X
-C - - - - - 0x03E666 0F:E656: B9 05 01  LDA ram_0105,Y
-C - - - - - 0x03E669 0F:E659: 9D 09 01  STA ram_0109,X
+C - - - - - 0x03E65A 0F:E64A: B9 4C 01  LDA ram_014C,Y ; 014C 014D 014E 014F 0150 0151 
+C - - - - - 0x03E65D 0F:E64D: 9D 50 01  STA ram_0150,X ; 0150 0151 0152 
+C - - - - - 0x03E660 0F:E650: B9 55 01  LDA ram_0155,Y ; 0155 0156 0157 0158 0159 015A 
+C - - - - - 0x03E663 0F:E653: 9D 59 01  STA ram_0159,X ; 0159 015A 015B 
+C - - - - - 0x03E666 0F:E656: B9 05 01  LDA ram_0105,Y ; 0105 0106 0107 0108 0109 010A 
+C - - - - - 0x03E669 0F:E659: 9D 09 01  STA ram_0109,X ; 0109 010A 010B 
 C - - - - - 0x03E66C 0F:E65C: B9 93 E9  LDA tbl_E993,Y
 C - - - - - 0x03E66F 0F:E65F: 0D 5D 01  ORA ram_015D
 C - - - - - 0x03E672 0F:E662: 8D 5D 01  STA ram_015D
@@ -4135,7 +4135,7 @@ C - - - - - 0x03E801 0F:E7F1: A9 18     LDA #$18
 C - - - - - 0x03E803 0F:E7F3: 8D 40 04  STA ram_obj_pos_X
 C - - - - - 0x03E806 0F:E7F6: A9 B0     LDA #$B0
 C - - - - - 0x03E808 0F:E7F8: 8D 10 04  STA ram_obj_pos_Y
-C - - - - - 0x03E80B 0F:E7FB: A9 09     LDA #con_0x03F84C_09
+C - - - - - 0x03E80B 0F:E7FB: A9 09     LDA #con_0048_09
 C - - - - - 0x03E80D 0F:E7FD: 20 14 F8  JSR sub_F814
 C - - - - - 0x03E810 0F:E800: 20 BE DA  JSR sub_DABE_удалить_все_объекты
 C - - - - - 0x03E813 0F:E803: A2 1C     LDX #con_screen_bonus_stage
@@ -4247,7 +4247,7 @@ C - - - - - 0x03E8BC 0F:E8AC: 20 3F F0  JSR sub_F03F
 C - - - - - 0x03E8BF 0F:E8AF: 20 6D D4  JSR sub_D46D
 C - - - - - 0x03E8C2 0F:E8B2: 20 BF E8  JSR sub_E8BF
 C - - - - - 0x03E8C5 0F:E8B5: E6 95     INC ram_0095
-C - - - - - 0x03E8C7 0F:E8B7: A9 0B     LDA #con_0x03F84C_0B
+C - - - - - 0x03E8C7 0F:E8B7: A9 0B     LDA #con_0048_0B
 C - - - - - 0x03E8C9 0F:E8B9: 20 14 F8  JSR sub_F814
 C - - - - - 0x03E8CC 0F:E8BC: 4C 41 E1  JMP loc_E141_подготовить_осветление_из_черного_в_цветной
 
@@ -4283,7 +4283,7 @@ C - - - - - 0x03E8F7 0F:E8E7: 4C 04 DC  JMP loc_DC04
 
 
 ofs_001_E8EA_1E:
-C - - J - - 0x03E8FA 0F:E8EA: 20 33 D3  JSR sub_D333
+C - - J - - 0x03E8FA 0F:E8EA: 20 33 D3  JSR sub_D333_выбрать_речь_перед_финальным_боем_в_story
 C - - - - - 0x03E8FE 0F:E8EE: 20 DE F7  JSR sub_F7DE
 C - - - - - 0x03E901 0F:E8F1: AD 31 06  LDA ram_0631
 C - - - - - 0x03E904 0F:E8F4: D0 8A     BNE bra_E880_RTS
@@ -4292,9 +4292,9 @@ C - - - - - 0x03E909 0F:E8F9: 4C 2E E1  JMP loc_E12E_подготовить_за
 
 
 
-ofs_001_E8FC_20:
-- - - - - - 0x03E90C 0F:E8FC: A9 06     LDA #con_00B6_06
-- - - - - - 0x03E90E 0F:E8FE: 85 B6     STA ram_00B6
+ofs_001_E8FC_20_expected_tougher:
+- - - - - - 0x03E90C 0F:E8FC: A9 06     LDA #con_speech_expected_tougher
+- - - - - - 0x03E90E 0F:E8FE: 85 B6     STA ram_speech
 - - - - - - 0x03E910 0F:E900: 20 DE F7  JSR sub_F7DE
 - - - - - - 0x03E913 0F:E903: AD 31 06  LDA ram_0631
 - - - - - - 0x03E916 0F:E906: D0 89     BNE bra_E891_RTS
@@ -4322,7 +4322,7 @@ bra_E91B:
 C - - - - - 0x03E92B 0F:E91B: 20 E7 F5  JSR sub_F5E7_swap_prg_16
 C - - - - - 0x03E92E 0F:E91E: 20 30 BD  JSR sub_0x02FD40
 C - - - - - 0x03E931 0F:E921: A4 00     LDY ram_0000
-C - - - - - 0x03E933 0F:E923: B9 55 01  LDA ram_0155,Y
+C - - - - - 0x03E933 0F:E923: B9 55 01  LDA ram_0155,Y ; 0155 0156 
 C - - - - - 0x03E936 0F:E926: 30 03     BMI bra_E92B
 C - - - - - 0x03E938 0F:E928: 4C 23 B0  JMP loc_0x027033
 bra_E92B:
@@ -4777,9 +4777,9 @@ sub_EBA0_вывести_имя_перса_на_vs_экране:
                                         LDA #$04
 C - - - - - 0x03EBB0 0F:EBA0: 85 01     STA ram_0001
 C - - - - - 0x03EBB2 0F:EBA2: A2 01     LDX #$01
-C - - - - - 0x03EBB4 0F:EBA4: 86 A8     STX ram_00A8    ; счетчик цикла
+C - - - - - 0x03EBB4 0F:EBA4: 86 A8     STX ram_local_obj_index
 bra_EBA6_loop:
-C - - - - - 0x03EBB6 0F:EBA6: A6 A8     LDX ram_00A8    ; счетчик цикла
+C - - - - - 0x03EBB6 0F:EBA6: A6 A8     LDX ram_local_obj_index
 C - - - - - 0x03EBB8 0F:EBA8: B5 A2     LDA ram_plr_id,X
 C - - - - - 0x03EBBA 0F:EBAA: 85 00     STA ram_0000    ; индекс перса
 C - - - - - 0x03EBBC 0F:EBAC: 8A        TXA
@@ -4812,7 +4812,7 @@ C - - - - - 0x03EBE7 0F:EBD7: C8        INY
 C - - - - - 0x03EBE8 0F:EBD8: C9 FF     CMP #$FF
 C - - - - - 0x03EBEA 0F:EBDA: D0 F5     BNE bra_EBD1
 bra_EBDC:
-C - - - - - 0x03EBEC 0F:EBDC: C6 A8     DEC ram_00A8    ; счетчик цикла
+C - - - - - 0x03EBEC 0F:EBDC: C6 A8     DEC ram_local_obj_index
 C - - - - - 0x03EBEE 0F:EBDE: 10 C6     BPL bra_EBA6_loop
 C - - - - - 0x03EBF0 0F:EBE0: 60        RTS
 bra_EBE1_vs_экран:
@@ -5588,7 +5588,7 @@ C - - - - - 0x03F031 0F:F021: A9 78     LDA #con_chr_bank_bg + $78
 C - - - - - 0x03F033 0F:F023: 85 32     STA ram_chr_bank_bg
 C - - - - - 0x03F035 0F:F025: A9 7A     LDA #con_chr_bank_bg + $7A
 C - - - - - 0x03F037 0F:F027: 85 33     STA ram_chr_bank_bg + $01
-C - - - - - 0x03F039 0F:F029: A9 08     LDA #con_0x03F84C_08
+C - - - - - 0x03F039 0F:F029: A9 08     LDA #con_0048_08
 C - - - - - 0x03F03B 0F:F02B: 20 14 F8  JSR sub_F814
 C - - - - - 0x03F03E 0F:F02E: A9 05     LDA #$05
 C - - - - - 0x03F040 0F:F030: 85 08     STA ram_0008
@@ -6573,7 +6573,7 @@ sub_F690_записать_звук_сохранив_X_Y:
 sub_0x03F6A0_записать_звук_сохранив_X_Y:
 loc_0x03F6A0_записать_звук_сохранив_X_Y:
 C D 3 - - - 0x03F6A0 0F:F690: 84 A9     STY ram_global_obj_index
-C - - - - - 0x03F6A2 0F:F692: 86 A8     STX ram_00A8
+C - - - - - 0x03F6A2 0F:F692: 86 A8     STX ram_local_obj_index
 loc_F694_записать_звук:
 sub_0x03F6A4_записать_звук:
 loc_0x03F6A4_записать_звук:
@@ -6585,7 +6585,7 @@ C - - - - - 0x03F6AC 0F:F69C: 68        PLA
 C - - - - - 0x03F6AD 0F:F69D: 20 8D 8E  JSR sub_0x020E9D_воспроизвести_звук
 loc_F6A0_restore_prg_в_оригинальный_банк:
 C D 3 - - - 0x03F6B0 0F:F6A0: 20 5F F6  JSR sub_F65F_restore_prg_в_оригинальный_банк
-C - - - - - 0x03F6B3 0F:F6A3: A6 A8     LDX ram_00A8
+C - - - - - 0x03F6B3 0F:F6A3: A6 A8     LDX ram_local_obj_index
 bra_F6A5:
 C - - - - - 0x03F6B5 0F:F6A5: A4 A9     LDY ram_global_obj_index
 C - - - - - 0x03F6B7 0F:F6A7: 60        RTS
@@ -6598,7 +6598,7 @@ sub_0x03F6D2_выключить_музыку_и_звуки:
 C D 3 - - - 0x03F6D2 0F:F6C2: 84 A9     STY ram_global_obj_index
 C - - - - - 0x03F6D4 0F:F6C4: A4 2E     LDY ram_002E
 C - - - - - 0x03F6D6 0F:F6C6: D0 DD     BNE bra_F6A5
-C - - - - - 0x03F6D8 0F:F6C8: 86 A8     STX ram_00A8
+C - - - - - 0x03F6D8 0F:F6C8: 86 A8     STX ram_local_obj_index
 C - - - - - 0x03F6DA 0F:F6CA: 20 69 F6  JSR sub_F669_swap_prg_запомнив_текущий_банк
 C - - - - - 0x03F6DD 0F:F6CD: 20 5D 90  JSR sub_0x02106D_выключить_музыку_и_звуки
 C - - - - - 0x03F6E0 0F:F6D0: 4C A0 F6  JMP loc_F6A0_restore_prg_в_оригинальный_банк
@@ -6886,7 +6886,7 @@ C - - - - - 0x03F84B 0F:F83B: 60        RTS
 
 
 tbl_F83C:
-; con_0x03F84C
+; con_0048
 - - - - - - 0x03F84C 0F:F83C: 7D F8     .word $FFFF      ; 00 ; индекс не существует  
 - - - - - - 0x03F84E 0F:F83E: 85 F8     .word $FFFF      ; 01 ; индекс не существует  
 - D 3 - - - 0x03F850 0F:F840: D0 F8     .word ofs_067_F8D0_02
@@ -7542,7 +7542,7 @@ C - - - - - 0x03FCA9 0F:FC99: 60        RTS
 
 
 tbl_FC9A_scanline:
-; con_0x03F84C
+; con_0048
 ; номер сканлинии
 - - - - - - 0x03FCAA 0F:FC9A: 30        .byte $30   ; 00
 - D 3 - - - 0x03FCAB 0F:FC9B: 28        .byte $28   ; 01
@@ -7976,8 +7976,8 @@ C - - - - - 0x03FF4B 0F:FF3B: A2 01     LDX #$01
 C - - - - - 0x03FF4D 0F:FF3D: AD 54 01  LDA ram_0154
 C - - - - - 0x03FF50 0F:FF40: 0A        ASL
 C - - - - - 0x03FF51 0F:FF41: A8        TAY
-C - - - - - 0x03FF52 0F:FF42: B9 56 01  LDA ram_0156,Y
-C - - - - - 0x03FF55 0F:FF45: 59 55 01  EOR ram_0155,Y
+C - - - - - 0x03FF52 0F:FF42: B9 56 01  LDA ram_0156,Y ; 0156 0158 015A 
+C - - - - - 0x03FF55 0F:FF45: 59 55 01  EOR ram_0155,Y ; 0155 0157 0159 
 C - - - - - 0x03FF58 0F:FF48: 30 23     BMI bra_FF6D
 C - - - - - 0x03FF5A 0F:FF4A: AD 0D 01  LDA ram_plr_hp_hi
 C - - - - - 0x03FF5D 0F:FF4D: 0D 0E 01  ORA ram_plr_hp_hi + $01
