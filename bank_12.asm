@@ -129,8 +129,6 @@ C - - - - - 0x0240C0 09:80B0: 9D 0C 06  STA ram_plr_таймер_для_супе
 C - - - - - 0x0240C3 09:80B3: 9D 0E 06  STA ram_plr_060E,X ; 060E 060F 
 C - - - - - 0x0240C6 09:80B6: 9D 06 06  STA ram_plr_таймер_для_запуска_мяча,X ; 0606 0607 
 C - - - - - 0x0240C9 09:80B9: 9D 04 06  STA ram_plr_0604,X ; 0604 0605 
-C - - - - - 0x0240CC 09:80BC: AC 28 01  LDY ram_option_health
-C - - - - - 0x0240CF 09:80BF: AD 4F 01  LDA ram_014F    ; ram_tournament_fighter + $03 ???
 C - - - - - 0x0240D2 09:80C2: 20 20 BE  JSR sub_BE20
 C - - - - - 0x0240D5 09:80C5: B5 A2     LDA ram_plr_id,X ; 00A2 00A3 
 C - - - - - 0x0240D7 09:80C7: 9D 50 05  STA ram_obj_id,X ; 0550 0551 
@@ -10812,6 +10810,8 @@ C - - - - - 0x027E25 09:BE15: 90 CC     BCC bra_BDE3    ; jmp
 
 
 sub_BE20:
+                                        LDY ram_option_health
+                                        LDA ram_014F    ; ram_tournament_fighter + $03 ???
 C - - - - - 0x027E30 09:BE20: 10 0E     BPL bra_BE30
 - - - - - - 0x027E32 09:BE22: C9 83     CMP #$83
 - - - - - - 0x027E34 09:BE24: F0 19     BEQ bra_BE3F_RTS
