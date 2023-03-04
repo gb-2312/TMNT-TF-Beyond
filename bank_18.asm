@@ -16,6 +16,37 @@
 
 
 
+loc_8006:
+                                        BIT $2002
+C D 0 - - - 0x030016 0C:8006: A0 00     LDY #$00
+loc_8008_main_loop:
+C - - - - - 0x030018 0C:8008: BE 00 03  LDX ram_ppu_buffer,Y
+C - - - - - 0x03001B 0C:800B: F0 28     BEQ bra_8035_00
+C - - - - - 0x03001D 0C:800D: A5 FF     LDA ram_for_2000
+C - - - - - 0x03001F 0C:800F: 29 18     AND #$18
+C - - - - - 0x030021 0C:8011: 1D 00 80  ORA tbl_8001 - $01,X
+C - - - - - 0x030024 0C:8014: 8D 00 20  STA $2000
+                                        LDA tbl_8009_lo - $01,X
+                                        STA ram_0002
+                                        LDA tbl_800A_hi - $01,X
+                                        STA ram_0003
+C - - - - - 0x03002B 0C:801B: B9 01 03  LDA ram_ppu_buffer + $02,Y
+C - - - - - 0x03002E 0C:801E: 8D 06 20  STA $2006
+C - - - - - 0x030031 0C:8021: B9 00 03  LDA ram_ppu_buffer + $01,Y
+C - - - - - 0x030034 0C:8024: 8D 06 20  STA $2006
+C - - - - - 0x030037 0C:8027: C8        INY
+C - - - - - 0x030038 0C:8028: C8        INY
+                                        INY
+                                        JMP (ram_0002)
+bra_8035_00:
+; выключить буфер и обнулить индекс
+C - - - - - 0x030045 0C:8035: A9 00     LDA #$00
+C - - - - - 0x030047 0C:8037: 8D 00 03  STA ram_ppu_buffer
+C - - - - - 0x03004A 0C:803A: 85 25     STA ram_index_ppu_buffer
+C - - - - - 0x03004C 0C:803C: 60        RTS
+
+
+
 tbl_8001:
 - D 0 - - - 0x030011 0C:8001: 00        .byte $00   ; 01 +01
 - D 0 - - - 0x030012 0C:8002: 04        .byte $04   ; 02 +32
@@ -25,86 +56,65 @@ tbl_8001:
 
 
 
-loc_8006:
-; bzk optimize, может лучше сделать таблицу прыжков для всех режимов? так явно быстрее будет
-; однако поскольку мы находимся в нми, надо использовать другой код с прыжками, а не оригинальный
-; 00 = буфер закрыт
-; 01 = записать список байтов, FF = end token, +01
-; 02 = записать список байтов, FF = end token, +32
-; 03 = счетчик + запись байта N раз, +01
-; 04 = счетчик + запись байта N раз с постоянным его увеличением, +01
-; 05 = счетчик + запись байта N раз, +32
-; 06 = (только после 01 или 02, unused 0x03005D)
-C D 0 - - - 0x030016 0C:8006: A0 00     LDY #$00
-bra_8008_main_loop:
-C - - - - - 0x030018 0C:8008: BE 00 03  LDX ram_ppu_buffer,Y
-C - - - - - 0x03001B 0C:800B: F0 28     BEQ bra_8035
-C - - - - - 0x03001D 0C:800D: A5 FF     LDA ram_for_2000
-C - - - - - 0x03001F 0C:800F: 29 18     AND #$18
-C - - - - - 0x030021 0C:8011: 1D 00 80  ORA tbl_8001 - $01,X
-C - - - - - 0x030024 0C:8014: 8D 00 20  STA $2000
-C - - - - - 0x030027 0C:8017: C8        INY
-C - - - - - 0x030028 0C:8018: AD 02 20  LDA $2002
-; bzk optimize, INY после каждой записи, а не 2 сразу
-C - - - - - 0x03002B 0C:801B: B9 01 03  LDA ram_ppu_buffer + $01,Y
-C - - - - - 0x03002E 0C:801E: 8D 06 20  STA $2006
-C - - - - - 0x030031 0C:8021: B9 00 03  LDA ram_ppu_buffer,Y
-C - - - - - 0x030034 0C:8024: 8D 06 20  STA $2006
-C - - - - - 0x030037 0C:8027: C8        INY
-C - - - - - 0x030038 0C:8028: C8        INY
-C - - - - - 0x030039 0C:8029: E0 03     CPX #$03
-C - - - - - 0x03003B 0C:802B: F0 26     BEQ bra_8053
-C - - - - - 0x03003D 0C:802D: 90 13     BCC bra_8042
-C - - - - - 0x03003F 0C:802F: E0 05     CPX #$05
-C - - - - - 0x030041 0C:8031: 90 30     BCC bra_8063
-C - - - - - 0x030043 0C:8033: B0 1E     BCS bra_8053    ; jmp
-bra_8035:
-C - - - - - 0x030045 0C:8035: A9 00     LDA #$00
-C - - - - - 0x030047 0C:8037: 8D 00 03  STA ram_ppu_buffer
-C - - - - - 0x03004A 0C:803A: 85 25     STA ram_index_ppu_buffer
-C - - - - - 0x03004C 0C:803C: 60        RTS
-bra_803D:
-- - - - - - 0x03004D 0C:803D: A9 FF     LDA #$FF
-bra_803F_loop:
-C - - - - - 0x03004F 0C:803F: 8D 07 20  STA $2007
-bra_8042:
-; режим 01 02
-C - - - - - 0x030052 0C:8042: B9 00 03  LDA ram_ppu_buffer,Y
-C - - - - - 0x030055 0C:8045: C8        INY
-C - - - - - 0x030056 0C:8046: C9 FF     CMP #$FF
-C - - - - - 0x030058 0C:8048: D0 F5     BNE bra_803F_loop
-; FF
-; bzk optimize, нет такого режима 06+
-                                        ;BEQ bra_8008_main_loop
-C - - - - - 0x03005A 0C:804A: B9 00 03  LDA ram_ppu_buffer,Y
-C - - - - - 0x03005D 0C:804D: C9 06     CMP #$06
-C - - - - - 0x03005F 0C:804F: 90 B7     BCC bra_8008_main_loop
-; режим 06+
-- - - - - - 0x030061 0C:8051: B0 EA     BCS bra_803D   ; jmp
-bra_8053:
-; режим 03 05
-C - - - - - 0x030063 0C:8053: BE 00 03  LDX ram_ppu_buffer,Y
-C - - - - - 0x030066 0C:8056: C8        INY
-C - - - - - 0x030067 0C:8057: B9 00 03  LDA ram_ppu_buffer,Y
-C - - - - - 0x03006A 0C:805A: C8        INY
+tbl_8009_lo:
+                                        .byte < ofs_087_800A_buf_mode_01
+                                        .byte < ofs_087_800A_buf_mode_02
+                                        .byte < ofs_087_800A_buf_mode_03
+                                        .byte < ofs_087_800A_buf_mode_04
+                                        .byte < ofs_087_800A_buf_mode_05
+
+tbl_800A_hi:
+                                        .byte > ofs_087_800A_buf_mode_01
+                                        .byte > ofs_087_800A_buf_mode_02
+                                        .byte > ofs_087_800A_buf_mode_03
+                                        .byte > ofs_087_800A_buf_mode_04
+                                        .byte > ofs_087_800A_buf_mode_05
+
+
+
+bra_803E_loop:
+                                        STA $2007
+ofs_087_800A_buf_mode_01:
+; записать список байтов, FF = end token, +01
+ofs_087_800A_buf_mode_02:
+; записать список байтов, FF = end token, +32
+                                        LDA ram_ppu_buffer,Y
+                                        INY
+                                        CMP #$FF
+                                        BNE bra_803E_loop
+                                        JMP loc_8008_main_loop
+
+
+
+ofs_087_800A_buf_mode_03:
+; счетчик + запись байта N раз, +01
+ofs_087_800A_buf_mode_05:
+; счетчик + запись байта N раз, +32
+                                        LDX ram_ppu_buffer,Y
+                                        INY
+                                        LDA ram_ppu_buffer,Y
+                                        INY
 bra_805B_loop:
-C - - - - - 0x03006B 0C:805B: 8D 07 20  STA $2007
-C - - - - - 0x03006E 0C:805E: CA        DEX
-C - - - - - 0x03006F 0C:805F: D0 FA     BNE bra_805B_loop
-C - - - - - 0x030071 0C:8061: F0 A5     BEQ bra_8008_main_loop    ; jmp
-bra_8063:
-; режим 04
-C - - - - - 0x030073 0C:8063: BE 00 03  LDX ram_ppu_buffer,Y
-C - - - - - 0x030076 0C:8066: C8        INY
-C - - - - - 0x030077 0C:8067: B9 00 03  LDA ram_ppu_buffer,Y
-C - - - - - 0x03007A 0C:806A: C8        INY
-C - - - - - 0x03007B 0C:806B: 18        CLC
+                                        STA $2007
+                                        DEX
+                                        BNE bra_805B_loop
+                                        JMP loc_8008_main_loop
+
+
+
+ofs_087_800A_buf_mode_04:
+; счетчик + запись байта N раз с постоянным его увеличением, +01
+                                        LDX ram_ppu_buffer,Y
+                                        INY
+                                        LDA ram_ppu_buffer,Y
+                                        INY
+                                        CLC
 bra_806C_loop:
-C - - - - - 0x03007C 0C:806C: 8D 07 20  STA $2007
-C - - - - - 0x03007F 0C:806F: 69 01     ADC #$01
-C - - - - - 0x030081 0C:8071: CA        DEX
-C - - - - - 0x030082 0C:8072: D0 F8     BNE bra_806C_loop
-C - - - - - 0x030084 0C:8074: F0 92     BEQ bra_8008_main_loop    ; jmp
+                                        STA $2007
+                                        ADC #$01
+                                        DEX
+                                        BNE bra_806C_loop
+                                        JMP loc_8008_main_loop
 
 
 
