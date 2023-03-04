@@ -38,7 +38,7 @@ sub_80D4:
 C - - - - - 0x02C0E4 0B:80D4: AD 3E 06  LDA ram_063E
 C - - - - - 0x02C0E7 0B:80D7: 20 32 D0  JSR sub_0x03D042_поинтеры_после_JSR
 - D 0 - I - 0x02C0EA 0B:80DA: E4 80     .word ofs_041_80E4_00
-- D 0 - I - 0x02C0EC 0B:80DC: 06 81     .word ofs_041_8106_01
+- D 0 - I - 0x02C0EC 0B:80DC: 06 81     .word ofs_041_8106_01_отрисовать_экран_player_select
 - D 0 - I - 0x02C0EE 0B:80DE: 58 81     .word ofs_041_8158_02
 - D 0 - I - 0x02C0F0 0B:80E0: 5B 81     .word ofs_041_815B_03
 - D 0 - I - 0x02C0F2 0B:80E2: 3C 83     .word ofs_041_833C_04
@@ -70,7 +70,7 @@ C - - - - - 0x02C113 0B:8103: 4C 6D D4  JMP loc_0x03D47D
 
 
 
-ofs_041_8106_01:
+ofs_041_8106_01_отрисовать_экран_player_select:
 C - - J - - 0x02C116 0B:8106: EE 3E 06  INC ram_063E
 C - - - - - 0x02C119 0B:8109: A4 2C     LDY ram_game_mode
 ; con_gm_story
@@ -104,7 +104,7 @@ C - - - - - 0x02C150 0B:8140: A5 2C     LDA ram_game_mode
 C - - - - - 0x02C152 0B:8142: F0 08     BEQ bra_814C    ; if con_gm_story
 C - - - - - 0x02C154 0B:8144: C9 02     CMP #$02
 C - - - - - 0x02C156 0B:8146: F0 04     BEQ bra_814C    ; if con_gm_vs_cpu
-C - - - - - 0x02C158 0B:8148: E8        INX
+C - - - - - 0x02C158 0B:8148: E8        INX ; 01
 C - - - - - 0x02C159 0B:8149: 20 2F 82  JSR sub_822F
 bra_814C:
 C - - - - - 0x02C15C 0B:814C: 4C 41 E1  JMP loc_0x03E151_подготовить_осветление_из_черного_в_цветной
@@ -2024,8 +2024,13 @@ tbl_BD7D:
 
 
 loc_BD80:
+                                       ;LDA ram_game_mode
+; con_gm_story
+; con_gm_vs_player
+; con_gm_vs_team
 C D 1 - - - 0x02FD90 0B:BD80: C9 03     CMP #$03
 C - - - - - 0x02FD92 0B:BD82: D0 70     BNE bra_BDF4
+; con_gm_vs_team
 C - - - - - 0x02FD94 0B:BD84: AD 51 01  LDA ram_0151
 C - - - - - 0x02FD97 0B:BD87: F0 06     BEQ bra_BD8F
 C - - - - - 0x02FD99 0B:BD89: AD 41 01  LDA ram_0141
