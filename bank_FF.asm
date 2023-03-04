@@ -5822,6 +5822,11 @@ C - - - - - 0x03F211 0F:F201: 4C FE F1  JMP loc_F1FE_infinite_loop
 
 
 
+tbl_F375_reset_check:
+- D 3 - - - 0x03F385 0F:F375: 91        .byte $91, $8B, $99   ; 
+
+
+
 sub_F204_генератор_рандома:
 sub_0x03F214_генератор_рандома:
 C - - - - - 0x03F214 0F:F204: E6 28     INC ram_random_1
@@ -6034,11 +6039,6 @@ C - - - - - 0x03F37F 0F:F36F: 49 00     EOR #$00
 C - - - - - 0x03F381 0F:F371: CA        DEX
 C - - - - - 0x03F382 0F:F372: D0 F5     BNE bra_F369_loop
 C - - - - - 0x03F384 0F:F374: 60        RTS
-
-
-
-tbl_F375_reset_check:
-- D 3 - - - 0x03F385 0F:F375: 91        .byte $91, $8B, $99   ; 
 
 
 
