@@ -3597,7 +3597,7 @@ C - - J - - 0x03E4B3 0F:E4A3: A4 2C     LDY ram_game_mode
 ; con_gm_tournament
 C - - - - - 0x03E4B5 0F:E4A5: AD 72 06  LDA ram_время_десятки
 C - - - - - 0x03E4B8 0F:E4A8: 0D 73 06  ORA ram_время_единицы
-C - - - - - 0x03E4BB 0F:E4AB: F0 50     BEQ bra_E4FD_loop
+C - - - - - 0x03E4BB 0F:E4AB: F0 50     BEQ bra_E4FD
 C - - - - - 0x03E4BD 0F:E4AD: C0 03     CPY #$03
 C - - - - - 0x03E4BF 0F:E4AF: 90 35     BCC bra_E4E6
 ; con_gm_vs_team
@@ -3655,7 +3655,12 @@ bra_E4FA:
 ; con_gm_vs_team
 ; con_gm_tournament
 C - - - - - 0x03E50A 0F:E4FA: 4C 94 F7  JMP loc_F794
+bra_E4FD:
 bra_E4FD_loop:
+; bzk bug, если соперник попался в мясо, его поднимает над землей,
+; из-за чего игра не может завершить поединок. еще нужно проследить чтобы
+; объекты hitspark были удалены, они почему-то могут остаться
+; висеть на экране, несмотря на 0x03E525
 C - - - - - 0x03E50D 0F:E4FD: A9 AE     LDA #$AE
 C - - - - - 0x03E50F 0F:E4FF: DD 10 04  CMP ram_obj_pos_Y,X ; 0410 0411 
 C - - - - - 0x03E512 0F:E502: B0 E2     BCS bra_E4E6
