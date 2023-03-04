@@ -5878,7 +5878,7 @@ C - - - - - 0x03F26E 0F:F25E: 85 93     STA ram_sum_btn_hold
 C - - - - - 0x03F270 0F:F260: A5 8E     LDA ram_btn_press
 C - - - - - 0x03F272 0F:F262: 05 8F     ORA ram_btn_press + $01
 C - - - - - 0x03F274 0F:F264: 85 90     STA ram_sum_btn_press
-C - - - - - 0x03F276 0F:F266: 20 78 F3  JSR sub_F378_обработать_скрипт
+C - - - - - 0x03F276 0F:F266: 20 78 F3  JSR sub_F378_обработать_скрипт_или_яркость
 C - - - - - 0x03F279 0F:F269: 20 D3 F6  JSR sub_F6D3_спрайтовый_движок
 ; закрыть буфер
 C - - - - - 0x03F27C 0F:F26C: A9 00     LDA #$00
@@ -6040,7 +6040,7 @@ tbl_F375_reset_check:
 
 
 
-sub_F378_обработать_скрипт:
+sub_F378_обработать_скрипт_или_яркость:
 C - - - - - 0x03F388 0F:F378: E6 22     INC ram_счетчик_кадров
 C - - - - - 0x03F38A 0F:F37A: 20 80 F3  JSR sub_F380
 C - - - - - 0x03F38D 0F:F37D: 4C 38 D5  JMP loc_D538

@@ -57,6 +57,7 @@ con_btns_SS                             = con_btn_Start + con_btn_Select        
 
 
 
+; для 0x030016
 con_buf_mode_01                         = $01 ; записать список байтов, FF = end token, +01
 con_buf_mode_02                         = $02 ; записать список байтов, FF = end token, +32
 con_buf_mode_03                         = $03 ; счетчик + запись байта N раз, +01
