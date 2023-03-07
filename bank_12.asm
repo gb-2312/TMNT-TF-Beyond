@@ -763,7 +763,9 @@ C D 0 - - - 0x0244EB 09:84DB: BD 00 06  LDA ram_plr_0600,X ; 0600 0601
 C - - - - - 0x0244EE 09:84DE: 10 1B     BPL bra_84FB_RTS
 C - - - - - 0x0244F0 09:84E0: A9 00     LDA #$00
 C - - - - - 0x0244F2 09:84E2: 9D 00 06  STA ram_plr_0600,X ; 0600 0601 
-C - - - - - 0x0244F5 09:84E5: 20 AB DD  JSR sub_0x03DDBB
+; бряк срабатывает когда перс теряет мяч после удара соперника
+C - - - - - 0x0244F5 09:84E5: 20 AB DD  LDA #$01
+                                        STA ram_obj_0530 + $06
 C - - - - - 0x0244F8 09:84E8: A9 02     LDA #$02
 C - - - - - 0x0244FA 09:84EA: 8D A6 04  STA ram_obj_spd_Y_hi + $06
 C - - - - - 0x0244FD 09:84ED: BD 10 04  LDA ram_obj_pos_Y,X ; 0410 0411 

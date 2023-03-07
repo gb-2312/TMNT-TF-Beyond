@@ -76,7 +76,6 @@
 .export loc_0x03DD75
 .export sub_0x03DD7E
 .export sub_0x03DD96
-.export sub_0x03DDBB
 .export tbl_0x03DDC6
 .export sub_0x03DDF9
 .export loc_0x03DDF9
@@ -2315,16 +2314,6 @@ C - - - - - 0x03DDB7 0F:DDA7: 60        RTS
 bra_DDA8:
 C - - - - - 0x03DDB8 0F:DDA8: A9 80     LDA #$80
 C - - - - - 0x03DDBA 0F:DDAA: 60        RTS
-
-
-
-sub_0x03DDBB:
-; bzk optimize, переместить в другой банк
-C - - - - - 0x03DDBB 0F:DDAB: A9 01     LDA #$01
-C - - - - - 0x03DDBD 0F:DDAD: 8D 36 05  STA ram_obj_0530 + $06
-C - - - - - 0x03DDC0 0F:DDB0: A9 04     LDA #$04
-C - - - - - 0x03DDC2 0F:DDB2: 8D A6 04  STA ram_obj_spd_Y_hi + $06
-C - - - - - 0x03DDC5 0F:DDB5: 60        RTS
 
 
 
