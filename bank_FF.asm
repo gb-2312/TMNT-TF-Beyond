@@ -2319,6 +2319,7 @@ C - - - - - 0x03DDBA 0F:DDAA: 60        RTS
 
 
 sub_0x03DDBB:
+; bzk optimize, переместить в другой банк
 C - - - - - 0x03DDBB 0F:DDAB: A9 01     LDA #$01
 C - - - - - 0x03DDBD 0F:DDAD: 8D 36 05  STA ram_obj_0530 + $06
 C - - - - - 0x03DDC0 0F:DDB0: A9 04     LDA #$04
@@ -7744,8 +7745,8 @@ C - - - - - 0x03FE03 0F:FDF3: 8D 35 06  STA ram_0635
 C - - - - - 0x03FE06 0F:FDF6: 20 F6 AF  JSR sub_0x027006_отрисовать_инфу_в_статусбаре
 bra_FDF9:
 C - - - - - 0x03FE09 0F:FDF9: 20 42 B1  JSR sub_0x027152
-C - - - - - 0x03FE0C 0F:FDFC: 20 4F 9E  JSR sub_0x025E5F
-C - - - - - 0x03FE0F 0F:FDFF: 20 AB A8  JSR sub_0x0268BB
+C - - - - - 0x03FE0C 0F:FDFC: 20 4F 9E  JSR sub_0x025E5F_обработка_состояния_мяча
+C - - - - - 0x03FE0F 0F:FDFF: 20 AB A8  JSR sub_0x0268BB_обработчик_состояния_летящего_сплинтера
 loc_FE02:
 C D 3 - - - 0x03FE12 0F:FE02: 20 E8 BA  JSR sub_0x027AF8
 C - - - - - 0x03FE15 0F:FE05: A2 0F     LDX #$0F
