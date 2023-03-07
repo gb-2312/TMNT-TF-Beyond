@@ -66,7 +66,7 @@ C - - - - - 0x02C10B 0B:80FB: EE E0 04  INC ram_obj_04E0
 bra_80FE:
 C - - - - - 0x02C10E 0B:80FE: A9 0A     LDA #con_0048_0A
 C - - - - - 0x02C110 0B:8100: 20 14 F8  JSR sub_0x03F824
-C - - - - - 0x02C113 0B:8103: 4C 6D D4  JMP loc_0x03D47D
+C - - - - - 0x02C113 0B:8103: 4C 6D D4  JMP loc_0x03D47D_запись_черной_палитры_в_буфер
 
 
 
@@ -1030,7 +1030,7 @@ C - - - - - 0x02EEB7 0B:AEA7: B9 D0 AC  LDA tbl_ACD0_палитра,Y
 C - - - - - 0x02EEBA 0B:AEAA: 99 59 06  STA ram_pal_buffer + $0C,Y
 C - - - - - 0x02EEBD 0B:AEAD: 88        DEY
 C - - - - - 0x02EEBE 0B:AEAE: 10 F7     BPL bra_AEA7_loop
-C - - - - - 0x02EEC0 0B:AEB0: 20 25 DC  JSR sub_0x03DC35
+C - - - - - 0x02EEC0 0B:AEB0: 20 25 DC  JSR sub_0x03DC35_запись_пары_chr_06
 C - - - - - 0x02EEC3 0B:AEB3: 20 BE DA  JSR sub_0x03DACE_удалить_все_объекты
 C - - - - - 0x02EEC6 0B:AEB6: E6 95     INC ram_0095
 C - - - - - 0x02EEC8 0B:AEB8: A9 60     LDA #$60

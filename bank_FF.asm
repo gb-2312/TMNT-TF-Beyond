@@ -16,8 +16,8 @@
 .export sub_0x03D042_поинтеры_после_JSR
 .export sub_0x03D083_очистить_spd_Z
 .export loc_0x03D083_очистить_spd_Z
-.export sub_0x03D08C
-.export loc_0x03D08C
+.export sub_0x03D08C_обработка_анимации_объекта
+.export loc_0x03D08C_обработка_анимации_объекта
 .export sub_0x03D17A
 .export loc_0x03D17A
 .export sub_0x03D18D
@@ -42,8 +42,8 @@
 .export loc_0x03D356_записать_3_цвета_в_буфер
 .export sub_0x03D3A4_записать_палитру_для_фона_и_спрайтов
 .export sub_0x03D3C0_записать_палитру_для_фона
-.export sub_0x03D47D
-.export loc_0x03D47D
+.export sub_0x03D47D_запись_черной_палитры_в_буфер
+.export loc_0x03D47D_запись_черной_палитры_в_буфер
 .export sub_0x03DACE_удалить_все_объекты
 .export sub_0x03DAD7_удалить_объект_сохранив_XY
 .export sub_0x03DAE3_удалить_объект
@@ -59,8 +59,8 @@
 .export sub_0x03DBC5_скопировать_данные_объекта_X_в_Y
 .export sub_0x03DC14
 .export sub_0x03DC1F
-.export sub_0x03DC2A
-.export sub_0x03DC35
+.export sub_0x03DC2A_запись_пары_chr
+.export sub_0x03DC35_запись_пары_chr_06
 .export sub_0x03DC64_добавить_A_FF_к_spd_Z
 .export loc_0x03DC64_добавить_A_FF_к_spd_Z
 .export sub_0x03DC68_добавить_A_00_к_spd_Z
@@ -493,9 +493,10 @@ C - - - - - 0x03D05E 0F:D04E: 6C 02 00  JMP (ram_0002)
 
 
 
-sub_0x03D08C:
-loc_0x03D08C:
-; смотреть con_0x03D0C3
+sub_0x03D08C_обработка_анимации_объекта:
+loc_0x03D08C_обработка_анимации_объекта:
+; X = индекс объекта, менять нельзя
+; Y = тип анимации, смотреть con_0x03D0C3
                                         LDA tbl_D0B3_индекс,Y
                                         STA ram_0000
                                         TAY
@@ -1128,7 +1129,7 @@ C - - - - - 0x03D293 0F:D283: 20 32 D0  JSR sub_D032_поинтеры_после
 - D 2 - I - 0x03D296 0F:D286: 90 D2     .word ofs_002_D290_00
 - D 2 - I - 0x03D298 0F:D288: AD D2     .word ofs_002_D2AD_01
 - D 2 - I - 0x03D29A 0F:D28A: BB D2     .word ofs_002_D2BB_02
-- D 2 - I - 0x03D29C 0F:D28C: 48 F7     .word ofs_002_F748_03
+- D 2 - I - 0x03D29C 0F:D28C: 48 F7     .word ofs_002_F748_03_обработка_экрана_с_выбором_карты
 - D 2 - I - 0x03D29E 0F:D28E: F7 D2     .word ofs_002_D2F7_04
 
 
@@ -1486,10 +1487,10 @@ C - - - - - 0x03D47C 0F:D46C: 60        RTS
 
 
 
-loc_D46D:
-sub_D46D:
-sub_0x03D47D:
-loc_0x03D47D:
+loc_D46D_запись_черной_палитры_в_буфер:
+sub_D46D_запись_черной_палитры_в_буфер:
+sub_0x03D47D_запись_черной_палитры_в_буфер:
+loc_0x03D47D_запись_черной_палитры_в_буфер:
 C D 2 - - - 0x03D47D 0F:D46D: A2 1F     LDX #$1F
 C - - - - - 0x03D47F 0F:D46F: A9 0F     LDA #$0F
 bra_D471:
@@ -1947,7 +1948,7 @@ C - - - - - 0x03D941 0F:D931: 60        RTS
 
 
 sub_DABE_удалить_все_объекты:
-sub_0x03DACE_удалить_все_объекты:
+sub_0x03DACE_удалить_все_объекты:   ; на выходе иногда требуется A = 00
 C - - - - - 0x03DACE 0F:DABE: A2 0F     LDX #$0F
 bra_DAC0_loop:
 C - - - - - 0x03DAD0 0F:DAC0: 20 D3 DA  JSR sub_DAD3_удалить_объект
@@ -1972,7 +1973,7 @@ C - - - - - 0x03DAE2 0F:DAD2: 60        RTS
 
 
 
-sub_DAD3_удалить_объект:
+sub_DAD3_удалить_объект:    ; на выходе иногда требуется A = 00
 loc_DAD3_удалить_объект:
 sub_0x03DAE3_удалить_объект:
 loc_0x03DAE3_удалить_объект:
@@ -2113,12 +2114,12 @@ C - - - - - 0x03DC29 0F:DC19: 60        RTS
 
 
 
-loc_DC25:
-sub_DC25:
-sub_0x03DC35:
+loc_DC25_запись_пары_chr_06:
+sub_DC25_запись_пары_chr_06:
+sub_0x03DC35_запись_пары_chr_06:
 C D 2 - - - 0x03DC35 0F:DC25: A0 06     LDY #con_chr_pair_06
-sub_DC1A:
-sub_0x03DC2A:
+sub_DC1A_запись_пары_chr:
+sub_0x03DC2A_запись_пары_chr:
 C - - - - - 0x03DC2A 0F:DC1A: B9 29 DC  LDA tbl_DC29,Y
 C - - - - - 0x03DC2D 0F:DC1D: 85 32     STA ram_chr_bank_bg
 C - - - - - 0x03DC2F 0F:DC1F: B9 2A DC  LDA tbl_DC29 + $01,Y
@@ -3188,7 +3189,7 @@ bra_E246:
 loc_0x03E256:
 C D 3 - - - 0x03E256 0F:E246: A9 03     LDA #$03
 C - - - - - 0x03E258 0F:E248: 85 95     STA ram_0095
-C - - - - - 0x03E25A 0F:E24A: 4C 25 DC  JMP loc_DC25
+C - - - - - 0x03E25A 0F:E24A: 4C 25 DC  JMP loc_DC25_запись_пары_chr_06
 
 
 
@@ -3451,7 +3452,7 @@ C - - - - - 0x03E3BF 0F:E3AF: 90 04     BCC bra_E3B5
 C - - - - - 0x03E3C1 0F:E3B1: A9 1D     LDA #$1D
 C - - - - - 0x03E3C3 0F:E3B3: 85 95     STA ram_0095
 bra_E3B5:
-C - - - - - 0x03E3C5 0F:E3B5: 4C 6D D4  JMP loc_D46D
+C - - - - - 0x03E3C5 0F:E3B5: 4C 6D D4  JMP loc_D46D_запись_черной_палитры_в_буфер
 
 
 
@@ -4098,7 +4099,7 @@ ofs_001_E7A1_16:
 ofs_001_E7A1_17:
 C - - J - - 0x03E7B1 0F:E7A1: E6 95     INC ram_0095
 C - - - - - 0x03E7B3 0F:E7A3: 20 3C F0  JSR sub_F03C
-C - - - - - 0x03E7B6 0F:E7A6: 20 25 DC  JSR sub_DC25
+C - - - - - 0x03E7B6 0F:E7A6: 20 25 DC  JSR sub_DC25_запись_пары_chr_06
 C - - - - - 0x03E7B9 0F:E7A9: A9 08     LDA #con_print_bonus_game
 C - - - - - 0x03E7BB 0F:E7AB: 20 E5 F6  JSR sub_F6E5_написать_текст_на_экране
 C - - - - - 0x03E7BE 0F:E7AE: A9 20     LDA #$20
@@ -4248,7 +4249,7 @@ ofs_001_E8A7_1F:
 - - - - - - 0x03E8B7 0F:E8A7: A9 45     LDA #con_0x03F6AD_45
 C - - - - - 0x03E8B9 0F:E8A9: 20 90 F6  JSR sub_F690_записать_звук_сохранив_X_Y
 C - - - - - 0x03E8BC 0F:E8AC: 20 3F F0  JSR sub_F03F
-C - - - - - 0x03E8BF 0F:E8AF: 20 6D D4  JSR sub_D46D
+C - - - - - 0x03E8BF 0F:E8AF: 20 6D D4  JSR sub_D46D_запись_черной_палитры_в_буфер
 C - - - - - 0x03E8C2 0F:E8B2: 20 BF E8  JSR sub_E8BF
 C - - - - - 0x03E8C5 0F:E8B5: E6 95     INC ram_0095
 C - - - - - 0x03E8C7 0F:E8B7: A9 0B     LDA #con_0048_0B
@@ -4280,7 +4281,7 @@ C - - - - - 0x03E8E8 0F:E8D8: 8D 10 04  STA ram_obj_pos_Y
 C - - - - - 0x03E8EB 0F:E8DB: A9 60     LDA #$60
 C - - - - - 0x03E8ED 0F:E8DD: 8D 40 04  STA ram_obj_pos_X
 C - - - - - 0x03E8F0 0F:E8E0: A0 16     LDY #con_chr_pair_16
-C - - - - - 0x03E8F2 0F:E8E2: 20 1A DC  JSR sub_DC1A
+C - - - - - 0x03E8F2 0F:E8E2: 20 1A DC  JSR sub_DC1A_запись_пары_chr
 C - - - - - 0x03E8F5 0F:E8E5: A0 18     LDY #con_chr_pair_18
 C - - - - - 0x03E8F7 0F:E8E7: 4C 04 DC  JMP loc_DC04
 
@@ -6683,9 +6684,9 @@ C - - - - - 0x03F755 0F:F745: 4C 17 F6  JMP loc_F617_restore_prg
 
 
 
-ofs_002_F748_03:
+ofs_002_F748_03_обработка_экрана_с_выбором_карты:
 C - - J - - 0x03F758 0F:F748: 20 F3 F5  JSR sub_F5F3_swap_prg_1C
-C - - - - - 0x03F75B 0F:F74B: 20 90 88  JSR sub_0x0388A0
+C - - - - - 0x03F75B 0F:F74B: 20 90 88  JSR sub_0x0388A0_обработка_экрана_с_выбором_карты
 C - - - - - 0x03F75E 0F:F74E: 4C 17 F6  JMP loc_F617_restore_prg
 
 
@@ -6803,7 +6804,7 @@ C - - - - - 0x03F7EB 0F:F7DB: 4C 17 F6  JMP loc_F617_restore_prg
 
 sub_F7DE:
 C - - - - - 0x03F7EE 0F:F7DE: 20 F3 F5  JSR sub_F5F3_swap_prg_1C
-C - - - - - 0x03F7F1 0F:F7E1: 20 36 9B  JSR sub_0x039B46
+C - - - - - 0x03F7F1 0F:F7E1: 20 36 9B  JSR sub_0x039B46_обработка_выбранного_speech
 C - - - - - 0x03F7F4 0F:F7E4: 4C 17 F6  JMP loc_F617_restore_prg
 
 

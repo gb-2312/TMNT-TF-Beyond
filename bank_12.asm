@@ -167,7 +167,7 @@ C - - - - - 0x024109 09:80F9: A8        TAY
 bra_80FA:
 C - - - - - 0x02410A 09:80FA: B9 0D 97  LDA tbl_970D,Y
 C - - - - - 0x02410D 09:80FD: A8        TAY
-C - - - - - 0x02410E 09:80FE: 4C 7C D0  JMP loc_0x03D08C
+C - - - - - 0x02410E 09:80FE: 4C 7C D0  JMP loc_0x03D08C_обработка_анимации_объекта
 
 
 
@@ -851,7 +851,7 @@ C - - - - - 0x0245A2 09:8592: 7D 50 05  ADC ram_obj_id,X ; 0550 0551
 C - - - - - 0x0245A5 09:8595: A8        TAY
 C - - - - - 0x0245A6 09:8596: B9 BC 99  LDA tbl_99BC,Y
 C - - - - - 0x0245A9 09:8599: A8        TAY
-C - - - - - 0x0245AA 09:859A: 20 7C D0  JSR sub_0x03D08C
+C - - - - - 0x0245AA 09:859A: 20 7C D0  JSR sub_0x03D08C_обработка_анимации_объекта
 C - - - - - 0x0245AD 09:859D: 4C B7 85  JMP loc_85B7
 bra_85A0:
 C - - - - - 0x0245B0 09:85A0: A0 0C     LDY #con_init_anim_записание_в_воздухе
@@ -2062,7 +2062,7 @@ C - - - - - 0x024DC3 09:8DB3: F0 18     BEQ bra_8DCD
 C - - - - - 0x024DC5 09:8DB5: A9 B0     LDA #$B0
 C - - - - - 0x024DC7 09:8DB7: 9D 10 04  STA ram_obj_pos_Y,X ; 0410 0411 
 C - - - - - 0x024DCA 09:8DBA: A0 14     LDY #con_0x03D0C3_черепахи_сальто_назад
-C - - - - - 0x024DCC 09:8DBC: 20 7C D0  JSR sub_0x03D08C
+C - - - - - 0x024DCC 09:8DBC: 20 7C D0  JSR sub_0x03D08C_обработка_анимации_объекта
 C - - - - - 0x024DCF 09:8DBF: BC 60 05  LDY ram_obj_0560,X ; 0560 0561 
 C - - - - - 0x024DD2 09:8DC2: A9 02     LDA #$02
 C - - - - - 0x024DD4 09:8DC4: C0 0E     CPY #$0E
@@ -2198,7 +2198,7 @@ C - - - - - 0x024E9E 09:8E8E: 4A        LSR
 bra_8E8F:
 C - - - - - 0x024E9F 09:8E8F: 20 6A D1  JSR sub_0x03D17A
 C - - - - - 0x024EA2 09:8E92: A0 14     LDY #con_0x03D0C3_черепахи_сальто_назад
-C - - - - - 0x024EA4 09:8E94: 20 7C D0  JSR sub_0x03D08C
+C - - - - - 0x024EA4 09:8E94: 20 7C D0  JSR sub_0x03D08C_обработка_анимации_объекта
 C - - - - - 0x024EA7 09:8E97: DE 60 05  DEC ram_obj_0560,X ; 0560 0561 
 C - - - - - 0x024EAA 09:8E9A: 10 C5     BPL bra_8E61_RTS
 C - - - - - 0x024EAC 09:8E9C: FE 40 05  INC ram_obj_0540,X ; 0540 0541 
@@ -5697,7 +5697,7 @@ C - - - - - 0x026167 09:A157: 6D 46 04  ADC ram_obj_pos_X + $06
 C - - - - - 0x02616A 09:A15A: 8D 46 04  STA ram_obj_pos_X + $06
 bra_A15D:
 C - - - - - 0x02616D 09:A15D: A0 17     LDY #con_0x03D0C3_мяч_хота
-C - - - - - 0x02616F 09:A15F: 20 7C D0  JSR sub_0x03D08C
+C - - - - - 0x02616F 09:A15F: 20 7C D0  JSR sub_0x03D08C_обработка_анимации_объекта
 C - - - - - 0x026172 09:A162: 20 D6 A1  JSR sub_A1D6    ; возможен PLA PLA
 C - - - - - 0x026175 09:A165: 20 C7 A1  JSR sub_A1C7    ; возможен PLA PLA
 C - - - - - 0x026178 09:A168: AD A6 04  LDA ram_obj_spd_Y_hi + $06
@@ -6158,8 +6158,8 @@ _off011_A3CC_30_special_shred_волна:
 
 
 ofs_072_A3D2_00:
-C - - J - - 0x0263E2 09:A3D2: A9 10     LDA #$10
-C - - - - - 0x0263E4 09:A3D4: A0 00     LDY #$00
+C - - J - - 0x0263E2 09:A3D2: A9 10     LDA #> $1000
+C - - - - - 0x0263E4 09:A3D4: A0 00     LDY #< $1000
 C - - - - - 0x0263E6 09:A3D6: 20 75 A4  JSR sub_A475
 C - - - - - 0x0263E9 09:A3D9: A9 1D     LDA #con_0x03F6AD_1D
 C - - - - - 0x0263EB 09:A3DB: 20 90 F6  JSR sub_0x03F6A0_записать_звук_сохранив_X_Y
@@ -6175,11 +6175,12 @@ C - - - - - 0x0263FF 09:A3EF: 4C 13 A3  JMP loc_A313
 
 
 ofs_072_A3F2_01:
+; X = 04 05
 C - - J - - 0x026402 09:A3F2: DE 60 05  DEC ram_obj_0560,X ; 0564 0565 
 C - - - - - 0x026405 09:A3F5: F0 05     BEQ bra_A3FC
 bra_A3F7:
 C - - - - - 0x026407 09:A3F7: A0 12     LDY #con_0x03D0C3_волна_шрушера
-C - - - - - 0x026409 09:A3F9: 4C 7C D0  JMP loc_0x03D08C
+C - - - - - 0x026409 09:A3F9: 4C 7C D0  JMP loc_0x03D08C_обработка_анимации_объекта
 bra_A3FC:
 C - - - - - 0x02640C 09:A3FC: A9 18     LDA #$18
 C - - - - - 0x02640E 09:A3FE: 20 B6 8B  JSR sub_8BB6_уменьшить_на_25_процентов_если_turbo
@@ -6244,8 +6245,8 @@ _off011_A45F_31_special_leo_крутилка:
 
 
 ofs_073_A463_00:
-C - - J - - 0x026473 09:A463: A9 18     LDA #$18
-C - - - - - 0x026475 09:A465: A0 D8     LDY #$D8
+C - - J - - 0x026473 09:A463: A9 18     LDA #> $18D8
+C - - - - - 0x026475 09:A465: A0 D8     LDY #< $18D8
 C - - - - - 0x026477 09:A467: 20 75 A4  JSR sub_A475
 C - - - - - 0x02647A 09:A46A: A9 0C     LDA #$0C
 C - - - - - 0x02647C 09:A46C: 20 1E BA  JSR sub_BA1E
@@ -6379,8 +6380,8 @@ _off011_A4FF_32_special_raph_сверло:
 
 
 ofs_074_A503_00:
-C - - J - - 0x026513 09:A503: A9 00     LDA #$00
-C - - - - - 0x026515 09:A505: A0 F7     LDY #$F7
+C - - J - - 0x026513 09:A503: A9 00     LDA #> $00F7
+C - - - - - 0x026515 09:A505: A0 F7     LDY #< $00F7
 C - - - - - 0x026517 09:A507: 4C 75 A4  JMP loc_A475
 
 
@@ -6398,15 +6399,17 @@ _off011_A50E_34_special_mike_ракеты_поверху:
 
 
 ofs_076_A512_00:
-C - - J - - 0x026522 09:A512: A9 1D     LDA #$1D
-C - - - - - 0x026524 09:A514: A0 CC     LDY #$CC
+C - - J - - 0x026522 09:A512: A9 1D     LDA #> $1DCC
+C - - - - - 0x026524 09:A514: A0 CC     LDY #< $1DCC
+; bzk optimize, заменить на JMP для безопасности
 C - - - - - 0x026526 09:A516: D0 0E     BNE bra_A526    ; jmp
 
 
 
 ofs_075_A518_00:
-C - - J - - 0x026528 09:A518: A9 18     LDA #$18
-C - - - - - 0x02652A 09:A51A: A0 E8     LDY #$E8
+C - - J - - 0x026528 09:A518: A9 18     LDA #> $18E8
+C - - - - - 0x02652A 09:A51A: A0 E8     LDY #< $18E8
+; bzk optimize, заменить на JMP для безопасности
 C - - - - - 0x02652C 09:A51C: D0 08     BNE bra_A526    ; jmp
 
 
@@ -6418,8 +6421,8 @@ _off011_A51E_35_special_don_пила_вращение:
 
 
 ofs_077_A522_00:
-C - - J - - 0x026532 09:A522: A9 00     LDA #$00
-C - - - - - 0x026534 09:A524: A0 F0     LDY #$F0
+C - - J - - 0x026532 09:A522: A9 00     LDA #> $00F0
+C - - - - - 0x026534 09:A524: A0 F0     LDY #< $00F0
 bra_A526:
 C - - - - - 0x026536 09:A526: 4C 75 A4  JMP loc_A475
 
@@ -6432,8 +6435,8 @@ _off011_A529_36_special_shred_мясо:
 
 
 ofs_078_A52D_00:
-C - - J - - 0x02653D 09:A52D: A9 20     LDA #$20
-C - - - - - 0x02653F 09:A52F: A0 D8     LDY #$D8
+C - - J - - 0x02653D 09:A52D: A9 20     LDA #> $20D8
+C - - - - - 0x02653F 09:A52F: A0 D8     LDY #< $20D8
 C - - - - - 0x026541 09:A531: 20 75 A4  JSR sub_A475
 sub_A534:
 C - - - - - 0x026544 09:A534: A9 04     LDA #$04
@@ -6483,8 +6486,8 @@ _off011_A57E_37_special_casey_клюшка:
 
 
 ofs_079_A582_00:
-C - - J - - 0x026592 09:A582: A9 1E     LDA #$1E
-C - - - - - 0x026594 09:A584: A0 D8     LDY #$D8
+C - - J - - 0x026592 09:A582: A9 1E     LDA #> $1ED8
+C - - - - - 0x026594 09:A584: A0 D8     LDY #< $1ED8
 C - - - - - 0x026596 09:A586: 20 75 A4  JSR sub_A475
 C - - - - - 0x026599 09:A589: A9 10     LDA #$10
 C - - - - - 0x02659B 09:A58B: 9D 60 05  STA ram_obj_0560,X ; 0564 0565 
@@ -6517,8 +6520,8 @@ _off011_A5A8_2F_special_hot_огонь:
 
 
 ofs_080_A5AC_00:
-C - - J - - 0x0265BC 09:A5AC: A9 2B     LDA #$2B
-C - - - - - 0x0265BE 09:A5AE: A0 F8     LDY #$F8
+C - - J - - 0x0265BC 09:A5AC: A9 2B     LDA #> $2BF8
+C - - - - - 0x0265BE 09:A5AE: A0 F8     LDY #< $2BF8
 C - - - - - 0x0265C0 09:A5B0: 20 75 A4  JSR sub_A475
 C - - - - - 0x0265C3 09:A5B3: A9 A8     LDA #$A8
 C - - - - - 0x0265C5 09:A5B5: 9D 10 04  STA ram_obj_pos_Y,X ; 0414 0415 
@@ -6580,8 +6583,8 @@ _off011_A61F_38_special_don_пила_подкат:
 
 
 ofs_081_A623_00:
-C - - J - - 0x026633 09:A623: A9 18     LDA #$18
-C - - - - - 0x026635 09:A625: A0 FC     LDY #$FC
+C - - J - - 0x026633 09:A623: A9 18     LDA #> $18FC
+C - - - - - 0x026635 09:A625: A0 FC     LDY #< $18FC
 C - - - - - 0x026637 09:A627: 20 75 A4  JSR sub_A475
 C - - - - - 0x02663A 09:A62A: A9 10     LDA #$10
 C - - - - - 0x02663C 09:A62C: 9D 60 05  STA ram_obj_0560,X ; 0564 0565 
@@ -6655,7 +6658,7 @@ C - - - - - 0x0266A9 09:A699: 9D 60 05  STA ram_obj_0560,X ; 0564
 bra_A69C:
 C - - - - - 0x0266AC 09:A69C: 20 65 DB  JSR sub_0x03DB75_добавить_spd_X_к_pos_X
 C - - - - - 0x0266AF 09:A69F: A0 18     LDY #con_0x03D0C3_песок_казея
-C - - - - - 0x0266B1 09:A6A1: 20 7C D0  JSR sub_0x03D08C
+C - - - - - 0x0266B1 09:A6A1: 20 7C D0  JSR sub_0x03D08C_обработка_анимации_объекта
 C - - - - - 0x0266B4 09:A6A4: 20 33 A6  JSR sub_A633
 C - - - - - 0x0266B7 09:A6A7: A5 22     LDA ram_счетчик_кадров
 C - - - - - 0x0266B9 09:A6A9: 29 07     AND #$07
@@ -9393,7 +9396,7 @@ C - - - - - 0x02751C 09:B50C: A9 0B     LDA #con_sfx_сверло_рафа
 C - - - - - 0x02751E 09:B50E: 20 90 F6  JSR sub_0x03F6A0_записать_звук_сохранив_X_Y
 ofs_048_B511_02:
 C - - - - - 0x027521 09:B511: A0 03     LDY #con_0x03D0C3_сверло_рафа
-C - - - - - 0x027523 09:B513: 20 7C D0  JSR sub_0x03D08C
+C - - - - - 0x027523 09:B513: 20 7C D0  JSR sub_0x03D08C_обработка_анимации_объекта
 C - - - - - 0x027526 09:B516: A9 12     LDA #$12
 C - - - - - 0x027528 09:B518: 9D 70 05  STA ram_obj_0570,X ; 0570 0571 
 C - - - - - 0x02752B 09:B51B: A4 A9     LDY ram_global_obj_index
