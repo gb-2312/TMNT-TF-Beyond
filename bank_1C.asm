@@ -1066,8 +1066,6 @@ C - - - - - 0x03846F 0E:845F: 85 01     STA ram_0000
 C - - - - - 0x038471 0E:8461: B9 FB 84  LDA tbl_84FA + $01,Y
 C - - - - - 0x038474 0E:8464: 85 02     STA ram_0001
 C - - - - - 0x038476 0E:8466: 8A        TXA
-C - - - - - 0x038477 0E:8467: 18        CLC
-C - - - - - 0x038478 0E:8468: 65 0A     ADC ram_000A
 C - - - - - 0x03847A 0E:846A: 0A        ASL
 C - - - - - 0x03847B 0E:846B: A8        TAY
 C - - - - - 0x03847C 0E:846C: B9 CE 85  LDA tbl_85CE_ppu,Y
@@ -1125,20 +1123,8 @@ bra_84BD:
 bra_84DE_FF:
 C - - - - - 0x0384EE 0E:84DE: 20 5B D2  JSR sub_0x03D26B_записать_FF_в_буфер_с_чтением_индекса
 C - - - - - 0x0384F1 0E:84E1: C6 00     DEC ram_0002
-C - - - - - 0x0384F3 0E:84E3: 30 03     BMI bra_84E8
+C - - - - - 0x0384F3 0E:84E3: 30 03     BMI bra_84F9_RTS
 C - - - - - 0x0384F5 0E:84E5: 4C 56 84  JMP loc_8456
-bra_84E8:
-C - - - - - 0x0384F8 0E:84E8: A4 0A     LDY ram_000A
-C - - - - - 0x0384FA 0E:84EA: D0 0D     BNE bra_84F9_RTS
-bra_84EC_loop:
-; bzk optimize, 000A всегда > 00, пишется в 0x03F744
-; удалить весь мусор
-- - - - - - 0x0384FC 0E:84EC: B9 BE 85  LDA tbl_85BE_атрибуты_фона,Y
-- - - - - - 0x0384FF 0E:84EF: C9 FE     CMP #$FE
-- - - - - - 0x038501 0E:84F1: F0 06     BEQ bra_84F9_RTS
-- - - - - - 0x038503 0E:84F3: 20 5D D2  JSR sub_0x03D26D_записать_A_в_буфер_с_чтением_индекса
-- - - - - - 0x038506 0E:84F6: C8        INY
-- - - - - - 0x038507 0E:84F7: D0 F3     BNE bra_84EC_loop   ; jmp
 bra_84F9_RTS:
 C - - - - - 0x038509 0E:84F9: 60        RTS
 
@@ -1238,28 +1224,9 @@ _off017_85A4_06_shred:
 
 
 
-tbl_85BE_атрибуты_фона:
-- - - - - - 0x0385CE 0E:85BE: 03        .byte con_buf_mode_03   ; 
-- - - - - - 0x0385CF 0E:85BF: C0 27     .word $27C0
-- - - - - - 0x0385D1 0E:85C1: 18        .byte $18, $00   ; 
-
-- - - - - - 0x0385D3 0E:85C3: 03        .byte con_buf_mode_03   ; 
-- - - - - - 0x0385D4 0E:85C4: D8 23     .word $23D8
-- - - - - - 0x0385D6 0E:85C6: 10        .byte $10, $55   ; 
-
-- - - - - - 0x0385D8 0E:85C8: 03        .byte con_buf_mode_03   ; 
-- - - - - - 0x0385D9 0E:85C9: E8 23     .word $23E8
-- - - - - - 0x0385DB 0E:85CB: 18        .byte $18, $AA   ; 
-
-- - - - - - 0x0385DD 0E:85CD: FE        .byte $FE   ; end token
-
-
-
 tbl_85CE_ppu:
-- - - - - - 0x0385DE 0E:85CE: C3 24     .word $24C3 ; 00
-- - - - - - 0x0385E0 0E:85D0: 98 22     .word $2298 ; 01
-- D 0 - - - 0x0385E2 0E:85D2: C6 20     .word $20C6 ; 02
-- D 0 - - - 0x0385E4 0E:85D4: D5 20     .word $20D5 ; 03
+- D 0 - - - 0x0385E2 0E:85D2: C6 20     .word $20C6 ; 00
+- D 0 - - - 0x0385E4 0E:85D4: D5 20     .word $20D5 ; 01
 
 
 
@@ -1725,6 +1692,7 @@ bra_88AA:
 C - - - - - 0x0388BA 0E:88AA: 20 BE DA  JSR sub_0x03DACE_удалить_все_объекты
 C - - - - - 0x0388BD 0E:88AD: A2 12     LDX #con_screen_stage_select
 C - - - - - 0x0388BF 0E:88AF: 20 44 F0  JSR sub_0x03F054_отрисовать_экран
+; свободный адрес 000A
 C - - - - - 0x0388C2 0E:88B2: 20 2F F7  JSR sub_0x03F73F_нарисовать_рожи_персов_на_экране_выбора_карты
 C - - - - - 0x0388C5 0E:88B5: E6 95     INC ram_0095
 C - - - - - 0x0388C7 0E:88B7: 4C 6D D4  JMP loc_0x03D47D
