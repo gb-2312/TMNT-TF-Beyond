@@ -3834,7 +3834,11 @@ bra_E60C:
 loc_0x03E61C:
 C - - - - - 0x03E61C 0F:E60C: A5 08     LDA ram_0008
 bra_E60E:
-C - - - - - 0x03E61E 0F:E60E: 20 B8 F8  JSR sub_F8B8
+C - - - - - 0x03E61E 0F:E60E: 20 B8 F8  STA ram_063F
+                                        BMI bra_E611
+                                        JSR sub_F600_swap_prg_16_no_return
+                                        JSR sub_0x02EFA0
+bra_E611:
 C - - - - - 0x03E621 0F:E611: A9 11     LDA #$11
 C - - - - - 0x03E623 0F:E613: 85 95     STA ram_0095
 C - - - - - 0x03E625 0F:E615: A9 00     LDA #$00
@@ -6987,14 +6991,6 @@ off_F8AE_07:
 - D 3 - - - 0x03F8C5 0F:F8B5: 5E        .byte < (ram_0056 + $08)   ; 
 - D 3 - - - 0x03F8C6 0F:F8B6: 61        .byte < (ram_0056 + $0B)   ; 
 - D 3 - - - 0x03F8C7 0F:F8B7: 63        .byte < (ram_0056 + $0D)   ; 
-
-
-
-
-sub_F8B8:
-C - - - - - 0x03F8C8 0F:F8B8: 48        PHA
-C - - - - - 0x03F8CB 0F:F8BB: 20 00 F6  JSR sub_F600_swap_prg_16_no_return
-C - - - - - 0x03F8CE 0F:F8BE: 4C 90 AF  JMP loc_0x02EFA0
 
 
 

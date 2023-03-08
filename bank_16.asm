@@ -15,7 +15,7 @@
 .export loc_0x02EB10
 .export sub_0x02EE60_выбрать_палитру_уровня
 .export sub_0x02EF50_записать_3_цвета_в_буфер
-.export loc_0x02EFA0
+.export sub_0x02EFA0
 .export ofs_0x02F73B_суперка_casey_песок
 .export loc_0x02FC90
 .export sub_0x02FD40_отрисовать_колво_побед_в_матчах
@@ -1110,15 +1110,12 @@ tbl_D374:
 
 
 
-loc_0x02EFA0:
-C D 1 - - - 0x02EFA0 0B:AF90: 68        PLA
-C - - - - - 0x02EFA1 0B:AF91: 8D 3F 06  STA ram_063F
-C - - - - - 0x02EFA4 0B:AF94: 30 1D     BMI bra_AFB3_RTS
+sub_0x02EFA0:
 C - - - - - 0x02EFA6 0B:AF96: A4 2C     LDY ram_game_mode
 ; con_gm_vs_cpu
 C - - - - - 0x02EFA8 0B:AF98: C0 01     CPY #$01
 C - - - - - 0x02EFAA 0B:AF9A: D0 17     BNE bra_AFB3_RTS    ; if con_gm_vs_player
-- - - - - - 0x02EFAC 0B:AF9C: AA        TAX
+- - - - - - 0x02EFAC 0B:AF9C: AA        LDX ram_063F
 - - - - - - 0x02EFAD 0B:AF9D: BD 29 01  LDA ram_plr_колво_побед_в_матчах,X
 - - - - - - 0x02EFB0 0B:AFA0: 29 0F     AND #$0F
 - - - - - - 0x02EFB2 0B:AFA2: 49 09     EOR #$09
