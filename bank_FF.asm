@@ -198,8 +198,8 @@
 .export sub_0x03FB98_disable_irq
 .export sub_0x03FC9C_set_mirroring_V
 .export sub_0x03FCA0_set_mirroring_H
-.export loc_0x03FE68
-.export sub_0x03FE68
+.export loc_0x03FE68_отрисовка_экрана_главное_меню
+.export sub_0x03FE68_отрисовка_экрана_главное_меню
 .export sub_0x03FE76
 .export sub_0x03FE8A
 .export loc_0x03FEAF
@@ -2087,9 +2087,9 @@ C - - - - - 0x03DBE3 0F:DBD3: 60        RTS
 
 loc_DC04:
 sub_0x03DC14:
-C D 2 - - - 0x03DC14 0F:DC04: B9 29 DC  LDA tbl_DC29,Y
+C D 2 - - - 0x03DC14 0F:DC04: B9 29 DC  LDA tbl_DC29_chr_pair,Y
 C - - - - - 0x03DC17 0F:DC07: 85 34     STA ram_chr_bank_spr
-C - - - - - 0x03DC19 0F:DC09: B9 2A DC  LDA tbl_DC29 + $01,Y
+C - - - - - 0x03DC19 0F:DC09: B9 2A DC  LDA tbl_DC29_chr_pair + $01,Y
 C - - - - - 0x03DC1C 0F:DC0C: 85 35     STA ram_chr_bank_spr + $01
 C - - - - - 0x03DC1E 0F:DC0E: 60        RTS
 
@@ -2097,9 +2097,9 @@ C - - - - - 0x03DC1E 0F:DC0E: 60        RTS
 
 sub_0x03DC1F:
 ; Y = 0E
-C - - - - - 0x03DC1F 0F:DC0F: B9 29 DC  LDA tbl_DC29,Y
+C - - - - - 0x03DC1F 0F:DC0F: B9 29 DC  LDA tbl_DC29_chr_pair,Y
 C - - - - - 0x03DC22 0F:DC12: 85 36     STA ram_chr_bank_spr + $02
-C - - - - - 0x03DC24 0F:DC14: B9 2A DC  LDA tbl_DC29 + $01,Y
+C - - - - - 0x03DC24 0F:DC14: B9 2A DC  LDA tbl_DC29_chr_pair + $01,Y
 C - - - - - 0x03DC27 0F:DC17: 85 37     STA ram_chr_bank_spr + $03
 C - - - - - 0x03DC29 0F:DC19: 60        RTS
 
@@ -2111,15 +2111,15 @@ sub_0x03DC35_запись_пары_chr_06:
 C D 2 - - - 0x03DC35 0F:DC25: A0 06     LDY #con_chr_pair_06
 sub_DC1A_запись_пары_chr:
 sub_0x03DC2A_запись_пары_chr:
-C - - - - - 0x03DC2A 0F:DC1A: B9 29 DC  LDA tbl_DC29,Y
+C - - - - - 0x03DC2A 0F:DC1A: B9 29 DC  LDA tbl_DC29_chr_pair,Y
 C - - - - - 0x03DC2D 0F:DC1D: 85 32     STA ram_chr_bank_bg
-C - - - - - 0x03DC2F 0F:DC1F: B9 2A DC  LDA tbl_DC29 + $01,Y
+C - - - - - 0x03DC2F 0F:DC1F: B9 2A DC  LDA tbl_DC29_chr_pair + $01,Y
 C - - - - - 0x03DC32 0F:DC22: 85 33     STA ram_chr_bank_bg + $01
 C - - - - - 0x03DC34 0F:DC24: 60        RTS
 
 
 
-tbl_DC29:
+tbl_DC29_chr_pair:
 ; con_chr_pair
 - - - - - - 0x03DC39 0F:DC29: 0D        .byte con_chr_bank + $0D, con_chr_bank + $09   ; 00 индекс не существует
 - D 2 - - - 0x03DC3B 0F:DC2B: 56        .byte con_chr_bank + $56, con_chr_bank + $54   ; 02
@@ -3054,7 +3054,7 @@ C - - - - - 0x03E199 0F:E189: 20 32 D0  JSR sub_D032_поинтеры_после
 - D 3 - I - 0x03E1B2 0F:E1A2: 8F E6     .word ofs_001_E68F_0B_ничья_во_время_боя
 - D 3 - I - 0x03E1B4 0F:E1A4: FF E6     .word ofs_001_E6FF_0C
 - D 3 - I - 0x03E1B6 0F:E1A6: 42 E7     .word ofs_001_E742_0D
-- D 3 - I - 0x03E1B8 0F:E1A8: 3F F7     .word ofs_001_F73F_0E
+- D 3 - I - 0x03E1B8 0F:E1A8: 3F F7     .word ofs_001_F73F_0E_обработка_экрана_continue
 - D 3 - I - 0x03E1BA 0F:E1AA: 53 E7     .word ofs_001_E753_0F
 - D 3 - I - 0x03E1BC 0F:E1AC: 5D E7     .word ofs_001_E75D_10
 - D 3 - I - 0x03E1BE 0F:E1AE: F9 F7     .word ofs_001_F7F9_11_подготовка_экрана_rematch
@@ -3980,7 +3980,7 @@ C - - - - - 0x03E700 0F:E6F0: AD 71 06  LDA ram_0671
 C - - - - - 0x03E703 0F:E6F3: C9 02     CMP #$02
 C - - - - - 0x03E705 0F:E6F5: B0 97     BCS bra_E68E_RTS
 C - - - - - 0x03E707 0F:E6F7: 20 41 E5  JSR sub_E541
-C - - - - - 0x03E70A 0F:E6FA: A9 2B     LDA #con_0x03F6AD_2B
+C - - - - - 0x03E70A 0F:E6FA: A9 2B     LDA #con_sfx_шум_зрителей
 C - - - - - 0x03E70C 0F:E6FC: 4C 90 F6  JMP loc_F690_записать_звук_сохранив_X_Y
 
 
@@ -4051,7 +4051,7 @@ C - - - - - 0x03E772 0F:E762: 29 10     AND #con_btn_Start
 C - - - - - 0x03E774 0F:E764: F0 09     BEQ bra_E76F_RTS
 C - - - - - 0x03E776 0F:E766: 20 C2 F6  JSR sub_F6C2_выключить_музыку_и_звуки
 C - - - - - 0x03E779 0F:E769: 20 3C F0  JSR sub_F03C_выключить_irq___удалить_все_объекты___отрисовать_пустой_экран
-C - - - - - 0x03E77C 0F:E76C: 4C 58 FE  JMP loc_FE58
+C - - - - - 0x03E77C 0F:E76C: 4C 58 FE  JMP loc_FE58_отрисовка_экрана_главное_меню
 bra_E76F_RTS:
 C - - - - - 0x03E77F 0F:E76F: 60        RTS
 
@@ -4630,7 +4630,7 @@ C - - - - - 0x03EAEA 0F:EADA: A5 95     LDA ram_0095
 C - - - - - 0x03EAEC 0F:EADC: C9 10     CMP #$10
 C - - - - - 0x03EAEE 0F:EADE: B0 27     BCS bra_EB07
 C - - - - - 0x03EAF0 0F:EAE0: 20 C2 F6  JSR sub_F6C2_выключить_музыку_и_звуки
-C - - - - - 0x03EAF3 0F:EAE3: A9 2C     LDA #con_0x03F6AD_2C
+C - - - - - 0x03EAF3 0F:EAE3: A9 2C     LDA #con_sfx_осталось_20_сек
 C - - - - - 0x03EAF5 0F:EAE5: 20 90 F6  JSR sub_F690_записать_звук_сохранив_X_Y
 C - - - - - 0x03EAF8 0F:EAE8: 4C 07 EB  JMP loc_EB07
 bra_EAEB:
@@ -6668,9 +6668,9 @@ C - - - - - 0x03F73C 0F:F72C: 4C 17 F6  JMP loc_F617_restore_prg
 
 
 
-ofs_001_F73F_0E:
+ofs_001_F73F_0E_обработка_экрана_continue:
 C - - J - - 0x03F74F 0F:F73F: 20 F3 F5  JSR sub_F5F3_swap_prg_1C
-C - - - - - 0x03F752 0F:F742: 20 D6 85  JSR sub_0x0385E6
+C - - - - - 0x03F752 0F:F742: 20 D6 85  JSR sub_0x0385E6_обработка_экрана_continue
 C - - - - - 0x03F755 0F:F745: 4C 17 F6  JMP loc_F617_restore_prg
 
 
@@ -7788,9 +7788,9 @@ tbl_FE37:
 
 
 
-loc_FE58:
-loc_0x03FE68:
-sub_0x03FE68:
+loc_FE58_отрисовка_экрана_главное_меню:
+loc_0x03FE68_отрисовка_экрана_главное_меню:
+sub_0x03FE68_отрисовка_экрана_главное_меню:
 C D 3 - - - 0x03FE68 0F:FE58: A9 00     LDA #$00
 C - - - - - 0x03FE6A 0F:FE5A: 85 27     STA ram_0027
 C - - - - - 0x03FE6C 0F:FE5C: 85 94     STA ram_0094

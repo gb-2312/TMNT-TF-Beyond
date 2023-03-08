@@ -8,7 +8,7 @@
 
 .export sub_0x038011_обработчик_экрана_с_опциями
 .export sub_0x0382CB_отрисовать_турнирную_сетку
-.export sub_0x0385E6
+.export sub_0x0385E6_обработка_экрана_continue
 .export sub_0x0388A0_обработка_экрана_с_выбором_арены
 .export sub_0x038A7A_подсчитать_время_и_здоровье_после_боя
 .export sub_0x038C8B_обработчик_экрана_с_клавиатурой
@@ -467,8 +467,8 @@ tbl_829E:
     .byte con_music_ost_down_town   ; 01
     .byte con_music_ost_pirate_ship   ; 02
     .byte con_music_ost_water_front   ; 03
-    .byte con_0x03F6AD_3A   ; 04
-    .byte con_0x03F6AD_3C   ; 05
+    .byte con_music_opening_1   ; 04
+    .byte con_music_opening_2   ; 05
     .byte con_dpcm_warcry_turtle_1   ; 06
     .byte con_dpcm_warcry_casey_1   ; 07
     .byte con_dpcm_warcry_hot_1   ; 08
@@ -600,7 +600,7 @@ loc_8071_выход_из_экрана_с_опциями:
                                         STA ram_game_mode
                                         JSR sub_0x03F6D2_выключить_музыку_и_звуки
                                         JSR sub_0x03E14E_подготовить_затемнение_из_белого_в_цветной
-                                        JSR sub_0x03FE68
+                                        JSR sub_0x03FE68_отрисовка_экрана_главное_меню
 bra_8074_RTS:
                                         RTS
 
@@ -784,11 +784,11 @@ C - - - - - 0x0382D3 0E:82C3: 20 14 F8  JSR sub_0x03F824
 C - - - - - 0x0382D6 0E:82C6: 20 6D D4  JSR sub_0x03D47D_запись_черной_палитры_в_буфер
 C - - - - - 0x0382D9 0E:82C9: A2 16     LDX #con_screen_турнирная_сетка
 C - - - - - 0x0382DB 0E:82CB: 20 44 F0  JSR sub_0x03F054_отрисовать_экран
-C - - - - - 0x0382DE 0E:82CE: A9 3E     LDA #con_0x03F6AD_3E
+C - - - - - 0x0382DE 0E:82CE: A9 3E     LDA #con_music_bracket_winner
 C - - - - - 0x0382E0 0E:82D0: A4 95     LDY ram_0095
 C - - - - - 0x0382E2 0E:82D2: C0 10     CPY #$10
 C - - - - - 0x0382E4 0E:82D4: F0 02     BEQ bra_82D8
-C - - - - - 0x0382E6 0E:82D6: A9 46     LDA #con_0x03F6AD_46
+C - - - - - 0x0382E6 0E:82D6: A9 46     LDA #con_music_bracket_playoff
 bra_82D8:
 C - - - - - 0x0382E8 0E:82D8: 20 90 F6  JSR sub_0x03F6A0_записать_звук_сохранив_X_Y
 C - - - - - 0x0382EB 0E:82DB: A0 04     LDY #con_chr_pair_04
@@ -1229,19 +1229,19 @@ tbl_85CE_ppu:
 
 
 
-sub_0x0385E6:
+sub_0x0385E6_обработка_экрана_continue:
 C - - - - - 0x0385E6 0E:85D6: AD 30 05  LDA ram_obj_0530
 C - - - - - 0x0385E9 0E:85D9: 20 32 D0  JSR sub_0x03D042_поинтеры_после_JSR
-- D 0 - I - 0x0385EC 0E:85DC: E8 85     .word ofs_014_85E8_00
-- D 0 - I - 0x0385EE 0E:85DE: 81 86     .word ofs_014_8681_01
+- D 0 - I - 0x0385EC 0E:85DC: E8 85     .word ofs_014_85E8_00_подготовить_экран_continue
+- D 0 - I - 0x0385EE 0E:85DE: 81 86     .word ofs_014_8681_01_отсчет_таймера_до_game_over
 - D 0 - I - 0x0385F0 0E:85E0: 00 A9     .word ofs_014_A900_02
-- D 0 - I - 0x0385F2 0E:85E2: 9C 86     .word ofs_014_869C_03
+- D 0 - I - 0x0385F2 0E:85E2: 9C 86     .word ofs_014_869C_03_отрисовка_счетчика_до_game_over
 - D 0 - I - 0x0385F4 0E:85E4: 06 87     .word ofs_014_8706_04
 - D 0 - I - 0x0385F6 0E:85E6: 36 87     .word ofs_014_8736_05
 
 
 
-ofs_014_85E8_00:
+ofs_014_85E8_00_подготовить_экран_continue:
 C - - J - - 0x0385F8 0E:85E8: 20 C1 F7  JSR sub_0x03F7D1
 C - - - - - 0x0385FB 0E:85EB: A9 00     LDA #$00
 C - - - - - 0x0385FD 0E:85ED: 8D 11 01  STA ram_0111
@@ -1269,7 +1269,7 @@ C - - - - - 0x03862C 0E:861C: A9 03     LDA #$03
 C - - - - - 0x03862E 0E:861E: 8D 30 05  STA ram_obj_0530
 C - - - - - 0x038631 0E:8621: 20 52 86  JSR sub_8652
 C - - - - - 0x038634 0E:8624: 20 40 87  JSR sub_8740_нарисовать_крупные_цифры_на_экране_continue
-C - - - - - 0x038637 0E:8627: A9 38     LDA #con_0x03F6AD_38
+C - - - - - 0x038637 0E:8627: A9 38     LDA #con_music_continue
 C - - - - - 0x038639 0E:8629: 20 90 F6  JSR sub_0x03F6A0_записать_звук_сохранив_X_Y
 C - - - - - 0x03863C 0E:862C: 20 3F 86  JSR sub_863F
 sub_862F:
@@ -1327,7 +1327,7 @@ C - - - - - 0x03868E 0E:867E: 4C 90 F6  JMP loc_0x03F6A0_записать_зву
 
 
 
-ofs_014_8681_01:
+ofs_014_8681_01_отсчет_таймера_до_game_over:
 C - - J - - 0x038691 0E:8681: CE 60 05  DEC ram_obj_timer
 C - - - - - 0x038694 0E:8684: 30 E4     BMI bra_866A
 C - - - - - 0x038696 0E:8686: 4C BA 86  JMP loc_86BA
@@ -1341,13 +1341,13 @@ C - - - - - 0x03869F 0E:868F: 29 7F     AND #$7F
 C - - - - - 0x0386A1 0E:8691: D0 08     BNE bra_869B_RTS
 C - - - - - 0x0386A3 0E:8693: CE 60 05  DEC ram_obj_timer
 C - - - - - 0x0386A6 0E:8696: 10 03     BPL bra_869B_RTS
-C - - - - - 0x0386A8 0E:8698: 4C 58 FE  JMP loc_0x03FE68
+C - - - - - 0x0386A8 0E:8698: 4C 58 FE  JMP loc_0x03FE68_отрисовка_экрана_главное_меню
 bra_869B_RTS:
 C - - - - - 0x0386AB 0E:869B: 60        RTS
 
 
 
-ofs_014_869C_03:
+ofs_014_869C_03_отрисовка_счетчика_до_game_over:
 C - - J - - 0x0386AC 0E:869C: A5 22     LDA ram_счетчик_кадров
 C - - - - - 0x0386AE 0E:869E: 29 07     AND #$07
 C - - - - - 0x0386B0 0E:86A0: D0 06     BNE bra_86A8
@@ -2415,7 +2415,7 @@ C - - - - - 0x038CC7 0E:8CB7: CA        DEX
 C - - - - - 0x038CC8 0E:8CB8: 10 F9     BPL bra_8CB3_loop
 C - - - - - 0x038CCA 0E:8CBA: A0 14     LDY #con_chr_pair_14
 C - - - - - 0x038CCC 0E:8CBC: 20 1A DC  JSR sub_0x03DC2A_запись_пары_chr
-C - - - - - 0x038CCF 0E:8CBF: A9 38     LDA #con_0x03F6AD_38
+C - - - - - 0x038CCF 0E:8CBF: A9 38     LDA #con_music_continue ; keyboard
 C - - - - - 0x038CD1 0E:8CC1: 20 90 F6  JSR sub_0x03F6A0_записать_звук_сохранив_X_Y
 ofs_011_8CC4_04:
 C - - - - - 0x038CD4 0E:8CC4: A9 00     LDA #$00
@@ -3087,7 +3087,7 @@ C - - - - - 0x0390F0 0E:90E0: 4C 6D D4  JMP loc_0x03D47D_запись_черно
 
 
 ofs_010_90E3_01_отрисовать_opening_1:
-C - - J - - 0x0390F3 0E:90E3: A9 3A     LDA #con_0x03F6AD_3A
+C - - J - - 0x0390F3 0E:90E3: A9 3A     LDA #con_music_opening_1
 C - - - - - 0x0390F5 0E:90E5: 20 90 F6  JSR sub_0x03F6A0_записать_звук_сохранив_X_Y
 C - - - - - 0x0390F8 0E:90E8: A9 00     LDA #con_speech_manhattan
 C - - - - - 0x0390FA 0E:90EA: 85 B6     STA ram_speech
@@ -3235,7 +3235,7 @@ C - - - - - 0x0391D9 0E:91C9: D0 D2     BNE bra_919D_RTS
 C - - - - - 0x0391DB 0E:91CB: A9 00     LDA #$00
 C - - - - - 0x0391DD 0E:91CD: 8D 00 04  STA ram_obj_anim_id
 C - - - - - 0x0391E0 0E:91D0: 8D B0 04  STA ram_obj_spd_Y_lo
-C - - - - - 0x0391E3 0E:91D3: A9 3C     LDA #con_0x03F6AD_3C
+C - - - - - 0x0391E3 0E:91D3: A9 3C     LDA #con_music_opening_2
 C - - - - - 0x0391E5 0E:91D5: 20 90 F6  JSR sub_0x03F6A0_записать_звук_сохранив_X_Y
 C - - - - - 0x0391E8 0E:91D8: 20 90 FC  JSR sub_0x03FCA0_set_mirroring_H
 C - - - - - 0x0391EB 0E:91DB: A9 10     LDA #con_0048_10
@@ -4122,7 +4122,7 @@ C - - - - - 0x0397F1 0E:97E1: A9 2B     LDA #$2B
 C - - - - - 0x0397F3 0E:97E3: 8D 01 04  STA ram_obj_anim_id + $01
 C - - - - - 0x0397F6 0E:97E6: A9 40     LDA #$40
 C - - - - - 0x0397F8 0E:97E8: 8D 11 05  STA ram_obj_spr_flip + $01
-C - - - - - 0x0397FB 0E:97EB: A9 1D     LDA #con_0x03F6AD_1D
+C - - - - - 0x0397FB 0E:97EB: A9 1D     LDA #con_sfx_взрыв
 C - - - - - 0x0397FD 0E:97ED: 20 90 F6  JSR sub_0x03F6A0_записать_звук_сохранив_X_Y
 bra_97F0:
 C - - - - - 0x039800 0E:97F0: A9 06     LDA #$06
@@ -4316,7 +4316,7 @@ C - - - - - 0x039921 0E:9911: F0 BA     BEQ bra_98CD_RTS
 - - - - - - 0x039923 0E:9913: A5 FF     LDA ram_for_2000
 - - - - - - 0x039925 0E:9915: 29 FC     AND #$FC
 - - - - - - 0x039927 0E:9917: 85 FF     STA ram_for_2000
-- - - - - - 0x039929 0E:9919: 4C 58 FE  JMP loc_0x03FE68
+- - - - - - 0x039929 0E:9919: 4C 58 FE  JMP loc_0x03FE68_отрисовка_экрана_главное_меню
 
 
 
@@ -5116,7 +5116,7 @@ C - - - - - 0x039FD9 0E:9FC9: 20 32 D0  JSR sub_0x03D042_поинтеры_пос
 - D 0 - I - 0x039FDE 0E:9FCE: 80 A0     .word ofs_004_A080_01
 bra_9FD0:
 - - - - - - 0x039FE0 0E:9FD0: 20 C2 F6  JSR sub_0x03F6D2_выключить_музыку_и_звуки
-- - - - - - 0x039FE3 0E:9FD3: 4C 58 FE  JMP loc_0x03FE68
+- - - - - - 0x039FE3 0E:9FD3: 4C 58 FE  JMP loc_0x03FE68_отрисовка_экрана_главное_меню
 
 
 
@@ -5200,7 +5200,7 @@ C - - - - - 0x03A081 0E:A071: A9 12     LDA #$12
 C - - - - - 0x03A083 0E:A073: A0 11     LDY #$11
 C - - - - - 0x03A085 0E:A075: 20 94 D3  JSR sub_0x03D3A4_записать_палитру_для_фона_и_спрайтов
 C - - - - - 0x03A088 0E:A078: 20 41 E1  JSR sub_0x03E151_подготовить_осветление_из_черного_в_цветной
-C - - - - - 0x03A08B 0E:A07B: A9 38     LDA #con_0x03F6AD_38
+C - - - - - 0x03A08B 0E:A07B: A9 38     LDA #con_music_continue ; topscore
 C - - - - - 0x03A08D 0E:A07D: 4C 90 F6  JMP loc_0x03F6A0_записать_звук_сохранив_X_Y
 
 
@@ -6098,7 +6098,7 @@ C - - - - - 0x03A51B 0E:A50B: 20 09 DE  JSR sub_0x03DE19_очистить_очк
 C - - - - - 0x03A51E 0E:A50E: 4C 2E E1  JMP loc_0x03E13E_подготовить_затемнение_из_цветного_в_черный
 bra_A511:
 C - - - - - 0x03A521 0E:A511: 20 09 DE  JSR sub_0x03DE19_очистить_очки_обоих_игроков
-C - - - - - 0x03A524 0E:A514: 4C 58 FE  JMP loc_0x03FE68
+C - - - - - 0x03A524 0E:A514: 4C 58 FE  JMP loc_0x03FE68_отрисовка_экрана_главное_меню
 bra_A517_RTS:
 C - - - - - 0x03A527 0E:A517: 60        RTS
 
@@ -6390,7 +6390,7 @@ C - - - - - 0x03A91C 0E:A90C: D0 F7     BNE bra_A905    ; if con_gm_story
 C - - - - - 0x03A91E 0E:A90E: A5 90     LDA ram_sum_btn_press
 C - - - - - 0x03A920 0E:A910: 29 10     AND #con_btn_Start
 C - - - - - 0x03A922 0E:A912: F0 03     BEQ bra_A917_RTS
-C - - - - - 0x03A924 0E:A914: 4C 58 FE  JMP loc_0x03FE68
+C - - - - - 0x03A924 0E:A914: 4C 58 FE  JMP loc_0x03FE68_отрисовка_экрана_главное_меню
 bra_A917_RTS:
 C - - - - - 0x03A927 0E:A917: 60        RTS
 

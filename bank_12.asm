@@ -1327,7 +1327,7 @@ C - - - - - 0x0248E4 09:88D4: F0 21     BEQ bra_88F7
 C - - - - - 0x0248E6 09:88D6: BD 60 05  LDA ram_obj_timer,X ; 0560 0561 
 C - - - - - 0x0248E9 09:88D9: C9 30     CMP #$30
 C - - - - - 0x0248EB 09:88DB: D0 0D     BNE bra_88EA
-C - - - - - 0x0248ED 09:88DD: A9 2B     LDA #con_0x03F6AD_2B
+C - - - - - 0x0248ED 09:88DD: A9 2B     LDA #con_sfx_шум_зрителей
 C - - - - - 0x0248EF 09:88DF: A4 95     LDY ram_0095
 C - - - - - 0x0248F1 09:88E1: C0 10     CPY #$10
 C - - - - - 0x0248F3 09:88E3: 90 02     BCC bra_88E7
@@ -1564,7 +1564,7 @@ C - - - - - 0x024AA0 09:8A90: F0 0C     BEQ bra_8A9E
 C - - - - - 0x024AA2 09:8A92: BD 60 05  LDA ram_obj_timer,X ; 0560 0561 
 C - - - - - 0x024AA5 09:8A95: C9 30     CMP #$30
 C - - - - - 0x024AA7 09:8A97: D0 05     BNE bra_8A9E
-C - - - - - 0x024AA9 09:8A99: A9 2A     LDA #con_0x03F6AD_2A
+C - - - - - 0x024AA9 09:8A99: A9 2A     LDA #con_sfx_увеличить_счетчик_побед_в_бою
 C - - - - - 0x024AAB 09:8A9B: 20 90 F6  JSR sub_0x03F6A0_записать_звук_сохранив_X_Y
 bra_8A9E:
 C - - - - - 0x024AAE 09:8A9E: DE 60 05  DEC ram_obj_timer,X ; 0560 0561 
@@ -6180,7 +6180,7 @@ ofs_072_A3D2_00:
 C - - J - - 0x0263E2 09:A3D2: A9 10     LDA #> $1000
 C - - - - - 0x0263E4 09:A3D4: A0 00     LDY #< $1000
 C - - - - - 0x0263E6 09:A3D6: 20 75 A4  JSR sub_A475_запись_spd_Y_и_звука_суперки
-C - - - - - 0x0263E9 09:A3D9: A9 1D     LDA #con_0x03F6AD_1D
+C - - - - - 0x0263E9 09:A3D9: A9 1D     LDA #con_sfx_взрыв
 C - - - - - 0x0263EB 09:A3DB: 20 90 F6  JSR sub_0x03F6A0_записать_звук_сохранив_X_Y
 C - - - - - 0x0263EE 09:A3DE: A9 06     LDA #$06
 C - - - - - 0x0263F0 09:A3E0: 20 B6 8B  JSR sub_8BB6_уменьшить_на_25_процентов_если_turbo
@@ -7216,7 +7216,7 @@ C - - - - - 0x026914 09:A904: 20 04 DD  JSR sub_0x03DD14
 C - - - - - 0x026917 09:A907: A9 C0     LDA #$C0
 C - - - - - 0x026919 09:A909: 9D 80 05  STA ram_obj_0580,X ; 0587 
 C - - - - - 0x02691C 09:A90C: 20 7D D1  JSR sub_0x03D18D
-C - - - - - 0x02691F 09:A90F: A9 20     LDA #con_0x03F6AD_20
+C - - - - - 0x02691F 09:A90F: A9 20     LDA #con_sfx_прилет_сплинтера
 C - - - - - 0x026921 09:A911: 20 90 F6  JSR sub_0x03F6A0_записать_звук_сохранив_X_Y
 C - - - - - 0x026924 09:A914: A9 38     LDA #$38
 C - - - - - 0x026926 09:A916: 9D 10 04  STA ram_obj_pos_Y,X ; 0417 
