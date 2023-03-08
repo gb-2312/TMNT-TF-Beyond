@@ -6165,7 +6165,7 @@ bra_A2C3:
 C - - - - - 0x0362D3 0D:A2C3: BC DE 06  LDY ram_plr_06DE,X ; 06DE 06DF 
 C - - - - - 0x0362D6 0D:A2C6: A9 01     LDA #con_шаблон_ai_01
 C - - - - - 0x0362D8 0D:A2C8: 9D C0 06  STA ram_шаблон_ai,X
-C - - - - - 0x0362DB 0D:A2CB: 20 7C A3  JSR sub_A37C
+C - - - - - 0x0362DB 0D:A2CB: 20 7C A3  JSR sub_A374
 bra_A2CE:
 C - - - - - 0x0362DE 0D:A2CE: BD 50 05  LDA ram_obj_id,X ; 0550 0551 
 C - - - - - 0x0362E1 0D:A2D1: 49 06     EOR #$06
@@ -6254,7 +6254,6 @@ C - - - - - 0x036387 0D:A377: 29 03     AND #con_btns_LR
 bra_A379:
 C - - - - - 0x036389 0D:A379: 9D C6 06  STA ram_plr_06C6,X ; 06C6 
 bra_A37C:
-sub_A37C:
 C - - - - - 0x03638C 0D:A37C: B9 44 04  LDA ram_0444,Y ; 0444 0445 0448 
 C - - - - - 0x03638F 0D:A37F: 19 12 04  ORA ram_obj_pos_Y + $02,Y
 C - - - - - 0x036392 0D:A382: F0 1D     BEQ bra_A3A1_RTS

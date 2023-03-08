@@ -10058,7 +10058,7 @@ C - - - - - 0x0279BD 09:B9AD: 9D 1C 04  STA ram_041C,X ; 041C 041D
 C - - - - - 0x0279C0 09:B9B0: BD 10 05  LDA ram_obj_0510,X ; 0510 0511 
 C - - - - - 0x0279C3 09:B9B3: 9D 1C 05  STA ram_051C,X ; 051C 051D 
 C - - - - - 0x0279C6 09:B9B6: BD D0 04  LDA ram_obj_04D0,X ; 04D0 04D1 
-C - - - - - 0x0279C9 09:B9B9: D0 2F     BNE bra_B9EA
+C - - - - - 0x0279C9 09:B9B9: D0 2F     BNE bra_B9E4
 C - - - - - 0x0279CB 09:B9BB: B5 8E     LDA ram_btn_press,X
 C - - - - - 0x0279CD 09:B9BD: 29 08     AND #con_btn_Up
 C - - - - - 0x0279CF 09:B9BF: F0 03     BEQ bra_B9C4
@@ -10082,7 +10082,13 @@ C - - - - - 0x0279E8 09:B9D8: F0 10     BEQ bra_B9EA
 C - - - - - 0x0279EA 09:B9DA: AC 26 01  LDY ram_option_speed
 C - - - - - 0x0279ED 09:B9DD: B9 25 BA  LDA tbl_BA25,Y
 C - - - - - 0x0279F0 09:B9E0: DD 60 05  CMP ram_obj_0560,X ; 0560 0561 
-C - - - - - 0x0279F3 09:B9E3: 90 05     BCC bra_B9EA
+C - - - - - 0x0279F3 09:B9E3: 90 05     BCS bra_B9E5
+bra_B9E4:
+                                        LDA ram_время_единицы
+                                        ORA ram_время_десятки
+                                        BNE bra_B9EA
+; if время вышло, закончить мясо шрушера
+bra_B9E5:
 C - - - - - 0x0279F5 09:B9E5: A9 00     LDA #$00
 C - - - - - 0x0279F7 09:B9E7: 9D 60 05  STA ram_obj_0560,X ; 0560 0561 
 bra_B9EA:
