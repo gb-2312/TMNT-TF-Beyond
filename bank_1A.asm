@@ -6019,7 +6019,7 @@ sub_A1A6:
 sub_A1AD:
 C - - - - - 0x0361BD 0D:A1AD: BD 40 04  LDA ram_obj_pos_X,X ; 0440 0441 
 C - - - - - 0x0361C0 0D:A1B0: D9 40 04  CMP ram_obj_pos_X,Y ; 0440 0441 
-C - - - - - 0x0361C3 0D:A1B3: BD 10 05  LDA ram_obj_0510,X ; 0510 0511 
+C - - - - - 0x0361C3 0D:A1B3: BD 10 05  LDA ram_obj_spr_flip,X ; 0510 0511 
 C - - - - - 0x0361C6 0D:A1B6: 90 02     BCC bra_A1BA
 C - - - - - 0x0361C8 0D:A1B8: B0 02     BCS bra_A1BC    ; jmp
 bra_A1BA:
@@ -6072,7 +6072,7 @@ C - - - - - 0x036214 0D:A204: D0 1F     BNE bra_A225
 - - - - - - 0x03621B 0D:A20B: B9 20 05  LDA ram_obj_0520,Y
 - - - - - - 0x03621E 0D:A20E: C9 03     CMP #con_plr_state_получает_урон
 - - - - - - 0x036220 0D:A210: D0 07     BNE bra_A219
-- - - - - - 0x036222 0D:A212: BD 60 05  LDA ram_obj_0560,X
+- - - - - - 0x036222 0D:A212: BD 60 05  LDA ram_obj_timer,X
 - - - - - - 0x036225 0D:A215: C9 0A     CMP #$0A
 - - - - - - 0x036227 0D:A217: 90 05     BCC bra_A21E
 bra_A219:
@@ -6297,7 +6297,7 @@ bra_A3D2:
 - - - - - - 0x0363E8 0D:A3D8: A9 00     LDA #$00
 - - - - - - 0x0363EA 0D:A3DA: 6A        ROR
 - - - - - - 0x0363EB 0D:A3DB: 6A        ROR
-- - - - - - 0x0363EC 0D:A3DC: DD 10 05  CMP ram_obj_0510,X
+- - - - - - 0x0363EC 0D:A3DC: DD 10 05  CMP ram_obj_spr_flip,X
 - - - - - - 0x0363EF 0D:A3DF: D0 27     BNE bra_A408
 - - - - - - 0x0363F1 0D:A3E1: F0 2E     BEQ bra_A411   ; jmp
 bra_A3E3:
@@ -6321,13 +6321,13 @@ C - - - - - 0x036414 0D:A404: BD C0 06  LDA ram_шаблон_ai,X
 C - - - - - 0x036417 0D:A407: 60        RTS
 bra_A408:
 - - - - - - 0x036418 0D:A408: A9 00     LDA #$00
-- - - - - - 0x03641A 0D:A40A: DD 10 05  CMP ram_obj_0510,X
+- - - - - - 0x03641A 0D:A40A: DD 10 05  CMP ram_obj_spr_flip,X
 ; con_btn_Down + con_btn_Right          con_btn_Down + con_btn_Left
 - - - - - - 0x03641D 0D:A40D: 69 05     ADC #$05
 - - - - - - 0x03641F 0D:A40F: D0 07     BNE bra_A418
 bra_A411:
 - - - - - - 0x036421 0D:A411: A9 00     LDA #$00
-- - - - - - 0x036423 0D:A413: DD 10 05  CMP ram_obj_0510,X
+- - - - - - 0x036423 0D:A413: DD 10 05  CMP ram_obj_spr_flip,X
 ; con_btn_Right     con_btn_Left
 - - - - - - 0x036426 0D:A416: 69 01     ADC #$01
 bra_A418:
@@ -6397,7 +6397,7 @@ sub_A4B4:
 - - - - - - 0x0364D4 0D:A4C4: F0 0E     BEQ bra_A4D4
 - - - - - - 0x0364D6 0D:A4C6: C9 08     CMP #$08
 - - - - - - 0x0364D8 0D:A4C8: D0 49     BNE bra_A513
-- - - - - - 0x0364DA 0D:A4CA: BD 60 05  LDA ram_obj_0560,X
+- - - - - - 0x0364DA 0D:A4CA: BD 60 05  LDA ram_obj_timer,X
 - - - - - - 0x0364DD 0D:A4CD: 10 44     BPL bra_A513
 - - - - - - 0x0364DF 0D:A4CF: A9 00     LDA #$00
 - - - - - - 0x0364E1 0D:A4D1: 9D D2 06  STA ram_plr_06D2,X
@@ -6426,7 +6426,7 @@ bra_A4ED:
 - - - - - - 0x036510 0D:A500: A9 24     LDA #con_шаблон_ai_24
 - - - - - - 0x036512 0D:A502: D0 3F     BNE bra_A543    ; jmp
 bra_A504:
-- - - - - - 0x036514 0D:A504: 7D 10 05  ADC ram_obj_0510,X
+- - - - - - 0x036514 0D:A504: 7D 10 05  ADC ram_obj_spr_flip,X
 - - - - - - 0x036517 0D:A507: C9 41     CMP #$41
 - - - - - - 0x036519 0D:A509: B0 04     BCS bra_A50F
 - - - - - - 0x03651B 0D:A50B: A9 25     LDA #con_шаблон_ai_25
@@ -6556,8 +6556,8 @@ bra_A5F9:
 - - - - - - 0x03660B 0D:A5FB: B9 40 05  LDA ram_obj_0540,Y
 - - - - - - 0x03660E 0D:A5FE: D0 5A     BNE bra_A65A
 bra_A600:
-- - - - - - 0x036612 0D:A602: B9 10 05  LDA ram_obj_0510,Y
-- - - - - - 0x036615 0D:A605: DD 10 05  CMP ram_obj_0510,X
+- - - - - - 0x036612 0D:A602: B9 10 05  LDA ram_obj_spr_flip,Y
+- - - - - - 0x036615 0D:A605: DD 10 05  CMP ram_obj_spr_flip,X
 - - - - - - 0x036618 0D:A608: F0 0D     BEQ bra_A617
 - - - - - - 0x03661A 0D:A60A: 0A        ASL
 - - - - - - 0x03661B 0D:A60B: 59 80 04  EOR ram_obj_spd_X_hi,Y
@@ -6742,8 +6742,8 @@ C D 1 - - - 0x036770 0D:A760: AD 25 01  LDA ram_option_difficulty
 C - - - - - 0x036773 0D:A763: C9 03     CMP #$03
 C - - - - - 0x036775 0D:A765: 90 31     BCC bra_A798
 - - - - - - 0x036777 0D:A767: BC DE 06  LDY ram_plr_06DE,X
-- - - - - - 0x03677A 0D:A76A: BD 10 05  LDA ram_obj_0510,X
-- - - - - - 0x03677D 0D:A76D: 59 10 05  EOR ram_obj_0510,Y
+- - - - - - 0x03677A 0D:A76A: BD 10 05  LDA ram_obj_spr_flip,X
+- - - - - - 0x03677D 0D:A76D: 59 10 05  EOR ram_obj_spr_flip,Y
 - - - - - - 0x036780 0D:A770: F0 20     BEQ bra_A792
 - - - - - - 0x036782 0D:A772: AC 26 01  LDY ram_option_speed
 - - - - - - 0x036785 0D:A775: AD 38 06  LDA ram_0638
@@ -7005,7 +7005,7 @@ bra_BE17:
 - - - - - - 0x037E27 0D:BE17: B9 80 04  LDA ram_obj_spd_X_hi,Y
 - - - - - - 0x037E2A 0D:BE1A: F0 0F     BEQ bra_BE2B
 - - - - - - 0x037E2C 0D:BE1C: 18        CLC
-- - - - - - 0x037E2D 0D:BE1D: 7D 10 05  ADC ram_obj_0510,X
+- - - - - - 0x037E2D 0D:BE1D: 7D 10 05  ADC ram_obj_spr_flip,X
 - - - - - - 0x037E30 0D:BE20: C9 41     CMP #$41
 - - - - - - 0x037E32 0D:BE22: 90 0F     BCC bra_BE33
 - - - - - - 0x037E34 0D:BE24: BD F0 05  LDA ram_obj_05F0,X
@@ -7049,7 +7049,7 @@ bra_BEAA:
 - - - - - - 0x037EC1 0D:BEB1: A9 16     LDA #$16
 - - - - - - 0x037EC3 0D:BEB3: CD 38 06  CMP ram_0638
 - - - - - - 0x037EC6 0D:BEB6: B0 36     BCS bra_BEEE
-- - - - - - 0x037EC8 0D:BEB8: BD 10 05  LDA ram_obj_0510,X
+- - - - - - 0x037EC8 0D:BEB8: BD 10 05  LDA ram_obj_spr_flip,X
 - - - - - - 0x037ECB 0D:BEBB: 79 80 04  ADC ram_obj_spd_X_hi,Y
 - - - - - - 0x037ECE 0D:BEBE: 30 2E     BMI bra_BEEE
 - - - - - - 0x037ED0 0D:BEC0: C9 41     CMP #$41
@@ -7150,8 +7150,8 @@ C - - - - - 0x037F74 0D:BF64: 90 34     BCC bra_BF9A
 C - - - - - 0x037F76 0D:BF66: BD 50 05  LDA ram_obj_id,X ; 0550 
 C - - - - - 0x037F79 0D:BF69: C9 06     CMP #$06
 C - - - - - 0x037F7B 0D:BF6B: D0 2D     BNE bra_BF9A
-- - - - - - 0x037F7D 0D:BF6D: BD 10 05  LDA ram_obj_0510,X
-- - - - - - 0x037F80 0D:BF70: D9 10 05  CMP ram_obj_0510,Y
+- - - - - - 0x037F7D 0D:BF6D: BD 10 05  LDA ram_obj_spr_flip,X
+- - - - - - 0x037F80 0D:BF70: D9 10 05  CMP ram_obj_spr_flip,Y
 - - - - - - 0x037F83 0D:BF73: F0 24     BEQ bra_BF99_RTS
 - - - - - - 0x037F85 0D:BF75: 20 AD A1  JSR sub_A1AD
 - - - - - - 0x037F88 0D:BF78: D0 20     BNE bra_BF9A

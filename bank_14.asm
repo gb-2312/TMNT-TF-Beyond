@@ -5987,9 +5987,9 @@ C - - - - - 0x02BDCC 0A:BDBC: 8D 71 05  STA ram_obj_0570 + $01
 C - - - - - 0x02BDCF 0A:BDBF: A9 20     LDA #$20
 C - - - - - 0x02BDD1 0A:BDC1: 8D 81 05  STA ram_obj_0580 + $01
 ofs_043_BDC4_01:
-C - - - - - 0x02BDD4 0A:BDC4: AD 61 05  LDA ram_obj_0560 + $01
+C - - - - - 0x02BDD4 0A:BDC4: AD 61 05  LDA ram_obj_timer + $01
 C - - - - - 0x02BDD7 0A:BDC7: F0 0A     BEQ bra_BDD3
-- - - - - - 0x02BDD9 0A:BDC9: CE 61 05  DEC ram_obj_0560 + $01
+- - - - - - 0x02BDD9 0A:BDC9: CE 61 05  DEC ram_obj_timer + $01
 - - - - - - 0x02BDDC 0A:BDCC: D0 0F     BNE bra_BDDD
 - - - - - - 0x02BDDE 0A:BDCE: A9 00     LDA #$00
 - - - - - - 0x02BDE0 0A:BDD0: 8D 1F 06  STA ram_plr_061E + $01
@@ -5997,7 +5997,7 @@ bra_BDD3:
 C - - - - - 0x02BDE3 0A:BDD3: AD 1F 06  LDA ram_plr_061E + $01
 C - - - - - 0x02BDE6 0A:BDD6: F0 05     BEQ bra_BDDD
 C - - - - - 0x02BDE8 0A:BDD8: A9 03     LDA #$03
-C - - - - - 0x02BDEA 0A:BDDA: 8D 60 05  STA ram_obj_0560
+C - - - - - 0x02BDEA 0A:BDDA: 8D 60 05  STA ram_obj_timer
 bra_BDDD:
 C - - - - - 0x02BDED 0A:BDDD: A9 1E     LDA #$1E
 C - - - - - 0x02BDEF 0A:BDDF: 8D 71 05  STA ram_obj_0570 + $01
@@ -6200,7 +6200,7 @@ C - - - - - 0x02BF52 0A:BF42: 9D 80 04  STA ram_obj_spd_X_hi,X ; 0483 0485 0487 
 C - - - - - 0x02BF55 0A:BF45: B9 EF BF  LDA tbl_BFEF_анимация,Y
 C - - - - - 0x02BF58 0A:BF48: 9D 00 04  STA ram_obj_anim_id,X ; 0403 0405 0407 0409 040B 
 C - - - - - 0x02BF5B 0A:BF4B: B9 F4 BF  LDA tbl_BFF4,Y
-C - - - - - 0x02BF5E 0A:BF4E: 9D 10 05  STA ram_obj_0510,X ; 0513 0515 0517 0519 051B 
+C - - - - - 0x02BF5E 0A:BF4E: 9D 10 05  STA ram_obj_spr_flip,X ; 0513 0515 0517 0519 051B 
 C - - - - - 0x02BF61 0A:BF51: FE 30 05  INC ram_obj_0530,X ; 0533 0535 0537 0539 053B 
 C - - - - - 0x02BF64 0A:BF54: A9 80     LDA #$80
 C - - - - - 0x02BF66 0A:BF56: 9D E0 05  STA ram_obj_05E0,X ; 05E3 05E5 05E7 05E9 05EB 
@@ -6223,10 +6223,10 @@ C - - - - - 0x02BF7E 0A:BF6E: 20 69 DC  JSR sub_0x03DC79
 C - - - - - 0x02BF81 0A:BF71: 90 ED     BCC bra_BF60_RTS
 C - - - - - 0x02BF83 0A:BF73: 20 67 D0  JSR sub_0x03DB48_очистить_spd_X_и_spd_Z
 C - - - - - 0x02BF86 0A:BF76: A9 20     LDA #$20
-C - - - - - 0x02BF88 0A:BF78: 9D 60 05  STA ram_obj_0560,X ; 0563 0565 0567 0569 056B 
+C - - - - - 0x02BF88 0A:BF78: 9D 60 05  STA ram_obj_timer,X ; 0563 0565 0567 0569 056B 
 C - - - - - 0x02BF8B 0A:BF7B: FE 30 05  INC ram_obj_0530,X ; 0533 0535 0537 0539 053B 
 ofs_042_BF7E_04:
-C - - - - - 0x02BF8E 0A:BF7E: DE 60 05  DEC ram_obj_0560,X ; 0563 0565 0567 0569 056B 
+C - - - - - 0x02BF8E 0A:BF7E: DE 60 05  DEC ram_obj_timer,X ; 0563 0565 0567 0569 056B 
 C - - - - - 0x02BF91 0A:BF81: D0 DD     BNE bra_BF60_RTS
 C - - - - - 0x02BF93 0A:BF83: 4C D3 DA  JMP loc_0x03DAE3_удалить_объект
 

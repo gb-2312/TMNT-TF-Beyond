@@ -532,7 +532,7 @@ C - - - - - 0x02E5A6 0B:A596: D9 40 04  CMP ram_obj_pos_X,Y ; 0440 0441
 C - - - - - 0x02E5A9 0B:A599: A9 00     LDA #$00
 C - - - - - 0x02E5AB 0B:A59B: 6A        ROR
 C - - - - - 0x02E5AC 0B:A59C: 6A        ROR
-C - - - - - 0x02E5AD 0B:A59D: DD 10 05  CMP ram_obj_0510,X ; 0510 0511 
+C - - - - - 0x02E5AD 0B:A59D: DD 10 05  CMP ram_obj_spr_flip,X ; 0510 0511 
 C - - - - - 0x02E5B0 0B:A5A0: 60        RTS
 
 
@@ -624,7 +624,7 @@ bra_A880:
 C - - - - - 0x02E890 0B:A880: BC 50 05  LDY ram_obj_id,X ; 0550 0551 
 C - - - - - 0x02E893 0B:A883: B9 A6 A8  LDA tbl_A8A6,Y
 bra_A886:
-C - - - - - 0x02E896 0B:A886: 9D 60 05  STA ram_obj_0560,X ; 0560 0561 
+C - - - - - 0x02E896 0B:A886: 9D 60 05  STA ram_obj_timer,X ; 0560 0561 
 C - - - - - 0x02E899 0B:A889: A9 86     LDA #> (ofs_0x024635 - $01)
 C - - - - - 0x02E89B 0B:A88B: 48        PHA
 C - - - - - 0x02E89C 0B:A88C: A9 24     LDA #< (ofs_0x024635 - $01)
@@ -657,7 +657,7 @@ tbl_A8A6:
 
 sub_0x02EA10:
 C - - - - - 0x02EA10 0B:AA00: BD 6B E4  LDA tbl_E46B,X
-C - - - - - 0x02EA13 0B:AA03: 9D 10 05  STA ram_obj_0510,X ; 0510 0511 
+C - - - - - 0x02EA13 0B:AA03: 9D 10 05  STA ram_obj_spr_flip,X ; 0510 0511 
 C - - - - - 0x02EA16 0B:AA06: A5 2C     LDA ram_game_mode
 ; con_gm_story
 ; con_gm_vs_player
@@ -1661,7 +1661,7 @@ ofs_038_B73D_00:
 C - - J - - 0x02F74D 0B:B73D: A9 0C     LDA #$0C
 loc_B73F:
 C D 1 - - - 0x02F74F 0B:B73F: 20 0E E1  JSR sub_0x03E11E_корректировка_значения_A_для_turbo
-C - - - - - 0x02F752 0B:B742: 9D 60 05  STA ram_obj_0560,X ; 0560 0561 
+C - - - - - 0x02F752 0B:B742: 9D 60 05  STA ram_obj_timer,X ; 0560 0561 
 C - - - - - 0x02F755 0B:B745: A9 A2     LDA #$A2
 C - - - - - 0x02F757 0B:B747: 9D 00 04  STA ram_obj_anim_id,X ; 0400 0401 
 C - - - - - 0x02F75A 0B:B74A: FE 40 05  INC ram_obj_0540,X ; 0540 0541 
@@ -1671,7 +1671,7 @@ C - - - - - 0x02F75D 0B:B74D: 4C 17 F6  JMP loc_0x03F627_restore_prg
 
 
 ofs_038_B750_01:
-C - - J - - 0x02F760 0B:B750: DE 60 05  DEC ram_obj_0560,X ; 0560 0561 
+C - - J - - 0x02F760 0B:B750: DE 60 05  DEC ram_obj_timer,X ; 0560 0561 
 C - - - - - 0x02F763 0B:B753: D0 F8     BNE bra_B74D
 C - - - - - 0x02F765 0B:B755: FE 40 05  INC ram_obj_0540,X ; 0540 0541 
 C - - - - - 0x02F768 0B:B758: A9 56     LDA #con_dpcm_warcry_casey_2
@@ -1751,7 +1751,7 @@ C - - - - - 0x02F7F7 0B:B7E7: BD 40 04  LDA ram_obj_pos_X,X ; 0440 0441
 C - - - - - 0x02F7FA 0B:B7EA: 9D 4C 04  STA ram_044C,X ; 044C 044D 
 C - - - - - 0x02F7FD 0B:B7ED: BD 10 04  LDA ram_obj_pos_Y,X ; 0410 0411 
 C - - - - - 0x02F800 0B:B7F0: 9D 1C 04  STA ram_041C,X ; 041C 041D 
-C - - - - - 0x02F803 0B:B7F3: BD 10 05  LDA ram_obj_0510,X ; 0510 0511 
+C - - - - - 0x02F803 0B:B7F3: BD 10 05  LDA ram_obj_spr_flip,X ; 0510 0511 
 C - - - - - 0x02F806 0B:B7F6: 9D 1C 05  STA ram_051C,X ; 051C 051D 
 bra_B7F9:
 C - - - - - 0x02F809 0B:B7F9: 4C 17 F6  JMP loc_0x03F627_restore_prg
@@ -1826,8 +1826,8 @@ C - - - - - 0x02F910 0B:B900: 48        PHA
 C - - - - - 0x02F911 0B:B901: 20 13 B9  JSR sub_B913
 C - - - - - 0x02F914 0B:B904: 68        PLA
 C - - - - - 0x02F915 0B:B905: 99 50 05  STA ram_obj_id,Y ; 0554 0555 
-C - - - - - 0x02F918 0B:B908: BD 10 05  LDA ram_obj_0510,X ; 0510 0511 
-C - - - - - 0x02F91B 0B:B90B: 99 10 05  STA ram_obj_0510,Y ; 0514 0515 
+C - - - - - 0x02F918 0B:B908: BD 10 05  LDA ram_obj_spr_flip,X ; 0510 0511 
+C - - - - - 0x02F91B 0B:B90B: 99 10 05  STA ram_obj_spr_flip,Y ; 0514 0515 
 C - - - - - 0x02F91E 0B:B90E: 8A        TXA
 C - - - - - 0x02F91F 0B:B90F: 99 20 05  STA ram_obj_0520,Y ; 0524 0525 
 C - - - - - 0x02F922 0B:B912: 60        RTS
