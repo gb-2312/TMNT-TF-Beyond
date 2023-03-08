@@ -656,8 +656,6 @@ tbl_A8A6:
 
 
 sub_0x02EA10_корректировка_strength_по_опции_автобаланса:
-C - - - - - 0x02EA10 0B:AA00: BD 6B E4  LDA tbl_E46B,X
-C - - - - - 0x02EA13 0B:AA03: 9D 10 05  STA ram_obj_spr_flip,X ; 0510 0511 
 C - - - - - 0x02EA16 0B:AA06: A5 2C     LDA ram_game_mode
 ; con_gm_story
 ; con_gm_vs_player
@@ -665,14 +663,14 @@ C - - - - - 0x02EA16 0B:AA06: A5 2C     LDA ram_game_mode
 ; con_gm_vs_team
 ; con_gm_tournament
 C - - - - - 0x02EA18 0B:AA08: 49 03     EOR #$03
-C - - - - - 0x02EA1A 0B:AA0A: D0 20     BNE bra_AA2C
+C - - - - - 0x02EA1A 0B:AA0A: D0 20     BNE bra_AA2C_RTS
 ; if con_gm_vs_team
 C - - - - - 0x02EA1C 0B:AA0C: AD 51 01  LDA ram_0151
 C - - - - - 0x02EA1F 0B:AA0F: 49 01     EOR #$01
 C - - - - - 0x02EA21 0B:AA11: F0 17     BEQ bra_AA2A
 C - - - - - 0x02EA23 0B:AA13: AD 2B 01  LDA ram_option_misc
 C - - - - - 0x02EA26 0B:AA16: 29 08     AND #$08
-C - - - - - 0x02EA28 0B:AA18: F0 12     BEQ bra_AA2C
+C - - - - - 0x02EA28 0B:AA18: F0 12     BEQ bra_AA2C_RTS
 C - - - - - 0x02EA2A 0B:AA1A: 8A        TXA
 C - - - - - 0x02EA2B 0B:AA1B: 49 01     EOR #$01
 C - - - - - 0x02EA2D 0B:AA1D: A8        TAY
@@ -685,16 +683,8 @@ C - - - - - 0x02EA36 0B:AA26: A8        TAY
 C - - - - - 0x02EA37 0B:AA27: B9 90 AA  LDA tbl_AA90_автобаланс,Y
 bra_AA2A:
 C - - - - - 0x02EA3A 0B:AA2A: 95 A0     STA ram_strength,X
-bra_AA2C:
-C - - - - - 0x02EA3C 0B:AA2C: A0 01     LDY #con_init_anim_обычная_стойка
-C - - - - - 0x02EA3E 0B:AA2E: 4C 68 F7  JMP loc_0x03F778_выбор_начальной_анимации_персу
-
-
-
-tbl_E46B:
-; перемещено из банка FF
-- D 3 - - - 0x03E47B 0F:E46B: 00        .byte $00   ; 00
-- D 3 - - - 0x03E47C 0F:E46C: 40        .byte $40   ; 01
+bra_AA2C_RTS:
+C - - - - - 0x02EA3C 0B:AA2C: A0 01     RTS
 
 
 

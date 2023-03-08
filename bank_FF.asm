@@ -188,7 +188,6 @@
 .export sub_0x03F724
 .export loc_0x03F724
 .export sub_0x03F76A
-.export loc_0x03F778_выбор_начальной_анимации_персу
 .export sub_0x03F785
 .export sub_0x03F7D1
 .export sub_0x03F7E3
@@ -3494,10 +3493,15 @@ C - - - - - 0x03E436 0F:E426: BD 69 E4  LDA tbl_E469,X
 C - - - - - 0x03E439 0F:E429: 9D 40 04  STA ram_obj_pos_X,X ; 0440 0441 
 C - - - - - 0x03E43C 0F:E42C: A9 B0     LDA #$B0
 C - - - - - 0x03E43E 0F:E42E: 9D 10 04  STA ram_obj_pos_Y,X ; 0410 0411 
-C - - - - - 0x03E441 0F:E431: A0 01     LDY #$01
+                                        LDA tbl_E46B,X
+                                        STA ram_obj_spr_flip,X ; 0510 0511 
+                                        JSR sub_F5DF_swap_prg_12
+                                        LDY #con_init_anim_обычная_стойка
+                                        JSR sub_0x024AF7_выбор_начальной_анимации_персу
 C - - - - - 0x03E443 0F:E433: A9 36     LDA #con_prg_bank + $16
 C - - - - - 0x03E445 0F:E435: 20 00 F6  JSR sub_F600_swap_prg_16
 C - - - - - 0x03E448 0F:E438: 20 00 AA  JSR sub_0x02EA10_корректировка_strength_по_опции_автобаланса
+                                        JSR sub_F617_restore_prg
 C - - - - - 0x03E44C 0F:E43C: 8A        TXA
 C - - - - - 0x03E44D 0F:E43D: 09 80     ORA #$80
 C - - - - - 0x03E44F 0F:E43F: 9D 00 05  STA ram_obj_0500,X ; 0500 0501 
@@ -3527,6 +3531,10 @@ tbl_E469:
 tbl_0x03E479:
 - D 3 - - - 0x03E479 0F:E469: 58        .byte $58   ; 00
 - D 3 - - - 0x03E47A 0F:E46A: A8        .byte $A8   ; 01
+
+tbl_E46B:
+- D 3 - - - 0x03E47B 0F:E46B: 00        .byte $00   ; 00
+- D 3 - - - 0x03E47C 0F:E46C: 40        .byte $40   ; 01
 
 
 
@@ -6689,18 +6697,6 @@ C - - - - - 0x03F76E 0F:F75E: 68        PLA
 C - - - - - 0x03F76F 0F:F75F: 20 B3 B0  JSR sub_0x0270C3
 C - - - - - 0x03F772 0F:F762: 20 F6 AF  JSR sub_0x027006_отрисовать_инфу_в_статусбаре
 C - - - - - 0x03F775 0F:F765: 4C 17 F6  JMP loc_F617_restore_prg
-
-
-
-loc_0x03F778_выбор_начальной_анимации_персу:
-; Y = 01    bzk optimize
-C D 3 - - - 0x03F778 0F:F768: 98        TYA
-C - - - - - 0x03F779 0F:F769: 48        PHA
-C - - - - - 0x03F77A 0F:F76A: 20 DF F5  JSR sub_F5DF_swap_prg_12
-C - - - - - 0x03F77D 0F:F76D: 68        PLA
-C - - - - - 0x03F77E 0F:F76E: A8        TAY
-C - - - - - 0x03F77F 0F:F76F: 20 E7 8A  JSR sub_0x024AF7_выбор_начальной_анимации_персу
-C - - - - - 0x03F782 0F:F772: 4C 17 F6  JMP loc_F617_restore_prg
 
 
 
