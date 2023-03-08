@@ -3847,7 +3847,8 @@ C - - - - - 0x03E629 0F:E619: 60        RTS
 bra_E61A:
 ; con_gm_vs_team
 ; con_gm_tournament
-C - - - - - 0x03E62A 0F:E61A: 4C 3B F1  JMP loc_F13B
+C - - - - - 0x03E62A 0F:E61A: 4C 3B F1  JSR sub_F600_swap_prg_16_no_return
+                                        JMP loc_0x02FC90
 
 
 
@@ -5707,12 +5708,6 @@ tbl_F134:
 - D 3 - - - 0x03F148 0F:F138: 0F        .byte $0F   ; 04 casey
 - D 3 - - - 0x03F149 0F:F139: 1F        .byte $1F   ; 05 hot
 - D 3 - - - 0x03F14A 0F:F13A: 1A        .byte $1A   ; 06 shred
-
-
-
-loc_F13B:
-C - - - - - 0x03F14D 0F:F13D: 20 00 F6  JSR sub_F600_swap_prg_16_no_return
-C - - - - - 0x03F150 0F:F140: 4C 80 BC  JMP loc_0x02FC90
 
 
 
