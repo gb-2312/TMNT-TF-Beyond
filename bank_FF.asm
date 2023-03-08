@@ -2278,20 +2278,6 @@ C - - - - - 0x03DD7D 0F:DD6D: 60        RTS
 
 
 
-loc_DD6E:
-sub_0x03DD7E:
-C D 2 - - - 0x03DD7E 0F:DD6E: A5 FF     LDA ram_for_2000
-C - - - - - 0x03DD80 0F:DD70: 29 FC     AND #$FC
-C - - - - - 0x03DD82 0F:DD72: 85 FF     STA ram_for_2000
-C - - - - - 0x03DD84 0F:DD74: A9 00     LDA #$00
-C - - - - - 0x03DD86 0F:DD76: 85 FC     STA ram_scroll_Y
-C - - - - - 0x03DD88 0F:DD78: 85 FD     STA ram_scroll_X
-C - - - - - 0x03DD8A 0F:DD7A: 85 A6     STA ram_screen_pos_X
-C - - - - - 0x03DD8C 0F:DD7C: 85 A7     STA ram_00A7
-C - - - - - 0x03DD8E 0F:DD7E: 60        RTS
-
-
-
 sub_0x03DD96:
 C - - - - - 0x03DD96 0F:DD86: BD 80 04  LDA ram_obj_spd_X_hi,X ; 0480 0481 0482 
 ; bzk bug? почему ссылка на 057F?
@@ -4033,7 +4019,16 @@ C - - - - - 0x03E74F 0F:E73F: 4C CC F5  RTS
 ofs_001_E742_0D:
 C - - J - - 0x03E752 0F:E742: 20 3C F0  JSR sub_F03C
 C - - - - - 0x03E755 0F:E745: E6 95     INC ram_0095
-C - - - - - 0x03E757 0F:E747: 4C 6E DD  JMP loc_DD6E
+sub_0x03DD7E:
+C D 2 - - - 0x03DD7E 0F:DD6E: A5 FF     LDA ram_for_2000
+C - - - - - 0x03DD80 0F:DD70: 29 FC     AND #$FC
+C - - - - - 0x03DD82 0F:DD72: 85 FF     STA ram_for_2000
+C - - - - - 0x03DD84 0F:DD74: A9 00     LDA #$00
+C - - - - - 0x03DD86 0F:DD76: 85 FC     STA ram_scroll_Y
+C - - - - - 0x03DD88 0F:DD78: 85 FD     STA ram_scroll_X
+C - - - - - 0x03DD8A 0F:DD7A: 85 A6     STA ram_screen_pos_X
+C - - - - - 0x03DD8C 0F:DD7C: 85 A7     STA ram_00A7
+C - - - - - 0x03DD8E 0F:DD7E: 60        RTS
 
 
 
