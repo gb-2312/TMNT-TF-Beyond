@@ -1015,8 +1015,10 @@ sub_0x03D21C_получить_разницу_pos_X_двух_объектов:
 C - - - - - 0x03D21C 0F:D20C: BD 40 04  LDA ram_obj_pos_X,X ; 0440 0441 0445 0446 
 C - - - - - 0x03D21F 0F:D20F: 38        SEC
 C - - - - - 0x03D220 0F:D210: F9 40 04  SBC ram_obj_pos_X,Y ; 0440 0441 0442 0444 0446 
-C - - - - - 0x03D223 0F:D213: B0 23     BCS bra_D238_RTS
+C - - - - - 0x03D223 0F:D213: B0 23     BCS bra_D216_RTS
 C - - - - - 0x03D225 0F:D215: 4C FC D1  JMP loc_D1FC_EOR
+bra_D216_RTS:
+                                        RTS
 
 
 
@@ -1042,7 +1044,6 @@ C - - - - - 0x03D242 0F:D232: A9 00     LDA #$00
 C - - - - - 0x03D244 0F:D234: 6A        ROR
 C - - - - - 0x03D245 0F:D235: 6A        ROR
 C - - - - - 0x03D246 0F:D236: 85 00     STA ram_0000
-bra_D238_RTS:
 C - - - - - 0x03D248 0F:D238: 60        RTS
 
 
