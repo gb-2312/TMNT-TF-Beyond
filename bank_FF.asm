@@ -1121,7 +1121,7 @@ C - - - - - 0x03D293 0F:D283: 20 32 D0  JSR sub_D032_поинтеры_после
 - D 2 - I - 0x03D296 0F:D286: 90 D2     .word ofs_002_D290_00
 - D 2 - I - 0x03D298 0F:D288: AD D2     .word ofs_002_D2AD_01
 - D 2 - I - 0x03D29A 0F:D28A: BB D2     .word ofs_002_D2BB_02
-- D 2 - I - 0x03D29C 0F:D28C: 48 F7     .word ofs_002_F748_03_обработка_экрана_с_выбором_карты
+- D 2 - I - 0x03D29C 0F:D28C: 48 F7     .word ofs_002_F748_03_обработка_экрана_с_выбором_арены
 - D 2 - I - 0x03D29E 0F:D28E: F7 D2     .word ofs_002_D2F7_04
 
 
@@ -3041,24 +3041,24 @@ sub_E187:
 C - - - - - 0x03E197 0F:E187: A5 95     LDA ram_0095
 C - - - - - 0x03E199 0F:E189: 20 32 D0  JSR sub_D032_поинтеры_после_JSR
 - D 3 - I - 0x03E19C 0F:E18C: CE E1     .word ofs_001_E1CE_00_отрисовать_пустой_экран_и_очистить_оперативку
-- D 3 - I - 0x03E19E 0F:E18E: FD E1     .word ofs_001_E1FD_01
-- D 3 - I - 0x03E1A0 0F:E190: E7 F7     .word ofs_001_F7E7_02
+- D 3 - I - 0x03E19E 0F:E18E: FD E1     .word ofs_001_E1FD_01_еще_одна_чистка_экрана_и_прочего___отрисовка_турнирной_сетки
+- D 3 - I - 0x03E1A0 0F:E190: E7 F7     .word ofs_001_F7E7_02_обработать_рожи_в_турнирной_сетке
 - D 3 - I - 0x03E1A2 0F:E192: 4E E2     .word ofs_001_E24E_03_отрисовать_vs_экран
 - D 3 - I - 0x03E1A4 0F:E194: 41 E3     .word ofs_001_E341_04_обработка_vs_экрана
-- D 3 - I - 0x03E1A6 0F:E196: F3 E3     .word ofs_001_E3F3_05_отрисовать_tmnt_внизу_экрана
-- D 3 - I - 0x03E1A8 0F:E198: 6D E4     .word ofs_001_E46D_06
-- D 3 - I - 0x03E1AA 0F:E19A: A3 E4     .word ofs_001_E4A3_07
-- D 3 - I - 0x03E1AC 0F:E19C: 2E E5     .word ofs_001_E52E_08
-- D 3 - I - 0x03E1AE 0F:E19E: 5D E5     .word ofs_001_E55D_09
-- D 3 - I - 0x03E1B0 0F:E1A0: D5 E5     .word ofs_001_E5D5_0A
+- D 3 - I - 0x03E1A6 0F:E196: F3 E3     .word ofs_001_E3F3_05_отрисовка_арены___подготовка_к_бою
+- D 3 - I - 0x03E1A8 0F:E198: 6D E4     .word ofs_001_E46D_06_подготовка_к_бою
+- D 3 - I - 0x03E1AA 0F:E19A: A3 E4     .word ofs_001_E4A3_07_обработка_боя_на_арене
+- D 3 - I - 0x03E1AC 0F:E19C: 2E E5     .word ofs_001_E52E_08_подготовка_к_подсчету_очков_после_боя
+- D 3 - I - 0x03E1AE 0F:E19E: 5D E5     .word ofs_001_E55D_09_подсчет_очков_после_боя
+- D 3 - I - 0x03E1B0 0F:E1A0: D5 E5     .word ofs_001_E5D5_0A_подготовка_экрана_с_поражением_после_боя
 - D 3 - I - 0x03E1B2 0F:E1A2: 8F E6     .word ofs_001_E68F_0B_ничья_во_время_боя
 - D 3 - I - 0x03E1B4 0F:E1A4: FF E6     .word ofs_001_E6FF_0C
 - D 3 - I - 0x03E1B6 0F:E1A6: 42 E7     .word ofs_001_E742_0D
 - D 3 - I - 0x03E1B8 0F:E1A8: 3F F7     .word ofs_001_F73F_0E
 - D 3 - I - 0x03E1BA 0F:E1AA: 53 E7     .word ofs_001_E753_0F
 - D 3 - I - 0x03E1BC 0F:E1AC: 5D E7     .word ofs_001_E75D_10
-- D 3 - I - 0x03E1BE 0F:E1AE: F9 F7     .word ofs_001_F7F9_11
-- D 3 - I - 0x03E1C0 0F:E1B0: F0 F7     .word ofs_001_F7F0_12
+- D 3 - I - 0x03E1BE 0F:E1AE: F9 F7     .word ofs_001_F7F9_11_подготовка_экрана_rematch
+- D 3 - I - 0x03E1C0 0F:E1B0: F0 F7     .word ofs_001_F7F0_12_обработка_экрана_rematch
 - - - - - - 0x03E1C2 0F:E1B2: 70 E7     .word ofs_001_E770_13
 - - - - - - 0x03E1C4 0F:E1B4: 8B E7     .word ofs_001_E78B_14
 - D 3 - I - 0x03E1C6 0F:E1B6: 99 E7     .word ofs_001_E799_15
@@ -3108,7 +3108,8 @@ C - - - - - 0x03E20A 0F:E1FA: 4C 8C FC  JMP loc_FC8C_set_mirroring_V
 
 
 
-ofs_001_E1FD_01:
+ofs_001_E1FD_01_еще_одна_чистка_экрана_и_прочего___отрисовка_турнирной_сетки:
+; bzk optimize, повторная отрисовка пустого экрана после 00
 C - - J - - 0x03E20D 0F:E1FD: E6 95     INC ram_0095    ; 01 -> 02
 C - - - - - 0x03E20F 0F:E1FF: 20 3C F0  JSR sub_F03C_выключить_irq___удалить_все_объекты___отрисовать_пустой_экран
 C - - - - - 0x03E212 0F:E202: 20 C2 F6  JSR sub_F6C2_выключить_музыку_и_звуки
@@ -3458,7 +3459,7 @@ tbl_E3EF:
 
 
 
-ofs_001_E3F3_05_отрисовать_tmnt_внизу_экрана:
+ofs_001_E3F3_05_отрисовка_арены___подготовка_к_бою:
 C - - J - - 0x03E403 0F:E3F3: 20 C2 F6  JSR sub_F6C2_выключить_музыку_и_звуки
 C - - - - - 0x03E408 0F:E3F8: 20 00 F6  JSR sub_F600_swap_prg_16_no_return
 C - - - - - 0x03E40B 0F:E3FB: 20 50 AE  JSR sub_0x02EE60_выбрать_палитру_уровня
@@ -3534,7 +3535,7 @@ tbl_E46B:
 
 
 
-ofs_001_E46D_06:
+ofs_001_E46D_06_подготовка_к_бою:
 C - - J - - 0x03E47D 0F:E46D: A4 9E     LDY ram_009E
 C - - - - - 0x03E47F 0F:E46F: B9 AB FC  LDA tbl_FCAB,Y
 C - - - - - 0x03E482 0F:E472: 20 8B F6  JSR sub_F68B_выключить_звуки_и_записать_новый
@@ -3569,7 +3570,7 @@ C - - - - - 0x03E4B2 0F:E4A2: 60        RTS
 
 
 
-ofs_001_E4A3_07:
+ofs_001_E4A3_07_обработка_боя_на_арене:
 C - - J - - 0x03E4B3 0F:E4A3: A4 2C     LDY ram_game_mode
 ; con_gm_story
 ; con_gm_vs_player
@@ -3638,10 +3639,9 @@ bra_E4FA:
 C - - - - - 0x03E50A 0F:E4FA: 4C 94 F7  JMP loc_F794
 bra_E4FD:
 bra_E4FD_loop:
-; bzk bug, если соперник попался в мясо, его поднимает над землей,
-; из-за чего игра не может завершить поединок. еще нужно проследить чтобы
-; объекты hitspark были удалены, они почему-то могут остаться
-; висеть на экране, несмотря на 0x03E525
+; bzk bug, проследить чтобы объекты hitspark были удалены когда время вышло,
+; они почему-то могут остаться висеть на экране, несмотря на 0x03E525,
+; например когда шрушер только начинает мясо как раз перед истечением времени
 C - - - - - 0x03E50D 0F:E4FD: A9 AE     LDA #$AE
 C - - - - - 0x03E50F 0F:E4FF: DD 10 04  CMP ram_obj_pos_Y,X ; 0410 0411 
 C - - - - - 0x03E512 0F:E502: B0 E2     BCS bra_E4E6
@@ -3671,7 +3671,7 @@ loc_E522_перейти_в_режим_vs_player:
 
 
 
-ofs_001_E52E_08:
+ofs_001_E52E_08_подготовка_к_подсчету_очков_после_боя:
 C - - J - - 0x03E53E 0F:E52E: E6 95     INC ram_0095    ; 08 -> 09
 C - - - - - 0x03E540 0F:E530: A9 00     LDA #$00
 C - - - - - 0x03E542 0F:E532: 8D 07 04  STA ram_obj_anim_id + $07
@@ -3699,7 +3699,7 @@ C - - - - - 0x03E56C 0F:E55C: 60        RTS
 
 
 
-ofs_001_E55D_09:
+ofs_001_E55D_09_подсчет_очков_после_боя:
 C - - J - - 0x03E56D 0F:E55D: AD B0 04  LDA ram_obj_spd_Y_lo
 C - - - - - 0x03E570 0F:E560: F0 09     BEQ bra_E56B
 C - - - - - 0x03E572 0F:E562: A5 22     LDA ram_счетчик_кадров
@@ -3790,7 +3790,7 @@ C - - - - - 0x03E5E4 0F:E5D4: 60        RTS
 
 
 
-ofs_001_E5D5_0A:
+ofs_001_E5D5_0A_подготовка_экрана_с_поражением_после_боя:
 C - - J - - 0x03E5E5 0F:E5D5: A0 00     LDY #$00
 C - - - - - 0x03E5E7 0F:E5D7: AD 49 06  LDA ram_plr_колво_побед_в_раундах
 C - - - - - 0x03E5EA 0F:E5DA: CD 4A 06  CMP ram_plr_колво_побед_в_раундах + $01
@@ -4045,7 +4045,7 @@ C - - - - - 0x03E765 0F:E755: 20 26 F7  JSR sub_F726_отрисовать_тур
 C - - - - - 0x03E768 0F:E758: A9 FF     LDA #$FF
 C - - - - - 0x03E76A 0F:E75A: 8D 60 05  STA ram_obj_timer
 ofs_001_E75D_10:
-C - - - - - 0x03E76D 0F:E75D: 20 E7 F7  JSR sub_F7E7
+C - - - - - 0x03E76D 0F:E75D: 20 E7 F7  JSR sub_F7E7_обработать_рожи_в_турнирной_сетке
 C - - - - - 0x03E770 0F:E760: A5 90     LDA ram_sum_btn_press
 C - - - - - 0x03E772 0F:E762: 29 10     AND #con_btn_Start
 C - - - - - 0x03E774 0F:E764: F0 09     BEQ bra_E76F_RTS
@@ -6449,7 +6449,7 @@ C - - - - - 0x03F605 0F:F5F5: D0 02     BNE bra_F5F9    ; jmp
 
 
 sub_F600_swap_prg_16_no_return:
-; bzk optimize, прыжок на 0x03F5F7 (а может не надо, раз 3 команды выше не выполняются)
+; bzk optimize, прыжок на 0x03F5F7 (а может не надо, раз 3 команды в 0x03F609 не выполняются)
                                         LDA #con_prg_bank + $16
                                         BNE bra_F600
 
@@ -6675,9 +6675,9 @@ C - - - - - 0x03F755 0F:F745: 4C 17 F6  JMP loc_F617_restore_prg
 
 
 
-ofs_002_F748_03_обработка_экрана_с_выбором_карты:
+ofs_002_F748_03_обработка_экрана_с_выбором_арены:
 C - - J - - 0x03F758 0F:F748: 20 F3 F5  JSR sub_F5F3_swap_prg_1C
-C - - - - - 0x03F75B 0F:F74B: 20 90 88  JSR sub_0x0388A0_обработка_экрана_с_выбором_карты
+C - - - - - 0x03F75B 0F:F74B: 20 90 88  JSR sub_0x0388A0_обработка_экрана_с_выбором_арены
 C - - - - - 0x03F75E 0F:F74E: 4C 17 F6  JMP loc_F617_restore_prg
 
 
@@ -6788,24 +6788,25 @@ C - - - - - 0x03F7F4 0F:F7E4: 4C 17 F6  JMP loc_F617_restore_prg
 
 
 
-sub_F7E7:
-ofs_001_F7E7_02:
+sub_F7E7_обработать_рожи_в_турнирной_сетке:
+ofs_001_F7E7_02_обработать_рожи_в_турнирной_сетке:
 C - - J - - 0x03F7F7 0F:F7E7: 20 F3 F5  JSR sub_F5F3_swap_prg_1C
 C - - - - - 0x03F7FA 0F:F7EA: 20 6C A3  JSR sub_0x03A37C_обработать_рожи_в_турнирной_сетке
 C - - - - - 0x03F7FD 0F:F7ED: 4C 17 F6  JMP loc_F617_restore_prg
 
 
 
-ofs_001_F7F0_12:
+ofs_001_F7F0_12_обработка_экрана_rematch:
 C - - J - - 0x03F800 0F:F7F0: 20 F3 F5  JSR sub_F5F3_swap_prg_1C
-C - - - - - 0x03F803 0F:F7F3: 20 8F A4  JSR sub_0x03A49F
+C - - - - - 0x03F803 0F:F7F3: 20 8F A4  JSR sub_0x03A49F_обработка_экрана_rematch
 C - - - - - 0x03F806 0F:F7F6: 4C 17 F6  JMP loc_F617_restore_prg
 
 
 
-ofs_001_F7F9_11:
+ofs_001_F7F9_11_подготовка_экрана_rematch:
+; подпрограмма срабатывает дважды подряд
 C - - J - - 0x03F809 0F:F7F9: 20 F3 F5  JSR sub_F5F3_swap_prg_1C
-C - - - - - 0x03F80C 0F:F7FC: 20 27 A4  JSR sub_0x03A437
+C - - - - - 0x03F80C 0F:F7FC: 20 27 A4  JSR sub_0x03A437_подготовка_экрана_rematch
 C - - - - - 0x03F80F 0F:F7FF: 4C 17 F6  JMP loc_F617_restore_prg
 
 
