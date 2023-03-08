@@ -11,7 +11,7 @@
 .export sub_0x02E74B
 .export ofs_0x02E7CA
 .export ofs_0x02E86E
-.export sub_0x02EA10
+.export sub_0x02EA10_корректировка_strength_по_опции_автобаланса
 .export loc_0x02EB10
 .export sub_0x02EE60_выбрать_палитру_уровня
 .export sub_0x02EF50_записать_3_цвета_в_буфер
@@ -655,7 +655,7 @@ tbl_A8A6:
 
 
 
-sub_0x02EA10:
+sub_0x02EA10_корректировка_strength_по_опции_автобаланса:
 C - - - - - 0x02EA10 0B:AA00: BD 6B E4  LDA tbl_E46B,X
 C - - - - - 0x02EA13 0B:AA03: 9D 10 05  STA ram_obj_spr_flip,X ; 0510 0511 
 C - - - - - 0x02EA16 0B:AA06: A5 2C     LDA ram_game_mode
