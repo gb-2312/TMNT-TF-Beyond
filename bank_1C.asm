@@ -1792,7 +1792,7 @@ C - - - - - 0x038974 0E:8964: A9 27     LDA #con_0x03F6AD_27
 bra_8966:
 C - - - - - 0x038976 0E:8966: 20 90 F6  JSR sub_0x03F6A0_записать_звук_сохранив_X_Y
 bra_8969:
-C - - - - - 0x038979 0E:8969: 4C 00 B0  JMP loc_B000
+C - - - - - 0x038979 0E:8969: 4C 00 B0  JMP loc_B000_попытка_toggle_technodrome
 bra_896C:
 C - - - - - 0x03897C 0E:896C: 20 16 B0  JSR sub_B016
 C - - - - - 0x03897F 0E:896F: B9 F1 BF  LDA tbl_BFF1_конвертация_в_индекс_уровня,Y
@@ -4098,8 +4098,8 @@ C - - - - - 0x0397C5 0E:97B5: AD 41 04  LDA ram_obj_pos_X + $01
 C - - - - - 0x0397C8 0E:97B8: C9 A0     CMP #$A0
 C - - - - - 0x0397CA 0E:97BA: B0 50     BCS bra_980C
 bra_97BC:
-C - - - - - 0x0397CC 0E:97BC: A9 42     LDA #$42
-C - - - - - 0x0397CE 0E:97BE: A0 04     LDY #$04
+C - - - - - 0x0397CC 0E:97BC: A9 42     LDA #$42    ; pos_Y для сравнения
+C - - - - - 0x0397CE 0E:97BE: A0 04     LDY #$04    ; spd_Z_lo
 C - - - - - 0x0397D0 0E:97C0: 20 0D DF  JSR sub_0x03DF1D
 C - - - - - 0x0397D3 0E:97C3: 4C 4C DB  JMP loc_0x03DB5C_добавить_spd_Z_к_pos_Y
 
@@ -6396,7 +6396,7 @@ C - - - - - 0x03A927 0E:A917: 60        RTS
 
 
 
-loc_B000:
+loc_B000_попытка_toggle_technodrome:
 C D 1 - - - 0x03B010 0E:B000: A5 90     LDA ram_sum_btn_press
 C - - - - - 0x03B012 0E:B002: 29 20     AND #con_btn_Select
 C - - - - - 0x03B014 0E:B004: F0 0D     BEQ bra_B013
