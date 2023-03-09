@@ -1794,7 +1794,9 @@ C - - - - - 0x038976 0E:8966: 20 90 F6  JSR sub_0x03F6A0_записать_зву
 bra_8969:
 C - - - - - 0x038979 0E:8969: 4C 00 B0  JMP loc_B000_попытка_toggle_technodrome
 bra_896C:
-C - - - - - 0x03897C 0E:896C: 20 16 B0  JSR sub_B016
+C - - - - - 0x03897C 0E:896C: 20 16 B0  LDA ram_obj_spd_Y_hi
+                                        ORA ram_0150
+                                        TAY
 C - - - - - 0x03897F 0E:896F: B9 F1 BF  LDA tbl_BFF1_конвертация_в_индекс_уровня,Y
 C - - - - - 0x038982 0E:8972: 85 9E     STA ram_009E
 C - - - - - 0x038984 0E:8974: A9 14     LDA #$14
@@ -6407,14 +6409,6 @@ C - - - - - 0x03B01E 0E:B00E: A9 27     LDA #con_0x03F6AD_27
 C - - - - - 0x03B020 0E:B010: 20 90 F6  JSR sub_0x03F6A0_записать_звук_сохранив_X_Y
 bra_B013:
 C - - - - - 0x03B023 0E:B013: 4C B6 89  JMP loc_89B6
-
-
-
-sub_B016:
-C - - - - - 0x03B026 0E:B016: AD A0 04  LDA ram_obj_spd_Y_hi
-C - - - - - 0x03B029 0E:B019: 0D 50 01  ORA ram_0150
-C - - - - - 0x03B02C 0E:B01C: A8        TAY
-C - - - - - 0x03B02D 0E:B01D: 60        RTS
 
 
 
