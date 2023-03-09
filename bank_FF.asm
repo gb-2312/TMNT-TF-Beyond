@@ -6536,8 +6536,6 @@ sub_F669_swap_prg_запомнив_текущий_банк:
 C - - - - - 0x03F679 0F:F669: A0 01     LDY #$01
 C - - - - - 0x03F67B 0F:F66B: 84 2E     STY ram_002E
 C - - - - - 0x03F67D 0F:F66D: AD 00 80  LDA $8000
-; bzk optimize
-C - - - - - 0x03F680 0F:F670: 09 30     ORA #$30
 C - - - - - 0x03F682 0F:F672: 85 46     STA ram_0046
 C - - - - - 0x03F684 0F:F674: A2 30     LDX #con_prg_bank + $10
 sub_F676_restore_prg_в_оригинальный_банк:
