@@ -13,6 +13,10 @@
 
 
 
+    .byte con_bank_id + $06   ; 
+
+
+
 _off006_screen_04:
     .incbin "incbin/screens/04.bin"
 

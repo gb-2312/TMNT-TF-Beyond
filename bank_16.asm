@@ -24,7 +24,7 @@
 
 
 
-- D 0 - - - 0x02C010 0B:8000: 06        .byte con_bank_id + $06   ; 
+- D 0 - - - 0x02C010 0B:8000: 06        .byte con_bank_id + $16   ; 
 
 
 

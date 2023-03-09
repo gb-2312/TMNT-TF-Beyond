@@ -5,3 +5,7 @@
 .org $8000
 
 
+
+    .byte con_bank_id + $0C   ; 
+
+

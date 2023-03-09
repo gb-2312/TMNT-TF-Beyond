@@ -11,7 +11,7 @@
 
 
 
-- D 0 - - - 0x034010 0D:8000: 0A        .byte con_bank_id + $0A   ; 
+- D 0 - - - 0x034010 0D:8000: 0A        .byte con_bank_id + $1A   ; 
 
 
 
