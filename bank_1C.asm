@@ -1684,7 +1684,7 @@ C - - - - - 0x0388B5 0E:88A5: F0 03     BEQ bra_88AA    ; if con_gm_vs_cpu
 ; con_gm_story
 ; con_gm_vs_team
 ; con_gm_tournament
-C - - - - - 0x0388B7 0E:88A7: 4C 9E 89  JMP loc_899E
+C - - - - - 0x0388B7 0E:88A7: 4C 9E 89  JMP loc_899E_подготовить_следующий_скрипт
 bra_88AA:
 ; con_gm_vs_player
 ; con_gm_vs_cpu
@@ -1824,7 +1824,7 @@ C - - - - - 0x0389AB 0E:899B: 4C 2E E1  JMP loc_0x03E13E_подготовить_
 
 
 
-loc_899E:
+loc_899E_подготовить_следующий_скрипт:
 ofs_013_899E_04_подготовить_следующий_скрипт:
 C D 0 - - - 0x0389AE 0E:899E: 20 BE DA  JSR sub_0x03DACE_удалить_все_объекты
 ; A = 00
