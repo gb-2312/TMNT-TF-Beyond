@@ -5966,7 +5966,7 @@ C - - - - - 0x02BD94 0A:BD84: 20 32 D0  JSR sub_0x03D042_поинтеры_пос
 
 ofs_043_BD91_00:
 C - - J - - 0x02BDA1 0A:BD91: A9 90     LDA #$90
-C - - - - - 0x02BDA3 0A:BD93: 8D 41 04  STA ram_obj_pos_X + $01
+C - - - - - 0x02BDA3 0A:BD93: 8D 41 04  STA ram_obj_pos_X_lo + $01
 C - - - - - 0x02BDA6 0A:BD96: A9 00     LDA #$00
 C - - - - - 0x02BDA8 0A:BD98: 8D A1 04  STA ram_obj_spd_Y_hi + $01
 loc_BD9B:
@@ -5981,7 +5981,7 @@ C - - - - - 0x02BDBD 0A:BDAD: 8D B1 04  STA ram_obj_spd_Y_lo + $01
 C - - - - - 0x02BDC0 0A:BDB0: A9 01     LDA #$01
 C - - - - - 0x02BDC2 0A:BDB2: 8D 31 05  STA ram_obj_0530 + $01
 C - - - - - 0x02BDC5 0A:BDB5: A9 B0     LDA #$B0
-C - - - - - 0x02BDC7 0A:BDB7: 8D 11 04  STA ram_obj_pos_Y + $01
+C - - - - - 0x02BDC7 0A:BDB7: 8D 11 04  STA ram_obj_pos_Y_lo + $01
 C - - - - - 0x02BDCA 0A:BDBA: A9 09     LDA #$09
 C - - - - - 0x02BDCC 0A:BDBC: 8D 71 05  STA ram_obj_0570 + $01
 C - - - - - 0x02BDCF 0A:BDBF: A9 20     LDA #$20
@@ -6064,10 +6064,10 @@ C - - - - - 0x02BE5E 0A:BE4E: A9 04     LDA #$04
 C - - - - - 0x02BE60 0A:BE50: 85 00     STA ram_0000
 C - - - - - 0x02BE62 0A:BE52: A0 03     LDY #$03
 bra_BE54_loop:
-C - - - - - 0x02BE64 0A:BE54: AD 41 04  LDA ram_obj_pos_X + $01
-C - - - - - 0x02BE67 0A:BE57: 99 40 04  STA ram_obj_pos_X,Y ; 0443 0445 0447 0449 044B 
+C - - - - - 0x02BE64 0A:BE54: AD 41 04  LDA ram_obj_pos_X_lo + $01
+C - - - - - 0x02BE67 0A:BE57: 99 40 04  STA ram_obj_pos_X_lo,Y ; 0443 0445 0447 0449 044B 
 C - - - - - 0x02BE6A 0A:BE5A: A9 80     LDA #$80
-C - - - - - 0x02BE6C 0A:BE5C: 99 10 04  STA ram_obj_pos_Y,Y ; 0413 0415 0417 0419 041B 
+C - - - - - 0x02BE6C 0A:BE5C: 99 10 04  STA ram_obj_pos_Y_lo,Y ; 0413 0415 0417 0419 041B 
 C - - - - - 0x02BE6F 0A:BE5F: A9 01     LDA #$01
 C - - - - - 0x02BE71 0A:BE61: 99 30 05  STA ram_obj_0530,Y ; 0533 0535 0537 0539 053B 
 C - - - - - 0x02BE74 0A:BE64: C8        INY
@@ -6079,12 +6079,12 @@ C - - - - - 0x02BE7D 0A:BE6D: AD A1 04  LDA ram_obj_spd_Y_hi + $01
 C - - - - - 0x02BE80 0A:BE70: C9 05     CMP #$05
 C - - - - - 0x02BE82 0A:BE72: B0 28     BCS bra_BE9C
 C - - - - - 0x02BE84 0A:BE74: 18        CLC
-C - - - - - 0x02BE85 0A:BE75: AD 41 04  LDA ram_obj_pos_X + $01
+C - - - - - 0x02BE85 0A:BE75: AD 41 04  LDA ram_obj_pos_X_lo + $01
 C - - - - - 0x02BE88 0A:BE78: 69 40     ADC #< $0040
-C - - - - - 0x02BE8A 0A:BE7A: 8D 46 04  STA ram_obj_pos_X + $06
-C - - - - - 0x02BE8D 0A:BE7D: AD 31 04  LDA ram_obj_0430 + $01
+C - - - - - 0x02BE8A 0A:BE7A: 8D 46 04  STA ram_obj_pos_X_lo + $06
+C - - - - - 0x02BE8D 0A:BE7D: AD 31 04  LDA ram_obj_pos_X_hi + $01
 C - - - - - 0x02BE90 0A:BE80: 69 00     ADC #> $0040
-C - - - - - 0x02BE92 0A:BE82: 8D 36 04  STA ram_obj_0430 + $06
+C - - - - - 0x02BE92 0A:BE82: 8D 36 04  STA ram_obj_pos_X_hi + $06
 C - - - - - 0x02BE95 0A:BE85: A9 80     LDA #$80
 C - - - - - 0x02BE97 0A:BE87: 8D E6 05  STA ram_obj_05E0 + $06
 C - - - - - 0x02BE9A 0A:BE8A: EE 31 05  INC ram_obj_0530 + $01
@@ -6093,7 +6093,7 @@ C - - - - - 0x02BE9F 0A:BE8F: 8D 81 05  STA ram_obj_0580 + $01
 C - - - - - 0x02BEA2 0A:BE92: 0A        ASL
 C - - - - - 0x02BEA3 0A:BE93: 8D E1 05  STA ram_obj_05E0 + $01
 C - - - - - 0x02BEA6 0A:BE96: A9 FF     LDA #$FF
-C - - - - - 0x02BEA8 0A:BE98: 8D 41 04  STA ram_obj_pos_X + $01
+C - - - - - 0x02BEA8 0A:BE98: 8D 41 04  STA ram_obj_pos_X_lo + $01
 C - - - - - 0x02BEAB 0A:BE9B: 60        RTS
 bra_BE9C:
 C - - - - - 0x02BEAC 0A:BE9C: A9 04     LDA #$04
@@ -6101,7 +6101,7 @@ C - - - - - 0x02BEAE 0A:BE9E: 8D 31 05  STA ram_obj_0530 + $01
 C - - - - - 0x02BEB1 0A:BEA1: A0 00     LDY #$00
 C - - - - - 0x02BEB3 0A:BEA3: 8C E1 05  STY ram_obj_05E0 + $01
 C - - - - - 0x02BEB6 0A:BEA6: 88        DEY
-C - - - - - 0x02BEB7 0A:BEA7: 8C 41 04  STY ram_obj_pos_X + $01
+C - - - - - 0x02BEB7 0A:BEA7: 8C 41 04  STY ram_obj_pos_X_lo + $01
 C - - - - - 0x02BEBA 0A:BEAA: A9 05     LDA #con_plr_state_запускает_мяч
 C - - - - - 0x02BEBC 0A:BEAC: 8D 21 05  STA ram_obj_0520 + $01
 C - - - - - 0x02BEBF 0A:BEAF: A9 1D     LDA #con_sfx_взрыв
@@ -6110,10 +6110,10 @@ C - - - - - 0x02BEC1 0A:BEB1: 4C 8B F6  JMP loc_0x03F69B_выключить_зв
 
 
 ofs_043_BEB4_03:
-C - - J - - 0x02BEC4 0A:BEB4: AD 36 04  LDA ram_obj_0430 + $06
+C - - J - - 0x02BEC4 0A:BEB4: AD 36 04  LDA ram_obj_pos_X_hi + $06
 C - - - - - 0x02BEC7 0A:BEB7: D0 8C     BNE bra_BE45_RTS
-C - - - - - 0x02BEC9 0A:BEB9: AD 46 04  LDA ram_obj_pos_X + $06
-C - - - - - 0x02BECC 0A:BEBC: 8D 41 04  STA ram_obj_pos_X + $01
+C - - - - - 0x02BEC9 0A:BEB9: AD 46 04  LDA ram_obj_pos_X_lo + $06
+C - - - - - 0x02BECC 0A:BEBC: 8D 41 04  STA ram_obj_pos_X_lo + $01
 C - - - - - 0x02BECF 0A:BEBF: 4C 9B BD  JMP loc_BD9B
 
 

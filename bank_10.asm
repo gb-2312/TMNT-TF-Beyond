@@ -1693,7 +1693,7 @@ C - - - - - 0x020AD0 08:8AC0: 85 E1     STA ram_00E1
 C - - - - - 0x020AD2 08:8AC2: 4C 04 84  JMP loc_8404
 bra_8AC5:
 C - - - - - 0x020AD5 08:8AC5: B5 EA     LDA ram_00EA,X
-C - - - - - 0x020AD7 08:8AC7: 29 BF     AND #$BF
+C - - - - - 0x020AD7 08:8AC7: 29 BF     AND #$40 ^ $FF
 C - - - - - 0x020AD9 08:8AC9: 95 EA     STA ram_00EA,X
 C - - - - - 0x020ADB 08:8ACB: A9 00     LDA #$00
 C - - - - - 0x020ADD 08:8ACD: 9D 7C 07  STA ram_077C,X
