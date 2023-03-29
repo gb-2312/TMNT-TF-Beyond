@@ -1869,6 +1869,18 @@ C - - - - - 0x0389E1 0E:89D1: 0A        ASL
 C - - - - - 0x0389E2 0E:89D2: 0A        ASL
 C - - - - - 0x0389E3 0E:89D3: 0A        ASL
 C - - - - - 0x0389E4 0E:89D4: 7D 32 8A  ADC tbl_8A32,X
+                                        CPX #$00
+                                        BEQ bra_89D5
+                                        CMP #$A9
+                                        BCC bra_89D6
+bra_89D5:
+                                        CMP #$21
+                                        BCS bra_89D7
+                                        LDA #$21
+                                        .byte $2C   ; BIT
+bra_89D6:
+                                        LDA #$A9
+bra_89D7:
 C - - - - - 0x0389E7 0E:89D7: 9D 40 04  STA ram_obj_pos_X_lo,X ; 0440 0441 
 C - - - - - 0x0389EA 0E:89DA: A9 57     LDA #$57
 C - - - - - 0x0389EC 0E:89DC: 9D 10 04  STA ram_obj_pos_Y_lo,X ; 0410 0411 
