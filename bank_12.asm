@@ -1914,13 +1914,96 @@ C - - - - - 0x024CD3 09:8CC3: DE D0 04  DEC ram_obj_04D0,X ; 04D0 04D1
 C - - - - - 0x024CD6 09:8CC6: F0 0E     BEQ bra_8CD6
 C - - - - - 0x024CD8 09:8CC8: BD D0 04  LDA ram_obj_04D0,X ; 04D0 04D1 
 C - - - - - 0x024CDB 09:8CCB: C9 08     CMP #$08
-C - - - - - 0x024CDD 09:8CCD: A9 C0     LDA #$C0
-C - - - - - 0x024CDF 09:8CCF: B0 02     BCS bra_8CD3
+                                        LDY ram_062E,X
 C - - - - - 0x024CE1 09:8CD1: A9 30     LDA #$30
+                                        BCC bra_8CD3
+                                        TYA
+                                        BPL bra_8CD2
+                                        LDY ram_global_obj_index
+                                        LDA ram_obj_id,Y
+                                        ORA #$40
+                                        TAY
+bra_8CD2:
+                                        LDA tbl_8CD7,Y
 bra_8CD3:
 C - - - - - 0x024CE3 09:8CD3: 4C 6A D1  JMP loc_0x03D17A
 bra_8CD6:
 C - - - - - 0x024CE6 09:8CD6: 4C 6E 8F  JMP loc_8F6E
+
+
+
+tbl_8CD7:
+    .byte $C0   ; 00 
+    .byte $C0   ; 01 
+    .byte $C0   ; 02 
+    .byte $C0   ; 03 
+    .byte $C0   ; 04 
+    .byte $C0   ; 05 
+    .byte $C0   ; 06 
+    .byte $C0   ; 07 
+    .byte $C0   ; 08 
+    .byte $C0   ; 09 
+    .byte $C0   ; 0A 
+    .byte $C0   ; 0B 
+    .byte $C0   ; 0C 
+    .byte $C0   ; 0D 
+    .byte $C0   ; 0E 
+    .byte $C0   ; 0F 
+    .byte $C0   ; 10 
+    .byte $C0   ; 11 
+    .byte $C0   ; 12 
+    .byte $C0   ; 13 
+    .byte $C0   ; 14 
+    .byte $C0   ; 15 
+    .byte $C0   ; 16 
+    .byte $C0   ; 17 
+    .byte $C0   ; 18 
+    .byte $C0   ; 19 
+    .byte $01   ; 1A 
+    .byte $01   ; 1B 
+    .byte $C0   ; 1C 
+    .byte $C0   ; 1D 
+    .byte $01   ; 1E 
+    .byte $01   ; 1F 
+    .byte $C0   ; 20 
+    .byte $11   ; 21 
+    .byte $C0   ; 22 
+    .byte $C0   ; 23 
+    .byte $C0   ; 24 
+    .byte $C0   ; 25 
+    .byte $C0   ; 26 
+    .byte $C0   ; 27 
+    .byte $C0   ; 28 
+    .byte $C0   ; 29 
+    .byte $C0   ; 2A 
+    .byte $C0   ; 2B 
+    .byte $C0   ; 2C 
+    .byte $C0   ; 2D 
+    .byte $C0   ; 2E 
+    .byte $C0   ; 2F 
+    .byte $C0   ; 30 
+    .byte $C0   ; 31 
+    .byte $C0   ; 32 
+    .byte $C0   ; 33 
+    .byte $C0   ; 34 
+    .byte $C0   ; 35 
+    .byte $C0   ; 36 
+    .byte $01   ; 37 
+    .byte $C0   ; 38 
+    .byte $C0   ; 39 
+    .byte $FF   ; 3A placeholder
+    .byte $FF   ; 3B placeholder
+    .byte $FF   ; 3C placeholder
+    .byte $FF   ; 3D placeholder
+    .byte $FF   ; 3E placeholder
+    .byte $FF   ; 3F placeholder
+    .byte $C0   ; 40 (00 leo)
+    .byte $C0   ; 41 (01 raph)
+    .byte $C0   ; 42 (02 mike)
+    .byte $C0   ; 43 (03 don)
+    .byte $01   ; 44 (04 casey)
+    .byte $A1   ; 45 (05 hot)
+    .byte $C0   ; 46 (06 shred)
 
 
 
@@ -7630,6 +7713,9 @@ C - - - - - 0x026C12 09:AC02: A9 00     LDA #$00
 C - - - - - 0x026C14 09:AC04: 9D 40 05  STA ram_obj_0540,X ; 0540 0541 
 C - - - - - 0x026C17 09:AC07: 9D 0C 04  STA ram_obj_anim_id + $0C,X ; 040C 040D 
 C - - - - - 0x026C1A 09:AC0A: 9D 04 04  STA ram_obj_anim_id + $04,X ; 0404 0405 
+                                        LDY ram_global_obj_index
+                                        LDA ram_obj_id,Y
+                                        STA ram_062E,X
 C - - - - - 0x026C1D 09:AC0D: 60        RTS
 
 
