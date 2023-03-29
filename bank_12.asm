@@ -8180,10 +8180,8 @@ C - - - - - 0x026F7F 09:AF6F: D0 01     BNE bra_AF72
 C - - - - - 0x026F81 09:AF71: C8        INY
 bra_AF72:
 C - - - - - 0x026F82 09:AF72: B9 AE AF  LDA tbl_AFAE,Y
+; bzk optimize, BNE
 C - - - - - 0x026F85 09:AF75: 4C 7B AF  JMP loc_AF7B
-
-
-
 bra_AF78:
 C - - - - - 0x026F88 09:AF78: B9 87 AF  LDA tbl_AF86 + $01,Y
 loc_AF7B:

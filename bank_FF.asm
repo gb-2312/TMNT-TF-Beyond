@@ -4553,6 +4553,9 @@ C D 3 - - - 0x03EA7F 0F:EA6F: 20 59 D2  JSR sub_D259_записать_FF_в_бу
 C - - - - - 0x03EA82 0F:EA72: A6 00     LDX ram_0000
 bra_EA74_RTS:
 C - - - - - 0x03EA84 0F:EA74: 60        RTS
+
+
+
 sub_EA75:
 C - - - - - 0x03EA85 0F:EA75: A9 37     LDA #$37
 C - - - - - 0x03EA87 0F:EA77: A4 04     LDY ram_0004
