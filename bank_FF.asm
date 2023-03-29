@@ -124,7 +124,7 @@
 .export loc_0x03E91E_отрисовать_инфу_в_статусбаре
 .export tbl_0x03E995
 .export tbl_0x03E99C
-.export sub_0x03EA42
+.export sub_0x03EA45
 .export loc_0x03EA45
 .export sub_0x03EA4B
 .export sub_0x03EAA6_обновить_и_отрисовать_время_боя
@@ -4519,8 +4519,7 @@ C - - - - - 0x03EA33 0F:EA23: 60        RTS
 
 
 
-sub_0x03EA42:
-C - - - - - 0x03EA42 0F:EA32: 20 DF F5  JSR sub_F5DF_swap_prg_12
+sub_0x03EA45:
 loc_0x03EA45:
 C D 3 - - - 0x03EA45 0F:EA35: A5 95     LDA ram_0095
 C - - - - - 0x03EA47 0F:EA37: C9 10     CMP #$10
@@ -4529,7 +4528,9 @@ sub_0x03EA4B:
 C - - - - - 0x03EA4B 0F:EA3B: 86 00     STX ram_0000
 C - - - - - 0x03EA4D 0F:EA3D: BD 66 EB  LDA tbl_EB66_ppu_lo,X
 C - - - - - 0x03EA50 0F:EA40: 85 01     STA ram_0001
+                                        JSR sub_F5E7_swap_prg_16
 C - - - - - 0x03EA52 0F:EA42: 20 03 BF  JSR sub_0x027F13
+                                        JSR sub_F617_restore_prg
 C - - - - - 0x03EA55 0F:EA45: 38        SEC
 C - - - - - 0x03EA56 0F:EA46: A9 B0     LDA #$B0
 C - - - - - 0x03EA58 0F:EA48: E5 05     SBC ram_0005
@@ -4553,6 +4554,9 @@ C D 3 - - - 0x03EA7F 0F:EA6F: 20 59 D2  JSR sub_D259_записать_FF_в_бу
 C - - - - - 0x03EA82 0F:EA72: A6 00     LDX ram_0000
 bra_EA74_RTS:
 C - - - - - 0x03EA84 0F:EA74: 60        RTS
+
+
+
 sub_EA75:
 C - - - - - 0x03EA85 0F:EA75: A9 37     LDA #$37
 C - - - - - 0x03EA87 0F:EA77: A4 04     LDY ram_0004
