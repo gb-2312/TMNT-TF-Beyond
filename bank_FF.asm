@@ -124,7 +124,7 @@
 .export loc_0x03E91E_отрисовать_инфу_в_статусбаре
 .export tbl_0x03E995
 .export tbl_0x03E99C
-.export sub_0x03EA42
+.export sub_0x03EA45
 .export loc_0x03EA45
 .export sub_0x03EA4B
 .export sub_0x03EAA6_обновить_и_отрисовать_время_боя
@@ -4519,8 +4519,91 @@ C - - - - - 0x03EA33 0F:EA23: 60        RTS
 
 
 
-sub_0x03EA42:
-C - - - - - 0x03EA42 0F:EA32: 20 DF F5  JSR sub_F5DF_swap_prg_12
+sub_BF03:
+C - - - - - 0x027F13 09:BF03: BD 90 05  LDA ram_obj_0590,X ; 0590 0591 
+C - - - - - 0x027F16 09:BF06: 20 3B BF  JSR sub_BF3B
+C - - - - - 0x027F19 09:BF09: 85 02     STA ram_0002
+C - - - - - 0x027F1B 09:BF0B: BD 90 05  LDA ram_obj_0590,X ; 0590 0591 
+C - - - - - 0x027F1E 09:BF0E: 20 56 BF  JSR sub_BF56
+C - - - - - 0x027F21 09:BF11: 85 05     STA ram_0005
+C - - - - - 0x027F23 09:BF13: BC 0D 01  LDY ram_plr_hp_hi,X ; 010D 010E 
+C - - - - - 0x027F26 09:BF16: F0 14     BEQ bra_BF2C
+C - - - - - 0x027F28 09:BF18: 98        TYA
+C - - - - - 0x027F29 09:BF19: 20 3B BF  JSR sub_BF3B
+C - - - - - 0x027F2C 09:BF1C: 18        CLC
+C - - - - - 0x027F2D 09:BF1D: 65 02     ADC ram_0002
+C - - - - - 0x027F2F 09:BF1F: 85 02     STA ram_0002
+C - - - - - 0x027F31 09:BF21: BD 0D 01  LDA ram_plr_hp_hi,X ; 010D 010E 
+C - - - - - 0x027F34 09:BF24: 20 56 BF  JSR sub_BF56
+C - - - - - 0x027F37 09:BF27: 18        CLC
+C - - - - - 0x027F38 09:BF28: 65 05     ADC ram_0005
+C - - - - - 0x027F3A 09:BF2A: 85 05     STA ram_0005
+bra_BF2C:
+C - - - - - 0x027F3C 09:BF2C: 29 0F     AND #$0F
+C - - - - - 0x027F3E 09:BF2E: 4A        LSR
+C - - - - - 0x027F3F 09:BF2F: 85 03     STA ram_0003
+C - - - - - 0x027F41 09:BF31: A5 95     ;LDA ram_0095
+C - - - - - 0x027F43 09:BF33: C9 09     ;CMP #$09
+C - - - - - 0x027F45 09:BF35: D0 03     ;BNE bra_BF3A_RTS
+C - - - - - 0x027F47 09:BF37: 4C 17 F6  ;JMP loc_0x03F627_restore_prg
+bra_BF3A_RTS:
+C - - - - - 0x027F4A 09:BF3A: 60        RTS
+
+
+
+sub_BF3B:
+C - - - - - 0x027F4B 09:BF3B: AC 28 01  LDY ram_option_health
+C - - - - - 0x027F4E 09:BF3E: F0 04     BEQ bra_BF44
+C - - - - - 0x027F50 09:BF40: 4A        LSR
+C - - - - - 0x027F51 09:BF41: 88        DEY
+C - - - - - 0x027F52 09:BF42: F0 03     BEQ bra_BF47
+bra_BF44:
+C - - - - - 0x027F54 09:BF44: 4C 07 D2  JMP loc_0x03D217_LSRx4
+bra_BF47:
+C - - - - - 0x027F57 09:BF47: 4A        LSR
+C - - - - - 0x027F58 09:BF48: 4A        LSR
+C - - - - - 0x027F59 09:BF49: 85 03     STA ram_0003
+C - - - - - 0x027F5B 09:BF4B: 4A        LSR
+C - - - - - 0x027F5C 09:BF4C: 4A        LSR
+C - - - - - 0x027F5D 09:BF4D: 65 03     ADC ram_0003
+C - - - - - 0x027F5F 09:BF4F: 6A        ROR
+C - - - - - 0x027F60 09:BF50: 4A        LSR
+C - - - - - 0x027F61 09:BF51: 65 03     ADC ram_0003
+C - - - - - 0x027F63 09:BF53: 6A        ROR
+C - - - - - 0x027F64 09:BF54: 4A        LSR
+C - - - - - 0x027F65 09:BF55: 60        RTS
+
+
+
+sub_BF56:
+C - - - - - 0x027F66 09:BF56: AC 28 01  LDY ram_option_health
+C - - - - - 0x027F69 09:BF59: F0 16     BEQ bra_BF71
+C - - - - - 0x027F6B 09:BF5B: 88        DEY
+C - - - - - 0x027F6C 09:BF5C: D0 12     BNE bra_BF70
+C - - - - - 0x027F6E 09:BF5E: 85 03     STA ram_0003
+C - - - - - 0x027F70 09:BF60: 4A        LSR
+C - - - - - 0x027F71 09:BF61: 69 21     ADC #$21
+C - - - - - 0x027F73 09:BF63: 4A        LSR
+C - - - - - 0x027F74 09:BF64: A0 03     LDY #$03
+bra_BF66_loop:
+C - - - - - 0x027F76 09:BF66: 18        CLC
+C - - - - - 0x027F77 09:BF67: 65 03     ADC ram_0003
+C - - - - - 0x027F79 09:BF69: 6A        ROR
+C - - - - - 0x027F7A 09:BF6A: 4A        LSR
+C - - - - - 0x027F7B 09:BF6B: 88        DEY
+C - - - - - 0x027F7C 09:BF6C: D0 F8     BNE bra_BF66_loop
+C - - - - - 0x027F7E 09:BF6E: 0A        ASL
+C - - - - - 0x027F7F 09:BF6F: 60        RTS
+bra_BF70:
+- - - - - - 0x027F80 09:BF70: 4A        LSR
+bra_BF71:
+C - - - - - 0x027F81 09:BF71: 4A        LSR
+C - - - - - 0x027F82 09:BF72: 0A        ASL
+C - - - - - 0x027F83 09:BF73: 60        RTS
+
+
+
+sub_0x03EA45:
 loc_0x03EA45:
 C D 3 - - - 0x03EA45 0F:EA35: A5 95     LDA ram_0095
 C - - - - - 0x03EA47 0F:EA37: C9 10     CMP #$10
@@ -4529,7 +4612,7 @@ sub_0x03EA4B:
 C - - - - - 0x03EA4B 0F:EA3B: 86 00     STX ram_0000
 C - - - - - 0x03EA4D 0F:EA3D: BD 66 EB  LDA tbl_EB66_ppu_lo,X
 C - - - - - 0x03EA50 0F:EA40: 85 01     STA ram_0001
-C - - - - - 0x03EA52 0F:EA42: 20 03 BF  JSR sub_0x027F13
+C - - - - - 0x03EA52 0F:EA42: 20 03 BF  JSR sub_BF03
 C - - - - - 0x03EA55 0F:EA45: 38        SEC
 C - - - - - 0x03EA56 0F:EA46: A9 B0     LDA #$B0
 C - - - - - 0x03EA58 0F:EA48: E5 05     SBC ram_0005
