@@ -4681,17 +4681,17 @@ C - - - - - 0x039B8C 0E:9B7C: AD 34 06  LDA ram_0634
 C - - - - - 0x039B8F 0E:9B7F: 85 01     STA ram_0001
 C - - - - - 0x039B91 0E:9B81: AC 32 06  LDY ram_0632
 C - - - - - 0x039B94 0E:9B84: B1 00     LDA (ram_0000),Y
-C - - - - - 0x039B96 0E:9B86: C9 BD     CMP #$BD
+C - - - - - 0x039B96 0E:9B86: C9 BD     CMP #con_9B6F_BD_новая_строка
 C - - - - - 0x039B98 0E:9B88: F0 33     BEQ bra_9BBD_BD
-C - - - - - 0x039B9A 0E:9B8A: C9 BB     CMP #$BB
+C - - - - - 0x039B9A 0E:9B8A: C9 BB     CMP #con_9B6F_BB_задержка
 C - - - - - 0x039B9C 0E:9B8C: F0 45     BEQ bra_9BD3_BB
-C - - - - - 0x039B9E 0E:9B8E: C9 BC     CMP #$BC
+C - - - - - 0x039B9E 0E:9B8E: C9 BC     CMP #con_9B6F_BC_очистить
 C - - - - - 0x039BA0 0E:9B90: F0 50     BEQ bra_9BE2_BC
-C - - - - - 0x039BA2 0E:9B92: C9 BE     CMP #$BE
+C - - - - - 0x039BA2 0E:9B92: C9 BE     CMP #con_9B6F_BE_проверка_сложности
 C - - - - - 0x039BA4 0E:9B94: F0 6A     BEQ bra_9C00_BE
-C - - - - - 0x039BA6 0E:9B96: C9 BF     CMP #$BF
+C - - - - - 0x039BA6 0E:9B96: C9 BF     CMP #con_9B6F_BF_сменить_музыку
 C - - - - - 0x039BA8 0E:9B98: F0 73     BEQ bra_9C0D_BF
-C - - - - - 0x039BAA 0E:9B9A: C9 FF     CMP #$FF
+C - - - - - 0x039BAA 0E:9B9A: C9 FF     CMP #con_9B6F_FF_закончить
 C - - - - - 0x039BAC 0E:9B9C: F0 69     BEQ bra_9C07_FF
 C - - - - - 0x039BAE 0E:9B9E: 48        PHA
 C - - - - - 0x039BAF 0E:9B9F: 18        CLC
