@@ -7588,10 +7588,6 @@ sub_FC90_set_mirroring_H:
 sub_0x03FCA0_set_mirroring_H:
 C - - - - - 0x03FCA0 0F:FC90: A9 01     LDA #$01
 bra_FC92:
-; bzk optimize, нахрена писать а потом читать
-; bzk optimize, бесполезный адрес
-C - - - - - 0x03FCA2 0F:FC92: 85 45     STA ram_for_A000
-C - - - - - 0x03FCA4 0F:FC94: A5 45     LDA ram_for_A000
 C - - - - - 0x03FCA6 0F:FC96: 8D 00 A0  STA $A000
 C - - - - - 0x03FCA9 0F:FC99: 60        RTS
 
