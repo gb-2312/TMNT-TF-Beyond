@@ -192,8 +192,8 @@
 .export sub_0x03F7D1
 .export sub_0x03F7E3
 .export loc_0x03F7E3
-.export sub_0x03F824
-.export loc_0x03F824
+.export sub_0x03F824_подготовить_irq_handler
+.export loc_0x03F824_подготовить_irq_handler
 .export ofs_0x03F8E0
 .export sub_0x03FB98_disable_irq
 .export sub_0x03FC9C_set_mirroring_V
@@ -1602,7 +1602,7 @@ C - - - - - 0x03D543 0F:D533: 60        RTS
 
 
 
-sub_D538:
+sub_D538_скопировать_буфер_палитры_в_общий_буфер:
 C D 2 - - - 0x03D548 0F:D538: AD 6D 06  LDA ram_066D
 C - - - - - 0x03D54B 0F:D53B: F0 F6     BEQ bra_D533_RTS
 C - - - - - 0x03D54D 0F:D53D: A0 10     LDY #$10
@@ -1625,7 +1625,7 @@ C - - - - - 0x03D56D 0F:D55D: A9 00     LDA #$00    ; палитра фона
 bra_D55F:
 C - - - - - 0x03D56F 0F:D55F: 85 A9     STA ram_global_obj_index
 C - - - - - 0x03D571 0F:D561: 20 66 D2  JSR sub_D266_записать_A_в_буфер_без_сохранения_индекса
-C - - - - - 0x03D574 0F:D564: A9 3F     LDA #$3F
+C - - - - - 0x03D574 0F:D564: A9 3F     LDA #$3F    ; 3F00/3F10
 C - - - - - 0x03D576 0F:D566: 20 66 D2  JSR sub_D266_записать_A_в_буфер_без_сохранения_индекса
 C - - - - - 0x03D579 0F:D569: A4 A9     LDY ram_global_obj_index
 bra_D56B_loop:
@@ -1639,15 +1639,16 @@ C - - - - - 0x03D587 0F:D577: 4C 59 D2  JMP loc_D259_записать_FF_в_бу
 
 
 tbl_D57A:
+; con_D57A
 - D 2 - - - 0x03D58A 0F:D57A: 00        .byte $00, $00, $00, $00   ; 00
 - D 2 - - - 0x03D58E 0F:D57E: 03        .byte $03, $04, $05, $01   ; 01
 - D 2 - - - 0x03D592 0F:D582: 0D        .byte $0D, $13, $07, $08   ; 02
-- - - - - - 0x03D596 0F:D586: 0B        .byte $0B, $29, $0C, $01   ; 03
+- - - - - - 0x03D596 0F:D586: 0B        .byte $0B, $29, $0C, $01   ; 03 unused, индекс не существует
 - D 2 - - - 0x03D59A 0F:D58A: 01        .byte $01, $26, $27, $00   ; 04
-- - - - - - 0x03D59E 0F:D58E: 2B        .byte $2B, $0C, $16, $01   ; 05
+- - - - - - 0x03D59E 0F:D58E: 2B        .byte $2B, $0C, $16, $01   ; 05 unused, индекс не существует
 - D 2 - - - 0x03D5A2 0F:D592: 20        .byte $20, $02, $02, $02   ; 06
 - D 2 - - - 0x03D5A6 0F:D596: 02        .byte $02, $17, $18, $18   ; 07
-- - - - - - 0x03D5AA 0F:D59A: 02        .byte $02, $09, $3C, $01   ; 08
+- - - - - - 0x03D5AA 0F:D59A: 02        .byte $02, $09, $3C, $01   ; 08 unused, индекс не существует
 - D 2 - - - 0x03D5AE 0F:D59E: 00        .byte $00, $20, $00, $02   ; 09
 - D 2 - - - 0x03D5B2 0F:D5A2: 2B        .byte $2B, $2C, $02, $01   ; 0A
 - D 2 - - - 0x03D5B6 0F:D5A6: 4B        .byte $4B, $4C, $02, $01   ; 0B
@@ -2059,7 +2060,7 @@ C - - - - - 0x03DB7B 0F:DB6B: 7D 50 04  ADC ram_obj_spd_X_fr,X ; 0450 0451 0453 
 C - - - - - 0x03DB7E 0F:DB6E: 9D 50 04  STA ram_obj_spd_X_fr,X ; 0450 0451 0453 0454 0455 0456 0457 0459 045B 
 C - - - - - 0x03DB81 0F:DB71: BD 80 04  LDA ram_obj_spd_X_hi,X ; 0480 0481 0483 0484 0485 0486 0487 0489 048B 
 C - - - - - 0x03DB84 0F:DB74: 10 01     BPL bra_DB77
-C - - - - - 0x03DB86 0F:DB76: 88        DEY
+C - - - - - 0x03DB86 0F:DB76: 88        DEY ; FF
 bra_DB77:
 C - - - - - 0x03DB87 0F:DB77: 7D 40 04  ADC ram_obj_pos_X_lo,X ; 0440 0441 0443 0444 0445 0446 0447 0449 044B 
 C - - - - - 0x03DB8A 0F:DB7A: 9D 40 04  STA ram_obj_pos_X_lo,X ; 0440 0441 0443 0444 0445 0446 0447 0449 044B 
@@ -2121,7 +2122,7 @@ C - - - - - 0x03DC34 0F:DC24: 60        RTS
 
 tbl_DC29_chr_pair:
 ; con_chr_pair
-- - - - - - 0x03DC39 0F:DC29: 0D        .byte con_chr_bank + $0D, con_chr_bank + $09   ; 00 индекс не существует
+- - - - - - 0x03DC39 0F:DC29: 0D        .byte con_chr_bank + $0D, con_chr_bank + $09   ; 00 unused, индекс не существует
 - D 2 - - - 0x03DC3B 0F:DC2B: 56        .byte con_chr_bank + $56, con_chr_bank + $54   ; 02
 - D 2 - - - 0x03DC3D 0F:DC2D: 74        .byte con_chr_bank + $74, con_chr_bank + $58   ; 04
 - D 2 - - - 0x03DC3F 0F:DC2F: 7C        .byte con_chr_bank + $7C, con_chr_bank + $7E   ; 06
@@ -2129,7 +2130,7 @@ tbl_DC29_chr_pair:
 - D 2 - - - 0x03DC43 0F:DC33: 48        .byte con_chr_bank + $48, con_chr_bank + $4A   ; 0A
 - D 2 - - - 0x03DC45 0F:DC35: 10        .byte con_chr_bank + $10, con_chr_bank + $12   ; 0C
 - D 2 - - - 0x03DC47 0F:DC37: 52        .byte con_chr_bank + $52, con_chr_bank + $53   ; 0E
-- - - - - - 0x03DC49 0F:DC39: 5C        .byte con_chr_bank + $5C, con_chr_bank + $5E   ; 10 индекс не существует
+- - - - - - 0x03DC49 0F:DC39: 5C        .byte con_chr_bank + $5C, con_chr_bank + $5E   ; 10 unused, индекс не существует
 - D 2 - - - 0x03DC4B 0F:DC3B: 5A        .byte con_chr_bank + $5A, con_chr_bank + $58   ; 12
 - D 2 - - - 0x03DC4D 0F:DC3D: 70        .byte con_chr_bank + $70, con_chr_bank + $76   ; 14
 - D 2 - - - 0x03DC4F 0F:DC3F: 22        .byte con_chr_bank + $22, con_chr_bank + $24   ; 16
@@ -3253,7 +3254,7 @@ C - - - - - 0x03E2F1 0F:E2E1: 86 57     STX ram_0056 + $01
 C - - - - - 0x03E2F3 0F:E2E3: A2 00     LDX #$00
 C - - - - - 0x03E2F5 0F:E2E5: 86 56     STX ram_0056
 C - - - - - 0x03E2F7 0F:E2E7: A9 06     LDA #con_0048_06
-C - - - - - 0x03E2F9 0F:E2E9: 20 14 F8  JSR sub_F814
+C - - - - - 0x03E2F9 0F:E2E9: 20 14 F8  JSR sub_F814_подготовить_irq_handler
 C - - - - - 0x03E2FC 0F:E2EC: 4C 41 E1  JMP loc_E141_подготовить_осветление_из_черного_в_цветной
 
 
@@ -4096,8 +4097,8 @@ C - - - - - 0x03E7B9 0F:E7A9: A9 08     LDA #con_print_bonus_game
 C - - - - - 0x03E7BB 0F:E7AB: 20 E5 F6  JSR sub_F6E5_написать_текст_на_экране
 C - - - - - 0x03E7BE 0F:E7AE: A9 20     LDA #$20
 C - - - - - 0x03E7C0 0F:E7B0: 8D 60 05  STA ram_obj_timer
-C - - - - - 0x03E7C3 0F:E7B3: A9 00     LDA #$00
-C - - - - - 0x03E7C5 0F:E7B5: A8        LDY #$00
+C - - - - - 0x03E7C3 0F:E7B3: A9 00     LDA #$00    ; con_D57A_00
+C - - - - - 0x03E7C5 0F:E7B5: A8        LDY #con_D57A_00
 C - - - - - 0x03E7C6 0F:E7B6: 85 96     STA ram_0096
 C - - - - - 0x03E7C8 0F:E7B8: 20 94 D3  JSR sub_D394_записать_палитру_для_фона_и_спрайтов
 C - - - - - 0x03E7CB 0F:E7BB: 4C 41 E1  JMP loc_E141_подготовить_осветление_из_черного_в_цветной
@@ -4133,7 +4134,7 @@ C - - - - - 0x03E803 0F:E7F3: 8D 40 04  STA ram_obj_pos_X_lo
 C - - - - - 0x03E806 0F:E7F6: A9 B0     LDA #$B0
 C - - - - - 0x03E808 0F:E7F8: 8D 10 04  STA ram_obj_pos_Y_lo
 C - - - - - 0x03E80B 0F:E7FB: A9 09     LDA #con_0048_09
-C - - - - - 0x03E80D 0F:E7FD: 20 14 F8  JSR sub_F814
+C - - - - - 0x03E80D 0F:E7FD: 20 14 F8  JSR sub_F814_подготовить_irq_handler
 C - - - - - 0x03E810 0F:E800: 20 BE DA  JSR sub_DABE_удалить_все_объекты
 C - - - - - 0x03E813 0F:E803: A2 1C     LDX #con_screen_bonus_stage
 C - - - - - 0x03E815 0F:E805: 20 44 F0  JSR sub_F044_отрисовать_экран
@@ -4147,8 +4148,8 @@ C - - - - - 0x03E825 0F:E815: A9 0D     LDA #con_print_time_bonus_game
 C - - - - - 0x03E827 0F:E817: 20 E5 F6  JSR sub_F6E5_написать_текст_на_экране
 C - - - - - 0x03E82A 0F:E81A: A9 3D     LDA #con_music_ost_bonus_stage
 C - - - - - 0x03E82C 0F:E81C: 20 90 F6  JSR sub_F690_записать_звук_сохранив_X_Y
-C - - - - - 0x03E82F 0F:E81F: A9 10     LDA #$10
-C - - - - - 0x03E831 0F:E821: A0 0A     LDY #$0A
+C - - - - - 0x03E82F 0F:E81F: A9 10     LDA #con_D57A_10
+C - - - - - 0x03E831 0F:E821: A0 0A     LDY #con_D57A_0A
 C - - - - - 0x03E833 0F:E823: 20 94 D3  JSR sub_D394_записать_палитру_для_фона_и_спрайтов
 C - - - - - 0x03E836 0F:E826: A2 04     LDX #$04    ; tip_индекс_буфера_палитры + $04
 C - - - - - 0x03E838 0F:E828: B5 9E     LDA ram_plr_id
@@ -4245,7 +4246,7 @@ C - - - - - 0x03E8BF 0F:E8AF: 20 6D D4  JSR sub_D46D_запись_черной_�
 C - - - - - 0x03E8C2 0F:E8B2: 20 BF E8  JSR sub_E8BF
 C - - - - - 0x03E8C5 0F:E8B5: E6 95     INC ram_0095    ; 1D/1F -> 1E/20
 C - - - - - 0x03E8C7 0F:E8B7: A9 0B     LDA #con_0048_0B
-C - - - - - 0x03E8C9 0F:E8B9: 20 14 F8  JSR sub_F814
+C - - - - - 0x03E8C9 0F:E8B9: 20 14 F8  JSR sub_F814_подготовить_irq_handler
 C - - - - - 0x03E8CC 0F:E8BC: 4C 41 E1  JMP loc_E141_подготовить_осветление_из_черного_в_цветной
 
 
@@ -5675,8 +5676,8 @@ C - - - - - 0x03F018 0F:F008: 29 FC     AND #$FC
 C - - - - - 0x03F01A 0F:F00A: 85 FF     STA ram_for_2000
 C - - - - - 0x03F01C 0F:F00C: A2 02     LDX #con_screen_главное_меню
 C - - - - - 0x03F01E 0F:F00E: 20 44 F0  JSR sub_F044_отрисовать_экран
-C - - - - - 0x03F021 0F:F011: A0 04     LDY #$04
-C - - - - - 0x03F023 0F:F013: A9 1B     LDA #$1B
+C - - - - - 0x03F021 0F:F011: A0 04     LDY #con_D57A_04
+C - - - - - 0x03F023 0F:F013: A9 1B     LDA #con_D57A_1B
 C - - - - - 0x03F025 0F:F015: 20 94 D3  JSR sub_D394_записать_палитру_для_фона_и_спрайтов
 C - - - - - 0x03F029 0F:F019: EE 6D 06  INC ram_066D
 C - - - - - 0x03F02C 0F:F01C: 20 02 D6  JSR sub_D602_выбрать_chr_банк_на_основе_опции_skin
@@ -5686,7 +5687,7 @@ C - - - - - 0x03F033 0F:F023: 85 32     STA ram_chr_bank_bg
 C - - - - - 0x03F035 0F:F025: A9 7A     LDA #con_chr_bank_bg + $7A
 C - - - - - 0x03F037 0F:F027: 85 33     STA ram_chr_bank_bg + $01
 C - - - - - 0x03F039 0F:F029: A9 08     LDA #con_0048_08
-C - - - - - 0x03F03B 0F:F02B: 20 14 F8  JSR sub_F814
+C - - - - - 0x03F03B 0F:F02B: 20 14 F8  JSR sub_F814_подготовить_irq_handler
 C - - - - - 0x03F03E 0F:F02E: A9 05     LDA #$05
 C - - - - - 0x03F040 0F:F030: 85 08     STA ram_0008
 bra_F032_loop:
@@ -5974,7 +5975,7 @@ C - - - - - 0x03F272 0F:F262: 05 8F     ORA ram_btn_press + $01
 C - - - - - 0x03F274 0F:F264: 85 90     STA ram_sum_btn_press
                                         INC ram_счетчик_кадров
 C - - - - - 0x03F276 0F:F266: 20 78 F3  JSR sub_F380_обработать_скрипт_или_яркость
-                                        JSR sub_D538
+                                        JSR sub_D538_скопировать_буфер_палитры_в_общий_буфер
 C - - - - - 0x03F279 0F:F269: 20 D3 F6  JSR sub_F6D3_спрайтовый_движок
 ; закрыть буфер
 C - - - - - 0x03F27C 0F:F26C: A9 00     LDA #$00
@@ -6392,7 +6393,7 @@ C - - - - - 0x03F526 0F:F516: 20 09 D0  JSR sub_D009_очистить_опера
 C - - - - - 0x03F529 0F:F519: 20 42 F0  JSR sub_F042_отрисовать_пустой_экран
 C - - - - - 0x03F52C 0F:F51C: A2 04     LDX #con_screen_konami
 C - - - - - 0x03F52E 0F:F51E: 20 44 F0  JSR sub_F044_отрисовать_экран
-C - - - - - 0x03F531 0F:F521: A9 00     LDA #$00
+C - - - - - 0x03F531 0F:F521: A9 00     LDA #con_D57A_00
 C - - - - - 0x03F533 0F:F523: 20 B0 D3  JSR sub_D3B0_записать_палитру_для_фона
 C - - - - - 0x03F536 0F:F526: 20 90 FC  JSR sub_FC90_set_mirroring_H
 C - - - - - 0x03F539 0F:F529: 20 90 FC  JSR sub_FC90_set_mirroring_H
@@ -6443,7 +6444,7 @@ C - - - - - 0x03F581 0F:F571: D0 1D     BNE bra_F590
 C - - - - - 0x03F583 0F:F573: 20 09 D0  JSR sub_D009_очистить_оперативку_1
 C - - - - - 0x03F586 0F:F576: A2 06     LDX #con_screen_копирайты
 C - - - - - 0x03F588 0F:F578: 20 44 F0  JSR sub_F044_отрисовать_экран
-C - - - - - 0x03F58B 0F:F57B: A9 00     LDA #$00
+C - - - - - 0x03F58B 0F:F57B: A9 00     LDA #con_D57A_00
 C - - - - - 0x03F58D 0F:F57D: 20 B0 D3  JSR sub_D3B0_записать_палитру_для_фона
 C - - - - - 0x03F590 0F:F580: A5 FF     LDA ram_for_2000
 C - - - - - 0x03F592 0F:F582: 29 FC     AND #$FC
@@ -6920,18 +6921,20 @@ C - - - - - 0x03F821 0F:F811: 4C 17 F6  JMP loc_F617_restore_prg
 
 
 
-sub_F814:
-sub_0x03F824:
-loc_0x03F824:
+sub_F814_подготовить_irq_handler:
+sub_0x03F824_подготовить_irq_handler:
+loc_0x03F824_подготовить_irq_handler:
 C D 3 - - - 0x03F824 0F:F814: 85 48     STA ram_0048
 C - - - - - 0x03F826 0F:F816: AA        TAX
-C - - - - - 0x03F827 0F:F817: E0 10     CPX #$10
+C - - - - - 0x03F827 0F:F817: E0 10     CPX #con_0048_10
 C - - - - - 0x03F829 0F:F819: D0 05     BNE bra_F820
-C - - - - - 0x03F82B 0F:F81B: AD 0C 01  LDA ram_010C
+C - - - - - 0x03F82B 0F:F81B: AD 0C 01  LDA ram_custom_scanline
 C - - - - - 0x03F82E 0F:F81E: D0 03     BNE bra_F823
 bra_F820:
 C - - - - - 0x03F830 0F:F820: BD 9A FC  LDA tbl_FC9A_scanline,X
 bra_F823:
+; bzk optimize, нахрена эти 2 LDA, если ни один из них не запишется?
+; удалить 0x03F826-0x03F830
 C - - - - - 0x03F835 0F:F825: A0 01     LDY #$01    ; enable irq
 C - - - - - 0x03F837 0F:F827: 84 49     STY ram_irq_flag
 C - - - - - 0x03F839 0F:F829: 88        DEY ; 00
@@ -6940,33 +6943,33 @@ C - - - - - 0x03F83C 0F:F82C: 78        SEI
 C - - - - - 0x03F83D 0F:F82D: A5 48     LDA ram_0048
 C - - - - - 0x03F83F 0F:F82F: 0A        ASL
 C - - - - - 0x03F840 0F:F830: A8        TAY
-C - - - - - 0x03F841 0F:F831: B9 3C F8  LDA tbl_F83C,Y
+C - - - - - 0x03F841 0F:F831: B9 3C F8  LDA tbl_F83C_irq_handler,Y
 C - - - - - 0x03F844 0F:F834: 85 4B     STA ram_004B
-C - - - - - 0x03F846 0F:F836: B9 3D F8  LDA tbl_F83C + $01,Y
+C - - - - - 0x03F846 0F:F836: B9 3D F8  LDA tbl_F83C_irq_handler + $01,Y
 C - - - - - 0x03F849 0F:F839: 85 4C     STA ram_004C
 C - - - - - 0x03F84B 0F:F83B: 60        RTS
 
 
 
-tbl_F83C:
+tbl_F83C_irq_handler:
 ; con_0048
-- - - - - - 0x03F84C 0F:F83C: 7D F8     .word $FFFF      ; 00 ; индекс не существует  
-- - - - - - 0x03F84E 0F:F83E: 85 F8     .word $FFFF      ; 01 ; индекс не существует  
-- D 3 - - - 0x03F850 0F:F840: D0 F8     .word ofs_067_F8D0_02
-- - - - - - 0x03F852 0F:F842: 40 F9     .word $FFFF      ; 03 ; индекс не существует
-- - - - - - 0x03F854 0F:F844: 57 F9     .word $FFFF      ; 04 ; индекс не существует
-- D 3 - - - 0x03F856 0F:F846: 38 FA     .word ofs_067_FA38_05
-- D 3 - - - 0x03F858 0F:F848: 6E F9     .word ofs_067_F96E_06
-- D 3 - - - 0x03F85A 0F:F84A: 96 FA     .word ofs_067_FA96_07
-- D 3 - - - 0x03F85C 0F:F84C: B2 FA     .word ofs_067_FAB2_08
-- D 3 - - - 0x03F85E 0F:F84E: BA FA     .word ofs_067_FABA_09
-- D 3 - - - 0x03F860 0F:F850: D4 FA     .word ofs_067_FAD4_0A
-- D 3 - - - 0x03F862 0F:F852: A7 FA     .word ofs_067_FAA7_0B
-- D 3 - - - 0x03F864 0F:F854: 07 FB     .word ofs_067_FB07_0C
-- D 3 - - - 0x03F866 0F:F856: 35 FB     .word ofs_067_FB35_0D
-- D 3 - - - 0x03F868 0F:F858: 2D FB     .word ofs_067_FB2D_0E
-- D 3 - - - 0x03F86A 0F:F85A: 3D FB     .word ofs_067_FB3D_0F
-- D 3 - - - 0x03F86C 0F:F85C: 68 FB     .word ofs_067_FB68_10
+- - - - - - 0x03F84C 0F:F83C: 7D F8     .word $FFFF      ; 00 ; unused, индекс не существует  
+- - - - - - 0x03F84E 0F:F83E: 85 F8     .word $FFFF      ; 01 ; unused, индекс не существует  
+- D 3 - - - 0x03F850 0F:F840: D0 F8     .word ofs_irq_handler_F8D0_02
+- - - - - - 0x03F852 0F:F842: 40 F9     .word $FFFF      ; 03 ; unused, индекс не существует
+- - - - - - 0x03F854 0F:F844: 57 F9     .word $FFFF      ; 04 ; unused, индекс не существует
+- D 3 - - - 0x03F856 0F:F846: 38 FA     .word ofs_irq_handler_FA38_05
+- D 3 - - - 0x03F858 0F:F848: 6E F9     .word ofs_irq_handler_F96E_06
+- D 3 - - - 0x03F85A 0F:F84A: 96 FA     .word ofs_irq_handler_FA96_07
+- D 3 - - - 0x03F85C 0F:F84C: B2 FA     .word ofs_irq_handler_FAB2_08
+- D 3 - - - 0x03F85E 0F:F84E: BA FA     .word ofs_irq_handler_FABA_09
+- D 3 - - - 0x03F860 0F:F850: D4 FA     .word ofs_irq_handler_FAD4_0A
+- D 3 - - - 0x03F862 0F:F852: A7 FA     .word ofs_irq_handler_FAA7_0B
+- D 3 - - - 0x03F864 0F:F854: 07 FB     .word ofs_irq_handler_FB07_0C
+- D 3 - - - 0x03F866 0F:F856: 35 FB     .word ofs_irq_handler_FB35_0D
+- D 3 - - - 0x03F868 0F:F858: 2D FB     .word ofs_irq_handler_FB2D_0E
+- D 3 - - - 0x03F86A 0F:F85A: 3D FB     .word ofs_irq_handler_FB3D_0F
+- D 3 - - - 0x03F86C 0F:F85C: 68 FB     .word ofs_irq_handler_FB68_10
 
 
 
@@ -6993,6 +6996,7 @@ C - - - - - 0x03F889 0F:F879: 40        RTI
 
 
 sub_F87A_indirect_jmp:
+; обработчик irq
 C - - - - - 0x03F88A 0F:F87A: 6C 4B 00  JMP (ram_004B)
 
 
@@ -7084,7 +7088,7 @@ off_F8AE_07:
 
 
 ofs_0x03F8E0:
-ofs_067_F8D0_02:
+ofs_irq_handler_F8D0_02:
 C - - J - - 0x03F8E0 0F:F8D0: A0 05     LDY #$05
 bra_F8D2_garbage_loop:
 C - - - - - 0x03F8E2 0F:F8D2: 88        DEY
@@ -7166,7 +7170,7 @@ C - - - - - 0x03F97D 0F:F96D: 60        RTS
 
 
 
-ofs_067_F96E_06:
+ofs_irq_handler_F96E_06:
 C - - J - - 0x03F97E 0F:F96E: A2 01     LDX #$01
 C - - - - - 0x03F980 0F:F970: 20 81 F8  JSR sub_F881_garbage_loop
 C - - - - - 0x03F983 0F:F973: A4 4D     LDY ram_004D
@@ -7275,7 +7279,7 @@ C - - - - - 0x03FA47 0F:FA37: 60        RTS
 
 
 
-ofs_067_FA38_05:
+ofs_irq_handler_FA38_05:
 C - - J - - 0x03FA48 0F:FA38: A2 01     LDX #$01
 C - - - - - 0x03FA4A 0F:FA3A: 20 81 F8  JSR sub_F881_garbage_loop
 C - - - - - 0x03FA4D 0F:FA3D: A4 4D     LDY ram_004D
@@ -7336,7 +7340,7 @@ tbl_FA94:
 
 
 
-ofs_067_FA96_07:
+ofs_irq_handler_FA96_07:
 C - - J - - 0x03FAA6 0F:FA96: A2 01     LDX #$01
 C - - - - - 0x03FAA8 0F:FA98: 20 81 F8  JSR sub_F881_garbage_loop
 C - - - - - 0x03FAAB 0F:FA9B: A5 4D     LDA ram_004D
@@ -7349,19 +7353,19 @@ C - - - - - 0x03FAB4 0F:FAA4: 4C FE FA  JMP loc_FAFE
 
 
 
-ofs_067_FAA7_0B:
+ofs_irq_handler_FAA7_0B:
 C - - J - - 0x03FAB7 0F:FAA7: A2 01     LDX #$01
 C - - - - - 0x03FAB9 0F:FAA9: 20 81 F8  JSR sub_F881_garbage_loop
 C - - - - - 0x03FABC 0F:FAAC: A2 02     LDX #$02
 C - - - - - 0x03FABE 0F:FAAE: 20 81 F8  JSR sub_F881_garbage_loop
-ofs_067_FAB2_08:
+ofs_irq_handler_FAB2_08:
 C - - J - - 0x03FAC2 0F:FAB2: A9 7C     LDA #con_chr_bank_bg + $7C
 C - - - - - 0x03FAC4 0F:FAB4: 20 25 FA  JSR sub_FA25_запись_банков_фона_из_A
 C - - - - - 0x03FAC7 0F:FAB7: 4C 8D FB  JMP loc_FB8D
 
 
 
-ofs_067_FABA_09:
+ofs_irq_handler_FABA_09:
 C - - J - - 0x03FACA 0F:FABA: A2 01     LDX #$01
 C - - - - - 0x03FACC 0F:FABC: 20 81 F8  JSR sub_F881_garbage_loop
 C - - - - - 0x03FACF 0F:FABF: A4 4D     LDY ram_004D
@@ -7377,7 +7381,7 @@ C - - - - - 0x03FAE1 0F:FAD1: 4C 39 F9  JMP loc_F939
 
 
 
-ofs_067_FAD4_0A:
+ofs_irq_handler_FAD4_0A:
 C - - J - - 0x03FAE4 0F:FAD4: A2 01     LDX #$01
 C - - - - - 0x03FAE6 0F:FAD6: 20 81 F8  JSR sub_F881_garbage_loop
 C - - - - - 0x03FAE9 0F:FAD9: A2 01     LDX #$01
@@ -7419,7 +7423,7 @@ tbl_FB04:
 
 
 
-ofs_067_FB07_0C:
+ofs_irq_handler_FB07_0C:
 C - - J - - 0x03FB17 0F:FB07: A2 01     LDX #$01
 C - - - - - 0x03FB19 0F:FB09: 20 81 F8  JSR sub_F881_garbage_loop
 C - - - - - 0x03FB1C 0F:FB0C: A5 4D     LDA ram_004D
@@ -7439,20 +7443,20 @@ C - - - - - 0x03FB3C 0F:FB2C: 60        RTS
 
 
 
-ofs_067_FB2D_0E:
+ofs_irq_handler_FB2D_0E:
 C - - J - - 0x03FB3D 0F:FB2D: A2 01     LDX #$01
 C - - - - - 0x03FB3F 0F:FB2F: 20 81 F8  JSR sub_F881_garbage_loop
 C - - - - - 0x03FB42 0F:FB32: A9 6C     LDA #con_chr_bank_bg + $6C
 C - - - - - 0x03FB44 0F:FB34: 2C        .byte $2C   ; BIT
 bra_FB35:
-ofs_067_FB35_0D:
+ofs_irq_handler_FB35_0D:
 C - - - - - 0x03FB45 0F:FB35: A9 7C     LDA #con_chr_bank_bg + $7C
 C - - - - - 0x03FB47 0F:FB37: 20 25 FA  JSR sub_FA25_запись_банков_фона_из_A
 C - - - - - 0x03FB4A 0F:FB3A: 4C 8D FB  JMP loc_FB8D
 
 
 
-ofs_067_FB3D_0F:
+ofs_irq_handler_FB3D_0F:
 C - - J - - 0x03FB4D 0F:FB3D: A2 02     LDX #$02
 C - - - - - 0x03FB4F 0F:FB3F: 20 81 F8  JSR sub_F881_garbage_loop
 C - - - - - 0x03FB52 0F:FB42: A5 4D     LDA ram_004D
@@ -7473,7 +7477,7 @@ C - - - - - 0x03FB76 0F:FB66: D0 CD     BNE bra_FB35    ; jmp
 
 
 
-ofs_067_FB68_10:
+ofs_irq_handler_FB68_10:
 C - - J - - 0x03FB78 0F:FB68: A2 01     LDX #$01
 C - - - - - 0x03FB7A 0F:FB6A: 20 81 F8  JSR sub_F881_garbage_loop
 C - - - - - 0x03FB7D 0F:FB6D: A2 03     LDX #$03
@@ -7510,6 +7514,7 @@ C - - - - - 0x03FBA4 0F:FB94: 60        RTS
 
 
 sub_FB95:
+; bzk optimize, удалить этот хлам с записью в 2002 и 2006
 C - - - - - 0x03FBA5 0F:FB95: A4 49     LDY ram_irq_flag
 C - - - - - 0x03FBA7 0F:FB97: 99 00 E0  STA $E000,Y
 C - - - - - 0x03FBAA 0F:FB9A: F0 53     BEQ bra_FBEF_RTS
@@ -7533,9 +7538,9 @@ C - - - - - 0x03FBD9 0F:FBC9: 8C 06 20  STY $2006
 C - - - - - 0x03FBDC 0F:FBCC: 8E 06 20  STX $2006
 C - - - - - 0x03FBDF 0F:FBCF: 8E 06 20  STX $2006
 C - - - - - 0x03FBE2 0F:FBD2: A4 48     LDY ram_0048
-C - - - - - 0x03FBE4 0F:FBD4: C0 10     CPY #$10
+C - - - - - 0x03FBE4 0F:FBD4: C0 10     CPY #con_0048_10
 C - - - - - 0x03FBE6 0F:FBD6: D0 05     BNE bra_FBDD
-C - - - - - 0x03FBE8 0F:FBD8: AD 0C 01  LDA ram_010C
+C - - - - - 0x03FBE8 0F:FBD8: AD 0C 01  LDA ram_custom_scanline
 C - - - - - 0x03FBEB 0F:FBDB: D0 03     BNE bra_FBE0
 bra_FBDD:
 C - - - - - 0x03FBED 0F:FBDD: B9 9A FC  LDA tbl_FC9A_scanline,Y

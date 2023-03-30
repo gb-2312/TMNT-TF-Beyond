@@ -57,26 +57,26 @@ tbl_8001:
 
 
 tbl_8009_lo:
-                                        .byte < ofs_087_800A_buf_mode_01
-                                        .byte < ofs_087_800A_buf_mode_02
-                                        .byte < ofs_087_800A_buf_mode_03
-                                        .byte < ofs_087_800A_buf_mode_04
-                                        .byte < ofs_087_800A_buf_mode_05
+    .byte < ofs_067_800A_buf_mode_01
+    .byte < ofs_067_800A_buf_mode_02
+    .byte < ofs_067_800A_buf_mode_03
+    .byte < ofs_067_800A_buf_mode_04
+    .byte < ofs_067_800A_buf_mode_05
 
 tbl_800A_hi:
-                                        .byte > ofs_087_800A_buf_mode_01
-                                        .byte > ofs_087_800A_buf_mode_02
-                                        .byte > ofs_087_800A_buf_mode_03
-                                        .byte > ofs_087_800A_buf_mode_04
-                                        .byte > ofs_087_800A_buf_mode_05
+    .byte > ofs_067_800A_buf_mode_01
+    .byte > ofs_067_800A_buf_mode_02
+    .byte > ofs_067_800A_buf_mode_03
+    .byte > ofs_067_800A_buf_mode_04
+    .byte > ofs_067_800A_buf_mode_05
 
 
 
 bra_803E_loop:
                                         STA $2007
-ofs_087_800A_buf_mode_01:
+ofs_067_800A_buf_mode_01:
 ; записать список байтов, FF = end token, +01
-ofs_087_800A_buf_mode_02:
+ofs_067_800A_buf_mode_02:
 ; записать список байтов, FF = end token, +32
                                         LDA ram_ppu_buffer,Y
                                         INY
@@ -86,9 +86,9 @@ ofs_087_800A_buf_mode_02:
 
 
 
-ofs_087_800A_buf_mode_03:
+ofs_067_800A_buf_mode_03:
 ; счетчик + запись байта N раз, +01
-ofs_087_800A_buf_mode_05:
+ofs_067_800A_buf_mode_05:
 ; счетчик + запись байта N раз, +32
                                         LDX ram_ppu_buffer,Y
                                         INY
@@ -102,7 +102,7 @@ bra_805B_loop:
 
 
 
-ofs_087_800A_buf_mode_04:
+ofs_067_800A_buf_mode_04:
 ; счетчик + запись байта N раз с постоянным его увеличением, +01
                                         LDX ram_ppu_buffer,Y
                                         INY
@@ -1300,9 +1300,9 @@ tbl_8C00:
 - D 0 - - - 0x030C26 0C:8C16: 86 81     .word _off014_8186_0B_hard
 - D 0 - - - 0x030C28 0C:8C18: 2C 82     .word _off014_822C_0C_expert
 - D 0 - - - 0x030C2A 0C:8C1A: 18 82     .word _off014_8218_0D_time_bonus_game
-- - - - - - 0x030C2C 0C:8C1C: A1 81     .word $FFFF      ; 0E индекс не существует
-- - - - - - 0x030C2E 0C:8C1E: AA 81     .word $FFFF      ; 0F индекс не существует
-- - - - - - 0x030C30 0C:8C20: FF FF     .word $FFFF      ; 10 индекс не существует
+- - - - - - 0x030C2C 0C:8C1C: A1 81     .word $FFFF      ; 0E unused, индекс не существует
+- - - - - - 0x030C2E 0C:8C1E: AA 81     .word $FFFF      ; 0F unused, индекс не существует
+- - - - - - 0x030C30 0C:8C20: FF FF     .word $FFFF      ; 10 unused, индекс не существует
 - D 0 - - - 0x030C32 0C:8C22: BE 81     .word _off014_81BE_11_push_start
 - D 0 - - - 0x030C34 0C:8C24: CB 81     .word _off014_81CB_12_cpu
 - D 0 - - - 0x030C36 0C:8C26: 8F 81     .word _off014_818F_13_normal
@@ -1324,16 +1324,16 @@ tbl_8C00:
 - D 0 - - - 0x030C56 0C:8C46: 39 B0     .word _off014_B039_23_green
 - D 0 - - - 0x030C58 0C:8C48: 44 B0     .word _off014_B044_24_original
 - D 0 - - - 0x030C5A 0C:8C4A: 4F B0     .word _off014_B04F_25_night
-- D 0 - - - 0x030C5C 0C:8C4C: 20 8B     .word $FFFF      ; 26 индекс не существует
-- D 0 - - - 0x030C5E 0C:8C4E: 2D 8B     .word $FFFF      ; 27 индекс не существует
-- D 0 - - - 0x030C60 0C:8C50: 3A 8B     .word $FFFF      ; 28 индекс не существует
-- D 0 - - - 0x030C62 0C:8C52: 42 8B     .word $FFFF      ; 29 индекс не существует
-- D 0 - - - 0x030C64 0C:8C54: 52 8B     .word $FFFF      ; 2A индекс не существует
-- D 0 - - - 0x030C66 0C:8C56: 62 8B     .word $FFFF      ; 2B индекс не существует
-- D 0 - - - 0x030C68 0C:8C58: 6F 8B     .word $FFFF      ; 2C индекс не существует
-- D 0 - - - 0x030C6A 0C:8C5A: 7C 8B     .word $FFFF      ; 2D индекс не существует
-- D 0 - - - 0x030C6C 0C:8C5C: 84 8B     .word $FFFF      ; 2E индекс не существует
-- D 0 - - - 0x030C6E 0C:8C5E: 98 8B     .word $FFFF      ; 2F индекс не существует
+- D 0 - - - 0x030C5C 0C:8C4C: 20 8B     .word $FFFF      ; 26 unused, индекс не существует
+- D 0 - - - 0x030C5E 0C:8C4E: 2D 8B     .word $FFFF      ; 27 unused, индекс не существует
+- D 0 - - - 0x030C60 0C:8C50: 3A 8B     .word $FFFF      ; 28 unused, индекс не существует
+- D 0 - - - 0x030C62 0C:8C52: 42 8B     .word $FFFF      ; 29 unused, индекс не существует
+- D 0 - - - 0x030C64 0C:8C54: 52 8B     .word $FFFF      ; 2A unused, индекс не существует
+- D 0 - - - 0x030C66 0C:8C56: 62 8B     .word $FFFF      ; 2B unused, индекс не существует
+- D 0 - - - 0x030C68 0C:8C58: 6F 8B     .word $FFFF      ; 2C unused, индекс не существует
+- D 0 - - - 0x030C6A 0C:8C5A: 7C 8B     .word $FFFF      ; 2D unused, индекс не существует
+- D 0 - - - 0x030C6C 0C:8C5C: 84 8B     .word $FFFF      ; 2E unused, индекс не существует
+- D 0 - - - 0x030C6E 0C:8C5E: 98 8B     .word $FFFF      ; 2F unused, индекс не существует
 - D 0 - - - 0x030C70 0C:8C60: F8 8A     .word _off014_8AF8_30_off
 - D 0 - - - 0x030C72 0C:8C62: 01 8B     .word _off014_8B01_31_on
 - D 0 - - - 0x030C74 0C:8C64: 0A 8B     .word _off014_8B0A_32_off
@@ -1343,13 +1343,13 @@ tbl_8C00:
 - D 0 - - - 0x030C7C 0C:8C6C: AD 8B     .word _off014_8BAD_36_losermix
 - D 0 - - - 0x030C7E 0C:8C6E: C3 8B     .word _off014_8BC3_37_winner
 - D 0 - - - 0x030C80 0C:8C70: CE 8B     .word _off014_8BCE_38_survival
-                                        .word $FFFF      ; 39 индекс не существует
-                                        .word $FFFF      ; 3A индекс не существует
-                                        .word $FFFF      ; 3B индекс не существует
-                                        .word $FFFF      ; 3C индекс не существует
-                                        .word $FFFF      ; 3D индекс не существует
-                                        .word $FFFF      ; 3E индекс не существует
-                                        .word $FFFF      ; 3F индекс не существует
+                                        .word $FFFF      ; 39 unused, индекс не существует
+                                        .word $FFFF      ; 3A unused, индекс не существует
+                                        .word $FFFF      ; 3B unused, индекс не существует
+                                        .word $FFFF      ; 3C unused, индекс не существует
+                                        .word $FFFF      ; 3D unused, индекс не существует
+                                        .word $FFFF      ; 3E unused, индекс не существует
+                                        .word $FFFF      ; 3F unused, индекс не существует
                                         .word _off014_8FD0_40_bgm1
                                         .word _off014_8FD0_41_bgm2
                                         .word _off014_8FD0_42_bgm3

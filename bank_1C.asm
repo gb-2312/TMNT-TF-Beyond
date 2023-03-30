@@ -55,7 +55,7 @@ C - - - - - 0x03803E 0E:802E: A9 55     LDA #con_chr_bank_spr + $55
 C - - - - - 0x038040 0E:8030: 85 34     STA ram_chr_bank_spr
 C - - - - - 0x038042 0E:8032: 20 25 DC  JSR sub_0x03DC35_запись_пары_chr_06
 C - - - - - 0x038045 0E:8035: A9 0E     LDA #con_0048_0E
-C - - - - - 0x038047 0E:8037: 20 14 F8  JSR sub_0x03F824
+C - - - - - 0x038047 0E:8037: 20 14 F8  JSR sub_0x03F824_подготовить_irq_handler
 C - - - - - 0x03804A 0E:803A: A2 18     LDX #con_screen_options
 C - - - - - 0x03804C 0E:803C: 20 44 F0  JSR sub_0x03F054_отрисовать_экран
                                         JSR sub_809E_отрисовать_вариант_difficulty
@@ -75,8 +75,8 @@ C - - - - - 0x03804C 0E:803C: 20 44 F0  JSR sub_0x03F054_отрисовать_э
 
 ofs_015_803F_01_запись_палитры_и_подсветка_первой_опции:
 ; запись палитры после отрисовки экрана скроет все дергания экрана при отрисовке
-C - - - - - 0x03804F 0E:803F: A9 07     LDA #$07
-C - - - - - 0x038051 0E:8041: A8        LDY #$07
+C - - - - - 0x03804F 0E:803F: A9 07     LDA #con_D57A_07
+C - - - - - 0x038051 0E:8041: A8        LDY #con_D57A_07
 C - - - - - 0x038052 0E:8042: 20 94 D3  JSR sub_0x03D3A4_записать_палитру_для_фона_и_спрайтов
 C - - - - - 0x038055 0E:8045: 20 BB 81  JSR sub_81D8_подсветить_опцию
                                         LDA #$02
@@ -780,7 +780,7 @@ sub_0x0382CB_отрисовать_турнирную_сетку:
 C - - - - - 0x0382CB 0E:82BB: 20 BE DA  JSR sub_0x03DACE_удалить_все_объекты
 C - - - - - 0x0382CE 0E:82BE: 20 6E DD  JSR sub_0x03DD7E
 C - - - - - 0x0382D1 0E:82C1: A9 07     LDA #con_0048_07
-C - - - - - 0x0382D3 0E:82C3: 20 14 F8  JSR sub_0x03F824
+C - - - - - 0x0382D3 0E:82C3: 20 14 F8  JSR sub_0x03F824_подготовить_irq_handler
 C - - - - - 0x0382D6 0E:82C6: 20 6D D4  JSR sub_0x03D47D_запись_черной_палитры_в_буфер
 C - - - - - 0x0382D9 0E:82C9: A2 16     LDX #con_screen_турнирная_сетка
 C - - - - - 0x0382DB 0E:82CB: 20 44 F0  JSR sub_0x03F054_отрисовать_экран
@@ -865,7 +865,7 @@ C - - - - - 0x03836C 0E:835C: 20 8A 83  JSR sub_838A
 bra_835F:
 C - - - - - 0x03836F 0E:835F: C6 00     DEC ram_0000
 C - - - - - 0x038371 0E:8361: 10 F5     BPL bra_8358_loop
-C - - - - - 0x038373 0E:8363: A9 15     LDA #$15
+C - - - - - 0x038373 0E:8363: A9 15     LDA #con_D57A_15
 C - - - - - 0x038375 0E:8365: 20 B0 D3  JSR sub_0x03D3C0_записать_палитру_для_фона
 C - - - - - 0x038378 0E:8368: A9 04     LDA #$04
 C - - - - - 0x03837A 0E:836A: 85 08     STA ram_0008
@@ -1248,7 +1248,7 @@ C - - - - - 0x0385FD 0E:85ED: 8D 11 01  STA ram_0111
 C - - - - - 0x038600 0E:85F0: 8D 12 01  STA ram_0112
 C - - - - - 0x038603 0E:85F3: 20 3F F0  JSR sub_0x03F04F_удалить_все_объекты___отрисовать_пустой_экран
 C - - - - - 0x038606 0E:85F6: A9 0D     LDA #con_0048_0D
-C - - - - - 0x038608 0E:85F8: 20 14 F8  JSR sub_0x03F824
+C - - - - - 0x038608 0E:85F8: 20 14 F8  JSR sub_0x03F824_подготовить_irq_handler
 C - - - - - 0x03860B 0E:85FB: A9 01     LDA #$01
 C - - - - - 0x03860D 0E:85FD: 20 D3 F7  JSR sub_0x03F7E3
 C - - - - - 0x038610 0E:8600: 20 E2 86  JSR sub_86E2
@@ -1699,8 +1699,8 @@ C - - - - - 0x0388C7 0E:88B7: 4C 6D D4  JMP loc_0x03D47D_запись_черно
 
 
 ofs_013_88BA_01_запись_палитры_и_др___осветление_экрана_с_выбором_уровня:
-C - - J - - 0x0388CA 0E:88BA: A0 09     LDY #$09
-C - - - - - 0x0388CC 0E:88BC: A9 02     LDA #$02
+C - - J - - 0x0388CA 0E:88BA: A0 09     LDY #con_D57A_09
+C - - - - - 0x0388CC 0E:88BC: A9 02     LDA #con_D57A_02
 C - - - - - 0x0388CE 0E:88BE: 20 94 D3  JSR sub_0x03D3A4_записать_палитру_для_фона_и_спрайтов
 C - - - - - 0x0388D1 0E:88C1: EE 30 05  INC ram_obj_0530
 C - - - - - 0x0388D4 0E:88C4: A5 2C     LDA ram_game_mode
@@ -1722,7 +1722,7 @@ C - - - - - 0x0388EB 0E:88DB: 20 1D E3  JSR sub_0x03E32D
 C - - - - - 0x0388EE 0E:88DE: A2 02     LDX #$02    ; tip_индекс_буфера_палитры + $02
 C - - - - - 0x0388F0 0E:88E0: 20 1D E3  JSR sub_0x03E32D
 C - - - - - 0x0388F3 0E:88E3: A9 05     LDA #con_0048_05
-C - - - - - 0x0388F5 0E:88E5: 20 14 F8  JSR sub_0x03F824
+C - - - - - 0x0388F5 0E:88E5: 20 14 F8  JSR sub_0x03F824_подготовить_irq_handler
 C - - - - - 0x0388F8 0E:88E8: 20 EF E2  JSR sub_0x03E2FF
 C - - - - - 0x0388FB 0E:88EB: A9 2F     LDA #$2F
 C - - - - - 0x0388FD 0E:88ED: 8D 12 04  STA ram_obj_pos_Y_lo + $02
@@ -2436,8 +2436,8 @@ C - - - - - 0x038CD6 0E:8CC6: 8D D0 05  STA ram_obj_05D0
 C - - - - - 0x038CD9 0E:8CC9: 8D C0 05  STA ram_obj_anim_timer
 C - - - - - 0x038CDC 0E:8CCC: 8D 00 04  STA ram_obj_anim_id
 C - - - - - 0x038CDF 0E:8CCF: 8D 77 06  STA ram_0677
-C - - - - - 0x038CE2 0E:8CD2: A9 0B     LDA #$0B
-C - - - - - 0x038CE4 0E:8CD4: A8        LDY #$0B
+C - - - - - 0x038CE2 0E:8CD2: A9 0B     LDA #con_D57A_0B
+C - - - - - 0x038CE4 0E:8CD4: A8        LDY #con_D57A_0B
 C - - - - - 0x038CE5 0E:8CD5: 20 94 D3  JSR sub_0x03D3A4_записать_палитру_для_фона_и_спрайтов
 C - - - - - 0x038CE8 0E:8CD8: 20 58 90  JSR sub_9058
 C - - - - - 0x038CEB 0E:8CDB: A9 20     LDA #> $2083
@@ -3094,7 +3094,7 @@ ofs_010_90D6_00:
 C - - J - - 0x0390E6 0E:90D6: E6 21     INC ram_script_draw_lo
 C - - - - - 0x0390E8 0E:90D8: 20 3C F0  JSR sub_0x03F04C_выключить_irq___удалить_все_объекты___отрисовать_пустой_экран
 C - - - - - 0x0390EB 0E:90DB: A9 0B     LDA #con_0048_0B
-C - - - - - 0x0390ED 0E:90DD: 20 14 F8  JSR sub_0x03F824
+C - - - - - 0x0390ED 0E:90DD: 20 14 F8  JSR sub_0x03F824_подготовить_irq_handler
 C - - - - - 0x0390F0 0E:90E0: 4C 6D D4  JMP loc_0x03D47D_запись_черной_палитры_в_буфер
 
 
@@ -3108,8 +3108,8 @@ C - - - - - 0x0390FC 0E:90EC: A0 1E     LDY #con_chr_pair_1E
 C - - - - - 0x0390FE 0E:90EE: 20 1A DC  JSR sub_0x03DC2A_запись_пары_chr
 C - - - - - 0x039101 0E:90F1: A9 4D     LDA #$4D
 C - - - - - 0x039103 0E:90F3: 8D 00 04  STA ram_obj_anim_id
-C - - - - - 0x039106 0E:90F6: A0 16     LDY #$16
-C - - - - - 0x039108 0E:90F8: A9 17     LDA #$17
+C - - - - - 0x039106 0E:90F6: A0 16     LDY #con_D57A_16
+C - - - - - 0x039108 0E:90F8: A9 17     LDA #con_D57A_17
 C - - - - - 0x03910A 0E:90FA: A2 2A     LDX #con_screen_opening_1
 C - - - - - 0x03910C 0E:90FC: D0 27     BNE bra_9125    ; jmp
 
@@ -3135,8 +3135,8 @@ C - - - - - 0x039126 0E:9116: A9 01     LDA #con_speech_strange_letter
 C - - - - - 0x039128 0E:9118: 85 B6     STA ram_speech
 C - - - - - 0x03912A 0E:911A: A9 4E     LDA #$4E
 C - - - - - 0x03912C 0E:911C: 8D 00 04  STA ram_obj_anim_id
-C - - - - - 0x03912F 0E:911F: A0 18     LDY #$18
-C - - - - - 0x039131 0E:9121: A9 19     LDA #$19
+C - - - - - 0x03912F 0E:911F: A0 18     LDY #con_D57A_18
+C - - - - - 0x039131 0E:9121: A9 19     LDA #con_D57A_19
 C - - - - - 0x039133 0E:9123: A2 2C     LDX #con_screen_opening_2
 bra_9125:
 C - - - - - 0x039135 0E:9125: 48        PHA
@@ -3187,8 +3187,8 @@ C - - - - - 0x039176 0E:9166: A9 3B     LDA #con_0x03F6AD_3B
 C - - - - - 0x039178 0E:9168: 20 8B F6  JSR sub_0x03F69B_выключить_звуки_и_записать_новый
 C - - - - - 0x03917B 0E:916B: A9 02     LDA #con_speech_offer_challenge
 C - - - - - 0x03917D 0E:916D: 85 B6     STA ram_speech
-C - - - - - 0x03917F 0E:916F: A9 00     LDA #$00
-C - - - - - 0x039181 0E:9171: A8        LDY #$00
+C - - - - - 0x03917F 0E:916F: A9 00     LDA #con_D57A_00
+C - - - - - 0x039181 0E:9171: A8        LDY #con_D57A_00
 C - - - - - 0x039182 0E:9172: 20 94 D3  JSR sub_0x03D3A4_записать_палитру_для_фона_и_спрайтов
 C - - - - - 0x039185 0E:9175: E6 21     INC ram_script_draw_lo
 C - - - - - 0x039187 0E:9177: 4C C6 E8  JMP loc_0x03E8D6
@@ -3210,7 +3210,7 @@ C - - - - - 0x0391A2 0E:9192: C9 06     CMP #$06
 C - - - - - 0x0391A4 0E:9194: 90 07     BCC bra_919D_RTS
 C - - - - - 0x0391A6 0E:9196: E6 21     INC ram_script_draw_lo
 C - - - - - 0x0391A8 0E:9198: A9 0B     LDA #con_0048_0B
-C - - - - - 0x0391AA 0E:919A: 4C 14 F8  JMP loc_0x03F824
+C - - - - - 0x0391AA 0E:919A: 4C 14 F8  JMP loc_0x03F824_подготовить_irq_handler
 bra_919D_RTS:
 C - - - - - 0x0391AD 0E:919D: 60        RTS
 
@@ -3252,9 +3252,9 @@ C - - - - - 0x0391E3 0E:91D3: A9 3C     LDA #con_music_opening_2
 C - - - - - 0x0391E5 0E:91D5: 20 90 F6  JSR sub_0x03F6A0_записать_звук_сохранив_X_Y
 C - - - - - 0x0391E8 0E:91D8: 20 90 FC  JSR sub_0x03FCA0_set_mirroring_H
 C - - - - - 0x0391EB 0E:91DB: A9 10     LDA #con_0048_10
-C - - - - - 0x0391ED 0E:91DD: 20 14 F8  JSR sub_0x03F824
+C - - - - - 0x0391ED 0E:91DD: 20 14 F8  JSR sub_0x03F824_подготовить_irq_handler
 C - - - - - 0x0391F0 0E:91E0: A9 03     LDA #$03
-C - - - - - 0x0391F2 0E:91E2: 8D 0C 01  STA ram_010C
+C - - - - - 0x0391F2 0E:91E2: 8D 0C 01  STA ram_custom_scanline
 loc_91E5:
 C D 0 - - - 0x0391F5 0E:91E5: E6 21     INC ram_script_draw_lo
 C - - - - - 0x0391F7 0E:91E7: A9 00     LDA #$00
@@ -3337,7 +3337,7 @@ C - - - - - 0x039278 0E:9268: E5 FC     SBC ram_scroll_Y
 C - - - - - 0x03927A 0E:926A: A8        TAY
 bra_926B:
 loc_926B:
-C D 0 - - - 0x03927B 0E:926B: 8C 0C 01  STY ram_010C
+C D 0 - - - 0x03927B 0E:926B: 8C 0C 01  STY ram_custom_scanline
 C - - - - - 0x03927E 0E:926E: 60        RTS
 
 
@@ -3887,7 +3887,7 @@ C - - J - - 0x03963B 0E:962B: 20 C1 F7  JSR sub_0x03F7D1
 C - - - - - 0x03963E 0E:962E: A9 41     LDA #con_0x03F6AD_41
 C - - - - - 0x039640 0E:9630: 20 90 F6  JSR sub_0x03F6A0_записать_звук_сохранив_X_Y
 C - - - - - 0x039643 0E:9633: A9 0B     LDA #con_0048_0B
-C - - - - - 0x039645 0E:9635: 20 14 F8  JSR sub_0x03F824
+C - - - - - 0x039645 0E:9635: 20 14 F8  JSR sub_0x03F824_подготовить_irq_handler
 C - - - - - 0x039648 0E:9638: A5 A2     LDA ram_plr_id
 C - - - - - 0x03964A 0E:963A: 8D 50 05  STA ram_obj_id
 C - - - - - 0x03964D 0E:963D: A9 06     LDA #$06
@@ -3965,11 +3965,11 @@ C - - - - - 0x0396CC 0E:96BC: 4C 42 F0  JMP loc_0x03F052_отрисовать_п
 ofs_007_96BF_04:
 C - - J - - 0x0396CF 0E:96BF: E6 21     INC ram_script_draw_lo
 C - - - - - 0x0396D1 0E:96C1: A9 02     LDA #con_0048_02
-C - - - - - 0x0396D3 0E:96C3: 20 14 F8  JSR sub_0x03F824
+C - - - - - 0x0396D3 0E:96C3: 20 14 F8  JSR sub_0x03F824_подготовить_irq_handler
 C - - - - - 0x0396D6 0E:96C6: A2 08     LDX #con_screen_stage_water_front
 C - - - - - 0x0396D8 0E:96C8: 20 44 F0  JSR sub_0x03F054_отрисовать_экран
-C - - - - - 0x0396DB 0E:96CB: A0 01     LDY #$01
-C - - - - - 0x0396DD 0E:96CD: A9 02     LDA #$02
+C - - - - - 0x0396DB 0E:96CB: A0 01     LDY #con_D57A_01
+C - - - - - 0x0396DD 0E:96CD: A9 02     LDA #con_D57A_02
 C - - - - - 0x0396DF 0E:96CF: 20 94 D3  JSR sub_0x03D3A4_записать_палитру_для_фона_и_спрайтов
 C - - - - - 0x0396E2 0E:96D2: A2 04     LDX #$04    ; tip_индекс_буфера_палитры + $04
 C - - - - - 0x0396E4 0E:96D4: AD 50 05  LDA ram_obj_id
@@ -4200,12 +4200,12 @@ C - - - - - 0x03984F 0E:983F: 20 44 F0  JSR sub_0x03F054_отрисовать_э
 C - - - - - 0x039852 0E:9842: 20 BE DA  JSR sub_0x03DACE_удалить_все_объекты
 C - - - - - 0x039855 0E:9845: E6 21     INC ram_script_draw_lo
 C - - - - - 0x039857 0E:9847: A9 0B     LDA #con_0048_0B
-C - - - - - 0x039859 0E:9849: 20 14 F8  JSR sub_0x03F824
+C - - - - - 0x039859 0E:9849: 20 14 F8  JSR sub_0x03F824_подготовить_irq_handler
 C - - - - - 0x03985C 0E:984C: A0 1C     LDY #con_chr_pair_1C
 C - - - - - 0x03985E 0E:984E: 20 1A DC  JSR sub_0x03DC2A_запись_пары_chr
 C - - - - - 0x039861 0E:9851: A9 04     LDA #con_speech_celebrate
 C - - - - - 0x039863 0E:9853: 85 B6     STA ram_speech
-C - - - - - 0x039865 0E:9855: A9 1A     LDA #$1A
+C - - - - - 0x039865 0E:9855: A9 1A     LDA #con_D57A_1A
 C - - - - - 0x039867 0E:9857: 20 B0 D3  JSR sub_0x03D3C0_записать_палитру_для_фона
 C - - - - - 0x03986A 0E:985A: 4C 41 E1  JMP loc_0x03E151_подготовить_осветление_из_черного_в_цветной
 
@@ -4265,8 +4265,8 @@ ofs_007_98AD_0A:
 - - - - - - 0x0398BD 0E:98AD: 20 90 FC  JSR sub_0x03FCA0_set_mirroring_H
 - - - - - - 0x0398C0 0E:98B0: 20 88 FB  JSR sub_0x03FB98_disable_irq
 - - - - - - 0x0398C3 0E:98B3: 20 3C F0  JSR sub_0x03F04C_выключить_irq___удалить_все_объекты___отрисовать_пустой_экран
-- - - - - - 0x0398C6 0E:98B6: A9 00     LDA #$00
-- - - - - - 0x0398C8 0E:98B8: A8        LDY #$00
+- - - - - - 0x0398C6 0E:98B6: A9 00     LDA #con_D57A_00
+- - - - - - 0x0398C8 0E:98B8: A8        LDY #con_D57A_00
 - - - - - - 0x0398C9 0E:98B9: 20 94 D3  JSR sub_0x03D3A4_записать_палитру_для_фона_и_спрайтов
 - - - - - - 0x0398CC 0E:98BC: A9 0B     LDA #$0B
 - - - - - - 0x0398CE 0E:98BE: 85 21     STA ram_script_draw_lo
@@ -4380,8 +4380,8 @@ tbl_9951_speech:
 
 tbl_9953_палитра_фона:
 tbl_9953_палитра_спрайтов:
-- D 0 - - - 0x039963 0E:9953: 0C        .byte $0C, $0D   ; 00 lousy tricks
-- D 0 - - - 0x039965 0E:9955: 0E        .byte $0E, $0F   ; 01 celebrate
+- D 0 - - - 0x039963 0E:9953: 0C        .byte con_D57A_0C, con_D57A_0D   ; 00 lousy tricks
+- D 0 - - - 0x039965 0E:9955: 0E        .byte con_D57A_0E, con_D57A_0F   ; 01 celebrate
 
 
 
@@ -5135,7 +5135,7 @@ bra_9FD0:
 
 ofs_004_9FD6_00_отрисовать_hiscore:
 C - - J - - 0x039FE6 0E:9FD6: A9 0C     LDA #con_0048_0C
-C - - - - - 0x039FE8 0E:9FD8: 20 14 F8  JSR sub_0x03F824
+C - - - - - 0x039FE8 0E:9FD8: 20 14 F8  JSR sub_0x03F824_подготовить_irq_handler
 C - - - - - 0x039FEB 0E:9FDB: 20 3F F0  JSR sub_0x03F04F_удалить_все_объекты___отрисовать_пустой_экран
 C - - - - - 0x039FEE 0E:9FDE: E6 21     INC ram_script_draw_lo
 C - - - - - 0x039FF0 0E:9FE0: A2 26     LDX #con_screen_hiscore
@@ -5209,8 +5209,8 @@ C - - - - - 0x03A077 0E:A067: A9 0C     LDA #$0C
 C - - - - - 0x03A079 0E:A069: 8D D0 05  STA ram_obj_05D0
 C - - - - - 0x03A07C 0E:A06C: A9 00     LDA #$00
 C - - - - - 0x03A07E 0E:A06E: 8D A0 04  STA ram_obj_spd_Y_hi
-C - - - - - 0x03A081 0E:A071: A9 12     LDA #$12
-C - - - - - 0x03A083 0E:A073: A0 11     LDY #$11
+C - - - - - 0x03A081 0E:A071: A9 12     LDA #con_D57A_12
+C - - - - - 0x03A083 0E:A073: A0 11     LDY #con_D57A_11
 C - - - - - 0x03A085 0E:A075: 20 94 D3  JSR sub_0x03D3A4_записать_палитру_для_фона_и_спрайтов
 C - - - - - 0x03A088 0E:A078: 20 41 E1  JSR sub_0x03E151_подготовить_осветление_из_черного_в_цветной
 C - - - - - 0x03A08B 0E:A07B: A9 38     LDA #con_music_continue ; topscore
@@ -5442,7 +5442,7 @@ C - - - - - 0x03A1D0 0E:A1C0: 60        RTS
 
 loc_A1C1_палитра_и_chr_банки_на_vs_экране:
 C D 1 - - - 0x03A1D1 0E:A1C1: 20 6D D4  JSR sub_0x03D47D_запись_черной_палитры_в_буфер
-C - - - - - 0x03A1D4 0E:A1C4: A9 14     LDA #$14
+C - - - - - 0x03A1D4 0E:A1C4: A9 14     LDA #con_D57A_14
 C - - - - - 0x03A1D6 0E:A1C6: 20 B0 D3  JSR sub_0x03D3C0_записать_палитру_для_фона
 C - - - - - 0x03A1D9 0E:A1C9: A2 01     LDX #$01
 C - - - - - 0x03A1DB 0E:A1CB: 86 A8     STX ram_local_obj_index
@@ -5999,7 +5999,7 @@ C - - - - - 0x03A439 0E:A429: D0 24     BNE bra_A44F
 C - - - - - 0x03A43B 0E:A42B: 20 C1 F7  JSR sub_0x03F7D1
 C - - - - - 0x03A43E 0E:A42E: 20 3C F0  JSR sub_0x03F04C_выключить_irq___удалить_все_объекты___отрисовать_пустой_экран
 C - - - - - 0x03A441 0E:A431: A9 0F     LDA #con_0048_0F
-C - - - - - 0x03A443 0E:A433: 20 14 F8  JSR sub_0x03F824
+C - - - - - 0x03A443 0E:A433: 20 14 F8  JSR sub_0x03F824_подготовить_irq_handler
 C - - - - - 0x03A446 0E:A436: E6 96     INC ram_0096
 C - - - - - 0x03A448 0E:A438: A0 00     LDY #$00
 bra_A43A_loop:

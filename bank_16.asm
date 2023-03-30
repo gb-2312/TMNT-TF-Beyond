@@ -67,7 +67,7 @@ C - - - - - 0x02C109 0B:80F9: F0 03     BEQ bra_80FE    ; if con_gm_story
 C - - - - - 0x02C10B 0B:80FB: EE E0 04  INC ram_obj_04E0
 bra_80FE:
 C - - - - - 0x02C10E 0B:80FE: A9 0A     LDA #con_0048_0A
-C - - - - - 0x02C110 0B:8100: 20 14 F8  JSR sub_0x03F824
+C - - - - - 0x02C110 0B:8100: 20 14 F8  JSR sub_0x03F824_подготовить_irq_handler
 C - - - - - 0x02C113 0B:8103: 4C 6D D4  JMP loc_0x03D47D_запись_черной_палитры_в_буфер
 
 
@@ -81,8 +81,8 @@ C - - - - - 0x02C119 0B:8109: A4 2C     LDY ram_game_mode
 ; con_gm_vs_team
 C - - - - - 0x02C11B 0B:810B: BE FA BF  LDX tbl_BFFA,Y
 C - - - - - 0x02C11E 0B:810E: 20 44 F0  JSR sub_0x03F054_отрисовать_экран
-C - - - - - 0x02C12B 0B:811B: A0 06     LDY #$06
-C - - - - - 0x02C12D 0B:811D: A9 13     LDA #$13
+C - - - - - 0x02C12B 0B:811B: A0 06     LDY #con_D57A_06
+C - - - - - 0x02C12D 0B:811D: A9 13     LDA #con_D57A_13
 C - - - - - 0x02C12F 0B:811F: 20 94 D3  JSR sub_0x03D3A4_записать_палитру_для_фона_и_спрайтов
 C - - - - - 0x02C132 0B:8122: A0 00     LDY #$00
 C - - - - - 0x02C134 0B:8124: 8C 30 05  STY ram_obj_0530
@@ -980,7 +980,8 @@ C - - - - - 0x02EE71 0B:AE61: 8D 71 06  STA ram_0671
 C - - - - - 0x02EE74 0B:AE64: 85 AA     STA ram_таймер_задержки_фпс
 C - - - - - 0x02EE76 0B:AE66: 85 86     STA ram_0086
 C - - - - - 0x02EE78 0B:AE68: 85 4D     STA ram_004D
-C - - - - - 0x02EE7A 0B:AE6A: A9 01     LDA #$01    ; enable irq
+; bzk optimize
+C - - - - - 0x02EE7A 0B:AE6A: A9 01     LDA #$01    ; con_0048_01   enable irq
 C - - - - - 0x02EE7C 0B:AE6C: 85 48     STA ram_0048
 C - - - - - 0x02EE7E 0B:AE6E: 85 49     STA ram_irq_flag
 C - - - - - 0x02EE80 0B:AE70: A5 9E     LDA ram_009E
