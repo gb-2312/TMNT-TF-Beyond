@@ -6925,18 +6925,17 @@ sub_F814_подготовить_irq_handler:
 sub_0x03F824_подготовить_irq_handler:
 loc_0x03F824_подготовить_irq_handler:
 C D 3 - - - 0x03F824 0F:F814: 85 48     STA ram_0048
-C - - - - - 0x03F835 0F:F825: A0 01     LDY #$01    ; enable irq
-C - - - - - 0x03F837 0F:F827: 84 49     STY ram_irq_flag
-C - - - - - 0x03F839 0F:F829: 88        DEY ; 00
-C - - - - - 0x03F83A 0F:F82A: 84 4D     STY ram_004D
-C - - - - - 0x03F83C 0F:F82C: 78        SEI
-C - - - - - 0x03F83D 0F:F82D: A5 48     LDA ram_0048
 C - - - - - 0x03F83F 0F:F82F: 0A        ASL
 C - - - - - 0x03F840 0F:F830: A8        TAY
 C - - - - - 0x03F841 0F:F831: B9 3C F8  LDA tbl_F83C_irq_handler,Y
 C - - - - - 0x03F844 0F:F834: 85 4B     STA ram_004B
 C - - - - - 0x03F846 0F:F836: B9 3D F8  LDA tbl_F83C_irq_handler + $01,Y
 C - - - - - 0x03F849 0F:F839: 85 4C     STA ram_004C
+C - - - - - 0x03F835 0F:F825: A0 01     LDY #$01    ; enable irq
+C - - - - - 0x03F837 0F:F827: 84 49     STY ram_irq_flag
+C - - - - - 0x03F839 0F:F829: 88        DEY ; 00
+C - - - - - 0x03F83A 0F:F82A: 84 4D     STY ram_004D
+C - - - - - 0x03F83C 0F:F82C: 78        SEI
 C - - - - - 0x03F84B 0F:F83B: 60        RTS
 
 
