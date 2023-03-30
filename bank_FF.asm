@@ -6924,7 +6924,7 @@ C - - - - - 0x03F821 0F:F811: 4C 17 F6  JMP loc_F617_restore_prg
 sub_F814_подготовить_irq_handler:
 sub_0x03F824_подготовить_irq_handler:
 loc_0x03F824_подготовить_irq_handler:
-C D 3 - - - 0x03F824 0F:F814: 85 48     STA ram_0048
+C D 3 - - - 0x03F824 0F:F814: 85 48     STA ram_irq_handler
 C - - - - - 0x03F83F 0F:F82F: 0A        ASL
 C - - - - - 0x03F840 0F:F830: A8        TAY
 C - - - - - 0x03F841 0F:F831: B9 3C F8  LDA tbl_F83C_irq_handler,Y
@@ -7150,7 +7150,7 @@ C - - - - - 0x03F969 0F:F959: A9 7E     LDA #$7E
 C - - - - - 0x03F96B 0F:F95B: 8E 00 80  STX $8000
 C - - - - - 0x03F96E 0F:F95E: 8D 01 80  STA $8001
 C - - - - - 0x03F971 0F:F961: 20 8D FB  JSR sub_FB8D
-C - - - - - 0x03F974 0F:F964: A4 48     LDY ram_0048
+C - - - - - 0x03F974 0F:F964: A4 48     LDY ram_irq_handler
 C - - - - - 0x03F976 0F:F966: C0 05     CPY #$05
 C - - - - - 0x03F978 0F:F968: B0 03     BCS bra_F96D_RTS
 C - - - - - 0x03F97A 0F:F96A: 4C C9 FC  JMP loc_FCC9_вычислить_скороллинг_фона
@@ -7526,7 +7526,7 @@ C - - - - - 0x03FBD6 0F:FBC6: 8C 06 20  STY $2006
 C - - - - - 0x03FBD9 0F:FBC9: 8C 06 20  STY $2006
 C - - - - - 0x03FBDC 0F:FBCC: 8E 06 20  STX $2006
 C - - - - - 0x03FBDF 0F:FBCF: 8E 06 20  STX $2006
-C - - - - - 0x03FBE2 0F:FBD2: A4 48     LDY ram_0048
+C - - - - - 0x03FBE2 0F:FBD2: A4 48     LDY ram_irq_handler
 C - - - - - 0x03FBE4 0F:FBD4: C0 10     CPY #con_0048_10
 C - - - - - 0x03FBE6 0F:FBD6: D0 05     BNE bra_FBDD
 C - - - - - 0x03FBE8 0F:FBD8: AD 0C 01  LDA ram_custom_scanline

@@ -980,9 +980,9 @@ C - - - - - 0x02EE71 0B:AE61: 8D 71 06  STA ram_0671
 C - - - - - 0x02EE74 0B:AE64: 85 AA     STA ram_таймер_задержки_фпс
 C - - - - - 0x02EE76 0B:AE66: 85 86     STA ram_0086
 C - - - - - 0x02EE78 0B:AE68: 85 4D     STA ram_004D
-; bzk optimize
+; bzk optimize, предположительно 0048 будет перезаписан до чтения
 C - - - - - 0x02EE7A 0B:AE6A: A9 01     LDA #$01    ; con_0048_01   enable irq
-C - - - - - 0x02EE7C 0B:AE6C: 85 48     STA ram_0048
+C - - - - - 0x02EE7C 0B:AE6C: 85 48     STA ram_irq_handler
 C - - - - - 0x02EE7E 0B:AE6E: 85 49     STA ram_irq_flag
 C - - - - - 0x02EE80 0B:AE70: A5 9E     LDA ram_009E
 C - - - - - 0x02EE82 0B:AE72: 0A        ASL
