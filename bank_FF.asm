@@ -6587,8 +6587,6 @@ C - - - - - 0x03F62E 0F:F61E: 10 E0     BPL bra_F600    ; jmp
 
 sub_F620:
 C - - - - - 0x03F630 0F:F620: A5 23     LDA ram_0023
-; bzk optimize, бесполезный адрес 003C
-C - - - - - 0x03F632 0F:F622: 85 3C     STA ram_003C
 C - - - - - 0x03F634 0F:F624: D0 10     BNE bra_F636
 C - - - - - 0x03F636 0F:F626: A5 34     LDA ram_chr_bank_spr
 C - - - - - 0x03F638 0F:F628: 85 38     STA ram_copy_chr_bank_spr
