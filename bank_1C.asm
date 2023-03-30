@@ -2268,7 +2268,6 @@ bra_8BC9:
 C - - - - - 0x038BD9 0E:8BC9: 9D 2B 06  STA ram_062B,X ; 062B 062C 062D 062E 
 C - - - - - 0x038BDC 0E:8BCC: CA        DEX
 C - - - - - 0x038BDD 0E:8BCD: 10 D9     BPL bra_8BA8_loop
-C - - - - - 0x038BDF 0E:8BCF: AD 71 06  LDA ram_0671
 C - - - - - 0x038BE2 0E:8BD2: 20 5A F7  JSR sub_0x03F76A
 C - - - - - 0x038BE5 0E:8BD5: A2 00     LDX #$00
 bra_8BD7_loop:

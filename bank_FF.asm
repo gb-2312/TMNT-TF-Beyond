@@ -6787,9 +6787,8 @@ C - - - - - 0x03F767 0F:F757: 4C 17 F6  JMP loc_F617_restore_prg
 
 
 sub_0x03F76A:
-C - - - - - 0x03F76A 0F:F75A: 48        PHA
 C - - - - - 0x03F76B 0F:F75B: 20 DF F5  JSR sub_F5DF_swap_prg_12
-C - - - - - 0x03F76E 0F:F75E: 68        PLA
+C - - - - - 0x03F76E 0F:F75E: 68        LDA ram_0671
 C - - - - - 0x03F76F 0F:F75F: 20 B3 B0  JSR sub_0x0270C3
 C - - - - - 0x03F772 0F:F762: 20 F6 AF  JSR sub_0x027006_отрисовать_инфу_в_статусбаре
 C - - - - - 0x03F775 0F:F765: 4C 17 F6  JMP loc_F617_restore_prg
