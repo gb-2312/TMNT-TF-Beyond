@@ -2413,7 +2413,8 @@ C - - - - - 0x025ECF 09:9EBF: 8D 06 04  STA ram_obj_anim_id + $06
 C - - - - - 0x025ED2 09:9EC2: AD 16 04  LDA ram_obj_pos_Y_lo + $06
 C - - - - - 0x025ED5 09:9EC5: C9 AC     CMP #$AC
 C - - - - - 0x025ED7 09:9EC7: B0 03     BCS bra_9ECC
-C - - - - - 0x025ED9 09:9EC9: 4C A1 9F  JMP loc_9FA1
+C - - - - - 0x025ED9 09:9EC9: 4C A1 9F  LDA #$20
+                                        JMP loc_0x03DC68_добавить_A_00_к_spd_Z
 bra_9ECC:
 C - - - - - 0x025EDC 09:9ECC: A9 04     LDA #$04
 C - - - - - 0x025EDE 09:9ECE: CD 30 05  CMP ram_obj_0530
@@ -2535,12 +2536,6 @@ C - - - - - 0x025FA9 09:9F99: 29 01     AND #$01
 C - - - - - 0x025FAB 09:9F9B: F0 B0     BEQ bra_9F4D
 C - - - - - 0x025FAD 09:9F9D: A9 05     LDA #$05
 C - - - - - 0x025FAF 09:9F9F: D0 AC     BNE bra_9F4D    ; jmp
-
-
-
-loc_9FA1:
-C D 0 - - - 0x025FB1 09:9FA1: A9 20     LDA #$20
-C - - - - - 0x025FB3 09:9FA3: 4C 58 DC  JMP loc_0x03DC68_добавить_A_00_к_spd_Z
 
 
 
