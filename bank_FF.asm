@@ -6932,8 +6932,6 @@ C - - - - - 0x03F82E 0F:F81E: D0 03     BNE bra_F823
 bra_F820:
 C - - - - - 0x03F830 0F:F820: BD 9A FC  LDA tbl_FC9A_scanline,X
 bra_F823:
-; bzk optimize, смысл записывать в 004A если он не будет считан?
-C - - - - - 0x03F833 0F:F823: 85 4A     STA ram_copy_C000
 C - - - - - 0x03F835 0F:F825: A0 01     LDY #$01    ; enable irq
 C - - - - - 0x03F837 0F:F827: 84 49     STY ram_irq_flag
 C - - - - - 0x03F839 0F:F829: 88        DEY ; 00
@@ -7104,7 +7102,6 @@ C - - - - - 0x03F8F6 0F:F8E6: BE 94 F8  LDX tbl_F890 - $01 + $05,Y
 C - - - - - 0x03F8F9 0F:F8E9: BC 00 00  LDY ram_0056 - $56,X
 bra_F8EC:
 C - - - - - 0x03F8FC 0F:F8EC: 8D 00 C0  STA $C000
-C - - - - - 0x03F8FF 0F:F8EF: 85 4A     STA ram_copy_C000
 C - - - - - 0x03F901 0F:F8F1: E6 4D     INC ram_004D
 C - - - - - 0x03F903 0F:F8F3: AD 02 20  LDA $2002
 C - - - - - 0x03F906 0F:F8F6: A5 FC     LDA ram_scroll_Y
@@ -7177,7 +7174,6 @@ C - - - - - 0x03F985 0F:F975: D0 4C     BNE bra_F9C3
 C - - - - - 0x03F987 0F:F977: A5 56     LDA ram_0056
 C - - - - - 0x03F989 0F:F979: A2 52     LDX #$52
 C - - - - - 0x03F98B 0F:F97B: 8E 00 C0  STX $C000
-C - - - - - 0x03F98E 0F:F97E: 86 4A     STX ram_copy_C000
 C - - - - - 0x03F990 0F:F980: E6 4D     INC ram_004D
 C - - - - - 0x03F992 0F:F982: AC 02 20  LDY $2002
 C - - - - - 0x03F995 0F:F985: 8D 05 20  STA $2005
@@ -7223,7 +7219,6 @@ C - - - - - 0x03F9D3 0F:F9C3: 88        DEY
 C - - - - - 0x03F9D4 0F:F9C4: D0 28     BNE bra_F9EE
 C - - - - - 0x03F9D6 0F:F9C6: A9 2A     LDA #$2A
 C - - - - - 0x03F9D8 0F:F9C8: 8D 00 C0  STA $C000
-C - - - - - 0x03F9DB 0F:F9CB: 85 4A     STA ram_copy_C000
 C - - - - - 0x03F9DD 0F:F9CD: E6 4D     INC ram_004D
 C - - - - - 0x03F9DF 0F:F9CF: AC 02 20  LDY $2002
 C - - - - - 0x03F9E2 0F:F9D2: A9 FF     LDA #$FF
@@ -7259,7 +7254,6 @@ bra_FA0F:
 loc_FA0F_запись_скролла_и_банков_фона:
 C D 3 - - - 0x03FA1F 0F:FA0F: 84 4E     STY ram_alt_chr_bank_bg_1
 C - - - - - 0x03FA21 0F:FA11: 8E 00 C0  STX $C000
-C - - - - - 0x03FA24 0F:FA14: 86 4A     STX ram_copy_C000
 C - - - - - 0x03FA26 0F:FA16: E6 4D     INC ram_004D
 C - - - - - 0x03FA28 0F:FA18: AC 02 20  LDY $2002
 C - - - - - 0x03FA2B 0F:FA1B: 8D 05 20  STA $2005
@@ -7314,7 +7308,6 @@ sub_FA67:
 C - - - - - 0x03FA77 0F:FA67: A4 4D     LDY ram_004D
 C - - - - - 0x03FA79 0F:FA69: B9 93 FA  LDA tbl_FA94 - $01,Y
 C - - - - - 0x03FA7C 0F:FA6C: 8D 00 C0  STA $C000
-C - - - - - 0x03FA7F 0F:FA6F: 85 4A     STA ram_copy_C000
 C - - - - - 0x03FA81 0F:FA71: E6 4D     INC ram_004D
 C - - - - - 0x03FA83 0F:FA73: 18        CLC
 C - - - - - 0x03FA84 0F:FA74: A5 4D     LDA ram_004D
@@ -7397,7 +7390,6 @@ C - - - - - 0x03FAF2 0F:FAE2: B0 1A     BCS bra_FAFE
 C - - - - - 0x03FAF4 0F:FAE4: B9 04 FB  LDA tbl_FB04,Y
 bra_FAE7:
 C - - - - - 0x03FAF7 0F:FAE7: 8D 00 C0  STA $C000
-C - - - - - 0x03FAFA 0F:FAEA: 85 4A     STA ram_copy_C000
 C - - - - - 0x03FAFC 0F:FAEC: E6 4D     INC ram_004D
 C - - - - - 0x03FAFE 0F:FAEE: 88        DEY
 C - - - - - 0x03FAFF 0F:FAEF: F0 05     BEQ bra_FAF6
@@ -7435,7 +7427,6 @@ C - - - - - 0x03FB1E 0F:FB0E: D0 E9     BNE bra_FAF9
 C - - - - - 0x03FB20 0F:FB10: E6 4D     INC ram_004D
 C - - - - - 0x03FB22 0F:FB12: A9 90     LDA #$90
 C - - - - - 0x03FB24 0F:FB14: 8D 00 C0  STA $C000
-C - - - - - 0x03FB27 0F:FB17: 85 4A     STA ram_copy_C000
 C - - - - - 0x03FB29 0F:FB19: A2 00     LDX #$00
 C - - - - - 0x03FB2B 0F:FB1B: 8E 00 80  STX $8000
 C - - - - - 0x03FB2E 0F:FB1E: A9 5A     LDA #$5A
@@ -7468,7 +7459,6 @@ C - - - - - 0x03FB52 0F:FB42: A5 4D     LDA ram_004D
 C - - - - - 0x03FB54 0F:FB44: D0 10     BNE bra_FB56
 C - - - - - 0x03FB58 0F:FB48: A9 54     LDA #$54
 C - - - - - 0x03FB5A 0F:FB4A: 8D 00 C0  STA $C000
-C - - - - - 0x03FB5D 0F:FB4D: 85 4A     STA ram_copy_C000
 C - - - - - 0x03FB5F 0F:FB4F: 85 4D     STA ram_004D
 C - - - - - 0x03FB61 0F:FB51: A0 01     LDY #$01
 C - - - - - 0x03FB63 0F:FB53: 4C 8F F9  JMP loc_F98F
@@ -7550,7 +7540,6 @@ C - - - - - 0x03FBEB 0F:FBDB: D0 03     BNE bra_FBE0
 bra_FBDD:
 C - - - - - 0x03FBED 0F:FBDD: B9 9A FC  LDA tbl_FC9A_scanline,Y
 bra_FBE0:
-C - - - - - 0x03FBF0 0F:FBE0: 85 4A     STA ram_copy_C000
 C - - - - - 0x03FBF2 0F:FBE2: 8D 00 C0  STA $C000
 C - - - - - 0x03FBF5 0F:FBE5: 8D 01 C0  STA $C001
 C - - - - - 0x03FBF8 0F:FBE8: A9 00     LDA #$00
