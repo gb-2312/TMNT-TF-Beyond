@@ -5979,6 +5979,7 @@ C - - - - - 0x03F279 0F:F269: 20 D3 F6  JSR sub_F6D3_спрайтовый_дви
 ; закрыть буфер
 C - - - - - 0x03F27C 0F:F26C: A9 00     LDA #$00
 C - - - - - 0x03F27E 0F:F26E: 20 5D D2  JSR sub_D25D_записать_A_в_буфер_с_чтением_индекса
+; A = 00
 C - - - - - 0x03F281 0F:F271: 85 23     STA ram_0023
 C - - - - - 0x03F283 0F:F273: 4C 6C F8  JMP loc_F86C_выход_из_прерывания
 bra_F279:
@@ -6550,7 +6551,7 @@ C - - - - - 0x03F605 0F:F5F5: D0 02     BNE bra_F5F9    ; jmp
 sub_F600_swap_prg_16_no_return:
 ; bzk optimize, прыжок на 0x03F5F7 (а может не надо, раз 3 команды в 0x03F609 не выполняются)
                                         LDA #con_prg_bank + $16
-                                        BNE bra_F600
+                                        BNE bra_F600    ; jmp
 
 
 
