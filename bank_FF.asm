@@ -5941,8 +5941,8 @@ C - - - - - 0x03F22C 0F:F21C: 98        TYA
 C - - - - - 0x03F22D 0F:F21D: 48        PHA
 C - - - - - 0x03F22E 0F:F21E: AD 02 20  LDA $2002
 C - - - - - 0x03F231 0F:F221: 58        CLI
-C - - - - - 0x03F232 0F:F222: A4 23     LDY ram_0023
-C - - - - - 0x03F234 0F:F224: D0 53     BNE bra_F279
+C - - - - - 0x03F232 0F:F222: A4 23     LDY ram_nmi_flag
+C - - - - - 0x03F234 0F:F224: D0 53     BNE bra_F279_игра_сейчас_лагает
 C - - - - - 0x03F236 0F:F226: 20 D6 F2  JSR sub_F2D6_nmi_off
 C - - - - - 0x03F239 0F:F229: A9 00     LDA #< ram_oam
 C - - - - - 0x03F23B 0F:F22B: 8D 03 20  STA $2003
@@ -5957,10 +5957,10 @@ C - - - - - 0x03F24E 0F:F23E: F0 02     BEQ bra_F242
 C - - - - - 0x03F250 0F:F240: 29 E7     AND #$E7
 bra_F242:
 C - - - - - 0x03F252 0F:F242: 8D 01 20  STA $2001
-C - - - - - 0x03F255 0F:F245: 20 95 FB  JSR sub_FB95
-C - - - - - 0x03F258 0F:F248: 20 9B F2  JSR sub_F29B
-C - - - - - 0x03F25B 0F:F24B: 20 20 F6  JSR sub_F620
-C - - - - - 0x03F25E 0F:F24E: E6 23     INC ram_0023
+C - - - - - 0x03F255 0F:F245: 20 95 FB  JSR sub_FB95_подготовить_irq
+C - - - - - 0x03F258 0F:F248: 20 9B F2  JSR sub_F29B_запись_scroll
+C - - - - - 0x03F25B 0F:F24B: 20 20 F6  JSR sub_F620_запись_chr_банков
+C - - - - - 0x03F25E 0F:F24E: E6 23     INC ram_nmi_flag
 C - - - - - 0x03F260 0F:F250: A5 2E     LDA ram_002E
 C - - - - - 0x03F262 0F:F252: D0 03     BNE bra_F257
 C - - - - - 0x03F264 0F:F254: 20 59 F6  JSR sub_F659_обновить_звуковой_движок
@@ -5981,9 +5981,10 @@ C - - - - - 0x03F279 0F:F269: 20 D3 F6  JSR sub_F6D3_спрайтовый_дви
 C - - - - - 0x03F27C 0F:F26C: A9 00     LDA #$00
 C - - - - - 0x03F27E 0F:F26E: 20 5D D2  JSR sub_D25D_записать_A_в_буфер_с_чтением_индекса
 ; A = 00
-C - - - - - 0x03F281 0F:F271: 85 23     STA ram_0023
+C - - - - - 0x03F281 0F:F271: 85 23     STA ram_nmi_flag
 C - - - - - 0x03F283 0F:F273: 4C 6C F8  JMP loc_F86C_выход_из_прерывания
-bra_F279:
+bra_F279_игра_сейчас_лагает:
+; if nmi был вызван повторно
 C - - - - - 0x03F289 0F:F279: A5 FE     LDA ram_for_2001
 C - - - - - 0x03F28B 0F:F27B: A6 24     LDX ram_0024
 C - - - - - 0x03F28D 0F:F27D: F0 06     BEQ bra_F285
@@ -5992,9 +5993,9 @@ C - - - - - 0x03F28D 0F:F27D: F0 06     BEQ bra_F285
 - - - - - - 0x03F293 0F:F283: 29 E7     AND #$E7
 bra_F285:
 C - - - - - 0x03F295 0F:F285: 8D 01 20  STA $2001
-C - - - - - 0x03F298 0F:F288: 20 95 FB  JSR sub_FB95
-C - - - - - 0x03F29B 0F:F28B: 20 9B F2  JSR sub_F29B
-C - - - - - 0x03F29E 0F:F28E: 20 20 F6  JSR sub_F620
+C - - - - - 0x03F298 0F:F288: 20 95 FB  JSR sub_FB95_подготовить_irq
+C - - - - - 0x03F29B 0F:F28B: 20 9B F2  JSR sub_F29B_запись_scroll
+C - - - - - 0x03F29E 0F:F28E: 20 20 F6  JSR sub_F620_запись_chr_банков
 C - - - - - 0x03F2A1 0F:F291: A4 2E     LDY ram_002E
 C - - - - - 0x03F2A3 0F:F293: D0 03     BNE bra_F298
 C - - - - - 0x03F2A5 0F:F295: 20 59 F6  JSR sub_F659_обновить_звуковой_движок
@@ -6003,7 +6004,7 @@ C - - - - - 0x03F2A8 0F:F298: 4C 6C F8  JMP loc_F86C_выход_из_преры�
 
 
 
-sub_F29B:
+sub_F29B_запись_scroll:
 C - - - - - 0x03F2AB 0F:F29B: AD 02 20  LDA $2002
 C - - - - - 0x03F2AE 0F:F29E: A9 20     LDA #> $2000
 C - - - - - 0x03F2B0 0F:F2A0: 8D 06 20  STA $2006
@@ -6586,8 +6587,8 @@ C - - - - - 0x03F62E 0F:F61E: 10 E0     BPL bra_F600    ; jmp
 
 
 
-sub_F620:
-C - - - - - 0x03F630 0F:F620: A5 23     LDA ram_0023
+sub_F620_запись_chr_банков:
+C - - - - - 0x03F630 0F:F620: A5 23     LDA ram_nmi_flag
 C - - - - - 0x03F634 0F:F624: D0 10     BNE bra_F636
 C - - - - - 0x03F636 0F:F626: A5 34     LDA ram_chr_bank_spr
 C - - - - - 0x03F638 0F:F628: 85 38     STA ram_copy_chr_bank_spr
@@ -7502,10 +7503,11 @@ C - - - - - 0x03FBA4 0F:FB94: 60        RTS
 
 
 
-sub_FB95:
+sub_FB95_подготовить_irq:
 C - - - - - 0x03FBA5 0F:FB95: A4 49     LDY ram_irq_flag
 C - - - - - 0x03FBA7 0F:FB97: 99 00 E0  STA $E000,Y
-C - - - - - 0x03FBAA 0F:FB9A: F0 53     BEQ bra_FBEF_RTS
+C - - - - - 0x03FBAA 0F:FB9A: F0 53     BEQ bra_FBEF_RTS    ; if irq off
+; if irq on
 C - - - - - 0x03FBE2 0F:FBD2: A4 48     LDY ram_irq_handler
 C - - - - - 0x03FBE4 0F:FBD4: C0 10     CPY #con_0048_10
 C - - - - - 0x03FBE6 0F:FBD6: D0 05     BNE bra_FBDD
