@@ -6925,16 +6925,6 @@ sub_F814_подготовить_irq_handler:
 sub_0x03F824_подготовить_irq_handler:
 loc_0x03F824_подготовить_irq_handler:
 C D 3 - - - 0x03F824 0F:F814: 85 48     STA ram_0048
-C - - - - - 0x03F826 0F:F816: AA        TAX
-C - - - - - 0x03F827 0F:F817: E0 10     CPX #con_0048_10
-C - - - - - 0x03F829 0F:F819: D0 05     BNE bra_F820
-C - - - - - 0x03F82B 0F:F81B: AD 0C 01  LDA ram_custom_scanline
-C - - - - - 0x03F82E 0F:F81E: D0 03     BNE bra_F823
-bra_F820:
-C - - - - - 0x03F830 0F:F820: BD 9A FC  LDA tbl_FC9A_scanline,X
-bra_F823:
-; bzk optimize, нахрена эти 2 LDA, если ни один из них не запишется?
-; удалить 0x03F826-0x03F830
 C - - - - - 0x03F835 0F:F825: A0 01     LDY #$01    ; enable irq
 C - - - - - 0x03F837 0F:F827: 84 49     STY ram_irq_flag
 C - - - - - 0x03F839 0F:F829: 88        DEY ; 00
