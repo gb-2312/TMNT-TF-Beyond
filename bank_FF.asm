@@ -7503,29 +7503,9 @@ C - - - - - 0x03FBA4 0F:FB94: 60        RTS
 
 
 sub_FB95:
-; bzk optimize, удалить этот хлам с записью в 2002 и 2006
 C - - - - - 0x03FBA5 0F:FB95: A4 49     LDY ram_irq_flag
 C - - - - - 0x03FBA7 0F:FB97: 99 00 E0  STA $E000,Y
 C - - - - - 0x03FBAA 0F:FB9A: F0 53     BEQ bra_FBEF_RTS
-C - - - - - 0x03FBAC 0F:FB9C: AD 02 20  LDA $2002
-C - - - - - 0x03FBAF 0F:FB9F: A2 00     LDX #$00
-C - - - - - 0x03FBB1 0F:FBA1: 8E 05 20  STX $2005
-C - - - - - 0x03FBB4 0F:FBA4: 8E 05 20  STX $2005
-C - - - - - 0x03FBB7 0F:FBA7: AD 02 20  LDA $2002
-C - - - - - 0x03FBBA 0F:FBAA: A9 FF     LDA #$FF
-C - - - - - 0x03FBBC 0F:FBAC: 8D 00 C0  STA $C000
-C - - - - - 0x03FBBF 0F:FBAF: 8D 01 C0  STA $C001
-C - - - - - 0x03FBC2 0F:FBB2: 8E 06 20  STX $2006
-C - - - - - 0x03FBC5 0F:FBB5: 8E 06 20  STX $2006
-C - - - - - 0x03FBC8 0F:FBB8: A0 10     LDY #$10
-C - - - - - 0x03FBCA 0F:FBBA: 8C 06 20  STY $2006
-C - - - - - 0x03FBCD 0F:FBBD: 8C 06 20  STY $2006
-C - - - - - 0x03FBD0 0F:FBC0: 8E 06 20  STX $2006
-C - - - - - 0x03FBD3 0F:FBC3: 8E 06 20  STX $2006
-C - - - - - 0x03FBD6 0F:FBC6: 8C 06 20  STY $2006
-C - - - - - 0x03FBD9 0F:FBC9: 8C 06 20  STY $2006
-C - - - - - 0x03FBDC 0F:FBCC: 8E 06 20  STX $2006
-C - - - - - 0x03FBDF 0F:FBCF: 8E 06 20  STX $2006
 C - - - - - 0x03FBE2 0F:FBD2: A4 48     LDY ram_irq_handler
 C - - - - - 0x03FBE4 0F:FBD4: C0 10     CPY #con_0048_10
 C - - - - - 0x03FBE6 0F:FBD6: D0 05     BNE bra_FBDD
