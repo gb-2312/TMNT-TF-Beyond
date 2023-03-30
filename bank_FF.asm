@@ -6622,14 +6622,14 @@ sub_F65F_restore_prg_в_оригинальный_банк:
 C - - - - - 0x03F66F 0F:F65F: A6 46     LDX ram_prg_return
 C - - - - - 0x03F671 0F:F661: 20 76 F6  JSR sub_F676_restore_prg_в_оригинальный_банк
 C - - - - - 0x03F674 0F:F664: A0 00     LDY #$00
-C - - - - - 0x03F676 0F:F666: 84 2E     STY ram_002E
+C - - - - - 0x03F676 0F:F666: 84 2E     STY ram_индекс_copy_8000
 C - - - - - 0x03F678 0F:F668: 60        RTS
 
 
 
 sub_F669_swap_prg_запомнив_текущий_банк:
 C - - - - - 0x03F679 0F:F669: A0 01     LDY #$01
-C - - - - - 0x03F67B 0F:F66B: 84 2E     STY ram_002E
+C - - - - - 0x03F67B 0F:F66B: 84 2E     STY ram_индекс_copy_8000
 C - - - - - 0x03F67D 0F:F66D: AD 00 80  LDA $8000
 C - - - - - 0x03F682 0F:F672: 85 46     STA ram_prg_return
 C - - - - - 0x03F684 0F:F674: A2 30     LDX #con_prg_bank + $10
@@ -6963,7 +6963,7 @@ C - - - - - 0x03F873 0F:F863: 8D 00 E0  STA $E000
 C - - - - - 0x03F876 0F:F866: 8D 01 E0  STA $E001
 C - - - - - 0x03F879 0F:F869: 20 7A F8  JSR sub_F87A_indirect_jmp
 loc_F86C_выход_из_прерывания:
-C D 3 - - - 0x03F87C 0F:F86C: A4 2E     LDY ram_002E
+C D 3 - - - 0x03F87C 0F:F86C: A4 2E     LDY ram_индекс_copy_8000
 C - - - - - 0x03F87E 0F:F86E: B9 42 00  LDA ram_copy_8000,Y ; 0042 0043 
 C - - - - - 0x03F881 0F:F871: 8D 00 80  STA $8000
 C - - - - - 0x03F884 0F:F874: 68        PLA
