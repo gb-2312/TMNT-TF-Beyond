@@ -103,9 +103,9 @@ ofs_015_805E_02_обработка_страницы_опций_1:
 ofs_085_8060_00_difficulty:
                                         JSR sub_817C_попытка_сделать_255_контов
                                         LDA ram_btn_press
-                                        AND #con_btns_LR
+                                        AND #con_btns_AB + con_btns_LR
                                         BEQ bra_8093_RTS
-                                        AND #con_btn_Right
+                                        AND #con_btn_Right + con_btn_A
                                         BNE bra_8090_right
 ; if left
                                         LDA ram_option_difficulty
@@ -144,9 +144,9 @@ ofs_085_8060_01_skin:
                                         AND #$03
                                         TAX
                                         LDA ram_btn_press
-                                        AND #con_btns_LR
+                                        AND #con_btns_AB + con_btns_LR
                                         BEQ bra_80A3_RTS
-                                        AND #con_btn_Right
+                                        AND #con_btn_Right + con_btn_A
                                         BNE bra_80A0_right
 ; if left
                                         DEX
@@ -188,20 +188,12 @@ tbl_80AF_skin:
 
 ofs_085_8060_02_speed:
                                         LDA ram_btn_press
-                                        AND #con_btns_LR
+                                        AND #con_btns_AB + con_btns_LR
                                         BEQ bra_80B3_RTS
-                                        AND #con_btn_Right
-                                        BNE bra_80B0_right
-; if left
+bra_80B0_change_option:
                                         LDA ram_option_speed
-                                        BEQ bra_80B3_RTS
-                                        DEC ram_option_speed
-                                        BPL bra_80B2    ; jmp
-bra_80B0_right:
-                                        LDA ram_option_speed
-                                        CMP #$01
-                                        BCS bra_80B3_RTS
-                                        INC ram_option_speed
+                                        EOR #$01
+                                        STA ram_option_speed
 bra_80B2:
                                         JSR sub_81A9_воспроизвести_звук_27
                                         JSR sub_80BE_отрисовать_вариант_speed
@@ -224,9 +216,9 @@ tbl_80BF_speed:
 
 ofs_085_8060_03_timer:
                                         LDA ram_btn_press
-                                        AND #con_btns_LR
+                                        AND #con_btns_AB + con_btns_LR
                                         BEQ bra_80C3_RTS
-                                        AND #con_btn_Right
+                                        AND #con_btn_Right + con_btn_A
                                         BNE bra_80C0_right
 ; if left
                                         LDA ram_option_timer
@@ -262,9 +254,9 @@ tbl_80CF_timer:
 
 ofs_085_8060_04_health:
                                         LDA ram_btn_press
-                                        AND #con_btns_LR
+                                        AND #con_btns_AB + con_btns_LR
                                         BEQ bra_80D3_RTS
-                                        AND #con_btn_Right
+                                        AND #con_btn_Right + con_btn_A
                                         BNE bra_80D0_right
 ; if left
                                         LDA ram_option_health
@@ -325,30 +317,14 @@ ofs_015_805F_03_обработка_страницы_опций_2:
 
 
 ofs_086_8060_00_balancing:
-                                        LDA ram_option_misc
-                                        AND #$08
-                                        TAX
                                         LDA ram_btn_press
-                                        AND #con_btns_LR
+                                        AND #con_btns_AB + con_btns_LR
                                         BEQ bra_8193_RTS
-                                        AND #con_btn_Right
-                                        BNE bra_8190_right
-; if left
-                                        CPX #$00
-                                        BEQ bra_8193_RTS
-                                        LDX #$00
-                                        BPL bra_8192    ; jmp
-bra_8190_right:
-                                        CPX #$08
-                                        BEQ bra_8193_RTS
-                                        LDX #$08
-bra_8192:
+bra_8190_change_option:
                                         LDA ram_option_misc
-                                        AND #$F7
+                                        EOR #$08
                                         STA ram_option_misc
-                                        TXA
-                                        ORA ram_option_misc
-                                        STA ram_option_misc
+bra_8192:
                                         JSR sub_81A9_воспроизвести_звук_27
                                         JSR sub_819E_отрисовать_вариант_balancing
 bra_8193_RTS:
@@ -376,30 +352,14 @@ tbl_819F_balancing:
 
 
 ofs_086_8060_01_shred_ctrl:
-                                        LDA ram_option_misc
-                                        AND #$10
-                                        TAX
                                         LDA ram_btn_press
-                                        AND #con_btns_LR
+                                        AND #con_btns_AB + con_btns_LR
                                         BEQ bra_81A3_RTS
-                                        AND #con_btn_Right
-                                        BNE bra_81A0_right
-; if left
-                                        CPX #$00
-                                        BEQ bra_81A3_RTS
-                                        LDX #$00
-                                        BPL bra_81A2    ; jmp
-bra_81A0_right:
-                                        CPX #$10
-                                        BEQ bra_81A3_RTS
-                                        LDX #$10
-bra_81A2:
+bra_81A0_change_option:
                                         LDA ram_option_misc
-                                        AND #$EF
+                                        EOR #$10
                                         STA ram_option_misc
-                                        TXA
-                                        ORA ram_option_misc
-                                        STA ram_option_misc
+bra_81A2:
                                         JSR sub_81A9_воспроизвести_звук_27
                                         JSR sub_81AE_отрисовать_вариант_shred_ctrl
 bra_81A3_RTS:
@@ -515,9 +475,9 @@ tbl_81BF_bgm:
 
 ofs_086_8060_03_team_keeps:
                                         LDA ram_btn_press
-                                        AND #con_btns_LR
+                                        AND #con_btns_AB + con_btns_LR
                                         BEQ bra_81C3_RTS
-                                        AND #con_btn_Right
+                                        AND #con_btn_Right + con_btn_A
                                         BNE bra_81C0_right
 ; if left
                                         LDA ram_option_team_keeps
