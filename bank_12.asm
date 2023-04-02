@@ -1917,7 +1917,7 @@ C - - - - - 0x024CE1 09:8CD1: A9 30     LDA #$30
                                         LDY ram_062E,X
 
                                         LDA ram_obj_id,X ; 0550 0551 
-                                        CMP #$05
+                                        CMP #$05    ; con_fighter_hot
                                         BNE bra_8CCF
                                         TYA
                                         BMI bra_8CCD
@@ -1930,7 +1930,7 @@ C - - - - - 0x024CE1 09:8CD1: A9 30     LDA #$30
                                         BCC bra_8CD3
 bra_8CCD:
                                         LDA #$C0
-                                        BNE bra_8CD3
+                                        BNE bra_8CD3    ; jmp
 bra_8CCF:
                                         LDA ram_obj_04C0,X
                                         CMP #$03
@@ -1943,13 +1943,14 @@ bra_8CCF:
                                         TAY
 bra_8CD0:
                                         LDA tbl_8CD7,Y
-                                        BNE bra_8CD3
+                                        BNE bra_8CD3    ; jmp
 bra_8CD2:
                                         LDA tbl_8CD8,Y
 bra_8CD3:
 C - - - - - 0x024CE3 09:8CD3: 4C 6A D1  JMP loc_0x03D17A
 bra_8CD6:
 C - - - - - 0x024CE6 09:8CD6: 4C 6E 8F  JMP loc_8F6E
+
 
 
 ofs_055_8CD9_02:
@@ -2027,6 +2028,7 @@ tbl_8CD7:
     .byte $01   ; 37 
     .byte $C0   ; 38 
     .byte $C0   ; 39 
+; bzk garbage?
     .byte $FF   ; 3A placeholder
     .byte $FF   ; 3B placeholder
     .byte $FF   ; 3C placeholder
@@ -2107,6 +2109,7 @@ tbl_8CD8:
     .byte $01   ; 44 (04 casey)
     .byte $A1   ; 45 (05 hot)
     .byte $C0   ; 46 (06 shred)
+
 
 
 ofs_055_8CE8_03:
