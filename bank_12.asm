@@ -1912,25 +1912,129 @@ C - - - - - 0x024CD3 09:8CC3: DE D0 04  DEC ram_obj_04D0,X ; 04D0 04D1
 C - - - - - 0x024CD6 09:8CC6: F0 0E     BEQ bra_8CD6
 C - - - - - 0x024CD8 09:8CC8: BD D0 04  LDA ram_obj_04D0,X ; 04D0 04D1 
 C - - - - - 0x024CDB 09:8CCB: C9 08     CMP #$08
-                                        LDY ram_062E,X
 C - - - - - 0x024CE1 09:8CD1: A9 30     LDA #$30
                                         BCC bra_8CD3
+                                        LDY ram_062E,X
+
+                                        LDA ram_obj_id,X ; 0550 0551 
+                                        CMP #$05
+                                        BNE bra_8CCF
                                         TYA
-                                        BPL bra_8CD2
+                                        BMI bra_8CCD
+                                        CMP #$2F
+                                        BCS bra_8CD2
+
+                                        LDA tbl_A7A5 - $01,Y
+                                        CMP #$10
+                                        LDA #$80
+                                        BCC bra_8CD3
+bra_8CCD:
+                                        LDA #$C0
+                                        BNE bra_8CD3
+bra_8CCF:
+                                        LDA ram_obj_04C0,X
+                                        CMP #$03
+                                        BEQ bra_8CD2
+
+                                        TYA
+                                        BPL bra_8CD0
                                         LDY ram_global_obj_index
-                                        LDA ram_obj_id,Y
-                                        ORA #$40
+                                        ORA ram_obj_id,Y
                                         TAY
-bra_8CD2:
+bra_8CD0:
                                         LDA tbl_8CD7,Y
+                                        BNE bra_8CD3
+bra_8CD2:
+                                        LDA tbl_8CD8,Y
 bra_8CD3:
 C - - - - - 0x024CE3 09:8CD3: 4C 6A D1  JMP loc_0x03D17A
 bra_8CD6:
 C - - - - - 0x024CE6 09:8CD6: 4C 6E 8F  JMP loc_8F6E
 
 
+ofs_055_8CD9_02:
+                                       ;LDY ram_obj_0540,X
+C - - J - - 0x024CE9 09:8CD9: D0 09     BNE bra_8CE4
+bra_8CDB:
+sub_8CDB:
+C - - - - - 0x024CEB 09:8CDB: A9 A7     LDA #> (ofs_0x02E7CA - $01)
+C - - - - - 0x024CED 09:8CDD: 48        PHA
+C - - - - - 0x024CEE 09:8CDE: A9 B9     LDA #< (ofs_0x02E7CA - $01)
+C - - - - - 0x024CF0 09:8CE0: 48        PHA
+C - - - - - 0x024CF1 09:8CE1: 4C E7 F5  JMP loc_0x03F5F7_swap_prg_16
+bra_8CE4:
+C - - - - - 0x024CF4 09:8CE4: A0 04     LDY #con_init_anim_получение_урона_сидя
+C - - - - - 0x024CF6 09:8CE6: D0 D8     BNE bra_8CC0    ; jmp
+
+
 
 tbl_8CD7:
+    .byte $C0   ; 00 
+    .byte $C0   ; 01 
+    .byte $C0   ; 02 
+    .byte $C0   ; 03 
+    .byte $C0   ; 04 
+    .byte $C0   ; 05 
+    .byte $C0   ; 06 
+    .byte $C0   ; 07 
+    .byte $C0   ; 08 
+    .byte $C0   ; 09 
+    .byte $C0   ; 0A 
+    .byte $C0   ; 0B 
+    .byte $C0   ; 0C 
+    .byte $C0   ; 0D 
+    .byte $C0   ; 0E 
+    .byte $C0   ; 0F 
+    .byte $C0   ; 10 
+    .byte $C0   ; 11 
+    .byte $C0   ; 12 
+    .byte $C0   ; 13 
+    .byte $C0   ; 14 
+    .byte $C0   ; 15 
+    .byte $C0   ; 16 
+    .byte $C0   ; 17 
+    .byte $C0   ; 18 
+    .byte $C0   ; 19 
+    .byte $F0   ; 1A 
+    .byte $F0   ; 1B 
+    .byte $C0   ; 1C 
+    .byte $C0   ; 1D 
+    .byte $F0   ; 1E 
+    .byte $F0   ; 1F 
+    .byte $C0   ; 20 
+    .byte $F0   ; 21 
+    .byte $C0   ; 22 
+    .byte $C0   ; 23 
+    .byte $C0   ; 24 
+    .byte $C0   ; 25 
+    .byte $C0   ; 26 
+    .byte $C0   ; 27 
+    .byte $C0   ; 28 
+    .byte $C0   ; 29 
+    .byte $C0   ; 2A 
+    .byte $C0   ; 2B 
+    .byte $C0   ; 2C 
+    .byte $C0   ; 2D 
+    .byte $C0   ; 2E 
+    .byte $C0   ; 2F 
+    .byte $C0   ; 30 
+    .byte $C0   ; 31 
+    .byte $C0   ; 32 
+    .byte $C0   ; 33 
+    .byte $C0   ; 34 
+    .byte $C0   ; 35 
+    .byte $C0   ; 36 
+    .byte $01   ; 37 
+    .byte $C0   ; 38 
+    .byte $C0   ; 39 
+    .byte $FF   ; 3A placeholder
+    .byte $FF   ; 3B placeholder
+    .byte $FF   ; 3C placeholder
+    .byte $FF   ; 3D placeholder
+    .byte $FF   ; 3E placeholder
+    .byte $FF   ; 3F placeholder
+
+tbl_8CD8:
     .byte $C0   ; 00 
     .byte $C0   ; 01 
     .byte $C0   ; 02 
@@ -1963,7 +2067,7 @@ tbl_8CD7:
     .byte $C0   ; 1D 
     .byte $01   ; 1E 
     .byte $01   ; 1F 
-    .byte $C0   ; 20 
+    .byte $E0   ; 20 
     .byte $11   ; 21 
     .byte $C0   ; 22 
     .byte $C0   ; 23 
@@ -1980,13 +2084,13 @@ tbl_8CD7:
     .byte $C0   ; 2E 
     .byte $C0   ; 2F 
     .byte $C0   ; 30 
-    .byte $C0   ; 31 
+    .byte $A0   ; 31 
     .byte $C0   ; 32 
     .byte $C0   ; 33 
     .byte $C0   ; 34 
     .byte $C0   ; 35 
-    .byte $C0   ; 36 
-    .byte $01   ; 37 
+    .byte $A0   ; 36 
+    .byte $C0   ; 37 
     .byte $C0   ; 38 
     .byte $C0   ; 39 
     .byte $FF   ; 3A placeholder
@@ -1995,6 +2099,7 @@ tbl_8CD7:
     .byte $FF   ; 3D placeholder
     .byte $FF   ; 3E placeholder
     .byte $FF   ; 3F placeholder
+
     .byte $C0   ; 40 (00 leo)
     .byte $C0   ; 41 (01 raph)
     .byte $C0   ; 42 (02 mike)
@@ -2002,23 +2107,6 @@ tbl_8CD7:
     .byte $01   ; 44 (04 casey)
     .byte $A1   ; 45 (05 hot)
     .byte $C0   ; 46 (06 shred)
-
-
-
-ofs_055_8CD9_02:
-                                       ;LDY ram_obj_0540,X
-C - - J - - 0x024CE9 09:8CD9: D0 09     BNE bra_8CE4
-bra_8CDB:
-sub_8CDB:
-C - - - - - 0x024CEB 09:8CDB: A9 A7     LDA #> (ofs_0x02E7CA - $01)
-C - - - - - 0x024CED 09:8CDD: 48        PHA
-C - - - - - 0x024CEE 09:8CDE: A9 B9     LDA #< (ofs_0x02E7CA - $01)
-C - - - - - 0x024CF0 09:8CE0: 48        PHA
-C - - - - - 0x024CF1 09:8CE1: 4C E7 F5  JMP loc_0x03F5F7_swap_prg_16
-bra_8CE4:
-C - - - - - 0x024CF4 09:8CE4: A0 04     LDY #con_init_anim_получение_урона_сидя
-C - - - - - 0x024CF6 09:8CE6: D0 D8     BNE bra_8CC0    ; jmp
-
 
 
 ofs_055_8CE8_03:
@@ -6413,11 +6501,11 @@ tbl_A7A5:
 - D 1 - - - 0x0267B5 09:A7A5: 0D        .byte $0D   ; 01 черепаха рука дальняя
 - D 1 - - - 0x0267B6 09:A7A6: 0B        .byte $0B   ; 02 черепаха нога ближняя
 - D 1 - - - 0x0267B7 09:A7A7: 0D        .byte $0D   ; 03 черепаха рука в воздухе
-- D 1 - - - 0x0267B8 09:A7A8: 11        .byte $11   ; 04 черепаха нога в воздухе
+- D 1 - - - 0x0267B8 09:A7A8: 11        .byte $12   ; 04 черепаха нога в воздухе
 - D 1 - - - 0x0267B9 09:A7A9: 06        .byte $06   ; 05 черепаха рука сидя
 - D 1 - - - 0x0267BA 09:A7AA: 07        .byte $07   ; 06 черепаха нога сидя обычная
 - D 1 - - - 0x0267BB 09:A7AB: 07        .byte $07   ; 07 черепаха рука ближняя
-- D 1 - - - 0x0267BC 09:A7AC: 11        .byte $11   ; 08 черепаха нога дальняя обычная
+- D 1 - - - 0x0267BC 09:A7AC: 11        .byte $12   ; 08 черепаха нога дальняя обычная
 - D 1 - - - 0x0267BD 09:A7AD: 15        .byte $15   ; 09 черепаха нога дальняя raph
 - D 1 - - - 0x0267BE 09:A7AE: 06        .byte $06   ; 0A черепаха нога сидя leo
 - D 1 - - - 0x0267BF 09:A7AF: 14        .byte $14   ; 0B черепаха деш локтем
@@ -6429,10 +6517,10 @@ tbl_A7A5:
 - D 1 - - - 0x0267C5 09:A7B5: 06        .byte $06   ; 11 casey рука сидя
 - D 1 - - - 0x0267C6 09:A7B6: 08        .byte $08   ; 12 casey нога сидя
 - D 1 - - - 0x0267C7 09:A7B7: 0E        .byte $0E   ; 13 casey рука ближняя
-- D 1 - - - 0x0267C8 09:A7B8: 12        .byte $12   ; 14 casey нога дальняя
+- D 1 - - - 0x0267C8 09:A7B8: 12        .byte $13   ; 14 casey нога дальняя
 - D 1 - - - 0x0267C9 09:A7B9: 0E        .byte $0E   ; 15 casey рука антиэйр
 - D 1 - - - 0x0267CA 09:A7BA: 0D        .byte $0D   ; 16 casey рука в воздухе
-- D 1 - - - 0x0267CB 09:A7BB: 12        .byte $12   ; 17 casey нога в воздухе
+- D 1 - - - 0x0267CB 09:A7BB: 12        .byte $13   ; 17 casey нога в воздухе
 - D 1 - - - 0x0267CC 09:A7BC: 11        .byte $11   ; 18 casey нога антиэйр
 - D 1 - - - 0x0267CD 09:A7BD: 0D        .byte $0D   ; 19 hot рука ближняя
 - D 1 - - - 0x0267CE 09:A7BE: 10        .byte $18   ; 1A hot рука дальняя
