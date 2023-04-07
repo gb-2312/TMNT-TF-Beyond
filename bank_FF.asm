@@ -5906,7 +5906,14 @@ C - - - - - 0x03F207 0F:F1F7: 20 E1 F4  JSR sub_F5AE_подготовить_ск
                                         JSR sub_F6C2_выключить_музыку_и_звуки
 C - - - - - 0x03F20A 0F:F1FA: 20 C6 F2  JSR sub_F2C6_nmi_on
 C - - - - - 0x03F20D 0F:F1FD: 58        CLI
+                                        LDX ram_счетчик_кадров
 loc_F1FE_infinite_loop:
+                                        CPX ram_счетчик_кадров
+                                        BEQ bra_F1FE_пропуск_звукового_движка
+                                        JSR sub_F659_обновить_звуковой_движок
+                                        LDX ram_счетчик_кадров
+                                        JMP loc_F1FE_infinite_loop
+bra_F1FE_пропуск_звукового_движка:
 C D 3 - - - 0x03F20E 0F:F1FE: 20 04 F2  JSR sub_F204_генератор_рандома
 C - - - - - 0x03F211 0F:F201: 4C FE F1  JMP loc_F1FE_infinite_loop
 
@@ -5961,7 +5968,6 @@ C - - - - - 0x03F255 0F:F245: 20 95 FB  JSR sub_FB95_подготовить_irq
 C - - - - - 0x03F258 0F:F248: 20 9B F2  JSR sub_F29B_запись_scroll
 C - - - - - 0x03F25B 0F:F24B: 20 20 F6  JSR sub_F620_запись_chr_банков
 C - - - - - 0x03F25E 0F:F24E: E6 23     INC ram_nmi_flag
-C - - - - - 0x03F264 0F:F254: 20 59 F6  JSR sub_F659_обновить_звуковой_движок
 C - - - - - 0x03F267 0F:F257: 20 ED F2  JSR sub_F2ED_чтение_регистров_джойстиков
 ; суммирование кнопок обоих джойстиков
 C - - - - - 0x03F26A 0F:F25A: A5 91     LDA ram_btn_hold
@@ -5993,7 +5999,6 @@ C - - - - - 0x03F295 0F:F285: 8D 01 20  STA $2001
 C - - - - - 0x03F298 0F:F288: 20 95 FB  JSR sub_FB95_подготовить_irq
 C - - - - - 0x03F29B 0F:F28B: 20 9B F2  JSR sub_F29B_запись_scroll
 C - - - - - 0x03F29E 0F:F28E: 20 20 F6  JSR sub_F620_запись_chr_банков
-C - - - - - 0x03F2A5 0F:F295: 20 59 F6  JSR sub_F659_обновить_звуковой_движок
 C - - - - - 0x03F2A8 0F:F298: 4C 6C F8  JMP loc_F86C_выход_из_прерывания
 
 
@@ -6508,6 +6513,12 @@ sub_F5DF_swap_prg_08:
 
 
 
+sub_F5DF_swap_prg_10:
+                                        LDA #con_prg_bank + $10
+                                        BNE bra_F5F9    ; jmp
+
+
+
 sub_F5DF_swap_prg_12:
 C - - - - - 0x03F5EF 0F:F5DF: A9 32     LDA #con_prg_bank + $12
 C - - - - - 0x03F5F1 0F:F5E1: D0 16     BNE bra_F5F9    ; jmp
@@ -6616,8 +6627,12 @@ C - - - - - 0x03F668 0F:F658: 60        RTS
 
 
 sub_F659_обновить_звуковой_движок:
-C - - - - - 0x03F669 0F:F659: 20 69 F6  JSR sub_F669_swap_prg_запомнив_текущий_банк
+C - - - - - 0x03F669 0F:F659: 20 69 F6  JSR sub_F5DF_swap_prg_10
 C - - - - - 0x03F66C 0F:F65C: 20 01 80  JSR sub_0x020011_обновить_звуковой_движок
+                                        JMP loc_F617_restore_prg
+
+
+
 sub_F65F_restore_prg_в_оригинальный_банк:
 C - - - - - 0x03F66F 0F:F65F: A6 46     LDX ram_prg_return
 C - - - - - 0x03F671 0F:F661: 20 76 F6  JSR sub_F676_restore_prg_в_оригинальный_банк
