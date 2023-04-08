@@ -3293,12 +3293,20 @@ ram_07F6                                = $07F6 ; 03D033 03F1BE
 ram_07F7                                = $07F7 ; 03D033 03F1BE 
 ram_07F8                                = $07F8 ; 03D033 03F1BE 
 ram_07F9                                = $07F9 ; 03D033 03F1BE 
-ram_07FA                                = $07FA ; 03D033 03F1BE 
-ram_07FB                                = $07FB ; 03D033 03F1BE 
-ram_07FC                                = $07FC ; 03D033 03F1BE 
-ram_07FD                                = $07FD ; 03D033 03F1BE 
-ram_07FE                                = $07FE ; 03D033 03F1BE 
-ram_07FF                                = $07FF ; 03D033 03F1BE 
+
+
+
+; индекс для для 07FB,X
+ram_индекс_очереди_звуков               = $07FA ; 03D033 03F1BE 
+
+
+
+; 07FB-07FF (05) 
+ram_очередь_звуков                      = $07FB ; 03D033 03F1BE 
+; ram_07FC                                = $07FC ; 03D033 03F1BE 
+; ram_07FD                                = $07FD ; 03D033 03F1BE 
+; ram_07FE                                = $07FE ; 03D033 03F1BE 
+; ram_07FF                                = $07FF ; 03D033 03F1BE 
 
 
 

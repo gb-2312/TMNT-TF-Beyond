@@ -454,9 +454,15 @@ bra_D01A_loop:
 C - - - - - 0x03D02A 0F:D01A: 9D 00 04  STA $0400,X
 C - - - - - 0x03D02D 0F:D01D: 9D 00 05  STA $0500,X
 C - - - - - 0x03D030 0F:D020: 9D 00 06  STA $0600,X
-C - - - - - 0x03D033 0F:D023: 9D 00 07  STA $0700,X
 C - - - - - 0x03D036 0F:D026: E8        INX
 C - - - - - 0x03D037 0F:D027: D0 F1     BNE bra_D01A_loop
+; очистка адресов звукового движка, кроме адресов для очереди звуков
+                                        LDX #$FA
+bra_D023_loop:
+; 0700-07F9
+                                        STA $0700 - $01,X
+                                        DEX
+                                        BNE bra_D023_loop
 ; bzk optimize, для безопасности лучше X = C1 чтоб охватить весь буфер
 C - - - - - 0x03D039 0F:D029: A2 C0     LDX #$C0
 bra_D02B_loop:
@@ -2457,9 +2463,8 @@ C - - - - - 0x03DE9F 0F:DE8F: 8D 0E 04  STA ram_obj_anim_id + $0E
 C - - - - - 0x03DEA2 0F:DE92: 8D 0F 04  STA ram_obj_anim_id + $0F
 C - - - - - 0x03DEA5 0F:DE95: A5 00     LDA ram_0000
 C - - - - - 0x03DEA7 0F:DE97: 9D E0 04  STA ram_obj_04E0,X ; 04E0 04E1 
-C - - - - - 0x03DEAA 0F:DE9A: 20 C2 F6  JSR sub_F6C2_выключить_музыку_и_звуки
 C - - - - - 0x03DEAD 0F:DE9D: A9 1C     LDA #con_0x03F6AD_1C
-C - - - - - 0x03DEAF 0F:DE9F: 4C 94 F6  JMP loc_F694_записать_звук
+C - - - - - 0x03DEAF 0F:DE9F: 4C 94 F6  JMP loc_F68B_выключить_звуки_и_записать_новый
 
 
 
@@ -4715,9 +4720,8 @@ C - - - - - 0x03EAE8 0F:EAD8: D0 2D     BNE bra_EB07
 C - - - - - 0x03EAEA 0F:EADA: A5 95     LDA ram_0095
 C - - - - - 0x03EAEC 0F:EADC: C9 10     CMP #$10
 C - - - - - 0x03EAEE 0F:EADE: B0 27     BCS bra_EB07
-C - - - - - 0x03EAF0 0F:EAE0: 20 C2 F6  JSR sub_F6C2_выключить_музыку_и_звуки
 C - - - - - 0x03EAF3 0F:EAE3: A9 2C     LDA #con_sfx_осталось_20_сек
-C - - - - - 0x03EAF5 0F:EAE5: 20 90 F6  JSR sub_F690_записать_звук_сохранив_X_Y
+C - - - - - 0x03EAF5 0F:EAE5: 20 90 F6  JSR sub_F68B_выключить_звуки_и_записать_новый
 C - - - - - 0x03EAF8 0F:EAE8: 4C 07 EB  JMP loc_EB07
 bra_EAEB:
 C - - - - - 0x03EAFB 0F:EAEB: A9 09     LDA #$09
@@ -5896,6 +5900,8 @@ C - - - - - 0x03F1FE 0F:F1EE: 99 22 01  STA ram_reset_check,Y
 C - - - - - 0x03F201 0F:F1F1: 88        DEY
 C - - - - - 0x03F202 0F:F1F2: 10 F7     BPL bra_F1EB_loop
 bra_F1F4_soft_reset:
+                                        LDA #$00
+                                        STA ram_индекс_очереди_звуков
 C - - - - - 0x03F204 0F:F1F4: 20 C2 F6  JSR sub_F6C2_выключить_музыку_и_звуки
                                         LDY #$00    ; disable irq
                                         STY ram_irq_flag
@@ -6631,42 +6637,19 @@ C - - - - - 0x03F66C 0F:F65C: 20 01 80  JSR sub_0x020011_обновить_зву
 
 
 
-sub_F65F_restore_prg_в_оригинальный_банк:
-C - - - - - 0x03F66F 0F:F65F: A6 46     LDX ram_prg_return
-C - - - - - 0x03F671 0F:F661: 20 76 F6  JSR sub_F676_restore_prg_в_оригинальный_банк
-C - - - - - 0x03F674 0F:F664: A0 00     LDY #$00
-C - - - - - 0x03F676 0F:F666: 84 2E     STY ram_индекс_copy_8000
-C - - - - - 0x03F678 0F:F668: 60        RTS
-
-
-
-sub_F669_swap_prg_запомнив_текущий_банк:
-C - - - - - 0x03F679 0F:F669: A0 01     LDY #$01
-C - - - - - 0x03F67B 0F:F66B: 84 2E     STY ram_индекс_copy_8000
-C - - - - - 0x03F67D 0F:F66D: AD 00 80  LDA $8000
-C - - - - - 0x03F682 0F:F672: 85 46     STA ram_prg_return
-C - - - - - 0x03F684 0F:F674: A2 30     LDX #con_prg_bank + $10
-sub_F676_restore_prg_в_оригинальный_банк:
-C - - - - - 0x03F686 0F:F676: A0 06     LDY #$06
-C - - - - - 0x03F688 0F:F678: 84 43     STY ram_copy_8000 + $01
-C - - - - - 0x03F68A 0F:F67A: 8C 00 80  STY $8000
-C - - - - - 0x03F68D 0F:F67D: 8E 01 80  STX $8001
-C - - - - - 0x03F690 0F:F680: C8        INY
-C - - - - - 0x03F691 0F:F681: E8        INX
-C - - - - - 0x03F692 0F:F682: 84 43     STY ram_copy_8000 + $01
-C - - - - - 0x03F694 0F:F684: 8C 00 80  STY $8000
-C - - - - - 0x03F697 0F:F687: 8E 01 80  STX $8001
-C - - - - - 0x03F69A 0F:F68A: 60        RTS
-
-
-
 sub_F68B_выключить_звуки_и_записать_новый:
 loc_F68B_выключить_звуки_и_записать_новый:
 sub_0x03F69B_выключить_звуки_и_записать_новый:
 loc_0x03F69B_выключить_звуки_и_записать_новый:
-C D 3 - - - 0x03F69B 0F:F68B: 48        PHA
-C - - - - - 0x03F69C 0F:F68C: 20 C2 F6  JSR sub_F6C2_выключить_музыку_и_звуки
-C - - - - - 0x03F69F 0F:F68F: 68        PLA
+                                        STY ram_global_obj_index
+                                        STX ram_local_obj_index
+                                        PHA
+                                        JSR sub_F6A8_добавить_выключение_музыки_и_звуков_в_очередь
+                                        PLA
+                                        JMP loc_F694_записать_звук
+
+
+
 loc_F690_записать_звук_сохранив_X_Y:
 sub_F690_записать_звук_сохранив_X_Y:
 sub_0x03F6A0_записать_звук_сохранив_X_Y:
@@ -6676,15 +6659,10 @@ C - - - - - 0x03F6A2 0F:F692: 86 A8     STX ram_local_obj_index
 loc_F694_записать_звук:
 sub_0x03F6A4_записать_звук:
 loc_0x03F6A4_записать_звук:
-C - - - - - 0x03F6A8 0F:F698: 48        PHA
-C - - - - - 0x03F6A9 0F:F699: 20 69 F6  JSR sub_F669_swap_prg_запомнив_текущий_банк
-C - - - - - 0x03F6AC 0F:F69C: 68        PLA
-C - - - - - 0x03F6AD 0F:F69D: 20 8D 8E  JSR sub_0x020E9D_воспроизвести_звук
-loc_F6A0_restore_prg_в_оригинальный_банк:
-C D 3 - - - 0x03F6B0 0F:F6A0: 20 5F F6  JSR sub_F65F_restore_prg_в_оригинальный_банк
-C - - - - - 0x03F6B3 0F:F6A3: A6 A8     LDX ram_local_obj_index
-C - - - - - 0x03F6B5 0F:F6A5: A4 A9     LDY ram_global_obj_index
-C - - - - - 0x03F6B7 0F:F6A7: 60        RTS
+                                        JSR sub_F6A8_добавить_звук_в_очередь
+                                        LDX ram_local_obj_index
+                                        LDY ram_global_obj_index
+                                        RTS
 
 
 
@@ -6693,9 +6671,23 @@ loc_F6C2_выключить_музыку_и_звуки:
 sub_0x03F6D2_выключить_музыку_и_звуки:
 C D 3 - - - 0x03F6D2 0F:F6C2: 84 A9     STY ram_global_obj_index
 C - - - - - 0x03F6D8 0F:F6C8: 86 A8     STX ram_local_obj_index
-C - - - - - 0x03F6DA 0F:F6CA: 20 69 F6  JSR sub_F669_swap_prg_запомнив_текущий_банк
-C - - - - - 0x03F6DD 0F:F6CD: 20 5D 90  JSR sub_0x02106D_выключить_музыку_и_звуки
-C - - - - - 0x03F6E0 0F:F6D0: 4C A0 F6  JMP loc_F6A0_restore_prg_в_оригинальный_банк
+C - - - - - 0x03F6DA 0F:F6CA: 20 69 F6  JSR sub_F6A8_добавить_выключение_музыки_и_звуков_в_очередь
+                                        LDX ram_local_obj_index
+                                        LDY ram_global_obj_index
+                                        RTS
+
+
+
+sub_F6A8_добавить_выключение_музыки_и_звуков_в_очередь:
+                                        LDA #con_music_sfx_off
+sub_F6A8_добавить_звук_в_очередь:
+                                        LDX ram_индекс_очереди_звуков
+                                        CPX #$05
+                                        BCS bra_F6D2_RTS
+                                        STA ram_очередь_звуков,X
+                                        INC ram_индекс_очереди_звуков
+bra_F6D2_RTS:
+                                        RTS
 
 
 
