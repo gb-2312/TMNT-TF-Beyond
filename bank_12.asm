@@ -1919,6 +1919,8 @@ C - - - - - 0x024CE1 09:8CD1: A9 30     LDA #$30
                                         LDA ram_obj_id,X ; 0550 0551 
                                         CMP #$05    ; con_fighter_hot
                                         BNE bra_8CCF
+                                        LDA ram_option_speed
+                                        BEQ bra_8CCD
                                         TYA
                                         BMI bra_8CCD
                                         CMP #$2F
@@ -3387,7 +3389,7 @@ _off010_94B7_08_черепаха_нога_дальняя_raph:
 - D 0 - I - 0x0254CB 09:94BB: 94        .byte $94, $07   ; 02
 - D 0 - I - 0x0254CD 09:94BD: FF        .byte $FF, con_0552_черепаха_нога_дальняя_raph   ; 03
 - D 0 - I - 0x0254CF 09:94BF: 93        .byte $93, $07   ; 04
-- D 0 - I - 0x0254D1 09:94C1: 92        .byte $92, $0B   ; 05
+- D 0 - I - 0x0254D1 09:94C1: 92        .byte $92, $0C   ; 05
 - D 0 - I - 0x0254D3 09:94C3: 00        .byte $00   ; end token
 
 
@@ -3518,12 +3520,12 @@ _off010_954A_13_casey_нога_ближняя:
 
 _off010_9559_14_casey_нога_дальняя:
 - D 0 - I - 0x025569 09:9559: FE        .byte $FE, con_0x03F6AD_04   ; 00
-- D 0 - I - 0x02556B 09:955B: 8E        .byte $8E, $04   ; 01
+- D 0 - I - 0x02556B 09:955B: 8E        .byte $8E, $05   ; 01
 - D 0 - I - 0x02556D 09:955D: 9A        .byte $9A, $04   ; 02
 - D 0 - I - 0x02556F 09:955F: 9B        .byte $9B, $00   ; 03
 - D 0 - I - 0x025571 09:9561: FF        .byte $FF, con_0552_casey_нога_дальняя   ; 04
 - D 0 - I - 0x025573 09:9563: 9B        .byte $9B, $08   ; 05
-- D 0 - I - 0x025575 09:9565: 9A        .byte $9A, $0A   ; 06
+- D 0 - I - 0x025575 09:9565: 9A        .byte $9A, $0B   ; 06
 - D 0 - I - 0x025577 09:9567: 00        .byte $00   ; end token
 
 

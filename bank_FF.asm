@@ -5258,7 +5258,6 @@ C - - - - - 0x03EDC3 0F:EDB3: 9D DC 06  STA ram_plr_06DC,X ; 06DC 06DD
 C - - - - - 0x03EDC6 0F:EDB6: 9D C2 06  STA ram_plr_06C2,X ; 06C2 06C3 
 C - - - - - 0x03EDC9 0F:EDB9: 9D E4 06  STA ram_plr_06E4,X ; 06E4 06E5 
 C - - - - - 0x03EDCC 0F:EDBC: 8D F0 06  STA ram_06F0
-C - - - - - 0x03EDCF 0F:EDBF: 9D F4 06  STA ram_plr_06F4,X ; 06F4 06F5 
 C - - - - - 0x03EDD2 0F:EDC2: 60        RTS
 bra_EDC3:
 ; bzk optimize, нигде на выходе игру не интересует этот 00 (да, я все проверил, а их дохера)
