@@ -5916,8 +5916,6 @@ loc_F1FE_infinite_loop:
                                         BEQ bra_F1FE_пропуск_звукового_движка
                                         JSR sub_F5DF_swap_prg_10
                                         JSR sub_0x020011_обновить_звуковой_движок
-; без восстановления банка игра дальше копирайтов не пройдет
-; bzk optimize, выяснить почему
                                         JSR sub_F617_restore_prg
                                         LDX ram_счетчик_кадров
                                         JMP loc_F1FE_infinite_loop
