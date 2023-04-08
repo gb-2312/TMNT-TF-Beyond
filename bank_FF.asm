@@ -207,7 +207,7 @@
 .export sub_0x03FF04
 .export sub_0x03FF1D
 .export loc_0x03FF38
-.export sub_0x03FF4B
+.export sub_0x03FF4B_вычисление_приоритета_игрока_в_бою
 .export _общий_RTS
 
 
@@ -3957,7 +3957,7 @@ bra_E6BF:
 C - - - - - 0x03E6CF 0F:E6BF: 90 06     BCC bra_E6C7
 C - - - - - 0x03E6D1 0F:E6C1: CA        DEX
 C - - - - - 0x03E6D2 0F:E6C2: EE 49 06  INC ram_plr_колво_побед_в_раундах
-C - - - - - 0x03E6D5 0F:E6C5: D0 03     BNE bra_E6CA
+C - - - - - 0x03E6D5 0F:E6C5: D0 03     BNE bra_E6CA    ; jmp
 bra_E6C7:
 C - - - - - 0x03E6D7 0F:E6C7: EE 4A 06  INC ram_plr_колво_побед_в_раундах + $01
 bra_E6CA:
@@ -7692,7 +7692,7 @@ C - - - - - 0x03FD57 0F:FD47: 20 75 F7  JSR sub_F775
 C - - - - - 0x03FD5A 0F:FD4A: 20 0B F7  JSR sub_F70B
 C - - - - - 0x03FD5D 0F:FD4D: 20 04 80  JSR sub_0x024014
 C - - - - - 0x03FD60 0F:FD50: 20 91 AD  JSR sub_0x026DA1
-C - - - - - 0x03FD63 0F:FD53: 20 3B FF  JSR sub_FF3B
+C - - - - - 0x03FD63 0F:FD53: 20 3B FF  JSR sub_FF3B_вычисление_приоритета_игрока_в_бою
 loc_FD57:
 C D 3 - - - 0x03FD67 0F:FD57: A6 AD     LDX ram_00AD
 C - - - - - 0x03FD69 0F:FD59: BD 36 06  LDA ram_plr_0636,X ; 0636 0637 
@@ -7993,8 +7993,8 @@ C - - - - - 0x03FF48 0F:FF38: 4C 08 80  JMP loc_0x024018
 
 
 
-sub_FF3B:
-sub_0x03FF4B:
+sub_FF3B_вычисление_приоритета_игрока_в_бою:
+sub_0x03FF4B_вычисление_приоритета_игрока_в_бою:
 C - - - - - 0x03FF4B 0F:FF3B: A2 01     LDX #$01
 C - - - - - 0x03FF4D 0F:FF3D: AD 54 01  LDA ram_0154
 C - - - - - 0x03FF50 0F:FF40: 0A        ASL
