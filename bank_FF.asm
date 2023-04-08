@@ -6965,8 +6965,7 @@ C - - - - - 0x03F873 0F:F863: 8D 00 E0  STA $E000
 C - - - - - 0x03F876 0F:F866: 8D 01 E0  STA $E001
 C - - - - - 0x03F879 0F:F869: 20 7A F8  JSR sub_F87A_indirect_jmp
 loc_F86C_выход_из_прерывания:
-C D 3 - - - 0x03F87C 0F:F86C: A4 2E     LDY ram_индекс_copy_8000
-C - - - - - 0x03F87E 0F:F86E: B9 42 00  LDA ram_copy_8000,Y ; 0042 0043 
+C - - - - - 0x03F87E 0F:F86E: B9 42 00  LDA ram_copy_8000
 C - - - - - 0x03F881 0F:F871: 8D 00 80  STA $8000
 C - - - - - 0x03F884 0F:F874: 68        PLA
 C - - - - - 0x03F885 0F:F875: A8        TAY
