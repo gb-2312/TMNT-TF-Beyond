@@ -77,7 +77,6 @@ C - - - - - 0x03408C 0D:807C: 9D D4 06  STA ram_plr_06D4,X ; 06D4 06D5
 C - - - - - 0x03408F 0D:807F: 9D E2 06  STA ram_plr_06E2,X ; 06E2 06E3 
 C - - - - - 0x034092 0D:8082: 9D CC 06  STA ram_plr_06CC,X ; 06CC 06CD 
 C - - - - - 0x034095 0D:8085: 8D F3 06  STA ram_06F3
-C - - - - - 0x034098 0D:8088: 9D F4 06  STA ram_plr_06F4,X ; 06F4 06F5 
 C - - - - - 0x03409B 0D:808B: 9D F6 06  STA ram_plr_06F6,X ; 06F6 06F7 
 C - - - - - 0x03409E 0D:808E: 9D F1 06  STA ram_06F1,X ; 06F1 06F2 
 C - - - - - 0x0340A1 0D:8091: 9D E4 06  STA ram_plr_06E4,X ; 06E4 06E5 
