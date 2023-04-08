@@ -206,7 +206,6 @@
 .export loc_0x03FEEF
 .export sub_0x03FF04
 .export sub_0x03FF1D
-.export loc_0x03FF38
 .export sub_0x03FF4B_вычисление_приоритета_игрока_в_бою
 .export _общий_RTS
 
@@ -7972,24 +7971,6 @@ C - - - - - 0x03FF31 0F:FF21: C6 AD     DEC ram_00AD
 C - - - - - 0x03FF33 0F:FF23: 30 F9     BMI bra_FF1E
 bra_FF25:
 C - - - - - 0x03FF35 0F:FF25: 4C 57 FD  JMP loc_FD57
-
-
-
-loc_0x03FF38:
-; bzk optimize, перенести в другой банк
-C D 3 - - - 0x03FF38 0F:FF28: A5 9D     LDA ram_009D
-C - - - - - 0x03FF3A 0F:FF2A: D0 08     BNE bra_FF34
-C - - - - - 0x03FF3C 0F:FF2C: E6 AD     INC ram_00AD
-C - - - - - 0x03FF3E 0F:FF2E: A5 AD     LDA ram_00AD
-C - - - - - 0x03FF40 0F:FF30: 4A        LSR
-C - - - - - 0x03FF41 0F:FF31: F0 05     BEQ bra_FF38
-bra_FF33_RTS:
-C - - - - - 0x03FF43 0F:FF33: 60        RTS
-bra_FF34:
-C - - - - - 0x03FF44 0F:FF34: C6 AD     DEC ram_00AD
-C - - - - - 0x03FF46 0F:FF36: 30 FB     BMI bra_FF33_RTS
-bra_FF38:
-C - - - - - 0x03FF48 0F:FF38: 4C 08 80  JMP loc_0x024018
 
 
 
