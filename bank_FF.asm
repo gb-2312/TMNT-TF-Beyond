@@ -5914,7 +5914,9 @@ C - - - - - 0x03F20D 0F:F1FD: 58        CLI
 loc_F1FE_infinite_loop:
                                         CPX ram_счетчик_кадров
                                         BEQ bra_F1FE_пропуск_звукового_движка
-                                        JSR sub_F659_обновить_звуковой_движок
+                                        JSR sub_F5DF_swap_prg_10
+                                        JSR sub_0x020011_обновить_звуковой_движок
+                                        JSR sub_F617_restore_prg
                                         LDX ram_счетчик_кадров
                                         JMP loc_F1FE_infinite_loop
 bra_F1FE_пропуск_звукового_движка:
@@ -6627,13 +6629,6 @@ C - - - - - 0x03F664 0F:F654: E8        INX
 C - - - - - 0x03F665 0F:F655: 88        DEY
 C - - - - - 0x03F666 0F:F656: 10 F4     BPL bra_F64C_loop
 C - - - - - 0x03F668 0F:F658: 60        RTS
-
-
-
-sub_F659_обновить_звуковой_движок:
-C - - - - - 0x03F669 0F:F659: 20 69 F6  JSR sub_F5DF_swap_prg_10
-C - - - - - 0x03F66C 0F:F65C: 20 01 80  JSR sub_0x020011_обновить_звуковой_движок
-                                        JMP loc_F617_restore_prg
 
 
 
