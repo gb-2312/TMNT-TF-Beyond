@@ -6661,9 +6661,13 @@ bra_A694:
 - - - - - - 0x0366A4 0D:A694: BD C0 06  LDA ram_шаблон_ai,X
 - - - - - - 0x0366A7 0D:A697: C9 25     CMP #con_шаблон_ai_25
 - - - - - - 0x0366A9 0D:A699: D0 0E     BNE bra_A6A9
+- - - - - - 0x0365FD 0D:A5ED: B9 50 05  LDA ram_obj_id,Y
+- - - - - - 0x0366AE 0D:A69E: C9 09     CMP #$06
+- - - - - - 0x0366B0 0D:A6A0: F0 57     BEQ bra_A6A8
 - - - - - - 0x0366AB 0D:A69B: BD C0 04  LDA ram_obj_04C0,X
 - - - - - - 0x0366AE 0D:A69E: C9 09     CMP #$09
 - - - - - - 0x0366B0 0D:A6A0: F0 57     BEQ bra_A6F9
+bra_A6A8:
 - - - - - - 0x0366B2 0D:A6A2: B9 12 06  LDA ram_plr_индекс_атаки,Y
 - - - - - - 0x0366B5 0D:A6A5: C9 07     CMP #con_0612_черепаха_нога_дальняя_обычная
 - - - - - - 0x0366B7 0D:A6A7: F0 50     BEQ bra_A6F9
