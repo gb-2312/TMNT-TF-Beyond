@@ -1,9 +1,9 @@
-time = os.clock()       --record script execution time
+local time = os.clock()       --record script execution time
 
 
 --список файлов для подготовки перед конвертацией
 --list of files which need to be prepared before compilation
-files_list = {
+local files_list = {
     "bank_00.asm",
     "bank_02.asm",
     "bank_04.asm",
@@ -25,7 +25,7 @@ files_list = {
 }
 
 --конвертация русских символов в английские
-english = {
+local english = {
     "А",    "A",        "а",    "a",
     "Б",    "B",        "б",    "b",
     "В",    "V",        "в",    "v",
@@ -65,7 +65,7 @@ english = {
 
 --вспомогательная подпрограмма для вывода возможных ошибок при работе с файлами
 --potential file error subroutine like "can't access file" or something
-function PrintError(err)
+local function PrintError(err)
     print("\n"..err.."\nPress Enter to exit")
     io.read()
 end
@@ -150,7 +150,7 @@ while true do
     end
     
     --проверка что итоговое чисто стопудово hex число, в таком случае создать коммент
-    result = tonumber(address, 16)
+    local result = tonumber(address, 16)
     if result ~= nil then
         tbl[result + 1] = string.sub(line, 0, find_start - 1)
     end
