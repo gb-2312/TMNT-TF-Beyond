@@ -3425,28 +3425,28 @@ _off004_A019_8D:
 
 _off004_A072_8E:
 - D 1 - I - 0x02A082 0A:A072: 16        .byte (@end - * - $01) / $04 ; счетчик спрайтов
-- D 1 - I - 0x02A083 0A:A073: B0        .byte $B0, $01, $00, $EC   ; spt_Y, spr_T, spr_A, spr_X
-- D 1 - I - 0x02A087 0A:A077: B0        .byte $B0, $03, $00, $F4   ; 
-- D 1 - I - 0x02A08B 0A:A07B: B0        .byte $B0, $05, $00, $FC   ; 
-- D 1 - I - 0x02A08F 0A:A07F: B8        .byte $B8, $0F, $00, $04   ; 
-- D 1 - I - 0x02A093 0A:A083: C0        .byte $C0, $09, $00, $EC   ; 
-- D 1 - I - 0x02A097 0A:A087: C0        .byte $C0, $0B, $00, $F4   ; 
-- D 1 - I - 0x02A09B 0A:A08B: C0        .byte $C0, $0D, $00, $FC   ; 
-- D 1 - I - 0x02A09F 0A:A08F: C8        .byte $C8, $11, $00, $04   ; 
-- D 1 - I - 0x02A0A3 0A:A093: D0        .byte $D0, $3B, $00, $EC   ; 
-- D 1 - I - 0x02A0A7 0A:A097: D0        .byte $D0, $3D, $00, $F4   ; 
-- D 1 - I - 0x02A0AB 0A:A09B: D0        .byte $D0, $3F, $00, $FC   ; 
-- D 1 - I - 0x02A0AF 0A:A09F: C5        .byte $C5, $37, $00, $DC   ; 
-- D 1 - I - 0x02A0B3 0A:A0A3: C0        .byte $C0, $39, $00, $E4   ; 
-- D 1 - I - 0x02A0B7 0A:A0A7: E0        .byte $E0, $41, $00, $E7   ; 
-- D 1 - I - 0x02A0BB 0A:A0AB: E0        .byte $E0, $5F, $00, $EF   ; 
-- D 1 - I - 0x02A0BF 0A:A0AF: E0        .byte $E0, $61, $00, $F7   ; 
-- D 1 - I - 0x02A0C3 0A:A0B3: E0        .byte $E0, $4B, $00, $07   ; 
-- D 1 - I - 0x02A0C7 0A:A0B7: F0        .byte $F0, $4F, $00, $F1   ; 
-- D 1 - I - 0x02A0CB 0A:A0BB: F0        .byte $F0, $51, $00, $F9   ; 
-- D 1 - I - 0x02A0CF 0A:A0BF: F0        .byte $F0, $63, $00, $02   ; 
-- D 1 - I - 0x02A0D3 0A:A0C3: F0        .byte $F0, $65, $00, $0A   ; 
-- D 1 - I - 0x02A0D7 0A:A0C7: E0        .byte $E0, $47, $00, $FF   ; 
+- D 1 - I - 0x02A083 0A:A073: B0        .byte $B1, $01, $00, $F3   ; spt_Y, spr_T, spr_A, spr_X
+- D 1 - I - 0x02A087 0A:A077: B0        .byte $B1, $03, $00, $FB   ; 
+- D 1 - I - 0x02A08B 0A:A07B: B0        .byte $B1, $05, $00, $03   ; 
+- D 1 - I - 0x02A08F 0A:A07F: B8        .byte $CA, $2B, $40, $E3   ; 
+- D 1 - I - 0x02A093 0A:A083: C0        .byte $C4, $2F, $00, $EB   ; 
+- D 1 - I - 0x02A097 0A:A087: C0        .byte $C1, $09, $00, $F3   ; 
+- D 1 - I - 0x02A09B 0A:A08B: C0        .byte $C1, $0B, $00, $FB   ; 
+- D 1 - I - 0x02A09F 0A:A08F: C8        .byte $C1, $0D, $00, $03   ; 
+- D 1 - I - 0x02A0A3 0A:A093: D0        .byte $C1, $0F, $00, $0B   ; 
+- D 1 - I - 0x02A0A7 0A:A097: D0        .byte $D1, $31, $00, $F3   ; 
+- D 1 - I - 0x02A0AB 0A:A09B: D0        .byte $D1, $33, $00, $FB   ; 
+- D 1 - I - 0x02A0AF 0A:A09F: C5        .byte $D1, $1F, $00, $03   ; 
+- D 1 - I - 0x02A0B3 0A:A0A3: C0        .byte $D1, $19, $00, $0B   ; 
+- D 1 - I - 0x02A0B7 0A:A0A7: E0        .byte $E1, $41, $00, $E7   ; 
+- D 1 - I - 0x02A0BB 0A:A0AB: E0        .byte $E1, $5F, $00, $EF   ; 
+- D 1 - I - 0x02A0BF 0A:A0AF: E0        .byte $E1, $61, $00, $F7   ; 
+- D 1 - I - 0x02A0C3 0A:A0B3: E0        .byte $E1, $47, $00, $FF   ; 
+- D 1 - I - 0x02A0C7 0A:A0B7: F0        .byte $E1, $4B, $00, $07   ; 
+- D 1 - I - 0x02A0CB 0A:A0BB: F0        .byte $F1, $4F, $00, $EF   ; 
+- D 1 - I - 0x02A0CF 0A:A0BF: F0        .byte $F1, $51, $00, $F7   ; 
+- D 1 - I - 0x02A0D3 0A:A0C3: F0        .byte $F1, $53, $00, $03   ; 
+- D 1 - I - 0x02A0D7 0A:A0C7: E0        .byte $F1, $55, $00, $0B   ; 
 @end:
 
 
