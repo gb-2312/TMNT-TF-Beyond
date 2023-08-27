@@ -3106,7 +3106,7 @@ tbl_9381:
 - D 0 - - - 0x025393 09:9383: 0D        .byte $0D   ; 02 mike
 - D 0 - - - 0x025394 09:9384: 0D        .byte $0D   ; 03 don
 - D 0 - - - 0x025395 09:9385: 0D        .byte $0D   ; 04 casey
-- D 0 - - - 0x025396 09:9386: 0A        .byte $0A   ; 05 hot
+- D 0 - - - 0x025396 09:9386: 0A        .byte $09   ; 05 hot
 - D 0 - - - 0x025397 09:9387: 0A        .byte $0A   ; 06 shred
 
 
@@ -9265,6 +9265,10 @@ C - - - - - 0x0277C6 09:B7B6: 4C 07 8C  JMP loc_8C07
 sub_B7C0:
 C - - - - - 0x0277D0 09:B7C0: C0 21     CPY #$21
 C - - - - - 0x0277D2 09:B7C2: D0 0E     BNE bra_B7D2
+C - - - - - 0x0269C7 09:A9B7: A4 AC     LDY ram_00AC
+C - - - - - 0x02797D 09:B96D: B9 20 05  LDA ram_obj_0520,Y ; 0520 0521 
+C - - - - - 0x0277D9 09:B7C9: C9 01     CMP #$01
+C - - - - - 0x0277BB 09:B7AB: F0 04     BEQ bra_B7CD
 C - - - - - 0x0277D4 09:B7C4: BD 5E 04  LDA ram_obj_spd_Z_hi - $02,X ; 0460 0461 
 C - - - - - 0x0277D7 09:B7C7: 30 04     BMI bra_B7CD
 C - - - - - 0x0277D9 09:B7C9: C9 03     CMP #$03
@@ -9273,7 +9277,8 @@ bra_B7CD:
 C - - - - - 0x0277DD 09:B7CD: A9 01     LDA #$01
 C - - - - - 0x0277DF 09:B7CF: 2C        .byte $2C   ; BIT
 bra_B7D0:
-C - - - - - 0x0277E0 09:B7D0: A9 02     LDA #$02
+C - - - - - 0x0277E0 09:B7D0: A9 05     LDA #$05
+C - - - - - 0x027A13 09:BA03: BC 50 05  LDY ram_obj_id,X ; 0550 0551 
 bra_B7D2:
 C - - - - - 0x0277E2 09:B7D2: 9D 90 05  STA ram_obj_0590,X ; 0592 0593 0594 0595 
 C - - - - - 0x0277E5 09:B7D5: 60        RTS
