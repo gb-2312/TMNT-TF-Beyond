@@ -2042,8 +2042,8 @@ tbl_8CD7:
     .byte $01   ; 37 
     .byte $C0   ; 38 
     .byte $C0   ; 39 
+    .byte $41   ; 3A
 ; bzk garbage?
-    .byte $FF   ; 3A placeholder
     .byte $FF   ; 3B placeholder
     .byte $FF   ; 3C placeholder
     .byte $FF   ; 3D placeholder
@@ -2109,7 +2109,7 @@ tbl_8CD8:
     .byte $C0   ; 37 
     .byte $C0   ; 38 
     .byte $C0   ; 39 
-    .byte $FF   ; 3A placeholder
+    .byte $C0   ; 3A
     .byte $FF   ; 3B placeholder
     .byte $FF   ; 3C placeholder
     .byte $FF   ; 3D placeholder
@@ -6989,9 +6989,9 @@ C - - - - - 0x026B5A 09:AB4A: 85 08     STA ram_0008
 C - - - - - 0x026B5C 09:AB4C: 8D 04 01  STA ram_0104
 C - - - - - 0x026B5F 09:AB4F: A9 0D     LDA #con_0x03F6AD_0D
                                         JSR sub_0x03F6A4_записать_звук
-C - - - - - 0x026B61 09:AB51: 20 24 AC  JSR sub_AC24_посчитать_урон_от_удара_1
 C - - - - - 0x026B64 09:AB54: A9 06     LDA #$06
 C - - - - - 0x026B66 09:AB56: 20 F8 AB  JSR sub_ABF8
+C - - - - - 0x026B61 09:AB51: 20 24 AC  JSR sub_AC24_посчитать_урон_от_удара_1
 C - - - - - 0x026B69 09:AB59: A0 07     LDY #con_init_anim_блокирование_стоя
 C - - - - - 0x026B6B 09:AB5B: BD 20 05  LDA ram_obj_0520,X ; 0520 0521 
 C - - - - - 0x026B6E 09:AB5E: C9 03     CMP #con_plr_state_получает_урон
@@ -7093,6 +7093,13 @@ C - - - - - 0x026C17 09:AC07: 9D 0C 04  STA ram_obj_anim_id + $0C,X ; 040C 040D
 C - - - - - 0x026C1A 09:AC0A: 9D 04 04  STA ram_obj_anim_id + $04,X ; 0404 0405 
                                         LDY ram_global_obj_index
                                         LDA ram_obj_id,Y
+C - - - - - 0x026C23 09:AC13: C9 2F     CMP #con_0552_special_hot_огонь
+C - - - - - 0x026C25 09:AC15: D0 09     BNE bra_AC08
+C - - - - - 0x024032 09:8022: BC 2A 06  LDY ram_plr_062A,X ; 062A 062B 
+C - - - - - 0x026C23 09:AC13: C0 32     CPY #$32
+C - - - - - 0x026C25 09:AC15: 90 02     BCC bra_AC08
+C - - - - - 0x026C37 09:AC27: A9 7B     LDA #con_062E_hot_2x_огонь_в_блок
+bra_AC08:
                                         STA ram_062E,X
 C - - - - - 0x026C1D 09:AC0D: 60        RTS
 
@@ -9277,7 +9284,7 @@ bra_B7CD:
 C - - - - - 0x0277DD 09:B7CD: A9 01     LDA #$01
 C - - - - - 0x0277DF 09:B7CF: 2C        .byte $2C   ; BIT
 bra_B7D0:
-C - - - - - 0x0277E0 09:B7D0: A9 05     LDA #$05
+C - - - - - 0x0277E0 09:B7D0: A9 04     LDA #$04
 C - - - - - 0x027A13 09:BA03: BC 50 05  LDY ram_obj_id,X ; 0550 0551 
 bra_B7D2:
 C - - - - - 0x0277E2 09:B7D2: 9D 90 05  STA ram_obj_0590,X ; 0592 0593 0594 0595 
