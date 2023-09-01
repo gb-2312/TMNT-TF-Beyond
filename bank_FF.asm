@@ -5631,7 +5631,7 @@ C - - - - - 0x03EFE5 0F:EFD5: 60        RTS
 
 tbl_EFD6:
 - D 3 - - - 0x03EFE6 0F:EFD6: 0E        .byte $0E   ; 5E
-- D 3 - - - 0x03EFE7 0F:EFD7: 0B        .byte $0B   ; 5F
+- D 3 - - - 0x03EFE7 0F:EFD7: 0A        .byte $0B   ; 5F
 - D 3 - - - 0x03EFE8 0F:EFD8: 0E        .byte $0E   ; 60
 - D 3 - - - 0x03EFE9 0F:EFD9: 0C        .byte $0C   ; 61
 - D 3 - - - 0x03EFEA 0F:EFDA: 0E        .byte $0E   ; 62
