@@ -530,33 +530,32 @@ C - - - - - 0x03D0C2 0F:D0B2: 60        RTS
 
 
 tbl_D0B3_индекс:
-off_D101_start = tbl_D101
-- D 2 - - - 0x03D0C3 0F:D0B3: 00        .byte off_D101_00_черепахи_ходьба_вперед - off_D101_start
-- - - - - - 0x03D0C4 0F:D0B4: 03        .byte off_D104_01 - off_D101_start
-- D 2 - - - 0x03D0C5 0F:D0B5: 0E        .byte off_D10F_02_черепахи_ходьба_назад - off_D101_start
-- D 2 - - - 0x03D0C6 0F:D0B6: 12        .byte off_D113_03_сверло_рафа - off_D101_start
-- D 2 - - - 0x03D0C7 0F:D0B7: 15        .byte off_D116_04_черепахи_бег_вперед - off_D101_start
-- D 2 - - - 0x03D0C8 0F:D0B8: 1B        .byte off_D11C_05_casey_бег_вперед - off_D101_start
-- D 2 - - - 0x03D0C9 0F:D0B9: 21        .byte off_D122_06_casey_ходьба_вперед - off_D101_start
-- D 2 - - - 0x03D0CA 0F:D0BA: 25        .byte off_D126_07_casey_ходьба_назад - off_D101_start
-- D 2 - - - 0x03D0CB 0F:D0BB: 25        .byte off_D126_08_casey_бег_назад - off_D101_start
-- D 2 - - - 0x03D0CC 0F:D0BC: 0E        .byte off_D10F_09_черепахи_бег_назад - off_D101_start
-- D 2 - - - 0x03D0CD 0F:D0BD: 29        .byte off_D12A_0A_hot_бег_вперед - off_D101_start
-- D 2 - - - 0x03D0CE 0F:D0BE: 33        .byte off_D134_0B_hot_бег_назад - off_D101_start
-- D 2 - - - 0x03D0CF 0F:D0BF: 2F        .byte off_D130_0C_hot_ходьба_вперед - off_D101_start
-- D 2 - - - 0x03D0D0 0F:D0C0: 33        .byte off_D134_0D_hot_ходьба_назад - off_D101_start
-- D 2 - - - 0x03D0D1 0F:D0C1: 37        .byte off_D138_0E_shred_бег_вперед - off_D101_start
-- D 2 - - - 0x03D0D2 0F:D0C2: 3D        .byte off_D13E_0F_shred_бег_назад - off_D101_start
-- D 2 - - - 0x03D0D3 0F:D0C3: 41        .byte off_D142_10_shred_ходьба_вперед - off_D101_start
-- D 2 - - - 0x03D0D4 0F:D0C4: 45        .byte off_D146_11_shred_ходьба_назад - off_D101_start
-- D 2 - - - 0x03D0D5 0F:D0C5: 49        .byte off_D14A_12_волна_шрушера - off_D101_start
-- D 2 - - - 0x03D0D6 0F:D0C6: 4C        .byte off_D14D_13_черепахи_сальто_вперед - off_D101_start
-- D 2 - - - 0x03D0D7 0F:D0C7: 50        .byte off_D151_14_черепахи_сальто_назад - off_D101_start
-- D 2 - - - 0x03D0D8 0F:D0C8: 54        .byte off_D155_15_casey_сальто_вперед - off_D101_start
-- D 2 - - - 0x03D0D9 0F:D0C9: 59        .byte off_D15A_16_casey_сальто_назад - off_D101_start
-- D 2 - - - 0x03D0DA 0F:D0CA: 5E        .byte off_D15F_17_мяч_хота - off_D101_start
-- D 2 - - - 0x03D0DB 0F:D0CB: 61        .byte off_D162_18_песок_казея - off_D101_start
-- D 2 - - - 0x03D0DC 0F:D0CC: 65        .byte off_D166_19_shred_съебывается - off_D101_start
+- D 2 - - - 0x03D0C3 0F:D0B3: 00        .byte off_D101_00_черепахи_ходьба_вперед - tbl_D101
+- - - - - - 0x03D0C4 0F:D0B4: 03        .byte off_D104_01 - tbl_D101
+- D 2 - - - 0x03D0C5 0F:D0B5: 0E        .byte off_D10F_02_черепахи_ходьба_назад - tbl_D101
+- D 2 - - - 0x03D0C6 0F:D0B6: 12        .byte off_D113_03_сверло_рафа - tbl_D101
+- D 2 - - - 0x03D0C7 0F:D0B7: 15        .byte off_D116_04_черепахи_бег_вперед - tbl_D101
+- D 2 - - - 0x03D0C8 0F:D0B8: 1B        .byte off_D11C_05_casey_бег_вперед - tbl_D101
+- D 2 - - - 0x03D0C9 0F:D0B9: 21        .byte off_D122_06_casey_ходьба_вперед - tbl_D101
+- D 2 - - - 0x03D0CA 0F:D0BA: 25        .byte off_D126_07_casey_ходьба_назад - tbl_D101
+- D 2 - - - 0x03D0CB 0F:D0BB: 25        .byte off_D126_08_casey_бег_назад - tbl_D101
+- D 2 - - - 0x03D0CC 0F:D0BC: 0E        .byte off_D10F_09_черепахи_бег_назад - tbl_D101
+- D 2 - - - 0x03D0CD 0F:D0BD: 29        .byte off_D12A_0A_hot_бег_вперед - tbl_D101
+- D 2 - - - 0x03D0CE 0F:D0BE: 33        .byte off_D134_0B_hot_бег_назад - tbl_D101
+- D 2 - - - 0x03D0CF 0F:D0BF: 2F        .byte off_D130_0C_hot_ходьба_вперед - tbl_D101
+- D 2 - - - 0x03D0D0 0F:D0C0: 33        .byte off_D134_0D_hot_ходьба_назад - tbl_D101
+- D 2 - - - 0x03D0D1 0F:D0C1: 37        .byte off_D138_0E_shred_бег_вперед - tbl_D101
+- D 2 - - - 0x03D0D2 0F:D0C2: 3D        .byte off_D13E_0F_shred_бег_назад - tbl_D101
+- D 2 - - - 0x03D0D3 0F:D0C3: 41        .byte off_D142_10_shred_ходьба_вперед - tbl_D101
+- D 2 - - - 0x03D0D4 0F:D0C4: 45        .byte off_D146_11_shred_ходьба_назад - tbl_D101
+- D 2 - - - 0x03D0D5 0F:D0C5: 49        .byte off_D14A_12_волна_шрушера - tbl_D101
+- D 2 - - - 0x03D0D6 0F:D0C6: 4C        .byte off_D14D_13_черепахи_сальто_вперед - tbl_D101
+- D 2 - - - 0x03D0D7 0F:D0C7: 50        .byte off_D151_14_черепахи_сальто_назад - tbl_D101
+- D 2 - - - 0x03D0D8 0F:D0C8: 54        .byte off_D155_15_casey_сальто_вперед - tbl_D101
+- D 2 - - - 0x03D0D9 0F:D0C9: 59        .byte off_D15A_16_casey_сальто_назад - tbl_D101
+- D 2 - - - 0x03D0DA 0F:D0CA: 5E        .byte off_D15F_17_мяч_хота - tbl_D101
+- D 2 - - - 0x03D0DB 0F:D0CB: 61        .byte off_D162_18_песок_казея - tbl_D101
+- D 2 - - - 0x03D0DC 0F:D0CC: 65        .byte off_D166_19_shred_съебывается - tbl_D101
 
 
 
@@ -2308,21 +2307,21 @@ C - - - - - 0x03DDBA 0F:DDAA: 60        RTS
 
 
 tbl_0x03DDC6:
-;                                              +----------------------------------- 00 leo
-;                                              |    +------------------------------ 01 raph
-;                                              |    |    +------------------------- 02 mike
-;                                              |    |    |    +-------------------- 03 don
-;                                              |    |    |    |    +--------------- 04 casey
-;                                              |    |    |    |    |    +---------- 05 hot
-;                                              |    |    |    |    |    |    +----- 06 shred
+;                                              +----------------------------------- 00 con_fighter_leo
+;                                              |    +------------------------------ 01 con_fighter_raph
+;                                              |    |    +------------------------- 02 con_fighter_mike
+;                                              |    |    |    +-------------------- 03 con_fighter_don
+;                                              |    |    |    |    +--------------- 04 con_fighter_casey
+;                                              |    |    |    |    |    +---------- 05 con_fighter_hot
+;                                              |    |    |    |    |    |    +----- 06 con_fighter_shred
 ;                                              |    |    |    |    |    |    |
-- D 2 - - - 0x03DDC6 0F:DDB6: FC        .byte $FC, $FD, $FC, $FC, $FE, $03, $FF   ; 00 leo
-- D 2 - - - 0x03DDCD 0F:DDBD: FE        .byte $FE, $FD, $FC, $FD, $FE, $01, $00   ; 01 raph
-- D 2 - - - 0x03DDD4 0F:DDC4: FD        .byte $FD, $FE, $FD, $FD, $FF, $05, $FF   ; 02 mike
-- D 2 - - - 0x03DDDB 0F:DDCB: FC        .byte $FC, $FD, $FC, $FC, $FE, $03, $FF   ; 03 don
-- D 2 - - - 0x03DDE2 0F:DDD2: FC        .byte $FC, $FD, $FC, $FC, $FE, $01, $FF   ; 04 casey
-- D 2 - - - 0x03DDE9 0F:DDD9: FC        .byte $FC, $FD, $FC, $FC, $FE, $03, $00   ; 05 hot
-- D 2 - - - 0x03DDF0 0F:DDE0: FC        .byte $FC, $FD, $FC, $FC, $FE, $00, $00   ; 06 shred
+- D 2 - - - 0x03DDC6 0F:DDB6: FC        .byte $FC, $FD, $FC, $FC, $FE, $03, $FF   ; 00 con_fighter_leo
+- D 2 - - - 0x03DDCD 0F:DDBD: FE        .byte $FE, $FD, $FC, $FD, $FE, $01, $00   ; 01 con_fighter_raph
+- D 2 - - - 0x03DDD4 0F:DDC4: FD        .byte $FD, $FE, $FD, $FD, $FF, $05, $FF   ; 02 con_fighter_mike
+- D 2 - - - 0x03DDDB 0F:DDCB: FC        .byte $FC, $FD, $FC, $FC, $FE, $03, $FF   ; 03 con_fighter_don
+- D 2 - - - 0x03DDE2 0F:DDD2: FC        .byte $FC, $FD, $FC, $FC, $FE, $01, $FF   ; 04 con_fighter_casey
+- D 2 - - - 0x03DDE9 0F:DDD9: FC        .byte $FC, $FD, $FC, $FC, $FE, $03, $00   ; 05 con_fighter_hot
+- D 2 - - - 0x03DDF0 0F:DDE0: FC        .byte $FC, $FD, $FC, $FC, $FE, $00, $00   ; 06 con_fighter_shred
 
 
 
@@ -2555,15 +2554,15 @@ C - - - - - 0x03DF29 0F:DF19: 4C 54 DC  JMP loc_DC54_добавить_A_FF_к_sp
 
 
 
-; расстояния хвата для броска
 tbl_0x03DF2C_рейндж_броска:
-- D 2 - - - 0x03DF2C 0F:DF1C: 07        .byte $07   ; 00 leo
-- D 2 - - - 0x03DF2D 0F:DF1D: 06        .byte $06   ; 01 raph
-- D 2 - - - 0x03DF2E 0F:DF1E: 08        .byte $08   ; 02 mike
-- D 2 - - - 0x03DF2F 0F:DF1F: 07        .byte $07   ; 03 don
-- D 2 - - - 0x03DF30 0F:DF20: 09        .byte $09   ; 04 casey
-- D 2 - - - 0x03DF31 0F:DF21: 07        .byte $07   ; 05 hot
-- D 2 - - - 0x03DF32 0F:DF22: 08        .byte $08   ; 06 shred
+; расстояния хвата для броска
+- D 2 - - - 0x03DF2C 0F:DF1C: 07        .byte $07   ; 00 con_fighter_leo
+- D 2 - - - 0x03DF2D 0F:DF1D: 06        .byte $06   ; 01 con_fighter_raph
+- D 2 - - - 0x03DF2E 0F:DF1E: 08        .byte $08   ; 02 con_fighter_mike
+- D 2 - - - 0x03DF2F 0F:DF1F: 07        .byte $07   ; 03 con_fighter_don
+- D 2 - - - 0x03DF30 0F:DF20: 09        .byte $09   ; 04 con_fighter_casey
+- D 2 - - - 0x03DF31 0F:DF21: 07        .byte $07   ; 05 con_fighter_hot
+- D 2 - - - 0x03DF32 0F:DF22: 08        .byte $08   ; 06 con_fighter_shred
 
 
 
@@ -2589,22 +2588,22 @@ C - - - - - 0x03DF50 0F:DF40: 60        RTS
 
 
 tbl_DF41:
-- D 2 - - - 0x03DF51 0F:DF41: 0E        .byte $0E   ; 00 leo
-- D 2 - - - 0x03DF52 0F:DF42: 0E        .byte $0E   ; 01 raph
-- D 2 - - - 0x03DF53 0F:DF43: 0E        .byte $0E   ; 02 mike
-- D 2 - - - 0x03DF54 0F:DF44: 0E        .byte $0E   ; 03 don
-- D 2 - - - 0x03DF55 0F:DF45: 0F        .byte $0F   ; 04 casey
-- D 2 - - - 0x03DF56 0F:DF46: 10        .byte $10   ; 05 hot
-- D 2 - - - 0x03DF57 0F:DF47: 11        .byte $11   ; 06 shred
+- D 2 - - - 0x03DF51 0F:DF41: 0E        .byte $0E   ; 00 con_fighter_leo
+- D 2 - - - 0x03DF52 0F:DF42: 0E        .byte $0E   ; 01 con_fighter_raph
+- D 2 - - - 0x03DF53 0F:DF43: 0E        .byte $0E   ; 02 con_fighter_mike
+- D 2 - - - 0x03DF54 0F:DF44: 0E        .byte $0E   ; 03 con_fighter_don
+- D 2 - - - 0x03DF55 0F:DF45: 0F        .byte $0F   ; 04 con_fighter_casey
+- D 2 - - - 0x03DF56 0F:DF46: 10        .byte $10   ; 05 con_fighter_hot
+- D 2 - - - 0x03DF57 0F:DF47: 11        .byte $11   ; 06 con_fighter_shred
 
 tbl_DF48:
-- D 2 - - - 0x03DF58 0F:DF48: 04        .byte $04   ; 00 leo
-- D 2 - - - 0x03DF59 0F:DF49: 04        .byte $04   ; 01 raph
-- D 2 - - - 0x03DF5A 0F:DF4A: 04        .byte $04   ; 02 mike
-- D 2 - - - 0x03DF5B 0F:DF4B: 04        .byte $04   ; 03 don
-- D 2 - - - 0x03DF5C 0F:DF4C: 02        .byte $02   ; 04 casey
-- D 2 - - - 0x03DF5D 0F:DF4D: 04        .byte $04   ; 05 hot
-- D 2 - - - 0x03DF5E 0F:DF4E: 04        .byte $04   ; 06 shred
+- D 2 - - - 0x03DF58 0F:DF48: 04        .byte $04   ; 00 con_fighter_leo
+- D 2 - - - 0x03DF59 0F:DF49: 04        .byte $04   ; 01 con_fighter_raph
+- D 2 - - - 0x03DF5A 0F:DF4A: 04        .byte $04   ; 02 con_fighter_mike
+- D 2 - - - 0x03DF5B 0F:DF4B: 04        .byte $04   ; 03 con_fighter_don
+- D 2 - - - 0x03DF5C 0F:DF4C: 02        .byte $02   ; 04 con_fighter_casey
+- D 2 - - - 0x03DF5D 0F:DF4D: 04        .byte $04   ; 05 con_fighter_hot
+- D 2 - - - 0x03DF5E 0F:DF4E: 04        .byte $04   ; 06 con_fighter_shred
 
 
 
@@ -2705,33 +2704,32 @@ C - - - - - 0x03DFF3 0F:DFE3: 4C 38 DF  JMP loc_DF38
 
 
 tbl_DFE6:
-off_E000_start = tbl_E000
-- D 2 - - - 0x03DFF6 0F:DFE6: 00        .byte off_E000_00 - off_E000_start
-- D 2 - - - 0x03DFF7 0F:DFE7: 06        .byte off_E006_01 - off_E000_start
-- D 2 - - - 0x03DFF8 0F:DFE8: 12        .byte off_E012_02 - off_E000_start
-- D 2 - - - 0x03DFF9 0F:DFE9: 1E        .byte off_E01E_03 - off_E000_start
-- D 2 - - - 0x03DFFA 0F:DFEA: 26        .byte off_E026_04 - off_E000_start
-- D 2 - - - 0x03DFFB 0F:DFEB: 3A        .byte off_E03A_05 - off_E000_start
-- D 2 - - - 0x03DFFC 0F:DFEC: 58        .byte off_E058_06 - off_E000_start
-- D 2 - - - 0x03DFFD 0F:DFED: 58        .byte off_E058_07 - off_E000_start
-- D 2 - - - 0x03DFFE 0F:DFEE: 6A        .byte off_E06A_08 - off_E000_start
-- D 2 - - - 0x03DFFF 0F:DFEF: 76        .byte off_E076_09 - off_E000_start
-- D 2 - - - 0x03E000 0F:DFF0: 9C        .byte off_E09C_0A - off_E000_start
-- D 2 - - - 0x03E001 0F:DFF1: A6        .byte off_E0A6_0B - off_E000_start
-- D 2 - - - 0x03E002 0F:DFF2: AA        .byte off_E0AA_0C - off_E000_start
-- D 2 - - - 0x03E003 0F:DFF3: B6        .byte off_E0B6_0D - off_E000_start
-- D 2 - - - 0x03E004 0F:DFF4: C2        .byte off_E0C2_0E - off_E000_start
-- D 2 - - - 0x03E005 0F:DFF5: CA        .byte off_E0CA_0F - off_E000_start
-- D 2 - - - 0x03E006 0F:DFF6: CE        .byte off_E0CE_10 - off_E000_start
-- D 2 - - - 0x03E007 0F:DFF7: D6        .byte off_E0D6_11 - off_E000_start
-- D 2 - - - 0x03E008 0F:DFF8: DE        .byte off_E0DE_12 - off_E000_start
-- D 2 - - - 0x03E009 0F:DFF9: E4        .byte off_E0E4_13 - off_E000_start
-- D 2 - - - 0x03E00A 0F:DFFA: E4        .byte off_E0E4_14 - off_E000_start
-- - - - - - 0x03E00B 0F:DFFB: E4        .byte off_E0E4_15 - off_E000_start
-- D 2 - - - 0x03E00C 0F:DFFC: E4        .byte off_E0E4_16 - off_E000_start
-- D 2 - - - 0x03E00D 0F:DFFD: EE        .byte off_E0EE_17 - off_E000_start
-- D 2 - - - 0x03E00E 0F:DFFE: F2        .byte off_E0F2_18 - off_E000_start
-- D 2 - - - 0x03E00F 0F:DFFF: F8        .byte off_E0F8_19 - off_E000_start
+- D 2 - - - 0x03DFF6 0F:DFE6: 00        .byte off_E000_00 - tbl_E000
+- D 2 - - - 0x03DFF7 0F:DFE7: 06        .byte off_E006_01 - tbl_E000
+- D 2 - - - 0x03DFF8 0F:DFE8: 12        .byte off_E012_02 - tbl_E000
+- D 2 - - - 0x03DFF9 0F:DFE9: 1E        .byte off_E01E_03 - tbl_E000
+- D 2 - - - 0x03DFFA 0F:DFEA: 26        .byte off_E026_04 - tbl_E000
+- D 2 - - - 0x03DFFB 0F:DFEB: 3A        .byte off_E03A_05 - tbl_E000
+- D 2 - - - 0x03DFFC 0F:DFEC: 58        .byte off_E058_06 - tbl_E000
+- D 2 - - - 0x03DFFD 0F:DFED: 58        .byte off_E058_07 - tbl_E000
+- D 2 - - - 0x03DFFE 0F:DFEE: 6A        .byte off_E06A_08 - tbl_E000
+- D 2 - - - 0x03DFFF 0F:DFEF: 76        .byte off_E076_09 - tbl_E000
+- D 2 - - - 0x03E000 0F:DFF0: 9C        .byte off_E09C_0A - tbl_E000
+- D 2 - - - 0x03E001 0F:DFF1: A6        .byte off_E0A6_0B - tbl_E000
+- D 2 - - - 0x03E002 0F:DFF2: AA        .byte off_E0AA_0C - tbl_E000
+- D 2 - - - 0x03E003 0F:DFF3: B6        .byte off_E0B6_0D - tbl_E000
+- D 2 - - - 0x03E004 0F:DFF4: C2        .byte off_E0C2_0E - tbl_E000
+- D 2 - - - 0x03E005 0F:DFF5: CA        .byte off_E0CA_0F - tbl_E000
+- D 2 - - - 0x03E006 0F:DFF6: CE        .byte off_E0CE_10 - tbl_E000
+- D 2 - - - 0x03E007 0F:DFF7: D6        .byte off_E0D6_11 - tbl_E000
+- D 2 - - - 0x03E008 0F:DFF8: DE        .byte off_E0DE_12 - tbl_E000
+- D 2 - - - 0x03E009 0F:DFF9: E4        .byte off_E0E4_13 - tbl_E000
+- D 2 - - - 0x03E00A 0F:DFFA: E4        .byte off_E0E4_14 - tbl_E000
+- - - - - - 0x03E00B 0F:DFFB: E4        .byte off_E0E4_15 - tbl_E000
+- D 2 - - - 0x03E00C 0F:DFFC: E4        .byte off_E0E4_16 - tbl_E000
+- D 2 - - - 0x03E00D 0F:DFFD: EE        .byte off_E0EE_17 - tbl_E000
+- D 2 - - - 0x03E00E 0F:DFFE: F2        .byte off_E0F2_18 - tbl_E000
+- D 2 - - - 0x03E00F 0F:DFFF: F8        .byte off_E0F8_19 - tbl_E000
 
 
 
@@ -2916,24 +2914,24 @@ off_E0F8_19:
 
 
 tbl_E100:
-- D 3 - - - 0x03E110 0F:E100: 0A        .byte $0A   ; 00 leo
-- D 3 - - - 0x03E111 0F:E101: 0F        .byte $0F   ; 01 raph
-- D 3 - - - 0x03E112 0F:E102: 09        .byte $09   ; 02 mike
-- D 3 - - - 0x03E113 0F:E103: 09        .byte $09   ; 03 don
-- D 3 - - - 0x03E114 0F:E104: 06        .byte $06   ; 04 casey
-- D 3 - - - 0x03E115 0F:E105: 13        .byte $13   ; 05 hot
-- D 3 - - - 0x03E116 0F:E106: 05        .byte $05   ; 06 shred
+- D 3 - - - 0x03E110 0F:E100: 0A        .byte $0A   ; 00 con_fighter_leo
+- D 3 - - - 0x03E111 0F:E101: 0F        .byte $0F   ; 01 con_fighter_raph
+- D 3 - - - 0x03E112 0F:E102: 09        .byte $09   ; 02 con_fighter_mike
+- D 3 - - - 0x03E113 0F:E103: 09        .byte $09   ; 03 con_fighter_don
+- D 3 - - - 0x03E114 0F:E104: 06        .byte $06   ; 04 con_fighter_casey
+- D 3 - - - 0x03E115 0F:E105: 13        .byte $13   ; 05 con_fighter_hot
+- D 3 - - - 0x03E116 0F:E106: 05        .byte $05   ; 06 con_fighter_shred
 
 
 
 tbl_E107:
-- D 3 - - - 0x03E117 0F:E107: 05        .byte $05   ; 00 leo
-- D 3 - - - 0x03E118 0F:E108: 05        .byte $05   ; 01 raph
-- - - - - - 0x03E119 0F:E109: 05        .byte $05   ; 02 mike
-- D 3 - - - 0x03E11A 0F:E10A: 05        .byte $05   ; 03 don
-- D 3 - - - 0x03E11B 0F:E10B: 02        .byte $02   ; 04 casey
-- D 3 - - - 0x03E11C 0F:E10C: 03        .byte $03   ; 05 hot
-- D 3 - - - 0x03E11D 0F:E10D: 04        .byte $04   ; 06 shred
+- D 3 - - - 0x03E117 0F:E107: 05        .byte $05   ; 00 con_fighter_leo
+- D 3 - - - 0x03E118 0F:E108: 05        .byte $05   ; 01 con_fighter_raph
+- - - - - - 0x03E119 0F:E109: 05        .byte $05   ; 02 con_fighter_mike
+- D 3 - - - 0x03E11A 0F:E10A: 05        .byte $05   ; 03 con_fighter_don
+- D 3 - - - 0x03E11B 0F:E10B: 02        .byte $02   ; 04 con_fighter_casey
+- D 3 - - - 0x03E11C 0F:E10C: 03        .byte $03   ; 05 con_fighter_hot
+- D 3 - - - 0x03E11D 0F:E10D: 04        .byte $04   ; 06 con_fighter_shred
 
 
 
@@ -3013,13 +3011,13 @@ C - - - - - 0x03E16D 0F:E15D: 60        RTS
 
 
 tbl_0x03E16E_звук_выбора_перса:
-- D 3 - - - 0x03E16E 0F:E15E: 53        .byte con_dpcm_warcry_turtle_1   ; 00 leo
-- D 3 - - - 0x03E16F 0F:E15F: 53        .byte con_dpcm_warcry_turtle_1   ; 01 raph
-- D 3 - - - 0x03E170 0F:E160: 53        .byte con_dpcm_warcry_turtle_1   ; 02 mike
-- D 3 - - - 0x03E171 0F:E161: 53        .byte con_dpcm_warcry_turtle_1   ; 03 don
-- D 3 - - - 0x03E172 0F:E162: 55        .byte con_dpcm_warcry_casey_1   ; 04 casey
-- D 3 - - - 0x03E173 0F:E163: 59        .byte con_dpcm_warcry_hot_1   ; 05 hot
-- D 3 - - - 0x03E174 0F:E164: 52        .byte con_dpcm_warcry_shred_1   ; 06 shred
+- D 3 - - - 0x03E16E 0F:E15E: 53        .byte con_dpcm_warcry_turtle_1   ; 00 con_fighter_leo
+- D 3 - - - 0x03E16F 0F:E15F: 53        .byte con_dpcm_warcry_turtle_1   ; 01 con_fighter_raph
+- D 3 - - - 0x03E170 0F:E160: 53        .byte con_dpcm_warcry_turtle_1   ; 02 con_fighter_mike
+- D 3 - - - 0x03E171 0F:E161: 53        .byte con_dpcm_warcry_turtle_1   ; 03 con_fighter_don
+- D 3 - - - 0x03E172 0F:E162: 55        .byte con_dpcm_warcry_casey_1   ; 04 con_fighter_casey
+- D 3 - - - 0x03E173 0F:E163: 59        .byte con_dpcm_warcry_hot_1   ; 05 con_fighter_hot
+- D 3 - - - 0x03E174 0F:E164: 52        .byte con_dpcm_warcry_shred_1   ; 06 con_fighter_shred
 
 
 
@@ -3439,13 +3437,13 @@ C - - - - - 0x03E3C5 0F:E3B5: 4C 6D D4  JMP loc_D46D_запись_черной_�
 
 tbl_0x03E3E8:
 ; bzk optimize, одинаковые байты
-- D 3 - - - 0x03E3E8 0F:E3D8: 04        .byte $04   ; 00 leo
-- D 3 - - - 0x03E3E9 0F:E3D9: 04        .byte $04   ; 01 raph
-- D 3 - - - 0x03E3EA 0F:E3DA: 04        .byte $04   ; 02 mike
-- D 3 - - - 0x03E3EB 0F:E3DB: 04        .byte $04   ; 03 don
-- D 3 - - - 0x03E3EC 0F:E3DC: 04        .byte $04   ; 04 casey
-- D 3 - - - 0x03E3ED 0F:E3DD: 04        .byte $04   ; 05 hot
-- D 3 - - - 0x03E3EE 0F:E3DE: 04        .byte $04   ; 06 shred
+- D 3 - - - 0x03E3E8 0F:E3D8: 04        .byte $04   ; 00 con_fighter_leo
+- D 3 - - - 0x03E3E9 0F:E3D9: 04        .byte $04   ; 01 con_fighter_raph
+- D 3 - - - 0x03E3EA 0F:E3DA: 04        .byte $04   ; 02 con_fighter_mike
+- D 3 - - - 0x03E3EB 0F:E3DB: 04        .byte $04   ; 03 con_fighter_don
+- D 3 - - - 0x03E3EC 0F:E3DC: 04        .byte $04   ; 04 con_fighter_casey
+- D 3 - - - 0x03E3ED 0F:E3DD: 04        .byte $04   ; 05 con_fighter_hot
+- D 3 - - - 0x03E3EE 0F:E3DE: 04        .byte $04   ; 06 con_fighter_shred
 
 
 
@@ -4360,12 +4358,11 @@ tbl_E94E:
 
 
 tbl_E952_индекс:
-off_E957_start = tbl_E957
-- D 3 - - - 0x03E962 0F:E952: 00        .byte off_E957_00 - off_E957_start
-- D 3 - - - 0x03E963 0F:E953: 08        .byte off_E95F_01 - off_E957_start
-- - - - - - 0x03E964 0F:E954: 10        .byte off_E967_02 - off_E957_start
-- - - - - - 0x03E965 0F:E955: 18        .byte off_E96F_03 - off_E957_start
-- D 3 - - - 0x03E966 0F:E956: 20        .byte off_E977_04 - off_E957_start
+- D 3 - - - 0x03E962 0F:E952: 00        .byte off_E957_00 - tbl_E957
+- D 3 - - - 0x03E963 0F:E953: 08        .byte off_E95F_01 - tbl_E957
+- - - - - - 0x03E964 0F:E954: 10        .byte off_E967_02 - tbl_E957
+- - - - - - 0x03E965 0F:E955: 18        .byte off_E96F_03 - tbl_E957
+- D 3 - - - 0x03E966 0F:E956: 20        .byte off_E977_04 - tbl_E957
 
 
 
@@ -4402,25 +4399,25 @@ tbl_E979:
 
 tbl_E985:
 tbl_0x03E995:
-- D 3 - - - 0x03E995 0F:E985: 2D        .byte $2D   ; 00 leo
-- D 3 - - - 0x03E996 0F:E986: 2E        .byte $2E   ; 01 raph
-- D 3 - - - 0x03E997 0F:E987: 2F        .byte $2F   ; 02 mike
-- D 3 - - - 0x03E998 0F:E988: 30        .byte $30   ; 03 don
-- D 3 - - - 0x03E999 0F:E989: 31        .byte $31   ; 04 casey
-- D 3 - - - 0x03E99A 0F:E98A: 2D        .byte $2D   ; 05 hot
-- D 3 - - - 0x03E99B 0F:E98B: 31        .byte $31   ; 06 shred
+- D 3 - - - 0x03E995 0F:E985: 2D        .byte $2D   ; 00 con_fighter_leo
+- D 3 - - - 0x03E996 0F:E986: 2E        .byte $2E   ; 01 con_fighter_raph
+- D 3 - - - 0x03E997 0F:E987: 2F        .byte $2F   ; 02 con_fighter_mike
+- D 3 - - - 0x03E998 0F:E988: 30        .byte $30   ; 03 con_fighter_don
+- D 3 - - - 0x03E999 0F:E989: 31        .byte $31   ; 04 con_fighter_casey
+- D 3 - - - 0x03E99A 0F:E98A: 2D        .byte $2D   ; 05 con_fighter_hot
+- D 3 - - - 0x03E99B 0F:E98B: 31        .byte $31   ; 06 con_fighter_shred
 
 
 
 tbl_E98C:
 tbl_0x03E99C:
-- D 3 - - - 0x03E99C 0F:E98C: 06        .byte $06   ; 00 leo
-- D 3 - - - 0x03E99D 0F:E98D: 06        .byte $06   ; 01 raph
-- D 3 - - - 0x03E99E 0F:E98E: 06        .byte $06   ; 02 mike
-- D 3 - - - 0x03E99F 0F:E98F: 06        .byte $06   ; 03 don
-- D 3 - - - 0x03E9A0 0F:E990: 32        .byte $32   ; 04 casey
-- D 3 - - - 0x03E9A1 0F:E991: 14        .byte $14   ; 05 hot
-- D 3 - - - 0x03E9A2 0F:E992: 32        .byte $32   ; 06 shred
+- D 3 - - - 0x03E99C 0F:E98C: 06        .byte $06   ; 00 con_fighter_leo
+- D 3 - - - 0x03E99D 0F:E98D: 06        .byte $06   ; 01 con_fighter_raph
+- D 3 - - - 0x03E99E 0F:E98E: 06        .byte $06   ; 02 con_fighter_mike
+- D 3 - - - 0x03E99F 0F:E98F: 06        .byte $06   ; 03 con_fighter_don
+- D 3 - - - 0x03E9A0 0F:E990: 32        .byte $32   ; 04 con_fighter_casey
+- D 3 - - - 0x03E9A1 0F:E991: 14        .byte $14   ; 05 con_fighter_hot
+- D 3 - - - 0x03E9A2 0F:E992: 32        .byte $32   ; 06 con_fighter_shred
 
 
 
@@ -4435,13 +4432,13 @@ tbl_E993:
 
 
 tbl_E999:
-- D 3 - - - 0x03E9A9 0F:E999: 00        .byte $00   ; 00 leo
-- D 3 - - - 0x03E9AA 0F:E99A: 12        .byte $12   ; 01 raph
-- D 3 - - - 0x03E9AB 0F:E99B: 14        .byte $14   ; 02 mike
-- D 3 - - - 0x03E9AC 0F:E99C: 18        .byte $18   ; 03 don
-- D 3 - - - 0x03E9AD 0F:E99D: 0C        .byte $0C   ; 04 casey
-- D 3 - - - 0x03E9AE 0F:E99E: 00        .byte $00   ; 05 hot
-- D 3 - - - 0x03E9AF 0F:E99F: 00        .byte $00   ; 06 shred
+- D 3 - - - 0x03E9A9 0F:E999: 00        .byte $00   ; 00 con_fighter_leo
+- D 3 - - - 0x03E9AA 0F:E99A: 12        .byte $12   ; 01 con_fighter_raph
+- D 3 - - - 0x03E9AB 0F:E99B: 14        .byte $14   ; 02 con_fighter_mike
+- D 3 - - - 0x03E9AC 0F:E99C: 18        .byte $18   ; 03 con_fighter_don
+- D 3 - - - 0x03E9AD 0F:E99D: 0C        .byte $0C   ; 04 con_fighter_casey
+- D 3 - - - 0x03E9AE 0F:E99E: 00        .byte $00   ; 05 con_fighter_hot
+- D 3 - - - 0x03E9AF 0F:E99F: 00        .byte $00   ; 06 con_fighter_shred
 
 
 
@@ -5185,13 +5182,13 @@ C - - - - - 0x03ED62 0F:ED52: 60        RTS
 
 
 tbl_ED53:
-- D 3 - - - 0x03ED63 0F:ED53: 50        .byte $50   ; 00 leo
-- - - - - - 0x03ED64 0F:ED54: 50        .byte $50   ; 01 raph
-- - - - - - 0x03ED65 0F:ED55: 50        .byte $50   ; 02 mike
-- - - - - - 0x03ED66 0F:ED56: 50        .byte $50   ; 03 don
-- D 3 - - - 0x03ED67 0F:ED57: 20        .byte $20   ; 04 casey
-- D 3 - - - 0x03ED68 0F:ED58: 60        .byte $60   ; 05 hot
-- D 3 - - - 0x03ED69 0F:ED59: 10        .byte $10   ; 06 shred
+- D 3 - - - 0x03ED63 0F:ED53: 50        .byte $50   ; 00 con_fighter_leo
+- - - - - - 0x03ED64 0F:ED54: 50        .byte $50   ; 01 con_fighter_raph
+- - - - - - 0x03ED65 0F:ED55: 50        .byte $50   ; 02 con_fighter_mike
+- - - - - - 0x03ED66 0F:ED56: 50        .byte $50   ; 03 con_fighter_don
+- D 3 - - - 0x03ED67 0F:ED57: 20        .byte $20   ; 04 con_fighter_casey
+- D 3 - - - 0x03ED68 0F:ED58: 60        .byte $60   ; 05 con_fighter_hot
+- D 3 - - - 0x03ED69 0F:ED59: 10        .byte $10   ; 06 con_fighter_shred
 
 
 
@@ -5804,13 +5801,13 @@ C - - - - - 0x03F060 0F:F050: 4C 17 F6  JMP loc_F617_restore_prg
 
 
 tbl_F134:
-- D 3 - - - 0x03F144 0F:F134: 14        .byte $14   ; 00 leo
-- D 3 - - - 0x03F145 0F:F135: 13        .byte $13   ; 01 raph
-- D 3 - - - 0x03F146 0F:F136: 12        .byte $12   ; 02 mike
-- D 3 - - - 0x03F147 0F:F137: 13        .byte $13   ; 03 don
-- D 3 - - - 0x03F148 0F:F138: 0F        .byte $0F   ; 04 casey
-- D 3 - - - 0x03F149 0F:F139: 1F        .byte $1F   ; 05 hot
-- D 3 - - - 0x03F14A 0F:F13A: 1A        .byte $1A   ; 06 shred
+- D 3 - - - 0x03F144 0F:F134: 14        .byte $14   ; 00 con_fighter_leo
+- D 3 - - - 0x03F145 0F:F135: 13        .byte $13   ; 01 con_fighter_raph
+- D 3 - - - 0x03F146 0F:F136: 12        .byte $12   ; 02 con_fighter_mike
+- D 3 - - - 0x03F147 0F:F137: 13        .byte $13   ; 03 con_fighter_don
+- D 3 - - - 0x03F148 0F:F138: 0F        .byte $0F   ; 04 con_fighter_casey
+- D 3 - - - 0x03F149 0F:F139: 1F        .byte $1F   ; 05 con_fighter_hot
+- D 3 - - - 0x03F14A 0F:F13A: 1A        .byte $1A   ; 06 con_fighter_shred
 
 
 
@@ -6990,15 +6987,14 @@ C - - - - - 0x03F894 0F:F884: 60        RTS
 
 
 tbl_F885:
-off_F890_start = tbl_F890
-- D 3 - - - 0x03F895 0F:F885: 00        .byte off_F890_00 - off_F890_start
-- D 3 - - - 0x03F896 0F:F886: 0A        .byte off_F89A_01 - off_F890_start
-- D 3 - - - 0x03F897 0F:F887: 00        .byte off_F890_02 - off_F890_start
-- D 3 - - - 0x03F898 0F:F888: 0A        .byte off_F89A_03 - off_F890_start
-- D 3 - - - 0x03F899 0F:F889: 0A        .byte off_F89A_04 - off_F890_start
-- D 3 - - - 0x03F89A 0F:F88A: 0A        .byte off_F89A_05 - off_F890_start
-- D 3 - - - 0x03F89B 0F:F88B: 14        .byte off_F8A4_06 - off_F890_start
-- D 3 - - - 0x03F89C 0F:F88C: 1E        .byte off_F8AE_07 - off_F890_start
+- D 3 - - - 0x03F895 0F:F885: 00        .byte off_F890_00 - tbl_F890
+- D 3 - - - 0x03F896 0F:F886: 0A        .byte off_F89A_01 - tbl_F890
+- D 3 - - - 0x03F897 0F:F887: 00        .byte off_F890_02 - tbl_F890
+- D 3 - - - 0x03F898 0F:F888: 0A        .byte off_F89A_03 - tbl_F890
+- D 3 - - - 0x03F899 0F:F889: 0A        .byte off_F89A_04 - tbl_F890
+- D 3 - - - 0x03F89A 0F:F88A: 0A        .byte off_F89A_05 - tbl_F890
+- D 3 - - - 0x03F89B 0F:F88B: 14        .byte off_F8A4_06 - tbl_F890
+- D 3 - - - 0x03F89C 0F:F88C: 1E        .byte off_F8AE_07 - tbl_F890
 
 
 
@@ -7136,7 +7132,7 @@ C - - - - - 0x03F95E 0F:F94E: A2 00     LDX #$00
 C - - - - - 0x03F960 0F:F950: A9 7C     LDA #$7C
 C - - - - - 0x03F962 0F:F952: 8E 00 80  STX $8000
 C - - - - - 0x03F965 0F:F955: 8D 01 80  STA $8001
-C - - - - - 0x03F968 0F:F958: E8        INX
+C - - - - - 0x03F968 0F:F958: E8        INX ; 01
 C - - - - - 0x03F969 0F:F959: A9 7E     LDA #$7E
 C - - - - - 0x03F96B 0F:F95B: 8E 00 80  STX $8000
 C - - - - - 0x03F96E 0F:F95E: 8D 01 80  STA $8001
@@ -7212,7 +7208,7 @@ C - - - - - 0x03F9E9 0F:F9D9: 8E 05 20  STX $2005
 C - - - - - 0x03F9EC 0F:F9DC: 8E 00 80  STX $8000
 C - - - - - 0x03F9EF 0F:F9DF: A9 7E     LDA #$7E
 C - - - - - 0x03F9F1 0F:F9E1: 8D 01 80  STA $8001
-C - - - - - 0x03F9F4 0F:F9E4: E8        INX
+C - - - - - 0x03F9F4 0F:F9E4: E8        INX ; 01
 C - - - - - 0x03F9F5 0F:F9E5: 8E 00 80  STX $8000
 C - - - - - 0x03F9F8 0F:F9E8: A9 20     LDA #$20
 C - - - - - 0x03F9FA 0F:F9EA: 8D 01 80  STA $8001
@@ -7415,7 +7411,7 @@ C - - - - - 0x03FB29 0F:FB19: A2 00     LDX #$00
 C - - - - - 0x03FB2B 0F:FB1B: 8E 00 80  STX $8000
 C - - - - - 0x03FB2E 0F:FB1E: A9 5A     LDA #$5A
 C - - - - - 0x03FB30 0F:FB20: 8D 01 80  STA $8001
-C - - - - - 0x03FB33 0F:FB23: E8        INX
+C - - - - - 0x03FB33 0F:FB23: E8        INX ; 01
 C - - - - - 0x03FB34 0F:FB24: A9 7E     LDA #$7E
 C - - - - - 0x03FB36 0F:FB26: 8E 00 80  STX $8000
 C - - - - - 0x03FB39 0F:FB29: 8D 01 80  STA $8001
@@ -7466,7 +7462,7 @@ C - - - - - 0x03FB82 0F:FB72: A2 00     LDX #$00
 C - - - - - 0x03FB84 0F:FB74: 8E 00 80  STX $8000
 C - - - - - 0x03FB87 0F:FB77: A9 72     LDA #$72
 C - - - - - 0x03FB89 0F:FB79: 8D 01 80  STA $8001
-C - - - - - 0x03FB8C 0F:FB7C: E8        INX
+C - - - - - 0x03FB8C 0F:FB7C: E8        INX ; 01
 C - - - - - 0x03FB8D 0F:FB7D: A9 70     LDA #$70
 C - - - - - 0x03FB8F 0F:FB7F: 8E 00 80  STX $8000
 C - - - - - 0x03FB92 0F:FB82: 8D 01 80  STA $8001

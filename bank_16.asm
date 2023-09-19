@@ -464,40 +464,40 @@ C - - - - - 0x02C351 0B:8341: 60        RTS
 
 
 tbl_8342_pos_Y_спрайты_портрета:
-- D 0 - - - 0x02C352 0B:8342: 4F        .byte $4F   ; 00 leo
-- D 0 - - - 0x02C353 0B:8343: 4F        .byte $4F   ; 01 raph
-- D 0 - - - 0x02C354 0B:8344: 4F        .byte $4F   ; 02 mike
-- D 0 - - - 0x02C355 0B:8345: 4F        .byte $4F   ; 03 don
-- D 0 - - - 0x02C356 0B:8346: 97        .byte $97   ; 04 casey
-- D 0 - - - 0x02C357 0B:8347: 97        .byte $97   ; 05 hot
-- D 0 - - - 0x02C358 0B:8348: 97        .byte $97   ; 06 shred
+- D 0 - - - 0x02C352 0B:8342: 4F        .byte $4F   ; 00 con_fighter_leo
+- D 0 - - - 0x02C353 0B:8343: 4F        .byte $4F   ; 01 con_fighter_raph
+- D 0 - - - 0x02C354 0B:8344: 4F        .byte $4F   ; 02 con_fighter_mike
+- D 0 - - - 0x02C355 0B:8345: 4F        .byte $4F   ; 03 con_fighter_don
+- D 0 - - - 0x02C356 0B:8346: 97        .byte $97   ; 04 con_fighter_casey
+- D 0 - - - 0x02C357 0B:8347: 97        .byte $97   ; 05 con_fighter_hot
+- D 0 - - - 0x02C358 0B:8348: 97        .byte $97   ; 06 con_fighter_shred
 
 tbl_8349_pos_X_спрайты_портрета:
-- D 0 - - - 0x02C359 0B:8349: 18        .byte $18   ; 00 leo
-- D 0 - - - 0x02C35A 0B:834A: 50        .byte $50   ; 01 raph
-- D 0 - - - 0x02C35B 0B:834B: 88        .byte $88   ; 02 mike
-- D 0 - - - 0x02C35C 0B:834C: C0        .byte $C0   ; 03 don
-- D 0 - - - 0x02C35D 0B:834D: 30        .byte $30   ; 04 casey
-- D 0 - - - 0x02C35E 0B:834E: 70        .byte $70   ; 05 hot
-- D 0 - - - 0x02C35F 0B:834F: B0        .byte $B0   ; 06 shred
+- D 0 - - - 0x02C359 0B:8349: 18        .byte $18   ; 00 con_fighter_leo
+- D 0 - - - 0x02C35A 0B:834A: 50        .byte $50   ; 01 con_fighter_raph
+- D 0 - - - 0x02C35B 0B:834B: 88        .byte $88   ; 02 con_fighter_mike
+- D 0 - - - 0x02C35C 0B:834C: C0        .byte $C0   ; 03 con_fighter_don
+- D 0 - - - 0x02C35D 0B:834D: 30        .byte $30   ; 04 con_fighter_casey
+- D 0 - - - 0x02C35E 0B:834E: 70        .byte $70   ; 05 con_fighter_hot
+- D 0 - - - 0x02C35F 0B:834F: B0        .byte $B0   ; 06 con_fighter_shred
 
 tbl_8350_pos_X_курсор:
-- D 0 - - - 0x02C360 0B:8350: 14        .byte $14   ; 00 leo
-- D 0 - - - 0x02C361 0B:8351: 4C        .byte $4C   ; 01 raph
-- D 0 - - - 0x02C362 0B:8352: 84        .byte $84   ; 02 mike
-- D 0 - - - 0x02C363 0B:8353: BC        .byte $BC   ; 03 don
-- D 0 - - - 0x02C364 0B:8354: 2C        .byte $2C   ; 04 casey
-- D 0 - - - 0x02C365 0B:8355: 6C        .byte $6C   ; 05 hot
-- D 0 - - - 0x02C366 0B:8356: AC        .byte $AC   ; 06 shred
+- D 0 - - - 0x02C360 0B:8350: 14        .byte $14   ; 00 con_fighter_leo
+- D 0 - - - 0x02C361 0B:8351: 4C        .byte $4C   ; 01 con_fighter_raph
+- D 0 - - - 0x02C362 0B:8352: 84        .byte $84   ; 02 con_fighter_mike
+- D 0 - - - 0x02C363 0B:8353: BC        .byte $BC   ; 03 con_fighter_don
+- D 0 - - - 0x02C364 0B:8354: 2C        .byte $2C   ; 04 con_fighter_casey
+- D 0 - - - 0x02C365 0B:8355: 6C        .byte $6C   ; 05 con_fighter_hot
+- D 0 - - - 0x02C366 0B:8356: AC        .byte $AC   ; 06 con_fighter_shred
 
 tbl_8357_pos_Y_курсор:
-- D 0 - - - 0x02C367 0B:8357: 46        .byte $46   ; 00 leo
-- D 0 - - - 0x02C368 0B:8358: 46        .byte $46   ; 01 raph
-- D 0 - - - 0x02C369 0B:8359: 46        .byte $46   ; 02 mike
-- D 0 - - - 0x02C36A 0B:835A: 46        .byte $46   ; 03 don
-- D 0 - - - 0x02C36B 0B:835B: 8E        .byte $8E   ; 04 casey
-- D 0 - - - 0x02C36C 0B:835C: 8E        .byte $8E   ; 05 hot
-- D 0 - - - 0x02C36D 0B:835D: 8E        .byte $8E   ; 06 shred
+- D 0 - - - 0x02C367 0B:8357: 46        .byte $46   ; 00 con_fighter_leo
+- D 0 - - - 0x02C368 0B:8358: 46        .byte $46   ; 01 con_fighter_raph
+- D 0 - - - 0x02C369 0B:8359: 46        .byte $46   ; 02 con_fighter_mike
+- D 0 - - - 0x02C36A 0B:835A: 46        .byte $46   ; 03 con_fighter_don
+- D 0 - - - 0x02C36B 0B:835B: 8E        .byte $8E   ; 04 con_fighter_casey
+- D 0 - - - 0x02C36C 0B:835C: 8E        .byte $8E   ; 05 con_fighter_hot
+- D 0 - - - 0x02C36D 0B:835D: 8E        .byte $8E   ; 06 con_fighter_shred
 
 
 
@@ -636,24 +636,24 @@ C - - - - - 0x02E89F 0B:A88F: 4C 17 F6  JMP loc_0x03F627_restore_prg
 
 
 tbl_A89C:
-- D 1 - - - 0x02E8AC 0B:A89C: 04        .byte $04   ; 00 leo
-- - - - - - 0x02E8AD 0B:A89D: 05        .byte $05   ; 01 raph
-- - - - - - 0x02E8AE 0B:A89E: 04        .byte $04   ; 02 mike
-- D 1 - - - 0x02E8AF 0B:A89F: 05        .byte $05   ; 03 don
-- - - - - - 0x02E8B0 0B:A8A0: 05        .byte $05   ; 04 casey
-- - - - - - 0x02E8B1 0B:A8A1: 09        .byte $09   ; 05 hot
-- - - - - - 0x02E8B2 0B:A8A2: 06        .byte $06   ; 06 shred
+- D 1 - - - 0x02E8AC 0B:A89C: 04        .byte $04   ; 00 con_fighter_leo
+- - - - - - 0x02E8AD 0B:A89D: 05        .byte $05   ; 01 con_fighter_raph
+- - - - - - 0x02E8AE 0B:A89E: 04        .byte $04   ; 02 con_fighter_mike
+- D 1 - - - 0x02E8AF 0B:A89F: 05        .byte $05   ; 03 con_fighter_don
+- - - - - - 0x02E8B0 0B:A8A0: 05        .byte $05   ; 04 con_fighter_casey
+- - - - - - 0x02E8B1 0B:A8A1: 09        .byte $09   ; 05 con_fighter_hot
+- - - - - - 0x02E8B2 0B:A8A2: 06        .byte $06   ; 06 con_fighter_shred
 
 
 
 tbl_A8A6:
-- D 1 - - - 0x02E8B6 0B:A8A6: 05        .byte $05   ; 00 leo
-- D 1 - - - 0x02E8B7 0B:A8A7: 06        .byte $06   ; 01 raph
-- D 1 - - - 0x02E8B8 0B:A8A8: 05        .byte $05   ; 02 mike
-- D 1 - - - 0x02E8B9 0B:A8A9: 06        .byte $06   ; 03 don
-- D 1 - - - 0x02E8BA 0B:A8AA: 05        .byte $05   ; 04 casey
-- D 1 - - - 0x02E8BB 0B:A8AB: 09        .byte $09   ; 05 hot
-- D 1 - - - 0x02E8BC 0B:A8AC: 07        .byte $07   ; 06 shred
+- D 1 - - - 0x02E8B6 0B:A8A6: 05        .byte $05   ; 00 con_fighter_leo
+- D 1 - - - 0x02E8B7 0B:A8A7: 06        .byte $06   ; 01 con_fighter_raph
+- D 1 - - - 0x02E8B8 0B:A8A8: 05        .byte $05   ; 02 con_fighter_mike
+- D 1 - - - 0x02E8B9 0B:A8A9: 06        .byte $06   ; 03 con_fighter_don
+- D 1 - - - 0x02E8BA 0B:A8AA: 05        .byte $05   ; 04 con_fighter_casey
+- D 1 - - - 0x02E8BB 0B:A8AB: 09        .byte $09   ; 05 con_fighter_hot
+- D 1 - - - 0x02E8BC 0B:A8AC: 07        .byte $07   ; 06 con_fighter_shred
 
 
 
@@ -734,22 +734,22 @@ C - - - - - 0x02EA9F 0B:AA8F: 60        RTS
 ; bzk optimize, переделать под нормальную таблицу
 ; предположительно сейчас не так вычисляется как я написал
 tbl_AA90_автобаланс:
-;                                              +---------------------------------------- 00 leo
-;                                              |    +----------------------------------- 01 raph
-;                                              |    |    +------------------------------ 02 mike
-;                                              |    |    |    +------------------------- 03 don
-;                                              |    |    |    |    +-------------------- 04 casey
-;                                              |    |    |    |    |    +--------------- 05 hot
-;                                              |    |    |    |    |    |    +---------- 06 shred
+;                                              +---------------------------------------- 00 con_fighter_leo
+;                                              |    +----------------------------------- 01 con_fighter_raph
+;                                              |    |    +------------------------------ 02 con_fighter_mike
+;                                              |    |    |    +------------------------- 03 con_fighter_don
+;                                              |    |    |    |    +-------------------- 04 con_fighter_casey
+;                                              |    |    |    |    |    +--------------- 05 con_fighter_hot
+;                                              |    |    |    |    |    |    +---------- 06 con_fighter_shred
 ;                                              |    |    |    |    |    |    |    +----- 07 placeholder
 ;                                              |    |    |    |    |    |    |    |
-- D 1 - - - 0x02EAA0 0B:AA90: 00        .byte $00, $00, $01, $00, $01, $FE, $FC, $00   ; 00 leo
-- D 1 - - - 0x02EAA8 0B:AA98: 00        .byte $00, $00, $01, $00, $01, $FE, $FD, $00   ; 01 raph
-- D 1 - - - 0x02EAB0 0B:AAA0: 00        .byte $00, $00, $00, $00, $00, $FD, $FC, $00   ; 02 mike
-- D 1 - - - 0x02EAB8 0B:AAA8: 00        .byte $00, $00, $01, $00, $01, $FE, $FC, $00   ; 03 don
-- D 1 - - - 0x02EAC0 0B:AAB0: 00        .byte $00, $00, $01, $00, $01, $FE, $FD, $00   ; 04 casey
-- D 1 - - - 0x02EAC8 0B:AAB8: 01        .byte $01, $01, $02, $02, $01, $FE, $FE, $01   ; 05 hot
-- D 1 - - - 0x02EAD0 0B:AAC0: 02        .byte $02, $02, $03, $03, $03, $00, $FE, $02   ; 06 shred
+- D 1 - - - 0x02EAA0 0B:AA90: 00        .byte $00, $00, $01, $00, $01, $FE, $FC, $00   ; 00 con_fighter_leo
+- D 1 - - - 0x02EAA8 0B:AA98: 00        .byte $00, $00, $01, $00, $01, $FE, $FD, $00   ; 01 con_fighter_raph
+- D 1 - - - 0x02EAB0 0B:AAA0: 00        .byte $00, $00, $00, $00, $00, $FD, $FC, $00   ; 02 con_fighter_mike
+- D 1 - - - 0x02EAB8 0B:AAA8: 00        .byte $00, $00, $01, $00, $01, $FE, $FC, $00   ; 03 con_fighter_don
+- D 1 - - - 0x02EAC0 0B:AAB0: 00        .byte $00, $00, $01, $00, $01, $FE, $FD, $00   ; 04 con_fighter_casey
+- D 1 - - - 0x02EAC8 0B:AAB8: 01        .byte $01, $01, $02, $02, $01, $FE, $FE, $01   ; 05 con_fighter_hot
+- D 1 - - - 0x02EAD0 0B:AAC0: 02        .byte $02, $02, $03, $03, $03, $00, $FE, $02   ; 06 con_fighter_shred
 - - - - - - 0x02EAD8 0B:AAC8: 00        .byte $00, $00, $01, $00, $01, $FE, $FC, $00   ; 07 placeholder
 
 
