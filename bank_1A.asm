@@ -100,7 +100,7 @@ C - - - - - 0x0340CE 0D:80BE: 0A        ASL
 C - - - - - 0x0340CF 0D:80BF: 0A        ASL
 C - - - - - 0x0340D0 0D:80C0: 85 10     STA ram_0010
 C - - - - - 0x0340D2 0D:80C2: BC 50 05  LDY ram_obj_id,X ; 0550 0551 
-C - - - - - 0x0340D5 0D:80C5: B9 1C DF  LDA tbl_0x03DF2C,Y
+C - - - - - 0x0340D5 0D:80C5: B9 1C DF  LDA tbl_0x03DF2C_рейндж_броска,Y
 C - - - - - 0x0340D8 0D:80C8: 38        SEC
 C - - - - - 0x0340D9 0D:80C9: E9 01     SBC #$01
 C - - - - - 0x0340DB 0D:80CB: A4 10     LDY ram_0010

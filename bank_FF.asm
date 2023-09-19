@@ -93,7 +93,7 @@
 .export sub_0x03DEE4
 .export sub_0x03DF0B
 .export sub_0x03DF1D
-.export tbl_0x03DF2C
+.export tbl_0x03DF2C_рейндж_броска
 .export sub_0x03DF33
 .export sub_0x03DF48
 .export loc_0x03DF48
@@ -2555,7 +2555,8 @@ C - - - - - 0x03DF29 0F:DF19: 4C 54 DC  JMP loc_DC54_добавить_A_FF_к_sp
 
 
 
-tbl_0x03DF2C:
+; расстояния хвата для броска
+tbl_0x03DF2C_рейндж_броска:
 - D 2 - - - 0x03DF2C 0F:DF1C: 07        .byte $07   ; 00 leo
 - D 2 - - - 0x03DF2D 0F:DF1D: 06        .byte $06   ; 01 raph
 - D 2 - - - 0x03DF2E 0F:DF1E: 08        .byte $08   ; 02 mike

@@ -450,10 +450,6 @@ C - - - - - 0x0242C5 09:82B5: F0 06     BEQ bra_82BD
 C - - - - - 0x0242C7 09:82B7: 9D 10 05  STA ram_obj_spr_flip,X ; 0510 0511 
 C - - - - - 0x0242CA 09:82BA: 4C DF 82  JMP loc_82DF
 bra_82BD:
-C - - - - - 0x0242CD 09:82BD: A5 13     LDA ram_0013
-C - - - - - 0x0242CF 09:82BF: BC 50 05  LDY ram_obj_id,X ; 0550 0551 
-C - - - - - 0x0242D2 09:82C2: D9 1C DF  CMP tbl_0x03DF2C,Y
-C - - - - - 0x0242D5 09:82C5: B0 18     BCS bra_82DF
 C - - - - - 0x0242D7 09:82C7: A4 A9     LDY ram_global_obj_index
 C - - - - - 0x0242D9 09:82C9: B9 10 04  LDA ram_obj_pos_Y_lo,Y ; 0410 0411 
 C - - - - - 0x0242DC 09:82CC: C9 B0     CMP #$B0
@@ -463,6 +459,25 @@ C - - - - - 0x0242E3 09:82D3: 29 A0     AND #$A0
 C - - - - - 0x0242E5 09:82D5: D0 08     BNE bra_82DF
 C - - - - - 0x0242E7 09:82D7: B9 F0 05  LDA ram_obj_05F0,Y ; 05F0 05F1 
 C - - - - - 0x0242EA 09:82DA: D0 03     BNE bra_82DF
+C - - - - - 0x0242CD 09:82BD: A5 13     LDA ram_0013
+C - - - - - 0x0242CF 09:82BF: BC 50 05  LDY ram_obj_id,X ; 0550 0551 
+C - - - - - 0x0242D2 09:82C2: D9 1C DF  CMP tbl_0x03DF2C_рейндж_броска,Y
+					BCC bra_82BE
+; рейндж для второго броска перса. пока 00 - 2-й бросок отключен
+					CMP #$00
+C - - - - - 0x0242D5 09:82C5: B0 18     BCS bra_82DF
+; условия для срабатывания второго броска
+					LDA ram_plr_0626,X
+					LSR
+					BNE bra_82BF
+bra_82BE:
+; 00 в ram_06F4 - это 1-й бросок, 01 - 2-й
+					LDA #$00
+					.byte $2C   ; BIT
+bra_82BF:
+					LDA #$01
+					STA ram_06F4,X
+
 C - - - - - 0x0242EC 09:82DC: 4C C2 83  JMP loc_83C2
 bra_82DF:
 loc_82DF:
@@ -2563,6 +2578,8 @@ sub_8FCF:
 C - - - - - 0x024FDF 09:8FCF: BD 50 05  LDA ram_obj_id,X ; 0550 0551 
 C - - - - - 0x024FE2 09:8FD2: C9 01     CMP #$01
 C - - - - - 0x024FE4 09:8FD4: F0 1F     BEQ bra_8FF5
+					LDA ram_06F4,X
+					BNE bra_8FF5
 C - - - - - 0x024FE6 09:8FD6: BD 10 05  LDA ram_obj_spr_flip,X ; 0510 0511 
 C - - - - - 0x024FE9 09:8FD9: 0A        ASL
 C - - - - - 0x024FEA 09:8FDA: 0A        ASL
@@ -2625,7 +2642,7 @@ C - - - - - 0x025058 09:9048: 20 A4 90  JSR sub_90A4
 C - - - - - 0x02505B 09:904B: BD 40 05  LDA ram_obj_0540,X ; 0540 0541 
 C - - - - - 0x02505E 09:904E: C9 02     CMP #$02
 C - - - - - 0x025060 09:9050: F0 51     BEQ bra_90A3_RTS
-C - - - - - 0x025062 09:9052: B9 4D 97  LDA tbl_974C_броски + $01,Y
+C - - - - - 0x025062 09:9052: B9 4D 97  LDA tbl_974C_звуки_и_анимации_бросков + $01,Y
 C - - - - - 0x025065 09:9055: 85 08     STA ram_0008
 C - - - - - 0x025067 09:9057: 29 9F     AND #$9F
 C - - - - - 0x025069 09:9059: 9D 60 05  STA ram_obj_timer,X ; 0560 0561 
@@ -2678,24 +2695,27 @@ C - - - - - 0x0250B3 09:90A3: 60        RTS
 bra_90A4:
 sub_90A4:
 loc_90A4:
-C D 0 - - - 0x0250B4 09:90A4: BC 50 05  LDY ram_obj_id,X ; 0550 0551 
+C D 0 - - - 0x0250B4 09:90A4: BC 50 05  LDA ram_obj_id,X ; 0550 0551 
+					ASL	
+					ADC ram_06F4,X
+					TAY
 C - - - - - 0x0250B7 09:90A7: BD D0 05  LDA ram_obj_05D0,X ; 05D0 05D1 
 C - - - - - 0x0250BA 09:90AA: 0A        ASL
 C - - - - - 0x0250BB 09:90AB: 0A        ASL
 C - - - - - 0x0250BC 09:90AC: 79 45 97  ADC tbl_9745_индекс,Y
 C - - - - - 0x0250BF 09:90AF: A8        TAY
 C - - - - - 0x0250C0 09:90B0: 85 1F     STA ram_001F
-C - - - - - 0x0250C2 09:90B2: B9 4C 97  LDA tbl_974C_броски,Y
+C - - - - - 0x0250C2 09:90B2: B9 4C 97  LDA tbl_974C_звуки_и_анимации_бросков,Y
 C - - - - - 0x0250C5 09:90B5: D0 06     BNE bra_90BD
 ; if 00, то следующий байт = номер звука, а 3й и 4й байты игнорируются
 C - - - - - 0x0250C7 09:90B7: 20 5D 91  JSR sub_915D_записать_звук
 C - - - - - 0x0250CA 09:90BA: 4C 30 91  JMP loc_9130
 bra_90BD:
 C - - - - - 0x0250CD 09:90BD: 9D 00 04  STA ram_obj_anim_id,X ; 0400 0401 
-C - - - - - 0x0250D1 09:90C1: B9 4E 97  LDA tbl_974C_броски + $02,Y
+C - - - - - 0x0250D1 09:90C1: B9 4E 97  LDA tbl_974C_звуки_и_анимации_бросков + $02,Y
 C - - - - - 0x0250D4 09:90C4: 85 01     STA ram_0001
 C - - - - - 0x0250D6 09:90C6: 18        CLC
-C - - - - - 0x0250D7 09:90C7: B9 4F 97  LDA tbl_974C_броски + $03,Y
+C - - - - - 0x0250D7 09:90C7: B9 4F 97  LDA tbl_974C_звуки_и_анимации_бросков + $03,Y
 C - - - - - 0x0250DA 09:90CA: 7D 10 04  ADC ram_obj_pos_Y_lo,X ; 0410 0411 
 C - - - - - 0x0250DD 09:90CD: 85 02     STA ram_0002
 C - - - - - 0x0250DF 09:90CF: 20 8C 91  JSR sub_918C
@@ -2777,7 +2797,7 @@ C - - - - - 0x02516A 09:915A: 20 7C DE  JMP loc_0x03DE8E
 
 
 sub_915D_записать_звук:
-C - - - - - 0x02516D 09:915D: B9 4D 97  LDA tbl_974C_броски + $01,Y
+C - - - - - 0x02516D 09:915D: B9 4D 97  LDA tbl_974C_звуки_и_анимации_бросков + $01,Y
 C - - - - - 0x025170 09:9160: 20 94 F6  JSR sub_0x03F6A4_записать_звук
 C - - - - - 0x025173 09:9163: A6 AD     LDX ram_00AD
 C - - - - - 0x025175 09:9165: FE D0 05  INC ram_obj_05D0,X ; 05D0 05D1 
@@ -2913,8 +2933,10 @@ C - - J - - 0x025247 09:9237: 1E 10 05  ASL ram_obj_spr_flip,X ; 0510 0511
 C - - - - - 0x02524A 09:923A: 5E 10 05  LSR ram_obj_spr_flip,X ; 0510 0511 
 C - - - - - 0x02524D 09:923D: A4 A9     LDY ram_global_obj_index
 C - - - - - 0x02524F 09:923F: B9 50 05  LDA ram_obj_id,Y ; 0550 0551 
+					ASL	
+					ADC ram_06F4,Y
 C - - - - - 0x025252 09:9242: A8        TAY
-C - - - - - 0x025253 09:9243: B9 DA 98  LDA tbl_98DA,Y
+C - - - - - 0x025253 09:9243: B9 DA 98  LDA tbl_98DA_скорость_Y_брошенного_перса,Y
 C - - - - - 0x025256 09:9246: A8        TAY
 C - - - - - 0x025257 09:9247: A9 00     LDA #$00
 loc_9249:
@@ -2934,8 +2956,10 @@ C - - - - - 0x025271 09:9261: 20 18 D2  JSR sub_0x03D228
 C - - - - - 0x025274 09:9264: 20 65 DD  JSR sub_0x03DD75_повернуть_объект_в_противоположную_сторону_по_горизонтали
 C - - - - - 0x025277 09:9267: A4 A9     LDY ram_global_obj_index
 C - - - - - 0x025279 09:9269: B9 50 05  LDA ram_obj_id,Y ; 0550 0551 
+					ASL	
+					ADC ram_06F4,Y
 C - - - - - 0x02527C 09:926C: A8        TAY
-C - - - - - 0x02527D 09:926D: B9 D3 98  LDA tbl_98D3,Y
+C - - - - - 0x02527D 09:926D: B9 D3 98  LDA tbl_98D3_скорость_X_брошенного_перса,Y
 C - - - - - 0x025280 09:9270: 20 7D D1  JSR sub_0x03D18D
 C - - - - - 0x025283 09:9273: A4 A9     LDY ram_global_obj_index
 C - - - - - 0x025285 09:9275: B9 50 05  LDA ram_obj_id,Y ; 0550 0551 
@@ -2972,8 +2996,10 @@ C - - - - - 0x0252C1 09:92B1: C9 04     CMP #$04
 C - - - - - 0x0252C3 09:92B3: B0 16     BCS bra_92CB
 C - - - - - 0x0252C5 09:92B5: A4 A9     LDY ram_global_obj_index
 C - - - - - 0x0252C7 09:92B7: B9 50 05  LDA ram_obj_id,Y ; 0550 0551 
+					ASL	
+					ADC ram_06F4,Y
 C - - - - - 0x0252CA 09:92BA: A8        TAY
-C - - - - - 0x0252CB 09:92BB: 20 DD B7  LDA tbl_973E,Y
+C - - - - - 0x0252CB 09:92BB: 20 DD B7  LDA tbl_973E_урон_от_бросков,Y
                                         DEC ram_obj_04C0,X ; 04C0 04C1 
 C - - - - - 0x0252CE 09:92BE: 20 3C DE  JSR sub_0x03DE4C
 C - - - - - 0x0252D1 09:92C1: 20 BA DE  JSR sub_0x03DECA
@@ -4017,30 +4043,50 @@ tbl_9737:
 
 
 
-tbl_973E:
+tbl_973E_урон_от_бросков:
 - D 0 - - - 0x02574E 09:973E: 2B        .byte $2B   ; 00 leo
+					.byte $2B   ; 00 leo 2
 - D 0 - - - 0x02574F 09:973F: 08        .byte $08   ; 01 raph
+					.byte $08   ; 01 raph 2
 - D 0 - - - 0x025750 09:9740: 22        .byte $22   ; 02 mike
+					.byte $22   ; 02 mike 2
 - D 0 - - - 0x025751 09:9741: 2B        .byte $2B   ; 03 don
+					.byte $2B   ; 03 don 2
 - D 0 - - - 0x025752 09:9742: 38        .byte $38   ; 04 casey
+					.byte $38   ; 04 casey 2
 - D 0 - - - 0x025753 09:9743: 40        .byte $40   ; 05 hot
+					.byte $2B   ; 05 hot 2
 - D 0 - - - 0x025754 09:9744: 40        .byte $40   ; 06 shred
+					.byte $40   ; 06 shred 2
 
 
 
+; пойнтеры для загрузки таблицы tbl_974C_звуки_и_анимации_бросков
 tbl_9745_индекс:
-off_974C_start = tbl_974C_броски
+off_974C_start = tbl_974C_звуки_и_анимации_бросков
 - D 0 - - - 0x025755 09:9745: 00        .byte off_974C_00_leo - off_974C_start
+					.byte off_974C_00_leo - off_974C_start
+
 - D 0 - - - 0x025756 09:9746: 48        .byte off_9794_01_raph - off_974C_start
+					.byte off_9794_01_raph - off_974C_start
+
 - D 0 - - - 0x025757 09:9747: 24        .byte off_9770_02_mike - off_974C_start
+					.byte off_9770_02_mike - off_974C_start
+
 - D 0 - - - 0x025758 09:9748: 00        .byte off_974C_03_don - off_974C_start
+					.byte off_974C_03_don - off_974C_start
+
 - D 0 - - - 0x025759 09:9749: 68        .byte off_97B4_04_casey - off_974C_start
+					.byte off_97B4_04_casey - off_974C_start
+
 - D 0 - - - 0x02575A 09:974A: 90        .byte off_97DC_05_hot - off_974C_start
+					.byte off_97DC_05_hot_2 - off_974C_start
+
 - D 0 - - - 0x02575B 09:974B: B2        .byte off_97FE_06_shred - off_974C_start
+					.byte off_97FE_06_shred - off_974C_start
 
 
-
-tbl_974C_броски:
+tbl_974C_звуки_и_анимации_бросков:
 off_974C_00_leo:
 off_974C_03_don:
 ; 00
@@ -4317,6 +4363,31 @@ off_97FE_06_shred:
 ; 06
 - D 0 - - - 0x025826 09:9816: B7        .byte $B7   ; номер анимации
 - D 0 - - - 0x025827 09:9817: 8C        .byte $8C   ; длительность анимации + тряска экрана
+off_97DC_05_hot_2:
+					.byte $00   ; записать звук
+					.byte con_dpcm_warcry_hot_2   ; 
+					.byte $00   ; placeholder
+					.byte $00   ; placeholder
+					.byte $92   ; номер анимации
+					.byte $09   ; длительность анимации + тряска экрана
+					.byte $18   ; смещение соперника по X
+					.byte $00   ; смещение соперника по Y
+					.byte $8B   ; номер анимации
+					.byte $09   ; длительность анимации + тряска экрана
+					.byte $18   ; смещение соперника по X
+					.byte $F8   ; смещение соперника по Y
+					.byte $00   ; записать звук
+					.byte $0D   ; 
+					.byte $00   ; placeholder
+					.byte $00   ; placeholder
+					.byte $8F   ; номер анимации
+					.byte $08   ; длительность анимации + тряска экрана
+					.byte $20   ; смещение соперника по X
+					.byte $F8   ; смещение соперника по Y
+					.byte $8F   ; номер анимации
+					.byte $C0   ; длительность анимации + тряска экрана
+					.byte $20   ; смещение соперника по X
+					.byte $F0   ; смещение соперника по Y
 
 
 
@@ -4568,25 +4639,39 @@ tbl_9862:
 
 
 
-tbl_98D3:
+tbl_98D3_скорость_X_брошенного_перса:
 - D 0 - - - 0x0258E3 09:98D3: 81        .byte $81   ; 00 leo
+					.byte $81   ; 00 leo 2
 - D 0 - - - 0x0258E4 09:98D4: 01        .byte $01   ; 01 raph
+					.byte $01   ; 01 raph 2
 - D 0 - - - 0x0258E5 09:98D5: 02        .byte $02   ; 02 mike
+					.byte $02   ; 02 mike 2
 - D 0 - - - 0x0258E6 09:98D6: 81        .byte $81   ; 03 don
+					.byte $81   ; 03 don 2
 - D 0 - - - 0x0258E7 09:98D7: 01        .byte $01   ; 04 casey
+					.byte $01   ; 04 casey 2
 - D 0 - - - 0x0258E8 09:98D8: 02        .byte $02   ; 05 hot
+					.byte $02   ; 05 hot 2
 - D 0 - - - 0x0258E9 09:98D9: 04        .byte $04   ; 06 shred
+					.byte $04   ; 06 shred 2
 
 
 
-tbl_98DA:
+tbl_98DA_скорость_Y_брошенного_перса:
 - D 0 - - - 0x0258EA 09:98DA: FE        .byte $FE   ; 00 leo
+					.byte $FE   ; 00 leo 2
 - D 0 - - - 0x0258EB 09:98DB: FE        .byte $FE   ; 01 raph
+					.byte $FE   ; 01 raph 2
 - D 0 - - - 0x0258EC 09:98DC: FF        .byte $FF   ; 02 mike
+					.byte $FF   ; 02 mike 2
 - D 0 - - - 0x0258ED 09:98DD: 01        .byte $01   ; 03 don
+					.byte $01   ; 03 don 2
 - D 0 - - - 0x0258EE 09:98DE: 01        .byte $01   ; 04 casey
+					.byte $01   ; 04 casey 2
 - D 0 - - - 0x0258EF 09:98DF: FC        .byte $FC   ; 05 hot
+					.byte $FC   ; 05 hot 2
 - D 0 - - - 0x0258F0 09:98E0: FF        .byte $FF   ; 06 shred
+					.byte $FF   ; 06 shred 2
 
 
 
@@ -10343,7 +10428,7 @@ C - - - - - 0x027E6B 09:BE5B: C0 03     CPY #$03
 C - - - - - 0x027E6D 09:BE5D: B0 25     BCS bra_BE84
 bra_BE5F:
 C - - - - - 0x027E6F 09:BE5F: AD 38 06  LDA ram_0638
-C - - - - - 0x027E72 09:BE62: D9 1C DF  CMP tbl_0x03DF2C,Y
+C - - - - - 0x027E72 09:BE62: D9 1C DF  CMP tbl_0x03DF2C_рейндж_броска,Y
 C - - - - - 0x027E75 09:BE65: B0 1D     BCS bra_BE84
 C - - - - - 0x027E77 09:BE67: A4 A9     LDY ram_global_obj_index
 C - - - - - 0x027E79 09:BE69: B5 8E     LDA ram_btn_press,X ; 008E 008F 
