@@ -1976,3 +1976,4 @@ C - - - - - 0x031079 0C:9069: D0 F4     BNE bra_905F_loop    ; jmp
 
 
 
+.out .sprintf("Free bytes in bank 18: %d [%Xh]", ($C000 - *), ($C000 - *))

@@ -176,3 +176,5 @@ tbl_0x03E3C8_prg_bank_с_данными_экрана:
     .byte con_prg_bank + $08   ; 1F
 
 
+
+.out .sprintf("Free bytes in bank 08: %d [%Xh]", ($C000 - *), ($C000 - *))

@@ -7250,3 +7250,4 @@ tbl_BFFE:
 
 
 
+.out .sprintf("Free bytes in bank 1A: %d [%Xh]", ($C000 - *), ($C000 - *))

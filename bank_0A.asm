@@ -9,3 +9,5 @@
     .byte con_bank_id + $0A   ; 
 
 
+
+.out .sprintf("Free bytes in bank 0A: %d [%Xh]", ($C000 - *), ($C000 - *))

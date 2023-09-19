@@ -3078,3 +3078,4 @@ C - - - - - 0x02699F 09:A98F: 60        RTS
 
 
 
+.out .sprintf("Free bytes in bank 16: %d [%Xh]", ($C000 - *), ($C000 - *))

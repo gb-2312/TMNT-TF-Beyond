@@ -7997,6 +7997,10 @@ _общий_RTS:
 
 
 
+.out .sprintf("Free bytes in bank FF: %d [%Xh]", ($FFFA - *), ($FFFA - *))
+
+
+
 .segment "VECTORS"
 - D 3 - - - 0x04000A 0F:FFFA: 19 F2     .word vec_F219_NMI
 - D 3 - - - 0x04000C 0F:FFFC: 6D F1     .word vec_F16D_RESET

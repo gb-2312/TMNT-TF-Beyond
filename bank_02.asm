@@ -54,3 +54,5 @@ _off006_screen_00:
     .incbin "incbin/screens/00.bin"
 
 
+
+.out .sprintf("Free bytes in bank 02: %d [%Xh]", ($C000 - *), ($C000 - *))
