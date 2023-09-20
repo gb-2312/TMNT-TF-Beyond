@@ -1948,7 +1948,7 @@ C - - - - - 0x024CE1 09:8CD1: A9 30     LDA #$30
                                         BEQ bra_8CCD
                                         TYA
                                         BMI bra_8CCD
-                                        CMP #$2F
+                                        CMP #con_колво_обычных_ударов
                                         BCS bra_8CD2
 
                                         LDA tbl_A7A5 - $01,Y

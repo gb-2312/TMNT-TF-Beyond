@@ -172,6 +172,7 @@ con_0552_special_casey_песок            = $39 ; special casey песок
 
 
 
+; связано с 0552-0555
 con_062E_hot_2x_огонь_в_блок            = $3A ; special hot 2x_огонь_в_блок
 
 
