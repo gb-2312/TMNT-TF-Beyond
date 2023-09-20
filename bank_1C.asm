@@ -21,7 +21,6 @@
 .export sub_0x03A37C_обработать_рожи_в_турнирной_сетке
 .export sub_0x03A437_подготовка_экрана_rematch
 .export sub_0x03A49F_обработка_экрана_rematch
-.export loc_0x03A777
 
 
 
@@ -6294,27 +6293,6 @@ C - - - - - 0x03A76F 0E:A75F: 38        SEC
 C - - - - - 0x03A770 0E:A760: F9 FD BF  SBC tbl_BFFD,Y
 C - - - - - 0x03A773 0E:A763: 9D 90 05  STA ram_obj_0590,X ; 0590 
 C - - - - - 0x03A776 0E:A766: 60        RTS
-
-
-
-loc_0x03A777:
-C D 1 - - - 0x03A777 0E:A767: A2 01     LDX #$01
-C - - - - - 0x03A779 0E:A769: AD 0D 01  LDA ram_plr_hp_hi
-C - - - - - 0x03A77C 0E:A76C: 0D 0E 01  ORA ram_plr_hp_hi + $01
-C - - - - - 0x03A77F 0E:A76F: F0 09     BEQ bra_A77A
-C - - - - - 0x03A781 0E:A771: AD 0D 01  LDA ram_plr_hp_hi
-C - - - - - 0x03A784 0E:A774: CD 0E 01  CMP ram_plr_hp_hi + $01
-C - - - - - 0x03A787 0E:A777: 4C 80 A7  JMP loc_A780
-bra_A77A:
-C - - - - - 0x03A78A 0E:A77A: AD 90 05  LDA ram_obj_0590
-C - - - - - 0x03A78D 0E:A77D: CD 91 05  CMP ram_obj_0590 + $01
-loc_A780:
-C D 1 - - - 0x03A790 0E:A780: 08        PHP
-C - - - - - 0x03A791 0E:A781: A9 E6     LDA #> (ofs_0x03E6C5 - $01)
-C - - - - - 0x03A793 0E:A783: 48        PHA
-C - - - - - 0x03A794 0E:A784: A9 B4     LDA #< (ofs_0x03E6C5 - $01)
-C - - - - - 0x03A796 0E:A786: 48        PHA
-C - - - - - 0x03A797 0E:A787: 4C 17 F6  JMP loc_0x03F627_restore_prg
 
 
 

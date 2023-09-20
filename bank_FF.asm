@@ -119,7 +119,6 @@
 .export loc_0x03E62D
 .export loc_0x03E67C
 .export loc_0x03E69A
-.export ofs_0x03E6C5
 .export loc_0x03E8D6
 .export loc_0x03E91E_отрисовать_инфу_в_статусбаре
 .export tbl_0x03E995
@@ -3946,13 +3945,19 @@ C - - - - - 0x03E6B3 0F:E6A3: 8D 3C 06  STA ram_063C
 C - - - - - 0x03E6B6 0F:E6A6: 8D 3D 06  STA ram_063D
 C - - - - - 0x03E6B9 0F:E6A9: A9 17     LDA #con_sfx_закусь_рафа    ; звук DRAW
 C - - - - - 0x03E6BB 0F:E6AB: 20 8B F6  JSR sub_F68B_выключить_звуки_и_записать_новый
-C - - - - - 0x03E6BF 0F:E6AF: 20 F3 F5  JSR sub_F5F3_swap_prg_1C
-C - - - - - 0x03E6C2 0F:E6B2: 4C 67 A7  JMP loc_0x03A777
-
-
-
-ofs_0x03E6C5:
-C - - - - - 0x03E6C5 0F:E6B5: 28        PLP
+; перемещено из банка 1C
+C D 1 - - - 0x03A777 0E:A767: A2 01     LDX #$01
+C - - - - - 0x03A779 0E:A769: AD 0D 01  LDA ram_plr_hp_hi
+C - - - - - 0x03A77C 0E:A76C: 0D 0E 01  ORA ram_plr_hp_hi + $01
+C - - - - - 0x03A77F 0E:A76F: F0 09     BEQ bra_A77A
+C - - - - - 0x03A781 0E:A771: AD 0D 01  LDA ram_plr_hp_hi
+C - - - - - 0x03A784 0E:A774: CD 0E 01  CMP ram_plr_hp_hi + $01
+C - - - - - 0x03A787 0E:A777: 4C 80 A7  JMP loc_A780
+bra_A77A:
+; проверка hp_lo
+C - - - - - 0x03A78A 0E:A77A: AD 90 05  LDA ram_obj_0590
+C - - - - - 0x03A78D 0E:A77D: CD 91 05  CMP ram_obj_0590 + $01
+loc_A780:
 C - - - - - 0x03E6C6 0F:E6B6: D0 07     BNE bra_E6BF
 C - - - - - 0x03E6C8 0F:E6B8: A0 03     LDY #$03
 C - - - - - 0x03E6CA 0F:E6BA: 8C 71 06  STY ram_0671
