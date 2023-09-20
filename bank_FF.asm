@@ -6583,7 +6583,7 @@ C - - - - - 0x03F610 0F:F600: A0 06     LDY #$06
 C - - - - - 0x03F612 0F:F602: 84 42     STY ram_copy_8000
 C - - - - - 0x03F614 0F:F604: 8C 00 80  STY $8000
 C - - - - - 0x03F617 0F:F607: 8D 01 80  STA $8001
-C - - - - - 0x03F61A 0F:F60A: C8        INY
+C - - - - - 0x03F61A 0F:F60A: C8        INY ; 07
 C - - - - - 0x03F61B 0F:F60B: 18        CLC
 C - - - - - 0x03F61C 0F:F60C: 69 01     ADC #$01
 C - - - - - 0x03F61E 0F:F60E: 84 42     STY ram_copy_8000

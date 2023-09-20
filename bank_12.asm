@@ -2129,13 +2129,13 @@ tbl_8CD8:
     .byte $FF   ; 3E placeholder
     .byte $FF   ; 3F placeholder
 
-    .byte $C0   ; 40 (00 leo)
-    .byte $C0   ; 41 (01 raph)
-    .byte $C0   ; 42 (02 mike)
-    .byte $C0   ; 43 (03 don)
-    .byte $01   ; 44 (04 casey)
-    .byte $A1   ; 45 (05 hot)
-    .byte $C0   ; 46 (06 shred)
+    .byte $C0   ; 40 (00 con_fighter_leo)
+    .byte $C0   ; 41 (01 con_fighter_raph)
+    .byte $C0   ; 42 (02 con_fighter_mike)
+    .byte $C0   ; 43 (03 con_fighter_don)
+    .byte $01   ; 44 (04 con_fighter_casey)
+    .byte $A1   ; 45 (05 con_fighter_hot)
+    .byte $C0   ; 46 (06 con_fighter_shred)
 
 
 
