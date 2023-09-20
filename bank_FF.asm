@@ -189,9 +189,9 @@
 .export loc_0x03F724
 .export sub_0x03F76A
 .export sub_0x03F785
-.export sub_0x03F7D1
-.export sub_0x03F7E3
-.export loc_0x03F7E3
+.export sub_0x03F7D1_сохранить_topscore
+.export sub_0x03F7E3_отрисовать_портреты
+.export loc_0x03F7E3_отрисовать_портреты
 .export sub_0x03F824_подготовить_irq_handler
 .export loc_0x03F824_подготовить_irq_handler
 .export ofs_0x03F8E0
@@ -2291,7 +2291,7 @@ C - - - - - 0x03DDA1 0F:DD91: D9 80 04  CMP ram_obj_spd_X_hi,Y ; 0480 0481
 C - - - - - 0x03DDA4 0F:DD94: D0 06     BNE bra_DD9C
 C - - - - - 0x03DDA6 0F:DD96: BD 90 04  LDA ram_obj_spd_X_lo,X ; 0490 0491 
 C - - - - - 0x03DDA9 0F:DD99: D9 90 04  CMP ram_obj_spd_X_lo,Y ; 0490 0491 
-bra_DD9C:                                                      ; 0480 0481 
+bra_DD9C:
 C - - - - - 0x03DDAC 0F:DD9C: BD 80 04  LDA ram_obj_spd_X_hi,X
 C - - - - - 0x03DDAF 0F:DD9F: 10 04     BPL bra_DDA5
 C - - - - - 0x03DDB1 0F:DDA1: 6A        ROR
@@ -3246,8 +3246,8 @@ C - - - - - 0x03E2D7 0F:E2C7: C6 A8     DEC ram_local_obj_index
 C - - - - - 0x03E2D9 0F:E2C9: 10 A2     BPL bra_E26D_loop
 bra_E2CB:
 C - - - - - 0x03E2DD 0F:E2CD: 20 A0 EB  JSR sub_EBA0_вывести_имя_перса_на_vs_экране
-C - - - - - 0x03E2E0 0F:E2D0: A9 00     LDA #$00
-C - - - - - 0x03E2E2 0F:E2D2: 20 D3 F7  JSR sub_F7D3
+C - - - - - 0x03E2E0 0F:E2D0: A9 00     LDA #$00    ; отрисовать портреты на vs экране
+C - - - - - 0x03E2E2 0F:E2D2: 20 D3 F7  JSR sub_F7D3_отрисовать_портреты
 C - - - - - 0x03E2E5 0F:E2D5: A9 32     LDA #con_music_vs_screen
 C - - - - - 0x03E2E7 0F:E2D7: 20 90 F6  JSR sub_F690_записать_звук_сохранив_X_Y
 C - - - - - 0x03E2EA 0F:E2DA: A9 D0     LDA #$D0
@@ -3940,7 +3940,7 @@ C - - - - - 0x03E6A4 0F:E694: 8D 10 06  STA ram_plr_флаг_индекса_ат
 C - - - - - 0x03E6A7 0F:E697: 8D 11 06  STA ram_plr_флаг_индекса_атаки + $01
 C - - - - - 0x03E6AA 0F:E69A: A2 01     LDX #$01
 C - - - - - 0x03E6AC 0F:E69C: 20 67 D0  JSR sub_D067_очистить_spd_X_и_spd_Z
-C - - - - - 0x03E6AF 0F:E69F: CA        DEX
+C - - - - - 0x03E6AF 0F:E69F: CA        DEX ; 00
 C - - - - - 0x03E6B0 0F:E6A0: 20 67 D0  JSR sub_D067_очистить_spd_X_и_spd_Z
 C - - - - - 0x03E6B3 0F:E6A3: 8D 3C 06  STA ram_063C
 C - - - - - 0x03E6B6 0F:E6A6: 8D 3D 06  STA ram_063D
@@ -3948,6 +3948,7 @@ C - - - - - 0x03E6B9 0F:E6A9: A9 17     LDA #con_sfx_закусь_рафа    ; 
 C - - - - - 0x03E6BB 0F:E6AB: 20 8B F6  JSR sub_F68B_выключить_звуки_и_записать_новый
 C - - - - - 0x03E6BF 0F:E6AF: 20 F3 F5  JSR sub_F5F3_swap_prg_1C
 C - - - - - 0x03E6C2 0F:E6B2: 4C 67 A7  JMP loc_0x03A777
+
 
 
 ofs_0x03E6C5:
@@ -3958,7 +3959,7 @@ C - - - - - 0x03E6CA 0F:E6BA: 8C 71 06  STY ram_0671
 C - - - - - 0x03E6CD 0F:E6BD: D0 25     BNE bra_E6E4    ; jmp
 bra_E6BF:
 C - - - - - 0x03E6CF 0F:E6BF: 90 06     BCC bra_E6C7
-C - - - - - 0x03E6D1 0F:E6C1: CA        DEX
+C - - - - - 0x03E6D1 0F:E6C1: CA        DEX ; 00
 C - - - - - 0x03E6D2 0F:E6C2: EE 49 06  INC ram_plr_колво_побед_в_раундах
 C - - - - - 0x03E6D5 0F:E6C5: D0 03     BNE bra_E6CA    ; jmp
 bra_E6C7:
@@ -4267,7 +4268,7 @@ C D 3 - - - 0x03E8D6 0F:E8C6: A5 A2     LDA ram_plr_id
 C - - - - - 0x03E8D8 0F:E8C8: 48        PHA
 C - - - - - 0x03E8D9 0F:E8C9: A9 04     LDA #$04
 bra_E8CB:
-C - - - - - 0x03E8DB 0F:E8CB: 20 D3 F7  JSR sub_F7D3
+C - - - - - 0x03E8DB 0F:E8CB: 20 D3 F7  JSR sub_F7D3_отрисовать_портреты
 C - - - - - 0x03E8DE 0F:E8CE: 68        PLA
 C - - - - - 0x03E8DF 0F:E8CF: 85 A2     STA ram_plr_id
 C - - - - - 0x03E8E1 0F:E8D1: A9 00     LDA #$00
@@ -6841,9 +6842,9 @@ C - - - - - 0x03F7CE 0F:F7BE: 4C 17 F6  JMP loc_F617_restore_prg
 
 
 
-sub_0x03F7D1:
+sub_0x03F7D1_сохранить_topscore:
 C - - - - - 0x03F7D1 0F:F7C1: 20 F3 F5  JSR sub_F5F3_swap_prg_1C
-C - - - - - 0x03F7D4 0F:F7C4: 20 2B 9F  JSR sub_0x039F3B
+C - - - - - 0x03F7D4 0F:F7C4: 20 2B 9F  JSR sub_0x039F3B_сохранить_topscore
 C - - - - - 0x03F7D7 0F:F7C7: 4C 17 F6  JMP loc_F617_restore_prg
 
 
@@ -6855,13 +6856,14 @@ C - - - - - 0x03F7E0 0F:F7D0: 4C 17 F6  JMP loc_F617_restore_prg
 
 
 
-sub_F7D3:
-sub_0x03F7E3:
-loc_0x03F7E3:
+sub_F7D3_отрисовать_портреты:       ; A = 00 04 05
+sub_0x03F7E3_отрисовать_портреты:   ; A = 01 03
+loc_0x03F7E3_отрисовать_портреты:   ; A = 02
+; отрисовать 2 портрета персов
 C D 3 - - - 0x03F7E3 0F:F7D3: 48        PHA
 C - - - - - 0x03F7E4 0F:F7D4: 20 F3 F5  JSR sub_F5F3_swap_prg_1C
 C - - - - - 0x03F7E7 0F:F7D7: 68        PLA
-C - - - - - 0x03F7E8 0F:F7D8: 20 E3 A0  JSR sub_0x03A0F3
+C - - - - - 0x03F7E8 0F:F7D8: 20 E3 A0  JSR sub_0x03A0F3_отрисовать_портреты
 C - - - - - 0x03F7EB 0F:F7DB: 4C 17 F6  JMP loc_F617_restore_prg
 
 
