@@ -5628,7 +5628,7 @@ C - - - - - 0x03EFDC 0F:EFCC: AD 04 01  LDA ram_0104
 C - - - - - 0x03EFDF 0F:EFCF: 10 01     BPL bra_EFD2
 C - - - - - 0x03EFE1 0F:EFD1: C8        INY
 bra_EFD2:
-C - - - - - 0x03EFE2 0F:EFD2: B9 78 EF  LDA tbl_EFD6 - $5E,Y
+C - - - - - 0x03EFE2 0F:EFD2: B9 78 EF  LDA tbl_EFD6 - con_колво_обычных_ударов * $02,Y
 C - - - - - 0x03EFE5 0F:EFD5: 60        RTS
 
 
@@ -7883,12 +7883,12 @@ C - - - - - 0x03FEB6 0F:FEA6: C9 B0     CMP #$B0
 C - - - - - 0x03FEB8 0F:FEA8: A9 02     LDA #$02
 C - - - - - 0x03FEBA 0F:FEAA: B0 0A     BCS bra_FEB6
 bra_FEAC:
-C - - - - - 0x03FEBC 0F:FEAC: A9 30     LDA #$30
+C - - - - - 0x03FEBC 0F:FEAC: A9 30     LDA #con_0552_special_shred_волна ; обычный удар, но для совместимости считаем, что shred_волна
 bra_FEAE:
 C - - - - - 0x03FEBE 0F:FEAE: 0A        ASL
 C - - - - - 0x03FEBF 0F:FEAF: 6D 26 01  ADC ram_option_speed
 C - - - - - 0x03FEC2 0F:FEB2: A8        TAY
-C - - - - - 0x03FEC3 0F:FEB3: B9 5C FE  LDA tbl_FEBA - $5E,Y
+C - - - - - 0x03FEC3 0F:FEB3: B9 5C FE  LDA tbl_FEBA - con_колво_обычных_ударов * $02,Y
 bra_FEB6:
 C - - - - - 0x03FEC6 0F:FEB6: 9D F0 05  STA ram_obj_05F0,X ; 05F0 05F1 
 C - - - - - 0x03FEC9 0F:FEB9: 60        RTS

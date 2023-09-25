@@ -1475,6 +1475,7 @@ tbl_B5E7_hi:
 
 
 
+; таблицы времени стана, получаемого персонажами от нормальных ударов
 _off013_B5F0_00_leo:
 _off013_B5F0_01_raph:
 _off013_B5F0_02_mike:
@@ -1526,8 +1527,22 @@ _off013_B5F0_04_casey:
 - - - - - - 0x02F656 0B:B646: 0C        .byte $0C, $0E   ; 2B
 - D 1 - I - 0x02F658 0B:B648: 0C        .byte $0C, $0B   ; 2C
 - - - - - - 0x02F65A 0B:B64A: 0C        .byte $0C, $0F   ; 2D
-- - - - - - 0x02F65C 0B:B64C: FF        .byte $FF, $FF   ; 2E
-- - - - - - 0x02F65E 0B:B64E: FF        .byte $FF, $FF   ; 2F
+- - - - - - 0x02F65C 0B:B64C: FF        .byte $0C, $0C   ; 2E
+- - - - - - 0x02F65E 0B:B64E: FF        .byte $00, $00   ; rezerv
+                                        .byte $00, $00   ; rezerv
+                                        .byte $00, $00   ; rezerv
+                                        .byte $00, $00   ; rezerv
+                                        .byte $00, $00   ; rezerv
+                                        .byte $00, $00   ; rezerv
+                                        .byte $00, $00   ; rezerv
+                                        .byte $00, $00   ; rezerv
+                                        .byte $00, $00   ; rezerv
+                                        .byte $00, $00   ; rezerv
+                                        .byte $00, $00   ; rezerv
+                                        .byte $00, $00   ; rezerv
+                                        .byte $00, $00   ; rezerv
+                                        .byte $00, $00   ; rezerv
+                                        .byte $00, $00   ; rezerv
 
 
 
@@ -1578,8 +1593,22 @@ _off013_B650_05_hot:
 - - - - - - 0x02F6B6 0B:B6A6: 0C        .byte $0C, $0E   ; 2B
 - D 1 - I - 0x02F6B8 0B:B6A8: 0B        .byte $0B, $0B   ; 2C
 - - - - - - 0x02F6BA 0B:B6AA: 0C        .byte $0C, $0F   ; 2D
-- - - - - - 0x02F6BC 0B:B6AC: FF        .byte $FF, $FF   ; 2E
-- - - - - - 0x02F6BE 0B:B6AE: FF        .byte $FF, $FF   ; 2F
+- - - - - - 0x02F6BC 0B:B6AC: FF        .byte $0C, $0C   ; 2E
+- - - - - - 0x02F6BE 0B:B6AE: FF        .byte $00, $00   ; rezerv
+                                        .byte $00, $00   ; rezerv
+                                        .byte $00, $00   ; rezerv
+                                        .byte $00, $00   ; rezerv
+                                        .byte $00, $00   ; rezerv
+                                        .byte $00, $00   ; rezerv
+                                        .byte $00, $00   ; rezerv
+                                        .byte $00, $00   ; rezerv
+                                        .byte $00, $00   ; rezerv
+                                        .byte $00, $00   ; rezerv
+                                        .byte $00, $00   ; rezerv
+                                        .byte $00, $00   ; rezerv
+                                        .byte $00, $00   ; rezerv
+                                        .byte $00, $00   ; rezerv
+                                        .byte $00, $00   ; rezerv
 
 
 
@@ -1630,8 +1659,22 @@ _off013_B6B0_06_shred:
 - - - - - - 0x02F716 0B:B706: 0C        .byte $0C, $0E   ; 2B
 - - - - - - 0x02F718 0B:B708: 0B        .byte $0B, $0B   ; 2C
 - - - - - - 0x02F71A 0B:B70A: 0C        .byte $0C, $0F   ; 2D
-- - - - - - 0x02F71C 0B:B70C: FF        .byte $FF, $FF   ; 2E
-- - - - - - 0x02F71E 0B:B70E: FF        .byte $FF, $FF   ; 2F
+- - - - - - 0x02F71C 0B:B70C: FF        .byte $0C, $0C   ; 2E
+- - - - - - 0x02F71E 0B:B70E: FF        .byte $00, $00   ; rezerv
+                                        .byte $00, $00   ; rezerv
+                                        .byte $00, $00   ; rezerv
+                                        .byte $00, $00   ; rezerv
+                                        .byte $00, $00   ; rezerv
+                                        .byte $00, $00   ; rezerv
+                                        .byte $00, $00   ; rezerv
+                                        .byte $00, $00   ; rezerv
+                                        .byte $00, $00   ; rezerv
+                                        .byte $00, $00   ; rezerv
+                                        .byte $00, $00   ; rezerv
+                                        .byte $00, $00   ; rezerv
+                                        .byte $00, $00   ; rezerv
+                                        .byte $00, $00   ; rezerv
+                                        .byte $00, $00   ; rezerv
 
 
 

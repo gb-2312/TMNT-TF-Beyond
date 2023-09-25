@@ -6259,7 +6259,7 @@ C - - - - - 0x03636B 0D:A35B: D0 13     BNE bra_A370
 - - - - - - 0x03637C 0D:A36C: 09 04     ORA #con_btn_Down
 - - - - - - 0x03637E 0D:A36E: D0 09     BNE bra_A379   ; jmp
 bra_A370:
-C - - - - - 0x036380 0D:A370: C9 35     CMP #$35
+C - - - - - 0x036380 0D:A370: C9 35     CMP #con_0552_special_don_пила_вращение
 C - - - - - 0x036382 0D:A372: D0 08     BNE bra_A37C
 sub_A374:
 C - - - - - 0x036384 0D:A374: BD C6 06  LDA ram_plr_06C6,X ; 06C6 

@@ -1951,7 +1951,7 @@ C - - - - - 0x024CE1 09:8CD1: A9 30     LDA #$30
                                         CMP #con_колво_обычных_ударов
                                         BCS bra_8CD2
 
-                                        LDA tbl_A7A5 - $01,Y
+                                        LDA tbl_A7A5_урон_от_ударов - $01,Y
                                         CMP #$10
                                         LDA #$80
                                         BCC bra_8CD3
@@ -1966,13 +1966,15 @@ bra_8CCF:
                                         TYA
                                         BPL bra_8CD0
                                         LDY ram_global_obj_index
-                                        ORA ram_obj_id,Y
+                                        LDA ram_obj_id,Y
                                         TAY
+                                        LDA tbl_8CD9_скорость_X_пушбэка_от_мяча,Y
+                                        BNE bra_8CD3    ; jmp
 bra_8CD0:
-                                        LDA tbl_8CD7,Y
+                                        LDA tbl_8CD7_скорость_X_пушбэка_в_хит,Y
                                         BNE bra_8CD3    ; jmp
 bra_8CD2:
-                                        LDA tbl_8CD8,Y
+                                        LDA tbl_8CD8_скорость_X_пушбэка_в_блок,Y
 bra_8CD3:
 C - - - - - 0x024CE3 09:8CD3: 4C 6A D1  JMP loc_0x03D17A
 bra_8CD6:
@@ -1996,7 +1998,8 @@ C - - - - - 0x024CF6 09:8CE6: D0 D8     BNE bra_8CC0    ; jmp
 
 
 
-tbl_8CD7:
+; начальная (основная) скорость X пушбэков от ударов в хит и от суперок в блок всем, кроме хота
+tbl_8CD7_скорость_X_пушбэка_в_хит:
     .byte $C0   ; 00 
     .byte $C0   ; 01 
     .byte $C0   ; 02 
@@ -2045,25 +2048,36 @@ tbl_8CD7:
     .byte $C0   ; 2D 
     .byte $C0   ; 2E 
     .byte $C0   ; 2F 
-    .byte $C0   ; 30 
-    .byte $C0   ; 31 
-    .byte $C0   ; 32 
-    .byte $C0   ; 33 
-    .byte $C0   ; 34 
-    .byte $C0   ; 35 
-    .byte $C0   ; 36 
-    .byte $01   ; 37 
-    .byte $C0   ; 38 
-    .byte $C0   ; 39 
-    .byte $41   ; 3A
-; bzk garbage?
-    .byte $FF   ; 3B placeholder
-    .byte $FF   ; 3C placeholder
-    .byte $FF   ; 3D placeholder
-    .byte $FF   ; 3E placeholder
-    .byte $FF   ; 3F placeholder
+    .byte $C0   ; rezerv 
+    .byte $C0   ; rezerv 
+    .byte $C0   ; rezerv 
+    .byte $C0   ; rezerv 
+    .byte $C0   ; rezerv 
+    .byte $C0   ; rezerv 
+    .byte $C0   ; rezerv 
+    .byte $C0   ; rezerv 
+    .byte $C0   ; rezerv 
+    .byte $C0   ; rezerv 
+    .byte $C0   ; rezerv 
+    .byte $C0   ; rezerv 
+    .byte $C0   ; rezerv 
+    .byte $C0   ; rezerv 
+    .byte $C0   ; rezerv 
+    .byte $C0   ; 3F 
+    .byte $C0   ; 40 
+    .byte $C0   ; 41 
+    .byte $C0   ; 42 
+    .byte $C0   ; 43 
+    .byte $C0   ; 44 
+    .byte $C0   ; 45 
+    .byte $C0   ; 46 
+    .byte $01   ; 47 
+    .byte $C0   ; 48 
+    .byte $C0   ; 49 
+    .byte $41   ; 4A
 
-tbl_8CD8:
+; начальная (основная) скорость X пушбэков от ударов в блок и от суперок в блок хоту
+tbl_8CD8_скорость_X_пушбэка_в_блок:
     .byte $C0   ; 00 
     .byte $C0   ; 01 
     .byte $C0   ; 02 
@@ -2112,30 +2126,43 @@ tbl_8CD8:
     .byte $C0   ; 2D 
     .byte $C0   ; 2E 
     .byte $C0   ; 2F 
-    .byte $C0   ; 30 
-    .byte $A0   ; 31 
-    .byte $C0   ; 32 
-    .byte $C0   ; 33 
-    .byte $C0   ; 34 
-    .byte $C0   ; 35 
-    .byte $A0   ; 36 
-    .byte $C0   ; 37 
-    .byte $C0   ; 38 
-    .byte $C0   ; 39 
-    .byte $C0   ; 3A
-    .byte $FF   ; 3B placeholder
-    .byte $FF   ; 3C placeholder
-    .byte $FF   ; 3D placeholder
-    .byte $FF   ; 3E placeholder
-    .byte $FF   ; 3F placeholder
+    .byte $C0   ; rezerv 
+    .byte $C0   ; rezerv 
+    .byte $C0   ; rezerv 
+    .byte $C0   ; rezerv 
+    .byte $C0   ; rezerv 
+    .byte $C0   ; rezerv 
+    .byte $C0   ; rezerv 
+    .byte $C0   ; rezerv 
+    .byte $C0   ; rezerv 
+    .byte $C0   ; rezerv 
+    .byte $C0   ; rezerv 
+    .byte $C0   ; rezerv 
+    .byte $C0   ; rezerv 
+    .byte $C0   ; rezerv 
+    .byte $C0   ; rezerv 
+    .byte $C0   ; 3F 
+    .byte $C0   ; 40 
+    .byte $A0   ; 41 
+    .byte $C0   ; 42 
+    .byte $C0   ; 43 
+    .byte $C0   ; 44 
+    .byte $C0   ; 45 
+    .byte $A0   ; 46 
+    .byte $C0   ; 47 
+    .byte $C0   ; 48 
+    .byte $C0   ; 49 
+    .byte $C0   ; 4A
 
-    .byte $C0   ; 40 (00 con_fighter_leo)
-    .byte $C0   ; 41 (01 con_fighter_raph)
-    .byte $C0   ; 42 (02 con_fighter_mike)
-    .byte $C0   ; 43 (03 con_fighter_don)
-    .byte $01   ; 44 (04 con_fighter_casey)
-    .byte $A1   ; 45 (05 con_fighter_hot)
-    .byte $C0   ; 46 (06 con_fighter_shred)
+; начальная (основная) скорость X пушбэков от заблоченного мяча
+tbl_8CD9_скорость_X_пушбэка_от_мяча:
+    .byte $C0   ; 50 (00 con_fighter_leo)
+    .byte $C0   ; 51 (01 con_fighter_raph)
+    .byte $C0   ; 52 (02 con_fighter_mike)
+    .byte $C0   ; 53 (03 con_fighter_don)
+    .byte $01   ; 54 (04 con_fighter_casey)
+    .byte $A1   ; 55 (05 con_fighter_hot)
+    .byte $C0   ; 56 (06 con_fighter_shred)
 
 
 
@@ -3184,7 +3211,7 @@ tbl_9388_конвертация_индексов_атаки_рукой:
 ; bzk garbage, только черепахи умеют дешить
 ; но если добавлять чета новое ниже, эти 3 байта будут служить как placeholder
 - - - - - - 0x0253BF 09:93AF: 0E        .byte con_0612_casey_рука_дальняя   ; 27 con_fighter_casey
-- - - - - - 0x0253C0 09:93B0: 19        .byte con_0612_hot_рука_дальняя   ; 28 con_fighter_hot
+- - - - - - 0x0253C0 09:93B0: 19        .byte con_0612_hot_ручка_быстрая   ; 28 con_fighter_hot
 - - - - - - 0x0253C1 09:93B1: 25        .byte con_0612_shred_рука_дальняя   ; 29 con_fighter_shred
 
 
@@ -3335,6 +3362,22 @@ tbl_9401_анимации___атаки___звуки:
 - D 0 - - - 0x025467 09:9457: 72 96     .word _off010_9672_2B_shred_нога_в_воздухе
 - D 0 - - - 0x025469 09:9459: 79 96     .word _off010_9679_2C_shred_нога_сидя
 - D 0 - - - 0x02546B 09:945B: 84 96     .word _off010_9684_2D_shred_нога_антиэйр
+                                        .word _off010_9605_2E_hot_ручка_быстрая
+                                        .word $0000  ; rezerv
+                                        .word $0000  ; rezerv
+                                        .word $0000  ; rezerv
+                                        .word $0000  ; rezerv
+                                        .word $0000  ; rezerv
+                                        .word $0000  ; rezerv
+                                        .word $0000  ; rezerv
+                                        .word $0000  ; rezerv
+                                        .word $0000  ; rezerv
+                                        .word $0000  ; rezerv
+                                        .word $0000  ; rezerv
+                                        .word $0000  ; rezerv
+                                        .word $0000  ; rezerv
+                                        .word $0000  ; rezerv
+                                        .word $0000  ; rezerv
 
 
 
@@ -3711,6 +3754,17 @@ _off010_9605_22_hot_нога_антиэйр:
 - D 0 - I - 0x02561D 09:960D: C4        .byte $C4, $0A   ; 04
 - D 0 - I - 0x02561F 09:960F: 80        .byte $80, $08   ; 05
 - D 0 - I - 0x025621 09:9611: 00        .byte $00   ; end token
+
+
+
+_off010_9605_2E_hot_ручка_быстрая:
+                                        .byte $FE, con_0x03F6AD_07
+                                        .byte $8D, $07
+                                        .byte $FF, con_0552_00
+                                        .byte $FF, con_0552_hot_ручка_быстрая
+                                        .byte $B7, $08
+                                        .byte $82, $05
+                                        .byte $00
 
 
 
@@ -5106,7 +5160,7 @@ C - - - - - 0x025B7D 09:9B6D: C5 00     CMP ram_0000
 C - - - - - 0x025B7F 09:9B6F: D0 3C     BNE bra_FE9B_RTS
 ; перемещено из банка FF
 C D 3 - - - 0x03FE9D 0F:FE8D: BD 52 05  LDA ram_obj_id + $02,X ; 0552 0553 
-C - - - - - 0x03FEA0 0F:FE90: C9 0E     CMP #$0E
+C - - - - - 0x03FEA0 0F:FE90: C9 0E     CMP #con_0552_черепаха_деш_ногой
 C - - - - - 0x03FEA2 0F:FE92: F0 08     BEQ bra_FE9C
 C - - - - - 0x03FEA4 0F:FE94: BD 0C 06  LDA ram_plr_таймер_для_суперки,X ; 060C 060D 
 C - - - - - 0x03FEA7 0F:FE97: C9 09     CMP #$09
@@ -5572,7 +5626,7 @@ bra_A245_loop:
 C - - - - - 0x026255 09:A245: 86 A8     STX ram_local_obj_index
 C - - - - - 0x026257 09:A247: BC 50 05  LDY ram_obj_id,X ; 0552 0553 0554 0555 
 C - - - - - 0x02625A 09:A24A: F0 24     BEQ bra_A270    ; if con_0552_00
-C - - - - - 0x02625C 09:A24C: B9 E1 A7  LDA tbl_A7E2 - $01,Y
+C - - - - - 0x02625C 09:A24C: B9 E1 A7  LDA tbl_A7E2_приоритеты_атак - $01,Y
 C - - - - - 0x02625F 09:A24F: 20 C0 B7  JSR sub_B7C0
 C - - - - - 0x026262 09:A252: 98        TYA
 C - - - - - 0x026263 09:A253: 0A        ASL
@@ -5655,6 +5709,22 @@ tbl_A282_обработчики_ударов_и_спешалов:
 - D 1 - - - 0x0262E8 09:A2D8: F4 A2     .word _off011_A2F4_2C_shred_нога_в_воздухе
 - D 1 - - - 0x0262EA 09:A2DA: F4 A2     .word _off011_A2F4_2D_shred_нога_сидя
 - D 1 - - - 0x0262EC 09:A2DC: F4 A2     .word _off011_A2F4_2E_shred_нога_антиэйр
+                                        .word _off011_A2F4_2F_hot_ручка_быстрая
+                                        .word $0000  ; rezerv
+                                        .word $0000  ; rezerv
+                                        .word $0000  ; rezerv
+                                        .word $0000  ; rezerv
+                                        .word $0000  ; rezerv
+                                        .word $0000  ; rezerv
+                                        .word $0000  ; rezerv
+                                        .word $0000  ; rezerv
+                                        .word $0000  ; rezerv
+                                        .word $0000  ; rezerv
+                                        .word $0000  ; rezerv
+                                        .word $0000  ; rezerv
+                                        .word $0000  ; rezerv
+                                        .word $0000  ; rezerv
+                                        .word $0000  ; rezerv
 - D 1 - - - 0x0262EE 09:A2DE: A8 A5     .word _off011_A5A8_2F_special_hot_огонь
 - D 1 - - - 0x0262F0 09:A2E0: CC A3     .word _off011_A3CC_30_special_shred_волна
 - D 1 - - - 0x0262F2 09:A2E2: 5F A4     .word _off011_A45F_31_special_leo_крутилка
@@ -5712,6 +5782,7 @@ _off011_A2F4_2B_shred_нога_дальняя:
 _off011_A2F4_2C_shred_нога_в_воздухе:
 _off011_A2F4_2D_shred_нога_сидя:
 _off011_A2F4_2E_shred_нога_антиэйр:
+_off011_A2F4_2F_hot_ручка_быстрая:
 - D 1 - I - 0x026304 09:A2F4: F8 A2     .word ofs_068_A2F8_00
 - D 1 - I - 0x026306 09:A2F6: 5E A3     .word ofs_068_A35E_01
 
@@ -5724,11 +5795,11 @@ ofs_071_A2F8_00:
 ; X = 02 03
 C - - J - - 0x026308 09:A2F8: FE 30 05  INC ram_obj_0530,X ; 0532 0533 
 C - - - - - 0x02630B 09:A2FB: 20 36 A3  JSR sub_A336
-C - - - - - 0x02630E 09:A2FE: B9 DE A6  LDA tbl_A6DF - $01,Y
+C - - - - - 0x02630E 09:A2FE: B9 DE A6  LDA tbl_A6DF_рейндж_X_нормалов - $01,Y
 C - - - - - 0x026311 09:A301: 9D A0 04  STA ram_obj_spd_Y_hi,X ; 04A2 04A3 
-C - - - - - 0x026314 09:A304: B9 0D A7  LDA tbl_A70E - $01,Y
+C - - - - - 0x026314 09:A304: B9 0D A7  LDA tbl_A70E_рейндж_Y_нормалов - $01,Y
 C - - - - - 0x026317 09:A307: 9D B0 04  STA ram_obj_spd_Y_lo,X ; 04B2 04B3 
-C - - - - - 0x02631A 09:A30A: B9 3C A7  LDA tbl_A73D_продолжительность_атаки - $01,Y
+C - - - - - 0x02631A 09:A30A: B9 3C A7  LDA tbl_A73D_активные_кадры_ударов - $01,Y
 C - - - - - 0x02631D 09:A30D: 20 B6 8B  JSR sub_8BB6_уменьшить_на_25_процентов_если_turbo
 C - - - - - 0x026320 09:A310: 9D 60 05  STA ram_obj_timer,X ; 0562 0563 
 sub_A313:
@@ -5758,9 +5829,9 @@ C - - - - - 0x026345 09:A335: 60        RTS
 
 sub_A336:
 C - - - - - 0x026346 09:A336: BC 50 05  LDY ram_obj_id,X ; 0552 0553 0554 0555 
-C - - - - - 0x026349 09:A339: B9 6B A7  LDA tbl_A76C - $01,Y
+C - - - - - 0x026349 09:A339: B9 6B A7  LDA tbl_A76C_id_хёртбокса_атаки - $01,Y
 C - - - - - 0x02634C 09:A33C: 9D 70 05  STA ram_obj_0570,X ; 0572 0573 0574 0575 
-C - - - - - 0x02634F 09:A33F: B9 A4 A7  LDA tbl_A7A5 - $01,Y
+C - - - - - 0x02634F 09:A33F: B9 A4 A7  LDA tbl_A7A5_урон_от_ударов - $01,Y
 C - - - - - 0x026352 09:A342: 9D B0 05  STA ram_obj_05B0,X ; 05B2 05B3 05B4 05B5 
 C - - - - - 0x026355 09:A345: C0 0F     CPY #$0F
 C - - - - - 0x026357 09:A347: B0 14     BCS bra_A35D_RTS
@@ -6411,7 +6482,7 @@ C - - - - - 0x0266ED 09:A6DD: F0 BD     BEQ bra_A69C    ; jmp
 
 
 
-tbl_A6DF:
+tbl_A6DF_рейндж_X_нормалов:
 - D 1 - - - 0x0266EF 09:A6DF: 1C        .byte $1C   ; 01 черепаха рука дальняя
 - D 1 - - - 0x0266F0 09:A6E0: 1C        .byte $1C   ; 02 черепаха нога ближняя
 - D 1 - - - 0x0266F1 09:A6E1: 17        .byte $17   ; 03 черепаха рука в воздухе
@@ -6458,10 +6529,26 @@ tbl_A6DF:
 - D 1 - - - 0x02671A 09:A70A: 1D        .byte $1D   ; 2C shred нога в воздухе
 - D 1 - - - 0x02671B 09:A70B: 25        .byte $26   ; 2D shred нога сидя
 - D 1 - - - 0x02671C 09:A70C: 1E        .byte $1E   ; 2E shred нога антиэйр
+                                        .byte $22   ; 2F hot ручка быстрая
+                                        .byte $00   ; rezerv
+                                        .byte $00   ; rezerv
+                                        .byte $00   ; rezerv
+                                        .byte $00   ; rezerv
+                                        .byte $00   ; rezerv
+                                        .byte $00   ; rezerv
+                                        .byte $00   ; rezerv
+                                        .byte $00   ; rezerv
+                                        .byte $00   ; rezerv
+                                        .byte $00   ; rezerv
+                                        .byte $00   ; rezerv
+                                        .byte $00   ; rezerv
+                                        .byte $00   ; rezerv
+                                        .byte $00   ; rezerv
+                                        .byte $00   ; rezerv
 
 
 
-tbl_A70E:
+tbl_A70E_рейндж_Y_нормалов:
 - D 1 - - - 0x02671E 09:A70E: DA        .byte $DA   ; 01 черепаха рука дальняя
 - D 1 - - - 0x02671F 09:A70F: DC        .byte $DC   ; 02 черепаха нога ближняя
 - D 1 - - - 0x026720 09:A710: E4        .byte $E4   ; 03 черепаха рука в воздухе
@@ -6508,10 +6595,26 @@ tbl_A70E:
 - D 1 - - - 0x026749 09:A739: F6        .byte $F6   ; 2C shred нога в воздухе
 - D 1 - - - 0x02674A 09:A73A: EF        .byte $EF   ; 2D shred нога сидя
 - D 1 - - - 0x02674B 09:A73B: C0        .byte $C0   ; 2E shred нога антиэйр
+                                        .byte $DC   ; 2F hot ручка быстрая
+                                        .byte $00   ; rezerv
+                                        .byte $00   ; rezerv
+                                        .byte $00   ; rezerv
+                                        .byte $00   ; rezerv
+                                        .byte $00   ; rezerv
+                                        .byte $00   ; rezerv
+                                        .byte $00   ; rezerv
+                                        .byte $00   ; rezerv
+                                        .byte $00   ; rezerv
+                                        .byte $00   ; rezerv
+                                        .byte $00   ; rezerv
+                                        .byte $00   ; rezerv
+                                        .byte $00   ; rezerv
+                                        .byte $00   ; rezerv
+                                        .byte $00   ; rezerv
 
 
 
-tbl_A73D_продолжительность_атаки:
+tbl_A73D_активные_кадры_ударов:
 - D 1 - - - 0x02674D 09:A73D: 06        .byte $06   ; 01 черепаха рука дальняя
 - D 1 - - - 0x02674E 09:A73E: 06        .byte $06   ; 02 черепаха нога ближняя
 - D 1 - - - 0x02674F 09:A73F: 0C        .byte $0C   ; 03 черепаха рука в воздухе
@@ -6558,10 +6661,26 @@ tbl_A73D_продолжительность_атаки:
 - D 1 - - - 0x026778 09:A768: 10        .byte $10   ; 2C shred нога в воздухе
 - D 1 - - - 0x026779 09:A769: 05        .byte $05   ; 2D shred нога сидя
 - D 1 - - - 0x02677A 09:A76A: 0D        .byte $0D   ; 2E shred нога антиэйр
+                                        .byte $08   ; 2F hot ручка быстрая
+                                        .byte $00   ; rezerv
+                                        .byte $00   ; rezerv
+                                        .byte $00   ; rezerv
+                                        .byte $00   ; rezerv
+                                        .byte $00   ; rezerv
+                                        .byte $00   ; rezerv
+                                        .byte $00   ; rezerv
+                                        .byte $00   ; rezerv
+                                        .byte $00   ; rezerv
+                                        .byte $00   ; rezerv
+                                        .byte $00   ; rezerv
+                                        .byte $00   ; rezerv
+                                        .byte $00   ; rezerv
+                                        .byte $00   ; rezerv
+                                        .byte $00   ; rezerv
 
 
 
-tbl_A76C:
+tbl_A76C_id_хёртбокса_атаки:
 - D 1 - - - 0x02677C 09:A76C: 02        .byte $02   ; 01 черепаха рука дальняя
 - D 1 - - - 0x02677D 09:A76D: 02        .byte $02   ; 02 черепаха нога ближняя
 - D 1 - - - 0x02677E 09:A76E: 02        .byte $02   ; 03 черепаха рука в воздухе
@@ -6608,21 +6727,37 @@ tbl_A76C:
 - D 1 - - - 0x0267A7 09:A797: 20        .byte $20   ; 2C shred нога в воздухе
 - D 1 - - - 0x0267A8 09:A798: 1A        .byte $1A   ; 2D shred нога сидя
 - D 1 - - - 0x0267A9 09:A799: 21        .byte $21   ; 2E shred нога антиэйр
-- D 1 - - - 0x0267AA 09:A79A: 02        .byte $02   ; 2F special hot огонь
-- D 1 - - - 0x0267AB 09:A79B: 02        .byte $02   ; 30 special shred волна
-- D 1 - - - 0x0267AC 09:A79C: 04        .byte $04   ; 31 special leo крутилка
-- D 1 - - - 0x0267AD 09:A79D: 13        .byte $13   ; 32 special raph сверло
-- D 1 - - - 0x0267AE 09:A79E: 04        .byte $04   ; 33 special mike ракеты понизу
-- D 1 - - - 0x0267AF 09:A79F: 03        .byte $03   ; 34 special mike ракеты поверху
-- D 1 - - - 0x0267B0 09:A7A0: 15        .byte $15   ; 35 special don пила вращение
-- D 1 - - - 0x0267B1 09:A7A1: 0E        .byte $0E   ; 36 special shred мясо
-- D 1 - - - 0x0267B2 09:A7A2: 05        .byte $05   ; 37 special casey клюшка
-- D 1 - - - 0x0267B3 09:A7A3: 02        .byte $02   ; 38 special don пила подкат
-- D 1 - - - 0x0267B4 09:A7A4: 1F        .byte $1F   ; 39 special casey песок
+                                        .byte $02   ; 2F hot ручка быстрая
+                                        .byte $00   ; rezerv
+                                        .byte $00   ; rezerv
+                                        .byte $00   ; rezerv
+                                        .byte $00   ; rezerv
+                                        .byte $00   ; rezerv
+                                        .byte $00   ; rezerv
+                                        .byte $00   ; rezerv
+                                        .byte $00   ; rezerv
+                                        .byte $00   ; rezerv
+                                        .byte $00   ; rezerv
+                                        .byte $00   ; rezerv
+                                        .byte $00   ; rezerv
+                                        .byte $00   ; rezerv
+                                        .byte $00   ; rezerv
+                                        .byte $00   ; rezerv
+- D 1 - - - 0x0267AA 09:A79A: 02        .byte $02   ; 3F special hot огонь
+- D 1 - - - 0x0267AB 09:A79B: 02        .byte $02   ; 40 special shred волна
+- D 1 - - - 0x0267AC 09:A79C: 04        .byte $04   ; 41 special leo крутилка
+- D 1 - - - 0x0267AD 09:A79D: 13        .byte $13   ; 42 special raph сверло
+- D 1 - - - 0x0267AE 09:A79E: 04        .byte $04   ; 43 special mike ракеты понизу
+- D 1 - - - 0x0267AF 09:A79F: 03        .byte $03   ; 44 special mike ракеты поверху
+- D 1 - - - 0x0267B0 09:A7A0: 15        .byte $15   ; 45 special don пила вращение
+- D 1 - - - 0x0267B1 09:A7A1: 0E        .byte $0E   ; 46 special shred мясо
+- D 1 - - - 0x0267B2 09:A7A2: 05        .byte $05   ; 47 special casey клюшка
+- D 1 - - - 0x0267B3 09:A7A3: 02        .byte $02   ; 48 special don пила подкат
+- D 1 - - - 0x0267B4 09:A7A4: 1F        .byte $1F   ; 49 special casey песок
 
 
 
-tbl_A7A5:
+tbl_A7A5_урон_от_ударов:
 - D 1 - - - 0x0267B5 09:A7A5: 0D        .byte $0D   ; 01 черепаха рука дальняя
 - D 1 - - - 0x0267B6 09:A7A6: 0B        .byte $0B   ; 02 черепаха нога ближняя
 - D 1 - - - 0x0267B7 09:A7A7: 0D        .byte $0D   ; 03 черепаха рука в воздухе
@@ -6669,17 +6804,33 @@ tbl_A7A5:
 - D 1 - - - 0x0267E0 09:A7D0: 15        .byte $15   ; 2C shred нога в воздухе
 - D 1 - - - 0x0267E1 09:A7D1: 0C        .byte $0C   ; 2D shred нога сидя
 - D 1 - - - 0x0267E2 09:A7D2: 16        .byte $16   ; 2E shred нога антиэйр
-- D 1 - - - 0x0267E3 09:A7D3: 38        .byte $38   ; 2F special hot огонь
-- D 1 - - - 0x0267E4 09:A7D4: 38        .byte $38   ; 30 special shred волна
-- D 1 - - - 0x0267E5 09:A7D5: 15        .byte $15   ; 31 special leo крутилка
-- D 1 - - - 0x0267E6 09:A7D6: 20        .byte $20   ; 32 special raph сверло
-- D 1 - - - 0x0267E7 09:A7D7: 22        .byte $22   ; 33 special mike ракеты понизу
-- D 1 - - - 0x0267E8 09:A7D8: 22        .byte $22   ; 34 special mike ракеты поверху
-- D 1 - - - 0x0267E9 09:A7D9: 19        .byte $19   ; 35 special don пила вращение
-- D 1 - - - 0x0267EA 09:A7DA: 02        .byte $02   ; 36 special shred мясо
-- D 1 - - - 0x0267EB 09:A7DB: 2B        .byte $2B   ; 37 special casey клюшка
-- D 1 - - - 0x0267EC 09:A7DC: 19        .byte $19   ; 38 special don пила подкат
-- D 1 - - - 0x0267ED 09:A7DD: 01        .byte $01   ; 39 special casey песок
+                                        .byte $0D   ; 2F hot ручка быстрая
+                                        .byte $00   ; rezerv
+                                        .byte $00   ; rezerv
+                                        .byte $00   ; rezerv
+                                        .byte $00   ; rezerv
+                                        .byte $00   ; rezerv
+                                        .byte $00   ; rezerv
+                                        .byte $00   ; rezerv
+                                        .byte $00   ; rezerv
+                                        .byte $00   ; rezerv
+                                        .byte $00   ; rezerv
+                                        .byte $00   ; rezerv
+                                        .byte $00   ; rezerv
+                                        .byte $00   ; rezerv
+                                        .byte $00   ; rezerv
+                                        .byte $00   ; rezerv
+- D 1 - - - 0x0267E3 09:A7D3: 38        .byte $38   ; 3F special hot огонь
+- D 1 - - - 0x0267E4 09:A7D4: 38        .byte $38   ; 40 special shred волна
+- D 1 - - - 0x0267E5 09:A7D5: 15        .byte $15   ; 41 special leo крутилка
+- D 1 - - - 0x0267E6 09:A7D6: 20        .byte $20   ; 42 special raph сверло
+- D 1 - - - 0x0267E7 09:A7D7: 22        .byte $22   ; 43 special mike ракеты понизу
+- D 1 - - - 0x0267E8 09:A7D8: 22        .byte $22   ; 44 special mike ракеты поверху
+- D 1 - - - 0x0267E9 09:A7D9: 19        .byte $19   ; 45 special don пила вращение
+- D 1 - - - 0x0267EA 09:A7DA: 02        .byte $02   ; 46 special shred мясо
+- D 1 - - - 0x0267EB 09:A7DB: 2B        .byte $2B   ; 47 special casey клюшка
+- D 1 - - - 0x0267EC 09:A7DC: 19        .byte $19   ; 48 special don пила подкат
+- D 1 - - - 0x0267ED 09:A7DD: 01        .byte $01   ; 49 special casey песок
 
 
 
@@ -6691,7 +6842,7 @@ tbl_A7DE_spd_Y_lo:
 
 
 
-tbl_A7E2:
+tbl_A7E2_приоритеты_атак:
 - D 1 - - - 0x0267F2 09:A7E2: 03        .byte $03   ; 01 черепаха рука дальняя
 - D 1 - - - 0x0267F3 09:A7E3: 04        .byte $04   ; 02 черепаха нога ближняя
 - D 1 - - - 0x0267F4 09:A7E4: 01        .byte $01   ; 03 черепаха рука в воздухе
@@ -6738,17 +6889,33 @@ tbl_A7E2:
 - D 1 - - - 0x02681D 09:A80D: 01        .byte $01   ; 2C shred нога в воздухе
 - D 1 - - - 0x02681E 09:A80E: 04        .byte $04   ; 2D shred нога сидя
 - D 1 - - - 0x02681F 09:A80F: 01        .byte $01   ; 2E shred нога антиэйр
-- D 1 - - - 0x026820 09:A810: 10        .byte $10   ; 2F special hot огонь
-- D 1 - - - 0x026821 09:A811: 10        .byte $10   ; 30 special shred волна
-- D 1 - - - 0x026822 09:A812: 10        .byte $10   ; 31 special leo крутилка
-- D 1 - - - 0x026823 09:A813: 01        .byte $01   ; 32 special raph сверло
-- D 1 - - - 0x026824 09:A814: 10        .byte $10   ; 33 special mike ракеты понизу
-- D 1 - - - 0x026825 09:A815: 10        .byte $10   ; 34 special mike ракеты поверху
-- D 1 - - - 0x026826 09:A816: 10        .byte $10   ; 35 special don пила вращение
-- D 1 - - - 0x026827 09:A817: 10        .byte $10   ; 36 special shred мясо
-- D 1 - - - 0x026828 09:A818: 10        .byte $10   ; 37 special casey клюшка
-- D 1 - - - 0x026829 09:A819: 10        .byte $10   ; 38 special don пила подкат
-- D 1 - - - 0x02682A 09:A81A: 10        .byte $10   ; 39 special casey песок
+                                        .byte $04   ; 2F hot ручка быстрая
+                                        .byte $00   ; rezerv
+                                        .byte $00   ; rezerv
+                                        .byte $00   ; rezerv
+                                        .byte $00   ; rezerv
+                                        .byte $00   ; rezerv
+                                        .byte $00   ; rezerv
+                                        .byte $00   ; rezerv
+                                        .byte $00   ; rezerv
+                                        .byte $00   ; rezerv
+                                        .byte $00   ; rezerv
+                                        .byte $00   ; rezerv
+                                        .byte $00   ; rezerv
+                                        .byte $00   ; rezerv
+                                        .byte $00   ; rezerv
+                                        .byte $00   ; rezerv
+- D 1 - - - 0x026820 09:A810: 10        .byte $10   ; 3F special hot огонь
+- D 1 - - - 0x026821 09:A811: 10        .byte $10   ; 40 special shred волна
+- D 1 - - - 0x026822 09:A812: 10        .byte $10   ; 41 special leo крутилка
+- D 1 - - - 0x026823 09:A813: 01        .byte $01   ; 42 special raph сверло
+- D 1 - - - 0x026824 09:A814: 10        .byte $10   ; 43 special mike ракеты понизу
+- D 1 - - - 0x026825 09:A815: 10        .byte $10   ; 44 special mike ракеты поверху
+- D 1 - - - 0x026826 09:A816: 10        .byte $10   ; 45 special don пила вращение
+- D 1 - - - 0x026827 09:A817: 10        .byte $10   ; 46 special shred мясо
+- D 1 - - - 0x026828 09:A818: 10        .byte $10   ; 47 special casey клюшка
+- D 1 - - - 0x026829 09:A819: 10        .byte $10   ; 48 special don пила подкат
+- D 1 - - - 0x02682A 09:A81A: 10        .byte $10   ; 49 special casey песок
 
 
 
@@ -6796,10 +6963,10 @@ C - - - - - 0x026846 09:A836: A8        TAY
 C - - - - - 0x026847 09:A837: 18        CLC
 C - - - - - 0x026848 09:A838: 69 06     ADC #$06
 C - - - - - 0x02684A 09:A83A: AA        TAX
-C - - - - - 0x02684B 09:A83B: B9 52 05  LDA ram_obj_id + $02,Y ; 0554 0555 
-C - - - - - 0x02684E 09:A83E: C9 36     CMP #$36
+C - - - - - 0x02684B 09:A83B: B9 52 05  LDA ram_obj_id + $02,Y ; 0554 0555
+C - - - - - 0x02684E 09:A83E: C9 36     CMP #con_0552_special_shred_мясо
 C - - - - - 0x026850 09:A840: F0 04     BEQ bra_A846
-C - - - - - 0x026852 09:A842: C9 31     CMP #$31
+C - - - - - 0x026852 09:A842: C9 31     CMP #con_0552_special_leo_крутилка
 C - - - - - 0x026854 09:A844: D0 02     BNE bra_A848
 bra_A846:
 ; 31 36
@@ -7877,17 +8044,33 @@ tbl_AFBC_звук_получения_удара:
 - D 1 - - - 0x026FF8 09:AFE8: 21        .byte con_0x03F6AD_21   ; 2C
 - D 1 - - - 0x026FF9 09:AFE9: 0E        .byte con_0x03F6AD_0E   ; 2D
 - - - - - - 0x026FFA 09:AFEA: 13        .byte con_0x03F6AD_13   ; 2E
-- D 1 - - - 0x026FFB 09:AFEB: 1F        .byte con_0x03F6AD_1F   ; 2F
-- D 1 - - - 0x026FFC 09:AFEC: 1F        .byte con_0x03F6AD_1F   ; 30
-- D 1 - - - 0x026FFD 09:AFED: 1F        .byte con_0x03F6AD_1F   ; 31
-- D 1 - - - 0x026FFE 09:AFEE: 1F        .byte con_0x03F6AD_1F   ; 32
-- D 1 - - - 0x026FFF 09:AFEF: 1F        .byte con_0x03F6AD_1F   ; 33
-- - - - - - 0x027000 09:AFF0: 1F        .byte con_0x03F6AD_1F   ; 34
-- D 1 - - - 0x027001 09:AFF1: 1F        .byte con_0x03F6AD_1F   ; 35
-- D 1 - - - 0x027002 09:AFF2: 12        .byte con_0x03F6AD_12   ; 36
-- D 1 - - - 0x027003 09:AFF3: 1F        .byte con_0x03F6AD_1F   ; 37
-- D 1 - - - 0x027004 09:AFF4: 1F        .byte con_0x03F6AD_1F   ; 38
-- D 1 - - - 0x027005 09:AFF5: 12        .byte con_0x03F6AD_12   ; 39
+                                        .byte con_0x03F6AD_21   ; 2F
+                                        .byte con_0x03F6AD_21   ; rezerv
+                                        .byte con_0x03F6AD_21   ; rezerv
+                                        .byte con_0x03F6AD_21   ; rezerv
+                                        .byte con_0x03F6AD_21   ; rezerv
+                                        .byte con_0x03F6AD_21   ; rezerv
+                                        .byte con_0x03F6AD_21   ; rezerv
+                                        .byte con_0x03F6AD_21   ; rezerv
+                                        .byte con_0x03F6AD_21   ; rezerv
+                                        .byte con_0x03F6AD_21   ; rezerv
+                                        .byte con_0x03F6AD_21   ; rezerv
+                                        .byte con_0x03F6AD_21   ; rezerv
+                                        .byte con_0x03F6AD_21   ; rezerv
+                                        .byte con_0x03F6AD_21   ; rezerv
+                                        .byte con_0x03F6AD_21   ; rezerv
+                                        .byte con_0x03F6AD_21   ; rezerv
+- D 1 - - - 0x026FFB 09:AFEB: 1F        .byte con_0x03F6AD_1F   ; 3F
+- D 1 - - - 0x026FFC 09:AFEC: 1F        .byte con_0x03F6AD_1F   ; 40
+- D 1 - - - 0x026FFD 09:AFED: 1F        .byte con_0x03F6AD_1F   ; 41
+- D 1 - - - 0x026FFE 09:AFEE: 1F        .byte con_0x03F6AD_1F   ; 42
+- D 1 - - - 0x026FFF 09:AFEF: 1F        .byte con_0x03F6AD_1F   ; 43
+- - - - - - 0x027000 09:AFF0: 1F        .byte con_0x03F6AD_1F   ; 44
+- D 1 - - - 0x027001 09:AFF1: 1F        .byte con_0x03F6AD_1F   ; 45
+- D 1 - - - 0x027002 09:AFF2: 12        .byte con_0x03F6AD_12   ; 46
+- D 1 - - - 0x027003 09:AFF3: 1F        .byte con_0x03F6AD_1F   ; 47
+- D 1 - - - 0x027004 09:AFF4: 1F        .byte con_0x03F6AD_1F   ; 48
+- D 1 - - - 0x027005 09:AFF5: 12        .byte con_0x03F6AD_12   ; 49
 
 
 
@@ -8006,7 +8189,7 @@ bra_B096:
 C - - - - - 0x0270A6 09:B096: B9 50 05  LDA ram_obj_id,Y ; 0552 0553 0554 0555 0556 
 C - - - - - 0x0270A9 09:B099: 29 7F     AND #$7F
 C - - - - - 0x0270AB 09:B09B: AA        TAX
-C - - - - - 0x0270AC 09:B09C: BD D7 B0  LDA tbl_B0D7,X
+C - - - - - 0x0270AC 09:B09C: BD D7 B0  LDA tbl_B0D7_очки_за_удар,X
 bra_B09F:
 C - - - - - 0x0270AF 09:B09F: 48        PHA
 C - - - - - 0x0270B0 09:B0A0: 29 0F     AND #$0F
@@ -8045,7 +8228,7 @@ C - - - - - 0x0270E6 09:B0D6: 60        RTS
 
 
 
-tbl_B0D7:
+tbl_B0D7_очки_за_удар:
 - D 1 - - - 0x0270E7 09:B0D7: 10        .byte $10   ; 00
 - D 1 - - - 0x0270E8 09:B0D8: 02        .byte $02   ; 01 черепаха рука дальняя
 - D 1 - - - 0x0270E9 09:B0D9: 01        .byte $01   ; 02 черепаха нога ближняя
@@ -8093,17 +8276,33 @@ tbl_B0D7:
 - D 1 - - - 0x027113 09:B103: 02        .byte $02   ; 2C shred нога в воздухе
 - D 1 - - - 0x027114 09:B104: 01        .byte $01   ; 2D shred нога сидя
 - - - - - - 0x027115 09:B105: 02        .byte $02   ; 2E shred нога антиэйр
-- D 1 - - - 0x027116 09:B106: 10        .byte $10   ; 2F special hot огонь
-- D 1 - - - 0x027117 09:B107: 10        .byte $10   ; 30 special shred волна
-- D 1 - - - 0x027118 09:B108: 10        .byte $10   ; 31 special leo крутилка
-- D 1 - - - 0x027119 09:B109: 10        .byte $10   ; 32 special raph сверло
-- D 1 - - - 0x02711A 09:B10A: 10        .byte $10   ; 33 special mike ракеты понизу
-- - - - - - 0x02711B 09:B10B: 10        .byte $10   ; 34 special mike ракеты поверху
-- D 1 - - - 0x02711C 09:B10C: 10        .byte $10   ; 35 special don пила вращение
-- D 1 - - - 0x02711D 09:B10D: 10        .byte $10   ; 36 special shred мясо
-- D 1 - - - 0x02711E 09:B10E: 10        .byte $10   ; 37 special casey клюшка
-- D 1 - - - 0x02711F 09:B10F: 10        .byte $10   ; 38 special don пила подкат
-- D 1 - - - 0x027120 09:B110: 10        .byte $10   ; 39 special casey песок
+                                        .byte $01   ; 2F hot ручка быстрая
+                                        .byte $00   ; rezerv
+                                        .byte $00   ; rezerv
+                                        .byte $00   ; rezerv
+                                        .byte $00   ; rezerv
+                                        .byte $00   ; rezerv
+                                        .byte $00   ; rezerv
+                                        .byte $00   ; rezerv
+                                        .byte $00   ; rezerv
+                                        .byte $00   ; rezerv
+                                        .byte $00   ; rezerv
+                                        .byte $00   ; rezerv
+                                        .byte $00   ; rezerv
+                                        .byte $00   ; rezerv
+                                        .byte $00   ; rezerv
+                                        .byte $00   ; rezerv
+- D 1 - - - 0x027116 09:B106: 10        .byte $10   ; 3F special hot огонь
+- D 1 - - - 0x027117 09:B107: 10        .byte $10   ; 40 special shred волна
+- D 1 - - - 0x027118 09:B108: 10        .byte $10   ; 41 special leo крутилка
+- D 1 - - - 0x027119 09:B109: 10        .byte $10   ; 42 special raph сверло
+- D 1 - - - 0x02711A 09:B10A: 10        .byte $10   ; 43 special mike ракеты понизу
+- - - - - - 0x02711B 09:B10B: 10        .byte $10   ; 44 special mike ракеты поверху
+- D 1 - - - 0x02711C 09:B10C: 10        .byte $10   ; 45 special don пила вращение
+- D 1 - - - 0x02711D 09:B10D: 10        .byte $10   ; 46 special shred мясо
+- D 1 - - - 0x02711E 09:B10E: 10        .byte $10   ; 47 special casey клюшка
+- D 1 - - - 0x02711F 09:B10F: 10        .byte $10   ; 48 special don пила подкат
+- D 1 - - - 0x027120 09:B110: 10        .byte $10   ; 49 special casey песок
 
 
 

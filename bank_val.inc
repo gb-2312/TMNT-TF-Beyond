@@ -32,7 +32,7 @@ con_chr_bank_spr                        = $00 ; только для спрайт
 ; CUSTOM для будущего расширения списков с данными
 con_колво_персов                        = $07 ; для вычислений
 con_колво_шаблонов_ai                   = $46 ; для вычислений
-con_колво_обычных_ударов                = $2F ; для вычислений
+con_колво_обычных_ударов                = $3F ; для вычислений
 
 
 
@@ -158,22 +158,23 @@ con_0552_shred_нога_дальняя             = $2B ; shred нога дал
 con_0552_shred_нога_в_воздухе           = $2C ; shred нога в воздухе
 con_0552_shred_нога_сидя                = $2D ; shred нога сидя
 con_0552_shred_нога_антиэйр             = $2E ; shred нога антиэйр
-con_0552_special_hot_огонь              = $2F ; special hot огонь
-con_0552_special_shred_волна            = $30 ; special shred волна
-con_0552_special_leo_крутилка           = $31 ; special leo крутилка
-con_0552_special_raph_сверло            = $32 ; special raph сверло
-con_0552_special_mike_ракеты_понизу     = $33 ; special mike ракеты понизу
-con_0552_special_mike_ракеты_поверху    = $34 ; special mike ракеты поверху
-con_0552_special_don_пила_вращение      = $35 ; special don пила вращение
-con_0552_special_shred_мясо             = $36 ; special shred мясо
-con_0552_special_casey_клюшка           = $37 ; special casey клюшка
-con_0552_special_don_пила_подкат        = $38 ; special don пила подкат
-con_0552_special_casey_песок            = $39 ; special casey песок
+con_0552_hot_ручка_быстрая              = $2F ; hot ручка быстрая
+con_0552_special_hot_огонь              = $3F ; special hot огонь
+con_0552_special_shred_волна            = $40 ; special shred волна
+con_0552_special_leo_крутилка           = $41 ; special leo крутилка
+con_0552_special_raph_сверло            = $42 ; special raph сверло
+con_0552_special_mike_ракеты_понизу     = $43 ; special mike ракеты понизу
+con_0552_special_mike_ракеты_поверху    = $44 ; special mike ракеты поверху
+con_0552_special_don_пила_вращение      = $45 ; special don пила вращение
+con_0552_special_shred_мясо             = $46 ; special shred мясо
+con_0552_special_casey_клюшка           = $47 ; special casey клюшка
+con_0552_special_don_пила_подкат        = $48 ; special don пила подкат
+con_0552_special_casey_песок            = $49 ; special casey песок
 
 
 
 ; связано с 0552-0555
-con_062E_hot_2x_огонь_в_блок            = $3A ; special hot 2x_огонь_в_блок
+con_062E_hot_2x_огонь_в_блок            = $4A ; special hot 2x_огонь_в_блок
 
 
 
@@ -225,6 +226,7 @@ con_0612_shred_нога_дальняя             = $2A ;
 con_0612_shred_нога_в_воздухе           = $2B ; 
 con_0612_shred_нога_сидя                = $2C ; 
 con_0612_shred_нога_антиэйр             = $2D ; 
+con_0612_hot_ручка_быстрая              = $2E ; 
 
 
 
