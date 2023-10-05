@@ -6766,6 +6766,11 @@ C - - - - - 0x036775 0D:A765: 90 31     BCC bra_A798
 - - - - - - 0x036785 0D:A775: AD 38 06  LDA ram_0638
 - - - - - - 0x036788 0D:A778: C9 58     CMP #$58
 - - - - - - 0x03678A 0D:A77A: B0 19     BCS bra_A795
+                                        LDA ram_plr_062C,X
+                                        CMP #$11
+                                        BCS bra_A78F
+
+                                        LDA ram_0638
 - - - - - - 0x03678C 0D:A77C: D9 FE BF  CMP tbl_BFFE,Y
 - - - - - - 0x03678F 0D:A77F: BD C0 04  LDA ram_obj_04C0,X
 - - - - - - 0x036792 0D:A782: 49 09     EOR #$09

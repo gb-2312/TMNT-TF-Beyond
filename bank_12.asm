@@ -3759,7 +3759,7 @@ _off010_9605_22_hot_нога_антиэйр:
 
 _off010_9605_2E_hot_ручка_быстрая:
                                         .byte $FE, con_0x03F6AD_07
-                                        .byte $8D, $07
+                                        .byte $8D, $05
                                         .byte $FF, con_0552_00
                                         .byte $FF, con_0552_hot_ручка_быстрая
                                         .byte $B7, $08
@@ -6804,7 +6804,7 @@ tbl_A7A5_урон_от_ударов:
 - D 1 - - - 0x0267E0 09:A7D0: 15        .byte $15   ; 2C shred нога в воздухе
 - D 1 - - - 0x0267E1 09:A7D1: 0C        .byte $0C   ; 2D shred нога сидя
 - D 1 - - - 0x0267E2 09:A7D2: 16        .byte $16   ; 2E shred нога антиэйр
-                                        .byte $0D   ; 2F hot ручка быстрая
+                                        .byte $0B   ; 2F hot ручка быстрая
                                         .byte $00   ; rezerv
                                         .byte $00   ; rezerv
                                         .byte $00   ; rezerv
@@ -8044,7 +8044,7 @@ tbl_AFBC_звук_получения_удара:
 - D 1 - - - 0x026FF8 09:AFE8: 21        .byte con_0x03F6AD_21   ; 2C
 - D 1 - - - 0x026FF9 09:AFE9: 0E        .byte con_0x03F6AD_0E   ; 2D
 - - - - - - 0x026FFA 09:AFEA: 13        .byte con_0x03F6AD_13   ; 2E
-                                        .byte con_0x03F6AD_21   ; 2F
+                                        .byte con_0x03F6AD_0F   ; 2F
                                         .byte con_0x03F6AD_21   ; rezerv
                                         .byte con_0x03F6AD_21   ; rezerv
                                         .byte con_0x03F6AD_21   ; rezerv
