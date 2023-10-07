@@ -1528,21 +1528,21 @@ _off013_B5F0_04_casey:
 - D 1 - I - 0x02F658 0B:B648: 0C        .byte $0C, $0B   ; 2C
 - - - - - - 0x02F65A 0B:B64A: 0C        .byte $0C, $0F   ; 2D
 - - - - - - 0x02F65C 0B:B64C: FF        .byte $0C, $0C   ; 2E
-- - - - - - 0x02F65E 0B:B64E: FF        .byte $00, $00   ; rezerv
-                                        .byte $00, $00   ; rezerv
-                                        .byte $00, $00   ; rezerv
-                                        .byte $00, $00   ; rezerv
-                                        .byte $00, $00   ; rezerv
-                                        .byte $00, $00   ; rezerv
-                                        .byte $00, $00   ; rezerv
-                                        .byte $00, $00   ; rezerv
-                                        .byte $00, $00   ; rezerv
-                                        .byte $00, $00   ; rezerv
-                                        .byte $00, $00   ; rezerv
-                                        .byte $00, $00   ; rezerv
-                                        .byte $00, $00   ; rezerv
-                                        .byte $00, $00   ; rezerv
-                                        .byte $00, $00   ; rezerv
+- - - - - - 0x02F65E 0B:B64E: FF        .byte $00, $00   ; 30 rezerv
+                                        .byte $00, $00   ; 31 rezerv
+                                        .byte $00, $00   ; 32 rezerv
+                                        .byte $00, $00   ; 33 rezerv
+                                        .byte $00, $00   ; 34 rezerv
+                                        .byte $00, $00   ; 35 rezerv
+                                        .byte $00, $00   ; 36 rezerv
+                                        .byte $00, $00   ; 37 rezerv
+                                        .byte $00, $00   ; 38 rezerv
+                                        .byte $00, $00   ; 39 rezerv
+                                        .byte $00, $00   ; 3A rezerv
+                                        .byte $00, $00   ; 3B rezerv
+                                        .byte $00, $00   ; 3C rezerv
+                                        .byte $00, $00   ; 3D rezerv
+                                        .byte $00, $00   ; 3E rezerv
 
 
 
@@ -1594,21 +1594,21 @@ _off013_B650_05_hot:
 - D 1 - I - 0x02F6B8 0B:B6A8: 0B        .byte $0B, $0B   ; 2C
 - - - - - - 0x02F6BA 0B:B6AA: 0C        .byte $0C, $0F   ; 2D
 - - - - - - 0x02F6BC 0B:B6AC: FF        .byte $0C, $0C   ; 2E
-- - - - - - 0x02F6BE 0B:B6AE: FF        .byte $00, $00   ; rezerv
-                                        .byte $00, $00   ; rezerv
-                                        .byte $00, $00   ; rezerv
-                                        .byte $00, $00   ; rezerv
-                                        .byte $00, $00   ; rezerv
-                                        .byte $00, $00   ; rezerv
-                                        .byte $00, $00   ; rezerv
-                                        .byte $00, $00   ; rezerv
-                                        .byte $00, $00   ; rezerv
-                                        .byte $00, $00   ; rezerv
-                                        .byte $00, $00   ; rezerv
-                                        .byte $00, $00   ; rezerv
-                                        .byte $00, $00   ; rezerv
-                                        .byte $00, $00   ; rezerv
-                                        .byte $00, $00   ; rezerv
+- - - - - - 0x02F6BE 0B:B6AE: FF        .byte $00, $00   ; 30 rezerv
+                                        .byte $00, $00   ; 31 rezerv
+                                        .byte $00, $00   ; 32 rezerv
+                                        .byte $00, $00   ; 33 rezerv
+                                        .byte $00, $00   ; 34 rezerv
+                                        .byte $00, $00   ; 35 rezerv
+                                        .byte $00, $00   ; 36 rezerv
+                                        .byte $00, $00   ; 37 rezerv
+                                        .byte $00, $00   ; 38 rezerv
+                                        .byte $00, $00   ; 39 rezerv
+                                        .byte $00, $00   ; 3A rezerv
+                                        .byte $00, $00   ; 3B rezerv
+                                        .byte $00, $00   ; 3C rezerv
+                                        .byte $00, $00   ; 3D rezerv
+                                        .byte $00, $00   ; 3E rezerv
 
 
 
@@ -1660,21 +1660,21 @@ _off013_B6B0_06_shred:
 - - - - - - 0x02F718 0B:B708: 0B        .byte $0B, $0B   ; 2C
 - - - - - - 0x02F71A 0B:B70A: 0C        .byte $0C, $0F   ; 2D
 - - - - - - 0x02F71C 0B:B70C: FF        .byte $0C, $0C   ; 2E
-- - - - - - 0x02F71E 0B:B70E: FF        .byte $00, $00   ; rezerv
-                                        .byte $00, $00   ; rezerv
-                                        .byte $00, $00   ; rezerv
-                                        .byte $00, $00   ; rezerv
-                                        .byte $00, $00   ; rezerv
-                                        .byte $00, $00   ; rezerv
-                                        .byte $00, $00   ; rezerv
-                                        .byte $00, $00   ; rezerv
-                                        .byte $00, $00   ; rezerv
-                                        .byte $00, $00   ; rezerv
-                                        .byte $00, $00   ; rezerv
-                                        .byte $00, $00   ; rezerv
-                                        .byte $00, $00   ; rezerv
-                                        .byte $00, $00   ; rezerv
-                                        .byte $00, $00   ; rezerv
+- - - - - - 0x02F71E 0B:B70E: FF        .byte $00, $00   ; 30 rezerv
+                                        .byte $00, $00   ; 31 rezerv
+                                        .byte $00, $00   ; 32 rezerv
+                                        .byte $00, $00   ; 33 rezerv
+                                        .byte $00, $00   ; 34 rezerv
+                                        .byte $00, $00   ; 35 rezerv
+                                        .byte $00, $00   ; 36 rezerv
+                                        .byte $00, $00   ; 37 rezerv
+                                        .byte $00, $00   ; 38 rezerv
+                                        .byte $00, $00   ; 39 rezerv
+                                        .byte $00, $00   ; 3A rezerv
+                                        .byte $00, $00   ; 3B rezerv
+                                        .byte $00, $00   ; 3C rezerv
+                                        .byte $00, $00   ; 3D rezerv
+                                        .byte $00, $00   ; 3E rezerv
 
 
 

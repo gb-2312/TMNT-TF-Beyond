@@ -2048,21 +2048,21 @@ tbl_8CD7_скорость_X_пушбэка_в_хит:
     .byte $C0   ; 2D 
     .byte $C0   ; 2E 
     .byte $C0   ; 2F 
-    .byte $C0   ; rezerv 
-    .byte $C0   ; rezerv 
-    .byte $C0   ; rezerv 
-    .byte $C0   ; rezerv 
-    .byte $C0   ; rezerv 
-    .byte $C0   ; rezerv 
-    .byte $C0   ; rezerv 
-    .byte $C0   ; rezerv 
-    .byte $C0   ; rezerv 
-    .byte $C0   ; rezerv 
-    .byte $C0   ; rezerv 
-    .byte $C0   ; rezerv 
-    .byte $C0   ; rezerv 
-    .byte $C0   ; rezerv 
-    .byte $C0   ; rezerv 
+    .byte $C0   ; 30 rezerv 
+    .byte $C0   ; 31 rezerv 
+    .byte $C0   ; 32 rezerv 
+    .byte $C0   ; 33 rezerv 
+    .byte $C0   ; 34 rezerv 
+    .byte $C0   ; 35 rezerv 
+    .byte $C0   ; 36 rezerv 
+    .byte $C0   ; 37 rezerv 
+    .byte $C0   ; 38 rezerv 
+    .byte $C0   ; 39 rezerv 
+    .byte $C0   ; 3A rezerv 
+    .byte $C0   ; 3B rezerv 
+    .byte $C0   ; 3C rezerv 
+    .byte $C0   ; 3D rezerv 
+    .byte $C0   ; 3E rezerv 
     .byte $C0   ; 3F 
     .byte $C0   ; 40 
     .byte $C0   ; 41 
@@ -2126,21 +2126,21 @@ tbl_8CD8_скорость_X_пушбэка_в_блок:
     .byte $C0   ; 2D 
     .byte $C0   ; 2E 
     .byte $C0   ; 2F 
-    .byte $C0   ; rezerv 
-    .byte $C0   ; rezerv 
-    .byte $C0   ; rezerv 
-    .byte $C0   ; rezerv 
-    .byte $C0   ; rezerv 
-    .byte $C0   ; rezerv 
-    .byte $C0   ; rezerv 
-    .byte $C0   ; rezerv 
-    .byte $C0   ; rezerv 
-    .byte $C0   ; rezerv 
-    .byte $C0   ; rezerv 
-    .byte $C0   ; rezerv 
-    .byte $C0   ; rezerv 
-    .byte $C0   ; rezerv 
-    .byte $C0   ; rezerv 
+    .byte $C0   ; 30 rezerv 
+    .byte $C0   ; 31 rezerv 
+    .byte $C0   ; 32 rezerv 
+    .byte $C0   ; 33 rezerv 
+    .byte $C0   ; 34 rezerv 
+    .byte $C0   ; 35 rezerv 
+    .byte $C0   ; 36 rezerv 
+    .byte $C0   ; 37 rezerv 
+    .byte $C0   ; 38 rezerv 
+    .byte $C0   ; 39 rezerv 
+    .byte $C0   ; 3A rezerv 
+    .byte $C0   ; 3B rezerv 
+    .byte $C0   ; 3C rezerv 
+    .byte $C0   ; 3D rezerv 
+    .byte $C0   ; 3E rezerv 
     .byte $C0   ; 3F 
     .byte $C0   ; 40 
     .byte $A0   ; 41 
@@ -3363,21 +3363,21 @@ tbl_9401_анимации___атаки___звуки:
 - D 0 - - - 0x025469 09:9459: 79 96     .word _off010_9679_2C_shred_нога_сидя
 - D 0 - - - 0x02546B 09:945B: 84 96     .word _off010_9684_2D_shred_нога_антиэйр
                                         .word _off010_9605_2E_hot_ручка_быстрая
-                                        .word $0000  ; rezerv
-                                        .word $0000  ; rezerv
-                                        .word $0000  ; rezerv
-                                        .word $0000  ; rezerv
-                                        .word $0000  ; rezerv
-                                        .word $0000  ; rezerv
-                                        .word $0000  ; rezerv
-                                        .word $0000  ; rezerv
-                                        .word $0000  ; rezerv
-                                        .word $0000  ; rezerv
-                                        .word $0000  ; rezerv
-                                        .word $0000  ; rezerv
-                                        .word $0000  ; rezerv
-                                        .word $0000  ; rezerv
-                                        .word $0000  ; rezerv
+                                        .word $0000      ; 30 rezerv
+                                        .word $0000      ; 31 rezerv
+                                        .word $0000      ; 32 rezerv
+                                        .word $0000      ; 33 rezerv
+                                        .word $0000      ; 34 rezerv
+                                        .word $0000      ; 35 rezerv
+                                        .word $0000      ; 36 rezerv
+                                        .word $0000      ; 37 rezerv
+                                        .word $0000      ; 38 rezerv
+                                        .word $0000      ; 39 rezerv
+                                        .word $0000      ; 3A rezerv
+                                        .word $0000      ; 3B rezerv
+                                        .word $0000      ; 3C rezerv
+                                        .word $0000      ; 3D rezerv
+                                        .word $0000      ; 3E rezerv
 
 
 
@@ -5710,21 +5710,21 @@ tbl_A282_обработчики_ударов_и_спешалов:
 - D 1 - - - 0x0262EA 09:A2DA: F4 A2     .word _off011_A2F4_2D_shred_нога_сидя
 - D 1 - - - 0x0262EC 09:A2DC: F4 A2     .word _off011_A2F4_2E_shred_нога_антиэйр
                                         .word _off011_A2F4_2F_hot_ручка_быстрая
-                                        .word $0000  ; rezerv
-                                        .word $0000  ; rezerv
-                                        .word $0000  ; rezerv
-                                        .word $0000  ; rezerv
-                                        .word $0000  ; rezerv
-                                        .word $0000  ; rezerv
-                                        .word $0000  ; rezerv
-                                        .word $0000  ; rezerv
-                                        .word $0000  ; rezerv
-                                        .word $0000  ; rezerv
-                                        .word $0000  ; rezerv
-                                        .word $0000  ; rezerv
-                                        .word $0000  ; rezerv
-                                        .word $0000  ; rezerv
-                                        .word $0000  ; rezerv
+                                        .word $0000      ; 30 rezerv
+                                        .word $0000      ; 31 rezerv
+                                        .word $0000      ; 32 rezerv
+                                        .word $0000      ; 33 rezerv
+                                        .word $0000      ; 34 rezerv
+                                        .word $0000      ; 35 rezerv
+                                        .word $0000      ; 36 rezerv
+                                        .word $0000      ; 37 rezerv
+                                        .word $0000      ; 38 rezerv
+                                        .word $0000      ; 39 rezerv
+                                        .word $0000      ; 3A rezerv
+                                        .word $0000      ; 3B rezerv
+                                        .word $0000      ; 3C rezerv
+                                        .word $0000      ; 3D rezerv
+                                        .word $0000      ; 3E rezerv
 - D 1 - - - 0x0262EE 09:A2DE: A8 A5     .word _off011_A5A8_2F_special_hot_огонь
 - D 1 - - - 0x0262F0 09:A2E0: CC A3     .word _off011_A3CC_30_special_shred_волна
 - D 1 - - - 0x0262F2 09:A2E2: 5F A4     .word _off011_A45F_31_special_leo_крутилка
@@ -6530,21 +6530,21 @@ tbl_A6DF_рейндж_X_нормалов:
 - D 1 - - - 0x02671B 09:A70B: 25        .byte $26   ; 2D shred нога сидя
 - D 1 - - - 0x02671C 09:A70C: 1E        .byte $1E   ; 2E shred нога антиэйр
                                         .byte $22   ; 2F hot ручка быстрая
-                                        .byte $00   ; rezerv
-                                        .byte $00   ; rezerv
-                                        .byte $00   ; rezerv
-                                        .byte $00   ; rezerv
-                                        .byte $00   ; rezerv
-                                        .byte $00   ; rezerv
-                                        .byte $00   ; rezerv
-                                        .byte $00   ; rezerv
-                                        .byte $00   ; rezerv
-                                        .byte $00   ; rezerv
-                                        .byte $00   ; rezerv
-                                        .byte $00   ; rezerv
-                                        .byte $00   ; rezerv
-                                        .byte $00   ; rezerv
-                                        .byte $00   ; rezerv
+                                        .byte $00   ; 30 rezerv
+                                        .byte $00   ; 31 rezerv
+                                        .byte $00   ; 32 rezerv
+                                        .byte $00   ; 33 rezerv
+                                        .byte $00   ; 34 rezerv
+                                        .byte $00   ; 35 rezerv
+                                        .byte $00   ; 36 rezerv
+                                        .byte $00   ; 37 rezerv
+                                        .byte $00   ; 38 rezerv
+                                        .byte $00   ; 39 rezerv
+                                        .byte $00   ; 3A rezerv
+                                        .byte $00   ; 3B rezerv
+                                        .byte $00   ; 3C rezerv
+                                        .byte $00   ; 3D rezerv
+                                        .byte $00   ; 3E rezerv
 
 
 
@@ -6596,21 +6596,21 @@ tbl_A70E_рейндж_Y_нормалов:
 - D 1 - - - 0x02674A 09:A73A: EF        .byte $EF   ; 2D shred нога сидя
 - D 1 - - - 0x02674B 09:A73B: C0        .byte $C0   ; 2E shred нога антиэйр
                                         .byte $DC   ; 2F hot ручка быстрая
-                                        .byte $00   ; rezerv
-                                        .byte $00   ; rezerv
-                                        .byte $00   ; rezerv
-                                        .byte $00   ; rezerv
-                                        .byte $00   ; rezerv
-                                        .byte $00   ; rezerv
-                                        .byte $00   ; rezerv
-                                        .byte $00   ; rezerv
-                                        .byte $00   ; rezerv
-                                        .byte $00   ; rezerv
-                                        .byte $00   ; rezerv
-                                        .byte $00   ; rezerv
-                                        .byte $00   ; rezerv
-                                        .byte $00   ; rezerv
-                                        .byte $00   ; rezerv
+                                        .byte $00   ; 30 rezerv
+                                        .byte $00   ; 31 rezerv
+                                        .byte $00   ; 32 rezerv
+                                        .byte $00   ; 33 rezerv
+                                        .byte $00   ; 34 rezerv
+                                        .byte $00   ; 35 rezerv
+                                        .byte $00   ; 36 rezerv
+                                        .byte $00   ; 37 rezerv
+                                        .byte $00   ; 38 rezerv
+                                        .byte $00   ; 39 rezerv
+                                        .byte $00   ; 3A rezerv
+                                        .byte $00   ; 3B rezerv
+                                        .byte $00   ; 3C rezerv
+                                        .byte $00   ; 3D rezerv
+                                        .byte $00   ; 3E rezerv
 
 
 
@@ -6662,21 +6662,21 @@ tbl_A73D_активные_кадры_ударов:
 - D 1 - - - 0x026779 09:A769: 05        .byte $05   ; 2D shred нога сидя
 - D 1 - - - 0x02677A 09:A76A: 0D        .byte $0D   ; 2E shred нога антиэйр
                                         .byte $08   ; 2F hot ручка быстрая
-                                        .byte $00   ; rezerv
-                                        .byte $00   ; rezerv
-                                        .byte $00   ; rezerv
-                                        .byte $00   ; rezerv
-                                        .byte $00   ; rezerv
-                                        .byte $00   ; rezerv
-                                        .byte $00   ; rezerv
-                                        .byte $00   ; rezerv
-                                        .byte $00   ; rezerv
-                                        .byte $00   ; rezerv
-                                        .byte $00   ; rezerv
-                                        .byte $00   ; rezerv
-                                        .byte $00   ; rezerv
-                                        .byte $00   ; rezerv
-                                        .byte $00   ; rezerv
+                                        .byte $00   ; 30 rezerv
+                                        .byte $00   ; 31 rezerv
+                                        .byte $00   ; 32 rezerv
+                                        .byte $00   ; 33 rezerv
+                                        .byte $00   ; 34 rezerv
+                                        .byte $00   ; 35 rezerv
+                                        .byte $00   ; 36 rezerv
+                                        .byte $00   ; 37 rezerv
+                                        .byte $00   ; 38 rezerv
+                                        .byte $00   ; 39 rezerv
+                                        .byte $00   ; 3A rezerv
+                                        .byte $00   ; 3B rezerv
+                                        .byte $00   ; 3C rezerv
+                                        .byte $00   ; 3D rezerv
+                                        .byte $00   ; 3E rezerv
 
 
 
@@ -6728,21 +6728,21 @@ tbl_A76C_id_хёртбокса_атаки:
 - D 1 - - - 0x0267A8 09:A798: 1A        .byte $1A   ; 2D shred нога сидя
 - D 1 - - - 0x0267A9 09:A799: 21        .byte $21   ; 2E shred нога антиэйр
                                         .byte $02   ; 2F hot ручка быстрая
-                                        .byte $00   ; rezerv
-                                        .byte $00   ; rezerv
-                                        .byte $00   ; rezerv
-                                        .byte $00   ; rezerv
-                                        .byte $00   ; rezerv
-                                        .byte $00   ; rezerv
-                                        .byte $00   ; rezerv
-                                        .byte $00   ; rezerv
-                                        .byte $00   ; rezerv
-                                        .byte $00   ; rezerv
-                                        .byte $00   ; rezerv
-                                        .byte $00   ; rezerv
-                                        .byte $00   ; rezerv
-                                        .byte $00   ; rezerv
-                                        .byte $00   ; rezerv
+                                        .byte $00   ; 30 rezerv
+                                        .byte $00   ; 31 rezerv
+                                        .byte $00   ; 32 rezerv
+                                        .byte $00   ; 33 rezerv
+                                        .byte $00   ; 34 rezerv
+                                        .byte $00   ; 35 rezerv
+                                        .byte $00   ; 36 rezerv
+                                        .byte $00   ; 37 rezerv
+                                        .byte $00   ; 38 rezerv
+                                        .byte $00   ; 39 rezerv
+                                        .byte $00   ; 3A rezerv
+                                        .byte $00   ; 3B rezerv
+                                        .byte $00   ; 3C rezerv
+                                        .byte $00   ; 3D rezerv
+                                        .byte $00   ; 3E rezerv
 - D 1 - - - 0x0267AA 09:A79A: 02        .byte $02   ; 3F special hot огонь
 - D 1 - - - 0x0267AB 09:A79B: 02        .byte $02   ; 40 special shred волна
 - D 1 - - - 0x0267AC 09:A79C: 04        .byte $04   ; 41 special leo крутилка
@@ -6805,21 +6805,21 @@ tbl_A7A5_урон_от_ударов:
 - D 1 - - - 0x0267E1 09:A7D1: 0C        .byte $0C   ; 2D shred нога сидя
 - D 1 - - - 0x0267E2 09:A7D2: 16        .byte $16   ; 2E shred нога антиэйр
                                         .byte $0B   ; 2F hot ручка быстрая
-                                        .byte $00   ; rezerv
-                                        .byte $00   ; rezerv
-                                        .byte $00   ; rezerv
-                                        .byte $00   ; rezerv
-                                        .byte $00   ; rezerv
-                                        .byte $00   ; rezerv
-                                        .byte $00   ; rezerv
-                                        .byte $00   ; rezerv
-                                        .byte $00   ; rezerv
-                                        .byte $00   ; rezerv
-                                        .byte $00   ; rezerv
-                                        .byte $00   ; rezerv
-                                        .byte $00   ; rezerv
-                                        .byte $00   ; rezerv
-                                        .byte $00   ; rezerv
+                                        .byte $00   ; 30 rezerv
+                                        .byte $00   ; 31 rezerv
+                                        .byte $00   ; 32 rezerv
+                                        .byte $00   ; 33 rezerv
+                                        .byte $00   ; 34 rezerv
+                                        .byte $00   ; 35 rezerv
+                                        .byte $00   ; 36 rezerv
+                                        .byte $00   ; 37 rezerv
+                                        .byte $00   ; 38 rezerv
+                                        .byte $00   ; 39 rezerv
+                                        .byte $00   ; 3A rezerv
+                                        .byte $00   ; 3B rezerv
+                                        .byte $00   ; 3C rezerv
+                                        .byte $00   ; 3D rezerv
+                                        .byte $00   ; 3E rezerv
 - D 1 - - - 0x0267E3 09:A7D3: 38        .byte $38   ; 3F special hot огонь
 - D 1 - - - 0x0267E4 09:A7D4: 38        .byte $38   ; 40 special shred волна
 - D 1 - - - 0x0267E5 09:A7D5: 15        .byte $15   ; 41 special leo крутилка
@@ -6890,21 +6890,21 @@ tbl_A7E2_приоритеты_атак:
 - D 1 - - - 0x02681E 09:A80E: 04        .byte $04   ; 2D shred нога сидя
 - D 1 - - - 0x02681F 09:A80F: 01        .byte $01   ; 2E shred нога антиэйр
                                         .byte $04   ; 2F hot ручка быстрая
-                                        .byte $00   ; rezerv
-                                        .byte $00   ; rezerv
-                                        .byte $00   ; rezerv
-                                        .byte $00   ; rezerv
-                                        .byte $00   ; rezerv
-                                        .byte $00   ; rezerv
-                                        .byte $00   ; rezerv
-                                        .byte $00   ; rezerv
-                                        .byte $00   ; rezerv
-                                        .byte $00   ; rezerv
-                                        .byte $00   ; rezerv
-                                        .byte $00   ; rezerv
-                                        .byte $00   ; rezerv
-                                        .byte $00   ; rezerv
-                                        .byte $00   ; rezerv
+                                        .byte $00   ; 30 rezerv
+                                        .byte $00   ; 31 rezerv
+                                        .byte $00   ; 32 rezerv
+                                        .byte $00   ; 33 rezerv
+                                        .byte $00   ; 34 rezerv
+                                        .byte $00   ; 35 rezerv
+                                        .byte $00   ; 36 rezerv
+                                        .byte $00   ; 37 rezerv
+                                        .byte $00   ; 38 rezerv
+                                        .byte $00   ; 39 rezerv
+                                        .byte $00   ; 3A rezerv
+                                        .byte $00   ; 3B rezerv
+                                        .byte $00   ; 3C rezerv
+                                        .byte $00   ; 3D rezerv
+                                        .byte $00   ; 3E rezerv
 - D 1 - - - 0x026820 09:A810: 10        .byte $10   ; 3F special hot огонь
 - D 1 - - - 0x026821 09:A811: 10        .byte $10   ; 40 special shred волна
 - D 1 - - - 0x026822 09:A812: 10        .byte $10   ; 41 special leo крутилка
@@ -8045,21 +8045,21 @@ tbl_AFBC_звук_получения_удара:
 - D 1 - - - 0x026FF9 09:AFE9: 0E        .byte con_0x03F6AD_0E   ; 2D
 - - - - - - 0x026FFA 09:AFEA: 13        .byte con_0x03F6AD_13   ; 2E
                                         .byte con_0x03F6AD_0F   ; 2F
-                                        .byte con_0x03F6AD_21   ; rezerv
-                                        .byte con_0x03F6AD_21   ; rezerv
-                                        .byte con_0x03F6AD_21   ; rezerv
-                                        .byte con_0x03F6AD_21   ; rezerv
-                                        .byte con_0x03F6AD_21   ; rezerv
-                                        .byte con_0x03F6AD_21   ; rezerv
-                                        .byte con_0x03F6AD_21   ; rezerv
-                                        .byte con_0x03F6AD_21   ; rezerv
-                                        .byte con_0x03F6AD_21   ; rezerv
-                                        .byte con_0x03F6AD_21   ; rezerv
-                                        .byte con_0x03F6AD_21   ; rezerv
-                                        .byte con_0x03F6AD_21   ; rezerv
-                                        .byte con_0x03F6AD_21   ; rezerv
-                                        .byte con_0x03F6AD_21   ; rezerv
-                                        .byte con_0x03F6AD_21   ; rezerv
+                                        .byte con_0x03F6AD_21   ; 30 rezerv
+                                        .byte con_0x03F6AD_21   ; 31 rezerv
+                                        .byte con_0x03F6AD_21   ; 32 rezerv
+                                        .byte con_0x03F6AD_21   ; 33 rezerv
+                                        .byte con_0x03F6AD_21   ; 34 rezerv
+                                        .byte con_0x03F6AD_21   ; 35 rezerv
+                                        .byte con_0x03F6AD_21   ; 36 rezerv
+                                        .byte con_0x03F6AD_21   ; 37 rezerv
+                                        .byte con_0x03F6AD_21   ; 38 rezerv
+                                        .byte con_0x03F6AD_21   ; 39 rezerv
+                                        .byte con_0x03F6AD_21   ; 3A rezerv
+                                        .byte con_0x03F6AD_21   ; 3B rezerv
+                                        .byte con_0x03F6AD_21   ; 3C rezerv
+                                        .byte con_0x03F6AD_21   ; 3D rezerv
+                                        .byte con_0x03F6AD_21   ; 3E rezerv
 - D 1 - - - 0x026FFB 09:AFEB: 1F        .byte con_0x03F6AD_1F   ; 3F
 - D 1 - - - 0x026FFC 09:AFEC: 1F        .byte con_0x03F6AD_1F   ; 40
 - D 1 - - - 0x026FFD 09:AFED: 1F        .byte con_0x03F6AD_1F   ; 41
@@ -8277,21 +8277,21 @@ tbl_B0D7_очки_за_удар:
 - D 1 - - - 0x027114 09:B104: 01        .byte $01   ; 2D shred нога сидя
 - - - - - - 0x027115 09:B105: 02        .byte $02   ; 2E shred нога антиэйр
                                         .byte $01   ; 2F hot ручка быстрая
-                                        .byte $00   ; rezerv
-                                        .byte $00   ; rezerv
-                                        .byte $00   ; rezerv
-                                        .byte $00   ; rezerv
-                                        .byte $00   ; rezerv
-                                        .byte $00   ; rezerv
-                                        .byte $00   ; rezerv
-                                        .byte $00   ; rezerv
-                                        .byte $00   ; rezerv
-                                        .byte $00   ; rezerv
-                                        .byte $00   ; rezerv
-                                        .byte $00   ; rezerv
-                                        .byte $00   ; rezerv
-                                        .byte $00   ; rezerv
-                                        .byte $00   ; rezerv
+                                        .byte $00   ; 30 rezerv
+                                        .byte $00   ; 31 rezerv
+                                        .byte $00   ; 32 rezerv
+                                        .byte $00   ; 33 rezerv
+                                        .byte $00   ; 34 rezerv
+                                        .byte $00   ; 35 rezerv
+                                        .byte $00   ; 36 rezerv
+                                        .byte $00   ; 37 rezerv
+                                        .byte $00   ; 38 rezerv
+                                        .byte $00   ; 39 rezerv
+                                        .byte $00   ; 3A rezerv
+                                        .byte $00   ; 3B rezerv
+                                        .byte $00   ; 3C rezerv
+                                        .byte $00   ; 3D rezerv
+                                        .byte $00   ; 3E rezerv
 - D 1 - - - 0x027116 09:B106: 10        .byte $10   ; 3F special hot огонь
 - D 1 - - - 0x027117 09:B107: 10        .byte $10   ; 40 special shred волна
 - D 1 - - - 0x027118 09:B108: 10        .byte $10   ; 41 special leo крутилка
