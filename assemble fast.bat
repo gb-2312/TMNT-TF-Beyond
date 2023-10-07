@@ -13,25 +13,25 @@ start /wait lua53 preparations.lua
 :: -U = no need to use .import
 :: -l = create listing file
 :: -g = create debug file
-ca65 -U -l copy_bank_00.lst -g copy_bank_00.asm
-ca65 -U -l copy_bank_02.lst -g copy_bank_02.asm
-ca65 -U -l copy_bank_04.lst -g copy_bank_04.asm
-ca65 -U -l copy_bank_06.lst -g copy_bank_06.asm
-ca65 -U -l copy_bank_08.lst -g copy_bank_08.asm
-ca65 -U -l copy_bank_0A.lst -g copy_bank_0A.asm
-ca65 -U -l copy_bank_0C.lst -g copy_bank_0C.asm
-ca65 -U -l copy_bank_0E.lst -g copy_bank_0E.asm
-ca65 -U -l copy_bank_10.lst -g copy_bank_10.asm
-ca65 -U -l copy_bank_12.lst -g copy_bank_12.asm
-ca65 -U -l copy_bank_14.lst -g copy_bank_14.asm
-ca65 -U -l copy_bank_16.lst -g copy_bank_16.asm
-ca65 -U -l copy_bank_18.lst -g copy_bank_18.asm
-ca65 -U -l copy_bank_1A.lst -g copy_bank_1A.asm
-ca65 -U -l copy_bank_1C.lst -g copy_bank_1C.asm
-ca65 -U -l copy_bank_FF.lst -g copy_bank_FF.asm
+ca65 -U copy_bank_00.asm
+ca65 -U copy_bank_02.asm
+ca65 -U copy_bank_04.asm
+ca65 -U copy_bank_06.asm
+ca65 -U copy_bank_08.asm
+ca65 -U copy_bank_0A.asm
+ca65 -U copy_bank_0C.asm
+ca65 -U copy_bank_0E.asm
+ca65 -U copy_bank_10.asm
+ca65 -U copy_bank_12.asm
+ca65 -U copy_bank_14.asm
+ca65 -U copy_bank_16.asm
+ca65 -U copy_bank_18.asm
+ca65 -U copy_bank_1A.asm
+ca65 -U copy_bank_1C.asm
+ca65 -U copy_bank_FF.asm
 
 :: assemble code into binaries
-ld65 -C ld65.cfg -o PRG_ROM.bin --dbgfile _debug.txt ^
+ld65 -C ld65.cfg -o PRG_ROM.bin ^
     copy_bank_00.o ^
     copy_bank_02.o ^
     copy_bank_04.o ^
@@ -53,7 +53,7 @@ ld65 -C ld65.cfg -o PRG_ROM.bin --dbgfile _debug.txt ^
 copy /B header.bin + PRG_ROM.bin + CHR_ROM.chr !beyond.nes
 
 :: join listing files into a single file
-copy /A copy_*.lst _listing.txt
+:: copy /A copy_*.lst _listing.txt
 
 :: delete leftover garbage and copies
 del *.o + PRG_ROM.bin + copy_*
