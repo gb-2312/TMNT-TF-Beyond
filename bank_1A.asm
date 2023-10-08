@@ -6772,7 +6772,7 @@ C - - - - - 0x036775 0D:A765: 90 31     BCC bra_A798
                                         CMP #con_plr_state_делает_суперку
 - - - - - - 0x03679B 0D:A78B: F0 02     BNE bra_A78D
                                         LDA ram_plr_062C,X
-                                        CMP #$11
+                                        CMP #$12
                                         BCS bra_A78F
 bra_A78D:
                                         LDA ram_0638
