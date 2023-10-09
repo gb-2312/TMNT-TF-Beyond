@@ -5751,7 +5751,6 @@ _off011_A2F4_09_черепаха_нога_дальняя_raph:
 _off011_A2F4_0A_черепаха_нога_сидя_leo:
 _off011_A2F4_0B_черепаха_деш_локтем:
 _off011_A2F4_0C_черепаха_нога_антиэйр:
-_off011_A2F4_0D_черепаха_рука_антиэйр:
 _off011_A2F4_0E_черепаха_деш_ногой:
 _off011_A2F4_0F_casey_рука_дальняя:
 _off011_A2F4_10_casey_нога_ближняя:
@@ -5918,6 +5917,7 @@ tbl_A3AF:
 
 
 
+_off011_A2F4_0D_черепаха_рука_антиэйр:
 _off011_A3B5_15_casey_рука_антиэйр:
 - D 1 - I - 0x0263C5 09:A3B5: F8 A2     .word ofs_071_A2F8_00
 - D 1 - I - 0x0263C7 09:A3B7: B9 A3     .word ofs_071_A3B9_01
@@ -5929,6 +5929,12 @@ C - - J - - 0x0263C9 09:A3B9: BC 20 05  LDY ram_obj_0520,X ; 0523
 C - - - - - 0x0263CC 09:A3BC: B9 16 06  LDA ram_plr_0616,Y ; 0617 
 C - - - - - 0x0263CF 09:A3BF: C9 06     CMP #$06
 C - - - - - 0x0263D1 09:A3C1: 90 9B     BCC bra_A35E
+                                        LDA ram_plr_индекс_атаки,Y ; 0613 
+                                        CMP #con_0612_черепаха_рука_антиэйр
+                                        BNE bra_A3AD
+                                        LDA #$CD
+                                        BNE bra_A3AC
+bra_A3AD:
 C - - - - - 0x0263D3 09:A3C3: A9 14     LDA #$14
 C - - - - - 0x0263D5 09:A3C5: 9D A0 04  STA ram_obj_spd_Y_hi,X ; 04A3 
 C - - - - - 0x0263D8 09:A3C8: A9 C5     LDA #$C5
@@ -8161,7 +8167,7 @@ sub_B069:
 C D 1 - - - 0x027079 09:B069: 86 17     STX ram_0017
 C - - - - - 0x02707B 09:B06B: 84 16     STY ram_0016
 C - - - - - 0x02707D 09:B06D: BC 50 05  LDY ram_obj_id,X ; 0550 0551 
-C - - - - - 0x027080 09:B070: B9 11 B1  LDA tbl_B111,Y
+C - - - - - 0x027080 09:B070: B9 11 B1  LDA tbl_B111_очки_за_переброс,Y
 C - - - - - 0x027083 09:B073: 48        PHA
 C - - - - - 0x027084 09:B074: 29 0F     AND #$0F
 C - - - - - 0x027086 09:B076: 85 14     STA ram_0014
@@ -8306,7 +8312,7 @@ tbl_B0D7_очки_за_удар:
 
 
 
-tbl_B111:
+tbl_B111_очки_за_переброс:
 - D 1 - - - 0x027121 09:B111: 10        .byte $10 + $00   ; 00 con_fighter_leo
 - D 1 - - - 0x027122 09:B112: 08        .byte $00 + $08   ; 01 con_fighter_raph
 - D 1 - - - 0x027123 09:B113: 10        .byte $10 + $00   ; 02 con_fighter_mike
@@ -10535,15 +10541,9 @@ C - - - - - 0x027D95 09:BD85: C0 05     CPY #$05
 C - - - - - 0x027D97 09:BD87: F0 18     BEQ bra_BDA1
 C - - - - - 0x027D99 09:BD89: BD 54 05  LDA ram_obj_id + $04,X ; 0554 0555 
 C - - - - - 0x027D9C 09:BD8C: 49 33     EOR #con_0552_special_mike_ракеты_понизу
-C - - - - - 0x027D9E 09:BD8E: D0 04     BNE bra_BD94
+C - - - - - 0x027D9E 09:BD8E: D0 04     BNE bra_BDA0_RTS
 C - - - - - 0x027DA0 09:BD90: A9 10     LDA #$10
 C - - - - - 0x027DA2 09:BD92: 85 06     STA ram_0006
-bra_BD94:
-C - - - - - 0x027DA4 09:BD94: BD 00 04  LDA ram_obj_anim_id,X ; 0400 0401 
-C - - - - - 0x027DA7 09:BD97: C9 DD     CMP #$DD
-C - - - - - 0x027DA9 09:BD99: D0 05     BNE bra_BDA0_RTS
-C - - - - - 0x027DAB 09:BD9B: A9 CD     LDA #$CD
-C - - - - - 0x027DAD 09:BD9D: 9D B2 04  STA ram_obj_spd_Y_lo + $02,X ; 04B2 04B3 
 bra_BDA0_RTS:
 C - - - - - 0x027DB0 09:BDA0: 60        RTS
 bra_BDA1:
