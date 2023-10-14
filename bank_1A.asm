@@ -6201,7 +6201,7 @@ C - - - - - 0x036306 0D:A2F6: D0 51     BNE bra_A349
 C - - - - - 0x036308 0D:A2F8: 20 AD A1  JSR sub_A1AD
 C - - - - - 0x03630B 0D:A2FB: D0 4C     BNE bra_A349
 C - - - - - 0x03630D 0D:A2FD: BD 20 05  LDA ram_obj_0520,X ; 0520 0521 
-C - - - - - 0x036310 0D:A300: F0 14     BEQ bra_A316    ; if con_plr_state_на_земле
+C - - - - - 0x036310 0D:A300: F0 14     BEQ bra_A316_ограничение_броска    ; if con_plr_state_на_земле
 C - - - - - 0x036312 0D:A302: C9 01     CMP #con_plr_state_в_прыжке
 C - - - - - 0x036314 0D:A304: F0 2E     BEQ bra_A334
 C - - - - - 0x036316 0D:A306: C9 07     CMP #con_plr_state_сидит
@@ -6211,10 +6211,10 @@ C - - - - - 0x03631D 0D:A30D: D0 3A     BNE bra_A349
 C - - - - - 0x03631F 0D:A30F: B9 00 04  LDA ram_obj_anim_id,Y
 C - - - - - 0x036322 0D:A312: C9 9A     CMP #$9A
 C - - - - - 0x036324 0D:A314: F0 19     BEQ bra_A32F
-bra_A316:
+bra_A316_ограничение_броска:
 C - - - - - 0x036326 0D:A316: BD 50 05  LDA ram_obj_id,X ; 0550 0551 
-C - - - - - 0x036329 0D:A319: 49 06     EOR #$06
-C - - - - - 0x03632B 0D:A31B: F0 09     BEQ bra_A326
+C - - - - - 0x036329 0D:A319: 49 06     CMP #$04
+C - - - - - 0x03632B 0D:A31B: F0 09     BCS bra_A326
 C - - - - - 0x03632D 0D:A31D: A5 8C     LDA ram_random_2
 C - - - - - 0x03632F 0D:A31F: 1D 10 06  ORA ram_plr_флаг_индекса_атаки,X ; 0610 0611 
 C - - - - - 0x036332 0D:A322: 29 80     AND #$80
@@ -6475,6 +6475,7 @@ bra_A543:
 bra_A546:
 - - - - - - 0x036556 0D:A546: BC DE 06  LDY ram_plr_06DE,X
 - - - - - - 0x036559 0D:A549: BD 20 05  LDA ram_obj_0520,X
+bra_A547_RTS:
 - - - - - - 0x03655C 0D:A54C: 60        RTS
 
 
@@ -6499,11 +6500,83 @@ sub_A56E:
 C - - - - - 0x03657E 0D:A56E: 9D E2 06  STA ram_plr_06E2,X ; 06E2 06E3 
 C - - - - - 0x036581 0D:A571: AC 25 01  LDY ram_option_difficulty
 C - - - - - 0x036584 0D:A574: C0 03     CPY #$03
-C - - - - - 0x036586 0D:A576: 90 61     BCC bra_A5D9_RTS
-C - - - - - 0x036588 0D:A578: BD 50 05  LDA ram_obj_id,X ; 0550 0551 
-C - - - - - 0x03658B 0D:A57B: C9 06     CMP #$06
-C - - - - - 0x03658D 0D:A57D: D0 5A     BNE bra_A5D9_RTS
+C - - - - - 0x036586 0D:A576: 90 61     BCC bra_A547_RTS
 - - - - - - 0x03658F 0D:A57F: BC DE 06  LDY ram_plr_06DE,X
+C - - - - - 0x036588 0D:A578: BD 50 05  LDA ram_obj_id,X ; 0550 0551 
+                                        CMP #$04    ; con_fighter_casey
+                                        BNE bra_A571
+                                        LDA ram_obj_0520,Y
+                                        CMP #con_plr_state_делает_суперку
+                                        BEQ bra_casey_ai_block
+                                        CMP #con_plr_state_получает_урон
+                                        BEQ bra_A547_RTS
+                                        CMP #con_plr_state_брошен_соперником
+                                        BEQ bra_A547_RTS
+                                        LDA ram_plr_флаг_индекса_атаки,Y
+                                        BEQ bra_A570
+                                        LDA ram_obj_id,Y
+                                        CMP #$06    ; con_fighter_shred
+                                        BEQ bra_casey_ai_sidit
+                                        CMP #$05    ; con_fighter_hot
+                                        BNE bra_A56F
+                                        LDA ram_obj_0520,Y
+                                        CMP #con_plr_state_сидит
+                                        BEQ bra_casey_ai_sidit
+                                        BNE bra_casey_ai_zhdet
+bra_A56F:
+                                        LDA ram_plr_индекс_атаки,Y
+                                        CMP #con_0612_черепаха_деш_ногой
+                                        BEQ bra_casey_ai_block
+                                        JSR loc_проверка_нахождения_в_углу
+                                        BCC bra_casey_ai_brosok
+                                        LDA ram_0638
+                                        CMP #$20
+                                        BCS bra_casey_ai_brosok
+                                        LDA ram_plr_062C,X
+                                        BNE bra_casey_ai_block
+                                        LDA ram_plr_индекс_атаки,Y
+                                        CMP #con_0612_черепаха_рука_сидя
+                                        BEQ bra_casey_ai_pesok
+                                        CMP #con_0612_черепаха_нога_дальняя_обычная
+                                        BEQ bra_casey_ai_pesok
+                                        LDA ram_obj_0520,Y
+                                        CMP #con_plr_state_сидит
+                                        BEQ bra_casey_ai_brosok
+                                        LDA ram_plr_индекс_атаки,X
+                                        CMP #con_0612_casey_нога_дальняя
+                                        BNE bra_casey_ai_noga
+bra_A570:
+                                        LDA ram_obj_spd_Z_hi,Y
+                                        BPL bra_casey_ai_brosok
+                                        CMP #$FB
+                                        BCS bra_casey_ai_block
+bra_casey_ai_kluxa:
+                                        LDA #con_шаблон_ai_1D
+                                        .byte $2C
+bra_casey_ai_brosok:
+                                        LDA #con_шаблон_ai_13
+                                        .byte $2C
+bra_casey_ai_noga:
+                                        LDA #con_шаблон_ai_17
+                                        .byte $2C
+bra_casey_ai_ruka:
+                                        LDA #con_шаблон_ai_10
+                                        .byte $2C
+bra_casey_ai_zhdet:
+                                        LDA #con_шаблон_ai_0A
+                                        .byte $2C
+bra_casey_ai_sidit:
+                                        LDA #con_шаблон_ai_02
+                                        .byte $2C
+bra_casey_ai_pesok:
+                                        LDA #con_шаблон_ai_3A
+                                        .byte $2C
+bra_casey_ai_block:
+                                        LDA #con_шаблон_ai_01
+                                        JMP loc_A65C
+bra_A571:
+C - - - - - 0x03658B 0D:A57B: C9 06     CMP #$06    ; con_fighter_shred
+C - - - - - 0x03658D 0D:A57D: D0 5A     BNE bra_A5D9_RTS
 - - - - - - 0x036592 0D:A582: B9 12 06  LDA ram_plr_индекс_атаки,Y
 - - - - - - 0x036595 0D:A585: 19 10 06  ORA ram_plr_флаг_индекса_атаки,Y
 - - - - - - 0x036598 0D:A588: 85 00     STA ram_0000
@@ -6672,11 +6745,8 @@ bra_A6A8:
 - - - - - - 0x0366B5 0D:A6A5: C9 07     CMP #con_0612_черепаха_нога_дальняя_обычная
 - - - - - - 0x0366B7 0D:A6A7: F0 50     BEQ bra_A6F9
 bra_A6A9:
-- - - - - - 0x0366B9 0D:A6A9: BD 40 04  LDA ram_obj_pos_X_lo,X
-- - - - - - 0x0366BC 0D:A6AC: C9 E7     CMP #$E7
-- - - - - - 0x0366BE 0D:A6AE: B0 3B     BCS bra_A6EB
-- - - - - - 0x0366C0 0D:A6B0: C9 19     CMP #$19
-- - - - - - 0x0366C2 0D:A6B2: 90 37     BCC bra_A6EB
+                                        JSR loc_проверка_нахождения_в_углу
+                                        BCC bra_A6EB
 - - - - - - 0x0366C4 0D:A6B4: B9 91 00  LDA ram_btn_hold,Y
 - - - - - - 0x0366C7 0D:A6B7: 29 08     AND #con_btn_Up
 - - - - - - 0x0366C9 0D:A6B9: D0 2E     BNE bra_A6E9
@@ -6967,11 +7037,8 @@ C - - - - - 0x037D9F 0D:BD8F: D0 51     BNE bra_BDE2
 bra_BDA8:
 - - - - - - 0x037DB8 0D:BDA8: C9 06     CMP #$06
 - - - - - - 0x037DBA 0D:BDAA: 90 13     BCC bra_BDBF
-- - - - - - 0x037DBC 0D:BDAC: BD 40 04  LDA ram_obj_pos_X_lo,X
-- - - - - - 0x037DBF 0D:BDAF: C9 E7     CMP #$E7
-- - - - - - 0x037DC1 0D:BDB1: B0 0C     BCS bra_BDBF
-- - - - - - 0x037DC3 0D:BDB3: C9 19     CMP #$19
-- - - - - - 0x037DC5 0D:BDB5: 90 08     BCC bra_BDBF
+                                        JSR loc_проверка_нахождения_в_углу
+                                        BCC bra_BDBF
 - - - - - - 0x037DC7 0D:BDB7: BD C0 04  LDA ram_obj_04C0,X
 - - - - - - 0x037DCA 0D:BDBA: 49 06     EOR #$06
 - - - - - - 0x037DCC 0D:BDBC: D0 27     BNE bra_BDE5
@@ -7003,8 +7070,16 @@ bra_BDEB:
 - - - - - - 0x037DFD 0D:BDED: 4C 95 88  JMP loc_8895
 
 
-; bzg garbage
-- - - - - - 0x037E00 0D:BDF0: FF        .byte $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF, $FF   ; 
+
+loc_проверка_нахождения_в_углу:
+                                        LDA ram_obj_pos_X_lo,X
+                                        CMP #$E7
+                                        BCS bra_BDEC
+                                        CMP #$19
+                                        RTS
+bra_BDEC:
+                                        CLC
+                                        RTS
 
 
 
