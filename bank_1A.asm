@@ -6097,8 +6097,18 @@ bra_A21E:
 - - - - - - 0x036233 0D:A223: D0 62     BNE bra_A287   ; jmp
 bra_A225:
 C - - - - - 0x036235 0D:A225: BD 50 05  LDA ram_obj_id,X ; 0550 0551 
-C - - - - - 0x036238 0D:A228: C9 06     CMP #$06
+C - - - - - 0x036238 0D:A228: C9 06     CMP #$06    ; con_fighter_shred
+                                        BEQ bra_A226
+                                        CMP #$04    ; con_fighter_casey
 C - - - - - 0x03623A 0D:A22A: D0 5E     BNE bra_A28A
+                                        LDA ram_obj_0520,X
+                                        CMP #con_plr_state_делает_суперку
+                                        BNE bra_A28A
+                                        LDA ram_0638
+                                        CMP #$10
+                                        BCC bra_A28A
+                                        BCS bra_A285
+bra_A226:
 - - - - - - 0x03623C 0D:A22C: 20 B4 A4  JSR sub_A4B4
 - - - - - - 0x03623F 0D:A22F: D0 36     BNE bra_A267
 - - - - - - 0x036241 0D:A231: B9 20 05  LDA ram_obj_0520,Y

@@ -1845,9 +1845,9 @@ sub_B865:
 C - - - - - 0x02F875 0B:B865: FE 40 05  INC ram_obj_0540,X ; 0540 0541 
 sub_B868:
 C - - - - - 0x02F878 0B:B868: B5 91     LDA ram_btn_hold,X
-C - - - - - 0x02F87A 0B:B86A: C9 80     CMP #con_btn_A
-C - - - - - 0x02F87C 0B:B86C: 90 03     BCC bra_B871_RTS
-; bzk bug? хз зачем нужен этот адрес, но надо ли ему кнопки?
+                                        ORA ram_btn_press,X
+                                        BPL bra_B871_RTS
+; запись в этот адрес означает выполнение длинного песка
 C - - - - - 0x02F87E 0B:B86E: 9D A0 04  STA ram_obj_spd_Y_hi,X ; 04A0 04A1 
 bra_B871_RTS:
 C - - - - - 0x02F881 0B:B871: 60        RTS
