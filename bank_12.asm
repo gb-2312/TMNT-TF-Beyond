@@ -5933,7 +5933,7 @@ C - - - - - 0x0263D1 09:A3C1: 90 9B     BCC bra_A35E
                                         CMP #con_0612_черепаха_рука_антиэйр
                                         BNE bra_A3AD
                                         LDA #$CD
-                                        BNE bra_A3AC
+                                        BNE bra_A3AC    ; jmp
 bra_A3AD:
 C - - - - - 0x0263D3 09:A3C3: A9 14     LDA #$14
 C - - - - - 0x0263D5 09:A3C5: 9D A0 04  STA ram_obj_spd_Y_hi,X ; 04A3 

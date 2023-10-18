@@ -6107,7 +6107,7 @@ C - - - - - 0x03623A 0D:A22A: D0 5E     BNE bra_A28A
                                         LDA ram_0638
                                         CMP #$10
                                         BCC bra_A28A
-                                        BCS bra_A285
+                                        BCS bra_A285    ; jmp
 bra_A226:
 - - - - - - 0x03623C 0D:A22C: 20 B4 A4  JSR sub_A4B4
 - - - - - - 0x03623F 0D:A22F: D0 36     BNE bra_A267
@@ -6517,7 +6517,7 @@ C - - - - - 0x036588 0D:A578: BD 50 05  LDA ram_obj_id,X ; 0550 0551
                                         BNE bra_A571
                                         LDA ram_obj_0520,Y
                                         CMP #con_plr_state_делает_суперку
-                                        BEQ bra_casey_ai_block
+                                        BEQ bra_A571_casey_ai_блок
                                         CMP #con_plr_state_получает_урон
                                         BEQ bra_A547_RTS
                                         CMP #con_plr_state_брошен_соперником
@@ -6526,62 +6526,62 @@ C - - - - - 0x036588 0D:A578: BD 50 05  LDA ram_obj_id,X ; 0550 0551
                                         BEQ bra_A570
                                         LDA ram_obj_id,Y
                                         CMP #$06    ; con_fighter_shred
-                                        BEQ bra_casey_ai_sidit
+                                        BEQ bra_A571_casey_ai_сидит
                                         CMP #$05    ; con_fighter_hot
                                         BNE bra_A56F
                                         LDA ram_obj_0520,Y
                                         CMP #con_plr_state_сидит
-                                        BEQ bra_casey_ai_sidit
-                                        BNE bra_casey_ai_zhdet
+                                        BEQ bra_A571_casey_ai_сидит
+                                        BNE bra_A571_casey_ai_ждет
 bra_A56F:
                                         LDA ram_plr_индекс_атаки,Y
                                         CMP #con_0612_черепаха_деш_ногой
-                                        BEQ bra_casey_ai_block
-                                        JSR loc_проверка_нахождения_в_углу
-                                        BCC bra_casey_ai_brosok
+                                        BEQ bra_A571_casey_ai_блок
+                                        JSR loc_BDEE_проверка_нахождения_в_углу
+                                        BCC bra_A571_casey_ai_бросок
                                         LDA ram_0638
                                         CMP #$20
-                                        BCS bra_casey_ai_brosok
+                                        BCS bra_A571_casey_ai_бросок
                                         LDA ram_plr_062C,X
-                                        BNE bra_casey_ai_block
+                                        BNE bra_A571_casey_ai_блок
                                         LDA ram_plr_индекс_атаки,Y
                                         CMP #con_0612_черепаха_рука_сидя
-                                        BEQ bra_casey_ai_pesok
+                                        BEQ bra_A571_casey_ai_песок
                                         CMP #con_0612_черепаха_нога_дальняя_обычная
-                                        BEQ bra_casey_ai_pesok
+                                        BEQ bra_A571_casey_ai_песок
                                         LDA ram_obj_0520,Y
                                         CMP #con_plr_state_сидит
-                                        BEQ bra_casey_ai_brosok
+                                        BEQ bra_A571_casey_ai_бросок
                                         LDA ram_plr_индекс_атаки,X
                                         CMP #con_0612_casey_нога_дальняя
-                                        BNE bra_casey_ai_noga
+                                        BNE bra_A571_casey_ai_нога
 bra_A570:
                                         LDA ram_obj_spd_Z_hi,Y
-                                        BPL bra_casey_ai_brosok
+                                        BPL bra_A571_casey_ai_бросок
                                         CMP #$FB
-                                        BCS bra_casey_ai_block
-bra_casey_ai_kluxa:
+                                        BCS bra_A571_casey_ai_блок
+bra_A571_casey_ai_клюшка:
                                         LDA #con_шаблон_ai_1D
-                                        .byte $2C
-bra_casey_ai_brosok:
+                                        .byte $2C   ; BIT
+bra_A571_casey_ai_бросок:
                                         LDA #con_шаблон_ai_13
-                                        .byte $2C
-bra_casey_ai_noga:
+                                        .byte $2C   ; BIT
+bra_A571_casey_ai_нога:
                                         LDA #con_шаблон_ai_17
-                                        .byte $2C
-bra_casey_ai_ruka:
+                                        .byte $2C   ; BIT
+bra_A571_casey_ai_рука:
                                         LDA #con_шаблон_ai_10
-                                        .byte $2C
-bra_casey_ai_zhdet:
+                                        .byte $2C   ; BIT
+bra_A571_casey_ai_ждет:
                                         LDA #con_шаблон_ai_0A
-                                        .byte $2C
-bra_casey_ai_sidit:
+                                        .byte $2C   ; BIT
+bra_A571_casey_ai_сидит:
                                         LDA #con_шаблон_ai_02
-                                        .byte $2C
-bra_casey_ai_pesok:
+                                        .byte $2C   ; BIT
+bra_A571_casey_ai_песок:
                                         LDA #con_шаблон_ai_3A
-                                        .byte $2C
-bra_casey_ai_block:
+                                        .byte $2C   ; BIT
+bra_A571_casey_ai_блок:
                                         LDA #con_шаблон_ai_01
                                         JMP loc_A65C
 bra_A571:
@@ -6755,7 +6755,7 @@ bra_A6A8:
 - - - - - - 0x0366B5 0D:A6A5: C9 07     CMP #con_0612_черепаха_нога_дальняя_обычная
 - - - - - - 0x0366B7 0D:A6A7: F0 50     BEQ bra_A6F9
 bra_A6A9:
-                                        JSR loc_проверка_нахождения_в_углу
+                                        JSR loc_BDEE_проверка_нахождения_в_углу
                                         BCC bra_A6EB
 - - - - - - 0x0366C4 0D:A6B4: B9 91 00  LDA ram_btn_hold,Y
 - - - - - - 0x0366C7 0D:A6B7: 29 08     AND #con_btn_Up
@@ -7047,7 +7047,7 @@ C - - - - - 0x037D9F 0D:BD8F: D0 51     BNE bra_BDE2
 bra_BDA8:
 - - - - - - 0x037DB8 0D:BDA8: C9 06     CMP #$06
 - - - - - - 0x037DBA 0D:BDAA: 90 13     BCC bra_BDBF
-                                        JSR loc_проверка_нахождения_в_углу
+                                        JSR loc_BDEE_проверка_нахождения_в_углу
                                         BCC bra_BDBF
 - - - - - - 0x037DC7 0D:BDB7: BD C0 04  LDA ram_obj_04C0,X
 - - - - - - 0x037DCA 0D:BDBA: 49 06     EOR #$06
@@ -7081,7 +7081,7 @@ bra_BDEB:
 
 
 
-loc_проверка_нахождения_в_углу:
+loc_BDEE_проверка_нахождения_в_углу:
                                         LDA ram_obj_pos_X_lo,X
                                         CMP #$E7
                                         BCS bra_BDEC
