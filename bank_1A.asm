@@ -6027,7 +6027,7 @@ tbl_A195:
 
 sub_A1A6:
 - - - - - - 0x0361B6 0D:A1A6: AD 38 06  LDA ram_0638
-- - - - - - 0x0361B9 0D:A1A9: C9 46     CMP #con_колво_шаблонов_ai
+- - - - - - 0x0361B9 0D:A1A9: C9 46     CMP #$46
 - - - - - - 0x0361BB 0D:A1AB: B0 11     BCS bra_A1BE_RTS
 sub_A1AD:
 C - - - - - 0x0361BD 0D:A1AD: BD 40 04  LDA ram_obj_pos_X_lo,X ; 0440 0441 
