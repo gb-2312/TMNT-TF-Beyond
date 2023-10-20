@@ -6029,7 +6029,7 @@ sub_A1A6:
 - - - - - - 0x0361B6 0D:A1A6: AD 38 06  LDA ram_0638
 - - - - - - 0x0361B9 0D:A1A9: C9 46     CMP #$46
 - - - - - - 0x0361BB 0D:A1AB: B0 11     BCS bra_A1BE_RTS
-sub_A1AD:
+sub_A1AD_проверка_за_спиной_ли_перс:
 C - - - - - 0x0361BD 0D:A1AD: BD 40 04  LDA ram_obj_pos_X_lo,X ; 0440 0441 
 C - - - - - 0x0361C0 0D:A1B0: D9 40 04  CMP ram_obj_pos_X_lo,Y ; 0440 0441 
 C - - - - - 0x0361C3 0D:A1B3: BD 10 05  LDA ram_obj_spr_flip,X ; 0510 0511 
@@ -6060,7 +6060,7 @@ C - - - - - 0x0361ED 0D:A1DD: 19 62 05  ORA ram_0562,Y ; 0562 0563
 C - - - - - 0x0361F0 0D:A1E0: 19 64 05  ORA ram_0564,Y ; 0564 0565 
 C - - - - - 0x0361F3 0D:A1E3: 19 80 05  ORA ram_obj_0580,Y ; 0580 0581 
 C - - - - - 0x0361F6 0D:A1E6: D0 09     BNE bra_A1F1_RTS
-C - - - - - 0x0361F8 0D:A1E8: 20 AD A1  JSR sub_A1AD
+C - - - - - 0x0361F8 0D:A1E8: 20 AD A1  JSR sub_A1AD_проверка_за_спиной_ли_перс
 C - - - - - 0x0361FB 0D:A1EB: D0 04     BNE bra_A1F1_RTS
 ; con_btn_Right     con_btn_Left
 C - - - - - 0x0361FD 0D:A1ED: 69 01     ADC #$01
@@ -6115,7 +6115,7 @@ bra_A226:
 - - - - - - 0x036244 0D:A234: C9 08     CMP #con_plr_state_делает_суперку
 - - - - - - 0x036246 0D:A236: D0 1E     BNE bra_A256
 - - - - - - 0x036248 0D:A238: B9 50 05  LDA ram_obj_id,Y
-- - - - - - 0x03624B 0D:A23B: D0 03     BNE bra_A240
+- - - - - - 0x03624B 0D:A23B: D0 03     BNE bra_A240    ; if not con_fighter_leo
 - - - - - - 0x03624D 0D:A23D: 4C 56 A4  JMP loc_A456
 bra_A240:
 - - - - - - 0x036251 0D:A241: C9 04     CMP #$04
@@ -6170,14 +6170,14 @@ bra_A2A1:
 loc_A2A1:
 C - - - - - 0x0362B1 0D:A2A1: BC 20 05  LDY ram_obj_0520,X ; 0520 0521 
 C - - - - - 0x0362B4 0D:A2A4: C0 0A     CPY #$0A
-C - - - - - 0x0362B6 0D:A2A6: F0 26     BEQ bra_A2CE
+C - - - - - 0x0362B6 0D:A2A6: F0 26     BEQ bra_A2CE_выход_ai_из_песка_нокдауна_и_кусания
 C - - - - - 0x0362B8 0D:A2A8: C0 04     CPY #$04
-C - - - - - 0x0362BA 0D:A2AA: F0 22     BEQ bra_A2CE
+C - - - - - 0x0362BA 0D:A2AA: F0 22     BEQ bra_A2CE_выход_ai_из_песка_нокдауна_и_кусания
 C - - - - - 0x0362BC 0D:A2AC: C0 03     CPY #$03
 C - - - - - 0x0362BE 0D:A2AE: D0 2B     BNE bra_A2DB
 C - - - - - 0x0362C0 0D:A2B0: BD C0 04  LDA ram_obj_04C0,X ; 04C0 04C1 
 C - - - - - 0x0362C3 0D:A2B3: C9 08     CMP #$08
-C - - - - - 0x0362C5 0D:A2B5: F0 17     BEQ bra_A2CE
+C - - - - - 0x0362C5 0D:A2B5: F0 17     BEQ bra_A2CE_выход_ai_из_песка_нокдауна_и_кусания
 C - - - - - 0x0362C7 0D:A2B7: C9 07     CMP #$07
 C - - - - - 0x0362C9 0D:A2B9: F0 08     BEQ bra_A2C3
 C - - - - - 0x0362CB 0D:A2BB: C9 05     CMP #$05
@@ -6189,7 +6189,7 @@ C - - - - - 0x0362D3 0D:A2C3: BC DE 06  LDY ram_plr_06DE,X ; 06DE 06DF
 C - - - - - 0x0362D6 0D:A2C6: A9 01     LDA #con_шаблон_ai_01
 C - - - - - 0x0362D8 0D:A2C8: 9D C0 06  STA ram_шаблон_ai,X
 C - - - - - 0x0362DB 0D:A2CB: 20 7C A3  JSR sub_A374
-bra_A2CE:
+bra_A2CE_выход_ai_из_песка_нокдауна_и_кусания:
 C - - - - - 0x0362DE 0D:A2CE: BD 50 05  LDA ram_obj_id,X ; 0550 0551 
 C - - - - - 0x0362E1 0D:A2D1: 49 06     EOR #$06
 C - - - - - 0x0362E3 0D:A2D3: F0 5A     BEQ bra_A32F
@@ -6208,10 +6208,10 @@ C - - - - - 0x0362FD 0D:A2ED: B9 62 05  LDA ram_0562,Y ; 0562 0563
 C - - - - - 0x036300 0D:A2F0: 19 64 05  ORA ram_0564,Y ; 0564 0565 
 C - - - - - 0x036303 0D:A2F3: 19 80 05  ORA ram_obj_0580,Y ; 0580 0581 
 C - - - - - 0x036306 0D:A2F6: D0 51     BNE bra_A349
-C - - - - - 0x036308 0D:A2F8: 20 AD A1  JSR sub_A1AD
+C - - - - - 0x036308 0D:A2F8: 20 AD A1  JSR sub_A1AD_проверка_за_спиной_ли_перс
 C - - - - - 0x03630B 0D:A2FB: D0 4C     BNE bra_A349
 C - - - - - 0x03630D 0D:A2FD: BD 20 05  LDA ram_obj_0520,X ; 0520 0521 
-C - - - - - 0x036310 0D:A300: F0 14     BEQ bra_A316_ограничение_броска    ; if con_plr_state_на_земле
+C - - - - - 0x036310 0D:A300: F0 14     BEQ bra_A316_ограничение_ai_броска    ; if con_plr_state_на_земле
 C - - - - - 0x036312 0D:A302: C9 01     CMP #con_plr_state_в_прыжке
 C - - - - - 0x036314 0D:A304: F0 2E     BEQ bra_A334
 C - - - - - 0x036316 0D:A306: C9 07     CMP #con_plr_state_сидит
@@ -6221,7 +6221,7 @@ C - - - - - 0x03631D 0D:A30D: D0 3A     BNE bra_A349
 C - - - - - 0x03631F 0D:A30F: B9 00 04  LDA ram_obj_anim_id,Y
 C - - - - - 0x036322 0D:A312: C9 9A     CMP #$9A
 C - - - - - 0x036324 0D:A314: F0 19     BEQ bra_A32F
-bra_A316_ограничение_броска:
+bra_A316_ограничение_ai_броска:
 C - - - - - 0x036326 0D:A316: BD 50 05  LDA ram_obj_id,X ; 0550 0551 
 C - - - - - 0x036329 0D:A319: 49 06     CMP #$04
 C - - - - - 0x03632B 0D:A31B: F0 09     BCS bra_A326
@@ -6260,7 +6260,7 @@ C - - - - - 0x036364 0D:A354: 90 4B     BCC bra_A3A1_RTS
 C - - - - - 0x036366 0D:A356: B9 54 05  LDA ram_obj_id + $04,Y
 C - - - - - 0x036369 0D:A359: C9 30     CMP #con_0552_special_shred_волна
 C - - - - - 0x03636B 0D:A35B: D0 13     BNE bra_A370
-- - - - - - 0x03636D 0D:A35D: 20 AD A1  JSR sub_A1AD
+- - - - - - 0x03636D 0D:A35D: 20 AD A1  JSR sub_A1AD_проверка_за_спиной_ли_перс
 - - - - - - 0x036370 0D:A360: D0 3F     BNE bra_A3A1_RTS
 - - - - - - 0x036372 0D:A362: AD 38 06  LDA ram_0638
 - - - - - - 0x036375 0D:A365: C9 64     CMP #$64
@@ -7141,7 +7141,7 @@ C - - - - - 0x037EA2 0D:BE92: AD 25 01  LDA ram_option_difficulty
 C - - - - - 0x037EA5 0D:BE95: C9 03     CMP #$03
 C - - - - - 0x037EA7 0D:BE97: 90 4B     BCC bra_BEE4_RTS
 - - - - - - 0x037EA9 0D:BE99: BC DE 06  LDY ram_plr_06DE,X
-- - - - - - 0x037EAC 0D:BE9C: 20 AD A1  JSR sub_A1AD
+- - - - - - 0x037EAC 0D:BE9C: 20 AD A1  JSR sub_A1AD_проверка_за_спиной_ли_перс
 - - - - - - 0x037EAF 0D:BE9F: D0 43     BNE bra_BEE4_RTS
 - - - - - - 0x037EB1 0D:BEA1: 20 42 BF  JSR sub_BF42
 - - - - - - 0x037EB4 0D:BEA4: D0 04     BNE bra_BEAA
@@ -7258,7 +7258,7 @@ C - - - - - 0x037F7B 0D:BF6B: D0 2D     BNE bra_BF9A
 - - - - - - 0x037F7D 0D:BF6D: BD 10 05  LDA ram_obj_spr_flip,X
 - - - - - - 0x037F80 0D:BF70: D9 10 05  CMP ram_obj_spr_flip,Y
 - - - - - - 0x037F83 0D:BF73: F0 24     BEQ bra_BF99_RTS
-- - - - - - 0x037F85 0D:BF75: 20 AD A1  JSR sub_A1AD
+- - - - - - 0x037F85 0D:BF75: 20 AD A1  JSR sub_A1AD_проверка_за_спиной_ли_перс
 - - - - - - 0x037F88 0D:BF78: D0 20     BNE bra_BF9A
 - - - - - - 0x037F8A 0D:BF7A: BD 20 05  LDA ram_obj_0520,X
 - - - - - - 0x037F8D 0D:BF7D: F0 04     BEQ bra_BF83    ; if con_plr_state_на_земле
