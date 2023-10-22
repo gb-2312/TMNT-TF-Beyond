@@ -6514,77 +6514,87 @@ C - - - - - 0x036586 0D:A576: 90 61     BCC bra_A547_RTS
 - - - - - - 0x03658F 0D:A57F: BC DE 06  LDY ram_plr_06DE,X
 C - - - - - 0x036588 0D:A578: BD 50 05  LDA ram_obj_id,X ; 0550 0551 
                                         CMP #$04    ; con_fighter_casey
-                                        BNE bra_A571
+                                        BEQ bra_A56F
+                                        JMP loc_A574_shred_ai
+bra_A56F:
                                         LDA ram_obj_0520,Y
                                         CMP #con_plr_state_делает_суперку
-                                        BEQ bra_A571_casey_ai_блок
+                                        BEQ bra_A573_casey_ai_блок
                                         CMP #con_plr_state_получает_урон
                                         BEQ bra_A547_RTS
                                         CMP #con_plr_state_брошен_соперником
                                         BEQ bra_A547_RTS
+                                        CMP #con_plr_state_нокаут
+                                        BNE bra_A570
+                                        LDA ram_0638
+                                        BEQ bra_A573_casey_ai_бросок_2
+bra_A570:
                                         LDA ram_plr_флаг_индекса_атаки,Y
-                                        BEQ bra_A570
+                                        BEQ bra_A572
                                         LDA ram_obj_id,Y
                                         CMP #$06    ; con_fighter_shred
-                                        BEQ bra_A571_casey_ai_сидит
+                                        BEQ bra_A573_casey_ai_сидит
                                         CMP #$05    ; con_fighter_hot
-                                        BNE bra_A56F
+                                        BNE bra_A571
                                         LDA ram_obj_0520,Y
                                         CMP #con_plr_state_сидит
-                                        BEQ bra_A571_casey_ai_сидит
-                                        BNE bra_A571_casey_ai_ждет
-bra_A56F:
+                                        BEQ bra_A573_casey_ai_сидит
+                                        BNE bra_A573_casey_ai_ждет
+bra_A571:
                                         LDA ram_plr_индекс_атаки,Y
                                         CMP #con_0612_черепаха_деш_ногой
-                                        BEQ bra_A571_casey_ai_блок
+                                        BEQ bra_A573_casey_ai_блок
                                         JSR loc_BDEE_проверка_нахождения_в_углу
-                                        BCC bra_A571_casey_ai_бросок
+                                        BCC bra_A573_casey_ai_бросок
                                         LDA ram_0638
                                         CMP #$20
-                                        BCS bra_A571_casey_ai_бросок
+                                        BCS bra_A573_casey_ai_бросок
                                         LDA ram_plr_062C,X
-                                        BNE bra_A571_casey_ai_блок
+                                        BNE bra_A573_casey_ai_блок
                                         LDA ram_plr_индекс_атаки,Y
                                         CMP #con_0612_черепаха_рука_сидя
-                                        BEQ bra_A571_casey_ai_песок
+                                        BEQ bra_A573_casey_ai_песок
                                         CMP #con_0612_черепаха_нога_дальняя_обычная
-                                        BEQ bra_A571_casey_ai_песок
+                                        BEQ bra_A573_casey_ai_песок
                                         LDA ram_obj_0520,Y
                                         CMP #con_plr_state_сидит
-                                        BEQ bra_A571_casey_ai_бросок
+                                        BEQ bra_A573_casey_ai_бросок
                                         LDA ram_plr_индекс_атаки,X
                                         CMP #con_0612_casey_нога_дальняя
-                                        BNE bra_A571_casey_ai_нога
-bra_A570:
+                                        BNE bra_A573_casey_ai_нога
+bra_A572:
                                         LDA ram_obj_spd_Z_hi,Y
-                                        BPL bra_A571_casey_ai_бросок
+                                        BPL bra_A573_casey_ai_бросок
                                         CMP #$FB
-                                        BCS bra_A571_casey_ai_блок
-bra_A571_casey_ai_клюшка:
+                                        BCS bra_A573_casey_ai_блок
+bra_A573_casey_ai_клюшка:
                                         LDA #con_шаблон_ai_1D
                                         .byte $2C   ; BIT
-bra_A571_casey_ai_бросок:
+bra_A573_casey_ai_бросок:
                                         LDA #con_шаблон_ai_13
                                         .byte $2C   ; BIT
-bra_A571_casey_ai_нога:
+bra_A573_casey_ai_бросок_2:
+                                        LDA #con_шаблон_ai_40
+                                        .byte $2C   ; BIT
+bra_A573_casey_ai_нога:
                                         LDA #con_шаблон_ai_17
                                         .byte $2C   ; BIT
-bra_A571_casey_ai_рука:
+bra_A573_casey_ai_рука:
                                         LDA #con_шаблон_ai_10
                                         .byte $2C   ; BIT
-bra_A571_casey_ai_ждет:
+bra_A573_casey_ai_ждет:
                                         LDA #con_шаблон_ai_0A
                                         .byte $2C   ; BIT
-bra_A571_casey_ai_сидит:
+bra_A573_casey_ai_сидит:
                                         LDA #con_шаблон_ai_02
                                         .byte $2C   ; BIT
-bra_A571_casey_ai_песок:
+bra_A573_casey_ai_песок:
                                         LDA #con_шаблон_ai_3A
                                         .byte $2C   ; BIT
-bra_A571_casey_ai_блок:
+bra_A573_casey_ai_блок:
                                         LDA #con_шаблон_ai_01
                                         JMP loc_A65C
-bra_A571:
+loc_A574_shred_ai:
 C - - - - - 0x03658B 0D:A57B: C9 06     CMP #$06    ; con_fighter_shred
 C - - - - - 0x03658D 0D:A57D: D0 5A     BNE bra_A5D9_RTS
 - - - - - - 0x036592 0D:A582: B9 12 06  LDA ram_plr_индекс_атаки,Y
