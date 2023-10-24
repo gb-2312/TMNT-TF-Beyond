@@ -6518,16 +6518,22 @@ C - - - - - 0x036588 0D:A578: BD 50 05  LDA ram_obj_id,X ; 0550 0551
                                         JMP loc_A574_shred_ai
 bra_A56F:
                                         LDA ram_obj_0520,Y
-                                        CMP #con_plr_state_делает_суперку
-                                        BEQ bra_A573_casey_ai_блок
                                         CMP #con_plr_state_получает_урон
                                         BEQ bra_A547_RTS
                                         CMP #con_plr_state_брошен_соперником
                                         BEQ bra_A547_RTS
-                                        CMP #con_plr_state_нокаут
-                                        BNE bra_A570
+                                        CMP #con_plr_state_делает_суперку
+                                        BEQ bra_A573_casey_ai_блок
+                                        LDA ram_obj_0520,X
+                                        CMP #con_plr_state_делает_суперку
+                                        BCC bra_A570
+                                        CMP #con_plr_state_брошен_соперником
+                                        BCS bra_A570
                                         LDA ram_0638
-                                        BEQ bra_A573_casey_ai_бросок_2
+                                        CMP #$09
+                                        BCS bra_A570
+                                        JSR sub_A1AD_проверка_за_спиной_ли_перс
+                                        BNE bra_A573_casey_ai_бросок_2
 bra_A570:
                                         LDA ram_plr_флаг_индекса_атаки,Y
                                         BEQ bra_A572
@@ -6588,11 +6594,11 @@ bra_A573_casey_ai_ждет:
 bra_A573_casey_ai_сидит:
                                         LDA #con_шаблон_ai_02
                                         .byte $2C   ; BIT
-bra_A573_casey_ai_песок:
-                                        LDA #con_шаблон_ai_3A
-                                        .byte $2C   ; BIT
 bra_A573_casey_ai_блок:
                                         LDA #con_шаблон_ai_01
+                                        .byte $2C   ; BIT
+bra_A573_casey_ai_песок:
+                                        LDA #con_шаблон_ai_3A
                                         JMP loc_A65C
 loc_A574_shred_ai:
 C - - - - - 0x03658B 0D:A57B: C9 06     CMP #$06    ; con_fighter_shred
