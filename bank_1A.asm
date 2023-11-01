@@ -6218,8 +6218,9 @@ C - - - - - 0x036316 0D:A306: C9 07     CMP #con_plr_state_сидит
 C - - - - - 0x036318 0D:A308: D0 3F     BNE bra_A349
 C - - - - - 0x03631A 0D:A30A: B9 50 05  LDA ram_obj_id,Y ; 0550 0551 
 C - - - - - 0x03631D 0D:A30D: D0 3A     BNE bra_A349
-C - - - - - 0x03631F 0D:A30F: B9 00 04  LDA ram_obj_anim_id,Y
-C - - - - - 0x036322 0D:A312: C9 9A     CMP #$9A
+                                        LDA ram_plr_индекс_атаки,Y
+                                        ORA ram_plr_флаг_индекса_атаки,Y
+                                        CMP #con_0612_черепаха_нога_сидя_leo + $80
 C - - - - - 0x036324 0D:A314: F0 19     BEQ bra_A32F
 bra_A316_ограничение_ai_броска:
 C - - - - - 0x036326 0D:A316: BD 50 05  LDA ram_obj_id,X ; 0550 0551 
@@ -6369,11 +6370,8 @@ C - - - - - 0x03643A 0D:A42A: 60        RTS
 
 loc_A456:
 - - - - - - 0x036466 0D:A456: AD 38 06  LDA ram_0638
-- - - - - - 0x036469 0D:A459: C9 12     CMP #$12
+- - - - - - 0x036469 0D:A459: C9 12     CMP #$16
 - - - - - - 0x03646B 0D:A45B: B0 15     BCS bra_A472
-- - - - - - 0x03646D 0D:A45D: B9 10 04  LDA ram_obj_pos_Y_lo,Y
-- - - - - - 0x036470 0D:A460: C9 B0     CMP #$B0
-- - - - - - 0x036472 0D:A462: B0 0E     BCS bra_A472
 - - - - - - 0x036474 0D:A464: B9 B0 04  LDA ram_obj_spd_Y_lo,Y
 - - - - - - 0x036477 0D:A467: C9 04     CMP #$04
 - - - - - - 0x036479 0D:A469: 90 07     BCC bra_A472
@@ -6870,6 +6868,9 @@ C - - - - - 0x036775 0D:A765: 90 31     BCC bra_A798
                                         LDA ram_plr_062C,X
                                         CMP #$12
                                         BCS bra_A78F
+                                        LDA ram_obj_04C0,X
+                                        CMP #$05
+                                        BEQ bra_A78F
 bra_A78D:
                                         LDA ram_0638
 - - - - - - 0x03678C 0D:A77C: D9 FE BF  CMP tbl_BFFE,Y
