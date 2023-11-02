@@ -749,7 +749,7 @@ tbl_AA90_автобаланс:
 - D 1 - - - 0x02EAB8 0B:AAA8: 00        .byte $00, $00, $01, $00, $01, $FE, $FC, $00   ; 03 con_fighter_don
 - D 1 - - - 0x02EAC0 0B:AAB0: 00        .byte $00, $00, $01, $00, $01, $FE, $FD, $00   ; 04 con_fighter_casey
 - D 1 - - - 0x02EAC8 0B:AAB8: 01        .byte $01, $01, $02, $02, $01, $FE, $FE, $01   ; 05 con_fighter_hot
-- D 1 - - - 0x02EAD0 0B:AAC0: 02        .byte $02, $02, $03, $03, $03, $00, $FE, $02   ; 06 con_fighter_shred
+- D 1 - - - 0x02EAD0 0B:AAC0: 02        .byte $02, $02, $04, $03, $04, $00, $FE, $02   ; 06 con_fighter_shred
 - - - - - - 0x02EAD8 0B:AAC8: 00        .byte $00, $00, $01, $00, $01, $FE, $FC, $00   ; 07 placeholder
 
 
