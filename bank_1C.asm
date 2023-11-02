@@ -1721,9 +1721,9 @@ C - - - - - 0x038942 0E:8932: D0 02     BNE bra_8936
 C - - - - - 0x038944 0E:8934: A9 FF     LDA #$FF
 bra_8936:
 C - - - - - 0x038946 0E:8936: 75 A0     ADC ram_strength,X
-C - - - - - 0x038948 0E:8938: C9 FC     CMP #$FC
+C - - - - - 0x038948 0E:8938: C9 FC     CMP #$FB
 C - - - - - 0x03894A 0E:893A: F0 0A     BEQ bra_8946
-C - - - - - 0x03894C 0E:893C: C9 04     CMP #$04
+C - - - - - 0x03894C 0E:893C: C9 04     CMP #$05
 C - - - - - 0x03894E 0E:893E: F0 06     BEQ bra_8946
 C - - - - - 0x038950 0E:8940: 95 A0     STA ram_strength,X
 C - - - - - 0x038952 0E:8942: A9 25     LDA #con_0x03F6AD_25
@@ -1826,18 +1826,6 @@ C - - - - - 0x0389E1 0E:89D1: 0A        ASL
 C - - - - - 0x0389E2 0E:89D2: 0A        ASL
 C - - - - - 0x0389E3 0E:89D3: 0A        ASL
 C - - - - - 0x0389E4 0E:89D4: 7D 32 8A  ADC tbl_8A32,X
-                                        CPX #$00
-                                        BEQ bra_89D5
-                                        CMP #$A9
-                                        BCC bra_89D6
-bra_89D5:
-                                        CMP #$21
-                                        BCS bra_89D7
-                                        LDA #$21
-                                        .byte $2C   ; BIT
-bra_89D6:
-                                        LDA #$A9
-bra_89D7:
 C - - - - - 0x0389E7 0E:89D7: 9D 40 04  STA ram_obj_pos_X_lo,X ; 0440 0441 
 C - - - - - 0x0389EA 0E:89DA: A9 57     LDA #$57
 C - - - - - 0x0389EC 0E:89DC: 9D 10 04  STA ram_obj_pos_Y_lo,X ; 0410 0411 
