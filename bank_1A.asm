@@ -6639,7 +6639,7 @@ bra_A5C4:
 - - - - - - 0x0365DB 0D:A5CB: F0 0C     BEQ bra_A5D9_RTS
 - - - - - - 0x0365DD 0D:A5CD: AD 38 06  LDA ram_0638
 - - - - - - 0x0365E0 0D:A5D0: C9 26     CMP #$26
-- - - - - - 0x0365E2 0D:A5D2: 90 77     BCC bra_A64B
+- - - - - - 0x0365E2 0D:A5D2: 90 77     BCC bra_A64B_ai_быстрое_мясо
 - - - - - - 0x0365E4 0D:A5D4: C9 2D     CMP #$2D
 - - - - - - 0x0365E6 0D:A5D6: 90 7F     BCC bra_A657
 ; 26-2C
@@ -6690,25 +6690,25 @@ bra_A617:
 - - - - - - 0x03663D 0D:A62D: AD 38 06  LDA ram_0638
 - - - - - - 0x036640 0D:A630: D0 07     BNE bra_A639
 - - - - - - 0x036642 0D:A632: B9 60 04  LDA ram_obj_spd_Z_hi,Y
-- - - - - - 0x036645 0D:A635: 30 1A     BMI bra_A651
-- - - - - - 0x036647 0D:A637: F0 18     BEQ bra_A651
+- - - - - - 0x036645 0D:A635: 30 1A     BMI bra_A651_медленное_мясо
+- - - - - - 0x036647 0D:A637: F0 18     BEQ bra_A651_медленное_мясо
 bra_A639:
 - - - - - - 0x036649 0D:A639: C9 10     CMP #$10
 - - - - - - 0x03664B 0D:A63B: B0 1A     BCS bra_A657
 - - - - - - 0x03664D 0D:A63D: B9 00 06  LDA ram_plr_0600,Y
 - - - - - - 0x036650 0D:A640: 29 02     AND #$02
-- - - - - - 0x036652 0D:A642: F0 07     BEQ bra_A64B
+- - - - - - 0x036652 0D:A642: F0 07     BEQ bra_A64B_ai_быстрое_мясо
 - - - - - - 0x036654 0D:A644: B9 60 04  LDA ram_obj_spd_Z_hi,Y
 - - - - - - 0x036657 0D:A647: C9 04     CMP #$04
 - - - - - - 0x036659 0D:A649: 90 03     BCC bra_A64E
-bra_A64B:
-loc_A64B_ai_мясо_шреда:
+bra_A64B_ai_быстрое_мясо:
+loc_A64B_ai_быстрое_мясо:
 - - - - - - 0x03665B 0D:A64B: A9 42     LDA #con_шаблон_ai_42
 - - - - - - 0x03665D 0D:A64D: 2C        .byte $2C   ; BIT
 bra_A64E:
 - - - - - - 0x03665E 0D:A64E: A9 0A     LDA #con_шаблон_ai_0A
 - - - - - - 0x036660 0D:A650: 2C        .byte $2C   ; BIT
-bra_A651:
+bra_A651_медленное_мясо:
 - - - - - - 0x036661 0D:A651: A9 24     LDA #con_шаблон_ai_24
 - - - - - - 0x036663 0D:A653: 2C        .byte $2C   ; BIT
 bra_A654:
@@ -6746,9 +6746,9 @@ loc_A663:
 - - - - - - 0x03668E 0D:A67E: F0 14     BEQ bra_A694
 - - - - - - 0x036690 0D:A680: A5 00     LDA ram_0000
 - - - - - - 0x036692 0D:A682: C9 84     CMP #con_0612_черепаха_рука_сидя + $80
-- - - - - - 0x036694 0D:A684: F0 C5     BEQ bra_A64B
+- - - - - - 0x036694 0D:A684: F0 C5     BEQ bra_A64B_ai_быстрое_мясо
 - - - - - - 0x036696 0D:A686: C9 90     CMP #con_0612_casey_рука_сидя + $80
-- - - - - - 0x036698 0D:A688: F0 C1     BEQ bra_A64B
+- - - - - - 0x036698 0D:A688: F0 C1     BEQ bra_A64B_ai_быстрое_мясо
 - - - - - - 0x03669A 0D:A68A: A5 28     LDA ram_random_1
 - - - - - - 0x03669C 0D:A68C: 29 03     AND #$03
 - - - - - - 0x03669E 0D:A68E: A8        TAY
@@ -6816,7 +6816,7 @@ bra_A6FC:
 - - - - - - 0x036716 0D:A706: C9 15     CMP #$15
 - - - - - - 0x036718 0D:A708: 90 03     BCC bra_A70D
 bra_A70A:
-- - - - - - 0x03671A 0D:A70A: 4C 4B A6  JMP loc_A64B_ai_мясо_шреда
+- - - - - - 0x03671A 0D:A70A: 4C 4B A6  JMP loc_A64B_ai_быстрое_мясо
 bra_A70D:
 - - - - - - 0x03671F 0D:A70F: 4C 5C A6  JMP loc_A573_ai_рука
 
