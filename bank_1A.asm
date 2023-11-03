@@ -6565,7 +6565,7 @@ bra_A571:
                                         BEQ bra_A573_casey_ai_бросок
                                         LDA ram_plr_индекс_атаки,X
                                         CMP #con_0612_casey_нога_дальняя
-                                        BNE bra_A573_casey_ai_нога
+                                        BNE bra_A573_ai_нога
 bra_A572:
                                         LDA ram_obj_spd_Z_hi,Y
                                         BPL bra_A573_casey_ai_бросок
@@ -6580,7 +6580,7 @@ bra_A573_casey_ai_бросок:
 bra_A573_casey_ai_бросок_2:
                                         LDA #con_шаблон_ai_40
                                         .byte $2C   ; BIT
-bra_A573_casey_ai_нога:
+bra_A573_ai_нога:
                                         LDA #con_шаблон_ai_17
                                         .byte $2C   ; BIT
 bra_A573_ai_рука:
@@ -6641,7 +6641,7 @@ bra_A5C4:
 - - - - - - 0x0365E0 0D:A5D0: C9 26     CMP #$26
 - - - - - - 0x0365E2 0D:A5D2: 90 77     BCC bra_A64B_ai_быстрое_мясо
 - - - - - - 0x0365E4 0D:A5D4: C9 2D     CMP #$2D
-- - - - - - 0x0365E6 0D:A5D6: 90 7F     BCC bra_A657
+- - - - - - 0x0365E6 0D:A5D6: 90 7F     BCC bra_A573_ai_нога
 ; 26-2C
 bra_A5D8:
 - - - - - - 0x0365E8 0D:A5D8: 8A        TXA
