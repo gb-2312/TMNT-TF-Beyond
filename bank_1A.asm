@@ -6583,7 +6583,8 @@ bra_A573_casey_ai_бросок_2:
 bra_A573_casey_ai_нога:
                                         LDA #con_шаблон_ai_17
                                         .byte $2C   ; BIT
-bra_A573_casey_ai_рука:
+bra_A573_ai_рука:
+loc_A573_ai_рука:
                                         LDA #con_шаблон_ai_10
                                         .byte $2C   ; BIT
 bra_A573_casey_ai_ждет:
@@ -6629,8 +6630,8 @@ bra_A5A3:
 - - - - - - 0x0365C8 0D:A5B8: B9 40 05  LDA ram_obj_0540,Y
 - - - - - - 0x0365CB 0D:A5BB: 49 03     EOR #$03
 - - - - - - 0x0365CD 0D:A5BD: D0 E1     BNE bra_A5A0
-- - - - - - 0x0365CF 0D:A5BF: 90 63     BCC bra_A624
-- - - - - - 0x0365D1 0D:A5C1: 4C 0D A7  JMP loc_A70D
+- - - - - - 0x0365CF 0D:A5BF: 90 63     BCS bra_A573_ai_рука
+                                        JMP loc_A65A_ai_бросок_0D
 bra_A5C4:
 - - - - - - 0x0365D4 0D:A5C4: C9 05     CMP #$05
 - - - - - - 0x0365D6 0D:A5C6: D0 11     BNE bra_A5D9_RTS
@@ -6682,7 +6683,6 @@ bra_A617:
 - - - - - - 0x03662E 0D:A61E: C9 E9     CMP #$E9
 - - - - - - 0x036630 0D:A620: B0 38     BCS bra_A65A
 - - - - - - 0x036632 0D:A622: C9 18     CMP #$18
-bra_A624:
 - - - - - - 0x036634 0D:A624: 90 34     BCC bra_A65A
 - - - - - - 0x036636 0D:A626: A9 42     LDA #con_шаблон_ai_42
 - - - - - - 0x036638 0D:A628: DD E6 06  CMP ram_plr_06E6,X
@@ -6702,7 +6702,7 @@ bra_A639:
 - - - - - - 0x036657 0D:A647: C9 04     CMP #$04
 - - - - - - 0x036659 0D:A649: 90 03     BCC bra_A64E
 bra_A64B:
-loc_A64B:
+loc_A64B_ai_мясо_шреда:
 - - - - - - 0x03665B 0D:A64B: A9 42     LDA #con_шаблон_ai_42
 - - - - - - 0x03665D 0D:A64D: 2C        .byte $2C   ; BIT
 bra_A64E:
@@ -6719,7 +6719,7 @@ bra_A657:
 - - - - - - 0x036667 0D:A657: A9 17     LDA #con_шаблон_ai_17
 - - - - - - 0x036669 0D:A659: 2C        .byte $2C   ; BIT
 bra_A65A:
-loc_A65A:
+loc_A65A_ai_бросок_0D:
 - - - - - - 0x03666A 0D:A65A: A9 0D     LDA #con_шаблон_ai_0D
 bra_A65C:
 loc_A65C:
@@ -6807,7 +6807,7 @@ bra_A6EB:
 - - - - - - 0x036705 0D:A6F5: 29 08     AND #$08
 - - - - - - 0x036707 0D:A6F7: F0 F0     BEQ bra_A6E9
 bra_A6F9:
-- - - - - - 0x036709 0D:A6F9: 4C 5A A6  JMP loc_A65A
+- - - - - - 0x036709 0D:A6F9: 4C 5A A6  JMP loc_A65A_ai_бросок_0D
 bra_A6FC:
 - - - - - - 0x03670C 0D:A6FC: 19 10 06  ORA ram_plr_флаг_индекса_атаки,Y
 - - - - - - 0x03670F 0D:A6FF: C9 81     CMP #con_0612_черепаха_нога_ближняя + $80
@@ -6816,11 +6816,9 @@ bra_A6FC:
 - - - - - - 0x036716 0D:A706: C9 15     CMP #$15
 - - - - - - 0x036718 0D:A708: 90 03     BCC bra_A70D
 bra_A70A:
-- - - - - - 0x03671A 0D:A70A: 4C 4B A6  JMP loc_A64B
+- - - - - - 0x03671A 0D:A70A: 4C 4B A6  JMP loc_A64B_ai_мясо_шреда
 bra_A70D:
-loc_A70D:
-- - - - - - 0x03671D 0D:A70D: A9 10     LDA #con_шаблон_ai_10
-- - - - - - 0x03671F 0D:A70F: 4C 5C A6  JMP loc_A65C
+- - - - - - 0x03671F 0D:A70F: 4C 5C A6  JMP loc_A573_ai_рука
 
 
 
