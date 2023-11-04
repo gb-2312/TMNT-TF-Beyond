@@ -1850,6 +1850,7 @@ C - - - - - 0x038A0B 0E:89FB: 90 09     BCC bra_8A06_RTS
 C - - - - - 0x038A0D 0E:89FD: A5 22     LDA ram_счетчик_кадров
 C - - - - - 0x038A0F 0E:89FF: 29 08     AND #$08
 C - - - - - 0x038A11 0E:8A01: D0 03     BNE bra_8A06_RTS
+; A = 00
 C - - - - - 0x038A13 0E:8A03: 8D 04 04  STA ram_obj_anim_id + $04
 bra_8A06_RTS:
 C - - - - - 0x038A16 0E:8A06: 60        RTS
