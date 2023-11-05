@@ -1724,7 +1724,9 @@ C - - - - - 0x038940 0E:8930: 29 01     AND #con_btn_Right
 C - - - - - 0x038942 0E:8932: D0 02     BNE bra_8936_right
 ; if left
 C - - - - - 0x038944 0E:8934: A9 FF     LDA #$FF
-bra_8936_right:   ; A = 01
+                                        .byte $2C   ; BIT
+bra_8936_right:
+                                        LDA #$01
                                         CLC
 C - - - - - 0x038946 0E:8936: 75 A0     ADC ram_strength,X
 C - - - - - 0x038948 0E:8938: C9 FC     CMP #$FB    ; min
