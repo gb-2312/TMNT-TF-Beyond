@@ -1702,41 +1702,43 @@ C - - J - - 0x03891E 0E:890E: A5 22     LDA ram_счетчик_кадров
 C - - - - - 0x038920 0E:8910: 20 AC 89  JSR sub_89AC_мерцание_текста_push_start
 C - - - - - 0x038923 0E:8913: A5 90     LDA ram_sum_btn_press
 C - - - - - 0x038925 0E:8915: 29 10     AND #con_btn_Start
-C - - - - - 0x038927 0E:8917: D0 53     BNE bra_896C
+C - - - - - 0x038927 0E:8917: D0 53     BNE bra_896C_завершение_выбора_опций
 C - - - - - 0x038929 0E:8919: A5 90     LDA ram_sum_btn_press
 C - - - - - 0x03892B 0E:891B: 29 0C     AND #con_btns_UD
-C - - - - - 0x03892D 0E:891D: F0 03     BEQ bra_8922
+C - - - - - 0x03892D 0E:891D: F0 03     BEQ bra_8922_не_переключать
+; переключение между выбором силы и выбором карты
 C - - - - - 0x03892F 0E:891F: EE 30 05  INC ram_obj_0530
-bra_8922:
+bra_8922_не_переключать:
 C - - - - - 0x038932 0E:8922: AD 30 05  LDA ram_obj_0530
 C - - - - - 0x038935 0E:8925: 4A        LSR
 C - - - - - 0x038936 0E:8926: B0 24     BCS bra_894C_выбор_карты
-; выбор strength
+; выбор силы (strength)
                                         LDA #$00
-                                        STA ram_0000    ; счетчик измененных strength
+                                        STA ram_0000    ; счетчик измененных сил
 C - - - - - 0x038938 0E:8928: A2 01     LDX #$01
 bra_892A_loop:
 C - - - - - 0x03893A 0E:892A: B5 8E     LDA ram_btn_press,X
 C - - - - - 0x03893C 0E:892C: 29 03     AND #con_btns_LR
-C - - - - - 0x03893E 0E:892E: F0 16     BEQ bra_8946
+C - - - - - 0x03893E 0E:892E: F0 16     BEQ bra_8946_не_менять_силу
 C - - - - - 0x038940 0E:8930: 29 01     AND #con_btn_Right
-C - - - - - 0x038942 0E:8932: D0 02     BNE bra_8936
+C - - - - - 0x038942 0E:8932: D0 02     BNE bra_8936_right
+; if left
 C - - - - - 0x038944 0E:8934: A9 FF     LDA #$FF
-bra_8936:   ; A = 01
+bra_8936_right:   ; A = 01
                                         CLC
 C - - - - - 0x038946 0E:8936: 75 A0     ADC ram_strength,X
-C - - - - - 0x038948 0E:8938: C9 FC     CMP #$FB
-C - - - - - 0x03894A 0E:893A: F0 0A     BEQ bra_8946
-C - - - - - 0x03894C 0E:893C: C9 04     CMP #$05
-C - - - - - 0x03894E 0E:893E: F0 06     BEQ bra_8946
+C - - - - - 0x038948 0E:8938: C9 FC     CMP #$FB    ; min
+C - - - - - 0x03894A 0E:893A: F0 0A     BEQ bra_8946_не_менять_силу
+C - - - - - 0x03894C 0E:893C: C9 04     CMP #$05    ; max
+C - - - - - 0x03894E 0E:893E: F0 06     BEQ bra_8946_не_менять_силу
 C - - - - - 0x038950 0E:8940: 95 A0     STA ram_strength,X
-                                        INC ram_0000    ; счетчик измененных strength
-bra_8946:
+                                        INC ram_0000    ; счетчик измененных сил
+bra_8946_не_менять_силу:
 C - - - - - 0x038956 0E:8946: CA        DEX
 C - - - - - 0x038957 0E:8947: 10 E1     BPL bra_892A_loop
-                                        LDA ram_0000    ; счетчик измененных strength
+                                        LDA ram_0000    ; счетчик измененных сил
                                         BEQ bra_8949_пропуск_звука
-; запись звука, если хотя бы 1 игрок изменил strength
+; запись звука, если хотя бы 1 игрок изменил силу
                                         LDA #con_0x03F6AD_25
                                         JSR sub_0x03F6A0_записать_звук_сохранив_X_Y
 bra_8949_пропуск_звука:
@@ -1758,7 +1760,7 @@ C - - - - - 0x038974 0E:8964: A9 27     LDA #con_0x03F6AD_27
 C - - - - - 0x038976 0E:8966: 20 90 F6  JSR sub_0x03F6A0_записать_звук_сохранив_X_Y
 bra_8969:
 C - - - - - 0x038979 0E:8969: 4C 00 B0  JMP loc_B000_попытка_toggle_technodrome
-bra_896C:
+bra_896C_завершение_выбора_опций:
 C - - - - - 0x03897C 0E:896C: 20 16 B0  LDA ram_obj_spd_Y_hi
                                         ORA ram_0150
                                         TAY
@@ -1771,7 +1773,7 @@ C - - - - - 0x03898C 0E:897C: A9 15     LDA #$15
 C - - - - - 0x03898E 0E:897E: 8D 04 04  STA ram_obj_anim_id + $04
 C - - - - - 0x038991 0E:8981: A9 50     LDA #$50
 C - - - - - 0x038993 0E:8983: 8D A0 04  STA ram_obj_spd_Y_hi
-C - - - - - 0x038996 0E:8986: E6 95     INC ram_0095
+C - - - - - 0x038996 0E:8986: E6 95     INC ram_0095    ; 02 -> 03
 C - - - - - 0x038998 0E:8988: A9 29     LDA #con_0x03F6AD_29
 C - - - - - 0x03899A 0E:898A: 4C 8B F6  JMP loc_0x03F69B_выключить_звуки_и_записать_новый
 
