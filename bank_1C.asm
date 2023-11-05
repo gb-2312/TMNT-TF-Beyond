@@ -1725,11 +1725,10 @@ C - - - - - 0x038944 0E:8934: A9 FF     LDA #$FF
 bra_8936:   ; A = 01
                                         CLC
 C - - - - - 0x038946 0E:8936: 75 A0     ADC ram_strength,X
+C - - - - - 0x038948 0E:8938: C9 FC     CMP #$FB
+C - - - - - 0x03894A 0E:893A: F0 0A     BEQ bra_8946
 C - - - - - 0x03894C 0E:893C: C9 04     CMP #$05
-C - - - - - 0x03894E 0E:893E: F0 06     BCC bra_8945
-C - - - - - 0x038948 0E:8938: C9 FC     CMP #$FC
-C - - - - - 0x03894A 0E:893A: F0 0A     BCC bra_8946
-bra_8945:
+C - - - - - 0x03894E 0E:893E: F0 06     BEQ bra_8946
 C - - - - - 0x038950 0E:8940: 95 A0     STA ram_strength,X
                                         INC ram_0000    ; счетчик измененных strength
 bra_8946:
