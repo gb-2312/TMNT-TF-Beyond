@@ -1710,7 +1710,8 @@ C - - - - - 0x03892F 0E:891F: EE 30 05  INC ram_obj_0530
 bra_8922:
 C - - - - - 0x038932 0E:8922: AD 30 05  LDA ram_obj_0530
 C - - - - - 0x038935 0E:8925: 4A        LSR
-C - - - - - 0x038936 0E:8926: B0 24     BCS bra_894C
+C - - - - - 0x038936 0E:8926: B0 24     BCS bra_894C_выбор_карты
+; выбор strength
 C - - - - - 0x038938 0E:8928: A2 01     LDX #$01
 bra_892A_loop:
 C - - - - - 0x03893A 0E:892A: B5 8E     LDA ram_btn_press,X
@@ -1733,7 +1734,7 @@ bra_8946:
 C - - - - - 0x038956 0E:8946: CA        DEX
 C - - - - - 0x038957 0E:8947: 10 E1     BPL bra_892A_loop
 C - - - - - 0x038959 0E:8949: 4C B6 89  JMP loc_89B6
-bra_894C:
+bra_894C_выбор_карты:
 C - - - - - 0x03895C 0E:894C: A5 90     LDA ram_sum_btn_press
 C - - - - - 0x03895E 0E:894E: 29 03     AND #con_btns_LR
 C - - - - - 0x038960 0E:8950: F0 17     BEQ bra_8969
