@@ -1712,6 +1712,8 @@ C - - - - - 0x038932 0E:8922: AD 30 05  LDA ram_obj_0530
 C - - - - - 0x038935 0E:8925: 4A        LSR
 C - - - - - 0x038936 0E:8926: B0 24     BCS bra_894C_выбор_карты
 ; выбор strength
+                                        LDA #$00
+                                        STA ram_0000    ; счетчик измененных strength
 C - - - - - 0x038938 0E:8928: A2 01     LDX #$01
 bra_892A_loop:
 C - - - - - 0x03893A 0E:892A: B5 8E     LDA ram_btn_press,X
@@ -1728,11 +1730,16 @@ C - - - - - 0x038948 0E:8938: C9 FC     CMP #$FC
 C - - - - - 0x03894A 0E:893A: F0 0A     BCC bra_8946
 bra_8945:
 C - - - - - 0x038950 0E:8940: 95 A0     STA ram_strength,X
-C - - - - - 0x038952 0E:8942: A9 25     LDA #con_0x03F6AD_25
-C - - - - - 0x038954 0E:8944: D0 20     BNE bra_8966    ; jmp
+                                        INC ram_0000    ; счетчик измененных strength
 bra_8946:
 C - - - - - 0x038956 0E:8946: CA        DEX
 C - - - - - 0x038957 0E:8947: 10 E1     BPL bra_892A_loop
+                                        LDA ram_0000    ; счетчик измененных strength
+                                        BEQ bra_8949_пропуск_звука
+; запись звука, если хотя бы 1 игрок изменил strength
+                                        LDA #con_0x03F6AD_25
+                                        JSR sub_0x03F6A0_записать_звук_сохранив_X_Y
+bra_8949_пропуск_звука:
 C - - - - - 0x038959 0E:8949: 4C B6 89  JMP loc_89B6
 bra_894C_выбор_карты:
 C - - - - - 0x03895C 0E:894C: A5 90     LDA ram_sum_btn_press
@@ -1748,7 +1755,6 @@ C - - - - - 0x03896C 0E:895C: 29 03     AND #$03
 C - - - - - 0x03896E 0E:895E: 8D A0 04  STA ram_obj_spd_Y_hi
 C - - - - - 0x038971 0E:8961: 20 07 8A  JSR sub_8A07
 C - - - - - 0x038974 0E:8964: A9 27     LDA #con_0x03F6AD_27
-bra_8966:
 C - - - - - 0x038976 0E:8966: 20 90 F6  JSR sub_0x03F6A0_записать_звук_сохранив_X_Y
 bra_8969:
 C - - - - - 0x038979 0E:8969: 4C 00 B0  JMP loc_B000_попытка_toggle_technodrome
