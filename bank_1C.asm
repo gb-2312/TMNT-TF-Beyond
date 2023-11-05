@@ -1722,7 +1722,7 @@ C - - - - - 0x03893E 0E:892E: F0 16     BEQ bra_8946
 C - - - - - 0x038940 0E:8930: 29 01     AND #con_btn_Right
 C - - - - - 0x038942 0E:8932: D0 02     BNE bra_8936
 C - - - - - 0x038944 0E:8934: A9 FF     LDA #$FF
-bra_8936:
+bra_8936:   ; A = 01
                                         CLC
 C - - - - - 0x038946 0E:8936: 75 A0     ADC ram_strength,X
 C - - - - - 0x03894C 0E:893C: C9 04     CMP #$05
