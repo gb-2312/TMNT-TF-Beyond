@@ -6677,13 +6677,19 @@ bra_A600:
 - - - - - - 0x036623 0D:A613: C9 0A     CMP #con_plr_state_брошен_соперником
 - - - - - - 0x036625 0D:A615: F0 3D     BEQ bra_A654
 bra_A617:
+                                        LDA ram_obj_pos_X_lo,Y
+                                        CMP #$30
+                                        BCC bra_A618
+                                        CMP #$D1
+                                        BCC bra_A619
+bra_A618:
 - - - - - - 0x036627 0D:A617: BD 40 04  LDA ram_obj_pos_X_lo,X
-- - - - - - 0x03662A 0D:A61A: 18        CLC
 - - - - - - 0x03662B 0D:A61B: 79 80 04  ADC ram_obj_spd_X_hi,Y
-- - - - - - 0x03662E 0D:A61E: C9 E9     CMP #$E9
+- - - - - - 0x03662E 0D:A61E: C9 E9     CMP #$EA
 - - - - - - 0x036630 0D:A620: B0 38     BCS bra_A65A
 - - - - - - 0x036632 0D:A622: C9 18     CMP #$18
 - - - - - - 0x036634 0D:A624: 90 34     BCC bra_A65A
+bra_A619:
 - - - - - - 0x036636 0D:A626: A9 42     LDA #con_шаблон_ai_42
 - - - - - - 0x036638 0D:A628: DD E6 06  CMP ram_plr_06E6,X
 - - - - - - 0x03663B 0D:A62B: D0 35     BNE bra_A662_RTS
