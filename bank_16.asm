@@ -681,6 +681,8 @@ C - - - - - 0x02EA31 0B:AA21: 0A        ASL
 C - - - - - 0x02EA32 0B:AA22: 0A        ASL
 C - - - - - 0x02EA33 0B:AA23: 0A        ASL
 C - - - - - 0x02EA34 0B:AA24: 75 A2     ADC ram_plr_id,X
+                                        SEC
+                                        SBC ram_plr_id,Y
 C - - - - - 0x02EA36 0B:AA26: A8        TAY
 C - - - - - 0x02EA37 0B:AA27: B9 90 AA  LDA tbl_AA90_автобаланс,Y
 bra_AA2A:
@@ -723,6 +725,8 @@ C - - - - - 0x02EA89 0B:AA79: 0A        ASL
 C - - - - - 0x02EA8A 0B:AA7A: 0A        ASL
 C - - - - - 0x02EA8B 0B:AA7B: 0A        ASL
 C - - - - - 0x02EA8C 0B:AA7C: 75 A2     ADC ram_plr_id,X ; 00A2 00A3 
+                                        SEC
+                                        SBC ram_obj_id
 C - - - - - 0x02EA8E 0B:AA7E: A8        TAY
 C - - - - - 0x02EA8F 0B:AA7F: B9 90 AA  LDA tbl_AA90_автобаланс,Y
 C - - - - - 0x02EA92 0B:AA82: 95 A0     STA ram_strength,X
@@ -744,15 +748,15 @@ tbl_AA90_автобаланс:
 ;                                              |    |    |    |    +-------------------- 04 con_fighter_casey
 ;                                              |    |    |    |    |    +--------------- 05 con_fighter_hot
 ;                                              |    |    |    |    |    |    +---------- 06 con_fighter_shred
-;                                              |    |    |    |    |    |    |    +----- 07 placeholder
-;                                              |    |    |    |    |    |    |    |
-- D 1 - - - 0x02EAA0 0B:AA90: 00        .byte $00, $00, $01, $00, $01, $FE, $FC, $00   ; 00 con_fighter_leo
-- D 1 - - - 0x02EAA8 0B:AA98: 00        .byte $00, $00, $01, $00, $01, $FE, $FD, $00   ; 01 con_fighter_raph
-- D 1 - - - 0x02EAB0 0B:AAA0: 00        .byte $00, $00, $00, $00, $00, $FD, $FC, $00   ; 02 con_fighter_mike
-- D 1 - - - 0x02EAB8 0B:AAA8: 00        .byte $00, $00, $01, $00, $01, $FE, $FC, $00   ; 03 con_fighter_don
-- D 1 - - - 0x02EAC0 0B:AAB0: 00        .byte $00, $00, $01, $00, $01, $FE, $FD, $00   ; 04 con_fighter_casey
-- D 1 - - - 0x02EAC8 0B:AAB8: 01        .byte $01, $01, $02, $02, $01, $FE, $FE, $01   ; 05 con_fighter_hot
-- D 1 - - - 0x02EAD0 0B:AAC0: 02        .byte $02, $02, $04, $03, $04, $00, $FE, $02   ; 06 con_fighter_shred
+;                                              |    |    |    |    |    |    |
+;                                              |    |    |    |    |    |    |
+- D 1 - - - 0x02EAA0 0B:AA90: 00        .byte $00, $00, $01, $00, $01, $FE, $FC   ; 00 con_fighter_leo
+- D 1 - - - 0x02EAA8 0B:AA98: 00        .byte $00, $00, $01, $00, $01, $FE, $FD   ; 01 con_fighter_raph
+- D 1 - - - 0x02EAB0 0B:AAA0: 00        .byte $00, $00, $00, $00, $00, $FD, $FC   ; 02 con_fighter_mike
+- D 1 - - - 0x02EAB8 0B:AAA8: 00        .byte $00, $00, $01, $00, $01, $FE, $FC   ; 03 con_fighter_don
+- D 1 - - - 0x02EAC0 0B:AAB0: 00        .byte $00, $00, $01, $00, $01, $FE, $FD   ; 04 con_fighter_casey
+- D 1 - - - 0x02EAC8 0B:AAB8: 01        .byte $01, $01, $02, $02, $01, $FE, $FE   ; 05 con_fighter_hot
+- D 1 - - - 0x02EAD0 0B:AAC0: 02        .byte $02, $02, $04, $03, $04, $00, $FE   ; 06 con_fighter_shred
 
 
 
