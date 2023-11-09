@@ -703,9 +703,14 @@ C - - - - - 0x02EA6F 0B:AA5F: D0 2B     BNE bra_AA8C
 C - - - - - 0x02EA71 0B:AA61: 86 9C     STX ram_009C
 C - - - - - 0x02EA73 0B:AA63: A0 01     LDY #$01
 C - - - - - 0x02EA75 0B:AA65: 84 9D     STY ram_009D
-C - - - - - 0x02EA77 0B:AA67: C9 FF     CMP #$FF
-C - - - - - 0x02EA79 0B:AA69: D0 02     BNE bra_AA6D
-C - - - - - 0x02EA7B 0B:AA6B: A9 06     LDA #$06
+C - - - - - 0x02EA77 0B:AA67: C9 FF     TAY
+C - - - - - 0x02EA79 0B:AA69: D0 02     BMI bra_AA6C
+                                        CMP #$07
+                                        BNE bra_AA6D
+C - - - - - 0x02EA7B 0B:AA6B: A9 06     LDA #$00
+                                        .byte $2C   ; BIT
+bra_AA6C:
+                                        LDA #$06
 bra_AA6D:
 C - - - - - 0x02EA7D 0B:AA6D: 95 A2     STA ram_plr_id,X ; 00A2 00A3 
 bra_AA6F_loop:
@@ -748,7 +753,6 @@ tbl_AA90_автобаланс:
 - D 1 - - - 0x02EAC0 0B:AAB0: 00        .byte $00, $00, $01, $00, $01, $FE, $FD, $00   ; 04 con_fighter_casey
 - D 1 - - - 0x02EAC8 0B:AAB8: 01        .byte $01, $01, $02, $02, $01, $FE, $FE, $01   ; 05 con_fighter_hot
 - D 1 - - - 0x02EAD0 0B:AAC0: 02        .byte $02, $02, $04, $03, $04, $00, $FE, $02   ; 06 con_fighter_shred
-- - - - - - 0x02EAD8 0B:AAC8: 00        .byte $00, $00, $01, $00, $01, $FE, $FC, $00   ; 07 placeholder
 
 
 
