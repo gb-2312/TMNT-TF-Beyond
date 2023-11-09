@@ -3500,7 +3500,7 @@ C - - - - - 0x03E43E 0F:E42E: 9D 10 04  STA ram_obj_pos_Y_lo,X ; 0410 0411
                                         LDY #con_init_anim_обычная_стойка
                                         JSR sub_0x024AF7_выбор_начальной_анимации_персу
 C - - - - - 0x03E445 0F:E435: 20 00 F6  JSR sub_F600_swap_prg_16_no_return
-C - - - - - 0x03E448 0F:E438: 20 00 AA  JSR sub_0x02EA10_корректировка_strength_по_опции_автобаланса
+C - - - - - 0x03E448 0F:E438: 20 00 AA  JSR sub_0x02EA10_автобаланс_сил_в_vs_team
                                         JSR sub_F617_restore_prg
 C - - - - - 0x03E44C 0F:E43C: 8A        TXA
 C - - - - - 0x03E44D 0F:E43D: 09 80     ORA #$80

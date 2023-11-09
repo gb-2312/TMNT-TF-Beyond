@@ -11,7 +11,7 @@
 .export sub_0x02E74B
 .export ofs_0x02E7CA
 .export ofs_0x02E86E
-.export sub_0x02EA10_корректировка_strength_по_опции_автобаланса
+.export sub_0x02EA10_автобаланс_сил_в_vs_team
 .export loc_0x02EB10
 .export sub_0x02EE60_выбрать_палитру_уровня
 .export sub_0x02EF50_записать_3_цвета_в_буфер
@@ -230,7 +230,7 @@ bra_81E2_loop:
 C - - - - - 0x02C1F2 0B:81E2: A5 00     LDA ram_0000
 C - - - - - 0x02C1F4 0B:81E4: 18        CLC
 C - - - - - 0x02C1F5 0B:81E5: 75 A2     ADC ram_plr_id,X
-C - - - - - 0x02C1F7 0B:81E7: 20 50 AA  JSR sub_AA50_автобаланс_силы
+C - - - - - 0x02C1F7 0B:81E7: 20 50 AA  JSR sub_AA50_автобаланс_сил_в_vs_player_cpu
 C - - - - - 0x02C1FA 0B:81EA: D9 62 83  CMP tbl_8362,Y
 C - - - - - 0x02C1FD 0B:81ED: 90 08     BCC bra_81F7
 C - - - - - 0x02C1FF 0B:81EF: 10 04     BPL bra_81F5
@@ -657,7 +657,23 @@ tbl_A8A6:
 
 
 
-sub_0x02EA10_корректировка_strength_по_опции_автобаланса:
+sub_0x02EA10_расчет_автобаланса:
+C - - - - - 0x02EA2E 0B:AA1E: B9 A2 00  LDA ram_plr_id,Y
+C - - - - - 0x02EA31 0B:AA21: 0A        ASL
+C - - - - - 0x02EA32 0B:AA22: 0A        ASL
+C - - - - - 0x02EA33 0B:AA23: 0A        ASL
+C - - - - - 0x02EA34 0B:AA24: 75 A2     ADC ram_plr_id,X
+                                        SEC
+                                        SBC ram_plr_id,Y
+C - - - - - 0x02EA36 0B:AA26: A8        TAY
+C - - - - - 0x02EA37 0B:AA27: B9 90 AA  LDA tbl_AA90_автобаланс,Y
+bra_AA2A:
+C - - - - - 0x02EA3A 0B:AA2A: 95 A0     STA ram_strength,X
+C - - - - - 0x02EA3C 0B:AA2C: A0 01     RTS
+
+
+
+sub_0x02EA10_автобаланс_сил_в_vs_team:
 C - - - - - 0x02EA16 0B:AA06: A5 2C     LDA ram_game_mode
 ; con_gm_story
 ; con_gm_vs_player
@@ -676,23 +692,11 @@ C - - - - - 0x02EA28 0B:AA18: F0 12     BEQ bra_AA2C_RTS
 C - - - - - 0x02EA2A 0B:AA1A: 8A        TXA
 C - - - - - 0x02EA2B 0B:AA1B: 49 01     EOR #$01
 C - - - - - 0x02EA2D 0B:AA1D: A8        TAY
-C - - - - - 0x02EA2E 0B:AA1E: B9 A2 00  LDA ram_plr_id,Y
-C - - - - - 0x02EA31 0B:AA21: 0A        ASL
-C - - - - - 0x02EA32 0B:AA22: 0A        ASL
-C - - - - - 0x02EA33 0B:AA23: 0A        ASL
-C - - - - - 0x02EA34 0B:AA24: 75 A2     ADC ram_plr_id,X
-                                        SEC
-                                        SBC ram_plr_id,Y
-C - - - - - 0x02EA36 0B:AA26: A8        TAY
-C - - - - - 0x02EA37 0B:AA27: B9 90 AA  LDA tbl_AA90_автобаланс,Y
-bra_AA2A:
-C - - - - - 0x02EA3A 0B:AA2A: 95 A0     STA ram_strength,X
-bra_AA2C_RTS:
-C - - - - - 0x02EA3C 0B:AA2C: A0 01     RTS
+                                        JMP sub_0x02EA10_расчет_автобаланса
 
 
 
-sub_AA50_автобаланс_силы:
+sub_AA50_автобаланс_сил_в_vs_player_cpu:
 C - - - - - 0x02EA60 0B:AA50: 48        PHA
 C - - - - - 0x02EA61 0B:AA51: AD 2B 01  LDA ram_option_misc
 C - - - - - 0x02EA64 0B:AA54: 29 08     AND #$08
@@ -703,39 +707,31 @@ C - - - - - 0x02EA6B 0B:AA5B: A4 27     LDY ram_0027
 C - - - - - 0x02EA6D 0B:AA5D: C0 01     CPY #$01
 C - - - - - 0x02EA6F 0B:AA5F: D0 2B     BNE bra_AA8C
 C - - - - - 0x02EA71 0B:AA61: 86 9C     STX ram_009C
-C - - - - - 0x02EA73 0B:AA63: A0 01     LDY #$01
-C - - - - - 0x02EA75 0B:AA65: 84 9D     STY ram_009D
 C - - - - - 0x02EA77 0B:AA67: C9 FF     TAY
 C - - - - - 0x02EA79 0B:AA69: D0 02     BMI bra_AA6C
                                         CMP #$07
                                         BNE bra_AA6D
-C - - - - - 0x02EA7B 0B:AA6B: A9 06     LDA #$00
+C - - - - - 0x02EA7B 0B:AA6B: A9 06     LDA #$00   ; 00 con_fighter_leo
                                         .byte $2C   ; BIT
 bra_AA6C:
                                         LDA #$06
 bra_AA6D:
+                                        STA ram_0000
 C - - - - - 0x02EA7D 0B:AA6D: 95 A2     STA ram_plr_id,X ; 00A2 00A3 
-bra_AA6F_loop:
-C - - - - - 0x02EA7F 0B:AA6F: 8D 50 05  STA ram_0000
 C - - - - - 0x02EA82 0B:AA72: 8A        TXA
+                                        EOR #$01
+                                        TAY
+                                        JSR sub_0x02EA10_расчет_автобаланса
+                                        TXA
+                                        TAY
 C - - - - - 0x02EA83 0B:AA73: 49 01     EOR #$01
 C - - - - - 0x02EA85 0B:AA75: AA        TAX
-C - - - - - 0x02EA86 0B:AA76: AD 50 05  LDA ram_0000
-C - - - - - 0x02EA89 0B:AA79: 0A        ASL
-C - - - - - 0x02EA8A 0B:AA7A: 0A        ASL
-C - - - - - 0x02EA8B 0B:AA7B: 0A        ASL
-C - - - - - 0x02EA8C 0B:AA7C: 75 A2     ADC ram_plr_id,X ; 00A2 00A3 
-                                        SEC
-                                        SBC ram_0000
-C - - - - - 0x02EA8E 0B:AA7E: A8        TAY
-C - - - - - 0x02EA8F 0B:AA7F: B9 90 AA  LDA tbl_AA90_автобаланс,Y
-C - - - - - 0x02EA92 0B:AA82: 95 A0     STA ram_strength,X
-C - - - - - 0x02EA94 0B:AA84: B5 A2     LDA ram_plr_id,X ; 00A2 00A3 
-C - - - - - 0x02EA96 0B:AA86: C6 9D     DEC ram_009D
-C - - - - - 0x02EA98 0B:AA88: 10 E5     BPL bra_AA6F_loop
+                                        JSR sub_0x02EA10_расчет_автобаланса
+                                        LDA ram_0000
 C - - - - - 0x02EA9A 0B:AA8A: A6 9C     LDX ram_009C
 bra_AA8C:
 C - - - - - 0x02EA9C 0B:AA8C: AC E0 04  LDY ram_obj_04E0
+bra_AA2C_RTS:
 C - - - - - 0x02EA9F 0B:AA8F: 60        RTS
 
 
