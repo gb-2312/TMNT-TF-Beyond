@@ -716,17 +716,17 @@ bra_AA6C:
 bra_AA6D:
 C - - - - - 0x02EA7D 0B:AA6D: 95 A2     STA ram_plr_id,X ; 00A2 00A3 
 bra_AA6F_loop:
-C - - - - - 0x02EA7F 0B:AA6F: 8D 50 05  STA ram_obj_id
+C - - - - - 0x02EA7F 0B:AA6F: 8D 50 05  STA ram_0000
 C - - - - - 0x02EA82 0B:AA72: 8A        TXA
 C - - - - - 0x02EA83 0B:AA73: 49 01     EOR #$01
 C - - - - - 0x02EA85 0B:AA75: AA        TAX
-C - - - - - 0x02EA86 0B:AA76: AD 50 05  LDA ram_obj_id
+C - - - - - 0x02EA86 0B:AA76: AD 50 05  LDA ram_0000
 C - - - - - 0x02EA89 0B:AA79: 0A        ASL
 C - - - - - 0x02EA8A 0B:AA7A: 0A        ASL
 C - - - - - 0x02EA8B 0B:AA7B: 0A        ASL
 C - - - - - 0x02EA8C 0B:AA7C: 75 A2     ADC ram_plr_id,X ; 00A2 00A3 
                                         SEC
-                                        SBC ram_obj_id
+                                        SBC ram_0000
 C - - - - - 0x02EA8E 0B:AA7E: A8        TAY
 C - - - - - 0x02EA8F 0B:AA7F: B9 90 AA  LDA tbl_AA90_автобаланс,Y
 C - - - - - 0x02EA92 0B:AA82: 95 A0     STA ram_strength,X
