@@ -6549,7 +6549,7 @@ bra_A571:
                                         LDA ram_plr_индекс_атаки,Y
                                         CMP #con_0612_черепаха_деш_ногой
                                         BEQ bra_A573_casey_ai_блок
-                                        JSR loc_BDEE_проверка_нахождения_в_углу
+                                        JSR sub_BDEE_проверка_нахождения_в_углу
                                         BCC bra_A573_casey_ai_бросок
                                         LDA ram_0638
                                         CMP #$20
@@ -6776,7 +6776,7 @@ bra_A6A8:
 - - - - - - 0x0366B5 0D:A6A5: C9 07     CMP #con_0612_черепаха_нога_дальняя_обычная
 - - - - - - 0x0366B7 0D:A6A7: F0 50     BEQ bra_A6F9
 bra_A6A9:
-                                        JSR loc_BDEE_проверка_нахождения_в_углу
+                                        JSR sub_BDEE_проверка_нахождения_в_углу
                                         BCC bra_A6EB
 - - - - - - 0x0366C4 0D:A6B4: B9 91 00  LDA ram_btn_hold,Y
 - - - - - - 0x0366C7 0D:A6B7: 29 08     AND #con_btn_Up
@@ -7069,7 +7069,7 @@ C - - - - - 0x037D9F 0D:BD8F: D0 51     BNE bra_BDE2
 bra_BDA8:
 - - - - - - 0x037DB8 0D:BDA8: C9 06     CMP #$06
 - - - - - - 0x037DBA 0D:BDAA: 90 13     BCC bra_BDBF
-                                        JSR loc_BDEE_проверка_нахождения_в_углу
+                                        JSR sub_BDEE_проверка_нахождения_в_углу
                                         BCC bra_BDBF
 - - - - - - 0x037DC7 0D:BDB7: BD C0 04  LDA ram_obj_04C0,X
 - - - - - - 0x037DCA 0D:BDBA: 49 06     EOR #$06
@@ -7103,7 +7103,7 @@ bra_BDEB:
 
 
 
-loc_BDEE_проверка_нахождения_в_углу:
+sub_BDEE_проверка_нахождения_в_углу:
                                         LDA ram_obj_pos_X_lo,X
                                         CMP #$E7
                                         BCS bra_BDEC

@@ -395,7 +395,7 @@ ofs_086_8060_02_bgm:
                                         AND #con_btn_B
                                         BEQ bra_81B3_RTS
                                         LDY ram_obj_04C0
-                                        LDA tbl_829E,Y
+                                        LDA tbl_829E_sound,Y
                                         JMP loc_0x03F6A0_записать_звук_сохранив_X_Y
 bra_81B4:
                                         LDA ram_btn_press
@@ -421,7 +421,7 @@ bra_81B3_RTS:
 
 
 
-tbl_829E:
+tbl_829E_sound:
     .byte con_music_ost_sewer   ; 00
     .byte con_music_ost_down_town   ; 01
     .byte con_music_ost_pirate_ship   ; 02

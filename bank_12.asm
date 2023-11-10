@@ -5072,7 +5072,7 @@ C - - - - - 0x025ADC 09:9ACC: 60        RTS
 
 sub_9ACD:
 C - - - - - 0x025ADD 09:9ACD: BD 0C 06  LDA ram_plr_таймер_для_суперки,X ; 060C 060D 
-C - - - - - 0x025AE0 09:9AD0: 9D 41 06  STA ram_plr_copy_таймер_для_суперки,X ; 0641 0642 
+C - - - - - 0x025AE0 09:9AD0: 9D 41 06  STA ram_copy_plr_таймер_для_суперки,X ; 0641 0642 
 loc_9AD3:
 sub_9AD3:
 C D 0 - - - 0x025AE3 09:9AD3: A9 00     LDA #$00
@@ -9188,7 +9188,7 @@ C - - - - - 0x027503 09:B4F3: 20 A8 B3  JSR sub_B3A8
 C - - - - - 0x027506 09:B4F6: A9 32     LDA #con_0552_special_raph_сверло
 C - - - - - 0x027508 09:B4F8: 20 CC B3  JSR sub_B3CC_записать_спешал_без_звука
 C - - - - - 0x02750B 09:B4FB: 38        SEC
-C - - - - - 0x02750C 09:B4FC: BD 41 06  LDA ram_plr_copy_таймер_для_суперки,X ; 0641 0642 
+C - - - - - 0x02750C 09:B4FC: BD 41 06  LDA ram_copy_plr_таймер_для_суперки,X ; 0641 0642 
 C - - - - - 0x02750F 09:B4FF: E9 0A     SBC #$0A
 C - - - - - 0x027511 09:B501: 4A        LSR
 C - - - - - 0x027512 09:B502: 69 12     ADC #$12
