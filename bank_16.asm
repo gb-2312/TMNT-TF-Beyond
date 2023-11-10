@@ -657,7 +657,11 @@ tbl_A8A6:
 
 
 
-loc_AA1E_расчет_автобаланса:
+loc_AA1E_расчет_автобаланса_с_индексом:
+sub_AA1E_расчет_автобаланса_с_индексом:
+C - - - - - 0x02EA2A 0B:AA1A: 8A        TXA
+C - - - - - 0x02EA2B 0B:AA1B: 49 01     EOR #$01
+C - - - - - 0x02EA2D 0B:AA1D: A8        TAY
 sub_AA1E_расчет_автобаланса:
 C - - - - - 0x02EA2E 0B:AA1E: B9 A2 00  LDA ram_plr_id,Y
 C - - - - - 0x02EA31 0B:AA21: 0A        ASL
@@ -690,10 +694,7 @@ C - - - - - 0x02EA21 0B:AA11: F0 17     BEQ bra_AA2A
 C - - - - - 0x02EA23 0B:AA13: AD 2B 01  LDA ram_option_misc
 C - - - - - 0x02EA26 0B:AA16: 29 08     AND #$08
 C - - - - - 0x02EA28 0B:AA18: F0 12     BEQ bra_AA2C_RTS
-C - - - - - 0x02EA2A 0B:AA1A: 8A        TXA
-C - - - - - 0x02EA2B 0B:AA1B: 49 01     EOR #$01
-C - - - - - 0x02EA2D 0B:AA1D: A8        TAY
-                                        JMP loc_AA1E_расчет_автобаланса
+                                        JMP loc_AA1E_расчет_автобаланса_с_индексом
 
 
 
@@ -720,10 +721,7 @@ bra_AA6C:
 bra_AA6D:
                                         STA ram_0000
 C - - - - - 0x02EA7D 0B:AA6D: 95 A2     STA ram_plr_id,X ; 00A2 00A3 
-C - - - - - 0x02EA82 0B:AA72: 8A        TXA
-                                        EOR #$01
-                                        TAY
-                                        JSR sub_AA1E_расчет_автобаланса
+                                        JSR sub_AA1E_расчет_автобаланса_с_индексом
                                         TXA
                                         TAY
 C - - - - - 0x02EA83 0B:AA73: 49 01     EOR #$01
