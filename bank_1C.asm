@@ -849,13 +849,13 @@ C - - - - - 0x038390 0E:8380: 4C 41 E1  JMP loc_0x03E151_подготовить_
 
 
 tbl_8383:
-- D 0 - - - 0x038393 0E:8383: 0D        .byte $0D   ; 00
-- D 0 - - - 0x038394 0E:8384: 0E        .byte $0E   ; 01
-- D 0 - - - 0x038395 0E:8385: 0F        .byte $0F   ; 02
-- D 0 - - - 0x038396 0E:8386: 10        .byte $10   ; 03
-- D 0 - - - 0x038397 0E:8387: 11        .byte $11   ; 04
-- D 0 - - - 0x038398 0E:8388: 12        .byte $12   ; 05
-- D 0 - - - 0x038399 0E:8389: 11        .byte $11   ; 06
+- D 0 - - - 0x038393 0E:8383: 0D        .byte con_AF40_pal + $0D   ; 00
+- D 0 - - - 0x038394 0E:8384: 0E        .byte con_AF40_pal + $0E   ; 01
+- D 0 - - - 0x038395 0E:8385: 0F        .byte con_AF40_pal + $0F   ; 02
+- D 0 - - - 0x038396 0E:8386: 10        .byte con_AF40_pal + $10   ; 03
+- D 0 - - - 0x038397 0E:8387: 11        .byte con_AF40_pal + $11   ; 04
+- D 0 - - - 0x038398 0E:8388: 12        .byte con_AF40_pal + $12   ; 05
+- D 0 - - - 0x038399 0E:8389: 11        .byte con_AF40_pal + $11   ; 06
 
 
 
@@ -1346,8 +1346,8 @@ C - - - - - 0x0386F1 0E:86E1: 60        RTS
 
 
 sub_86E2:
-C - - - - - 0x0386F2 0E:86E2: A9 02     LDA #$02
-C - - - - - 0x0386F4 0E:86E4: AA        TAX
+C - - - - - 0x0386F2 0E:86E2: A9 02     LDA #$02    ; con_AF40_pal + $02
+C - - - - - 0x0386F4 0E:86E4: AA        TAX ; 02
 ; tip_индекс_буфера_палитры + $02
 C - - - - - 0x0386F5 0E:86E5: 4C 46 D3  JMP loc_0x03D356_записать_3_цвета_в_буфер
 bra_86E8:
@@ -2931,6 +2931,13 @@ C - - - - - 0x039068 0E:9058: AC 76 06  LDY ram_0676
 C - - - - - 0x03906B 0E:905B: 18        CLC
 C - - - - - 0x03906C 0E:905C: B9 4C 01  LDA ram_tournament_fighter,Y ; 014C 014D 014E 014F 
 C - - - - - 0x03906F 0E:905F: 69 0D     ADC #$0D
+; con_AF40_pal + $0D
+; con_AF40_pal + $0E
+; con_AF40_pal + $0F
+; con_AF40_pal + $10
+; con_AF40_pal + $11
+; con_AF40_pal + $12
+; con_AF40_pal + $13
 C - - - - - 0x039071 0E:9061: A2 04     LDX #$04    ; tip_индекс_буфера_палитры + $04
 C - - - - - 0x039073 0E:9063: 20 46 D3  JSR sub_0x03D356_записать_3_цвета_в_буфер
 C - - - - - 0x039076 0E:9066: A6 A8     LDX ram_local_obj_index
@@ -3667,12 +3674,30 @@ tbl_9533:
 
 
 tbl_953F:
-- D 0 - - - 0x03954F 0E:953F: 58        .byte $58, $00, $59   ; 00
-- D 0 - - - 0x039552 0E:9542: 5A        .byte $5A, $00, $5B   ; 01
-- D 0 - - - 0x039555 0E:9545: 5C        .byte $5C, $00, $3E   ; 02
-- D 0 - - - 0x039558 0E:9548: 5D        .byte $5D, $00, $65   ; 03
-- D 0 - - - 0x03955B 0E:954B: 5E        .byte $5E, $5F, $60   ; 04
-- D 0 - - - 0x03955E 0E:954E: 61        .byte $61, $62, $63   ; 05
+; 00
+- D 0 - - - 0x03954F 0E:953F: 58        .byte con_AF40_pal + $58   ; 
+- D 0 - - - 0x039550 0E:9540: 00        .byte con_AF40_pal + $00   ; 
+- D 0 - - - 0x039551 0E:9541: 59        .byte con_AF40_pal + $59   ; 
+; 01
+- D 0 - - - 0x039552 0E:9542: 5A        .byte con_AF40_pal + $5A   ; 
+- D 0 - - - 0x039553 0E:9543: 00        .byte con_AF40_pal + $00   ; 
+- D 0 - - - 0x039554 0E:9544: 5B        .byte con_AF40_pal + $5B   ; 
+; 02
+- D 0 - - - 0x039555 0E:9545: 5C        .byte con_AF40_pal + $5C   ; 
+- D 0 - - - 0x039556 0E:9546: 00        .byte con_AF40_pal + $00   ; 
+- D 0 - - - 0x039557 0E:9547: 3E        .byte con_AF40_pal + $3E   ; 
+; 03
+- D 0 - - - 0x039558 0E:9548: 5D        .byte con_AF40_pal + $5D   ; 
+- D 0 - - - 0x039559 0E:9549: 00        .byte con_AF40_pal + $00   ; 
+- D 0 - - - 0x03955A 0E:954A: 65        .byte con_AF40_pal + $65   ; 
+; 04
+- D 0 - - - 0x03955B 0E:954B: 5E        .byte con_AF40_pal + $5E   ; 
+- D 0 - - - 0x03955C 0E:954C: 5F        .byte con_AF40_pal + $5F   ; 
+- D 0 - - - 0x03955D 0E:954D: 60        .byte con_AF40_pal + $60   ; 
+; 05
+- D 0 - - - 0x03955E 0E:954E: 61        .byte con_AF40_pal + $61   ; 
+- D 0 - - - 0x03955F 0E:954F: 62        .byte con_AF40_pal + $62   ; 
+- D 0 - - - 0x039560 0E:9550: 63        .byte con_AF40_pal + $63   ; 
 
 
 
@@ -4084,10 +4109,10 @@ C - - - - - 0x0397DB 0E:97CB: EE 31 05  INC ram_obj_0530 + $01
 C - - - - - 0x0397DE 0E:97CE: A0 0E     LDY #con_chr_pair_0E
 C - - - - - 0x0397E0 0E:97D0: 20 0F DC  JSR sub_0x03DC1F
 C - - - - - 0x0397E3 0E:97D3: A2 05     LDX #$05    ; tip_индекс_буфера_палитры + $05
-C - - - - - 0x0397E5 0E:97D5: A9 02     LDA #$02
+C - - - - - 0x0397E5 0E:97D5: A9 02     LDA #con_AF40_pal + $02
 C - - - - - 0x0397E7 0E:97D7: 20 46 D3  JSR sub_0x03D356_записать_3_цвета_в_буфер
 C - - - - - 0x0397EA 0E:97DA: A2 06     LDX #$06    ; tip_индекс_буфера_палитры + $06
-C - - - - - 0x0397EC 0E:97DC: A9 3B     LDA #$3B
+C - - - - - 0x0397EC 0E:97DC: A9 3B     LDA #con_AF40_pal + $3B
 C - - - - - 0x0397EE 0E:97DE: 20 46 D3  JSR sub_0x03D356_записать_3_цвета_в_буфер
 C - - - - - 0x0397F1 0E:97E1: A9 2B     LDA #$2B
 C - - - - - 0x0397F3 0E:97E3: 8D 01 04  STA ram_obj_anim_id + $01
@@ -5760,26 +5785,26 @@ tbl_A31E:
 
 tbl_A32E_индекс_палитры:
 ; 00
-- D 1 - - - 0x03A33E 0E:A32E: 43        .byte $43   ; 
-- D 1 - - - 0x03A33F 0E:A32F: 66        .byte $66   ; 
+- D 1 - - - 0x03A33E 0E:A32E: 43        .byte con_AF40_pal + $43   ; 
+- D 1 - - - 0x03A33F 0E:A32F: 66        .byte con_AF40_pal + $66   ; 
 ; 01
-- D 1 - - - 0x03A340 0E:A330: 44        .byte $44   ; 
-- D 1 - - - 0x03A341 0E:A331: 48        .byte $48   ; 
+- D 1 - - - 0x03A340 0E:A330: 44        .byte con_AF40_pal + $44   ; 
+- D 1 - - - 0x03A341 0E:A331: 48        .byte con_AF40_pal + $48   ; 
 ; 02
-- D 1 - - - 0x03A342 0E:A332: 45        .byte $45   ; 
-- D 1 - - - 0x03A343 0E:A333: 48        .byte $48   ; 
+- D 1 - - - 0x03A342 0E:A332: 45        .byte con_AF40_pal + $45   ; 
+- D 1 - - - 0x03A343 0E:A333: 48        .byte con_AF40_pal + $48   ; 
 ; 03
-- D 1 - - - 0x03A344 0E:A334: 46        .byte $46   ; 
-- D 1 - - - 0x03A345 0E:A335: 66        .byte $66   ; 
+- D 1 - - - 0x03A344 0E:A334: 46        .byte con_AF40_pal + $46   ; 
+- D 1 - - - 0x03A345 0E:A335: 66        .byte con_AF40_pal + $66   ; 
 ; 04
-- D 1 - - - 0x03A346 0E:A336: 47        .byte $47   ; 
-- D 1 - - - 0x03A347 0E:A337: 2A        .byte $2A   ; 
+- D 1 - - - 0x03A346 0E:A336: 47        .byte con_AF40_pal + $47   ; 
+- D 1 - - - 0x03A347 0E:A337: 2A        .byte con_AF40_pal + $2A   ; 
 ; 05
-- D 1 - - - 0x03A348 0E:A338: 48        .byte $48   ; 
-- D 1 - - - 0x03A349 0E:A339: 49        .byte $49   ; 
+- D 1 - - - 0x03A348 0E:A338: 48        .byte con_AF40_pal + $48   ; 
+- D 1 - - - 0x03A349 0E:A339: 49        .byte con_AF40_pal + $49   ; 
 ; 06
-- D 1 - - - 0x03A34A 0E:A33A: 02        .byte $02   ; 
-- D 1 - - - 0x03A34B 0E:A33B: 4A        .byte $4A   ; 
+- D 1 - - - 0x03A34A 0E:A33A: 02        .byte con_AF40_pal + $02   ; 
+- D 1 - - - 0x03A34B 0E:A33B: 4A        .byte con_AF40_pal + $4A   ; 
 
 
 
@@ -5988,7 +6013,7 @@ C - - - - - 0x03A467 0E:A457: 8D 30 06  STA ram_0630
 C - - - - - 0x03A46A 0E:A45A: A9 03     LDA #$03
 C - - - - - 0x03A46C 0E:A45C: 20 D3 F7  JSR sub_0x03F7E3_отрисовать_портреты
 C - - - - - 0x03A46F 0E:A45F: A2 06     LDX #$06    ; tip_индекс_буфера_палитры + $06
-C - - - - - 0x03A471 0E:A461: A9 64     LDA #$64
+C - - - - - 0x03A471 0E:A461: A9 64     LDA #con_AF40_pal + $64
 C - - - - - 0x03A473 0E:A463: 20 46 D3  JSR sub_0x03D356_записать_3_цвета_в_буфер
 C - - - - - 0x03A476 0E:A466: AD 3F 06  LDA ram_063F
 C - - - - - 0x03A479 0E:A469: 30 06     BMI bra_A471

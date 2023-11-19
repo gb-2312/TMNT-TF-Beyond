@@ -2201,7 +2201,7 @@ C - - - - - 0x024D20 09:8D10: 20 63 8F  JSR sub_8F63
 C - - - - - 0x024D23 09:8D13: FE 40 05  INC ram_obj_0540,X ; 0540 0541 
 C - - - - - 0x024D26 09:8D16: A9 3B     LDA #$3B
 C - - - - - 0x024D28 09:8D18: 9D 60 05  STA ram_obj_timer,X ; 0560 0561 
-C - - - - - 0x024D2B 09:8D1B: A9 23     LDA #$23
+C - - - - - 0x024D2B 09:8D1B: A9 23     LDA #con_AF40_pal + $23
 sub_8D1D:
 C - - - - - 0x024D2D 09:8D1D: 48        PHA
 C - - - - - 0x024D2E 09:8D1E: 8A        TXA
@@ -2217,9 +2217,9 @@ C - - - - - 0x024D38 09:8D28: 60        RTS
 bra_8D29:
 C - - - - - 0x024D39 09:8D29: A5 22     LDA ram_счетчик_кадров
 C - - - - - 0x024D3B 09:8D2B: 4A        LSR
-C - - - - - 0x024D3C 09:8D2C: A9 23     LDA #$23
+C - - - - - 0x024D3C 09:8D2C: A9 23     LDA #con_AF40_pal + $23
 C - - - - - 0x024D3E 09:8D2E: 90 02     BCC bra_8D32
-C - - - - - 0x024D40 09:8D30: A9 24     LDA #$24
+C - - - - - 0x024D40 09:8D30: A9 24     LDA #con_AF40_pal + $24
 bra_8D32:
 C - - - - - 0x024D42 09:8D32: 20 1D 8D  JSR sub_8D1D
 C - - - - - 0x024D45 09:8D35: A0 0F     LDY #con_init_anim_получение_урона_1

@@ -121,8 +121,8 @@
 .export loc_0x03E69A
 .export loc_0x03E8D6
 .export loc_0x03E91E_отрисовать_инфу_в_статусбаре
-.export tbl_0x03E995
-.export tbl_0x03E99C
+.export tbl_0x03E995_индекс_3х_цветов_для_перса
+.export tbl_0x03E99C_индекс_3х_цветов_для_перса
 .export sub_0x03EA45
 .export loc_0x03EA45
 .export sub_0x03EA4B
@@ -1643,34 +1643,146 @@ C - - - - - 0x03D587 0F:D577: 4C 59 D2  JMP loc_D259_записать_FF_в_бу
 
 tbl_D57A:
 ; con_D57A
-- D 2 - - - 0x03D58A 0F:D57A: 00        .byte $00, $00, $00, $00   ; 00
-- D 2 - - - 0x03D58E 0F:D57E: 03        .byte $03, $04, $05, $01   ; 01
-- D 2 - - - 0x03D592 0F:D582: 0D        .byte $0D, $13, $07, $08   ; 02
-- - - - - - 0x03D596 0F:D586: 0B        .byte $0B, $29, $0C, $01   ; 03 unused, индекс не существует
-- D 2 - - - 0x03D59A 0F:D58A: 01        .byte $01, $26, $27, $00   ; 04
-- - - - - - 0x03D59E 0F:D58E: 2B        .byte $20, $02, $02, $02   ; 05
-- D 2 - - - 0x03D5A2 0F:D592: 20        .byte $67, $02, $02, $02   ; 06
-- D 2 - - - 0x03D5A6 0F:D596: 02        .byte $02, $17, $18, $18   ; 07
-- - - - - - 0x03D5AA 0F:D59A: 02        .byte $02, $09, $3C, $01   ; 08 unused, индекс не существует
-- D 2 - - - 0x03D5AE 0F:D59E: 00        .byte $00, $20, $00, $02   ; 09
-- D 2 - - - 0x03D5B2 0F:D5A2: 2B        .byte $2B, $2C, $02, $01   ; 0A
-- D 2 - - - 0x03D5B6 0F:D5A6: 4B        .byte $4B, $4C, $02, $01   ; 0B
-- D 2 - - - 0x03D5BA 0F:D5AA: 35        .byte $35, $36, $50, $38   ; 0C
-- D 2 - - - 0x03D5BE 0F:D5AE: 36        .byte $36, $37, $38, $35   ; 0D
-- D 2 - - - 0x03D5C2 0F:D5B2: 35        .byte $35, $36, $39, $3A   ; 0E
-- D 2 - - - 0x03D5C6 0F:D5B6: 36        .byte $36, $37, $3D, $35   ; 0F
-- D 2 - - - 0x03D5CA 0F:D5BA: 0D        .byte $0D, $2B, $07, $08   ; 10
-- D 2 - - - 0x03D5CE 0F:D5BE: 2D        .byte $2D, $2D, $02, $14   ; 11
-- D 2 - - - 0x03D5D2 0F:D5C2: 3F        .byte $3F, $40, $41, $00   ; 12
-- D 2 - - - 0x03D5D6 0F:D5C6: 0D        .byte $0D, $33, $25, $42   ; 13
-- D 2 - - - 0x03D5DA 0F:D5CA: 00        .byte $00, $00, $40, $02   ; 14
-- D 2 - - - 0x03D5DE 0F:D5CE: 4D        .byte $4D, $4E, $4F, $02   ; 15
-- D 2 - - - 0x03D5E2 0F:D5D2: 51        .byte $51, $52, $57, $02   ; 16
-- D 2 - - - 0x03D5E6 0F:D5D6: 05        .byte $05, $53, $00, $00   ; 17
-- D 2 - - - 0x03D5EA 0F:D5DA: 05        .byte $05, $54, $55, $02   ; 18
-- D 2 - - - 0x03D5EE 0F:D5DE: 05        .byte $05, $2F, $00, $00   ; 19
-- D 2 - - - 0x03D5F2 0F:D5E2: 2F        .byte $2F, $56, $46, $00   ; 1A
-- D 2 - - - 0x03D5F6 0F:D5E6: 00        .byte $00, $00, $64, $00   ; 1B
+; 00
+- D 2 - - - 0x03D58A 0F:D57A: 00        .byte con_AF40_pal + $00   ; 00
+- D 2 - - - 0x03D58B 0F:D57B: 00        .byte con_AF40_pal + $00   ; 01
+- D 2 - - - 0x03D58C 0F:D57C: 00        .byte con_AF40_pal + $00   ; 02
+- D 2 - - - 0x03D58D 0F:D57D: 00        .byte con_AF40_pal + $00   ; 03
+; 01
+- D 2 - - - 0x03D58E 0F:D57E: 03        .byte con_AF40_pal + $03   ; 00
+- D 2 - - - 0x03D58F 0F:D57F: 04        .byte con_AF40_pal + $04   ; 01
+- D 2 - - - 0x03D590 0F:D580: 05        .byte con_AF40_pal + $05   ; 02
+- D 2 - - - 0x03D591 0F:D581: 01        .byte con_AF40_pal + $01   ; 03
+; 02
+- D 2 - - - 0x03D592 0F:D582: 0D        .byte con_AF40_pal + $0D   ; 00
+- D 2 - - - 0x03D593 0F:D583: 13        .byte con_AF40_pal + $13   ; 01
+- D 2 - - - 0x03D594 0F:D584: 07        .byte con_AF40_pal + $07   ; 02
+- D 2 - - - 0x03D595 0F:D585: 08        .byte con_AF40_pal + $08   ; 03
+; 03 unused, индекс не существует
+- - - - - - 0x03D596 0F:D586: 0B        .byte con_AF40_pal + $0B   ; 00
+- - - - - - 0x03D597 0F:D587: 29        .byte con_AF40_pal + $29   ; 01
+- - - - - - 0x03D598 0F:D588: 0C        .byte con_AF40_pal + $0C   ; 02
+- - - - - - 0x03D599 0F:D589: 01        .byte con_AF40_pal + $01   ; 03
+; 04
+- D 2 - - - 0x03D59A 0F:D58A: 01        .byte con_AF40_pal + $01   ; 00
+- D 2 - - - 0x03D59B 0F:D58B: 26        .byte con_AF40_pal + $26   ; 01
+- D 2 - - - 0x03D59C 0F:D58C: 27        .byte con_AF40_pal + $27   ; 02
+- D 2 - - - 0x03D59D 0F:D58D: 00        .byte con_AF40_pal + $00   ; 03
+; 05
+- - - - - - 0x03D59E 0F:D58E: 2B        .byte con_AF40_pal + $20   ; 00
+- - - - - - 0x03D59F 0F:D58F: 0C        .byte con_AF40_pal + $02   ; 01
+- - - - - - 0x03D5A0 0F:D590: 16        .byte con_AF40_pal + $02   ; 02
+- - - - - - 0x03D5A1 0F:D591: 01        .byte con_AF40_pal + $02   ; 03
+; 06
+- D 2 - - - 0x03D5A2 0F:D592: 20        .byte con_AF40_pal + $67   ; 00
+- D 2 - - - 0x03D5A3 0F:D593: 02        .byte con_AF40_pal + $02   ; 01
+- D 2 - - - 0x03D5A4 0F:D594: 02        .byte con_AF40_pal + $02   ; 02
+- D 2 - - - 0x03D5A5 0F:D595: 02        .byte con_AF40_pal + $02   ; 03
+; 07
+- D 2 - - - 0x03D5A6 0F:D596: 02        .byte con_AF40_pal + $02   ; 00
+- D 2 - - - 0x03D5A7 0F:D597: 17        .byte con_AF40_pal + $17   ; 01
+- D 2 - - - 0x03D5A8 0F:D598: 18        .byte con_AF40_pal + $18   ; 02
+- D 2 - - - 0x03D5A9 0F:D599: 18        .byte con_AF40_pal + $18   ; 03
+; 08 unused, индекс не существует
+- - - - - - 0x03D5AA 0F:D59A: 02        .byte con_AF40_pal + $02   ; 00
+- - - - - - 0x03D5AB 0F:D59B: 09        .byte con_AF40_pal + $09   ; 01
+- - - - - - 0x03D5AC 0F:D59C: 3C        .byte con_AF40_pal + $3C   ; 02
+- - - - - - 0x03D5AD 0F:D59D: 01        .byte con_AF40_pal + $01   ; 03
+; 09
+- D 2 - - - 0x03D5AE 0F:D59E: 00        .byte con_AF40_pal + $00   ; 00
+- D 2 - - - 0x03D5AF 0F:D59F: 20        .byte con_AF40_pal + $20   ; 01
+- D 2 - - - 0x03D5B0 0F:D5A0: 00        .byte con_AF40_pal + $00   ; 02
+- D 2 - - - 0x03D5B1 0F:D5A1: 02        .byte con_AF40_pal + $02   ; 03
+; 0A
+- D 2 - - - 0x03D5B2 0F:D5A2: 2B        .byte con_AF40_pal + $2B   ; 00
+- D 2 - - - 0x03D5B3 0F:D5A3: 2C        .byte con_AF40_pal + $2C   ; 01
+- D 2 - - - 0x03D5B4 0F:D5A4: 02        .byte con_AF40_pal + $02   ; 02
+- D 2 - - - 0x03D5B5 0F:D5A5: 01        .byte con_AF40_pal + $01   ; 03
+; 0B
+- D 2 - - - 0x03D5B6 0F:D5A6: 4B        .byte con_AF40_pal + $4B   ; 00
+- D 2 - - - 0x03D5B7 0F:D5A7: 4C        .byte con_AF40_pal + $4C   ; 01
+- D 2 - - - 0x03D5B8 0F:D5A8: 02        .byte con_AF40_pal + $02   ; 02
+- D 2 - - - 0x03D5B9 0F:D5A9: 01        .byte con_AF40_pal + $01   ; 03
+; 0C
+- D 2 - - - 0x03D5BA 0F:D5AA: 35        .byte con_AF40_pal + $35   ; 00
+- D 2 - - - 0x03D5BB 0F:D5AB: 36        .byte con_AF40_pal + $36   ; 01
+- D 2 - - - 0x03D5BC 0F:D5AC: 50        .byte con_AF40_pal + $50   ; 02
+- D 2 - - - 0x03D5BD 0F:D5AD: 38        .byte con_AF40_pal + $38   ; 03
+; 0D
+- D 2 - - - 0x03D5BE 0F:D5AE: 36        .byte con_AF40_pal + $36   ; 00
+- D 2 - - - 0x03D5BF 0F:D5AF: 37        .byte con_AF40_pal + $37   ; 01
+- D 2 - - - 0x03D5C0 0F:D5B0: 38        .byte con_AF40_pal + $38   ; 02
+- D 2 - - - 0x03D5C1 0F:D5B1: 35        .byte con_AF40_pal + $35   ; 03
+; 0E
+- D 2 - - - 0x03D5C2 0F:D5B2: 35        .byte con_AF40_pal + $35   ; 00
+- D 2 - - - 0x03D5C3 0F:D5B3: 36        .byte con_AF40_pal + $36   ; 01
+- D 2 - - - 0x03D5C4 0F:D5B4: 39        .byte con_AF40_pal + $39   ; 02
+- D 2 - - - 0x03D5C5 0F:D5B5: 3A        .byte con_AF40_pal + $3A   ; 03
+; 0F
+- D 2 - - - 0x03D5C6 0F:D5B6: 36        .byte con_AF40_pal + $36   ; 00
+- D 2 - - - 0x03D5C7 0F:D5B7: 37        .byte con_AF40_pal + $37   ; 01
+- D 2 - - - 0x03D5C8 0F:D5B8: 3D        .byte con_AF40_pal + $3D   ; 02
+- D 2 - - - 0x03D5C9 0F:D5B9: 35        .byte con_AF40_pal + $35   ; 03
+; 10
+- D 2 - - - 0x03D5CA 0F:D5BA: 0D        .byte con_AF40_pal + $0D   ; 00
+- D 2 - - - 0x03D5CB 0F:D5BB: 2B        .byte con_AF40_pal + $2B   ; 01
+- D 2 - - - 0x03D5CC 0F:D5BC: 07        .byte con_AF40_pal + $07   ; 02
+- D 2 - - - 0x03D5CD 0F:D5BD: 08        .byte con_AF40_pal + $08   ; 03
+; 11
+- D 2 - - - 0x03D5CE 0F:D5BE: 2D        .byte con_AF40_pal + $2D   ; 00
+- D 2 - - - 0x03D5CF 0F:D5BF: 2D        .byte con_AF40_pal + $2D   ; 01
+- D 2 - - - 0x03D5D0 0F:D5C0: 02        .byte con_AF40_pal + $02   ; 02
+- D 2 - - - 0x03D5D1 0F:D5C1: 14        .byte con_AF40_pal + $14   ; 03
+; 12
+- D 2 - - - 0x03D5D2 0F:D5C2: 3F        .byte con_AF40_pal + $3F   ; 00
+- D 2 - - - 0x03D5D3 0F:D5C3: 40        .byte con_AF40_pal + $40   ; 01
+- D 2 - - - 0x03D5D4 0F:D5C4: 41        .byte con_AF40_pal + $41   ; 02
+- D 2 - - - 0x03D5D5 0F:D5C5: 00        .byte con_AF40_pal + $00   ; 03
+; 13
+- D 2 - - - 0x03D5D6 0F:D5C6: 0D        .byte con_AF40_pal + $0D   ; 00
+- D 2 - - - 0x03D5D7 0F:D5C7: 33        .byte con_AF40_pal + $33   ; 01
+- D 2 - - - 0x03D5D8 0F:D5C8: 25        .byte con_AF40_pal + $25   ; 02
+- D 2 - - - 0x03D5D9 0F:D5C9: 42        .byte con_AF40_pal + $42   ; 03
+; 14
+- D 2 - - - 0x03D5DA 0F:D5CA: 00        .byte con_AF40_pal + $00   ; 00
+- D 2 - - - 0x03D5DB 0F:D5CB: 00        .byte con_AF40_pal + $00   ; 01
+- D 2 - - - 0x03D5DC 0F:D5CC: 40        .byte con_AF40_pal + $40   ; 02
+- D 2 - - - 0x03D5DD 0F:D5CD: 02        .byte con_AF40_pal + $02   ; 03
+; 15
+- D 2 - - - 0x03D5DE 0F:D5CE: 4D        .byte con_AF40_pal + $4D   ; 00
+- D 2 - - - 0x03D5DF 0F:D5CF: 4E        .byte con_AF40_pal + $4E   ; 01
+- D 2 - - - 0x03D5E0 0F:D5D0: 4F        .byte con_AF40_pal + $4F   ; 02
+- D 2 - - - 0x03D5E1 0F:D5D1: 02        .byte con_AF40_pal + $02   ; 03
+; 16
+- D 2 - - - 0x03D5E2 0F:D5D2: 51        .byte con_AF40_pal + $51   ; 00
+- D 2 - - - 0x03D5E3 0F:D5D3: 52        .byte con_AF40_pal + $52   ; 01
+- D 2 - - - 0x03D5E4 0F:D5D4: 57        .byte con_AF40_pal + $57   ; 02
+- D 2 - - - 0x03D5E5 0F:D5D5: 02        .byte con_AF40_pal + $02   ; 03
+; 17
+- D 2 - - - 0x03D5E6 0F:D5D6: 05        .byte con_AF40_pal + $05   ; 00
+- D 2 - - - 0x03D5E7 0F:D5D7: 53        .byte con_AF40_pal + $53   ; 01
+- D 2 - - - 0x03D5E8 0F:D5D8: 00        .byte con_AF40_pal + $00   ; 02
+- D 2 - - - 0x03D5E9 0F:D5D9: 00        .byte con_AF40_pal + $00   ; 03
+; 18
+- D 2 - - - 0x03D5EA 0F:D5DA: 05        .byte con_AF40_pal + $05   ; 00
+- D 2 - - - 0x03D5EB 0F:D5DB: 54        .byte con_AF40_pal + $54   ; 01
+- D 2 - - - 0x03D5EC 0F:D5DC: 55        .byte con_AF40_pal + $55   ; 02
+- D 2 - - - 0x03D5ED 0F:D5DD: 02        .byte con_AF40_pal + $02   ; 03
+; 19
+- D 2 - - - 0x03D5EE 0F:D5DE: 05        .byte con_AF40_pal + $05   ; 00
+- D 2 - - - 0x03D5EF 0F:D5DF: 2F        .byte con_AF40_pal + $2F   ; 01
+- D 2 - - - 0x03D5F0 0F:D5E0: 00        .byte con_AF40_pal + $00   ; 02
+- D 2 - - - 0x03D5F1 0F:D5E1: 00        .byte con_AF40_pal + $00   ; 03
+; 1A
+- D 2 - - - 0x03D5F2 0F:D5E2: 2F        .byte con_AF40_pal + $2F   ; 00
+- D 2 - - - 0x03D5F3 0F:D5E3: 56        .byte con_AF40_pal + $56   ; 01
+- D 2 - - - 0x03D5F4 0F:D5E4: 46        .byte con_AF40_pal + $46   ; 02
+- D 2 - - - 0x03D5F5 0F:D5E5: 00        .byte con_AF40_pal + $00   ; 03
+; 1B
+- D 2 - - - 0x03D5F6 0F:D5E6: 00        .byte con_AF40_pal + $00   ; 00
+- D 2 - - - 0x03D5F7 0F:D5E7: 00        .byte con_AF40_pal + $00   ; 01
+- D 2 - - - 0x03D5F8 0F:D5E8: 64        .byte con_AF40_pal + $64   ; 02
+- D 2 - - - 0x03D5F9 0F:D5E9: 00        .byte con_AF40_pal + $00   ; 03
 
 
 
@@ -3308,7 +3420,7 @@ C - - - - - 0x03E307 0F:E2F7: 69 06     ADC #$06
 C - - - - - 0x03E309 0F:E2F9: AA        TAX
 C - - - - - 0x03E30A 0F:E2FA: B9 A2 00  LDA ram_plr_id,Y
 C - - - - - 0x03E30D 0F:E2FD: A8        TAY
-C - - - - - 0x03E30E 0F:E2FE: B9 85 E9  LDA tbl_E985,Y
+C - - - - - 0x03E30E 0F:E2FE: B9 85 E9  LDA tbl_E985_индекс_3х_цветов_для_перса,Y
 ; tip_индекс_буфера_палитры + $06
 ; tip_индекс_буфера_палитры + $07
 C - - - - - 0x03E311 0F:E301: 20 46 D3  JSR sub_D346_записать_3_цвета_в_буфер
@@ -3333,7 +3445,7 @@ C - - - - - 0x03E32E 0F:E31E: 4A        LSR
 C - - - - - 0x03E32F 0F:E31F: A8        TAY
 C - - - - - 0x03E330 0F:E320: B9 A2 00  LDA ram_plr_id,Y
 C - - - - - 0x03E333 0F:E323: A8        TAY
-C - - - - - 0x03E334 0F:E324: B9 8C E9  LDA tbl_E98C,Y
+C - - - - - 0x03E334 0F:E324: B9 8C E9  LDA tbl_E98C_индекс_3х_цветов_для_перса,Y
 ; tip_индекс_буфера_палитры + $00
 ; tip_индекс_буфера_палитры + $02
 C - - - - - 0x03E337 0F:E327: 4C 46 D3  JMP loc_D346_записать_3_цвета_в_буфер
@@ -3353,11 +3465,18 @@ C - - - - - 0x03E345 0F:E335: C5 A3     CMP ram_plr_id + $01
 C - - - - - 0x03E347 0F:E337: D0 04     BNE bra_E33D
 C - - - - - 0x03E349 0F:E339: 68        PLA
 ; C = 1?
-; bzk optimize, CLC + ADC 0C
+; bzk optimize, CLC + ADC 0C для уверенности
 C - - - - - 0x03E34A 0F:E33A: 69 0B     ADC #$0B
 C - - - - - 0x03E34C 0F:E33C: 48        PHA
 bra_E33D:
 C - - - - - 0x03E34D 0F:E33D: 68        PLA
+; con_AF40_pal + $0D    con_AF40_pal + $19
+; con_AF40_pal + $0E    con_AF40_pal + $1A
+; con_AF40_pal + $0F    con_AF40_pal + $1B
+; con_AF40_pal + $10    con_AF40_pal + $1C
+; con_AF40_pal + $11    con_AF40_pal + $1D
+; con_AF40_pal + $12    con_AF40_pal + $1E
+; con_AF40_pal + $13    con_AF40_pal + $1F
 C - - - - - 0x03E34E 0F:E33E: 4C 46 D3  JMP loc_D346_записать_3_цвета_в_буфер
 
 
@@ -4403,27 +4522,27 @@ tbl_E979:
 
 
 
-tbl_E985:
-tbl_0x03E995:
-- D 3 - - - 0x03E995 0F:E985: 2D        .byte $2D   ; 00 con_fighter_leo
-- D 3 - - - 0x03E996 0F:E986: 2E        .byte $2E   ; 01 con_fighter_raph
-- D 3 - - - 0x03E997 0F:E987: 2F        .byte $2F   ; 02 con_fighter_mike
-- D 3 - - - 0x03E998 0F:E988: 30        .byte $30   ; 03 con_fighter_don
-- D 3 - - - 0x03E999 0F:E989: 31        .byte $31   ; 04 con_fighter_casey
-- D 3 - - - 0x03E99A 0F:E98A: 2D        .byte $2D   ; 05 con_fighter_hot
-- D 3 - - - 0x03E99B 0F:E98B: 31        .byte $31   ; 06 con_fighter_shred
+tbl_E985_индекс_3х_цветов_для_перса:
+tbl_0x03E995_индекс_3х_цветов_для_перса:
+- D 3 - - - 0x03E995 0F:E985: 2D        .byte con_AF40_pal + $2D   ; 00 con_fighter_leo
+- D 3 - - - 0x03E996 0F:E986: 2E        .byte con_AF40_pal + $2E   ; 01 con_fighter_raph
+- D 3 - - - 0x03E997 0F:E987: 2F        .byte con_AF40_pal + $2F   ; 02 con_fighter_mike
+- D 3 - - - 0x03E998 0F:E988: 30        .byte con_AF40_pal + $30   ; 03 con_fighter_don
+- D 3 - - - 0x03E999 0F:E989: 31        .byte con_AF40_pal + $31   ; 04 con_fighter_casey
+- D 3 - - - 0x03E99A 0F:E98A: 2D        .byte con_AF40_pal + $2D   ; 05 con_fighter_hot
+- D 3 - - - 0x03E99B 0F:E98B: 31        .byte con_AF40_pal + $31   ; 06 con_fighter_shred
 
 
 
-tbl_E98C:
-tbl_0x03E99C:
-- D 3 - - - 0x03E99C 0F:E98C: 06        .byte $06   ; 00 con_fighter_leo
-- D 3 - - - 0x03E99D 0F:E98D: 06        .byte $06   ; 01 con_fighter_raph
-- D 3 - - - 0x03E99E 0F:E98E: 06        .byte $06   ; 02 con_fighter_mike
-- D 3 - - - 0x03E99F 0F:E98F: 06        .byte $06   ; 03 con_fighter_don
-- D 3 - - - 0x03E9A0 0F:E990: 32        .byte $32   ; 04 con_fighter_casey
-- D 3 - - - 0x03E9A1 0F:E991: 14        .byte $14   ; 05 con_fighter_hot
-- D 3 - - - 0x03E9A2 0F:E992: 32        .byte $32   ; 06 con_fighter_shred
+tbl_E98C_индекс_3х_цветов_для_перса:
+tbl_0x03E99C_индекс_3х_цветов_для_перса:
+- D 3 - - - 0x03E99C 0F:E98C: 06        .byte con_AF40_pal + $06   ; 00 con_fighter_leo
+- D 3 - - - 0x03E99D 0F:E98D: 06        .byte con_AF40_pal + $06   ; 01 con_fighter_raph
+- D 3 - - - 0x03E99E 0F:E98E: 06        .byte con_AF40_pal + $06   ; 02 con_fighter_mike
+- D 3 - - - 0x03E99F 0F:E98F: 06        .byte con_AF40_pal + $06   ; 03 con_fighter_don
+- D 3 - - - 0x03E9A0 0F:E990: 32        .byte con_AF40_pal + $32   ; 04 con_fighter_casey
+- D 3 - - - 0x03E9A1 0F:E991: 14        .byte con_AF40_pal + $14   ; 05 con_fighter_hot
+- D 3 - - - 0x03E9A2 0F:E992: 32        .byte con_AF40_pal + $32   ; 06 con_fighter_shred
 
 
 
