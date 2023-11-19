@@ -1880,16 +1880,15 @@ _off014_8FD0_51_se12:
 
 
 tbl_8FD1_имена_из_3х_букв:
-- D 0 - - - 0x030FE1 0C:8FD1: C6        .byte $C6, $BF, $C9, $FF   ; 00 LEO
-- D 0 - - - 0x030FE5 0C:8FD5: CC        .byte $CC, $BB, $CA, $FF   ; 01 RAP
-- D 0 - - - 0x030FE9 0C:8FD9: C7        .byte $C7, $C3, $C5, $FF   ; 02 MIK
-- D 0 - - - 0x030FED 0C:8FDD: BE        .byte $BE, $C9, $C8, $FF   ; 03 DON
-- D 0 - - - 0x030FF1 0C:8FE1: BD        .byte $BD, $BB, $CD, $FF   ; 04 CAS
-- D 0 - - - 0x030FF5 0C:8FE5: C2        .byte $C2, $C9, $CE, $FF   ; 05 HOT
-- D 0 - - - 0x030FF9 0C:8FE9: CD        .byte $CD, $C2, $CC, $FF   ; 06 SHR
-- - - - - - 0x030FFD 0C:8FED: CC        .byte $CC, $C8, $BE, $FF   ; 07 RND
-- D 0 - - - 0x031001 0C:8FF1: A9        .byte $A9, $A9, $A9, $FF   ; 08 ???
-- - - - - - 0x031005 0C:8FF5: FF        .byte $FF, $FF, $FF, $FF   ; 09
+- D 0 - - - 0x030FE1 0C:8FD1: C6        .byte $B8, $B4, $BB, $FF   ; 00 LEO
+- D 0 - - - 0x030FE5 0C:8FD5: CC        .byte $BD, $B1, $BC, $FF   ; 01 RAP
+- D 0 - - - 0x030FE9 0C:8FD9: C7        .byte $B9, $B6, $B7, $FF   ; 02 MIK
+- D 0 - - - 0x030FED 0C:8FDD: BE        .byte $B3, $BB, $BA, $FF   ; 03 DON
+- D 0 - - - 0x030FF1 0C:8FE1: BD        .byte $B2, $B1, $BE, $FF   ; 04 CAS
+- D 0 - - - 0x030FF5 0C:8FE5: C2        .byte $B5, $BB, $BF, $FF   ; 05 HOT
+- D 0 - - - 0x030FF9 0C:8FE9: CD        .byte $BE, $B5, $BD, $FF   ; 06 SHR
+- - - - - - 0x030FFD 0C:8FED: CC        .byte $BD, $BA, $B3, $FF   ; 07 RND
+- D 0 - - - 0x031001 0C:8FF1: A9        .byte $B0, $B0, $B0, $FF   ; 08 ???
 
 
 
@@ -1923,6 +1922,11 @@ C - - - - - 0x03101E 0C:900E: 10 F8     BPL bra_9008_loop
 bra_9010:
 C - - - - - 0x031020 0C:9010: 4C 06 80  JMP loc_8006
 bra_9013:
+                                        LDA ram_tournament_индекс_игрока,X
+                                        LSR
+                                        LSR
+                                        LSR
+                                        STA ram_0000
 C - - - - - 0x031023 0C:9013: A9 01     LDA #con_buf_mode_01
 C - - - - - 0x031025 0C:9015: 8D 46 01  STA ram_0146
 C - - - - - 0x031028 0C:9018: BD 40 01  LDA ram_0140,X ; 0140 0141 
@@ -1960,6 +1964,10 @@ bra_9051:
 C - - - - - 0x031061 0C:9051: A0 04     LDY #$04
 bra_9053_loop:
 C - - - - - 0x031063 0C:9053: BD D0 8F  LDA tbl_8FD1_имена_из_3х_букв - $01,X
+                                        CMP #$FF
+                                        BEQ bra_9054
+                                        ADC ram_0000
+bra_9054:
 C - - - - - 0x031066 0C:9056: 99 48 01  STA ram_0149 - $01,Y ; 0149 014A 014B 014C 
 C - - - - - 0x031069 0C:9059: CA        DEX
 C - - - - - 0x03106A 0C:905A: 88        DEY

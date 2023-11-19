@@ -81,7 +81,8 @@ C - - - - - 0x02C119 0B:8109: A4 2C     LDY ram_game_mode
 ; con_gm_vs_team
 C - - - - - 0x02C11B 0B:810B: BE FA BF  LDX tbl_BFFA,Y
 C - - - - - 0x02C11E 0B:810E: 20 44 F0  JSR sub_0x03F054_отрисовать_экран
-C - - - - - 0x02C12B 0B:811B: A0 06     LDY #con_D57A_06
+                                        LDX ram_game_mode
+C - - - - - 0x02C12B 0B:811B: A0 06     LDY tbl_B3EA_выбор_палитры_фона,X
 C - - - - - 0x02C12D 0B:811D: A9 13     LDA #con_D57A_13
 C - - - - - 0x02C12F 0B:811F: 20 94 D3  JSR sub_0x03D3A4_записать_палитру_для_фона_и_спрайтов
 C - - - - - 0x02C132 0B:8122: A0 00     LDY #$00
@@ -688,9 +689,11 @@ C - - - - - 0x02EA16 0B:AA06: A5 2C     LDA ram_game_mode
 C - - - - - 0x02EA18 0B:AA08: 49 03     EOR #$03
 C - - - - - 0x02EA1A 0B:AA0A: D0 20     BNE bra_AA2C_RTS
 ; if con_gm_vs_team
-C - - - - - 0x02EA1C 0B:AA0C: AD 51 01  LDA ram_0151
-C - - - - - 0x02EA1F 0B:AA0F: 49 01     EOR #$01
-C - - - - - 0x02EA21 0B:AA11: F0 17     BEQ bra_AA2A
+C - - - - - 0x02EA1C 0B:AA0C: AD 51 01  LDA ram_tournament_индекс_игрока
+C - - - - - 0x02EA1F 0B:AA0F: 49 01     EOR ram_tournament_индекс_игрока + $01
+                                        ASL
+                                        LDA #$00
+C - - - - - 0x02EA21 0B:AA11: F0 17     BCS bra_AA2A
 C - - - - - 0x02EA23 0B:AA13: AD 2B 01  LDA ram_option_misc
 C - - - - - 0x02EA26 0B:AA16: 29 08     AND #$08
 C - - - - - 0x02EA28 0B:AA18: F0 12     BEQ bra_AA2C_RTS
@@ -1240,6 +1243,7 @@ tbl_AFEA_night:
 - - - - - - 0x02F126 0B:B116: 27        .byte $27, $13, $03   ; 64
 - - - - - - 0x02F129 0B:B119: 18        .byte $18, $28, $14   ; 65
 - - - - - - 0x02F12C 0B:B11C: 18        .byte $18, $28, $20   ; 66
+                                        .byte $05, $1A, $26   ; 67
 
 
 
@@ -1347,6 +1351,7 @@ tbl_B1EA_original:
 - - - - - - 0x02F326 0B:B316: 03        .byte $03, $13, $27   ; 64
 - - - - - - 0x02F329 0B:B319: 17        .byte $17, $27, $14   ; 65
 - - - - - - 0x02F32C 0B:B31C: 17        .byte $17, $27, $20   ; 66
+                                        .byte $17, $11, $38   ; 67
 
 
 
@@ -1454,6 +1459,15 @@ tbl_B3EA_green:
 - D 1 - I - 0x02F526 0B:B516: 03        .byte $03, $13, $27   ; 64
 - D 1 - I - 0x02F529 0B:B519: 18        .byte $18, $28, $14   ; 65
 - D 1 - I - 0x02F52C 0B:B51C: 18        .byte $18, $28, $20   ; 66
+                                        .byte $17, $11, $38   ; 67
+
+
+
+tbl_B3EA_выбор_палитры_фона:
+                                        .byte con_D57A_05   ; 00 story
+                                        .byte con_D57A_05   ; 01 vs player
+                                        .byte con_D57A_05   ; 02 vs cpu
+                                        .byte con_D57A_06   ; 03 vs team
 
 
 
@@ -1881,15 +1895,17 @@ C - - - - - 0x02F930 0B:B920: 60        RTS
 
 
 
-sub_BBB5:
+sub_BBB5_перетасовка_персов_для_losermix:
+; проверяем возможность перетасовки
 C - - - - - 0x02FBC5 0B:BBB5: AC 2C 01  LDY ram_option_team_keeps
 C - - - - - 0x02FBC8 0B:BBB8: C0 02     CPY #$02
-C - - - - - 0x02FBCA 0B:BBBA: D0 39     BNE bra_BBF5_RTS
+C - - - - - 0x02FBCA 0B:BBBA: D0 39     BNE bra_BBF5
 - - - - - - 0x02FBCC 0B:BBBC: AC 50 01  LDY ram_0150
-- - - - - - 0x02FBCF 0B:BBBF: F0 34     BEQ bra_BBF5_RTS
+- - - - - - 0x02FBCF 0B:BBBF: F0 34     BEQ bra_BBF5
 - - - - - - 0x02FBD1 0B:BBC1: BC 49 06  LDY ram_plr_колво_побед_в_раундах,X ; 0649 064A 
 - - - - - - 0x02FBD4 0B:BBC4: C0 02     CPY #$02
-- - - - - - 0x02FBD6 0B:BBC6: F0 2D     BEQ bra_BBF5_RTS
+- - - - - - 0x02FBD6 0B:BBC6: F0 2D     BEQ bra_BBF5
+; старт перетасовки
 - - - - - - 0x02FBD8 0B:BBC8: 85 01     STA ram_0001
 - - - - - - 0x02FBDA 0B:BBCA: 8A        TXA
 - - - - - - 0x02FBDB 0B:BBCB: 0A        ASL
@@ -1912,7 +1928,9 @@ C - - - - - 0x02FBCA 0B:BBBA: D0 39     BNE bra_BBF5_RTS
 - - - - - - 0x02FBFE 0B:BBEE: A4 00     LDY ram_0000
 - - - - - - 0x02FC00 0B:BBF0: A5 02     LDA ram_0002
 - - - - - - 0x02FC02 0B:BBF2: 99 30 01  STA ram_0130,Y
-bra_BBF5_RTS:
+bra_BBF5:
+                                        TAY
+                                        AND #$7F
 C - - - - - 0x02FC05 0B:BBF5: 60        RTS
 
 
@@ -1928,6 +1946,8 @@ C - - - - - 0x02FC96 0B:BC86: AE 54 01  LDX ram_0154
 C - - - - - 0x02FC99 0B:BC89: 4C 1D E6  JMP loc_0x03E62D
 bra_BC8C:
 ; con_gm_vs_team
+                                        LDY ram_0151
+                                        JSR sub_BE11_запись_игрок_или_компьютер
 C - - - - - 0x02FC9C 0B:BC8C: EE 50 01  INC ram_0150
 C - - - - - 0x02FC9F 0B:BC8F: AC 2C 01  LDY ram_option_team_keeps
 C - - - - - 0x02FCA2 0B:BC92: A5 08     LDA ram_0008
@@ -2085,6 +2105,9 @@ bra_BDA0:
 C - - - - - 0x02FDB0 0B:BDA0: CA        DEX
 C - - - - - 0x02FDB1 0B:BDA1: 10 EC     BPL bra_BD8F_loop
 bra_BDA3:
+                                        LDY ram_obj_0530 + $01
+                                        DEY
+                                        BEQ bra_BDEC
 C - - - - - 0x02FDB3 0B:BDA3: AC 30 05  LDY ram_obj_0530
 C - - - - - 0x02FDB6 0B:BDA6: C0 04     CPY #$04
 C - - - - - 0x02FDB8 0B:BDA8: B0 42     BCS bra_BDEC
@@ -2109,10 +2132,7 @@ C - - - - - 0x02FDD9 0B:BDC9: 4A        LSR
 C - - - - - 0x02FDDA 0B:BDCA: 90 03     BCC bra_BDCF
 C - - - - - 0x02FDDC 0B:BDCC: 8D 31 05  STA ram_obj_0530 + $01
 bra_BDCF:
-C - - - - - 0x02FDDF 0B:BDCF: B9 74 BD  LDA tbl_BD74,Y
-C - - - - - 0x02FDE2 0B:BDD2: 8D 55 01  STA ram_tournament_индекс_игрока
-C - - - - - 0x02FDE5 0B:BDD5: B9 77 BD  LDA tbl_BD77,Y
-C - - - - - 0x02FDE8 0B:BDD8: 8D 56 01  STA ram_tournament_индекс_игрока + $01
+                                        JSR sub_BE11_запись_игрок_или_компьютер
 C - - - - - 0x02FDEB 0B:BDDB: B9 7A BD  LDA tbl_BD7A_анимация,Y
 C - - - - - 0x02FDEE 0B:BDDE: 8D 00 04  STA ram_obj_anim_id
 C - - - - - 0x02FDF1 0B:BDE1: B9 7D BD  LDA tbl_BD7D,Y
@@ -2129,6 +2149,15 @@ C - - - - - 0x02FE07 0B:BDF7: 4C 64 81  JMP loc_8164
 
 
 
+sub_BE11_запись_игрок_или_компьютер:
+C - - - - - 0x02FDDF 0B:BDCF: B9 74 BD  LDA tbl_BD74,Y
+C - - - - - 0x02FDE2 0B:BDD2: 8D 55 01  STA ram_tournament_индекс_игрока
+C - - - - - 0x02FDE5 0B:BDD5: B9 77 BD  LDA tbl_BD77,Y
+C - - - - - 0x02FDE8 0B:BDD8: 8D 56 01  STA ram_tournament_индекс_игрока + $01
+                                        RTS
+
+
+
 loc_BE12:
 C D 1 - - - 0x02FE22 0B:BE12: A5 2C     LDA ram_game_mode
 ; con_gm_story
@@ -2138,6 +2167,9 @@ C D 1 - - - 0x02FE22 0B:BE12: A5 2C     LDA ram_game_mode
 C - - - - - 0x02FE24 0B:BE14: C9 03     CMP #$03
 C - - - - - 0x02FE26 0B:BE16: D0 39     BNE bra_BE51
 ; if con_gm_vs_team
+                                        LDA ram_tournament_индекс_игрока,X
+                                        AND #$80
+                                        STA ram_0000
 C - - - - - 0x02FE28 0B:BE18: 98        TYA
 C - - - - - 0x02FE29 0B:BE19: 29 10     AND #con_btn_Start
 C - - - - - 0x02FE2B 0B:BE1B: F0 03     BEQ bra_BE20
@@ -2169,6 +2201,7 @@ C - - - - - 0x02FE55 0B:BE45: 29 40     AND #con_btn_B
 C - - - - - 0x02FE57 0B:BE47: D0 1B     BNE bra_BE64
 C - - - - - 0x02FE59 0B:BE49: DE 44 01  DEC ram_0144,X ; 0144 0145 
 C - - - - - 0x02FE5C 0B:BE4C: B5 A2     LDA ram_plr_id,X ; 00A2 00A3 
+                                        ORA ram_0000
 C - - - - - 0x02FE5E 0B:BE4E: 99 30 01  STA ram_0130,Y ; 0130 0131 0132 0133 0134 0135 0136 0138 0139 013A 013B 013C 013D 013E 
 bra_BE51:
 C - - - - - 0x02FE61 0B:BE51: 4C 6F 82  JMP loc_826F
@@ -2183,6 +2216,7 @@ bra_BE63_RTS:
 C - - - - - 0x02FE73 0B:BE63: 60        RTS
 bra_BE64:
 - - - - - - 0x02FE74 0B:BE64: 20 7C BE  JSR sub_BE7C
+                                        ORA ram_0000
 - - - - - - 0x02FE77 0B:BE67: 99 30 01  STA ram_0130,Y
 - - - - - - 0x02FE7A 0B:BE6A: A9 FD     LDA #$FD
 - - - - - - 0x02FE7C 0B:BE6C: 9D 44 01  STA ram_0144,X
@@ -2350,8 +2384,11 @@ bra_BF93:
 C - - - - - 0x02FFA3 0B:BF93: BC 42 01  LDY ram_0142,X ; 0142 
 bra_BF96:
 C - - - - - 0x02FFA6 0B:BF96: B9 30 01  LDA ram_0130,Y ; 0130 0131 0132 0133 0134 0135 0136 
-C - - - - - 0x02FFA9 0B:BF99: 20 B5 BB  JSR sub_BBB5
+C - - - - - 0x02FFA9 0B:BF99: 20 B5 BB  JSR sub_BBB5_перетасовка_персов_для_losermix
 C - - - - - 0x02FFAC 0B:BF9C: 85 A2     STA ram_plr_id
+                                        TYA
+                                        AND #$80
+                                        STA ram_tournament_индекс_игрока
 C - - - - - 0x02FFAE 0B:BF9E: 8A        TXA
 C - - - - - 0x02FFAF 0B:BF9F: 49 01     EOR #$01
 C - - - - - 0x02FFB1 0B:BFA1: AA        TAX
@@ -2361,8 +2398,12 @@ C - - - - - 0x02FFB8 0B:BFA8: F0 03     BEQ bra_BFAD
 C - - - - - 0x02FFBA 0B:BFAA: BC 42 01  LDY ram_0142,X ; 0143 
 bra_BFAD:
 C - - - - - 0x02FFBD 0B:BFAD: B9 38 01  LDA ram_0138,Y ; 0138 
-C - - - - - 0x02FFC0 0B:BFB0: 20 B5 BB  JSR sub_BBB5
+C - - - - - 0x02FFC0 0B:BFB0: 20 B5 BB  JSR sub_BBB5_перетасовка_персов_для_losermix
 C - - - - - 0x02FFC3 0B:BFB3: 85 A3     STA ram_plr_id + $01
+                                        TYA
+                                        AND #$80
+                                        ORA #$01
+                                        STA ram_tournament_индекс_игрока + $01
 C - - - - - 0x02FFC5 0B:BFB5: 4C 46 E2  JMP loc_0x03E256
 
 

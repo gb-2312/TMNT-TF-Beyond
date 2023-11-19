@@ -1648,8 +1648,8 @@ tbl_D57A:
 - D 2 - - - 0x03D592 0F:D582: 0D        .byte $0D, $13, $07, $08   ; 02
 - - - - - - 0x03D596 0F:D586: 0B        .byte $0B, $29, $0C, $01   ; 03 unused, индекс не существует
 - D 2 - - - 0x03D59A 0F:D58A: 01        .byte $01, $26, $27, $00   ; 04
-- - - - - - 0x03D59E 0F:D58E: 2B        .byte $2B, $0C, $16, $01   ; 05 unused, индекс не существует
-- D 2 - - - 0x03D5A2 0F:D592: 20        .byte $20, $02, $02, $02   ; 06
+- - - - - - 0x03D59E 0F:D58E: 2B        .byte $20, $02, $02, $02   ; 05
+- D 2 - - - 0x03D5A2 0F:D592: 20        .byte $67, $02, $02, $02   ; 06
 - D 2 - - - 0x03D5A6 0F:D596: 02        .byte $02, $17, $18, $18   ; 07
 - - - - - - 0x03D5AA 0F:D59A: 02        .byte $02, $09, $3C, $01   ; 08 unused, индекс не существует
 - D 2 - - - 0x03D5AE 0F:D59E: 00        .byte $00, $20, $00, $02   ; 09
@@ -3281,7 +3281,7 @@ C - - - - - 0x003F20 00:BF10: 4A        LSR
 C - - - - - 0x003F21 00:BF11: 60        RTS
 bra_BF12:
 - - - - - - 0x003F22 00:BF12: 18        CLC
-- - - - - - 0x003F23 00:BF13: 6D 51 01  ADC ram_0151
+- - - - - - 0x003F23 00:BF13: 6D 51 01  ADC #$02
 - - - - - - 0x003F26 00:BF16: A4 00     LDY ram_0000
 - - - - - - 0x003F28 00:BF18: F0 03     BEQ bra_BF1D_RTS
 - - - - - - 0x003F2A 00:BF1A: B9 1D BF  LDA tbl_BF1E - $01,Y
@@ -7971,9 +7971,12 @@ C - - - - - 0x03FF4D 0F:FF3D: AD 54 01  LDA ram_0154
 C - - - - - 0x03FF50 0F:FF40: 0A        ASL
 C - - - - - 0x03FF51 0F:FF41: A8        TAY
 C - - - - - 0x03FF52 0F:FF42: B9 56 01  LDA ram_tournament_индекс_игрока + $01,Y ; 0156 0158 015A 
-C - - - - - 0x03FF55 0F:FF45: 59 55 01  EOR ram_tournament_индекс_игрока,Y ; 0155 0157 0159 
-C - - - - - 0x03FF58 0F:FF48: 30 23     BMI bra_FF6D    ; if лишь 1 из соперников cpu
-; if никто из соперников cpu, либо оба cpu
+                                        ADC ram_tournament_индекс_игрока,Y ; 0155 0157 0159 
+                                        BPL bra_FF5A    ; if никто из соперников cpu, либо оба cpu
+                                        LDA ram_tournament_индекс_игрока,Y ; 0155 0157 0159 
+                                        BPL bra_FF6D    ; if 2 соперник cpu
+                                        BMI bra_FF6C    ; if 1 соперник cpu
+bra_FF5A:
 C - - - - - 0x03FF5A 0F:FF4A: AD 0D 01  LDA ram_plr_hp_hi
 C - - - - - 0x03FF5D 0F:FF4D: 0D 0E 01  ORA ram_plr_hp_hi + $01
 C - - - - - 0x03FF60 0F:FF50: F0 09     BEQ bra_FF5B
