@@ -9852,16 +9852,21 @@ C - - - - - 0x0279CB 09:B9BB: B5 8E     LDA ram_btn_press,X
 C - - - - - 0x0279CD 09:B9BD: 29 08     AND #con_btn_Up
 C - - - - - 0x0279CF 09:B9BF: F0 03     BEQ bra_B9C4
 C - - - - - 0x0279D1 09:B9C1: 9D 33 06  STA ram_0633,X ; 0633 0634 
+; проверка, может ли шред отменять мясо
 bra_B9C4:
 C - - - - - 0x0279D4 09:B9C4: A5 2C     LDA ram_game_mode
 ; con_gm_story
+; con_gm_vs_player
+; con_gm_vs_cpu
 ; con_gm_vs_team
 ; con_gm_tournament
 C - - - - - 0x0279D6 09:B9C6: 4A        LSR
 C - - - - - 0x0279D7 09:B9C7: 90 0C     BCC bra_B9D5
+; con_gm_vs_player
 ; con_gm_vs_team
-C - - - - - 0x0279D9 09:B9C9: AD 51 01  LDA ram_переключатель_man_cpu
-C - - - - - 0x0279DC 09:B9CC: D0 07     BNE bra_B9D5
+C - - - - - 0x0279D9 09:B9C9: AD 51 01  LDA ram_tournament_индекс_игрока
+                                        ORA ram_tournament_индекс_игрока + $01
+C - - - - - 0x0279DC 09:B9CC: D0 07     BMI bra_B9D5 ; if хоть один из игроков - комп
 C - - - - - 0x0279DE 09:B9CE: AD 2B 01  LDA ram_option_misc
 C - - - - - 0x0279E1 09:B9D1: 29 10     AND #$10
 C - - - - - 0x0279E3 09:B9D3: F0 15     BEQ bra_B9EA

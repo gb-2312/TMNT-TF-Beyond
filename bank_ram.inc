@@ -868,7 +868,7 @@ ram_plr_колво_побед_в_матчах            = $0129 ; 02FD4A 02FD59
 ; ram_012A                                = $012A ; 02FD4A 02FD59 02FD68 02FD6D 03F1DD 
 
 
-; .... ..xx = SCIN
+; .... ..xx = SKIN
     ; 00 = GREEN
     ; 01 = ORIGINAL
     ; 02 = NIGHT
