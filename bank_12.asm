@@ -9860,7 +9860,7 @@ C - - - - - 0x0279D4 09:B9C4: A5 2C     LDA ram_game_mode
 C - - - - - 0x0279D6 09:B9C6: 4A        LSR
 C - - - - - 0x0279D7 09:B9C7: 90 0C     BCC bra_B9D5
 ; con_gm_vs_team
-C - - - - - 0x0279D9 09:B9C9: AD 51 01  LDA ram_0151
+C - - - - - 0x0279D9 09:B9C9: AD 51 01  LDA ram_переключатель_man_cpu
 C - - - - - 0x0279DC 09:B9CC: D0 07     BNE bra_B9D5
 C - - - - - 0x0279DE 09:B9CE: AD 2B 01  LDA ram_option_misc
 C - - - - - 0x0279E1 09:B9D1: 29 10     AND #$10

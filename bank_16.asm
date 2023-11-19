@@ -1912,13 +1912,13 @@ C - - - - - 0x02FBCA 0B:BBBA: D0 39     BNE bra_BBF5
 - - - - - - 0x02FBDC 0B:BBCC: 0A        ASL
 - - - - - - 0x02FBDD 0B:BBCD: 0A        ASL
 - - - - - - 0x02FBDE 0B:BBCE: 85 03     STA ram_0003
-- - - - - - 0x02FBE0 0B:BBD0: 1D 42 01  ORA ram_0142,X
+- - - - - - 0x02FBE0 0B:BBD0: 1D 42 01  ORA ram_plr_колво_побед_в_vs_team,X
 - - - - - - 0x02FBE3 0B:BBD3: 85 00     STA ram_0000
-- - - - - - 0x02FBE5 0B:BBD5: BD 40 01  LDA ram_0140,X
-- - - - - - 0x02FBE8 0B:BBD8: FD 42 01  SBC ram_0142,X
+- - - - - - 0x02FBE5 0B:BBD5: BD 40 01  LDA ram_plr_колво_персов_в_цепочке_vs_team,X
+- - - - - - 0x02FBE8 0B:BBD8: FD 42 01  SBC ram_plr_колво_побед_в_vs_team,X
 - - - - - - 0x02FBEB 0B:BBDB: 25 22     AND ram_счетчик_кадров
 - - - - - - 0x02FBED 0B:BBDD: 18        CLC
-- - - - - - 0x02FBEE 0B:BBDE: 7D 42 01  ADC ram_0142,X
+- - - - - - 0x02FBEE 0B:BBDE: 7D 42 01  ADC ram_plr_колво_побед_в_vs_team,X
 - - - - - - 0x02FBF1 0B:BBE1: 65 03     ADC ram_0003
 - - - - - - 0x02FBF3 0B:BBE3: A8        TAY
 - - - - - - 0x02FBF4 0B:BBE4: B9 30 01  LDA ram_0130,Y
@@ -1946,7 +1946,7 @@ C - - - - - 0x02FC96 0B:BC86: AE 54 01  LDX ram_0154
 C - - - - - 0x02FC99 0B:BC89: 4C 1D E6  JMP loc_0x03E62D
 bra_BC8C:
 ; con_gm_vs_team
-                                        LDY ram_0151
+                                        LDY ram_переключатель_man_cpu
                                         JSR sub_BE11_запись_игрок_или_компьютер
 C - - - - - 0x02FC9C 0B:BC8C: EE 50 01  INC ram_0150
 C - - - - - 0x02FC9F 0B:BC8F: AC 2C 01  LDY ram_option_team_keeps
@@ -1960,11 +1960,11 @@ bra_BC9E:
 C - - - - - 0x02FCAE 0B:BC9E: 8D 4F 01  STA ram_014F
 C - - - - - 0x02FCB1 0B:BCA1: C9 83     CMP #$83
 C - - - - - 0x02FCB3 0B:BCA3: F0 2E     BEQ bra_BCD3
-C - - - - - 0x02FCB5 0B:BCA5: FE 42 01  INC ram_0142,X ; 0142 
+C - - - - - 0x02FCB5 0B:BCA5: FE 42 01  INC ram_plr_колво_побед_в_vs_team,X ; 0142 
 C - - - - - 0x02FCB8 0B:BCA8: 90 0B     BCC bra_BCB5
-- - - - - - 0x02FCBA 0B:BCAA: EE 43 01  INC ram_0143
-- - - - - - 0x02FCBD 0B:BCAD: AD 43 01  LDA ram_0143
-- - - - - - 0x02FCC0 0B:BCB0: CD 40 01  CMP ram_0140
+- - - - - - 0x02FCBA 0B:BCAA: EE 43 01  INC ram_plr_колво_побед_в_vs_team + $01
+- - - - - - 0x02FCBD 0B:BCAD: AD 43 01  LDA ram_plr_колво_побед_в_vs_team + $01
+- - - - - - 0x02FCC0 0B:BCB0: CD 40 01  CMP ram_plr_колво_персов_в_цепочке_vs_team
 - - - - - - 0x02FCC3 0B:BCB3: B0 21     BCS bra_BCD6
 bra_BCB5:
 C - - - - - 0x02FCC5 0B:BCB5: 8A        TXA
@@ -1975,33 +1975,33 @@ C - - - - - 0x02FCC8 0B:BCB8: F0 06     BEQ bra_BCC0
 - - - - - - 0x02FCCE 0B:BCBE: 49 01     EOR #$01
 bra_BCC0:
 C - - - - - 0x02FCD0 0B:BCC0: A8        TAY
-C - - - - - 0x02FCD1 0B:BCC1: BD 42 01  LDA ram_0142,X ; 0142 
+C - - - - - 0x02FCD1 0B:BCC1: BD 42 01  LDA ram_plr_колво_побед_в_vs_team,X ; 0142 
 C - - - - - 0x02FCD4 0B:BCC4: B0 08     BCS bra_BCCE
 - - - - - - 0x02FCD6 0B:BCC6: AD 50 01  LDA ram_0150
-- - - - - - 0x02FCD9 0B:BCC9: DD 40 01  CMP ram_0140,X
+- - - - - - 0x02FCD9 0B:BCC9: DD 40 01  CMP ram_plr_колво_персов_в_цепочке_vs_team,X
 - - - - - - 0x02FCDC 0B:BCCC: B0 11     BCS bra_BCDF
 bra_BCCE:
-C - - - - - 0x02FCDE 0B:BCCE: D9 40 01  CMP ram_0140,Y ; 0140 
+C - - - - - 0x02FCDE 0B:BCCE: D9 40 01  CMP ram_plr_колво_персов_в_цепочке_vs_team,Y ; 0140 
 C - - - - - 0x02FCE1 0B:BCD1: B0 0C     BCS bra_BCDF
 bra_BCD3:
 C - - - - - 0x02FCE3 0B:BCD3: 4C 6C E6  JMP loc_0x03E67C
 bra_BCD6:
 - - - - - - 0x02FCE6 0B:BCD6: E8        INX
-- - - - - - 0x02FCE7 0B:BCD7: AD 42 01  LDA ram_0142
-- - - - - - 0x02FCEA 0B:BCDA: CD 41 01  CMP ram_0141
+- - - - - - 0x02FCE7 0B:BCD7: AD 42 01  LDA ram_plr_колво_побед_в_vs_team
+- - - - - - 0x02FCEA 0B:BCDA: CD 41 01  CMP ram_plr_колво_персов_в_цепочке_vs_team + $01
 - - - - - - 0x02FCED 0B:BCDD: B0 25     BCS bra_BD04
 bra_BCDF:
 C - - - - - 0x02FCEF 0B:BCDF: AD 2C 01  LDA ram_option_team_keeps
 C - - - - - 0x02FCF2 0B:BCE2: F0 10     BEQ bra_BCF4
-C - - - - - 0x02FCF4 0B:BCE4: AD 40 01  LDA ram_0140
-C - - - - - 0x02FCF7 0B:BCE7: 0D 41 01  ORA ram_0141
+C - - - - - 0x02FCF4 0B:BCE4: AD 40 01  LDA ram_plr_колво_персов_в_цепочке_vs_team
+C - - - - - 0x02FCF7 0B:BCE7: 0D 41 01  ORA ram_plr_колво_персов_в_цепочке_vs_team + $01
 C - - - - - 0x02FCFA 0B:BCEA: 49 01     EOR #$01
 C - - - - - 0x02FCFC 0B:BCEC: F0 06     BEQ bra_BCF4
 C - - - - - 0x02FCFE 0B:BCEE: 8E 71 06  STX ram_0671
 C - - - - - 0x02FD01 0B:BCF1: 4C 8A E6  JMP loc_0x03E69A
 bra_BCF4:
-- - - - - - 0x02FD04 0B:BCF4: AD 42 01  LDA ram_0142
-- - - - - - 0x02FD07 0B:BCF7: CD 43 01  CMP ram_0143
+- - - - - - 0x02FD04 0B:BCF4: AD 42 01  LDA ram_plr_колво_побед_в_vs_team
+- - - - - - 0x02FD07 0B:BCF7: CD 43 01  CMP ram_plr_колво_побед_в_vs_team + $01
 - - - - - - 0x02FD0A 0B:BCFA: F0 08     BEQ bra_BD04
 - - - - - - 0x02FD0C 0B:BCFC: 90 03     BCC bra_BD01
 - - - - - - 0x02FD0E 0B:BCFE: A2 00     LDX #$00
@@ -2086,9 +2086,9 @@ loc_BD80:
 C D 1 - - - 0x02FD90 0B:BD80: C9 03     CMP #$03
 C - - - - - 0x02FD92 0B:BD82: D0 70     BNE bra_BDF4
 ; con_gm_vs_team
-C - - - - - 0x02FD94 0B:BD84: AD 51 01  LDA ram_0151
+C - - - - - 0x02FD94 0B:BD84: AD 51 01  LDA ram_переключатель_man_cpu
 C - - - - - 0x02FD97 0B:BD87: F0 06     BEQ bra_BD8F
-C - - - - - 0x02FD99 0B:BD89: AD 41 01  LDA ram_0141
+C - - - - - 0x02FD99 0B:BD89: AD 41 01  LDA ram_plr_колво_персов_в_цепочке_vs_team + $01
 C - - - - - 0x02FD9C 0B:BD8C: D0 15     BNE bra_BDA3
 C - - - - - 0x02FD9E 0B:BD8E: CA        DEX
 bra_BD8F:
@@ -2117,7 +2117,7 @@ C - - - - - 0x02FDBD 0B:BDAD: A5 8E     LDA ram_btn_press
 C - - - - - 0x02FDBF 0B:BDAF: 29 20     AND #con_btn_Select
 C - - - - - 0x02FDC1 0B:BDB1: F0 39     BEQ bra_BDEC
 C - - - - - 0x02FDC3 0B:BDB3: A9 01     LDA #$01
-C - - - - - 0x02FDC5 0B:BDB5: 6D 51 01  ADC ram_0151
+C - - - - - 0x02FDC5 0B:BDB5: 6D 51 01  ADC ram_переключатель_man_cpu
 C - - - - - 0x02FDC8 0B:BDB8: C9 03     CMP #$03
 C - - - - - 0x02FDCA 0B:BDBA: 90 09     BCC bra_BDC5
 C - - - - - 0x02FDCC 0B:BDBC: C0 02     CPY #$02
@@ -2126,7 +2126,7 @@ C - - - - - 0x02FDCE 0B:BDBE: D0 03     BNE bra_BDC3
 bra_BDC3:
 C - - - - - 0x02FDD3 0B:BDC3: A9 00     LDA #$00
 bra_BDC5:
-C - - - - - 0x02FDD5 0B:BDC5: 8D 51 01  STA ram_0151
+C - - - - - 0x02FDD5 0B:BDC5: 8D 51 01  STA ram_переключатель_man_cpu
 C - - - - - 0x02FDD8 0B:BDC8: A8        TAY
 C - - - - - 0x02FDD9 0B:BDC9: 4A        LSR
 C - - - - - 0x02FDDA 0B:BDCA: 90 03     BCC bra_BDCF
@@ -2140,7 +2140,7 @@ C - - - - - 0x02FDF4 0B:BDE4: 8D 01 04  STA ram_obj_anim_id + $01
 C - - - - - 0x02FDF7 0B:BDE7: A9 27     LDA #con_0x03F6AD_27
 C - - - - - 0x02FDF9 0B:BDE9: 20 90 F6  JSR sub_0x03F6A0_записать_звук_сохранив_X_Y
 bra_BDEC:
-C - - - - - 0x02FDFC 0B:BDEC: AD 51 01  LDA ram_0151
+C - - - - - 0x02FDFC 0B:BDEC: AD 51 01  LDA ram_переключатель_man_cpu
 C - - - - - 0x02FDFF 0B:BDEF: F0 03     BEQ bra_BDF4
 C - - - - - 0x02FE01 0B:BDF1: 4C 84 81  JMP loc_8184
 bra_BDF4:
@@ -2169,28 +2169,28 @@ C - - - - - 0x02FE26 0B:BE16: D0 39     BNE bra_BE51
 ; if con_gm_vs_team
                                         LDA ram_tournament_индекс_игрока,X
                                         AND #$80
-                                        STA ram_0000
+                                        STA ram_0000 ; сохраняем man или cpu для использования дальше
 C - - - - - 0x02FE28 0B:BE18: 98        TYA
 C - - - - - 0x02FE29 0B:BE19: 29 10     AND #con_btn_Start
 C - - - - - 0x02FE2B 0B:BE1B: F0 03     BEQ bra_BE20
-- - - - - - 0x02FE2D 0B:BE1D: DE 42 01  DEC ram_0142,X
+- - - - - - 0x02FE2D 0B:BE1D: DE 42 01  DEC ram_plr_колво_побед_в_vs_team,X
 bra_BE20:
 C - - - - - 0x02FE30 0B:BE20: 98        TYA
 C - - - - - 0x02FE31 0B:BE21: 29 40     AND #con_btn_B
 C - - - - - 0x02FE33 0B:BE23: D0 2F     BNE bra_BE54
-C - - - - - 0x02FE35 0B:BE25: BD 40 01  LDA ram_0140,X ; 0140 0141 
+C - - - - - 0x02FE35 0B:BE25: BD 40 01  LDA ram_plr_колво_персов_в_цепочке_vs_team,X ; 0140 0141 
 C - - - - - 0x02FE38 0B:BE28: C9 07     CMP #$07
 C - - - - - 0x02FE3A 0B:BE2A: 90 03     BCC bra_BE2F
-- - - - - - 0x02FE3C 0B:BE2C: DE 40 01  DEC ram_0140,X
+- - - - - - 0x02FE3C 0B:BE2C: DE 40 01  DEC ram_plr_колво_персов_в_цепочке_vs_team,X
 bra_BE2F:
 C - - - - - 0x02FE3F 0B:BE2F: 8A        TXA
 C - - - - - 0x02FE40 0B:BE30: 0A        ASL
 C - - - - - 0x02FE41 0B:BE31: 0A        ASL
 C - - - - - 0x02FE42 0B:BE32: 0A        ASL
-C - - - - - 0x02FE43 0B:BE33: 7D 40 01  ADC ram_0140,X ; 0140 0141 
+C - - - - - 0x02FE43 0B:BE33: 7D 40 01  ADC ram_plr_колво_персов_в_цепочке_vs_team,X ; 0140 0141 
 C - - - - - 0x02FE46 0B:BE36: A8        TAY
-C - - - - - 0x02FE47 0B:BE37: FE 40 01  INC ram_0140,X ; 0140 0141 
-C - - - - - 0x02FE4A 0B:BE3A: AD 51 01  LDA ram_0151
+C - - - - - 0x02FE47 0B:BE37: FE 40 01  INC ram_plr_колво_персов_в_цепочке_vs_team,X ; 0140 0141 
+C - - - - - 0x02FE4A 0B:BE3A: AD 51 01  LDA ram_переключатель_man_cpu
 C - - - - - 0x02FE4D 0B:BE3D: F0 04     BEQ bra_BE43
 - - - - - - 0x02FE4F 0B:BE3F: A5 91     LDA ram_btn_hold
 - - - - - - 0x02FE51 0B:BE41: D0 02     BNE bra_BE45
@@ -2201,12 +2201,12 @@ C - - - - - 0x02FE55 0B:BE45: 29 40     AND #con_btn_B
 C - - - - - 0x02FE57 0B:BE47: D0 1B     BNE bra_BE64
 C - - - - - 0x02FE59 0B:BE49: DE 44 01  DEC ram_0144,X ; 0144 0145 
 C - - - - - 0x02FE5C 0B:BE4C: B5 A2     LDA ram_plr_id,X ; 00A2 00A3 
-                                        ORA ram_0000
+                                        ORA ram_0000 ; суммируем с man или cpu
 C - - - - - 0x02FE5E 0B:BE4E: 99 30 01  STA ram_0130,Y ; 0130 0131 0132 0133 0134 0135 0136 0138 0139 013A 013B 013C 013D 013E 
 bra_BE51:
 C - - - - - 0x02FE61 0B:BE51: 4C 6F 82  JMP loc_826F
 bra_BE54:
-C - - - - - 0x02FE64 0B:BE54: BD 40 01  LDA ram_0140,X ; 0140 0141 
+C - - - - - 0x02FE64 0B:BE54: BD 40 01  LDA ram_plr_колво_персов_в_цепочке_vs_team,X ; 0140 0141 
 C - - - - - 0x02FE67 0B:BE57: F0 0A     BEQ bra_BE63_RTS
 C - - - - - 0x02FE69 0B:BE59: A9 FE     LDA #$FE
 C - - - - - 0x02FE6B 0B:BE5B: 9D 44 01  STA ram_0144,X ; 0144 0145 
@@ -2215,8 +2215,8 @@ C - - - - - 0x02FE70 0B:BE60: 4C 90 F6  JMP loc_0x03F6A0_записать_зву
 bra_BE63_RTS:
 C - - - - - 0x02FE73 0B:BE63: 60        RTS
 bra_BE64:
-- - - - - - 0x02FE74 0B:BE64: 20 7C BE  JSR sub_BE7C
-                                        ORA ram_0000
+- - - - - - 0x02FE74 0B:BE64: 20 7C BE  JSR sub_BE7C_случайный_выбор_перса
+                                        ORA ram_0000 ; суммируем с man или cpu
 - - - - - - 0x02FE77 0B:BE67: 99 30 01  STA ram_0130,Y
 - - - - - - 0x02FE7A 0B:BE6A: A9 FD     LDA #$FD
 - - - - - - 0x02FE7C 0B:BE6C: 9D 44 01  STA ram_0144,X
@@ -2228,7 +2228,7 @@ bra_BE64:
 
 
 
-sub_BE7C:
+sub_BE7C_случайный_выбор_перса:
 - - - - - - 0x02FE8C 0B:BE7C: A5 28     LDA ram_random_1
 - - - - - - 0x02FE8E 0B:BE7E: 29 07     AND #$07
 - - - - - - 0x02FE90 0B:BE80: 69 FF     ADC #$FF
@@ -2244,16 +2244,16 @@ loc_BEA0:
 C D 1 - - - 0x02FEB0 0B:BEA0: A9 81     LDA #$81
 C - - - - - 0x02FEB2 0B:BEA2: 20 66 D2  JSR sub_0x03D276_записать_A_в_буфер_без_сохранения_индекса
 C - - - - - 0x02FEB5 0B:BEA5: A4 00     LDY ram_0000
-C - - - - - 0x02FEB7 0B:BEA7: B9 42 01  LDA ram_0142,Y ; 0142 0143 
+C - - - - - 0x02FEB7 0B:BEA7: B9 42 01  LDA ram_plr_колво_побед_в_vs_team,Y ; 0142 0143 
 C - - - - - 0x02FEBA 0B:BEAA: 18        CLC
 C - - - - - 0x02FEBB 0B:BEAB: 69 81     ADC #$81
 C - - - - - 0x02FEBD 0B:BEAD: 20 5F D2  JSR sub_0x03D26F_записать_A_в_буфер_с_сохранением_индекса
 C - - - - - 0x02FEC0 0B:BEB0: 98        TYA
 C - - - - - 0x02FEC1 0B:BEB1: 49 01     EOR #$01
 C - - - - - 0x02FEC3 0B:BEB3: AA        TAX
-C - - - - - 0x02FEC4 0B:BEB4: B9 42 01  LDA ram_0142,Y ; 0142 0143 
+C - - - - - 0x02FEC4 0B:BEB4: B9 42 01  LDA ram_plr_колво_побед_в_vs_team,Y ; 0142 0143 
 C - - - - - 0x02FEC7 0B:BEB7: A0 75     LDY #$75
-C - - - - - 0x02FEC9 0B:BEB9: DD 42 01  CMP ram_0142,X ; 0142 0143 
+C - - - - - 0x02FEC9 0B:BEB9: DD 42 01  CMP ram_plr_колво_побед_в_vs_team,X ; 0142 0143 
 loc_BEBC:
 C D 1 - - - 0x02FECC 0B:BEBC: F0 04     BEQ bra_BEC2
 C - - - - - 0x02FECE 0B:BEBE: B0 01     BCS bra_BEC1
@@ -2326,7 +2326,7 @@ C - - - - - 0x02FF43 0B:BF33: F0 02     BEQ bra_BF37
 C - - - - - 0x02FF45 0B:BF35: A9 03     LDA #$03
 bra_BF37:
 C - - - - - 0x02FF47 0B:BF37: 18        CLC
-C - - - - - 0x02FF48 0B:BF38: 6D 51 01  ADC ram_0151
+C - - - - - 0x02FF48 0B:BF38: 6D 51 01  ADC ram_переключатель_man_cpu
 C - - - - - 0x02FF4B 0B:BF3B: A8        TAY
 C - - - - - 0x02FF4C 0B:BF3C: B9 7A BD  LDA tbl_BD7A_анимация,Y
 bra_BF3F:
@@ -2344,15 +2344,15 @@ C - - - - - 0x02FF5C 0B:BF4C: A5 2C     LDA ram_game_mode
 C - - - - - 0x02FF5E 0B:BF4E: C9 03     CMP #$03
 C - - - - - 0x02FF60 0B:BF50: D0 13     BNE bra_BF65
 ; con_gm_vs_team
-C - - - - - 0x02FF62 0B:BF52: BD 42 01  LDA ram_0142,X ; 0142 0143 
+C - - - - - 0x02FF62 0B:BF52: BD 42 01  LDA ram_plr_колво_побед_в_vs_team,X ; 0142 0143 
 C - - - - - 0x02FF65 0B:BF55: D0 0B     BNE bra_BF62
-C - - - - - 0x02FF67 0B:BF57: BD 40 01  LDA ram_0140,X ; 0140 0141 
+C - - - - - 0x02FF67 0B:BF57: BD 40 01  LDA ram_plr_колво_персов_в_цепочке_vs_team,X ; 0140 0141 
 C - - - - - 0x02FF6A 0B:BF5A: C9 07     CMP #$07
 C - - - - - 0x02FF6C 0B:BF5C: B0 07     BCS bra_BF65
 C - - - - - 0x02FF6E 0B:BF5E: DE 30 05  DEC ram_obj_0530,X ; 0530 0531 
 C - - - - - 0x02FF71 0B:BF61: 60        RTS
 bra_BF62:
-- - - - - - 0x02FF72 0B:BF62: FE 42 01  INC ram_0142,X
+- - - - - - 0x02FF72 0B:BF62: FE 42 01  INC ram_plr_колво_побед_в_vs_team,X
 bra_BF65:
 C - - - - - 0x02FF75 0B:BF65: FE 30 05  INC ram_obj_0530,X ; 0530 0531 
 C - - - - - 0x02FF78 0B:BF68: 60        RTS
@@ -2381,7 +2381,7 @@ C - - - - - 0x02FF9E 0B:BF8E: C9 03     CMP #$03
 C - - - - - 0x02FFA0 0B:BF90: B0 01     BCS bra_BF93
 C - - - - - 0x02FFA2 0B:BF92: CA        DEX ; 00
 bra_BF93:
-C - - - - - 0x02FFA3 0B:BF93: BC 42 01  LDY ram_0142,X ; 0142 
+C - - - - - 0x02FFA3 0B:BF93: BC 42 01  LDY ram_plr_колво_побед_в_vs_team,X ; 0142 
 bra_BF96:
 C - - - - - 0x02FFA6 0B:BF96: B9 30 01  LDA ram_0130,Y ; 0130 0131 0132 0133 0134 0135 0136 
 C - - - - - 0x02FFA9 0B:BF99: 20 B5 BB  JSR sub_BBB5_перетасовка_персов_для_losermix
@@ -2395,7 +2395,7 @@ C - - - - - 0x02FFB1 0B:BFA1: AA        TAX
 C - - - - - 0x02FFB2 0B:BFA2: AC 50 01  LDY ram_0150
 C - - - - - 0x02FFB5 0B:BFA5: AD 2C 01  LDA ram_option_team_keeps
 C - - - - - 0x02FFB8 0B:BFA8: F0 03     BEQ bra_BFAD
-C - - - - - 0x02FFBA 0B:BFAA: BC 42 01  LDY ram_0142,X ; 0143 
+C - - - - - 0x02FFBA 0B:BFAA: BC 42 01  LDY ram_plr_колво_побед_в_vs_team,X ; 0143 
 bra_BFAD:
 C - - - - - 0x02FFBD 0B:BFAD: B9 38 01  LDA ram_0138,Y ; 0138 
 C - - - - - 0x02FFC0 0B:BFB0: 20 B5 BB  JSR sub_BBB5_перетасовка_персов_для_losermix
