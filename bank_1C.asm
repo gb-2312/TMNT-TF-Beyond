@@ -605,10 +605,10 @@ C - - - - - 0x038195 0E:8185: A5 91     LDA ram_sum_btn_hold
 C - - - - - 0x038197 0E:8187: 29 40     AND #con_btn_B
 C - - - - - 0x038199 0E:8189: D0 03     BNE bra_818E
 ; A = 00
-C - - - - - 0x03819B 0E:818B: 8D 50 01  STA ram_0150
+C - - - - - 0x03819B 0E:818B: 8D 50 01  STA ram_номер_боя_vs_team_и_переключатель
 bra_818E:
 ; удерживать B 2 секунды
-C - - - - - 0x03819E 0E:818E: EE 50 01  INC ram_0150
+C - - - - - 0x03819E 0E:818E: EE 50 01  INC ram_номер_боя_vs_team_и_переключатель
 C - - - - - 0x0381A1 0E:8191: 10 09     BPL bra_819C_RTS
 ; записать 255 контов
 - - - - - - 0x0381A3 0E:8193: A9 FF     LDA #$FF
@@ -1764,7 +1764,7 @@ bra_8969:
 C - - - - - 0x038979 0E:8969: 4C 00 B0  JMP loc_B000_попытка_toggle_technodrome
 bra_896C_завершение_выбора_опций:
 C - - - - - 0x03897C 0E:896C: 20 16 B0  LDA ram_obj_spd_Y_hi
-                                        ORA ram_0150
+                                        ORA ram_номер_боя_vs_team_и_переключатель
                                         TAY
 C - - - - - 0x03897F 0E:896F: B9 F1 BF  LDA tbl_BFF1_конвертация_в_индекс_уровня,Y
 C - - - - - 0x038982 0E:8972: 85 9E     STA ram_009E
@@ -6383,9 +6383,9 @@ loc_B000_попытка_toggle_technodrome:
 C D 1 - - - 0x03B010 0E:B000: A5 90     LDA ram_sum_btn_press
 C - - - - - 0x03B012 0E:B002: 29 20     AND #con_btn_Select
 C - - - - - 0x03B014 0E:B004: F0 0D     BEQ bra_B013
-C - - - - - 0x03B016 0E:B006: AD 50 01  LDA ram_0150
+C - - - - - 0x03B016 0E:B006: AD 50 01  LDA ram_номер_боя_vs_team_и_переключатель
 C - - - - - 0x03B019 0E:B009: 49 04     EOR #$04
-C - - - - - 0x03B01B 0E:B00B: 8D 50 01  STA ram_0150
+C - - - - - 0x03B01B 0E:B00B: 8D 50 01  STA ram_номер_боя_vs_team_и_переключатель
 C - - - - - 0x03B01E 0E:B00E: A9 27     LDA #con_0x03F6AD_27
 C - - - - - 0x03B020 0E:B010: 20 90 F6  JSR sub_0x03F6A0_записать_звук_сохранив_X_Y
 bra_B013:

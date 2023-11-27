@@ -1901,7 +1901,7 @@ sub_BBB5_перетасовка_персов_для_losermix:
 C - - - - - 0x02FBC5 0B:BBB5: AC 2C 01  LDY ram_option_team_keeps
 C - - - - - 0x02FBC8 0B:BBB8: C0 02     CPY #$02
 C - - - - - 0x02FBCA 0B:BBBA: D0 39     BNE bra_BBF5
-- - - - - - 0x02FBCC 0B:BBBC: AC 50 01  LDY ram_0150
+- - - - - - 0x02FBCC 0B:BBBC: AC 50 01  LDY ram_номер_боя_vs_team_и_переключатель
 - - - - - - 0x02FBCF 0B:BBBF: F0 34     BEQ bra_BBF5
 - - - - - - 0x02FBD1 0B:BBC1: BC 49 06  LDY ram_plr_колво_побед_в_раундах,X ; 0649 064A 
 - - - - - - 0x02FBD4 0B:BBC4: C0 02     CPY #$02
@@ -1949,7 +1949,7 @@ bra_BC8C:
 ; con_gm_vs_team
                                         LDY ram_переключатель_man_cpu
                                         JSR sub_BE11_запись_игрок_или_компьютер
-C - - - - - 0x02FC9C 0B:BC8C: EE 50 01  INC ram_0150
+C - - - - - 0x02FC9C 0B:BC8C: EE 50 01  INC ram_номер_боя_vs_team_и_переключатель
 C - - - - - 0x02FC9F 0B:BC8F: AC 2C 01  LDY ram_option_team_keeps
 C - - - - - 0x02FCA2 0B:BC92: A5 08     LDA ram_0008
 C - - - - - 0x02FCA4 0B:BC94: AA        TAX
@@ -1978,7 +1978,7 @@ bra_BCC0:
 C - - - - - 0x02FCD0 0B:BCC0: A8        TAY
 C - - - - - 0x02FCD1 0B:BCC1: BD 42 01  LDA ram_plr_колво_побед_в_vs_team,X ; 0142 
 C - - - - - 0x02FCD4 0B:BCC4: B0 08     BCS bra_BCCE
-- - - - - - 0x02FCD6 0B:BCC6: AD 50 01  LDA ram_0150
+- - - - - - 0x02FCD6 0B:BCC6: AD 50 01  LDA ram_номер_боя_vs_team_и_переключатель
 - - - - - - 0x02FCD9 0B:BCC9: DD 40 01  CMP ram_plr_колво_персов_в_цепочке_vs_team,X
 - - - - - - 0x02FCDC 0B:BCCC: B0 11     BCS bra_BCDF
 bra_BCCE:
@@ -2374,7 +2374,7 @@ C - - - - - 0x02FF8D 0B:BF7D: E0 04     CPX #$04
 C - - - - - 0x02FF8F 0B:BF7F: D0 03     BNE bra_BF84
 C - - - - - 0x02FF91 0B:BF81: 4C 19 E2  JMP loc_0x03E229_отрисовать_турнирную_сетку
 bra_BF84:
-C - - - - - 0x02FF94 0B:BF84: AC 50 01  LDY ram_0150
+C - - - - - 0x02FF94 0B:BF84: AC 50 01  LDY ram_номер_боя_vs_team_и_переключатель
 C - - - - - 0x02FF97 0B:BF87: AD 2C 01  LDA ram_option_team_keeps
 C - - - - - 0x02FF9A 0B:BF8A: F0 0A     BEQ bra_BF96
 C - - - - - 0x02FF9C 0B:BF8C: A2 01     LDX #$01
@@ -2393,7 +2393,7 @@ C - - - - - 0x02FFAC 0B:BF9C: 85 A2     STA ram_plr_id
 C - - - - - 0x02FFAE 0B:BF9E: 8A        TXA
 C - - - - - 0x02FFAF 0B:BF9F: 49 01     EOR #$01
 C - - - - - 0x02FFB1 0B:BFA1: AA        TAX
-C - - - - - 0x02FFB2 0B:BFA2: AC 50 01  LDY ram_0150
+C - - - - - 0x02FFB2 0B:BFA2: AC 50 01  LDY ram_номер_боя_vs_team_и_переключатель
 C - - - - - 0x02FFB5 0B:BFA5: AD 2C 01  LDA ram_option_team_keeps
 C - - - - - 0x02FFB8 0B:BFA8: F0 03     BEQ bra_BFAD
 C - - - - - 0x02FFBA 0B:BFAA: BC 42 01  LDY ram_plr_колво_побед_в_vs_team,X ; 0143 

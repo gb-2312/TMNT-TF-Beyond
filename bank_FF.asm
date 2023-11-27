@@ -3566,7 +3566,7 @@ tbl_0x03E3E8:
 
 
 loc_E3E3:
-C D 3 - - - 0x03E3F3 0F:E3E3: AD 50 01  LDA ram_0150
+C D 3 - - - 0x03E3F3 0F:E3E3: AD 50 01  LDA ram_номер_боя_vs_team_и_переключатель
 C - - - - - 0x03E3F6 0F:E3E6: 4A        LSR
 C - - - - - 0x03E3F7 0F:E3E7: 4A        LSR
 C - - - - - 0x03E3F8 0F:E3E8: A8        TAY
@@ -4003,7 +4003,7 @@ C - - - - - 0x03E654 0F:E644: 65 08     ADC ram_0008
 C - - - - - 0x03E656 0F:E646: A8        TAY
 C - - - - - 0x03E657 0F:E647: AE 54 01  LDX ram_0154
 C - - - - - 0x03E65A 0F:E64A: B9 4C 01  LDA ram_tournament_fighter,Y ; 014C 014D 014E 014F 0150 0151 
-C - - - - - 0x03E65D 0F:E64D: 9D 50 01  STA ram_0150,X ; 0150 0151 0152 
+C - - - - - 0x03E65D 0F:E64D: 9D 50 01  STA ram_номер_боя_vs_team_и_переключатель,X ; 0150 0151 0152 
 C - - - - - 0x03E660 0F:E650: B9 55 01  LDA ram_tournament_индекс_игрока,Y ; 0155 0156 0157 0158 0159 015A 
 C - - - - - 0x03E663 0F:E653: 9D 59 01  STA ram_tournament_индекс_игрока + $04,X ; 0159 015A 015B 
 C - - - - - 0x03E666 0F:E656: B9 05 01  LDA ram_0105,Y ; 0105 0106 0107 0108 0109 010A 
