@@ -6364,6 +6364,9 @@ bra_F42B:
 C - - - - - 0x03F43B 0F:F42B: A5 90     LDA ram_sum_btn_press
 C - - - - - 0x03F43D 0F:F42D: 29 10     AND #con_btn_Start
 C - - - - - 0x03F43F 0F:F42F: F0 2C     BEQ bra_F45D_RTS
+                                        LDA ram_btn_hold
+                                        AND #con_btn_Select
+                                        STA ram_plr_012E
 C - - - - - 0x03F441 0F:F431: A9 29     LDA #$29    ; con_0x03F6AD_29
 C - - - - - 0x03F443 0F:F433: 85 98     STA ram_0098
 C - - - - - 0x03F445 0F:F435: 20 90 F6  JSR sub_F690_записать_звук_сохранив_X_Y

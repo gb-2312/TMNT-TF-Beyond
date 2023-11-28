@@ -75,10 +75,15 @@ C - - - - - 0x02C113 0B:8103: 4C 6D D4  JMP loc_0x03D47D_запись_черно
 ofs_041_8106_01_отрисовать_экран_player_select:
 C - - J - - 0x02C116 0B:8106: EE 3E 06  INC ram_063E
 C - - - - - 0x02C119 0B:8109: A4 2C     LDY ram_game_mode
+                                        BNE bra_812C
+                                        LDA ram_plr_012E
+                                        BEQ bra_812C
+                                        INY
 ; con_gm_story
 ; con_gm_vs_player
 ; con_gm_vs_cpu
 ; con_gm_vs_team
+bra_812C:
 C - - - - - 0x02C11B 0B:810B: BE FA BF  LDX tbl_BFFA,Y
 C - - - - - 0x02C11E 0B:810E: 20 44 F0  JSR sub_0x03F054_отрисовать_экран
                                         LDX ram_game_mode
@@ -226,12 +231,16 @@ C - - - - - 0x02C1EA 0B:81DA: 29 09     AND #con_btn_Up + con_btn_Right
 C - - - - - 0x02C1EC 0B:81DC: F0 02     BEQ bra_81E0
 C - - - - - 0x02C1EE 0B:81DE: A0 01     LDY #$01
 bra_81E0:
-C - - - - - 0x02C1F0 0B:81E0: 84 00     STY ram_0000
-bra_81E2_loop:
-C - - - - - 0x02C1F2 0B:81E2: A5 00     LDA ram_0000
+C - - - - - 0x02C1F0 0B:81E0: 84 00     TYA
 C - - - - - 0x02C1F4 0B:81E4: 18        CLC
 C - - - - - 0x02C1F5 0B:81E5: 75 A2     ADC ram_plr_id,X
-C - - - - - 0x02C1F7 0B:81E7: 20 50 AA  JSR sub_AA50_автобаланс_сил_в_vs_player_cpu
+                                        PHA
+C - - - - - 0x02EA9C 0B:AA8C: AC E0 04  LDY ram_obj_04E0
+                                        LDA ram_plr_012E
+                                        BEQ bra_81F4
+                                        LDY #$01
+bra_81F4:
+                                        PLA
 C - - - - - 0x02C1FA 0B:81EA: D9 62 83  CMP tbl_8362,Y
 C - - - - - 0x02C1FD 0B:81ED: 90 08     BCC bra_81F7
 C - - - - - 0x02C1FF 0B:81EF: 10 04     BPL bra_81F5
@@ -241,24 +250,7 @@ bra_81F5:
 C - - - - - 0x02C205 0B:81F5: A9 00     LDA #$00
 bra_81F7:
 C - - - - - 0x02C207 0B:81F7: 95 A2     STA ram_plr_id,X
-C - - - - - 0x02C209 0B:81F9: C9 0F     CMP #$0F
-C - - - - - 0x02C20B 0B:81FB: D0 1B     BNE bra_8218
-- - - - - - 0x02C20D 0B:81FD: A5 2C     LDA ram_game_mode
-- - - - - - 0x02C20F 0B:81FF: C9 02     CMP #$02
-- - - - - - 0x02C211 0B:8201: D0 05     BNE bra_8208
-; if con_gm_vs_cpu
-- - - - - - 0x02C213 0B:8203: AD 30 05  LDA ram_obj_0530
-- - - - - - 0x02C216 0B:8206: F0 10     BEQ bra_8218
-bra_8208:
-- - - - - - 0x02C218 0B:8208: AD E0 04  LDA ram_obj_04E0
-- - - - - - 0x02C21B 0B:820B: F0 0B     BEQ bra_8218
-- - - - - - 0x02C21D 0B:820D: 8A        TXA
-- - - - - - 0x02C21E 0B:820E: 49 01     EOR #$01
-- - - - - - 0x02C220 0B:8210: A8        TAY
-- - - - - - 0x02C221 0B:8211: B9 A2 00  LDA ram_plr_id,Y
-- - - - - - 0x02C224 0B:8214: C9 05     CMP #$05
-- - - - - - 0x02C226 0B:8216: F0 CA     BEQ bra_81E2_loop
-bra_8218:
+C - - - - - 0x02C1F7 0B:81E7: 20 50 AA  JSR sub_AA50_автобаланс_сил_в_vs_player
 C - - - - - 0x02C228 0B:8218: 20 7F 82  JSR sub_827F
 C - - - - - 0x02C22B 0B:821B: B0 03     BCS bra_8220
 C - - - - - 0x02C22D 0B:821D: 20 4F 81  JSR sub_814F
@@ -687,7 +679,7 @@ C - - - - - 0x02EA16 0B:AA06: A5 2C     LDA ram_game_mode
 ; con_gm_vs_team
 ; con_gm_tournament
 C - - - - - 0x02EA18 0B:AA08: 49 03     EOR #$03
-C - - - - - 0x02EA1A 0B:AA0A: D0 20     BNE bra_AA2C_RTS
+C - - - - - 0x02EA1A 0B:AA0A: D0 20     BNE bra_AA8C_RTS
 ; if con_gm_vs_team
 C - - - - - 0x02EA1C 0B:AA0C: AD 51 01  LDA ram_tournament_индекс_игрока
 C - - - - - 0x02EA1F 0B:AA0F: 49 01     EOR ram_tournament_индекс_игрока + $01
@@ -696,45 +688,28 @@ C - - - - - 0x02EA1F 0B:AA0F: 49 01     EOR ram_tournament_индекс_игро
 C - - - - - 0x02EA21 0B:AA11: F0 17     BCS bra_AA2A
 C - - - - - 0x02EA23 0B:AA13: AD 2B 01  LDA ram_option_misc
 C - - - - - 0x02EA26 0B:AA16: 29 08     AND #$08
-C - - - - - 0x02EA28 0B:AA18: F0 12     BEQ bra_AA2C_RTS
+C - - - - - 0x02EA28 0B:AA18: F0 12     BEQ bra_AA8C_RTS
                                         JMP loc_AA1E_расчет_автобаланса_с_индексом
 
 
 
-sub_AA50_автобаланс_сил_в_vs_player_cpu:
+sub_AA50_автобаланс_сил_в_vs_player:
 ; свободный адрес 009D
-C - - - - - 0x02EA60 0B:AA50: 48        PHA
 C - - - - - 0x02EA61 0B:AA51: AD 2B 01  LDA ram_option_misc
 C - - - - - 0x02EA64 0B:AA54: 29 08     AND #$08
-C - - - - - 0x02EA66 0B:AA56: C9 08     CMP #$08
-C - - - - - 0x02EA68 0B:AA58: 68        PLA
-C - - - - - 0x02EA69 0B:AA59: 90 31     BCC bra_AA8C
-C - - - - - 0x02EA6B 0B:AA5B: A4 27     LDY ram_0027
-C - - - - - 0x02EA6D 0B:AA5D: C0 01     CPY #$01
-C - - - - - 0x02EA6F 0B:AA5F: D0 2B     BNE bra_AA8C
+C - - - - - 0x02EA69 0B:AA59: 90 31     BEQ bra_AA8C_RTS
+C - - - - - 0x02EA6B 0B:AA5B: A4 27     LDA ram_0027
+C - - - - - 0x02EA6D 0B:AA5D: C0 01     CMP #$01
+C - - - - - 0x02EA6F 0B:AA5F: D0 2B     BNE bra_AA8C_RTS
 C - - - - - 0x02EA71 0B:AA61: 86 9C     STX ram_009C
-C - - - - - 0x02EA77 0B:AA67: C9 FF     TAY
-C - - - - - 0x02EA79 0B:AA69: D0 02     BMI bra_AA6C
-                                        CMP #$07
-                                        BNE bra_AA6D
-C - - - - - 0x02EA7B 0B:AA6B: A9 06     LDA #$00    ; con_fighter_leo
-                                        .byte $2C   ; BIT
-bra_AA6C:
-                                        LDA #$06    ; con_fighter_shred
-bra_AA6D:
-                                        STA ram_0000
-C - - - - - 0x02EA7D 0B:AA6D: 95 A2     STA ram_plr_id,X ; 00A2 00A3 
                                         JSR sub_AA1E_расчет_автобаланса_с_индексом
                                         TXA
                                         TAY
 C - - - - - 0x02EA83 0B:AA73: 49 01     EOR #$01
 C - - - - - 0x02EA85 0B:AA75: AA        TAX
                                         JSR sub_AA1E_расчет_автобаланса
-                                        LDA ram_0000
 C - - - - - 0x02EA9A 0B:AA8A: A6 9C     LDX ram_009C
-bra_AA8C:
-C - - - - - 0x02EA9C 0B:AA8C: AC E0 04  LDY ram_obj_04E0
-bra_AA2C_RTS:
+bra_AA8C_RTS:
 C - - - - - 0x02EA9F 0B:AA8F: 60        RTS
 
 
