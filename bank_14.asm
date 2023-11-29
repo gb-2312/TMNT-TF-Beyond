@@ -5971,7 +5971,7 @@ C - - - - - 0x02BDA6 0A:BD96: A9 00     LDA #$00
 C - - - - - 0x02BDA8 0A:BD98: 8D A1 04  STA ram_obj_spd_Y_hi + $01
 loc_BD9B:
 C D 1 - - - 0x02BDAB 0A:BD9B: AC 50 05  LDY ram_obj_id
-C - - - - - 0x02BDAE 0A:BD9E: B9 CE BF  LDA tbl_BFCE,Y
+C - - - - - 0x02BDAE 0A:BD9E: B9 CE BF  LDA tbl_BFCE_hp_стен_в_story_для_персов,Y
 C - - - - - 0x02BDB1 0A:BDA1: 8D 91 05  STA ram_obj_0590 + $01
 C - - - - - 0x02BDB4 0A:BDA4: EE 31 05  INC ram_obj_0530 + $01
 C - - - - - 0x02BDB7 0A:BDA7: A9 80     LDA #$80
@@ -6258,11 +6258,14 @@ tbl_BFC4:
 
 
 
-tbl_BFCE:
-- - - - - - 0x02BFDE 0A:BFCE: 90        .byte $90   ; 00
-- - - - - - 0x02BFDF 0A:BFCF: 72        .byte $72   ; 01
-- - - - - - 0x02BFE0 0A:BFD0: B0        .byte $B0   ; 02
-- D 1 - - - 0x02BFE1 0A:BFD1: B0        .byte $B0   ; 03
+tbl_BFCE_hp_стен_в_story_для_персов:
+- - - - - - 0x02BFDE 0A:BFCE: 90        .byte $90   ; 00 con_fighter_leo
+- - - - - - 0x02BFDF 0A:BFCF: 72        .byte $72   ; 01 con_fighter_raph
+- - - - - - 0x02BFE0 0A:BFD0: B0        .byte $B0   ; 02 con_fighter_mike
+- D 1 - - - 0x02BFE1 0A:BFD1: B0        .byte $B0   ; 03 con_fighter_don
+                                        .byte $90   ; 04 con_fighter_casey
+                                        .byte $90   ; 05 con_fighter_hot
+                                        .byte $72   ; 06 con_fighter_shred
 
 
 
