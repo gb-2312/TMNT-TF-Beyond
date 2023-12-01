@@ -3267,6 +3267,8 @@ C - - - - - 0x03E240 0F:E230: 60        RTS
 
 bra_E231_story:
 C - - - - - 0x03E241 0F:E231: A5 9E     LDA ram_009E
+                                        CMP #$06    ; con_fighter_shred
+                                        BEQ bra_E244
 C - - - - - 0x03E243 0F:E233: C5 A2     CMP ram_plr_id
 C - - - - - 0x03E245 0F:E235: D0 0D     BNE bra_E244
 C - - - - - 0x03E247 0F:E237: 69 00     ADC #$00

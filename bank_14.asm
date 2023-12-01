@@ -6247,9 +6247,9 @@ tbl_BFC4:
 
 tbl_BFCE_hp_стен_в_story_для_персов:
 - - - - - - 0x02BFDE 0A:BFCE: 90        .byte $B0   ; 00 con_fighter_leo
-- - - - - - 0x02BFDF 0A:BFCF: 72        .byte $78   ; 01 con_fighter_raph
-- - - - - - 0x02BFE0 0A:BFD0: B0        .byte $C0   ; 02 con_fighter_mike
-- D 1 - - - 0x02BFE1 0A:BFD1: B0        .byte $C0   ; 03 con_fighter_don
+- - - - - - 0x02BFDF 0A:BFCF: 72        .byte $90   ; 01 con_fighter_raph
+- - - - - - 0x02BFE0 0A:BFD0: B0        .byte $BF   ; 02 con_fighter_mike
+- D 1 - - - 0x02BFE1 0A:BFD1: B0        .byte $B0   ; 03 con_fighter_don
                                         .byte $A0   ; 04 con_fighter_casey
                                         .byte $A0   ; 05 con_fighter_hot
                                         .byte $90   ; 06 con_fighter_shred
