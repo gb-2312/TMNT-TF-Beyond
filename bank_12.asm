@@ -142,8 +142,22 @@ C - - - - - 0x0240C9 09:80B9: 9D 04 06  STA ram_plr_0604,X ; 0604 0605
 C - - - - - 0x0240D2 09:80C2: 20 20 BE  JSR sub_BE20
 C - - - - - 0x0240D5 09:80C5: B5 A2     LDA ram_plr_id,X ; 00A2 00A3 
 C - - - - - 0x0240D7 09:80C7: 9D 50 05  STA ram_obj_id,X ; 0550 0551 
+                                        TAY
+                                        LDA tbl_E999_время_зарядки_суперок,Y
+                                        STA ram_plr_012E,X ; 012E 012F 
 C - - - - - 0x0240DA 09:80CA: 20 18 D2  JSR sub_0x03D228
 C - - - - - 0x0240DD 09:80CD: 4C 35 EA  JMP loc_0x03EA45
+
+
+
+tbl_E999_время_зарядки_суперок:
+- D 3 - - - 0x03E9A9 0F:E999: 00        .byte $00   ; 00 con_fighter_leo
+- D 3 - - - 0x03E9AA 0F:E99A: 12        .byte $12   ; 01 con_fighter_raph
+- D 3 - - - 0x03E9AB 0F:E99B: 14        .byte $14   ; 02 con_fighter_mike
+- D 3 - - - 0x03E9AC 0F:E99C: 18        .byte $18   ; 03 con_fighter_don
+- D 3 - - - 0x03E9AD 0F:E99D: 0C        .byte $0C   ; 04 con_fighter_casey
+- D 3 - - - 0x03E9AE 0F:E99E: 00        .byte $00   ; 05 con_fighter_hot
+- D 3 - - - 0x03E9AF 0F:E99F: 00        .byte $00   ; 06 con_fighter_shred
 
 
 
@@ -10444,23 +10458,14 @@ C - - - - - 0x027CE5 09:BCD5: 85 AA     STA ram_таймер_задержки_ф
 C - - - - - 0x027CE7 09:BCD7: B9 B0 05  LDA ram_obj_05B0,Y ; 05B2 05B4 
 C - - - - - 0x027CEA 09:BCDA: 85 08     STA ram_0008
 C - - - - - 0x027CEC 09:BCDC: 20 88 B0  JSR sub_B088
-C - - - - - 0x027CEF 09:BCDF: A4 A9     LDY ram_global_obj_index
-C - - - - - 0x027CF1 09:BCE1: B9 50 05  LDA ram_obj_id,Y ; 0552 0554 
-C - - - - - 0x027CF4 09:BCE4: C9 36     CMP #con_0552_special_shred_мясо
-C - - - - - 0x027CF6 09:BCE6: F0 0C     BEQ bra_BCF4
-C - - - - - 0x027CF8 09:BCE8: C9 2F     CMP #con_колво_обычных_ударов
-C - - - - - 0x027CFA 09:BCEA: B0 0B     BCS bra_BCF7
-; if обычный удар
-C - - - - - 0x027CFC 09:BCEC: A9 00     LDA #$00
-C - - - - - 0x027CFE 09:BCEE: 99 B0 05  STA ram_obj_05B0,Y ; 05B2 
-C - - - - - 0x027D01 09:BCF1: A9 0D     LDA #$0D
-C - - - - - 0x027D03 09:BCF3: 2C        .byte $2C   ; BIT
-bra_BCF4:
-C - - - - - 0x027D04 09:BCF4: A9 0E     LDA #$0E
-C - - - - - 0x027D06 09:BCF6: 2C        .byte $2C   ; BIT
-bra_BCF7:
-C - - - - - 0x027D07 09:BCF7: A9 1F     LDA #$1F
+C - - - - - 0x027CF1 09:BCE1: B9 50 05  LDA ram_obj_id + $04 ; 0552 
+                                        TAY
+C - - - - - 0x027CF4 09:BCE4: C9 36     CMP #con_колво_обычных_ударов
 C - - - - - 0x027D09 09:BCF9: A9 10     LDA #$10
+C - - - - - 0x027CF6 09:BCE6: F0 0C     BCC bra_BCF7
+                                        LDA tbl_BD4B_время_стана_стен_от_суперок - con_колво_обычных_ударов,Y
+bra_BCF7:
+                                        JSR sub_8BB6_уменьшить_на_25_процентов_если_turbo
 C - - - - - 0x027D0B 09:BCFB: 9D F0 05  STA ram_obj_05F0,X ; 05F1 
 C - - - - - 0x027D0E 09:BCFE: A9 12     LDA #con_0x03F6AD_12
 C - - - - - 0x027D10 09:BD00: 20 94 F6  JSR sub_0x03F6A4_записать_звук
@@ -10477,6 +10482,21 @@ C - - - - - 0x027D24 09:BD14: 9D 90 05  STA ram_obj_0590,X ; 0591
 C - - - - - 0x027D27 09:BD17: A9 02     LDA #$02
 C - - - - - 0x027D29 09:BD19: 8D 31 05  STA ram_obj_0530 + $01
 C - - - - - 0x027D2C 09:BD1C: 60        RTS
+
+
+
+tbl_BD4B_время_стана_стен_от_суперок:
+                                        .byte $14   ; 3F special hot огонь
+                                        .byte $10   ; 40 special shred волна
+                                        .byte $11   ; 41 special leo крутилка
+                                        .byte $10   ; 42 special raph сверло
+                                        .byte $10   ; 43 special mike ракеты понизу
+                                        .byte $10   ; 44 special mike ракеты поверху
+                                        .byte $14   ; 45 special don пила вращение
+                                        .byte $10   ; 46 special shred мясо
+                                        .byte $14   ; 47 special casey клюшка
+                                        .byte $14   ; 48 special don пила подкат
+                                        .byte $0E   ; 49 special casey песок
 
 
 

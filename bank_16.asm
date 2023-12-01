@@ -76,7 +76,7 @@ ofs_041_8106_01_отрисовать_экран_player_select:
 C - - J - - 0x02C116 0B:8106: EE 3E 06  INC ram_063E
 C - - - - - 0x02C119 0B:8109: A4 2C     LDY ram_game_mode
                                         BNE bra_812C
-                                        LDA ram_plr_012E
+                                        LDA ram_все_персы_в_story
                                         BEQ bra_812C
                                         INY
 ; con_gm_story
@@ -236,7 +236,7 @@ C - - - - - 0x02C1F4 0B:81E4: 18        CLC
 C - - - - - 0x02C1F5 0B:81E5: 75 A2     ADC ram_plr_id,X
                                         PHA
 C - - - - - 0x02EA9C 0B:AA8C: AC E0 04  LDY ram_obj_04E0
-                                        LDA ram_plr_012E
+                                        LDA ram_все_персы_в_story
                                         BEQ bra_81F4
                                         LDY #$01
 bra_81F4:

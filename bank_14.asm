@@ -5987,24 +5987,11 @@ C - - - - - 0x02BDCC 0A:BDBC: 8D 71 05  STA ram_obj_0570 + $01
 C - - - - - 0x02BDCF 0A:BDBF: A9 20     LDA #$20
 C - - - - - 0x02BDD1 0A:BDC1: 8D 81 05  STA ram_obj_0580 + $01
 ofs_043_BDC4_01:
-C - - - - - 0x02BDD4 0A:BDC4: AD 61 05  LDA ram_obj_timer + $01
-C - - - - - 0x02BDD7 0A:BDC7: F0 0A     BEQ bra_BDD3
-- - - - - - 0x02BDD9 0A:BDC9: CE 61 05  DEC ram_obj_timer + $01
-- - - - - - 0x02BDDC 0A:BDCC: D0 0F     BNE bra_BDDD
-- - - - - - 0x02BDDE 0A:BDCE: A9 00     LDA #$00
-- - - - - - 0x02BDE0 0A:BDD0: 8D 1F 06  STA ram_plr_061E + $01
-bra_BDD3:
-C - - - - - 0x02BDE3 0A:BDD3: AD 1F 06  LDA ram_plr_061E + $01
-C - - - - - 0x02BDE6 0A:BDD6: F0 05     BEQ bra_BDDD
-C - - - - - 0x02BDE8 0A:BDD8: A9 03     LDA #$03
-C - - - - - 0x02BDEA 0A:BDDA: 8D 60 05  STA ram_obj_timer
-bra_BDDD:
 C - - - - - 0x02BDED 0A:BDDD: A9 1E     LDA #$1E
 C - - - - - 0x02BDEF 0A:BDDF: 8D 71 05  STA ram_obj_0570 + $01
 C - - - - - 0x02BDF2 0A:BDE2: AD F1 05  LDA ram_obj_05F0 + $01
 C - - - - - 0x02BDF5 0A:BDE5: F0 0A     BEQ bra_BDF1
 C - - - - - 0x02BDF7 0A:BDE7: CE F1 05  DEC ram_obj_05F0 + $01
-C - - - - - 0x02BDFA 0A:BDEA: D0 05     BNE bra_BDF1
 C - - - - - 0x02BDFC 0A:BDEC: A9 00     LDA #$00
 C - - - - - 0x02BDFE 0A:BDEE: 8D 1F 06  STA ram_plr_061E + $01
 bra_BDF1:
@@ -6259,13 +6246,13 @@ tbl_BFC4:
 
 
 tbl_BFCE_hp_стен_в_story_для_персов:
-- - - - - - 0x02BFDE 0A:BFCE: 90        .byte $90   ; 00 con_fighter_leo
-- - - - - - 0x02BFDF 0A:BFCF: 72        .byte $72   ; 01 con_fighter_raph
-- - - - - - 0x02BFE0 0A:BFD0: B0        .byte $B0   ; 02 con_fighter_mike
-- D 1 - - - 0x02BFE1 0A:BFD1: B0        .byte $B0   ; 03 con_fighter_don
-                                        .byte $90   ; 04 con_fighter_casey
-                                        .byte $90   ; 05 con_fighter_hot
-                                        .byte $72   ; 06 con_fighter_shred
+- - - - - - 0x02BFDE 0A:BFCE: 90        .byte $B0   ; 00 con_fighter_leo
+- - - - - - 0x02BFDF 0A:BFCF: 72        .byte $78   ; 01 con_fighter_raph
+- - - - - - 0x02BFE0 0A:BFD0: B0        .byte $C0   ; 02 con_fighter_mike
+- D 1 - - - 0x02BFE1 0A:BFD1: B0        .byte $C0   ; 03 con_fighter_don
+                                        .byte $A0   ; 04 con_fighter_casey
+                                        .byte $A0   ; 05 con_fighter_hot
+                                        .byte $90   ; 06 con_fighter_shred
 
 
 

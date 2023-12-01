@@ -931,7 +931,10 @@ C - - - - - 0x03D1BA 0F:D1AA: AD 26 01  LDA ram_option_speed
 C - - - - - 0x03D1BD 0F:D1AD: F0 26     BEQ bra_D1D5_RTS
 C - - - - - 0x03D1BF 0F:D1AF: A5 95     LDA ram_0095
 C - - - - - 0x03D1C1 0F:D1B1: C9 07     CMP #$07
+                                        BEQ bra_D1C3
+                                        CMP #$19
 C - - - - - 0x03D1C3 0F:D1B3: D0 20     BNE bra_D1D5_RTS
+bra_D1C3:
 C - - - - - 0x03D1C5 0F:D1B5: 46 00     LSR ram_0000
 C - - - - - 0x03D1C7 0F:D1B7: 66 01     ROR ram_0001
 C - - - - - 0x03D1C9 0F:D1B9: BD 80 04  LDA ram_obj_spd_X_hi,X ; 0480 0481 0484 0485 0486 0487 
@@ -3055,7 +3058,10 @@ C - - - - - 0x03E120 0F:E110: AC 26 01  LDY ram_option_speed
 C - - - - - 0x03E123 0F:E113: F0 16     BEQ bra_E12B
 C - - - - - 0x03E125 0F:E115: A4 95     LDY ram_0095
 C - - - - - 0x03E127 0F:E117: C0 07     CPY #$07
+                                        BEQ bra_E12A
+                                        CPY #$19
 C - - - - - 0x03E129 0F:E119: D0 10     BNE bra_E12B
+bra_E12A:
 ; умножить на 02 и поделить на 03
 C - - - - - 0x03E12B 0F:E11B: 0A        ASL
 C - - - - - 0x03E12C 0F:E11C: 85 18     STA ram_0018    ; делимое lo
@@ -3632,14 +3638,6 @@ C - - - - - 0x03E457 0F:E447: 20 D3 DA  JSR sub_DAD3_удалить_объект
 C - - - - - 0x03E45A 0F:E44A: CA        DEX
 C - - - - - 0x03E45B 0F:E44B: E0 02     CPX #$02
 C - - - - - 0x03E45D 0F:E44D: B0 F8     BCS bra_E447_loop
-C - - - - - 0x03E45F 0F:E44F: A2 01     LDX #$01
-bra_E451_loop:
-C - - - - - 0x03E461 0F:E451: BC 50 05  LDY ram_obj_id,X ; 0550 0551 
-C - - - - - 0x03E464 0F:E454: B9 99 E9  LDA tbl_E999,Y
-C - - - - - 0x03E467 0F:E457: 20 0E E1  JSR sub_E10E_корректировка_значения_A_для_turbo
-C - - - - - 0x03E46A 0F:E45A: 9D 2E 01  STA ram_plr_012E,X ; 012E 012F 
-C - - - - - 0x03E46D 0F:E45D: CA        DEX
-C - - - - - 0x03E46E 0F:E45E: 10 F1     BPL bra_E451_loop
 C - - - - - 0x03E470 0F:E460: 20 14 F7  JSR sub_F714
 C - - - - - 0x03E473 0F:E463: 20 0B F8  JSR sub_F80B
 C - - - - - 0x03E476 0F:E466: 4C 41 E1  JMP loc_E141_подготовить_осветление_из_черного_в_цветной
@@ -4556,17 +4554,6 @@ tbl_E993:
 
 
 
-tbl_E999:
-- D 3 - - - 0x03E9A9 0F:E999: 00        .byte $00   ; 00 con_fighter_leo
-- D 3 - - - 0x03E9AA 0F:E99A: 12        .byte $12   ; 01 con_fighter_raph
-- D 3 - - - 0x03E9AB 0F:E99B: 14        .byte $14   ; 02 con_fighter_mike
-- D 3 - - - 0x03E9AC 0F:E99C: 18        .byte $18   ; 03 con_fighter_don
-- D 3 - - - 0x03E9AD 0F:E99D: 0C        .byte $0C   ; 04 con_fighter_casey
-- D 3 - - - 0x03E9AE 0F:E99E: 00        .byte $00   ; 05 con_fighter_hot
-- D 3 - - - 0x03E9AF 0F:E99F: 00        .byte $00   ; 06 con_fighter_shred
-
-
-
 bra_E9A0_RTS:
 C - - - - - 0x03E9B0 0F:E9A0: 60        RTS
 
@@ -4822,9 +4809,9 @@ C - - - - - 0x03EAB6 0F:EAA6: B0 D9     BCS bra_EA81_RTS
 bra_EAA8_story:
 C - - - - - 0x03EAB8 0F:EAA8: A9 04     LDA #$04
 C - - - - - 0x03EABA 0F:EAAA: CD 30 05  CMP ram_obj_0530
-C - - - - - 0x03EABD 0F:EAAD: F0 C5     BEQ bra_EA74_RTS
+C - - - - - 0x03EABD 0F:EAAD: F0 C5     BEQ bra_EA81_RTS
 C - - - - - 0x03EABF 0F:EAAF: CD 31 05  CMP ram_obj_0530 + $01
-C - - - - - 0x03EAC2 0F:EAB2: F0 7E     BEQ bra_EB32_RTS
+C - - - - - 0x03EAC2 0F:EAB2: F0 7E     BEQ bra_EA81_RTS
 C - - - - - 0x03EAC4 0F:EAB4: AD 74 06  LDA ram_время_милисекунды
 C - - - - - 0x03EAC7 0F:EAB7: 0D 73 06  ORA ram_время_единицы
 C - - - - - 0x03EACA 0F:EABA: 0D 72 06  ORA ram_время_десятки
@@ -4832,7 +4819,11 @@ C - - - - - 0x03EACD 0F:EABD: F0 73     BEQ bra_EB32_RTS    ; if время вы
 C - - - - - 0x03EACF 0F:EABF: CE 74 06  DEC ram_время_милисекунды
 C - - - - - 0x03EAD2 0F:EAC2: 10 6E     BPL bra_EB32_RTS
 C - - - - - 0x03EAD4 0F:EAC4: A9 4E     LDA #$4E
+                                        LDY ram_0095
+                                        CPY #$19
+                                        BEQ bra_EAEA
 C - - - - - 0x03EAD6 0F:EAC6: 20 0E E1  JSR sub_E10E_корректировка_значения_A_для_turbo
+bra_EAEA:
 C - - - - - 0x03EAD9 0F:EAC9: 8D 74 06  STA ram_время_милисекунды
 C - - - - - 0x03EADC 0F:EACC: CE 73 06  DEC ram_время_единицы
 C - - - - - 0x03EADF 0F:EACF: 30 1A     BMI bra_EAEB
@@ -6366,7 +6357,7 @@ C - - - - - 0x03F43D 0F:F42D: 29 10     AND #con_btn_Start
 C - - - - - 0x03F43F 0F:F42F: F0 2C     BEQ bra_F45D_RTS
                                         LDA ram_btn_hold
                                         AND #con_btn_Select
-                                        STA ram_plr_012E
+                                        STA ram_все_персы_в_story
 C - - - - - 0x03F441 0F:F431: A9 29     LDA #$29    ; con_0x03F6AD_29
 C - - - - - 0x03F443 0F:F433: 85 98     STA ram_0098
 C - - - - - 0x03F445 0F:F435: 20 90 F6  JSR sub_F690_записать_звук_сохранив_X_Y
