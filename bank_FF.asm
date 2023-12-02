@@ -206,6 +206,7 @@
 .export sub_0x03FF04
 .export sub_0x03FF1D
 .export sub_0x03FF4B_вычисление_приоритета_игрока_в_бою
+.export sub_0x03F723_отрисовка_финальной_стойки
 .export _общий_RTS
 
 
@@ -6851,11 +6852,19 @@ C - - - - - 0x03F721 0F:F711: 4C 17 F6  JMP loc_F617_restore_prg
 
 
 
+sub_0x03F723_отрисовка_финальной_стойки:
+                                        JSR sub_F5DF_swap_prg_12
+                                        JSR sub_837E_анимация_стойки
+                                        JMP loc_F715
+
+
+
 sub_F714:
 loc_F714:
 sub_0x03F724_смена_тайловых_наборов_для_анимаций:
 loc_0x03F724_смена_тайловых_наборов_для_анимаций:
 C D 3 - - - 0x03F724 0F:F714: 20 DF F5  JSR sub_F5DF_swap_prg_12
+loc_F715:
 C - - - - - 0x03F727 0F:F717: 20 42 B1  JSR sub_0x027152
 C - - - - - 0x03F72A 0F:F71A: 4C 17 F6  JMP loc_F617_restore_prg
 
