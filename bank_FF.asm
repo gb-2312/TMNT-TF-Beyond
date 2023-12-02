@@ -184,8 +184,8 @@
 .export sub_0x03F6D2_выключить_музыку_и_звуки
 .export sub_0x03F6F5_написать_текст_на_экране
 .export loc_0x03F6F5_написать_текст_на_экране
-.export sub_0x03F724
-.export loc_0x03F724
+.export sub_0x03F724_смена_спрайтовых_банков_под_анимацию
+.export loc_0x03F724_смена_спрайтовых_банков_под_анимацию
 .export sub_0x03F76A
 .export sub_0x03F785
 .export sub_0x03F7D1_сохранить_topscore
@@ -6853,8 +6853,8 @@ C - - - - - 0x03F721 0F:F711: 4C 17 F6  JMP loc_F617_restore_prg
 
 sub_F714:
 loc_F714:
-sub_0x03F724:
-loc_0x03F724:
+sub_0x03F724_смена_спрайтовых_банков_под_анимацию:
+loc_0x03F724_смена_спрайтовых_банков_под_анимацию:
 C D 3 - - - 0x03F724 0F:F714: 20 DF F5  JSR sub_F5DF_swap_prg_12
 C - - - - - 0x03F727 0F:F717: 20 42 B1  JSR sub_0x027152
 C - - - - - 0x03F72A 0F:F71A: 4C 17 F6  JMP loc_F617_restore_prg
