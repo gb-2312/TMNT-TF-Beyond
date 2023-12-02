@@ -79,7 +79,7 @@
 .export tbl_0x03DDC6
 .export sub_0x03DDF9
 .export loc_0x03DDF9
-.export sub_0x03DE0C
+.export sub_0x03DE0C_выбор_палитры_перса_с_сохранением_X
 .export sub_0x03DE19_очистить_очки_обоих_игроков
 .export loc_0x03DE19_очистить_очки_обоих_игроков
 .export sub_0x03DE30_удалить_объекты_перса
@@ -2453,7 +2453,7 @@ C - - - - - 0x03DE0B 0F:DDFB: 60        RTS
 
 
 
-sub_0x03DE0C:
+sub_0x03DE0C_выбор_палитры_перса_с_сохранением_X:
 C - - - - - 0x03DE0C 0F:DDFC: 8A        TXA
 C - - - - - 0x03DE0D 0F:DDFD: 48        PHA
 C - - - - - 0x03DE0E 0F:DDFE: 09 04     ORA #$04

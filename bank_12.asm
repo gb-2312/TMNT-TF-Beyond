@@ -152,6 +152,7 @@ C - - - - - 0x0240DD 09:80CD: 4C 35 EA  JMP loc_0x03EA45
 
 
 tbl_E999_время_зарядки_суперок:
+; перемещено из банка FF
 - D 3 - - - 0x03E9A9 0F:E999: 00        .byte $00   ; 00 con_fighter_leo
 - D 3 - - - 0x03E9AA 0F:E99A: 12        .byte $12   ; 01 con_fighter_raph
 - D 3 - - - 0x03E9AB 0F:E99B: 14        .byte $14   ; 02 con_fighter_mike
@@ -2584,7 +2585,7 @@ C - - - - - 0x024FB4 09:8FA4: 4C 9F FE  JMP loc_0x03FEAF
 bra_8FA7_RTS:
 C - - - - - 0x024FB7 09:8FA7: 60        RTS
 bra_8FA8:
-C - - - - - 0x024FB8 09:8FA8: 20 FC DD  JSR sub_0x03DE0C
+C - - - - - 0x024FB8 09:8FA8: 20 FC DD  JSR sub_0x03DE0C_выбор_палитры_перса_с_сохранением_X
 bra_8FAB:
 loc_8FAB:
 C D 0 - - - 0x024FBB 09:8FAB: 20 9C 8F  JSR sub_8F9C
