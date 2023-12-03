@@ -4139,7 +4139,7 @@ C - - - - - 0x03E737 0F:E727: 29 01     AND #$01
 C - - - - - 0x03E739 0F:E729: AA        TAX
 sub_E72A:
 C - - - - - 0x03E73A 0F:E72A: 18        CLC
-C - - - - - 0x03E73B 0F:E72B: 20 EE FE  JSR sub_FEEE
+C - - - - - 0x03E73B 0F:E72B: 20 EE FE  LDA ram_obj_id,X ; 0550 0551
 C - - - - - 0x03E73E 0F:E72E: 69 13     ADC #$13
 C - - - - - 0x03E740 0F:E730: A8        TAY
 C - - - - - 0x03E741 0F:E731: 20 4F DF  JSR sub_DF4F
@@ -4304,6 +4304,8 @@ C - - - - - 0x03E85B 0F:E84B: E6 95     INC ram_0095    ; 19 -> 1A
 C - - - - - 0x03E85D 0F:E84D: E6 95     INC ram_0095    ; 1A -> 1B
 C - - - - - 0x03E85F 0F:E84F: A9 00     LDA #$00
 C - - - - - 0x03E861 0F:E851: 85 96     STA ram_0096
+                                        STA ram_obj_anim_id + $04 ; 0404 
+C - - - - - 0x03FF06 0F:FEF6: 9D 0C 04  STA ram_obj_anim_id + $0C ; 040C 
 C - - - - - 0x03E863 0F:E853: AA        TAX
 C - - - - - 0x03E864 0F:E854: 20 DD DF  JSR sub_DFDD
 C - - - - - 0x03E867 0F:E857: A9 40     LDA #con_music_bonus_game_lose
@@ -8049,13 +8051,8 @@ C - - - - - 0x03FEFD 0F:FEED: 60        RTS
 
 
 
-sub_FEEE:
-C - - - - - 0x03FEFE 0F:FEEE: A5 95     LDA ram_0095
-C - - - - - 0x03FF00 0F:FEF0: 49 1B     EOR #$1B
-C - - - - - 0x03FF02 0F:FEF2: D0 0B     BNE bra_FEFF
 sub_0x03FF04:
 C - - - - - 0x03FF04 0F:FEF4: A9 00     LDA #$00
-C - - - - - 0x03FF06 0F:FEF6: 9D 0C 04  STA ram_obj_anim_id + $0C,X ; 040C 040D 
 C - - - - - 0x03FF09 0F:FEF9: 9D 0A 06  STA ram_plr_060A,X ; 060A 060B 
 C - - - - - 0x03FF0C 0F:FEFC: BC 20 05  LDY ram_obj_0520,X ; 0520 0521 
 bra_FEFF:
