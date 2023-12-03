@@ -563,10 +563,11 @@ C - - - - - 0x02435C 09:834C: 4C A9 8B  JMP loc_8BA9
 
 
 loc_834F:
-C D 0 - - - 0x02435F 09:834F: BC 50 05  LDY ram_obj_id,X ; 0550 0551 
-C - - - - - 0x024362 09:8352: B9 D8 E3  LDA tbl_0x03E3E8,Y
-C - - - - - 0x024365 09:8355: A8        TAY
+; в оригинале читался байт из таблицы 0x03E3E8 по индексу перса,
+; но в таблице все байты были 04
+                                       ;LDY ram_obj_id,X ; 0550 0551 
 C - - - - - 0x024366 09:8356: A9 01     LDA #con_plr_state_в_прыжке
+                                        LDY #$04
 C D 1 - - - 0x027E97 09:BE87: 20 81 84  JSR sub_8481
 C - - - - - 0x027E9A 09:BE8A: A4 A9     LDY ram_global_obj_index
 C - - - - - 0x027E9C 09:BE8C: B9 D0 04  LDA ram_obj_04D0,Y ; 04D0 04D1 

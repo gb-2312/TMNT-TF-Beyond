@@ -113,7 +113,6 @@
 .export sub_0x03E2FF
 .export sub_0x03E32D
 .export sub_0x03E33A_выбрать_палитру_персу
-.export tbl_0x03E3E8
 .export tbl_0x03E479
 .export loc_0x03E61C
 .export loc_0x03E62D
@@ -3558,18 +3557,6 @@ C - - - - - 0x03E3C1 0F:E3B1: A9 1D     LDA #$1D
 C - - - - - 0x03E3C3 0F:E3B3: 85 95     STA ram_0095
 bra_E3B5:
 C - - - - - 0x03E3C5 0F:E3B5: 4C 6D D4  JMP loc_D46D_запись_черной_палитры_в_буфер
-
-
-
-tbl_0x03E3E8:
-; bzk optimize, одинаковые байты
-- D 3 - - - 0x03E3E8 0F:E3D8: 04        .byte $04   ; 00 con_fighter_leo
-- D 3 - - - 0x03E3E9 0F:E3D9: 04        .byte $04   ; 01 con_fighter_raph
-- D 3 - - - 0x03E3EA 0F:E3DA: 04        .byte $04   ; 02 con_fighter_mike
-- D 3 - - - 0x03E3EB 0F:E3DB: 04        .byte $04   ; 03 con_fighter_don
-- D 3 - - - 0x03E3EC 0F:E3DC: 04        .byte $04   ; 04 con_fighter_casey
-- D 3 - - - 0x03E3ED 0F:E3DD: 04        .byte $04   ; 05 con_fighter_hot
-- D 3 - - - 0x03E3EE 0F:E3DE: 04        .byte $04   ; 06 con_fighter_shred
 
 
 
