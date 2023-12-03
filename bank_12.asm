@@ -26,7 +26,7 @@
 .export sub_0x027AF8
 .export sub_0x027B61
 .export sub_0x027BC7
-.export sub_837E_анимация_стойки
+.export sub_0x02438E_анимация_стойки
 
 
 
@@ -593,8 +593,8 @@ C - - - - - 0x02438B 09:837B: 4C B2 84  JMP loc_84B2
 
 
 
-sub_837E_анимация_стойки:
 loc_837E_анимация_стойки:
+sub_0x02438E_анимация_стойки:
 C D 0 - - - 0x02438E 09:837E: 20 38 DB  JSR sub_0x03DB48_очистить_spd_X_и_spd_Z
 C - - - - - 0x024391 09:8381: DE 1A 06  DEC ram_plr_061A,X ; 061A 061B 
 C - - - - - 0x024394 09:8384: 10 10     BPL bra_8396
