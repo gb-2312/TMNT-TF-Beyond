@@ -203,7 +203,6 @@
 .export sub_0x03FE8A
 .export loc_0x03FEAF
 .export loc_0x03FEEF
-.export sub_0x03FF04
 .export sub_0x03FF1D
 .export sub_0x03FF4B_вычисление_приоритета_игрока_в_бою
 .export sub_0x03F723_отрисовка_финальной_стойки
@@ -8048,16 +8047,6 @@ bra_FEE9:
 C - - - - - 0x03FEF9 0F:FEE9: C9 02     CMP #$02
 C - - - - - 0x03FEFB 0F:FEEB: 49 07     EOR #$07
 C - - - - - 0x03FEFD 0F:FEED: 60        RTS
-
-
-
-sub_0x03FF04:
-C - - - - - 0x03FF04 0F:FEF4: A9 00     LDA #$00
-C - - - - - 0x03FF09 0F:FEF9: 9D 0A 06  STA ram_plr_060A,X ; 060A 060B 
-C - - - - - 0x03FF0C 0F:FEFC: BC 20 05  LDY ram_obj_0520,X ; 0520 0521 
-bra_FEFF:
-C - - - - - 0x03FF0F 0F:FEFF: BD 50 05  LDA ram_obj_id,X ; 0550 0551 
-C - - - - - 0x03FF12 0F:FF02: 60        RTS
 
 
 
