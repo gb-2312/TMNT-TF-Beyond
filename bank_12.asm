@@ -567,7 +567,19 @@ C D 0 - - - 0x02435F 09:834F: BC 50 05  LDY ram_obj_id,X ; 0550 0551
 C - - - - - 0x024362 09:8352: B9 D8 E3  LDA tbl_0x03E3E8,Y
 C - - - - - 0x024365 09:8355: A8        TAY
 C - - - - - 0x024366 09:8356: A9 01     LDA #con_plr_state_в_прыжке
-C - - - - - 0x024368 09:8358: 4C 87 BE  JMP loc_BE87
+C D 1 - - - 0x027E97 09:BE87: 20 81 84  JSR sub_8481
+C - - - - - 0x027E9A 09:BE8A: A4 A9     LDY ram_global_obj_index
+C - - - - - 0x027E9C 09:BE8C: B9 D0 04  LDA ram_obj_04D0,Y ; 04D0 04D1 
+C - - - - - 0x027E9F 09:BE8F: A8        TAY
+C - - - - - 0x027EA0 09:BE90: BD 00 06  LDA ram_plr_0600,X ; 0600 0601 
+C - - - - - 0x027EA3 09:BE93: 88        DEY
+C - - - - - 0x027EA4 09:BE94: 30 03     BMI bra_BE99
+C - - - - - 0x027EA6 09:BE96: 09 40     ORA #$40
+C - - - - - 0x027EA8 09:BE98: 2C        .byte $2C   ; BIT
+bra_BE99:
+C - - - - - 0x027EA9 09:BE99: 29 BF     AND #$40 ^ $FF
+C - - - - - 0x027EAB 09:BE9B: 9D 00 06  STA ram_plr_0600,X ; 0600 0601 
+C - - - - - 0x027EAE 09:BE9E: 60        RTS
 
 
 
@@ -10697,23 +10709,6 @@ C - - - - - 0x027E92 09:BE82: 68        PLA
 C - - - - - 0x027E93 09:BE83: 68        PLA
 bra_BE84:
 C - - - - - 0x027E94 09:BE84: 4C DF FE  JMP loc_0x03FEEF
-
-
-
-loc_BE87:
-C D 1 - - - 0x027E97 09:BE87: 20 81 84  JSR sub_8481
-C - - - - - 0x027E9A 09:BE8A: A4 A9     LDY ram_global_obj_index
-C - - - - - 0x027E9C 09:BE8C: B9 D0 04  LDA ram_obj_04D0,Y ; 04D0 04D1 
-C - - - - - 0x027E9F 09:BE8F: A8        TAY
-C - - - - - 0x027EA0 09:BE90: BD 00 06  LDA ram_plr_0600,X ; 0600 0601 
-C - - - - - 0x027EA3 09:BE93: 88        DEY
-C - - - - - 0x027EA4 09:BE94: 30 03     BMI bra_BE99
-C - - - - - 0x027EA6 09:BE96: 09 40     ORA #$40
-C - - - - - 0x027EA8 09:BE98: 2C        .byte $2C   ; BIT
-bra_BE99:
-C - - - - - 0x027EA9 09:BE99: 29 BF     AND #$40 ^ $FF
-C - - - - - 0x027EAB 09:BE9B: 9D 00 06  STA ram_plr_0600,X ; 0600 0601 
-C - - - - - 0x027EAE 09:BE9E: 60        RTS
 
 
 
