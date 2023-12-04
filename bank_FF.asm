@@ -2087,7 +2087,6 @@ loc_0x03DAE3_удалить_объект:
 ; X = индекс объекта
 C D 2 - - - 0x03DAE3 0F:DAD3: A9 00     LDA #$00
 C - - - - - 0x03DAE5 0F:DAD5: 9D 50 05  STA ram_obj_id,X
-C - - - - - 0x03DAE8 0F:DAD8: A9 00     LDA #$00
 C - - - - - 0x03DAEA 0F:DADA: 9D 30 04  STA ram_obj_pos_X_hi,X
 C - - - - - 0x03DAED 0F:DADD: 9D 40 04  STA ram_obj_pos_X_lo,X
 C - - - - - 0x03DAF0 0F:DAE0: 9D 10 04  STA ram_obj_pos_Y_lo,X
