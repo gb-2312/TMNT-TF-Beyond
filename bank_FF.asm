@@ -7806,7 +7806,7 @@ C - - - - - 0x03FD5A 0F:FD4A: 20 0B F7  JSR sub_F70B
 C - - - - - 0x03FD5D 0F:FD4D: 20 04 80  JSR sub_0x024014
 C - - - - - 0x03FD60 0F:FD50: 20 91 AD  JSR sub_0x026DA1
 C - - - - - 0x03FD63 0F:FD53: 20 3B FF  JSR sub_FF3B_вычисление_приоритета_игрока_в_бою
-loc_FD57:
+loc_FD57_loop:
 C D 3 - - - 0x03FD67 0F:FD57: A6 AD     LDX ram_00AD
 C - - - - - 0x03FD69 0F:FD59: BD 36 06  LDA ram_plr_0636,X ; 0636 0637 
 C - - - - - 0x03FD6C 0F:FD5C: F0 14     BEQ bra_FD72
@@ -7888,7 +7888,7 @@ bra_FF21:
 C - - - - - 0x03FF31 0F:FF21: C6 AD     DEC ram_00AD
 C - - - - - 0x03FF33 0F:FF23: 30 F9     BMI bra_FF1E
 bra_FF25:
-C - - - - - 0x03FF35 0F:FF25: 4C 57 FD  JMP loc_FD57
+C - - - - - 0x03FF35 0F:FF25: 4C 57 FD  JMP loc_FD57_loop
 
 
 
