@@ -3370,9 +3370,9 @@ C - - - - - 0x03E2E7 0F:E2D7: 20 90 F6  JSR sub_F690_записать_звук_�
 C - - - - - 0x03E2EA 0F:E2DA: A9 D0     LDA #$D0
 C - - - - - 0x03E2EC 0F:E2DC: 8D 60 05  STA ram_obj_timer
 C - - - - - 0x03E2EF 0F:E2DF: A2 FF     LDX #$FF
-C - - - - - 0x03E2F1 0F:E2E1: 86 57     STX ram_0056 + $01
+C - - - - - 0x03E2F1 0F:E2E1: 86 57     STX ram_0056
 C - - - - - 0x03E2F3 0F:E2E3: A2 00     LDX #$00
-C - - - - - 0x03E2F5 0F:E2E5: 86 56     STX ram_0056
+C - - - - - 0x03E2F5 0F:E2E5: 86 56     STX ram_0056 + $01
 C - - - - - 0x03E2F7 0F:E2E7: A9 06     LDA #con_0048_06
 C - - - - - 0x03E2F9 0F:E2E9: 20 14 F8  JSR sub_F814_подготовить_irq_handler
 C - - - - - 0x03E2FC 0F:E2EC: 4C 41 E1  JMP loc_E141_подготовить_осветление_из_черного_в_цветной
@@ -3491,22 +3491,22 @@ ofs_001_E341_04_обработка_vs_экрана:
 C - - J - - 0x03E351 0F:E341: A5 90     LDA ram_sum_btn_press
 C - - - - - 0x03E353 0F:E343: 29 10     AND #con_btn_Start
 C - - - - - 0x03E355 0F:E345: D0 53     BNE bra_E39A
-C - - - - - 0x03E357 0F:E347: A5 57     LDA ram_0056 + $01
+C - - - - - 0x03E357 0F:E347: A5 57     LDA ram_0056
 C - - - - - 0x03E359 0F:E349: 29 F8     AND #$F8
 C - - - - - 0x03E35B 0F:E34B: F0 3F     BEQ bra_E38C
 C - - - - - 0x03E35D 0F:E34D: 38        SEC
-C - - - - - 0x03E35E 0F:E34E: A5 57     LDA ram_0056 + $01
+C - - - - - 0x03E35E 0F:E34E: A5 57     LDA ram_0056
 C - - - - - 0x03E360 0F:E350: E9 08     SBC #$08
-C - - - - - 0x03E362 0F:E352: 85 57     STA ram_0056 + $01
+C - - - - - 0x03E362 0F:E352: 85 57     STA ram_0056
 C - - - - - 0x03E364 0F:E354: 69 10     ADC #$08
 C - - - - - 0x03E366 0F:E356: 8D 40 04  STA ram_obj_pos_X_lo
 C - - - - - 0x03E369 0F:E359: A9 00     LDA #$00
 C - - - - - 0x03E36B 0F:E35B: 2A        ROL
 C - - - - - 0x03E36C 0F:E35C: 8D 30 04  STA ram_obj_pos_X_hi
 C - - - - - 0x03E36F 0F:E35F: 18        CLC
-C - - - - - 0x03E370 0F:E360: A5 56     LDA ram_0056
+C - - - - - 0x03E370 0F:E360: A5 56     LDA ram_0056 + $01
 C - - - - - 0x03E372 0F:E362: 69 08     ADC #$08
-C - - - - - 0x03E374 0F:E364: 85 56     STA ram_0056
+C - - - - - 0x03E374 0F:E364: 85 56     STA ram_0056 + $01
 C - - - - - 0x03E376 0F:E366: E9 46     SBC #$46
 C - - - - - 0x03E378 0F:E368: 8D 41 04  STA ram_obj_pos_X_lo + $01
 C - - - - - 0x03E37B 0F:E36B: C9 B4     CMP #$B4
@@ -3517,18 +3517,18 @@ C - - - - - 0x03E383 0F:E373: A9 0F     LDA #$0F
 C - - - - - 0x03E385 0F:E375: 8D 10 04  STA ram_obj_pos_Y_lo
 C - - - - - 0x03E388 0F:E378: A9 8F     LDA #$8F
 C - - - - - 0x03E38A 0F:E37A: 8D 11 04  STA ram_obj_pos_Y_lo + $01
-C - - - - - 0x03E38D 0F:E37D: A5 57     LDA ram_0056 + $01
+C - - - - - 0x03E38D 0F:E37D: A5 57     LDA ram_0056
 C - - - - - 0x03E38F 0F:E37F: 29 F8     AND #$F8
 C - - - - - 0x03E391 0F:E381: D0 08     BNE bra_E38B_RTS
 sub_E383_зафиксировать_pos_X_спрайтов:
                                         CLC
-                                        LDA ram_0056 + $01
+                                        LDA ram_0056
                                         ADC #$11
                                         BEQ bra_E385
                                         STA ram_obj_pos_X_lo
 bra_E385:
 C - - - - - 0x03E393 0F:E383: 38        SEC
-C - - - - - 0x03E394 0F:E384: A5 56     LDA ram_0056
+C - - - - - 0x03E394 0F:E384: A5 56     LDA ram_0056 + $01
 C - - - - - 0x03E396 0F:E386: E9 4F     SBC #$4F
 C - - - - - 0x03E398 0F:E388: 8D 41 04  STA ram_obj_pos_X_lo + $01
 bra_E38B_RTS:
@@ -7270,7 +7270,7 @@ C - - - - - 0x03F971 0F:F961: 20 8D FB  JSR sub_FB8D
 C - - - - - 0x03F974 0F:F964: A4 48     LDY ram_irq_handler
 C - - - - - 0x03F976 0F:F966: C0 05     CPY #$05
 C - - - - - 0x03F978 0F:F968: B0 03     BCS bra_F96D_RTS
-C - - - - - 0x03F97A 0F:F96A: 4C C9 FC  JMP loc_FCC9_вычислить_скороллинг_фона
+C - - - - - 0x03F97A 0F:F96A: 4C C9 FC  JMP loc_FCC9_вычислить_скроллинг_фона
 bra_F96D_RTS:
 C - - - - - 0x03F97D 0F:F96D: 60        RTS
 
@@ -7281,7 +7281,7 @@ C - - J - - 0x03F97E 0F:F96E: A2 01     LDX #$01
 C - - - - - 0x03F980 0F:F970: 20 81 F8  JSR sub_F881_garbage_loop
 C - - - - - 0x03F983 0F:F973: A4 4D     LDY ram_004D
 C - - - - - 0x03F985 0F:F975: D0 4C     BNE bra_F9C3
-C - - - - - 0x03F987 0F:F977: A5 56     LDA ram_0056
+C - - - - - 0x03F987 0F:F977: A5 56     LDA ram_0056 + $01
 C - - - - - 0x03F989 0F:F979: A2 52     LDX #$52
 C - - - - - 0x03F98B 0F:F97B: 8E 00 C0  STX $C000
 C - - - - - 0x03F990 0F:F980: E6 4D     INC ram_004D
@@ -7347,7 +7347,7 @@ bra_F9EE:
 C - - - - - 0x03F9FE 0F:F9EE: A2 13     LDX #$13
 C - - - - - 0x03FA00 0F:F9F0: 20 81 F8  JSR sub_F881_garbage_loop
 C - - - - - 0x03FA03 0F:F9F3: AD 02 20  LDA $2002
-C - - - - - 0x03FA06 0F:F9F6: A5 57     LDA ram_0056 + $01
+C - - - - - 0x03FA06 0F:F9F6: A5 57     LDA ram_0056
 C - - - - - 0x03FA08 0F:F9F8: 8D 05 20  STA $2005
 C - - - - - 0x03FA0B 0F:F9FB: A5 FC     LDA ram_scroll_Y
 C - - - - - 0x03FA0D 0F:F9FD: 8D 05 20  STA $2005
@@ -7721,7 +7721,7 @@ tbl_FCBA:
 
 
 
-loc_FCC9_вычислить_скороллинг_фона:
+loc_FCC9_вычислить_скроллинг_фона:
 C D 3 - - - 0x03FCD9 0F:FCC9: A9 00     LDA #$00
 C - - - - - 0x03FCDB 0F:FCCB: 85 B7     STA ram_00B7
 C - - - - - 0x03FCDD 0F:FCCD: 38        SEC
