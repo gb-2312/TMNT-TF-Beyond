@@ -3654,7 +3654,7 @@ ofs_001_E46D_06_подготовка_к_бою:
 C - - J - - 0x03E47D 0F:E46D: A4 9E     LDY ram_009E
 C - - - - - 0x03E47F 0F:E46F: B9 AB FC  LDA tbl_FCAB,Y
 C - - - - - 0x03E482 0F:E472: 20 8B F6  JSR sub_F68B_выключить_звуки_и_записать_новый
-                                       ;LDA #con_0095_07
+                                       ;LDA #con_0095_бой_идет
 C - - - - - 0x03E485 0F:E475: E6 95     INC ram_0095_стадия_игры    ; 06 -> 07
 C - - - - - 0x03E487 0F:E477: A9 06     LDA #$06
 C - - - - - 0x03E489 0F:E479: 8D 36 05  STA ram_obj_0530 + $06
@@ -5786,7 +5786,7 @@ loc_0x03EFFC:
 C D 3 - - - 0x03EFFC 0F:EFEC: AC 26 01  LDY ram_option_speed
 C - - - - - 0x03EFFF 0F:EFEF: F0 0C     BEQ bra_EFFD
 C - - - - - 0x03F001 0F:EFF1: A4 95     LDY ram_0095_стадия_игры
-C - - - - - 0x03F003 0F:EFF3: C0 07     CPY #con_0095_07
+C - - - - - 0x03F003 0F:EFF3: C0 07     CPY #con_0095_бой_идет
 C - - - - - 0x03F005 0F:EFF5: D0 06     BNE bra_EFFD
 C - - - - - 0x03F007 0F:EFF7: E9 80     SBC #$80
 C - - - - - 0x03F009 0F:EFF9: 10 02     BPL bra_EFFD
