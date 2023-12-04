@@ -52,7 +52,7 @@ C - - - - - 0x038036 0E:8026: A9 82     LDA #$82
 C - - - - - 0x038038 0E:8028: 9D 00 05  STA ram_obj_0500 + $01
 C - - - - - 0x03803E 0E:802E: A9 55     LDA #con_chr_bank_spr + $55
 C - - - - - 0x038040 0E:8030: 85 34     STA ram_chr_bank_spr
-C - - - - - 0x038042 0E:8032: 20 25 DC  JSR sub_0x03DC35_запись_пары_chr_06
+C - - - - - 0x038042 0E:8032: 20 25 DC  JSR sub_0x03DC35_запись_пары_chr_bg_06
 C - - - - - 0x038045 0E:8035: A9 0E     LDA #con_0048_0E
 C - - - - - 0x038047 0E:8037: 20 14 F8  JSR sub_0x03F824_подготовить_irq_handler
 C - - - - - 0x03804A 0E:803A: A2 18     LDX #con_screen_options
@@ -744,9 +744,9 @@ C - - - - - 0x0382E6 0E:82D6: A9 46     LDA #con_music_bracket_playoff
 bra_82D8:
 C - - - - - 0x0382E8 0E:82D8: 20 90 F6  JSR sub_0x03F6A0_записать_звук_сохранив_X_Y
 C - - - - - 0x0382EB 0E:82DB: A0 04     LDY #con_chr_pair_04
-C - - - - - 0x0382ED 0E:82DD: 20 1A DC  JSR sub_0x03DC2A_запись_пары_chr
+C - - - - - 0x0382ED 0E:82DD: 20 1A DC  JSR sub_0x03DC2A_запись_пары_chr_bg
 C - - - - - 0x0382F0 0E:82E0: A0 1A     LDY #con_chr_pair_1A
-C - - - - - 0x0382F2 0E:82E2: 20 04 DC  JSR sub_0x03DC14
+C - - - - - 0x0382F2 0E:82E2: 20 04 DC  JSR sub_0x03DC14_запись_1й_пары_chr_spr
 C - - - - - 0x0382F5 0E:82E5: A9 03     LDA #$03
 C - - - - - 0x0382F7 0E:82E7: 85 00     STA ram_0000
 bra_82E9_loop:
@@ -1663,9 +1663,9 @@ C - - - - - 0x0388DA 0E:88CA: A9 12     LDA #con_print_cpu
 C - - - - - 0x0388DC 0E:88CC: 20 E5 F6  JSR sub_0x03F6F5_написать_текст_на_экране
 bra_88CF:
 ; con_gm_vs_player
-C - - - - - 0x0388DF 0E:88CF: 20 25 DC  JSR sub_0x03DC35_запись_пары_chr_06
+C - - - - - 0x0388DF 0E:88CF: 20 25 DC  JSR sub_0x03DC35_запись_пары_chr_bg_06
 C - - - - - 0x0388E2 0E:88D2: A0 02     LDY #con_chr_pair_02
-C - - - - - 0x0388E4 0E:88D4: 20 04 DC  JSR sub_0x03DC14
+C - - - - - 0x0388E4 0E:88D4: 20 04 DC  JSR sub_0x03DC14_запись_1й_пары_chr_spr
 C - - - - - 0x0388E7 0E:88D7: E6 95     INC ram_0095
 C - - - - - 0x0388E9 0E:88D9: A2 00     LDX #$00    ; tip_индекс_буфера_палитры + $00
 C - - - - - 0x0388EB 0E:88DB: 20 1D E3  JSR sub_0x03E32D
@@ -2378,7 +2378,7 @@ C - - - - - 0x038CC4 0E:8CB4: 9D 55 01  STA ram_tournament_индекс_игро
 C - - - - - 0x038CC7 0E:8CB7: CA        DEX
 C - - - - - 0x038CC8 0E:8CB8: 10 F9     BPL bra_8CB3_loop
 C - - - - - 0x038CCA 0E:8CBA: A0 14     LDY #con_chr_pair_14
-C - - - - - 0x038CCC 0E:8CBC: 20 1A DC  JSR sub_0x03DC2A_запись_пары_chr
+C - - - - - 0x038CCC 0E:8CBC: 20 1A DC  JSR sub_0x03DC2A_запись_пары_chr_bg
 C - - - - - 0x038CCF 0E:8CBF: A9 38     LDA #con_music_continue ; keyboard
 C - - - - - 0x038CD1 0E:8CC1: 20 90 F6  JSR sub_0x03F6A0_записать_звук_сохранив_X_Y
 ofs_011_8CC4_04:
@@ -3028,7 +3028,7 @@ C - - - - - 0x0390B9 0E:90A9: 20 32 D0  JSR sub_0x03D042_поинтеры_пос
 - D 0 - I - 0x0390C4 0E:90B4: 49 91     .word ofs_010_9149_04
 - D 0 - I - 0x0390C6 0E:90B6: 59 91     .word ofs_010_9159_05
 - D 0 - I - 0x0390C8 0E:90B8: 63 91     .word ofs_010_9163_06_offer_challenge
-- D 0 - I - 0x0390CA 0E:90BA: 7A 91     .word ofs_010_917A_07
+- D 0 - I - 0x0390CA 0E:90BA: 7A 91     .word ofs_010_917A_07_отрисовать_рамку_портрета_шрушера
 - D 0 - I - 0x0390CC 0E:90BC: 9E 91     .word ofs_010_919E_08
 - D 0 - I - 0x0390CE 0E:90BE: AE 91     .word ofs_010_91AE_09
 - D 0 - I - 0x0390D0 0E:90C0: C6 91     .word ofs_010_91C6_0A_отрисовать_персов_в_opening
@@ -3063,7 +3063,7 @@ C - - - - - 0x0390F5 0E:90E5: 20 90 F6  JSR sub_0x03F6A0_записать_зву
 C - - - - - 0x0390F8 0E:90E8: A9 00     LDA #con_speech_manhattan
 C - - - - - 0x0390FA 0E:90EA: 85 B6     STA ram_speech
 C - - - - - 0x0390FC 0E:90EC: A0 1E     LDY #con_chr_pair_1E
-C - - - - - 0x0390FE 0E:90EE: 20 1A DC  JSR sub_0x03DC2A_запись_пары_chr
+C - - - - - 0x0390FE 0E:90EE: 20 1A DC  JSR sub_0x03DC2A_запись_пары_chr_bg
 C - - - - - 0x039101 0E:90F1: A9 4D     LDA #$4D
 C - - - - - 0x039103 0E:90F3: 8D 00 04  STA ram_obj_anim_id
 C - - - - - 0x039106 0E:90F6: A0 16     LDY #con_D57A_16
@@ -3088,7 +3088,7 @@ C - - - - - 0x039120 0E:9110: 60        RTS
 
 ofs_010_9111_03_отрисовать_opening_2:
 C - - J - - 0x039121 0E:9111: A0 20     LDY #con_chr_pair_20
-C - - - - - 0x039123 0E:9113: 20 1A DC  JSR sub_0x03DC2A_запись_пары_chr
+C - - - - - 0x039123 0E:9113: 20 1A DC  JSR sub_0x03DC2A_запись_пары_chr_bg
 C - - - - - 0x039126 0E:9116: A9 01     LDA #con_speech_strange_letter
 C - - - - - 0x039128 0E:9118: 85 B6     STA ram_speech
 C - - - - - 0x03912A 0E:911A: A9 4E     LDA #$4E
@@ -3149,17 +3149,17 @@ C - - - - - 0x03917F 0E:916F: A9 00     LDA #con_D57A_00
 C - - - - - 0x039181 0E:9171: A8        LDY #con_D57A_00
 C - - - - - 0x039182 0E:9172: 20 94 D3  JSR sub_0x03D3A4_записать_палитру_для_фона_и_спрайтов
 C - - - - - 0x039185 0E:9175: E6 21     INC ram_script_draw_lo
-C - - - - - 0x039187 0E:9177: 4C C6 E8  JMP loc_0x03E8D6
+C - - - - - 0x039187 0E:9177: 4C C6 E8  JMP loc_0x03E8D6_отрисовать_портрет_шрушера_в_opening
 
 
 
-ofs_010_917A_07:
+ofs_010_917A_07_отрисовать_рамку_портрета_шрушера:
 C - - J - - 0x03918A 0E:917A: CE 60 05  DEC ram_obj_timer
 C - - - - - 0x03918D 0E:917D: 30 05     BMI bra_9184
 C - - - - - 0x03918F 0E:917F: D0 1C     BNE bra_919D_RTS
-C - - - - - 0x039191 0E:9181: 4C BB 93  JMP loc_93BB
+C - - - - - 0x039191 0E:9181: 4C BB 93  JMP loc_93BB_скрыть_рамку
 bra_9184:
-C - - - - - 0x039194 0E:9184: 20 CE 93  JSR sub_93CE
+C - - - - - 0x039194 0E:9184: 20 CE 93  JSR sub_93CE_отрисовать_рамку
 C - - - - - 0x039197 0E:9187: A9 03     LDA #$03
 C - - - - - 0x039199 0E:9189: 8D 60 05  STA ram_obj_timer
 C - - - - - 0x03919C 0E:918C: EE 30 05  INC ram_obj_0530
@@ -3504,23 +3504,23 @@ C - - - - - 0x0393C7 0E:93B7: 4C 3E E1  JMP loc_0x03E14E_подготовить_
 
 
 
-loc_93BB:
-C D 0 - - - 0x0393CB 0E:93BB: A9 00     LDA #$00
+loc_93BB_скрыть_рамку:
+C D 0 - - - 0x0393CB 0E:93BB: A9 00     LDA #$00    ; скрыть тайлы рамки
 C - - - - - 0x0393CD 0E:93BD: 85 18     STA ram_0018
 C - - - - - 0x0393CF 0E:93BF: AC 30 05  LDY ram_obj_0530
 C - - - - - 0x0393D2 0E:93C2: F0 F6     BEQ bra_93CD_RTS
 C - - - - - 0x0393D4 0E:93C4: CE 30 05  DEC ram_obj_0530
-C - - - - - 0x0393D7 0E:93C7: 20 D2 93  JSR sub_93D2
+C - - - - - 0x0393D7 0E:93C7: 20 D2 93  JSR sub_93D2_затереть_рамку
 C - - - - - 0x0393DA 0E:93CA: EE 30 05  INC ram_obj_0530
 bra_93CD_RTS:
 C - - - - - 0x0393DD 0E:93CD: 60        RTS
 
 
 
-sub_93CE:
-C - - - - - 0x0393DE 0E:93CE: A9 01     LDA #$01
+sub_93CE_отрисовать_рамку:
+C - - - - - 0x0393DE 0E:93CE: A9 01     LDA #$01    ; отобразить тайлы рамки
 C - - - - - 0x0393E0 0E:93D0: 85 18     STA ram_0018
-sub_93D2:
+sub_93D2_затереть_рамку:
 C - - - - - 0x0393E2 0E:93D2: A9 20     LDA #$20
 C - - - - - 0x0393E4 0E:93D4: 85 00     STA ram_0000
 C - - - - - 0x0393E6 0E:93D6: AD 30 05  LDA ram_obj_0530
@@ -3647,7 +3647,7 @@ C - - - - - 0x0394D4 0E:94C4: 4C 56 D2  JMP loc_0x03D266_записать_A_и_F
 
 
 sub_94C7:
-C - - - - - 0x0394D7 0E:94C7: A4 18     LDY ram_0018
+C - - - - - 0x0394D7 0E:94C7: A4 18     LDY ram_0018    ; флаг отображения тайлов рамки
 C - - - - - 0x0394D9 0E:94C9: D0 01     BNE bra_94CC_RTS
 ; Y = 00
 C - - - - - 0x0394DB 0E:94CB: 98        TYA
@@ -3898,9 +3898,9 @@ C - - - - - 0x039683 0E:9673: BE 4D 99  LDX tbl_994D_ending,Y
 C - - - - - 0x039686 0E:9676: 20 44 F0  JSR sub_0x03F054_отрисовать_экран
 C - - - - - 0x039689 0E:9679: A6 18     LDX ram_0018
 C - - - - - 0x03968B 0E:967B: BC 4F 99  LDY tbl_994F_chr_pair,X
-C - - - - - 0x03968E 0E:967E: 20 1A DC  JSR sub_0x03DC2A_запись_пары_chr
+C - - - - - 0x03968E 0E:967E: 20 1A DC  JSR sub_0x03DC2A_запись_пары_chr_bg
 C - - - - - 0x039691 0E:9681: A0 08     LDY #con_chr_pair_08
-C - - - - - 0x039693 0E:9683: 20 04 DC  JSR sub_0x03DC14
+C - - - - - 0x039693 0E:9683: 20 04 DC  JSR sub_0x03DC14_запись_1й_пары_chr_spr
 C - - - - - 0x039696 0E:9686: A9 52     LDA #con_chr_bank_spr + $52
 C - - - - - 0x039698 0E:9688: 85 36     STA ram_chr_bank_spr + $02
 C - - - - - 0x03969A 0E:968A: E6 21     INC ram_script_draw_lo  ; 02 09
@@ -4100,7 +4100,7 @@ C - - J - - 0x0397D6 0E:97C6: CE 61 05  DEC ram_obj_timer + $01
 C - - - - - 0x0397D9 0E:97C9: D0 F1     BNE bra_97BC
 C - - - - - 0x0397DB 0E:97CB: EE 31 05  INC ram_obj_0530 + $01
 C - - - - - 0x0397DE 0E:97CE: A0 0E     LDY #con_chr_pair_0E
-C - - - - - 0x0397E0 0E:97D0: 20 0F DC  JSR sub_0x03DC1F
+C - - - - - 0x0397E0 0E:97D0: 20 0F DC  JSR sub_0x03DC1F_запись_2й_пары_chr_spr
 C - - - - - 0x0397E3 0E:97D3: A2 05     LDX #$05    ; tip_индекс_буфера_палитры + $05
 C - - - - - 0x0397E5 0E:97D5: A9 02     LDA #con_AF40_pal + $02
 C - - - - - 0x0397E7 0E:97D7: 20 46 D3  JSR sub_0x03D356_записать_3_цвета_в_буфер
@@ -4178,7 +4178,7 @@ C - - - - - 0x039855 0E:9845: E6 21     INC ram_script_draw_lo
 C - - - - - 0x039857 0E:9847: A9 0B     LDA #con_0048_0B
 C - - - - - 0x039859 0E:9849: 20 14 F8  JSR sub_0x03F824_подготовить_irq_handler
 C - - - - - 0x03985C 0E:984C: A0 1C     LDY #con_chr_pair_1C
-C - - - - - 0x03985E 0E:984E: 20 1A DC  JSR sub_0x03DC2A_запись_пары_chr
+C - - - - - 0x03985E 0E:984E: 20 1A DC  JSR sub_0x03DC2A_запись_пары_chr_bg
 C - - - - - 0x039861 0E:9851: A9 04     LDA #con_speech_celebrate
 C - - - - - 0x039863 0E:9853: 85 B6     STA ram_speech
 C - - - - - 0x039865 0E:9855: A9 1A     LDA #con_D57A_1A
@@ -4247,7 +4247,7 @@ ofs_007_98AD_0A:
 - - - - - - 0x0398C9 0E:98B9: 20 94 D3  JSR sub_0x03D3A4_записать_палитру_для_фона_и_спрайтов
 - - - - - - 0x0398CC 0E:98BC: A9 0B     LDA #$0B
 - - - - - - 0x0398CE 0E:98BE: 85 21     STA ram_script_draw_lo
-- - - - - - 0x0398D0 0E:98C0: 20 25 DC  JSR sub_0x03DC35_запись_пары_chr_06
+- - - - - - 0x0398D0 0E:98C0: 20 25 DC  JSR sub_0x03DC35_запись_пары_chr_bg_06
 - - - - - - 0x0398D3 0E:98C3: A9 42     LDA #con_music_ost_technodrome
 - - - - - - 0x0398D5 0E:98C5: 20 90 F6  JSR sub_0x03F6A0_записать_звук_сохранив_X_Y
 sub_98C8:
@@ -5179,7 +5179,7 @@ C - - - - - 0x03A05C 0E:A04C: 8D 60 05  STA ram_obj_timer
 C - - - - - 0x03A05F 0E:A04F: A9 57     LDA #con_chr_bank_spr + $57
 C - - - - - 0x03A061 0E:A051: 85 34     STA ram_chr_bank_spr
 C - - - - - 0x03A063 0E:A053: A0 12     LDY #con_chr_pair_12
-C - - - - - 0x03A065 0E:A055: 20 1A DC  JSR sub_0x03DC2A_запись_пары_chr
+C - - - - - 0x03A065 0E:A055: 20 1A DC  JSR sub_0x03DC2A_запись_пары_chr_bg
 C - - - - - 0x03A068 0E:A058: A9 30     LDA #$30
 C - - - - - 0x03A06A 0E:A05A: 8D 00 04  STA ram_obj_anim_id
 C - - - - - 0x03A06D 0E:A05D: A9 9F     LDA #$9F
@@ -5273,7 +5273,7 @@ sub_0x03A0F3_отрисовать_портреты:
 C - - - - - 0x03A0F3 0E:A0E3: C9 02     CMP #$02
 C - - - - - 0x03A0F5 0E:A0E5: F0 16     BEQ bra_A0FD_02
 C - - - - - 0x03A0F7 0E:A0E7: 20 ED A0  JSR sub_A0ED
-C - - - - - 0x03A0FA 0E:A0EA: 4C C1 A1  JMP loc_A1C1_палитра_и_chr_банки_на_vs_экране
+C - - - - - 0x03A0FA 0E:A0EA: 4C C1 A1  JMP loc_A1C1_палитра_и_chr_банки_на_экранах_с_портретами
 
 
 
@@ -5284,7 +5284,7 @@ C - - - - - 0x03A0FE 0E:A0EE: 20 32 D0  JSR sub_0x03D042_поинтеры_пос
 - D 1 - I - 0x03A103 0E:A0F3: 44 A1     .word ofs_003_A144_01_отрисовать_портрет_на_экране_continue___разбитая_рожа
 - - - - - - 0x03A105 0E:A0F5: 41 A1     .word ofs_003_A141_02_отрисовать_портрет_на_экране_continue___целая_рожа   ; never used 0x03A0F5
 - D 1 - I - 0x03A107 0E:A0F7: 00 A1     .word ofs_003_A100_03_отрисовать_портреты_на_экране_rematch
-- D 1 - I - 0x03A109 0E:A0F9: 35 A1     .word ofs_003_A135_04
+- D 1 - I - 0x03A109 0E:A0F9: 35 A1     .word ofs_003_A135_04_отрисовать_портрет_шрушера_в_opening
 - D 1 - I - 0x03A10B 0E:A0FB: 22 A1     .word ofs_003_A122_05
 
 
@@ -5334,10 +5334,10 @@ C - - - - - 0x03A144 0E:A134: 60        RTS
 
 
 sub_A135:
-ofs_003_A135_04:
+ofs_003_A135_04_отрисовать_портрет_шрушера_в_opening:   ; offer challenge
 C - - J - - 0x03A145 0E:A135: A9 00     LDA #$00
 C - - - - - 0x03A147 0E:A137: 85 04     STA ram_0004    ; флаг рисования разбитой рожи
-C - - - - - 0x03A149 0E:A139: A0 06     LDY #$06
+C - - - - - 0x03A149 0E:A139: A0 06     LDY #$06    ; con_fighter_shred
 C - - - - - 0x03A14B 0E:A13B: 84 A2     STY ram_plr_id
 C - - - - - 0x03A14D 0E:A13D: A2 05     LDX #$05
 C - - - - - 0x03A14F 0E:A13F: D0 1B     BNE bra_A15C    ; jmp
@@ -5429,7 +5429,7 @@ C - - - - - 0x03A1D0 0E:A1C0: 60        RTS
 
 
 
-loc_A1C1_палитра_и_chr_банки_на_vs_экране:
+loc_A1C1_палитра_и_chr_банки_на_экранах_с_портретами:
 C D 1 - - - 0x03A1D1 0E:A1C1: 20 6D D4  JSR sub_0x03D47D_запись_черной_палитры_в_буфер
 C - - - - - 0x03A1D4 0E:A1C4: A9 14     LDA #con_D57A_14
 C - - - - - 0x03A1D6 0E:A1C6: 20 B0 D3  JSR sub_0x03D3C0_записать_палитру_для_фона

@@ -54,7 +54,7 @@ C - - - - - 0x02C0FA 0B:80EA: A9 74     LDA #con_chr_bank_bg + $74
 C - - - - - 0x02C0FC 0B:80EC: 85 32     STA ram_chr_bank_bg
 C - - - - - 0x02C0FE 0B:80EE: 20 00 AC  JSR sub_AC00
 C - - - - - 0x02C102 0B:80F2: A0 02     LDY #con_chr_pair_02
-C - - - - - 0x02C104 0B:80F4: 20 04 DC  JSR sub_0x03DC14
+C - - - - - 0x02C104 0B:80F4: 20 04 DC  JSR sub_0x03DC14_запись_1й_пары_chr_spr
 C - - - - - 0x02C107 0B:80F7: A5 2C     LDA ram_game_mode
 ; con_gm_story
 ; con_gm_vs_player
@@ -1003,7 +1003,7 @@ C - - - - - 0x02EEB7 0B:AEA7: B9 D0 AC  LDA tbl_ACD0_палитра,Y
 C - - - - - 0x02EEBA 0B:AEAA: 99 59 06  STA ram_pal_buffer + $0C,Y
 C - - - - - 0x02EEBD 0B:AEAD: 88        DEY
 C - - - - - 0x02EEBE 0B:AEAE: 10 F7     BPL bra_AEA7_loop
-C - - - - - 0x02EEC0 0B:AEB0: 20 25 DC  JSR sub_0x03DC35_запись_пары_chr_06
+C - - - - - 0x02EEC0 0B:AEB0: 20 25 DC  JSR sub_0x03DC35_запись_пары_chr_bg_06
 C - - - - - 0x02EEC3 0B:AEB3: 20 BE DA  JSR sub_0x03DACE_удалить_все_объекты
 C - - - - - 0x02EEC6 0B:AEB6: E6 95     INC ram_0095
 C - - - - - 0x02EEC8 0B:AEB8: A9 60     LDA #$60

@@ -57,10 +57,10 @@
 .export loc_0x03DB5C_добавить_spd_Z_к_pos_Y
 .export sub_0x03DB75_добавить_spd_X_к_pos_X
 .export sub_0x03DBC5_скопировать_данные_объекта_X_в_Y
-.export sub_0x03DC14
-.export sub_0x03DC1F
-.export sub_0x03DC2A_запись_пары_chr
-.export sub_0x03DC35_запись_пары_chr_06
+.export sub_0x03DC14_запись_1й_пары_chr_spr
+.export sub_0x03DC1F_запись_2й_пары_chr_spr
+.export sub_0x03DC2A_запись_пары_chr_bg
+.export sub_0x03DC35_запись_пары_chr_bg_06
 .export sub_0x03DC64_добавить_A_FF_к_spd_Z
 .export loc_0x03DC64_добавить_A_FF_к_spd_Z
 .export sub_0x03DC68_добавить_A_00_к_spd_Z
@@ -118,7 +118,7 @@
 .export loc_0x03E62D
 .export loc_0x03E67C
 .export loc_0x03E69A
-.export loc_0x03E8D6
+.export loc_0x03E8D6_отрисовать_портрет_шрушера_в_opening
 .export loc_0x03E91E_отрисовать_инфу_в_статусбаре
 .export tbl_0x03E995_индекс_3х_цветов_для_перса
 .export tbl_0x03E99C_индекс_3х_цветов_для_перса
@@ -2202,8 +2202,8 @@ C - - - - - 0x03DBE3 0F:DBD3: 60        RTS
 
 
 
-loc_DC04:
-sub_0x03DC14:
+loc_DC04_запись_1й_пары_chr_spr:
+sub_0x03DC14_запись_1й_пары_chr_spr:
 C D 2 - - - 0x03DC14 0F:DC04: B9 29 DC  LDA tbl_DC29_chr_pair,Y
 C - - - - - 0x03DC17 0F:DC07: 85 34     STA ram_chr_bank_spr
 C - - - - - 0x03DC19 0F:DC09: B9 2A DC  LDA tbl_DC29_chr_pair + $01,Y
@@ -2212,7 +2212,7 @@ C - - - - - 0x03DC1E 0F:DC0E: 60        RTS
 
 
 
-sub_0x03DC1F:
+sub_0x03DC1F_запись_2й_пары_chr_spr:
 ; Y = 0E
 C - - - - - 0x03DC1F 0F:DC0F: B9 29 DC  LDA tbl_DC29_chr_pair,Y
 C - - - - - 0x03DC22 0F:DC12: 85 36     STA ram_chr_bank_spr + $02
@@ -2222,12 +2222,12 @@ C - - - - - 0x03DC29 0F:DC19: 60        RTS
 
 
 
-loc_DC25_запись_пары_chr_06:
-sub_DC25_запись_пары_chr_06:
-sub_0x03DC35_запись_пары_chr_06:
+loc_DC25_запись_пары_chr_bg_06:
+sub_DC25_запись_пары_chr_bg_06:
+sub_0x03DC35_запись_пары_chr_bg_06:
 C D 2 - - - 0x03DC35 0F:DC25: A0 06     LDY #con_chr_pair_06
-sub_DC1A_запись_пары_chr:
-sub_0x03DC2A_запись_пары_chr:
+sub_DC1A_запись_пары_chr_bg:
+sub_0x03DC2A_запись_пары_chr_bg:
 C - - - - - 0x03DC2A 0F:DC1A: B9 29 DC  LDA tbl_DC29_chr_pair,Y
 C - - - - - 0x03DC2D 0F:DC1D: 85 32     STA ram_chr_bank_bg
 C - - - - - 0x03DC2F 0F:DC1F: B9 2A DC  LDA tbl_DC29_chr_pair + $01,Y
@@ -3283,7 +3283,7 @@ bra_E246:
 loc_0x03E256:
 C D 3 - - - 0x03E256 0F:E246: A9 03     LDA #$03    ; отрисовать vs экран
 C - - - - - 0x03E258 0F:E248: 85 95     STA ram_0095
-C - - - - - 0x03E25A 0F:E24A: 4C 25 DC  JMP loc_DC25_запись_пары_chr_06
+C - - - - - 0x03E25A 0F:E24A: 4C 25 DC  JMP loc_DC25_запись_пары_chr_bg_06
 
 
 
@@ -4208,7 +4208,7 @@ ofs_001_E7A1_16:
 ofs_001_E7A1_17:
 C - - J - - 0x03E7B1 0F:E7A1: E6 95     INC ram_0095    ; 16/17 -> 17/18
 C - - - - - 0x03E7B3 0F:E7A3: 20 3C F0  JSR sub_F03C_выключить_irq___удалить_все_объекты___отрисовать_пустой_экран
-C - - - - - 0x03E7B6 0F:E7A6: 20 25 DC  JSR sub_DC25_запись_пары_chr_06
+C - - - - - 0x03E7B6 0F:E7A6: 20 25 DC  JSR sub_DC25_запись_пары_chr_bg_06
 C - - - - - 0x03E7B9 0F:E7A9: A9 08     LDA #con_print_bonus_game
 C - - - - - 0x03E7BB 0F:E7AB: 20 E5 F6  JSR sub_F6E5_написать_текст_на_экране
 C - - - - - 0x03E7BE 0F:E7AE: A9 20     LDA #$20
@@ -4377,7 +4377,7 @@ C - - - - - 0x03E8D4 0F:E8C4: D0 05     BNE bra_E8CB    ; jmp
 
 
 
-loc_0x03E8D6:
+loc_0x03E8D6_отрисовать_портрет_шрушера_в_opening:
 C D 3 - - - 0x03E8D6 0F:E8C6: A5 A2     LDA ram_plr_id
 C - - - - - 0x03E8D8 0F:E8C8: 48        PHA
 C - - - - - 0x03E8D9 0F:E8C9: A9 04     LDA #$04
@@ -4385,16 +4385,16 @@ bra_E8CB:
 C - - - - - 0x03E8DB 0F:E8CB: 20 D3 F7  JSR sub_F7D3_отрисовать_портреты
 C - - - - - 0x03E8DE 0F:E8CE: 68        PLA
 C - - - - - 0x03E8DF 0F:E8CF: 85 A2     STA ram_plr_id
-C - - - - - 0x03E8E1 0F:E8D1: A9 00     LDA #$00
+C - - - - - 0x03E8E1 0F:E8D1: A9 00     LDA #> $0060
 C - - - - - 0x03E8E3 0F:E8D3: 8D 30 04  STA ram_obj_pos_X_hi
 C - - - - - 0x03E8E6 0F:E8D6: A9 2F     LDA #$2F
 C - - - - - 0x03E8E8 0F:E8D8: 8D 10 04  STA ram_obj_pos_Y_lo
-C - - - - - 0x03E8EB 0F:E8DB: A9 60     LDA #$60
+C - - - - - 0x03E8EB 0F:E8DB: A9 60     LDA #< $0060
 C - - - - - 0x03E8ED 0F:E8DD: 8D 40 04  STA ram_obj_pos_X_lo
 C - - - - - 0x03E8F0 0F:E8E0: A0 16     LDY #con_chr_pair_16
-C - - - - - 0x03E8F2 0F:E8E2: 20 1A DC  JSR sub_DC1A_запись_пары_chr
+C - - - - - 0x03E8F2 0F:E8E2: 20 1A DC  JSR sub_DC1A_запись_пары_chr_bg
 C - - - - - 0x03E8F5 0F:E8E5: A0 18     LDY #con_chr_pair_18
-C - - - - - 0x03E8F7 0F:E8E7: 4C 04 DC  JMP loc_DC04
+C - - - - - 0x03E8F7 0F:E8E7: 4C 04 DC  JMP loc_DC04_запись_1й_пары_chr_spr
 
 
 
