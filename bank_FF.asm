@@ -3523,7 +3523,9 @@ sub_E383_зафиксировать_pos_X_спрайтов:
                                         CLC
                                         LDA ram_0056 + $01
                                         ADC #$11
+                                        BEQ bra_E385
                                         STA ram_obj_pos_X_lo
+bra_E385:
 C - - - - - 0x03E393 0F:E383: 38        SEC
 C - - - - - 0x03E394 0F:E384: A5 56     LDA ram_0056
 C - - - - - 0x03E396 0F:E386: E9 4F     SBC #$4F
