@@ -2025,11 +2025,12 @@ C - - - - - 0x038AC6 0E:8AB6: C9 03     CMP #$03
 C - - - - - 0x038AC8 0E:8AB8: B0 08     BCS bra_8AC2
 C - - - - - 0x038ACA 0E:8ABA: AD 72 06  LDA ram_время_десятки
 C - - - - - 0x038ACD 0E:8ABD: 0D 73 06  ORA ram_время_единицы
-C - - - - - 0x038AD0 0E:8AC0: D0 13     BNE bra_8AD5_RTS
+C - - - - - 0x038AD0 0E:8AC0: D0 13     BNE bra_8ACA_RTS
 bra_8AC2:
 C - - - - - 0x038AD2 0E:8AC2: A9 00     LDA #$00
 C - - - - - 0x038AD4 0E:8AC4: 8D 2F 06  STA ram_062F
 C - - - - - 0x038AD7 0E:8AC7: EE 24 06  INC ram_plr_0624
+bra_8ACA_RTS:
 C - - - - - 0x038ADA 0E:8ACA: 60        RTS
 
 
@@ -2041,7 +2042,6 @@ C - - - - - 0x038ADF 0E:8ACF: 9D 26 06  STA ram_plr_0626
                                         STA ram_plr_0626 + $01
                                         STA ram_plr_0628
                                         STA ram_plr_0628 + $01
-bra_8AD5_RTS:
 C - - - - - 0x038AE5 0E:8AD5: 60        RTS
 
 
