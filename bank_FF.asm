@@ -7067,7 +7067,7 @@ tbl_F83C_irq_handler:
 - - - - - - 0x03F852 0F:F842: 40 F9     .word $FFFF      ; 03 ; unused, индекс не существует
 - - - - - - 0x03F854 0F:F844: 57 F9     .word $FFFF      ; 04 ; unused, индекс не существует
 - D 3 - - - 0x03F856 0F:F846: 38 FA     .word ofs_irq_handler_FA38_05
-- D 3 - - - 0x03F858 0F:F848: 6E F9     .word ofs_irq_handler_F96E_06
+- D 3 - - - 0x03F858 0F:F848: 6E F9     .word ofs_irq_handler_F96E_скроллинг_vs_экрана
 - D 3 - - - 0x03F85A 0F:F84A: 96 FA     .word ofs_irq_handler_FA96_07
 - D 3 - - - 0x03F85C 0F:F84C: B2 FA     .word ofs_irq_handler_FAB2_08
 - D 3 - - - 0x03F85E 0F:F84E: BA FA     .word ofs_irq_handler_FABA_09
@@ -7276,7 +7276,7 @@ C - - - - - 0x03F97D 0F:F96D: 60        RTS
 
 
 
-ofs_irq_handler_F96E_06:
+ofs_irq_handler_F96E_скроллинг_vs_экрана:
 C - - J - - 0x03F97E 0F:F96E: A2 01     LDX #$01
 C - - - - - 0x03F980 0F:F970: 20 81 F8  JSR sub_F881_garbage_loop
 C - - - - - 0x03F983 0F:F973: A4 4D     LDY ram_004D
