@@ -1006,7 +1006,7 @@ C - - - - - 0x02EEBE 0B:AEAE: 10 F7     BPL bra_AEA7_loop
 C - - - - - 0x02EEC0 0B:AEB0: 20 25 DC  JSR sub_0x03DC35_запись_пары_chr_bg_06
 C - - - - - 0x02EEC3 0B:AEB3: 20 BE DA  JSR sub_0x03DACE_удалить_все_объекты
                                        ;LDA con_0095_06
-C - - - - - 0x02EEC6 0B:AEB6: E6 95     INC ram_0095_скрипт    ; 05 -> 06
+C - - - - - 0x02EEC6 0B:AEB6: E6 95     INC ram_0095_стадия_игры    ; 05 -> 06
 C - - - - - 0x02EEC8 0B:AEB8: A9 60     LDA #$60
 C - - - - - 0x02EECA 0B:AEBA: 85 A6     STA ram_screen_pos_X
 C - - - - - 0x02EECC 0B:AEBC: A4 9E     LDY ram_009E
