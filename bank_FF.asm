@@ -2609,7 +2609,7 @@ C - - - - - 0x03DED1 0F:DEC1: 7D 45 06  ADC ram_plr_damage,X ; 0645 0646
 C - - - - - 0x03DED4 0F:DEC4: 9D 45 06  STA ram_plr_damage,X ; 0645 0646 
 C - - - - - 0x03DED7 0F:DEC7: A4 A9     LDY ram_global_obj_index
 C - - - - - 0x03DED9 0F:DEC9: B9 50 05  LDA ram_obj_id,Y ; 0550 0551 
-C - - - - - 0x03DEDC 0F:DECC: C9 04     CMP #$04
+C - - - - - 0x03DEDC 0F:DECC: C9 04     CMP #con_fighter_casey
 C - - - - - 0x03DEDE 0F:DECE: F0 D9     BEQ bra_DEA9
 C - - - - - 0x03DEE0 0F:DED0: A9 80     LDA #$80
 C - - - - - 0x03DEE2 0F:DED2: D0 D7     BNE bra_DEAB    ; jmp
@@ -2726,7 +2726,7 @@ C - - - - - 0x03DF61 0F:DF51: DE C0 05  DEC ram_obj_anim_timer,X ; 05C0 05C1
 C - - - - - 0x03DF64 0F:DF54: 10 2F     BPL bra_DF85
 C - - - - - 0x03DF66 0F:DF56: BD D0 05  LDA ram_obj_05D0,X ; 05D0 05D1 
 C - - - - - 0x03DF69 0F:DF59: F0 2A     BEQ bra_DF85
-loc_DF5B:
+loc_DF5B_loop:
 C D 2 - - - 0x03DF6B 0F:DF5B: DE D0 05  DEC ram_obj_05D0,X ; 05D0 05D1 
 C - - - - - 0x03DF6E 0F:DF5E: BD D0 05  LDA ram_obj_05D0,X ; 05D0 05D1 
 C - - - - - 0x03DF71 0F:DF61: 0A        ASL
@@ -2761,7 +2761,7 @@ bra_DF98:
 C - - - - - 0x03DFA8 0F:DF98: B9 01 E0  LDA tbl_E000 + $01,Y
 C - - - - - 0x03DFAB 0F:DF9B: 20 90 F6  JSR sub_F690_записать_звук_сохранив_X_Y
 C - - - - - 0x03DFAE 0F:DF9E: A4 00     LDY ram_0000
-C - - - - - 0x03DFB0 0F:DFA0: 4C 5B DF  JMP loc_DF5B
+C - - - - - 0x03DFB0 0F:DFA0: 4C 5B DF  JMP loc_DF5B_loop
 
 
 
@@ -3265,7 +3265,7 @@ C - - - - - 0x03E240 0F:E230: 60        RTS
 
 bra_E231_story:
 C - - - - - 0x03E241 0F:E231: A5 9E     LDA ram_009E
-                                        CMP #$06    ; con_fighter_shred
+                                        CMP #con_fighter_shred
                                         BEQ bra_E244
 C - - - - - 0x03E243 0F:E233: C5 A2     CMP ram_plr_id
 C - - - - - 0x03E245 0F:E235: D0 0D     BNE bra_E244
@@ -3654,7 +3654,7 @@ ofs_001_E46D_06_подготовка_к_бою:
 C - - J - - 0x03E47D 0F:E46D: A4 9E     LDY ram_009E
 C - - - - - 0x03E47F 0F:E46F: B9 AB FC  LDA tbl_FCAB,Y
 C - - - - - 0x03E482 0F:E472: 20 8B F6  JSR sub_F68B_выключить_звуки_и_записать_новый
-                                       ;LDA #con_0095_07
+                                       ;LDA #con_0095_бой_идет
 C - - - - - 0x03E485 0F:E475: E6 95     INC ram_0095_стадия_игры    ; 06 -> 07
 C - - - - - 0x03E487 0F:E477: A9 06     LDA #$06
 C - - - - - 0x03E489 0F:E479: 8D 36 05  STA ram_obj_0530 + $06
@@ -5786,7 +5786,7 @@ loc_0x03EFFC:
 C D 3 - - - 0x03EFFC 0F:EFEC: AC 26 01  LDY ram_option_speed
 C - - - - - 0x03EFFF 0F:EFEF: F0 0C     BEQ bra_EFFD
 C - - - - - 0x03F001 0F:EFF1: A4 95     LDY ram_0095_стадия_игры
-C - - - - - 0x03F003 0F:EFF3: C0 07     CPY #con_0095_07
+C - - - - - 0x03F003 0F:EFF3: C0 07     CPY #con_0095_бой_идет
 C - - - - - 0x03F005 0F:EFF5: D0 06     BNE bra_EFFD
 C - - - - - 0x03F007 0F:EFF7: E9 80     SBC #$80
 C - - - - - 0x03F009 0F:EFF9: 10 02     BPL bra_EFFD

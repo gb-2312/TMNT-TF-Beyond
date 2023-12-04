@@ -3867,7 +3867,7 @@ C - - - - - 0x039643 0E:9633: A9 0B     LDA #con_0048_0B
 C - - - - - 0x039645 0E:9635: 20 14 F8  JSR sub_0x03F824_подготовить_irq_handler
 C - - - - - 0x039648 0E:9638: A5 A2     LDA ram_plr_id
 C - - - - - 0x03964A 0E:963A: 8D 50 05  STA ram_obj_id
-C - - - - - 0x03964D 0E:963D: A9 06     LDA #$06
+C - - - - - 0x03964D 0E:963D: A9 06     LDA #con_fighter_shred
 C - - - - - 0x03964F 0E:963F: 8D 51 05  STA ram_obj_id + $01
 C - - - - - 0x039652 0E:9642: 85 A3     STA ram_plr_id + $01
 C - - - - - 0x039654 0E:9644: A0 00     LDY #$00
@@ -5338,7 +5338,7 @@ sub_A135:
 ofs_003_A135_04_отрисовать_портрет_шрушера_в_opening:   ; offer challenge
 C - - J - - 0x03A145 0E:A135: A9 00     LDA #$00
 C - - - - - 0x03A147 0E:A137: 85 04     STA ram_0004    ; флаг рисования разбитой рожи
-C - - - - - 0x03A149 0E:A139: A0 06     LDY #$06    ; con_fighter_shred
+C - - - - - 0x03A149 0E:A139: A0 06     LDY #con_fighter_shred
 C - - - - - 0x03A14B 0E:A13B: 84 A2     STY ram_plr_id
 C - - - - - 0x03A14D 0E:A13D: A2 05     LDX #$05
 C - - - - - 0x03A14F 0E:A13F: D0 1B     BNE bra_A15C    ; jmp

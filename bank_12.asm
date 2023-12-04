@@ -394,7 +394,7 @@ C - - - - - 0x02424A 09:823A: F0 26     BEQ bra_8262
 C - - - - - 0x02424C 09:823C: 4A        LSR
 C - - - - - 0x02424D 09:823D: B0 1C     BCS bra_825B
 C - - - - - 0x02424F 09:823F: BD 50 05  LDA ram_obj_id,X ; 0550 0551 
-C - - - - - 0x024252 09:8242: C9 05     CMP #$05
+C - - - - - 0x024252 09:8242: C9 05     CMP #con_fighter_hot
 C - - - - - 0x024254 09:8244: D0 12     BNE bra_8258
 ; con_fighter_hot
 C - - - - - 0x024256 09:8246: B5 91     LDA ram_btn_hold,X
@@ -522,7 +522,7 @@ C - - - - - 0x024312 09:8302: B5 91     LDA ram_btn_hold,X
 C - - - - - 0x024314 09:8304: 29 04     AND #con_btn_Down
 C - - - - - 0x024316 09:8306: D0 25     BNE bra_832D
 C - - - - - 0x024318 09:8308: BD 50 05  LDA ram_obj_id,X ; 0550 0551 
-C - - - - - 0x02431B 09:830B: C9 06     CMP #$06
+C - - - - - 0x02431B 09:830B: C9 06     CMP #con_fighter_shred
 C - - - - - 0x02431D 09:830D: D0 23     BNE bra_8332
 C - - - - - 0x02431F 09:830F: BD 10 04  LDA ram_obj_pos_Y_lo,X ; 0410 0411 
 C - - - - - 0x024322 09:8312: C9 B0     CMP #$B0
@@ -1023,6 +1023,7 @@ C - - - - - 0x024670 09:8660: BD D0 05  LDA ram_obj_05D0,X ; 05D0 05D1
 C - - - - - 0x024673 09:8663: 4A        LSR
 C - - - - - 0x024674 09:8664: C9 06     CMP #$06
 C - - - - - 0x024676 09:8666: B0 1C     BCS bra_8684
+; C = 0
 C - - - - - 0x024678 09:8668: BC 50 05  LDY ram_obj_id,X ; 0550 0551 
 C - - - - - 0x02467B 09:866B: 79 D8 96  ADC tbl_96D8_индекс,Y
 C - - - - - 0x02467E 09:866E: A8        TAY
@@ -1513,7 +1514,7 @@ C - - - - - 0x0249CA 09:89BA: BD 90 04  LDA ram_obj_spd_X_lo,X ; 0490 0491
 C - - - - - 0x0249CD 09:89BD: 9D C0 04  STA ram_obj_04C0,X ; 04C0 04C1 
 C - - - - - 0x0249D0 09:89C0: A4 A9     LDY ram_global_obj_index
 C - - - - - 0x0249D2 09:89C2: B9 50 05  LDA ram_obj_id,Y ; 0550 0551 
-C - - - - - 0x0249D5 09:89C5: C9 01     CMP #$01
+C - - - - - 0x0249D5 09:89C5: C9 01     CMP #con_fighter_raph
 C - - - - - 0x0249D7 09:89C7: F0 08     BEQ bra_89D1
 C - - - - - 0x0249D9 09:89C9: BD E0 04  LDA ram_obj_04E0,X ; 04E0 04E1 
 C - - - - - 0x0249DC 09:89CC: 10 03     BPL bra_89D1
@@ -1751,7 +1752,7 @@ C - - - - - 0x024B70 09:8B60: A9 03     LDA #$03
 C - - - - - 0x024B72 09:8B62: D0 3A     BNE bra_8B9E    ; jmp
 bra_8B64:
 C - - - - - 0x024B74 09:8B64: BD 50 05  LDA ram_obj_id,X ; 0550 0551 
-C - - - - - 0x024B77 09:8B67: C9 01     CMP #$01
+C - - - - - 0x024B77 09:8B67: C9 01     CMP #con_fighter_raph
 C - - - - - 0x024B79 09:8B69: D0 36     BNE bra_8BA1
 C - - - - - 0x024B7B 09:8B6B: BD 12 06  LDA ram_plr_индекс_атаки,X ; 0612 0613 
 C - - - - - 0x024B7E 09:8B6E: F0 06     BEQ bra_8B76    ; if con_0612_черепаха_рука_дальняя
@@ -1972,7 +1973,7 @@ C - - - - - 0x024CE1 09:8CD1: A9 30     LDA #$30
                                         LDY ram_062E,X
 
                                         LDA ram_obj_id,X ; 0550 0551 
-                                        CMP #$05    ; con_fighter_hot
+                                        CMP #con_fighter_hot
                                         BNE bra_8CCF
                                         LDA ram_option_speed
                                         BEQ bra_8CCD
@@ -2346,7 +2347,7 @@ C - - - - - 0x024DF4 09:8DE4: 20 18 D2  JSR sub_0x03D228
 bra_8DE7:
 loc_8DE7:
 C D 0 - - - 0x024DF7 09:8DE7: BD 50 05  LDA ram_obj_id,X ; 0550 0551 
-C - - - - - 0x024DFA 09:8DEA: C9 06     CMP #$06
+C - - - - - 0x024DFA 09:8DEA: C9 06     CMP #con_fighter_shred
 C - - - - - 0x024DFC 09:8DEC: F0 07     BEQ bra_8DF5
 C - - - - - 0x024DFE 09:8DEE: C9 04     CMP #$04
 C - - - - - 0x024E00 09:8DF0: B0 11     BCS bra_8E03
@@ -2415,7 +2416,7 @@ C - - - - - 0x024E4D 09:8E3D: 90 09     BCC bra_8E48
 ; con_fighter_shred
 C - - - - - 0x024E4F 09:8E3F: A4 A9     LDY ram_global_obj_index
 C - - - - - 0x024E51 09:8E41: B9 50 05  LDA ram_obj_id,Y ; 0550 0551 
-C - - - - - 0x024E54 09:8E44: C9 04     CMP #$04    ; con_fighter_casey
+C - - - - - 0x024E54 09:8E44: C9 04     CMP #con_fighter_casey
 C - - - - - 0x024E56 09:8E46: D0 29     BNE bra_8E71
 bra_8E48:
 C - - - - - 0x024E58 09:8E48: BC 40 05  LDY ram_obj_0540,X ; 0540 0541 
@@ -2425,7 +2426,7 @@ C - - - - - 0x024E60 09:8E50: A4 A9     LDY ram_global_obj_index
 C - - - - - 0x024E62 09:8E52: B9 50 05  LDA ram_obj_id,Y ; 0550 0551 
 C - - - - - 0x024E65 09:8E55: A8        TAY
 C - - - - - 0x024E66 09:8E56: A9 FE     LDA #$FE
-C - - - - - 0x024E68 09:8E58: C0 04     CPY #$04    ; con_fighter_casey
+C - - - - - 0x024E68 09:8E58: C0 04     CPY #con_fighter_casey
 C - - - - - 0x024E6A 09:8E5A: D0 02     BNE bra_8E5E
 C - - - - - 0x024E6C 09:8E5C: A9 FB     LDA #$FB
 bra_8E5E:
@@ -2631,7 +2632,7 @@ C - - - - - 0x024FDC 09:8FCC: 4C 9A 91  JMP loc_919A
 
 sub_8FCF:
 C - - - - - 0x024FDF 09:8FCF: BD 50 05  LDA ram_obj_id,X ; 0550 0551 
-C - - - - - 0x024FE2 09:8FD2: C9 01     CMP #$01
+C - - - - - 0x024FE2 09:8FD2: C9 01     CMP #con_fighter_raph
 C - - - - - 0x024FE4 09:8FD4: F0 1F     BEQ bra_8FF5
                                         LDA ram_индекс_броска_перса,X
                                         BNE bra_8FF5
@@ -2680,7 +2681,7 @@ C - - - - - 0x025035 09:9025: BD 60 05  LDA ram_obj_timer,X ; 0560 0561
 C - - - - - 0x025038 09:9028: C9 80     CMP #$80
 C - - - - - 0x02503A 09:902A: D0 14     BNE bra_9040
 C - - - - - 0x02503C 09:902C: BD 50 05  LDA ram_obj_id,X ; 0550 0551 
-C - - - - - 0x02503F 09:902F: C9 01     CMP #$01
+C - - - - - 0x02503F 09:902F: C9 01     CMP #con_fighter_raph
 C - - - - - 0x025041 09:9031: F0 03     BEQ bra_9036
 C - - - - - 0x025043 09:9033: 4C 6B 91  JMP loc_916B
 bra_9036:
@@ -2738,7 +2739,7 @@ C - - - - - 0x02509B 09:908B: A9 1C     LDA #con_0x03F6AD_1C
 C - - - - - 0x02509D 09:908D: 20 94 F6  JSR sub_0x03F6A4_записать_звук
 C - - - - - 0x0250A0 09:9090: A6 AD     LDX ram_00AD
 C - - - - - 0x0250A2 09:9092: BD 50 05  LDA ram_obj_id,X ; 0550 0551 
-C - - - - - 0x0250A5 09:9095: C9 04     CMP #$04
+C - - - - - 0x0250A5 09:9095: C9 04     CMP #con_fighter_casey
 C - - - - - 0x0250A7 09:9097: D0 05     BNE bra_909E
 C - - - - - 0x0250A9 09:9099: A9 B0     LDA #$B0
 C - - - - - 0x0250AB 09:909B: 99 10 04  STA ram_obj_pos_Y_lo,Y ; 0410 0411 
@@ -2780,7 +2781,7 @@ bra_90D7:
 C - - - - - 0x0250E7 09:90D7: A5 02     LDA ram_0002
 C - - - - - 0x0250E9 09:90D9: 99 10 04  STA ram_obj_pos_Y_lo,Y ; 0410 0411 
 C - - - - - 0x0250EC 09:90DC: BD 50 05  LDA ram_obj_id,X ; 0550 0551 
-C - - - - - 0x0250EF 09:90DF: C9 01     CMP #$01
+C - - - - - 0x0250EF 09:90DF: C9 01     CMP #con_fighter_raph
 C - - - - - 0x0250F1 09:90E1: D0 3A     BNE bra_911D
 C - - - - - 0x0250F3 09:90E3: DE D0 04  DEC ram_obj_04D0,X ; 04D0 04D1 
 C - - - - - 0x0250F6 09:90E6: 10 1A     BPL bra_9102
@@ -2915,7 +2916,7 @@ C - - - - - 0x0251CF 09:91BF: B9 62 98  LDA tbl_9862,Y
 C - - - - - 0x0251D2 09:91C2: A4 A9     LDY ram_global_obj_index
 C - - - - - 0x0251D4 09:91C4: 99 00 04  STA ram_obj_anim_id,Y ; 0400 0401 
 C - - - - - 0x0251D7 09:91C7: BD 50 05  LDA ram_obj_id,X ; 0550 0551 
-C - - - - - 0x0251DA 09:91CA: C9 04     CMP #$04
+C - - - - - 0x0251DA 09:91CA: C9 04     CMP #con_fighter_casey
 C - - - - - 0x0251DC 09:91CC: D0 19     BNE bra_91E7
 C - - - - - 0x0251DE 09:91CE: BD D0 05  LDA ram_obj_05D0,X ; 05D0 05D1 
 C - - - - - 0x0251E1 09:91D1: C9 05     CMP #$05
@@ -3018,9 +3019,9 @@ C - - - - - 0x02527D 09:926D: B9 D3 98  LDA tbl_98D3_скорость_X_брош
 C - - - - - 0x025280 09:9270: 20 7D D1  JSR sub_0x03D18D
 C - - - - - 0x025283 09:9273: A4 A9     LDY ram_global_obj_index
 C - - - - - 0x025285 09:9275: B9 50 05  LDA ram_obj_id,Y ; 0550 0551 
-C - - - - - 0x025288 09:9278: C9 01     CMP #$01
+C - - - - - 0x025288 09:9278: C9 01     CMP #con_fighter_raph
 C - - - - - 0x02528A 09:927A: F0 04     BEQ bra_9280
-C - - - - - 0x02528C 09:927C: C9 04     CMP #$04
+C - - - - - 0x02528C 09:927C: C9 04     CMP #con_fighter_casey
 C - - - - - 0x02528E 09:927E: D0 B6     BNE bra_9236_RTS
 bra_9280:
 C - - - - - 0x025290 09:9280: 4C 65 DD  JMP loc_0x03DD75_повернуть_объект_в_противоположную_сторону_по_горизонтали
@@ -3072,9 +3073,9 @@ C - - - - - 0x0252EC 09:92DC: B9 A2 99  LDA tbl_99A2,Y
 C - - - - - 0x0252EF 09:92DF: 20 0E E1  JSR sub_0x03E11E_корректировка_значения_A_для_turbo
 C - - - - - 0x0252F2 09:92E2: 9D 60 05  STA ram_obj_timer,X ; 0560 0561 
 C - - - - - 0x0252F5 09:92E5: BC 50 05  LDY ram_obj_id,X ; 0550 0551 
-C - - - - - 0x0252F8 09:92E8: C0 05     CPY #$05
+C - - - - - 0x0252F8 09:92E8: C0 05     CPY #con_fighter_hot
 C - - - - - 0x0252FA 09:92EA: F0 04     BEQ bra_92F0
-C - - - - - 0x0252FC 09:92EC: C0 04     CPY #$04
+C - - - - - 0x0252FC 09:92EC: C0 04     CPY #con_fighter_casey
 C - - - - - 0x0252FE 09:92EE: D0 0A     BNE bra_92FA_RTS
 bra_92F0:
 C - - - - - 0x025300 09:92F0: A9 03     LDA #$03
@@ -3088,7 +3089,7 @@ C - - - - - 0x02530A 09:92FA: 60        RTS
 
 ofs_055_92FB_05:
 C - - J - - 0x02530B 09:92FB: BD 50 05  LDA ram_obj_id,X ; 0550 0551 
-C - - - - - 0x02530E 09:92FE: C9 06     CMP #$06
+C - - - - - 0x02530E 09:92FE: C9 06     CMP #con_fighter_shred
 C - - - - - 0x025310 09:9300: F0 5A     BEQ bra_935C
 C - - - - - 0x025312 09:9302: C9 04     CMP #$04
 C - - - - - 0x025314 09:9304: 90 59     BCC bra_935F
@@ -3115,7 +3116,7 @@ C - - - - - 0x02533F 09:932F: A4 A9     LDY ram_global_obj_index
 C - - - - - 0x025341 09:9331: B9 50 05  LDA ram_obj_id,Y ; 0550 0551 
 C - - - - - 0x025344 09:9334: C9 04     CMP #$04
 C - - - - - 0x025346 09:9336: B0 31     BCS bra_9369_RTS
-C - - - - - 0x025348 09:9338: C9 01     CMP #$01
+C - - - - - 0x025348 09:9338: C9 01     CMP #con_fighter_raph
 C - - - - - 0x02534A 09:933A: F0 2D     BEQ bra_9369_RTS
 C - - - - - 0x02534C 09:933C: 20 18 D2  JSR sub_0x03D228
 C - - - - - 0x02534F 09:933F: 4C 65 DD  JMP loc_0x03DD75_повернуть_объект_в_противоположную_сторону_по_горизонтали
@@ -5470,7 +5471,7 @@ bra_9D35_RTS:
 C - - - - - 0x025D45 09:9D35: 60        RTS
 bra_9D36:
 C - - - - - 0x025D46 09:9D36: BD 50 05  LDA ram_obj_id,X ; 0550 0551 
-C - - - - - 0x025D49 09:9D39: C9 03     CMP #$03
+C - - - - - 0x025D49 09:9D39: C9 03     CMP #con_fighter_don
 C - - - - - 0x025D4B 09:9D3B: F0 0D     BEQ bra_9D4A    ; if con_fighter_don, он умеет пускать мяч в любом состоянии
 C - - - - - 0x025D4D 09:9D3D: BD 20 05  LDA ram_obj_0520,X ; 0520 0521 
 C - - - - - 0x025D50 09:9D40: F0 08     BEQ bra_9D4A    ; if con_plr_state_на_земле
@@ -5480,7 +5481,7 @@ C - - - - - 0x025D56 09:9D46: C9 06     CMP #con_plr_state_поворачива�
 C - - - - - 0x025D58 09:9D48: D0 EB     BNE bra_9D35_RTS
 bra_9D4A:
 C - - - - - 0x025D5A 09:9D4A: BD 50 05  LDA ram_obj_id,X ; 0550 0551 
-C - - - - - 0x025D5D 09:9D4D: C9 02     CMP #$02
+C - - - - - 0x025D5D 09:9D4D: C9 02     CMP #con_fighter_mike
 C - - - - - 0x025D5F 09:9D4F: D0 25     BNE bra_9D76
 ; if con_fighter_mike, он умеет пускать 2 вида мяча
 C - - - - - 0x025D61 09:9D51: A5 09     LDA ram_0009    ; dpad btns
@@ -7480,7 +7481,7 @@ C - - - - - 0x026C8B 09:AC7B: 20 C1 EF  JSR sub_0x03EFD1
 bra_AC7E:
 ; if обычный удар
 C - - - - - 0x026C8E 09:AC7E: BC 50 05  LDY ram_obj_id,X ; 0550 0551 
-C - - - - - 0x026C91 09:AC81: C0 06     CPY #$06
+C - - - - - 0x026C91 09:AC81: C0 06     CPY #con_fighter_shred
 C - - - - - 0x026C93 09:AC83: D0 07     BNE bra_AC8C
 C - - - - - 0x026C95 09:AC85: CC 04 01  CPY ram_0104
 C - - - - - 0x026C98 09:AC88: E9 01     SBC #$01
@@ -10579,7 +10580,7 @@ C - - - - - 0x027D8C 09:BD7C: 85 A9     STA ram_global_obj_index
 C - - - - - 0x027D8E 09:BD7E: E0 02     CPX #$02
 C - - - - - 0x027D90 09:BD80: B0 1E     BCS bra_BDA0_RTS
 C - - - - - 0x027D92 09:BD82: BC 50 05  LDY ram_obj_id,X ; 0550 0551 
-C - - - - - 0x027D95 09:BD85: C0 05     CPY #$05
+C - - - - - 0x027D95 09:BD85: C0 05     CPY #con_fighter_hot
 C - - - - - 0x027D97 09:BD87: F0 18     BEQ bra_BDA1
 C - - - - - 0x027D99 09:BD89: BD 54 05  LDA ram_obj_id + $04,X ; 0554 0555 
 C - - - - - 0x027D9C 09:BD8C: 49 33     EOR #con_0552_special_mike_ракеты_понизу

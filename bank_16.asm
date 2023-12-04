@@ -2245,10 +2245,10 @@ C - - - - - 0x02FED6 0B:BEC6: 4C 17 F6  JMP loc_0x03F627_restore_prg
 
 
 sub_0x02FEE4:
-C - - - - - 0x02FEE4 0B:BED4: A9 00     LDA #$00
+C - - - - - 0x02FEE4 0B:BED4: A9 00     LDA #con_fighter_leo
 C - - - - - 0x02FEE6 0B:BED6: 85 A2     STA ram_plr_id
 C - - - - - 0x02FEE8 0B:BED8: A0 01     LDY #$01
-C - - - - - 0x02FEEA 0B:BEDA: 84 A3     STY ram_plr_id + $01
+C - - - - - 0x02FEEA 0B:BEDA: 84 A3     STY ram_plr_id + $01    ; con_fighter_raph
 C - - - - - 0x02FEEC 0B:BEDC: 84 98     STY ram_0098
 C - - - - - 0x02FEEE 0B:BEDE: A4 2C     LDY ram_game_mode
 ; con_gm_story

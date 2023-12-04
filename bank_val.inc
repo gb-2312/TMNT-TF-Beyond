@@ -89,13 +89,13 @@ con_script_draw_topscore                = $0C ; телка с микрофоно
 
 ; ram_plr_id
 ; ram_obj_id
-; con_fighter_leo                         = $00 ; 00 leo
-; con_fighter_raph                        = $01 ; 01 raph
-; con_fighter_mike                        = $02 ; 02 mike
-; con_fighter_don                         = $03 ; 03 don
-; con_fighter_casey                       = $04 ; 04 casey
-; con_fighter_hot                         = $05 ; 05 hot
-; con_fighter_shred                       = $06 ; 06 shred
+con_fighter_leo                         = $00 ; 00 leo
+con_fighter_raph                        = $01 ; 01 raph
+con_fighter_mike                        = $02 ; 02 mike
+con_fighter_don                         = $03 ; 03 don
+con_fighter_casey                       = $04 ; 04 casey
+con_fighter_hot                         = $05 ; 05 hot
+con_fighter_shred                       = $06 ; 06 shred
 
 
 
