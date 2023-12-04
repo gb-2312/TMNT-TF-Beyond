@@ -3499,7 +3499,7 @@ C - - - - - 0x03E35D 0F:E34D: 38        SEC
 C - - - - - 0x03E35E 0F:E34E: A5 57     LDA ram_0056 + $01
 C - - - - - 0x03E360 0F:E350: E9 08     SBC #$08
 C - - - - - 0x03E362 0F:E352: 85 57     STA ram_0056 + $01
-C - - - - - 0x03E364 0F:E354: 69 10     ADC #$10
+C - - - - - 0x03E364 0F:E354: 69 10     ADC #$08
 C - - - - - 0x03E366 0F:E356: 8D 40 04  STA ram_obj_pos_X_lo
 C - - - - - 0x03E369 0F:E359: A9 00     LDA #$00
 C - - - - - 0x03E36B 0F:E35B: 2A        ROL
@@ -3521,7 +3521,11 @@ C - - - - - 0x03E38A 0F:E37A: 8D 11 04  STA ram_obj_pos_Y_lo + $01
 C - - - - - 0x03E38D 0F:E37D: A5 57     LDA ram_0056 + $01
 C - - - - - 0x03E38F 0F:E37F: 29 F8     AND #$F8
 C - - - - - 0x03E391 0F:E381: D0 08     BNE bra_E38B_RTS
-sub_E383:
+sub_E383_зафиксировать_pos_X_спрайтов:
+                                        CLC
+                                        LDA ram_0056 + $01
+                                        ADC #$11
+                                        STA ram_obj_pos_X_lo
 C - - - - - 0x03E393 0F:E383: 38        SEC
 C - - - - - 0x03E394 0F:E384: A5 56     LDA ram_0056
 C - - - - - 0x03E396 0F:E386: E9 4F     SBC #$4F
@@ -3529,14 +3533,13 @@ C - - - - - 0x03E398 0F:E388: 8D 41 04  STA ram_obj_pos_X_lo + $01
 bra_E38B_RTS:
 C - - - - - 0x03E39B 0F:E38B: 60        RTS
 bra_E38C:
-C - - - - - 0x03E39C 0F:E38C: 20 83 E3  JSR sub_E383
 C - - - - - 0x03E39F 0F:E38F: CE 60 05  DEC ram_obj_timer
 C - - - - - 0x03E3A2 0F:E392: F0 11     BEQ bra_E3A5
 C - - - - - 0x03E3A4 0F:E394: AC 60 05  LDY ram_obj_timer
 C - - - - - 0x03E3A7 0F:E397: 88        DEY
 C - - - - - 0x03E3A8 0F:E398: D0 F1     BNE bra_E38B_RTS
 bra_E39A:
-C - - - - - 0x03E3AA 0F:E39A: 20 83 E3  JSR sub_E383
+C - - - - - 0x03E3AA 0F:E39A: 20 83 E3  JSR sub_E383_зафиксировать_pos_X_спрайтов
 C - - - - - 0x03E3AD 0F:E39D: A9 01     LDA #$01
 C - - - - - 0x03E3AF 0F:E39F: 8D 60 05  STA ram_obj_timer
 C - - - - - 0x03E3B2 0F:E3A2: 4C 2E E1  JMP loc_E12E_подготовить_затемнение_из_цветного_в_черный
@@ -6250,7 +6253,7 @@ C - - - - - 0x03F392 0F:F382: D0 1F     BNE bra_F3A3_обработать_ярк
 C - - - - - 0x03F394 0F:F384: A5 20     LDA ram_script_draw_hi
 C - - - - - 0x03F396 0F:F386: 20 32 D0  JSR sub_D032_поинтеры_после_JSR
 - D 3 - I - 0x03F399 0F:F389: BF F3     .word ofs_000_F3BF_00_главное_меню
-- D 3 - I - 0x03F39B 0F:F38B: AC F4     .word ofs_000_F4AC_01_vs_экран
+- D 3 - I - 0x03F39B 0F:F38B: AC F4     .word ofs_000_F4AC_01_демонстрационный_бой
 - D 3 - I - 0x03F39D 0F:F38D: E5 F4     .word ofs_000_F4E5_02_очистка_1
 - D 3 - I - 0x03F39F 0F:F38F: FA F4     .word ofs_000_F4FA_03_очистка_2
 - D 3 - I - 0x03F3A1 0F:F391: 79 D2     .word ofs_000_D279_04_чтото_общее
@@ -6447,7 +6450,7 @@ tbl_F4A6:
 
 
 
-ofs_000_F4AC_01_vs_экран:
+ofs_000_F4AC_01_демонстрационный_бой:
 C - - J - - 0x03F4BC 0F:F4AC: A6 21     LDX ram_script_draw_lo
 C - - - - - 0x03F4BE 0F:F4AE: D0 09     BNE bra_F4B9
 C - - - - - 0x03F4C0 0F:F4B0: E6 21     INC ram_script_draw_lo
@@ -6466,6 +6469,11 @@ C - - - - - 0x03F4D9 0F:F4C9: 20 DB F4  JSR sub_F5AE_подготовить_ск
                                         JSR sub_F6C2_выключить_музыку_и_звуки
 C - - - - - 0x03F4DC 0F:F4CC: 4C 2E E1  JMP loc_E12E_подготовить_затемнение_из_цветного_в_черный
 bra_F4CF:
+                                        LDA ram_0095
+                                        CMP #$04
+                                        BNE bra_F4D0
+                                        JSR sub_E383_зафиксировать_pos_X_спрайтов
+bra_F4D0:
 - - - - - - 0x03F4DF 0F:F4CF: 20 3E E1  JSR sub_E13E_подготовить_затемнение_из_белого_в_цветной
 - - - - - - 0x03F4E2 0F:F4D2: A9 00     LDA #con_script_draw_главное_меню
 C - - - - - 0x03F4EB 0F:F4DB: 20 AE F5  JSR sub_F5AE_подготовить_скрипт
