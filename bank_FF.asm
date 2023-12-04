@@ -7876,7 +7876,19 @@ bra_FDDD:
 C - - - - - 0x03FDED 0F:FDDD: 20 3F A2  JSR sub_0x02624F
 C - - - - - 0x03FDF0 0F:FDE0: A6 AD     LDX ram_00AD
 C - - - - - 0x03FDF2 0F:FDE2: 20 91 A9  JSR sub_0x0269A1
-C - - - - - 0x03FDF5 0F:FDE5: 4C 13 FF  JMP loc_FF13
+C D 3 - - - 0x03FF23 0F:FF13: A5 9D     LDA ram_009D
+C - - - - - 0x03FF25 0F:FF15: D0 0A     BNE bra_FF21
+C - - - - - 0x03FF27 0F:FF17: E6 AD     INC ram_00AD
+C - - - - - 0x03FF29 0F:FF19: A5 AD     LDA ram_00AD
+C - - - - - 0x03FF2B 0F:FF1B: 4A        LSR
+C - - - - - 0x03FF2C 0F:FF1C: F0 07     BEQ bra_FF25
+bra_FF1E:
+C - - - - - 0x03FF2E 0F:FF1E: 4C EC FD  JMP loc_FDEC
+bra_FF21:
+C - - - - - 0x03FF31 0F:FF21: C6 AD     DEC ram_00AD
+C - - - - - 0x03FF33 0F:FF23: 30 F9     BMI bra_FF1E
+bra_FF25:
+C - - - - - 0x03FF35 0F:FF25: 4C 57 FD  JMP loc_FD57
 
 
 
@@ -8050,23 +8062,6 @@ sub_0x03FF1D:
 C - - - - - 0x03FF1D 0F:FF0D: 20 E7 F5  JSR sub_F5E7_swap_prg_16
 C - - - - - 0x03FF20 0F:FF10: 4C D6 A6  JSR sub_0x02E6E6
                                         JMP loc_F617_restore_prg
-
-
-
-loc_FF13:
-C D 3 - - - 0x03FF23 0F:FF13: A5 9D     LDA ram_009D
-C - - - - - 0x03FF25 0F:FF15: D0 0A     BNE bra_FF21
-C - - - - - 0x03FF27 0F:FF17: E6 AD     INC ram_00AD
-C - - - - - 0x03FF29 0F:FF19: A5 AD     LDA ram_00AD
-C - - - - - 0x03FF2B 0F:FF1B: 4A        LSR
-C - - - - - 0x03FF2C 0F:FF1C: F0 07     BEQ bra_FF25
-bra_FF1E:
-C - - - - - 0x03FF2E 0F:FF1E: 4C EC FD  JMP loc_FDEC
-bra_FF21:
-C - - - - - 0x03FF31 0F:FF21: C6 AD     DEC ram_00AD
-C - - - - - 0x03FF33 0F:FF23: 30 F9     BMI bra_FF1E
-bra_FF25:
-C - - - - - 0x03FF35 0F:FF25: 4C 57 FD  JMP loc_FD57
 
 
 
