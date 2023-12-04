@@ -7882,16 +7882,16 @@ C - - - - - 0x03FF27 0F:FF17: E6 AD     INC ram_00AD
 C - - - - - 0x03FF29 0F:FF19: A5 AD     LDA ram_00AD
 C - - - - - 0x03FF2B 0F:FF1B: 4A        LSR
 C - - - - - 0x03FF2C 0F:FF1C: F0 07     BEQ bra_FF25
-bra_FF1E:
 C - - - - - 0x03FF2E 0F:FF1E: 4C EC FD  JMP loc_FDEC
 bra_FF21:
 C - - - - - 0x03FF31 0F:FF21: C6 AD     DEC ram_00AD
-C - - - - - 0x03FF33 0F:FF23: 30 F9     BMI bra_FF1E
+C - - - - - 0x03FF33 0F:FF23: 30 F9     BMI bra_FDEC
 bra_FF25:
 C - - - - - 0x03FF35 0F:FF25: 4C 57 FD  JMP loc_FD57_loop
 
 
 
+bra_FDEC:
 loc_FDEC:
 C D 3 - - - 0x03FDFC 0F:FDEC: AD 35 06  LDA ram_0635
 C - - - - - 0x03FDFF 0F:FDEF: F0 08     BEQ bra_FDF9
