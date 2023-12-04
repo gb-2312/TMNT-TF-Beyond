@@ -197,7 +197,6 @@
 .export sub_0x03FC9C_set_mirroring_V
 .export sub_0x03FCA0_set_mirroring_H
 .export loc_0x03FE68_отрисовка_экрана_главное_меню
-.export sub_0x03FE68_отрисовка_экрана_главное_меню
 .export sub_0x03FE76
 .export sub_0x03FE8A
 .export loc_0x03FEAF
@@ -6473,7 +6472,7 @@ bra_F4CF:
                                         BNE bra_F4D0
                                         JSR sub_E383_зафиксировать_pos_X_спрайтов
 bra_F4D0:
-- - - - - - 0x03F4DF 0F:F4CF: 20 3E E1  JMP loc_F564_переход_на_главное_меню
+- - - - - - 0x03F4DF 0F:F4CF: 20 3E E1  JMP loc_FE58_отрисовка_экрана_главное_меню
 
 
 
@@ -6550,11 +6549,7 @@ C - - - - - 0x03F56D 0F:F55D: 85 FF     STA ram_for_2000
 C - - - - - 0x03F56F 0F:F55F: A9 0A     LDA #con_script_draw_opening
 C - - - - - 0x03F571 0F:F561: 4C AE F5  JMP loc_F5AE_подготовить_скрипт
 bra_F564:
-loc_F564_переход_на_главное_меню:
-C - - - - - 0x03F574 0F:F564: A9 00     LDA #con_script_draw_главное_меню
-C - - - - - 0x03F576 0F:F566: 20 AE F5  JSR sub_F5AE_подготовить_скрипт
-C - - - - - 0x03F579 0F:F569: 20 C2 F6  JSR sub_F6C2_выключить_музыку_и_звуки
-C - - - - - 0x03F57C 0F:F56C: 4C 3E E1  JMP loc_E13E_подготовить_затемнение_из_белого_в_цветной
+C - - - - - 0x03F57C 0F:F56C: 4C 3E E1  JMP loc_FE58_отрисовка_экрана_главное_меню
 
 
 
@@ -7957,12 +7952,9 @@ tbl_FE37:
 
 loc_FE58_отрисовка_экрана_главное_меню:
 loc_0x03FE68_отрисовка_экрана_главное_меню:
-sub_0x03FE68_отрисовка_экрана_главное_меню:
-C D 3 - - - 0x03FE68 0F:FE58: A9 00     LDA #$00
-C - - - - - 0x03FE6A 0F:FE5A: 85 27     STA ram_0027
-C - - - - - 0x03FE6C 0F:FE5C: 85 94     STA ram_0094
 C - - - - - 0x03FE6E 0F:FE5E: A9 00     LDA #con_script_draw_главное_меню
 C - - - - - 0x03FE70 0F:FE60: 20 AE F5  JSR sub_F5AE_подготовить_скрипт
+C - - - - - 0x03F579 0F:F569: 20 C2 F6  JSR sub_F6C2_выключить_музыку_и_звуки
 C - - - - - 0x03FE73 0F:FE63: 4C 3E E1  JMP loc_E13E_подготовить_затемнение_из_белого_в_цветной
 
 
