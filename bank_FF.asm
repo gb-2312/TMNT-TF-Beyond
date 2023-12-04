@@ -187,7 +187,6 @@
 .export loc_0x03F724_смена_тайловых_наборов_для_анимаций
 .export sub_0x03F76A
 .export sub_0x03F785
-.export sub_0x03F7D1_сохранить_topscore
 .export sub_0x03F7E3_отрисовать_портреты
 .export loc_0x03F7E3_отрисовать_портреты
 .export sub_0x03F824_подготовить_irq_handler
@@ -6976,13 +6975,6 @@ ofs_000_F7B8_0B_ending:
 C - - J - - 0x03F7C8 0F:F7B8: 20 F3 F5  JSR sub_F5F3_swap_prg_1C
 C - - - - - 0x03F7CB 0F:F7BB: 20 00 96  JSR sub_0x039610_обработчик_ending
 C - - - - - 0x03F7CE 0F:F7BE: 4C 17 F6  JMP loc_F617_restore_prg
-
-
-
-sub_0x03F7D1_сохранить_topscore:
-C - - - - - 0x03F7D1 0F:F7C1: 20 F3 F5  JSR sub_F5F3_swap_prg_1C
-C - - - - - 0x03F7D4 0F:F7C4: 20 2B 9F  JSR sub_0x039F3B_сохранить_topscore
-C - - - - - 0x03F7D7 0F:F7C7: 4C 17 F6  JMP loc_F617_restore_prg
 
 
 

@@ -15,7 +15,6 @@
 .export sub_0x0390AF_обработчик_opening
 .export sub_0x039610_обработчик_ending
 .export sub_0x039B46_обработка_выбранного_speech
-.export sub_0x039F3B_сохранить_topscore
 .export sub_0x039FCF_обработчик_экрана_topscore
 .export sub_0x03A0F3_отрисовать_портреты
 .export sub_0x03A37C_обработать_рожи_в_турнирной_сетке
@@ -1192,7 +1191,7 @@ C - - - - - 0x0385E9 0E:85D9: 20 32 D0  JSR sub_0x03D042_поинтеры_пос
 
 
 ofs_014_85E8_00_подготовить_экран_continue:
-C - - J - - 0x0385F8 0E:85E8: 20 C1 F7  JSR sub_0x03F7D1_сохранить_topscore
+C - - J - - 0x0385F8 0E:85E8: 20 C1 F7  JSR sub_9F2B_сохранить_topscore
 C - - - - - 0x0385FB 0E:85EB: A9 00     LDA #$00
 C - - - - - 0x0385FD 0E:85ED: 8D 11 01  STA ram_0111
 C - - - - - 0x038600 0E:85F0: 8D 12 01  STA ram_0112
@@ -3861,7 +3860,7 @@ C - - - - - 0x039638 0E:9628: 4C 2E E1  JMP loc_0x03E13E_подготовить_
 
 
 ofs_007_962B_01_lousy_tricks:
-C - - J - - 0x03963B 0E:962B: 20 C1 F7  JSR sub_0x03F7D1_сохранить_topscore
+C - - J - - 0x03963B 0E:962B: 20 C1 F7  JSR sub_9F2B_сохранить_topscore
 C - - - - - 0x03963E 0E:962E: A9 41     LDA #con_0x03F6AD_41
 C - - - - - 0x039640 0E:9630: 20 90 F6  JSR sub_0x03F6A0_записать_звук_сохранив_X_Y
 C - - - - - 0x039643 0E:9633: A9 0B     LDA #con_0048_0B
@@ -5016,7 +5015,7 @@ _off018_9ED6_07_try_hard_mode:
 
 
 
-sub_0x039F3B_сохранить_topscore:
+sub_9F2B_сохранить_topscore:
 C - - - - - 0x039F3B 0E:9F2B: A2 01     LDX #$01
 C - - - - - 0x039F3D 0E:9F2D: 86 A8     STX ram_local_obj_index
 bra_9F2F_loop:
@@ -5987,7 +5986,7 @@ tbl_A420_pos_Y:
 sub_0x03A437_подготовка_экрана_rematch:
 C - - - - - 0x03A437 0E:A427: A5 96     LDA ram_0096
 C - - - - - 0x03A439 0E:A429: D0 24     BNE bra_A44F
-C - - - - - 0x03A43B 0E:A42B: 20 C1 F7  JSR sub_0x03F7D1_сохранить_topscore
+C - - - - - 0x03A43B 0E:A42B: 20 C1 F7  JSR sub_9F2B_сохранить_topscore
 C - - - - - 0x03A43E 0E:A42E: 20 3C F0  JSR sub_0x03F04C_выключить_irq___удалить_все_объекты___отрисовать_пустой_экран
 C - - - - - 0x03A441 0E:A431: A9 0F     LDA #con_0048_0F
 C - - - - - 0x03A443 0E:A433: 20 14 F8  JSR sub_0x03F824_подготовить_irq_handler
