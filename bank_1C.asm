@@ -1092,7 +1092,6 @@ C - - - - - 0x0384ED 0E:84DD: 60        RTS
 
 
 tbl_84FA:
-; con_новые_персы
 - - - - - - 0x03850A 0E:84FA: 08 85     .word _off017_8508_00_leo
 - - - - - - 0x03850C 0E:84FC: 22 85     .word _off017_8522_01_raph
 - - - - - - 0x03850E 0E:84FE: 3C 85     .word _off017_853C_02_mike
@@ -1100,10 +1099,20 @@ tbl_84FA:
 - D 0 - - - 0x038512 0E:8502: 70 85     .word _off017_8570_04_casey
 - D 0 - - - 0x038514 0E:8504: 8A 85     .word _off017_858A_05_hot
 - D 0 - - - 0x038516 0E:8506: A4 85     .word _off017_85A4_06_shred
+                                    .if con_новые_персы <> $00
+                                        .word _off017_8508_07
+                                        .word _off017_8522_08
+                                        .word _off017_853C_09
+                                        .word _off017_8556_0A
+                                        .word _off017_8570_0B
+                                        .word _off017_858A_0C
+                                        .word _off017_85A4_0D
+                                    .endif
 
 
 
 _off017_8508_00_leo:
+_off017_8508_07:
 - - - - - - 0x038518 0E:8508: 01        .byte $01, $02, $09, $0A, $03   ; 
 - - - - - - 0x03851D 0E:850D: 04        .byte $04, $0B, $0C, $0D, $0E   ; 
 - - - - - - 0x038522 0E:8512: 04        .byte $04, $0F, $10, $11, $12   ; 
@@ -1114,6 +1123,7 @@ _off017_8508_00_leo:
 
 
 _off017_8522_01_raph:
+_off017_8522_08:
 - - - - - - 0x038532 0E:8522: 01        .byte $01, $02, $09, $0A, $03   ; 
 - - - - - - 0x038537 0E:8527: 04        .byte $04, $3A, $3B, $3C, $3D   ; 
 - - - - - - 0x03853C 0E:852C: 04        .byte $04, $3E, $3F, $40, $41   ; 
@@ -1124,6 +1134,7 @@ _off017_8522_01_raph:
 
 
 _off017_853C_02_mike:
+_off017_853C_09:
 - - - - - - 0x03854C 0E:853C: 01        .byte $01, $02, $1A, $1B, $03   ; 
 - - - - - - 0x038551 0E:8541: 04        .byte $04, $1C, $1D, $1E, $08   ; 
 - - - - - - 0x038556 0E:8546: 04        .byte $04, $1F, $20, $21, $22   ; 
@@ -1134,6 +1145,7 @@ _off017_853C_02_mike:
 
 
 _off017_8556_03_don:
+_off017_8556_0A:
 - - - - - - 0x038566 0E:8556: 01        .byte $01, $38, $39, $02, $03   ; 
 - - - - - - 0x03856B 0E:855B: 04        .byte $04, $2B, $2C, $2D, $08   ; 
 - - - - - - 0x038570 0E:8560: 04        .byte $04, $2E, $2F, $30, $08   ; 
@@ -1144,6 +1156,7 @@ _off017_8556_03_don:
 
 
 _off017_8570_04_casey:
+_off017_8570_0B:
 - D 0 - I - 0x038580 0E:8570: 01        .byte $01, $02, $49, $4A, $03   ; 
 - D 0 - I - 0x038585 0E:8575: 04        .byte $04, $00, $4B, $4C, $08   ; 
 - D 0 - I - 0x03858A 0E:857A: 04        .byte $04, $4D, $4E, $4F, $08   ; 
@@ -1154,6 +1167,7 @@ _off017_8570_04_casey:
 
 
 _off017_858A_05_hot:
+_off017_858A_0C:
 - D 0 - I - 0x03859A 0E:858A: 01        .byte $01, $56, $57, $58, $59   ; 
 - D 0 - I - 0x03859F 0E:858F: 04        .byte $04, $5A, $5B, $5C, $5D   ; 
 - D 0 - I - 0x0385A4 0E:8594: 04        .byte $04, $5E, $5F, $60, $61   ; 
@@ -1164,6 +1178,7 @@ _off017_858A_05_hot:
 
 
 _off017_85A4_06_shred:
+_off017_85A4_0D:
 - D 0 - I - 0x0385B4 0E:85A4: 01        .byte $01, $69, $6A, $02, $03   ; 
 - D 0 - I - 0x0385B9 0E:85A9: 6B        .byte $6B, $6C, $6D, $6E, $08   ; 
 - D 0 - I - 0x0385BE 0E:85AE: 6F        .byte $6F, $70, $71, $72, $08   ; 
@@ -2986,7 +3001,8 @@ tbl_907A:
                                         .byte $68   ; 09 con_fighter_09
                                         .byte $68   ; 0A con_fighter_0A
                                         .byte $68   ; 0B con_fighter_0B
-                                        .byte $68   ; 0C con_fighter_0C
+                                        .byte $76   ; 0C con_fighter_0C
+                                        .byte $70   ; 0D con_fighter_0D
                                     .endif
 
 
@@ -3963,6 +3979,7 @@ C - - - - - 0x0396DD 0E:96CD: A9 02     LDA #con_D57A_02
 C - - - - - 0x0396DF 0E:96CF: 20 94 D3  JSR sub_0x03D3A4_записать_палитру_для_фона_и_спрайтов
 C - - - - - 0x0396EA 0E:96DA: A2 01     LDX #$01
 bra_96DC_loop:
+; bzk optimize, A будет перезаписан
 C - - - - - 0x0396E4 0E:96D4: AD 50 05  LDA ram_obj_id,X
 ; con_новые_персы
 C - - - - - 0x0396E7 0E:96D7: 20 2A E3  JSR sub_0x03DE0C_выбор_палитры_перса_с_сохранением_X
@@ -5774,8 +5791,9 @@ tbl_A317_индекс:
                                         .byte $00   ; 08 con_fighter_08
                                         .byte $00   ; 09 con_fighter_09
                                         .byte $00   ; 0A con_fighter_0A
-                                        .byte $00   ; 0B con_fighter_0B
-                                        .byte $00   ; 0C con_fighter_0C
+                                        .byte $04   ; 0B con_fighter_0B
+                                        .byte $08   ; 0C con_fighter_0C
+                                        .byte $0C   ; 0D con_fighter_0D
                                     .endif
 
 
@@ -5843,8 +5861,9 @@ tbl_A33C:
                                         .byte $36   ; 08 con_fighter_08
                                         .byte $36   ; 09 con_fighter_09
                                         .byte $36   ; 0A con_fighter_0A
-                                        .byte $36   ; 0B con_fighter_0B
-                                        .byte $36   ; 0C con_fighter_0C
+                                        .byte $38   ; 0B con_fighter_0B
+                                        .byte $3A   ; 0C con_fighter_0C
+                                        .byte $3C   ; 0D con_fighter_0D
                                     .endif
 
 
@@ -6483,7 +6502,7 @@ C - - - - - 0x03BF47 0E:BF37: D0 04     BNE bra_BF3D_RTS    ; if con_gm_vs_team
 ; con_gm_vs_cpu
 ; con_gm_tournament
 C - - - - - 0x03BF49 0E:BF39: A5 95     LDA ram_0095_стадия_игры
-C - - - - - 0x03BF4B 0E:BF3B: 49 0E     EOR #$0E
+C - - - - - 0x03BF4B 0E:BF3B: 49 0E     EOR #con_0095_экран_gameover_continue
 bra_BF3D_RTS:
 C - - - - - 0x03BF4D 0E:BF3D: 60        RTS
 

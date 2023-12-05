@@ -173,28 +173,33 @@ tbl_80FA:
 ; 08 con_fighter_08
                                         .byte $00   ; 
                                         .byte $1C   ; 
-                                        .byte $38   ; 
+                                        .byte $54   ; 
                                         .byte $8C   ; 
 ; 09 con_fighter_09
                                         .byte $00   ; 
                                         .byte $1C   ; 
-                                        .byte $38   ; 
+                                        .byte $54   ; 
                                         .byte $8C   ; 
 ; 0A con_fighter_0A
                                         .byte $00   ; 
                                         .byte $1C   ; 
-                                        .byte $38   ; 
+                                        .byte $3C   ; 
                                         .byte $8C   ; 
 ; 0B con_fighter_0B
                                         .byte $00   ; 
-                                        .byte $1C   ; 
-                                        .byte $38   ; 
-                                        .byte $8C   ; 
+                                        .byte $20   ; 
+                                        .byte $60   ; 
+                                        .byte $A0   ; 
 ; 0C con_fighter_0C
                                         .byte $00   ; 
-                                        .byte $1C   ; 
-                                        .byte $38   ; 
-                                        .byte $8C   ; 
+                                        .byte $24   ; 
+                                        .byte $6C   ; 
+                                        .byte $B4   ; 
+; 0D con_fighter_0D
+                                        .byte $00   ; 
+                                        .byte $1E   ; 
+                                        .byte $5A   ; 
+                                        .byte $96   ; 
                                     .endif
 
 
@@ -269,7 +274,6 @@ C - - - - - 0x0341A1 0D:8191: D0 E7     BNE bra_817A    ; jmp
 
 sub_8193:
 C - - - - - 0x0341A3 0D:8193: BD 50 05  LDA ram_obj_id,X ; 0550 0551 
-; con_новые_персы
 C - - - - - 0x0341A6 0D:8196: 20 32 D0  JSR sub_0x03D042_поинтеры_после_JSR
 - D 0 - I - 0x0341A9 0D:8199: 11 9C     .word ofs_036_9C11_00_leo
 - D 0 - I - 0x0341AB 0D:819B: F6 9C     .word ofs_036_9CF6_01_raph
@@ -278,12 +282,20 @@ C - - - - - 0x0341A6 0D:8196: 20 32 D0  JSR sub_0x03D042_поинтеры_пос
 - D 0 - I - 0x0341B1 0D:81A1: AF 9D     .word ofs_036_9DAF_04_casey
 - D 0 - I - 0x0341B3 0D:81A3: E4 9E     .word ofs_036_9EE4_05_hot
 - D 0 - I - 0x0341B5 0D:81A5: AF 9F     .word ofs_036_9FAF_06_shred
+                                    .if con_новые_персы <> $00
+                                        .word ofs_036_9C11_07
+                                        .word ofs_036_9CF6_08
+                                        .word ofs_036_9D1C_09
+                                        .word ofs_036_9D64_0A
+                                        .word ofs_036_9DAF_0B
+                                        .word ofs_036_9EE4_0C
+                                        .word ofs_036_9FAF_0D
+                                    .endif
 
 
 
 sub_81A7_выбрать_шаблоны_ai_для_персов:
 C - - - - - 0x0341B7 0D:81A7: BD 50 05  LDA ram_obj_id,X ; 0550 0551 
-; con_новые_персы
 C - - - - - 0x0341BA 0D:81AA: 20 32 D0  JSR sub_0x03D042_поинтеры_после_JSR
 - D 0 - I - 0x0341BD 0D:81AD: EB 8D     .word ofs_035_8DEB_00_leo
 - D 0 - I - 0x0341BF 0D:81AF: BC 90     .word ofs_035_90BC_01_raph
@@ -292,6 +304,15 @@ C - - - - - 0x0341BA 0D:81AA: 20 32 D0  JSR sub_0x03D042_поинтеры_пос
 - D 0 - I - 0x0341C5 0D:81B5: 97 95     .word ofs_035_9597_04_casey
 - D 0 - I - 0x0341C7 0D:81B7: 5C 98     .word ofs_035_985C_05_hot
 - D 0 - I - 0x0341C9 0D:81B9: CA 99     .word ofs_035_99CA_06_shred
+                                    .if con_новые_персы <> $00
+                                        .word ofs_035_8DEB_07
+                                        .word ofs_035_90BC_08
+                                        .word ofs_035_93BD_09
+                                        .word ofs_035_92A4_0A
+                                        .word ofs_035_9597_0B
+                                        .word ofs_035_985C_0C
+                                        .word ofs_035_99CA_0D
+                                    .endif
 
 
 
@@ -2776,11 +2797,12 @@ tbl_8DB5:
 - D 0 - - - 0x034DDD 0D:8DCD: 08        .byte $08, $04, $00, $00   ; 06 con_fighter_shred
                                     .if con_новые_персы <> $00
                                         .byte $40, $20, $00, $00   ; 07 con_fighter_07
-                                        .byte $40, $20, $00, $00   ; 08 con_fighter_08
-                                        .byte $40, $20, $00, $00   ; 09 con_fighter_09
-                                        .byte $40, $20, $00, $00   ; 0A con_fighter_0A
-                                        .byte $40, $20, $00, $00   ; 0B con_fighter_0B
-                                        .byte $40, $20, $00, $00   ; 0C con_fighter_0C
+                                        .byte $10, $08, $00, $00   ; 08 con_fighter_08
+                                        .byte $10, $08, $00, $00   ; 09 con_fighter_09
+                                        .byte $10, $08, $00, $00   ; 0A con_fighter_0A
+                                        .byte $10, $08, $00, $00   ; 0B con_fighter_0B
+                                        .byte $20, $10, $00, $00   ; 0C con_fighter_0C
+                                        .byte $08, $04, $00, $00   ; 0D con_fighter_0D
                                     .endif
 
 
@@ -2803,13 +2825,15 @@ tbl_8DD0:
                                         .byte $14, $08, $03, $01   ; 08 con_fighter_08
                                         .byte $14, $08, $03, $01   ; 09 con_fighter_09
                                         .byte $14, $08, $03, $01   ; 0A con_fighter_0A
-                                        .byte $14, $08, $03, $01   ; 0B con_fighter_0B
-                                        .byte $14, $08, $03, $01   ; 0C con_fighter_0C
+                                        .byte $08, $04, $01, $01   ; 0B con_fighter_0B
+                                        .byte $18, $0A, $05, $01   ; 0C con_fighter_0C
+                                        .byte $10, $05, $01, $01   ; 0D con_fighter_0D
                                     .endif
 
 
 
 ofs_035_8DEB_00_leo:
+ofs_035_8DEB_07:
 C - - J - - 0x034DFB 0D:8DEB: A5 11     LDA ram_0011
 C - - - - - 0x034DFD 0D:8DED: C9 03     CMP #$03
 C - - - - - 0x034DFF 0D:8DEF: D0 0A     BNE bra_8DFB
@@ -3319,6 +3343,7 @@ tbl_90B4_шаблоны_leo:
 
 
 ofs_035_90BC_01_raph:
+ofs_035_90BC_08:
 C - - J - - 0x0350CC 0D:90BC: A5 13     LDA ram_0013
 C - - - - - 0x0350CE 0D:90BE: 20 32 D0  JSR sub_0x03D042_поинтеры_после_JSR
 - D 0 - I - 0x0350D1 0D:90C1: C9 90     .word ofs_028_90C9_00
@@ -3650,6 +3675,7 @@ tbl_929C_шаблоны_raph:
 
 
 ofs_035_92A4_03_don:
+ofs_035_92A4_0A:
 C - - J - - 0x0352B4 0D:92A4: A5 13     LDA ram_0013
 C - - - - - 0x0352B6 0D:92A6: 20 32 D0  JSR sub_0x03D042_поинтеры_после_JSR
 - D 0 - I - 0x0352B9 0D:92A9: B1 92     .word ofs_027_92B1_00
@@ -3857,6 +3883,7 @@ tbl_93B5_шаблоны_don:
 
 
 ofs_035_93BD_02_mike:
+ofs_035_93BD_09:
 C - - J - - 0x0353CD 0D:93BD: A5 13     LDA ram_0013
 C - - - - - 0x0353CF 0D:93BF: 20 32 D0  JSR sub_0x03D042_поинтеры_после_JSR
 - D 0 - I - 0x0353D2 0D:93C2: CA 93     .word ofs_026_93CA_00
@@ -4163,6 +4190,7 @@ tbl_958F_шаблоны_mike:
 
 
 ofs_035_9597_04_casey:
+ofs_035_9597_0B:
 C - - J - - 0x0355A7 0D:9597: A5 11     LDA ram_0011
 C - - - - - 0x0355A9 0D:9599: C9 03     CMP #$03
 C - - - - - 0x0355AB 0D:959B: D0 0A     BNE bra_95A7
@@ -4582,6 +4610,7 @@ tbl_9858_шаблоны_casey:
 
 
 ofs_035_985C_05_hot:
+ofs_035_985C_0C:
 C - - J - - 0x03586C 0D:985C: A5 12     LDA ram_0012
 C - - - - - 0x03586E 0D:985E: C9 03     CMP #$03
 C - - - - - 0x035870 0D:9860: B0 05     BCS bra_9867
@@ -4847,6 +4876,7 @@ tbl_99C6_шаблоны_hot:
 
 
 ofs_035_99CA_06_shred:
+ofs_035_99CA_0D:
 C - - J - - 0x0359DA 0D:99CA: BC DE 06  LDY ram_plr_06DE,X ; 06DF 
 C - - - - - 0x0359DD 0D:99CD: B9 10 06  LDA ram_plr_флаг_индекса_атаки,Y ; 0610 
 C - - - - - 0x0359E0 0D:99D0: F0 17     BEQ bra_99E9
@@ -5226,6 +5256,7 @@ C - - - - - 0x035C20 0D:9C10: 60        RTS
 
 
 ofs_036_9C11_00_leo:
+ofs_036_9C11_07:
 C - - J - - 0x035C21 0D:9C11: A9 00     LDA #$00    ; con_шаблон_ai_00 ???
 C - - - - - 0x035C23 0D:9C13: 85 17     STA ram_0017
 C - - - - - 0x035C25 0D:9C15: 20 D6 9B  JSR sub_9BD6
@@ -5234,7 +5265,6 @@ C - - - - - 0x035C2A 0D:9C1A: 60        RTS
 bra_9C1B:
 C - - - - - 0x035C2B 0D:9C1B: BC DE 06  LDY ram_plr_06DE,X ; 06DE 06DF 
 C - - - - - 0x035C2E 0D:9C1E: B9 50 05  LDA ram_obj_id,Y ; 0550 0551 
-; con_новые_персы
 C - - - - - 0x035C31 0D:9C21: 20 32 D0  JSR sub_0x03D042_поинтеры_после_JSR
 - - - - - - 0x035C34 0D:9C24: 32 9C     .word ofs_022_9C32_00_leo
 - D 0 - I - 0x035C36 0D:9C26: 75 9C     .word ofs_022_9C75_01_raph
@@ -5243,13 +5273,25 @@ C - - - - - 0x035C31 0D:9C21: 20 32 D0  JSR sub_0x03D042_поинтеры_пос
 - - - - - - 0x035C3C 0D:9C2C: C4 9C     .word _общий_RTS ; 04 casey
 - - - - - - 0x035C3E 0D:9C2E: C5 9C     .word ofs_022_9CC5_05_hot
 - - - - - - 0x035C40 0D:9C30: D0 9C     .word ofs_022_9CD0_06_shred
+                                    .if con_новые_персы <> $00
+                                        .word ofs_022_9C32_07
+                                        .word ofs_022_9C75_08
+                                        .word _общий_RTS ; 09
+                                        .word ofs_022_9CB3_0A
+                                        .word _общий_RTS ; 0B
+                                        .word ofs_022_9CC5_0C
+                                        .word ofs_022_9CD0_0D
+                                    .endif
 
 
 
 loc_9C32:
 ofs_019_9C32_00_leo:
+ofs_019_9C32_07:
 ofs_021_9C32_00_leo:
+ofs_021_9C32_07:
 ofs_022_9C32_00_leo:
+ofs_022_9C32_07:
 C D 0 - - - 0x035C42 0D:9C32: A5 11     LDA ram_0011
 C - - - - - 0x035C44 0D:9C34: C9 08     CMP #$08
 C - - - - - 0x035C46 0D:9C36: D0 37     BNE bra_9C6F_RTS
@@ -5329,21 +5371,29 @@ tbl_9CAB:
                                     .if con_новые_персы <> $00
                                         .byte $30   ; 07 con_fighter_07
                                         .byte $30   ; 08 con_fighter_08
-                                        .byte $30   ; 09 con_fighter_09
-                                        .byte $30   ; 0A con_fighter_0A
-                                        .byte $30   ; 0B con_fighter_0B
-                                        .byte $30   ; 0C con_fighter_0C
+                                        .byte $40   ; 09 con_fighter_09
+                                        .byte $40   ; 0A con_fighter_0A
+                                        .byte $18   ; 0B con_fighter_0B
+                                        .byte $20   ; 0C con_fighter_0C
+                                        .byte $10   ; 0D con_fighter_0D
                                     .endif
 
 
 
 ofs_016_9CB3_03_don:
+ofs_016_9CB3_0A:
 ofs_017_9CB3_03_don:
+ofs_017_9CB3_0A:
 ofs_018_9CB3_03_don:
+ofs_018_9CB3_0A:
 ofs_019_9CB3_03_don:
+ofs_019_9CB3_0A:
 ofs_020_9CB3_03_don:
+ofs_020_9CB3_0A:
 ofs_021_9CB3_03_don:
+ofs_021_9CB3_0A:
 ofs_022_9CB3_03_don:
+ofs_022_9CB3_0A:
 C - - J - - 0x035CC3 0D:9CB3: A5 11     LDA ram_0011
 C - - - - - 0x035CC5 0D:9CB5: C9 08     CMP #$08
 C - - - - - 0x035CC7 0D:9CB7: D0 0A     BNE bra_9CC3_RTS
@@ -5362,6 +5412,7 @@ C - - - - - 0x035CD3 0D:9CC3: 60        RTS
 
 
 ofs_022_9CC5_05_hot:
+ofs_022_9CC5_0C:
 - - - - - - 0x035CD5 0D:9CC5: A5 11     LDA ram_0011
 - - - - - - 0x035CD7 0D:9CC7: C9 08     CMP #$08
 - - - - - - 0x035CD9 0D:9CC9: D0 04     BNE bra_9CCF_RTS
@@ -5373,6 +5424,7 @@ bra_9CCF_RTS:
 
 
 ofs_022_9CD0_06_shred:
+ofs_022_9CD0_0D:
 - - - - - - 0x035CE0 0D:9CD0: A5 13     LDA ram_0013
 - - - - - - 0x035CE2 0D:9CD2: C9 02     CMP #$02
 - - - - - - 0x035CE4 0D:9CD4: B0 12     BCS bra_9CE8_RTS
@@ -5405,6 +5457,7 @@ tbl_9CEE:
 
 
 ofs_036_9CF6_01_raph:
+ofs_036_9CF6_08:
 C - - J - - 0x035D06 0D:9CF6: A9 00     LDA #$00    ; con_шаблон_ai_00 ???
 C - - - - - 0x035D08 0D:9CF8: 85 17     STA ram_0017
 C - - - - - 0x035D0A 0D:9CFA: 20 D6 9B  JSR sub_9BD6
@@ -5413,7 +5466,6 @@ C - - - - - 0x035D0F 0D:9CFF: 60        RTS
 bra_9D00:
 C - - - - - 0x035D10 0D:9D00: BC DE 06  LDY ram_plr_06DE,X ; 06DE 06DF 
 C - - - - - 0x035D13 0D:9D03: B9 50 05  LDA ram_obj_id,Y ; 0550 0551 
-; con_новые_персы
 C - - - - - 0x035D16 0D:9D06: 20 32 D0  JSR sub_0x03D042_поинтеры_после_JSR
 - D 0 - I - 0x035D19 0D:9D09: 32 9C     .word ofs_021_9C32_00_leo
 - - - - - - 0x035D1B 0D:9D0B: 75 9C     .word ofs_021_9C75_01_raph
@@ -5422,10 +5474,20 @@ C - - - - - 0x035D16 0D:9D06: 20 32 D0  JSR sub_0x03D042_поинтеры_пос
 - - - - - - 0x035D21 0D:9D11: 19 9D     .word _общий_RTS ; 04 casey
 - - - - - - 0x035D23 0D:9D13: 1A 9D     .word _общий_RTS ; 05 hot
 - - - - - - 0x035D25 0D:9D15: 1B 9D     .word _общий_RTS ; 06 shred
+                                    .if con_новые_персы <> $00
+                                        .word ofs_021_9C32_07
+                                        .word ofs_021_9C75_08
+                                        .word _общий_RTS ; 09
+                                        .word ofs_021_9CB3_0A
+                                        .word _общий_RTS ; 0B
+                                        .word _общий_RTS ; 0C
+                                        .word _общий_RTS ; 0D
+                                    .endif
 
 
 
 ofs_036_9D1C_02_mike:
+ofs_036_9D1C_09:
 C - - J - - 0x035D2C 0D:9D1C: A9 00     LDA #$00    ; con_шаблон_ai_00 ???
 C - - - - - 0x035D2E 0D:9D1E: 85 17     STA ram_0017
 C - - - - - 0x035D30 0D:9D20: 20 D6 9B  JSR sub_9BD6
@@ -5434,7 +5496,6 @@ C - - - - - 0x035D35 0D:9D25: 60        RTS
 bra_9D26:
 C - - - - - 0x035D36 0D:9D26: BC DE 06  LDY ram_plr_06DE,X ; 06DE 06DF 
 C - - - - - 0x035D39 0D:9D29: B9 50 05  LDA ram_obj_id,Y ; 0550 0551 
-; con_новые_персы
 C - - - - - 0x035D3C 0D:9D2C: 20 32 D0  JSR sub_0x03D042_поинтеры_после_JSR
 - D 0 - I - 0x035D3F 0D:9D2F: 3D 9D     .word ofs_020_9D3D_00_leo
 - D 0 - I - 0x035D41 0D:9D31: 75 9C     .word ofs_020_9C75_01_raph
@@ -5443,10 +5504,20 @@ C - - - - - 0x035D3C 0D:9D2C: 20 32 D0  JSR sub_0x03D042_поинтеры_пос
 - - - - - - 0x035D47 0D:9D37: 61 9D     .word _общий_RTS ; 04 casey
 - - - - - - 0x035D49 0D:9D39: 62 9D     .word _общий_RTS ; 05 hot
 - - - - - - 0x035D4B 0D:9D3B: 63 9D     .word _общий_RTS ; 06 shred
+                                    .if con_новые_персы <> $00
+                                        .word ofs_020_9D3D_07
+                                        .word ofs_020_9C75_08
+                                        .word _общий_RTS ; 09
+                                        .word ofs_020_9CB3_0A
+                                        .word _общий_RTS ; 0B
+                                        .word _общий_RTS ; 0C
+                                        .word _общий_RTS ; 0D
+                                    .endif
 
 
 
 ofs_020_9D3D_00_leo:
+ofs_020_9D3D_07:
 C - - J - - 0x035D4D 0D:9D3D: A5 11     LDA ram_0011
 C - - - - - 0x035D4F 0D:9D3F: C9 08     CMP #$08
 C - - - - - 0x035D51 0D:9D41: D0 19     BNE bra_9D5C
@@ -5468,6 +5539,7 @@ C - - - - - 0x035D6C 0D:9D5C: 4C 32 9C  JMP loc_9C32
 
 
 ofs_036_9D64_03_don:
+ofs_036_9D64_0A:
 C - - J - - 0x035D74 0D:9D64: A9 00     LDA #$00    ; con_шаблон_ai_00 ???
 C - - - - - 0x035D76 0D:9D66: 85 17     STA ram_0017
 C - - - - - 0x035D78 0D:9D68: 20 D6 9B  JSR sub_9BD6
@@ -5494,7 +5566,6 @@ C - - - - - 0x035D88 0D:9D78: B0 19     BCS bra_9D93
 bra_9D93:
 C - - - - - 0x035DA3 0D:9D93: BC DE 06  LDY ram_plr_06DE,X ; 06DF
 C - - - - - 0x035DA6 0D:9D96: B9 50 05  LDA ram_obj_id,Y ; 0550 
-; con_новые_персы
 C - - - - - 0x035DA9 0D:9D99: 20 32 D0  JSR sub_0x03D042_поинтеры_после_JSR
 - D 0 - I - 0x035DAC 0D:9D9C: 32 9C     .word ofs_019_9C32_00_leo
 - - - - - - 0x035DAE 0D:9D9E: 75 9C     .word ofs_019_9C75_01_raph
@@ -5503,10 +5574,20 @@ C - - - - - 0x035DA9 0D:9D99: 20 32 D0  JSR sub_0x03D042_поинтеры_пос
 - - - - - - 0x035DB4 0D:9DA4: AC 9D     .word _общий_RTS ; 04 casey
 - - - - - - 0x035DB6 0D:9DA6: AD 9D     .word _общий_RTS ; 05 hot
 - - - - - - 0x035DB8 0D:9DA8: AE 9D     .word _общий_RTS ; 06 shred
+                                    .if con_новые_персы <> $00
+                                        .word ofs_019_9C32_07
+                                        .word ofs_019_9C75_08
+                                        .word _общий_RTS ; 09
+                                        .word ofs_019_9CB3_0A
+                                        .word _общий_RTS ; 0B
+                                        .word _общий_RTS ; 0C
+                                        .word _общий_RTS ; 0D
+                                    .endif
 
 
 
 ofs_036_9DAF_04_casey:
+ofs_036_9DAF_0B:
 C - - J - - 0x035DBF 0D:9DAF: A9 00     LDA #$00    ; con_шаблон_ai_00 ???
 C - - - - - 0x035DC1 0D:9DB1: 85 17     STA ram_0017
 C - - - - - 0x035DC3 0D:9DB3: 20 D6 9B  JSR sub_9BD6
@@ -5529,7 +5610,6 @@ C - - - - - 0x035DE5 0D:9DD5: 4C 31 9E  JMP loc_9E31
 bra_9DD8:
 C - - - - - 0x035DE8 0D:9DD8: BC DE 06  LDY ram_plr_06DE,X ; 06DF
 C - - - - - 0x035DEB 0D:9DDB: B9 50 05  LDA ram_obj_id,Y ; 0550 
-; con_новые_персы
 C - - - - - 0x035DEE 0D:9DDE: 20 32 D0  JSR sub_0x03D042_поинтеры_после_JSR
 - - - - - - 0x035DF1 0D:9DE1: EF 9D     .word ofs_018_9DEF_00_leo
 - D 0 - I - 0x035DF3 0D:9DE3: 36 9E     .word ofs_018_9E36_01_raph
@@ -5538,10 +5618,20 @@ C - - - - - 0x035DEE 0D:9DDE: 20 32 D0  JSR sub_0x03D042_поинтеры_пос
 - - - - - - 0x035DF9 0D:9DE9: B1 9E     .word _общий_RTS ; 04 casey
 - - - - - - 0x035DFB 0D:9DEB: B2 9E     .word ofs_018_9EB2_05_hot
 - - - - - - 0x035DFD 0D:9DED: E3 9E     .word _общий_RTS ; 06 shred
+                                    .if con_новые_персы <> $00
+                                        .word ofs_018_9DEF_07
+                                        .word ofs_018_9E36_08
+                                        .word ofs_018_9E7F_09
+                                        .word ofs_018_9CB3_0A
+                                        .word _общий_RTS ; 0B
+                                        .word ofs_018_9EB2_0C
+                                        .word _общий_RTS ; 0D
+                                    .endif
 
 
 
 ofs_018_9DEF_00_leo:
+ofs_018_9DEF_07:
 - - - - - - 0x035DFF 0D:9DEF: BD 20 05  LDA ram_obj_0520,X
 - - - - - - 0x035E02 0D:9DF2: C9 08     CMP #con_plr_state_делает_суперку
 - - - - - - 0x035E04 0D:9DF4: F0 07     BEQ bra_9DFD
@@ -5586,6 +5676,7 @@ C - - - - - 0x035E45 0D:9E35: 60        RTS
 
 
 ofs_018_9E36_01_raph:
+ofs_018_9E36_08:
 C - - J - - 0x035E46 0D:9E36: BD 20 05  LDA ram_obj_0520,X ; 0521 
 C - - - - - 0x035E49 0D:9E39: C9 08     CMP #con_plr_state_делает_суперку
 C - - - - - 0x035E4B 0D:9E3B: D0 3A     BNE bra_9E77
@@ -5626,6 +5717,7 @@ C - - - - - 0x035E8E 0D:9E7E: 60        RTS
 
 
 ofs_018_9E7F_02_mike:
+ofs_018_9E7F_09:
 - - - - - - 0x035E8F 0D:9E7F: A5 11     LDA ram_0011
 - - - - - - 0x035E91 0D:9E81: C9 08     CMP #$08
 - - - - - - 0x035E93 0D:9E83: D0 1C     BNE bra_9EA1_RTS
@@ -5657,6 +5749,7 @@ bra_9EAB:
 
 
 ofs_018_9EB2_05_hot:
+ofs_018_9EB2_0C:
 - - - - - - 0x035EC2 0D:9EB2: A5 11     LDA ram_0011
 - - - - - - 0x035EC4 0D:9EB4: C9 08     CMP #$08
 - - - - - - 0x035EC6 0D:9EB6: F0 0B     BEQ bra_9EC3
@@ -5688,6 +5781,7 @@ bra_9EDE:
 
 
 ofs_036_9EE4_05_hot:
+ofs_036_9EE4_0C:
 C - - J - - 0x035EF4 0D:9EE4: A9 00     LDA #$00    ; con_шаблон_ai_00 ???
 C - - - - - 0x035EF6 0D:9EE6: 85 17     STA ram_0017
 C - - - - - 0x035EF8 0D:9EE8: A5 13     LDA ram_0013
@@ -5708,7 +5802,6 @@ C - - - - - 0x035F14 0D:9F04: 60        RTS
 bra_9F05:
 C - - - - - 0x035F15 0D:9F05: BC DE 06  LDY ram_plr_06DE,X ; 06DE 06DF 
 C - - - - - 0x035F18 0D:9F08: B9 50 05  LDA ram_obj_id,Y ; 0550 0551 
-; con_новые_персы
 C - - - - - 0x035F1B 0D:9F0B: 20 32 D0  JSR sub_0x03D042_поинтеры_после_JSR
 - - - - - - 0x035F1E 0D:9F0E: 1C 9F     .word ofs_017_9F1C_00_leo
 - - - - - - 0x035F20 0D:9F10: 68 9F     .word ofs_017_9F68_01_raph
@@ -5717,10 +5810,20 @@ C - - - - - 0x035F1B 0D:9F0B: 20 32 D0  JSR sub_0x03D042_поинтеры_пос
 - D 0 - I - 0x035F26 0D:9F16: 15 A1     .word ofs_017_A115_04_casey
 - - - - - - 0x035F28 0D:9F18: 9D 9F     .word _общий_RTS ; 05 hot
 - D 0 - I - 0x035F2A 0D:9F1A: 9E 9F     .word ofs_017_9F9E_06_shred
+                                    .if con_новые_персы <> $00
+                                        .word ofs_017_9F1C_07
+                                        .word ofs_017_9F68_08
+                                        .word ofs_017_A084_09
+                                        .word ofs_017_9CB3_0A
+                                        .word ofs_017_A115_0B
+                                        .word _общий_RTS ; 0C
+                                        .word ofs_017_9F9E_0D
+                                    .endif
 
 
 
 ofs_017_9F1C_00_leo:
+ofs_017_9F1C_07:
 - - - - - - 0x035F2C 0D:9F1C: BD 20 05  LDA ram_obj_0520,X
 - - - - - - 0x035F2F 0D:9F1F: C9 01     CMP #con_plr_state_в_прыжке
 - - - - - - 0x035F31 0D:9F21: D0 09     BNE bra_9F2C
@@ -5768,6 +5871,7 @@ bra_9F63:
 
 
 ofs_017_9F68_01_raph:
+ofs_017_9F68_08:
 - - - - - - 0x035F78 0D:9F68: A5 11     LDA ram_0011
 - - - - - - 0x035F7A 0D:9F6A: C9 08     CMP #$08
 - - - - - - 0x035F7C 0D:9F6C: D0 1B     BNE bra_9F89
@@ -5800,6 +5904,7 @@ loc_9F95:
 
 
 ofs_017_9F9E_06_shred:
+ofs_017_9F9E_0D:
 C - - J - - 0x035FAE 0D:9F9E: A5 11     LDA ram_0011
 C - - - - - 0x035FB0 0D:9FA0: C9 08     CMP #$08
 C - - - - - 0x035FB2 0D:9FA2: D0 0A     BNE bra_9FAE_RTS
@@ -5814,6 +5919,7 @@ C - - - - - 0x035FBE 0D:9FAE: 60        RTS
 
 
 ofs_036_9FAF_06_shred:
+ofs_036_9FAF_0D:
 C - - J - - 0x035FBF 0D:9FAF: A9 00     LDA #$00
 C - - - - - 0x035FC1 0D:9FB1: 85 17     STA ram_0017
 C - - - - - 0x035FC3 0D:9FB3: BC DE 06  LDY ram_plr_06DE,X ; 06DF 
@@ -5863,7 +5969,6 @@ tbl_9FF5:
 bra_9FF9:
 C - - - - - 0x036009 0D:9FF9: BC DE 06  LDY ram_plr_06DE,X ; 06DF 
 C - - - - - 0x03600C 0D:9FFC: B9 50 05  LDA ram_obj_id,Y ; 0550
-; con_новые_персы
 C - - - - - 0x03600F 0D:9FFF: 20 32 D0  JSR sub_0x03D042_поинтеры_после_JSR
 - - - - - - 0x036012 0D:A002: 10 A0     .word ofs_016_A010_00_leo
 - D 1 - I - 0x036014 0D:A004: 46 A0     .word ofs_016_A046_01_raph
@@ -5872,10 +5977,20 @@ C - - - - - 0x03600F 0D:9FFF: 20 32 D0  JSR sub_0x03D042_поинтеры_пос
 - - - - - - 0x03601A 0D:A00A: 15 A1     .word ofs_016_A115_04_casey
 - D 1 - I - 0x03601C 0D:A00C: 30 A1     .word ofs_016_A130_05_hot
 - - - - - - 0x03601E 0D:A00E: 67 A1     .word ofs_016_A167_06_shred
+                                    .if con_новые_персы <> $00
+                                        .word ofs_016_A010_07
+                                        .word ofs_016_A046_08
+                                        .word ofs_016_A084_09
+                                        .word ofs_016_9CB3_0A
+                                        .word ofs_016_A115_0B
+                                        .word ofs_016_A130_0C
+                                        .word ofs_016_A167_0D
+                                    .endif
 
 
 
 ofs_016_A010_00_leo:
+ofs_016_A010_07:
 - - - - - - 0x036020 0D:A010: 20 8E EC  JSR sub_0x03EC9E
 - - - - - - 0x036023 0D:A013: B0 2D     BCS bra_A042_RTS
 - - - - - - 0x036025 0D:A015: A5 11     LDA ram_0011
@@ -5913,6 +6028,7 @@ bra_A043:
 
 
 ofs_016_A046_01_raph:
+ofs_016_A046_08:
 C - - J - - 0x036056 0D:A046: A5 11     LDA ram_0011
 C - - - - - 0x036058 0D:A048: C9 08     CMP #$08
 C - - - - - 0x03605A 0D:A04A: D0 23     BNE bra_A06F
@@ -5963,7 +6079,9 @@ C D 1 - - - 0x036107 0D:A0F7: 4C 60 A7  JMP loc_A760
 
 
 ofs_016_A084_02_mike:
+ofs_016_A084_09:
 ofs_017_A084_02_mike:
+ofs_017_A084_09:
 - - - - - - 0x036094 0D:A084: A5 11     LDA ram_0011
 - - - - - - 0x036096 0D:A086: C9 08     CMP #$08
 - - - - - - 0x036098 0D:A088: F0 05     BEQ bra_A08F
@@ -5997,7 +6115,9 @@ bra_A0B0:
 
 
 ofs_016_A115_04_casey:
+ofs_016_A115_0B:
 ofs_017_A115_04_casey:
+ofs_017_A115_0B:
 C - - J - - 0x036125 0D:A115: A5 11     LDA ram_0011
 C - - - - - 0x036127 0D:A117: C9 08     CMP #$08
 C - - - - - 0x036129 0D:A119: D0 14     BNE bra_A12F_RTS
@@ -6017,6 +6137,7 @@ C - - - - - 0x03613F 0D:A12F: 60        RTS
 
 
 ofs_016_A130_05_hot:
+ofs_016_A130_0C:
 C - - J - - 0x036140 0D:A130: A5 11     LDA ram_0011
 C - - - - - 0x036142 0D:A132: C9 08     CMP #$08
 C - - - - - 0x036144 0D:A134: D0 2B     BNE bra_A161_RTS
@@ -6050,6 +6171,7 @@ bra_A162:
 
 
 ofs_016_A167_06_shred:
+ofs_016_A167_0D:
 - - - - - - 0x036177 0D:A167: AD F8 06  LDA ram_06F8
 - - - - - - 0x03617A 0D:A16A: 30 12     BMI bra_A17E_RTS
 - - - - - - 0x03617C 0D:A16C: AD 38 06  LDA ram_0638
@@ -7129,9 +7251,10 @@ tbl_BD60:
                                         .byte $00   ; 07 con_fighter_07
                                         .byte $00   ; 08 con_fighter_08
                                         .byte $00   ; 09 con_fighter_09
-                                        .byte $00   ; 0A con_fighter_0A
-                                        .byte $00   ; 0B con_fighter_0B
+                                        .byte con_шаблон_ai_01   ; 0A con_fighter_0A
+                                        .byte con_шаблон_ai_01   ; 0B con_fighter_0B
                                         .byte $00   ; 0C con_fighter_0C
+                                        .byte $00   ; 0D con_fighter_0D
                                     .endif
 
 
@@ -7147,10 +7270,11 @@ tbl_BD70:
                                     .if con_новые_персы <> $00
                                         .byte $00   ; 07 con_fighter_07
                                         .byte $00   ; 08 con_fighter_08
-                                        .byte $00   ; 09 con_fighter_09
-                                        .byte $00   ; 0A con_fighter_0A
-                                        .byte $00   ; 0B con_fighter_0B
+                                        .byte $01   ; 09 con_fighter_09
+                                        .byte $01   ; 0A con_fighter_0A
+                                        .byte $01   ; 0B con_fighter_0B
                                         .byte $00   ; 0C con_fighter_0C
+                                        .byte $00   ; 0D con_fighter_0D
                                     .endif
 
 
@@ -7423,9 +7547,13 @@ bra_BFA1:
 
 loc_BFA4:
 ofs_019_9C75_01_raph:
+ofs_019_9C75_08:
 ofs_020_9C75_01_raph:
+ofs_020_9C75_08:
 ofs_021_9C75_01_raph:
+ofs_021_9C75_08:
 ofs_022_9C75_01_raph:
+ofs_022_9C75_08:
 C D 1 - - - 0x037FB4 0D:BFA4: AD 25 01  LDA ram_option_difficulty
 C - - - - - 0x037FB7 0D:BFA7: C9 03     CMP #$03
 C - - - - - 0x037FB9 0D:BFA9: B0 07     BCS bra_BFB2_RTS

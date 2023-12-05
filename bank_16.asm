@@ -276,8 +276,17 @@ C - - - - - 0x02C255 0B:8245: 9D 42 04  STA ram_obj_pos_X_lo + $02,X ; 0442 0443
 C - - - - - 0x02C258 0B:8248: B9 42 83  LDA tbl_8342_pos_Y_спрайты_портрета,Y
 C - - - - - 0x02C25B 0B:824B: 9D 12 04  STA ram_obj_pos_Y_lo + $02,X ; 0412 0413 
 C - - - - - 0x02C25E 0B:824E: 98        TYA
+                                    .if con_новые_персы <> $00
+; временная корректировка индекса анимации портрета
+                                        CMP #$07
+                                        BCC bra_824F
+                                        SEC
+                                        SBC #$07
+bra_824F:
+                                    .endif
 C - - - - - 0x02C25F 0B:824F: 18        CLC
 C - - - - - 0x02C260 0B:8250: 69 1B     ADC #$1B
+; запись индекса анимации портрета на экране выбора перса
 C - - - - - 0x02C262 0B:8252: 9D 02 04  STA ram_obj_anim_id + $02,X ; 0402 0403 
 C - - - - - 0x02C265 0B:8255: 8A        TXA
 C - - - - - 0x02C266 0B:8256: 09 82     ORA #$82
@@ -411,8 +420,16 @@ bra_82FC:
 C - - - - - 0x02C30C 0B:82FC: 86 00     STX ram_0000
 bra_82FE_loop:
 C - - - - - 0x02C30E 0B:82FE: A6 00     LDX ram_0000
+; запись атрибутов для добавления цветов роже на экране выбора персов
 C - - - - - 0x02C310 0B:8300: B5 A2     LDA ram_plr_id,X ; 00A2 00A3 
-; con_новые_персы
+                                    .if con_новые_персы <> $00
+; временная корректировка индекса
+                                        CMP #$07
+                                        BCC bra_8302
+                                        SEC
+                                        SBC #$07
+bra_8302:
+                                    .endif
 C - - - - - 0x02C312 0B:8302: 0A        ASL
 C - - - - - 0x02C313 0B:8303: C9 08     CMP #$08
 C - - - - - 0x02C315 0B:8305: 90 02     BCC bra_8309
@@ -470,8 +487,9 @@ tbl_8342_pos_Y_спрайты_портрета:
                                         .byte $4F   ; 08 con_fighter_08
                                         .byte $4F   ; 09 con_fighter_09
                                         .byte $4F   ; 0A con_fighter_0A
-                                        .byte $4F   ; 0B con_fighter_0B
-                                        .byte $4F   ; 0C con_fighter_0C
+                                        .byte $97   ; 0B con_fighter_0B
+                                        .byte $97   ; 0C con_fighter_0C
+                                        .byte $97   ; 0D con_fighter_0D
                                     .endif
 
 tbl_8349_pos_X_спрайты_портрета:
@@ -484,11 +502,12 @@ tbl_8349_pos_X_спрайты_портрета:
 - D 0 - - - 0x02C35F 0B:834F: B0        .byte $B0   ; 06 con_fighter_shred
                                     .if con_новые_персы <> $00
                                         .byte $18   ; 07 con_fighter_07
-                                        .byte $18   ; 08 con_fighter_08
-                                        .byte $18   ; 09 con_fighter_09
-                                        .byte $18   ; 0A con_fighter_0A
-                                        .byte $18   ; 0B con_fighter_0B
-                                        .byte $18   ; 0C con_fighter_0C
+                                        .byte $50   ; 08 con_fighter_08
+                                        .byte $88   ; 09 con_fighter_09
+                                        .byte $C0   ; 0A con_fighter_0A
+                                        .byte $30   ; 0B con_fighter_0B
+                                        .byte $70   ; 0C con_fighter_0C
+                                        .byte $B0   ; 0D con_fighter_0D
                                     .endif
 
 tbl_8350_pos_X_курсор:
@@ -501,11 +520,12 @@ tbl_8350_pos_X_курсор:
 - D 0 - - - 0x02C366 0B:8356: AC        .byte $AC   ; 06 con_fighter_shred
                                     .if con_новые_персы <> $00
                                         .byte $14   ; 07 con_fighter_07
-                                        .byte $14   ; 08 con_fighter_08
-                                        .byte $14   ; 09 con_fighter_09
-                                        .byte $14   ; 0A con_fighter_0A
-                                        .byte $14   ; 0B con_fighter_0B
-                                        .byte $14   ; 0C con_fighter_0C
+                                        .byte $4C   ; 08 con_fighter_08
+                                        .byte $84   ; 09 con_fighter_09
+                                        .byte $BC   ; 0A con_fighter_0A
+                                        .byte $2C   ; 0B con_fighter_0B
+                                        .byte $6C   ; 0C con_fighter_0C
+                                        .byte $AC   ; 0D con_fighter_0D
                                     .endif
 
 tbl_8357_pos_Y_курсор:
@@ -517,12 +537,13 @@ tbl_8357_pos_Y_курсор:
 - D 0 - - - 0x02C36C 0B:835C: 8E        .byte $8E   ; 05 con_fighter_hot
 - D 0 - - - 0x02C36D 0B:835D: 8E        .byte $8E   ; 06 con_fighter_shred
                                     .if con_новые_персы <> $00
-                                        .byte $46   ; 07 con_fighter_07
-                                        .byte $46   ; 08 con_fighter_08
-                                        .byte $46   ; 09 con_fighter_09
-                                        .byte $46   ; 0A con_fighter_0A
-                                        .byte $46   ; 0B con_fighter_0B
-                                        .byte $46   ; 0C con_fighter_0C
+                                        .byte $46 - $08   ; 07 con_fighter_07
+                                        .byte $46 - $08   ; 08 con_fighter_08
+                                        .byte $46 - $08   ; 09 con_fighter_09
+                                        .byte $46 - $08   ; 0A con_fighter_0A
+                                        .byte $8E - $08   ; 0B con_fighter_0B
+                                        .byte $8E - $08   ; 0C con_fighter_0C
+                                        .byte $8E - $08   ; 0D con_fighter_0D
                                     .endif
 
 
@@ -675,11 +696,12 @@ tbl_A89C:
 - - - - - - 0x02E8B2 0B:A8A2: 06        .byte $06   ; 06 con_fighter_shred
                                     .if con_новые_персы <> $00
                                         .byte $04   ; 07 con_fighter_07
-                                        .byte $04   ; 08 con_fighter_08
+                                        .byte $05   ; 08 con_fighter_08
                                         .byte $04   ; 09 con_fighter_09
-                                        .byte $04   ; 0A con_fighter_0A
-                                        .byte $04   ; 0B con_fighter_0B
-                                        .byte $04   ; 0C con_fighter_0C
+                                        .byte $05   ; 0A con_fighter_0A
+                                        .byte $05   ; 0B con_fighter_0B
+                                        .byte $09   ; 0C con_fighter_0C
+                                        .byte $06   ; 0D con_fighter_0D
                                     .endif
 
 
@@ -694,11 +716,12 @@ tbl_A8A6:
 - D 1 - - - 0x02E8BC 0B:A8AC: 07        .byte $07   ; 06 con_fighter_shred
                                     .if con_новые_персы <> $00
                                         .byte $05   ; 07 con_fighter_07
-                                        .byte $05   ; 08 con_fighter_08
+                                        .byte $06   ; 08 con_fighter_08
                                         .byte $05   ; 09 con_fighter_09
-                                        .byte $05   ; 0A con_fighter_0A
+                                        .byte $06   ; 0A con_fighter_0A
                                         .byte $05   ; 0B con_fighter_0B
-                                        .byte $05   ; 0C con_fighter_0C
+                                        .byte $09   ; 0C con_fighter_0C
+                                        .byte $07   ; 0D con_fighter_0D
                                     .endif
 
 
@@ -2667,7 +2690,6 @@ ofs_052_9FA6_04_мяч_был_запущен_персом:
 C - - J - - 0x025FB6 09:9FA6: 20 FA DC  JSR sub_0x03DD0A
 C - - - - - 0x025FB9 09:9FA9: AC 26 05  LDY ram_obj_0520 + $06
 C - - - - - 0x025FBC 09:9FAC: B9 50 05  LDA ram_obj_id,Y ; 0550 0551 
-; con_новые_персы
 C - - - - - 0x025FBF 09:9FAF: AC 46 05  LDY ram_obj_0540 + $06
 C - - - - - 0x025FC2 09:9FB2: 20 32 D0  JSR sub_0x03D042_поинтеры_после_JSR
 - D 0 - I - 0x025FC5 09:9FB5: 0E A0     .word ofs_051_A00E_00_leo
@@ -2677,6 +2699,15 @@ C - - - - - 0x025FC2 09:9FB2: 20 32 D0  JSR sub_0x03D042_поинтеры_пос
 - D 0 - I - 0x025FCD 09:9FBD: 65 A0     .word ofs_051_A065_04_casey
 - D 0 - I - 0x025FCF 09:9FBF: 40 A1     .word ofs_051_A140_05_hot
 - D 0 - I - 0x025FD1 09:9FC1: BD A0     .word ofs_051_A0BD_06_shred
+                                    .if con_новые_персы <> $00
+                                        .word ofs_051_A00E_07
+                                        .word ofs_051_A00E_08
+                                        .word ofs_051_A1AC_09
+                                        .word ofs_051_A18C_0A
+                                        .word ofs_051_A065_0B
+                                        .word ofs_051_A140_0C
+                                        .word ofs_051_A0BD_0D
+                                    .endif
 
 
 
@@ -2732,7 +2763,9 @@ C - - - - - 0x02601D 09:A00D: 60        RTS
 
 
 ofs_051_A00E_00_leo:
+ofs_051_A00E_07:
 ofs_051_A00E_01_raph:
+ofs_051_A00E_08:
 C - - J - - 0x02601E 09:A00E: A9 CA     LDA #$CA
 C - - - - - 0x026020 09:A010: 8D 06 04  STA ram_obj_anim_id + $06
 C - - - - - 0x026023 09:A013: AC 46 05  LDY ram_obj_0540 + $06
@@ -2779,6 +2812,7 @@ C - - - - - 0x026072 09:A062: 4C DD A1  JMP loc_A1DD
 
 
 ofs_051_A065_04_casey:
+ofs_051_A065_0B:
 C - - J - - 0x026075 09:A065: A8        TAY
 C - - - - - 0x026076 09:A066: D0 1C     BNE bra_A084
 C - - - - - 0x026078 09:A068: A9 83     LDA #$83
@@ -2824,6 +2858,7 @@ C - - - - - 0x0260CA 09:A0BA: 4C CE 9F  JMP loc_9FCE
 
 
 ofs_051_A0BD_06_shred:
+ofs_051_A0BD_0D:
 C - - J - - 0x0260CD 09:A0BD: A8        TAY
 C - - - - - 0x0260CE 09:A0BE: D0 1E     BNE bra_A0DE
 C - - - - - 0x0260D0 09:A0C0: A9 03     LDA #$03
@@ -2899,6 +2934,7 @@ tbl_A13D:
 
 
 ofs_051_A140_05_hot:
+ofs_051_A140_0C:
 C - - J - - 0x026150 09:A140: A8        TAY
 C - - - - - 0x026151 09:A141: D0 1A     BNE bra_A15D
 C - - - - - 0x026153 09:A143: A9 03     LDA #$03
@@ -2947,6 +2983,7 @@ tbl_A18A:
 
 
 ofs_051_A18C_03_don:
+ofs_051_A18C_0A:
 C - - J - - 0x02619C 09:A18C: A8        TAY
 C - - - - - 0x02619D 09:A18D: D0 16     BNE bra_A1A5
 C - - - - - 0x02619F 09:A18F: A9 83     LDA #$83
@@ -2966,6 +3003,7 @@ C - - - - - 0x0261BB 09:A1AB: 60        RTS
 
 
 ofs_051_A1AC_02_mike:
+ofs_051_A1AC_09:
 C - - J - - 0x0261BC 09:A1AC: A8        TAY
 C - - - - - 0x0261BD 09:A1AD: D0 F6     BNE bra_A1A5
 C - - - - - 0x0261BF 09:A1AF: A9 C3     LDA #$C3

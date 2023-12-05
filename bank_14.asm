@@ -13,6 +13,13 @@
 .export _off000_0x028E23_04_casey
 .export _off000_0x029B62_05_hot
 .export _off000_0x02AED5_06_shred
+.export _off000_0x028011_07
+.export _off000_0x028011_08
+.export _off000_0x028011_09
+.export _off000_0x028011_0A
+.export _off000_0x028E23_0B
+.export _off000_0x029B62_0C
+.export _off000_0x02AED5_0D
 .export sub_0x02BD8C
 .export sub_0x02BF21
 
@@ -24,9 +31,13 @@
 
 
 _off000_0x028011_00_leo:
+_off000_0x028011_07:
 _off000_0x028011_01_raph:
+_off000_0x028011_08:
 _off000_0x028011_02_mike:
+_off000_0x028011_09:
 _off000_0x028011_03_don:
+_off000_0x028011_0A:
 - D 0 - - - 0x028011 0A:8001: CD 80     .word _off002_80CD_80
 - D 0 - I - 0x028013 0A:8003: F2 80     .word _off002_80F2_81
 - D 0 - I - 0x028015 0A:8005: 17 81     .word _off002_8117_82
@@ -1569,6 +1580,7 @@ _off002_8E0A_E5:
 
 
 _off000_0x028E23_04_casey:
+_off000_0x028E23_0B:
 - D 0 - I - 0x028E23 0A:8E13: C5 8E     .word _off003_8EC5_80
 - D 0 - I - 0x028E25 0A:8E15: F2 8E     .word _off003_8EF2_81
 - D 0 - I - 0x028E27 0A:8E17: 1F 8F     .word _off003_8F1F_82
@@ -2977,6 +2989,7 @@ _off003_9B31_D8:
 
 
 _off000_0x029B62_05_hot:
+_off000_0x029B62_0C:
 - D 0 - I - 0x029B62 0A:9B52: DC 9B     .word _off004_9BDC_80
 - D 0 - I - 0x029B64 0A:9B54: 31 9C     .word _off004_9C31_81
 - D 0 - I - 0x029B66 0A:9B56: 86 9C     .word _off004_9C86_82
@@ -4657,6 +4670,7 @@ _off004_AE70_C4:
 
 
 _off000_0x02AED5_06_shred:
+_off000_0x02AED5_0D:
 - D 1 - I - 0x02AED5 0A:AEC5: 5B AF     .word _off005_AF5B_80
 - D 1 - I - 0x02AED7 0A:AEC7: 8C AF     .word _off005_AF8C_81
 - D 1 - I - 0x02AED9 0A:AEC9: BD AF     .word _off005_AFBD_82
@@ -6255,11 +6269,12 @@ tbl_BFCE_hp_стен_в_story_для_персов:
                                         .byte $90   ; 06 con_fighter_shred
                                     .if con_новые_персы <> $00
                                         .byte $B0   ; 07 con_fighter_07
-                                        .byte $B0   ; 08 con_fighter_08
-                                        .byte $B0   ; 09 con_fighter_09
+                                        .byte $90   ; 08 con_fighter_08
+                                        .byte $BF   ; 09 con_fighter_09
                                         .byte $B0   ; 0A con_fighter_0A
-                                        .byte $B0   ; 0B con_fighter_0B
-                                        .byte $B0   ; 0C con_fighter_0C
+                                        .byte $A0   ; 0B con_fighter_0B
+                                        .byte $A0   ; 0C con_fighter_0C
+                                        .byte $90   ; 0D con_fighter_0D
                                     .endif
 
 
