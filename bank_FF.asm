@@ -3296,17 +3296,19 @@ ofs_001_E1FD_01_еще_одна_чистка_экрана_и_прочего___о
 C - - J - - 0x03E20D 0F:E1FD: E6 95     INC ram_0095_стадия_игры    ; 01 -> 02
 C - - - - - 0x03E20F 0F:E1FF: 20 3C F0  JSR sub_F03C_выключить_irq___удалить_все_объекты___отрисовать_пустой_экран
 C - - - - - 0x03E212 0F:E202: 20 C2 F6  JSR sub_F6C2_выключить_музыку_и_звуки
-C - - - - - 0x03E215 0F:E205: A6 2C     LDX ram_game_mode
-; con_gm_story
-; con_gm_vs_player
-; con_gm_vs_cpu
-; con_gm_vs_team
-; con_gm_tournament
-C - - - - - 0x03E217 0F:E207: F0 28     BEQ bra_E231_story
-C - - - - - 0x03E219 0F:E209: E0 03     CPX #$03
-C - - - - - 0x03E21B 0F:E20B: 90 39     BCC bra_E246
-; con_gm_vs_team
-; con_gm_tournament
+C - - - - - 0x03E215 0F:E205: A6 2C     LDA ram_game_mode
+                                        JSR sub_D032_поинтеры_после_JSR
+                                        .word ofs_087_E231_00_story
+                                        .word ofs_087_E246_01_vs_player
+                                        .word ofs_087_E246_02_vs_cpu
+                                        .word ofs_087_E20F_03_vs_team
+                                        .word ofs_087_E20F_04_tournament
+                                       ;.word ofs_087_E20F_05_options
+
+
+
+ofs_087_E20F_03_vs_team:
+ofs_087_E20F_04_tournament:
 C - - - - - 0x03E21F 0F:E20F: 20 00 F6  JSR sub_F600_swap_prg_16_no_return
 C - - - - - 0x03E226 0F:E216: 4C 70 BF  JMP loc_0x02FF80
 
@@ -3327,7 +3329,7 @@ C - - - - - 0x03E240 0F:E230: 60        RTS
 
 
 
-bra_E231_story:
+ofs_087_E231_00_story:
 ; con_новые_персы
 C - - - - - 0x03E241 0F:E231: A5 9E     LDA ram_009E
                                         CMP #con_fighter_shred
@@ -3342,10 +3344,8 @@ C - - - - - 0x03E24F 0F:E23F: 85 A3     STA ram_plr_id + $01
 C - - - - - 0x03E251 0F:E241: 4C F8 E5  JMP loc_E5F8
 bra_E244:
 C - - - - - 0x03E254 0F:E244: 85 A3     STA ram_plr_id + $01
-bra_E246:
-; con_gm_story
-; con_gm_vs_player
-; con_gm_vs_cpu
+ofs_087_E246_01_vs_player:
+ofs_087_E246_02_vs_cpu:
 loc_0x03E256:
 C D 3 - - - 0x03E256 0F:E246: A9 03     LDA #con_0095_старт_vs_экрана    ; отрисовать vs экран
 C - - - - - 0x03E258 0F:E248: 85 95     STA ram_0095_стадия_игры
