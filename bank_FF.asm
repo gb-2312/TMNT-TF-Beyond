@@ -5093,43 +5093,23 @@ C - - - - - 0x03EBC7 0F:EBB7: 20 6B D2  JSR sub_D26B_записать_адрес
 C - - - - - 0x03EBCA 0F:EBBA: A5 01     LDA ram_0001
 C - - - - - 0x03EBCC 0F:EBBC: D0 23     BNE bra_EBE1_vs_экран
 ; if вывести имя в статусбаре
-; bzk optimize, вместо поиска нужного начального адреса сделать таблицу с готовыми индексами
-C - - - - - 0x03EBCE 0F:EBBE: A0 00     LDY #$00
-C - - - - - 0x03EBD0 0F:EBC0: A5 00     LDA ram_0000    ; индекс перса
-C - - - - - 0x03EBD2 0F:EBC2: F0 0D     BEQ bra_EBD1
-bra_EBC4_loop:
-C - - - - - 0x03EBD4 0F:EBC4: C8        INY
-C - - - - - 0x03EBD5 0F:EBC5: B9 01 EC  LDA tbl_EC01_имя_перса_в_статусбаре,Y
-C - - - - - 0x03EBD8 0F:EBC8: C9 FF     CMP #$FF
-C - - - - - 0x03EBDA 0F:EBCA: D0 F8     BNE bra_EBC4_loop
-C - - - - - 0x03EBDC 0F:EBCC: C8        INY
-C - - - - - 0x03EBDD 0F:EBCD: C6 00     DEC ram_0000    ; индекс перса
-C - - - - - 0x03EBDF 0F:EBCF: D0 F3     BNE bra_EBC4_loop
-bra_EBD1:
+C - - - - - 0x03EBD0 0F:EBC0: A5 00     LDY ram_0000    ; индекс перса
+                                        LDA tbl_EC00_индекс,Y
+                                        TAY
 bra_EBD1_loop:
 C - - - - - 0x03EBE1 0F:EBD1: B9 01 EC  LDA tbl_EC01_имя_перса_в_статусбаре,Y
 C - - - - - 0x03EBE4 0F:EBD4: 20 5F D2  JSR sub_D25F_записать_A_в_буфер_с_сохранением_индекса
 C - - - - - 0x03EBE7 0F:EBD7: C8        INY
 C - - - - - 0x03EBE8 0F:EBD8: C9 FF     CMP #$FF
-C - - - - - 0x03EBEA 0F:EBDA: D0 F5     BNE bra_EBD1
+C - - - - - 0x03EBEA 0F:EBDA: D0 F5     BNE bra_EBD1_loop
 bra_EBDC:
 C - - - - - 0x03EBEC 0F:EBDC: C6 A8     DEC ram_local_obj_index
 C - - - - - 0x03EBEE 0F:EBDE: 10 C6     BPL bra_EBA6_loop
 C - - - - - 0x03EBF0 0F:EBE0: 60        RTS
 bra_EBE1_vs_экран:
-; bzk optimize, вместо поиска нужного начального адреса сделать таблицу с готовыми индексами
-C - - - - - 0x03EBF1 0F:EBE1: A0 00     LDY #$00
-C - - - - - 0x03EBF3 0F:EBE3: A5 00     LDA ram_0000
-C - - - - - 0x03EBF5 0F:EBE5: F0 0D     BEQ bra_EBF4
-bra_EBE7_loop:
-C - - - - - 0x03EBF7 0F:EBE7: C8        INY
-C - - - - - 0x03EBF8 0F:EBE8: B9 2A EC  LDA tbl_EC2A_имя_перса_на_vs_экране,Y
-C - - - - - 0x03EBFB 0F:EBEB: C9 FF     CMP #$FF
-C - - - - - 0x03EBFD 0F:EBED: D0 F8     BNE bra_EBE7_loop
-C - - - - - 0x03EBFF 0F:EBEF: C8        INY
-C - - - - - 0x03EC00 0F:EBF0: C6 00     DEC ram_0000
-C - - - - - 0x03EC02 0F:EBF2: D0 F3     BNE bra_EBE7_loop
-bra_EBF4:
+C - - - - - 0x03EBF3 0F:EBE3: A5 00     LDY ram_0000    ; индекс перса
+                                        LDA tbl_EC29_индекс,Y
+                                        TAY
 bra_EBF4_loop:
 C - - - - - 0x03EC04 0F:EBF4: B9 2A EC  LDA tbl_EC2A_имя_перса_на_vs_экране,Y
 C - - - - - 0x03EC07 0F:EBF7: 20 5F D2  JSR sub_D25F_записать_A_в_буфер_с_сохранением_индекса
@@ -5140,59 +5120,97 @@ C - - - - - 0x03EC0F 0F:EBFF: F0 DB     BEQ bra_EBDC    ; jmp
 
 
 
+tbl_EC00_индекс:
+                                        .byte off_EC01_00 - tbl_EC02
+                                        .byte off_EC05_01 - tbl_EC02
+                                        .byte off_EC0A_02 - tbl_EC02
+                                        .byte off_EC0F_03 - tbl_EC02
+                                        .byte off_EC13_04 - tbl_EC02
+                                        .byte off_EC19_05 - tbl_EC02
+                                        .byte off_EC21_06 - tbl_EC02
+
+
+
 tbl_EC01_имя_перса_в_статусбаре:
+tbl_EC02:
 ; con_новые_персы
 ; leo
+off_EC01_00:
 - D 3 - - - 0x03EC11 0F:EC01: 07        .byte $07, $04, $0A   ; LEO
 - D 3 - - - 0x03EC14 0F:EC04: FF        .byte $FF   ; 
 
 ; raph
+off_EC05_01:
 - D 3 - - - 0x03EC15 0F:EC05: 0C        .byte $0C, $01, $0B, $05   ; RAPH
 - D 3 - - - 0x03EC19 0F:EC09: FF        .byte $FF   ; 
 
 ; mike
+off_EC0A_02:
 - D 3 - - - 0x03EC1A 0F:EC0A: 08        .byte $08, $06, $60, $04   ; MIKE
 - D 3 - - - 0x03EC1E 0F:EC0E: FF        .byte $FF   ; 
 
 ; don
+off_EC0F_03:
 - D 3 - - - 0x03EC1F 0F:EC0F: 03        .byte $03, $0A, $09   ; DON
 - D 3 - - - 0x03EC22 0F:EC12: FF        .byte $FF   ; 
 
 ; casey
+off_EC13_04:
 - D 3 - - - 0x03EC23 0F:EC13: 02        .byte $02, $01, $0D, $04, $0F   ; CASEY
 - D 3 - - - 0x03EC28 0F:EC18: FF        .byte $FF   ; 
 
 ; hot
+off_EC19_05:
 - D 3 - - - 0x03EC29 0F:EC19: 05        .byte $05, $0A, $0E, $05, $04, $01, $03   ; HOTHEAD
 - D 3 - - - 0x03EC30 0F:EC20: FF        .byte $FF   ; 
 
 ; shred
+off_EC21_06:
 - D 3 - - - 0x03EC31 0F:EC21: 0D        .byte $0D, $05, $0C, $04, $03, $03, $04, $0C   ; SHREDDER
 - D 3 - - - 0x03EC39 0F:EC29: FF        .byte $FF   ; 
 
 
 
+tbl_EC29_индекс:
+                                        .byte off_EC2A_00 - tbl_EC2B
+                                        .byte off_EC2E_01 - tbl_EC2B
+                                        .byte off_EC33_02 - tbl_EC2B
+                                        .byte off_EC38_03 - tbl_EC2B
+                                        .byte off_EC3C_04 - tbl_EC2B
+                                        .byte off_EC42_05 - tbl_EC2B
+                                        .byte off_EC4A_06 - tbl_EC2B
+
+
+
 tbl_EC2A_имя_перса_на_vs_экране:
+tbl_EC2B:
 ; con_новые_персы
 ; leo
+off_EC2A_00:
 - D 3 - - - 0x03EC3A 0F:EC2A: 16        .byte $16, $0F, $19   ; LEO
 - D 3 - - - 0x03EC3D 0F:EC2D: FF        .byte $FF   ; 
 ; raph
+off_EC2E_01:
 - D 3 - - - 0x03EC3E 0F:EC2E: 1C        .byte $1C, $0B, $1A, $12   ; RAPH
 - D 3 - - - 0x03EC42 0F:EC32: FF        .byte $FF   ; 
 ; mike
+off_EC33_02:
 - D 3 - - - 0x03EC43 0F:EC33: 17        .byte $17, $13, $15, $0F   ; MIKE
 - D 3 - - - 0x03EC47 0F:EC37: FF        .byte $FF   ; 
 ; don
+off_EC38_03:
 - D 3 - - - 0x03EC48 0F:EC38: 0E        .byte $0E, $19, $18   ; DON
 - D 3 - - - 0x03EC4B 0F:EC3B: FF        .byte $FF   ; 
 ; casey
+off_EC3C_04:
 - D 3 - - - 0x03EC4C 0F:EC3C: 0D        .byte $0D, $0B, $1D, $0F, $23   ; CASEY
 - D 3 - - - 0x03EC51 0F:EC41: FF        .byte $FF   ; 
 ; hot
+off_EC42_05:
 - D 3 - - - 0x03EC52 0F:EC42: 12        .byte $12, $19, $1E, $12, $0F, $0B, $0E   ; HOTHEAD
 - D 3 - - - 0x03EC59 0F:EC49: FF        .byte $FF   ; 
 ; shred
+off_EC4A_06:
 - D 3 - - - 0x03EC5A 0F:EC4A: 1D        .byte $1D, $12, $1C, $0F, $0E, $0E, $0F, $1C   ; SHREDDER
 - D 3 - - - 0x03EC62 0F:EC52: FF        .byte $FF   ; 
 
