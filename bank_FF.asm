@@ -3341,7 +3341,9 @@ C - - - - - 0x03E249 0F:E239: 85 9E     STA ram_009E
 C - - - - - 0x03E24B 0F:E23B: C9 04     CMP #$04
 C - - - - - 0x03E24D 0F:E23D: D0 05     BNE bra_E244
 C - - - - - 0x03E24F 0F:E23F: 85 A3     STA ram_plr_id + $01
-C - - - - - 0x03E251 0F:E241: 4C F8 E5  JMP loc_E5F8
+C - - - - - 0x03E251 0F:E241: 4C F8 E5  LDA #con_0095_bonus_game_отрисовка_1
+                                        STA ram_0095_стадия_игры
+                                        RTS
 bra_E244:
 C - - - - - 0x03E254 0F:E244: 85 A3     STA ram_plr_id + $01
 ofs_087_E246_01_vs_player:
@@ -4001,7 +4003,6 @@ C - - - - - 0x03E600 0F:E5F0: E6 9E     INC ram_009E
 C - - - - - 0x03E602 0F:E5F2: A5 9E     LDA ram_009E
 C - - - - - 0x03E604 0F:E5F4: C9 04     CMP #$04
 C - - - - - 0x03E606 0F:E5F6: D0 07     BNE bra_E5FF
-loc_E5F8:
 C D 3 - - - 0x03E608 0F:E5F8: A9 17     LDA #con_0095_bonus_game_отрисовка_1
 C - - - - - 0x03E60A 0F:E5FA: D0 0D     BNE bra_E609    ; jmp
 bra_E5FC:
