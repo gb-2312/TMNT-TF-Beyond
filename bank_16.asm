@@ -913,29 +913,29 @@ C - - - - - 0x02EC17 0B:AC07: 60        RTS
 
 
 
-tbl_ACB0:
+tbl_ACB0_палитра_боя:
 ; green, original
-- D 1 - - - 0x02ECC0 0B:ACB0: 00        .word off_AD00_00
-- D 1 - - - 0x02ECC1 0B:ACB1: 0C        .word off_AD0C_01
-- D 1 - - - 0x02ECC2 0B:ACB2: 00        .word off_AD00_02
-- D 1 - - - 0x02ECC3 0B:ACB3: 0C        .word off_AD0C_03
-- D 1 - - - 0x02ECC4 0B:ACB4: 18        .word off_AD18_04
-- D 1 - - - 0x02ECC5 0B:ACB5: 18        .word off_AD18_05
-- D 1 - - - 0x02ECC6 0B:ACB6: 24        .word off_AD24_06
+- D 1 - - - 0x02ECC0 0B:ACB0: 00        .word off_AD00_00_leo
+- D 1 - - - 0x02ECC1 0B:ACB1: 0C        .word off_AD0C_01_raph
+- D 1 - - - 0x02ECC2 0B:ACB2: 00        .word off_AD00_02_mike
+- D 1 - - - 0x02ECC3 0B:ACB3: 0C        .word off_AD0C_03_don
+- D 1 - - - 0x02ECC4 0B:ACB4: 18        .word off_AD18_04_casey
+- D 1 - - - 0x02ECC5 0B:ACB5: 18        .word off_AD18_05_hot
+- D 1 - - - 0x02ECC6 0B:ACB6: 24        .word off_AD24_06_shred
 - D 1 - - - 0x02ECC7 0B:ACB7: 30        .word off_AD30_07
 ; night
-- - - - - - 0x02ECD0 0B:ACC0: 80        .word off_AD80_10
-- - - - - - 0x02ECD1 0B:ACC1: 8C        .word off_AD8C_11
-- - - - - - 0x02ECD2 0B:ACC2: 80        .word off_AD80_12
-- - - - - - 0x02ECD3 0B:ACC3: 8C        .word off_AD8C_13
-- - - - - - 0x02ECD4 0B:ACC4: 98        .word off_AD98_14
-- - - - - - 0x02ECD5 0B:ACC5: 98        .word off_AD98_15
-- - - - - - 0x02ECD6 0B:ACC6: A4        .word off_ADA4_16
+- - - - - - 0x02ECD0 0B:ACC0: 80        .word off_AD80_10_leo
+- - - - - - 0x02ECD1 0B:ACC1: 8C        .word off_AD8C_11_raph
+- - - - - - 0x02ECD2 0B:ACC2: 80        .word off_AD80_12_mike
+- - - - - - 0x02ECD3 0B:ACC3: 8C        .word off_AD8C_13_don
+- - - - - - 0x02ECD4 0B:ACC4: 98        .word off_AD98_14_casey
+- - - - - - 0x02ECD5 0B:ACC5: 98        .word off_AD98_15_hot
+- - - - - - 0x02ECD6 0B:ACC6: A4        .word off_ADA4_16_shred
 - - - - - - 0x02ECD7 0B:ACC7: B0        .word off_ADB0_17
 
 
 
-tbl_ACD0_палитра:
+tbl_ACD0_фиксированная_палитра:
 - D 1 - - - 0x02ECE0 0B:ACD0: 0F        .byte $0F, $16, $1A, $20   ; 
 - D 1 - - - 0x02ECE4 0B:ACD4: 0F        .byte $0F, $0B, $2A, $12   ; 
 - D 1 - - - 0x02ECE8 0B:ACD8: 0F        .byte $0F, $07, $16, $31   ; 
@@ -944,25 +944,25 @@ tbl_ACD0_палитра:
 
 
 
-off_AD00_00:
-off_AD00_02:
+off_AD00_00_leo:
+off_AD00_02_mike:
 - D 1 - I - 0x02ED10 0B:AD00: 0F        .byte $0F, $17, $27, $38   ; 
 - D 1 - I - 0x02ED14 0B:AD04: 0F        .byte $0F, $04, $14, $24   ; 
 - D 1 - I - 0x02ED18 0B:AD08: 0F        .byte $0F, $06, $16, $26   ; 
 
-off_AD0C_01:
-off_AD0C_03:
+off_AD0C_01_raph:
+off_AD0C_03_don:
 - D 1 - I - 0x02ED1C 0B:AD0C: 0F        .byte $0F, $00, $10, $20   ; 
 - D 1 - I - 0x02ED20 0B:AD10: 0F        .byte $0F, $06, $16, $27   ; 
 - D 1 - I - 0x02ED24 0B:AD14: 0F        .byte $0F, $08, $18, $28   ; 
 
-off_AD18_04:
-off_AD18_05:
+off_AD18_04_casey:
+off_AD18_05_hot:
 - D 1 - I - 0x02ED28 0B:AD18: 0F        .byte $0F, $07, $17, $27   ; 
 - D 1 - I - 0x02ED2C 0B:AD1C: 0F        .byte $0F, $06, $16, $26   ; 
 - D 1 - I - 0x02ED30 0B:AD20: 0F        .byte $0F, $05, $07, $10   ; 
 
-off_AD24_06:
+off_AD24_06_shred:
 - D 1 - I - 0x02ED34 0B:AD24: 0F        .byte $0F, $0C, $1C, $21   ; 
 - D 1 - I - 0x02ED38 0B:AD28: 0F        .byte $0F, $01, $11, $21   ; 
 - D 1 - I - 0x02ED3C 0B:AD2C: 0F        .byte $0F, $03, $13, $23   ; 
@@ -972,25 +972,25 @@ off_AD30_07:
 - D 1 - I - 0x02ED44 0B:AD34: 0F        .byte $0F, $37, $27, $17   ; 
 - D 1 - I - 0x02ED48 0B:AD38: 0F        .byte $0F, $06, $16, $26   ; 
 
-off_AD80_10:
-off_AD80_12:
+off_AD80_10_leo:
+off_AD80_12_mike:
 - - - - - - 0x02ED90 0B:AD80: 0F        .byte $0F, $01, $11, $21   ; 
 - - - - - - 0x02ED94 0B:AD84: 0F        .byte $0F, $03, $13, $23   ; 
 - - - - - - 0x02ED98 0B:AD88: 0F        .byte $0F, $0C, $1C, $21   ; 
 
-off_AD8C_11:
-off_AD8C_13:
+off_AD8C_11_raph:
+off_AD8C_13_don:
 - - - - - - 0x02ED9C 0B:AD8C: 0F        .byte $0F, $01, $11, $21   ; 
 - - - - - - 0x02EDA0 0B:AD90: 0F        .byte $0F, $03, $13, $23   ; 
 - - - - - - 0x02EDA4 0B:AD94: 0F        .byte $0F, $0C, $1C, $21   ; 
 
-off_AD98_14:
-off_AD98_15:
+off_AD98_14_casey:
+off_AD98_15_hot:
 - - - - - - 0x02EDA8 0B:AD98: 0F        .byte $0F, $01, $11, $21   ; 
 - - - - - - 0x02EDAC 0B:AD9C: 0F        .byte $0F, $0C, $1C, $21   ; 
 - - - - - - 0x02EDB0 0B:ADA0: 0F        .byte $0F, $03, $02, $23   ; 
 
-off_ADA4_16:
+off_ADA4_16_shred:
 - - - - - - 0x02EDB4 0B:ADA4: 0F        .byte $0F, $0C, $1C, $21   ; 
 - - - - - - 0x02EDB8 0B:ADA8: 0F        .byte $0F, $01, $11, $21   ; 
 - - - - - - 0x02EDBC 0B:ADAC: 0F        .byte $0F, $03, $13, $23   ; 
@@ -1003,31 +1003,31 @@ off_ADB0_17:
 
 
 tbl_AE20_уровень_для_отрисовки:
-- D 1 - - - 0x02EE30 0B:AE20: 0A        .byte con_screen_stage_sewer   ; 00
-- D 1 - - - 0x02EE31 0B:AE21: 14        .byte con_screen_stage_down_town   ; 01
-- D 1 - - - 0x02EE32 0B:AE22: 0A        .byte con_screen_stage_sewer   ; 02
-- D 1 - - - 0x02EE33 0B:AE23: 14        .byte con_screen_stage_down_town   ; 03
-- D 1 - - - 0x02EE34 0B:AE24: 0E        .byte con_screen_stage_pirate_ship   ; 04
-- D 1 - - - 0x02EE35 0B:AE25: 0E        .byte con_screen_stage_pirate_ship   ; 05
-- D 1 - - - 0x02EE36 0B:AE26: 08        .byte con_screen_stage_water_front   ; 06
-- D 1 - - - 0x02EE37 0B:AE27: 3E        .byte con_screen_stage_technodrome   ; 07
+- D 1 - - - 0x02EE30 0B:AE20: 0A        .byte con_screen_stage_sewer   ; 00 con_fighter_leo
+- D 1 - - - 0x02EE31 0B:AE21: 14        .byte con_screen_stage_down_town   ; 01 con_fighter_raph
+- D 1 - - - 0x02EE32 0B:AE22: 0A        .byte con_screen_stage_sewer   ; 02 con_fighter_mike
+- D 1 - - - 0x02EE33 0B:AE23: 14        .byte con_screen_stage_down_town   ; 03 con_fighter_don
+- D 1 - - - 0x02EE34 0B:AE24: 0E        .byte con_screen_stage_pirate_ship   ; 04 con_fighter_casey
+- D 1 - - - 0x02EE35 0B:AE25: 0E        .byte con_screen_stage_pirate_ship   ; 05 con_fighter_hot
+- D 1 - - - 0x02EE36 0B:AE26: 08        .byte con_screen_stage_water_front   ; 06 con_fighter_shred
+- D 1 - - - 0x02EE37 0B:AE27: 3E        .byte con_screen_stage_technodrome   ; 07 
 
 
 
 tbl_AE30:
-- D 1 - - - 0x02EE40 0B:AE30: 68        .byte con_chr_bank_bg + $68, con_chr_bank_bg + $6A   ; 00
-- D 1 - - - 0x02EE42 0B:AE32: 64        .byte con_chr_bank_bg + $64, con_chr_bank_bg + $66   ; 01
-- D 1 - - - 0x02EE44 0B:AE34: 68        .byte con_chr_bank_bg + $68, con_chr_bank_bg + $6A   ; 02
-- D 1 - - - 0x02EE46 0B:AE36: 64        .byte con_chr_bank_bg + $64, con_chr_bank_bg + $66   ; 03
-- D 1 - - - 0x02EE48 0B:AE38: 60        .byte con_chr_bank_bg + $60, con_chr_bank_bg + $62   ; 04
-- D 1 - - - 0x02EE4A 0B:AE3A: 60        .byte con_chr_bank_bg + $60, con_chr_bank_bg + $62   ; 05
-- D 1 - - - 0x02EE4C 0B:AE3C: 5C        .byte con_chr_bank_bg + $5C, con_chr_bank_bg + $5E   ; 06
-- D 1 - - - 0x02EE4E 0B:AE3E: 88        .byte con_chr_bank_bg + $88, con_chr_bank_bg + $8A   ; 07
+- D 1 - - - 0x02EE40 0B:AE30: 68        .byte con_chr_bank_bg + $68, con_chr_bank_bg + $6A   ; 00 con_fighter_leo
+- D 1 - - - 0x02EE42 0B:AE32: 64        .byte con_chr_bank_bg + $64, con_chr_bank_bg + $66   ; 01 con_fighter_raph
+- D 1 - - - 0x02EE44 0B:AE34: 68        .byte con_chr_bank_bg + $68, con_chr_bank_bg + $6A   ; 02 con_fighter_mike
+- D 1 - - - 0x02EE46 0B:AE36: 64        .byte con_chr_bank_bg + $64, con_chr_bank_bg + $66   ; 03 con_fighter_don
+- D 1 - - - 0x02EE48 0B:AE38: 60        .byte con_chr_bank_bg + $60, con_chr_bank_bg + $62   ; 04 con_fighter_casey
+- D 1 - - - 0x02EE4A 0B:AE3A: 60        .byte con_chr_bank_bg + $60, con_chr_bank_bg + $62   ; 05 con_fighter_hot
+- D 1 - - - 0x02EE4C 0B:AE3C: 5C        .byte con_chr_bank_bg + $5C, con_chr_bank_bg + $5E   ; 06 con_fighter_shred
+- D 1 - - - 0x02EE4E 0B:AE3E: 88        .byte con_chr_bank_bg + $88, con_chr_bank_bg + $8A   ; 07 
 
 
 
 sub_0x02EE60_выбрать_палитру_уровня:
-C - - - - - 0x02EE60 0B:AE50: A5 9E     LDA ram_009E
+C - - - - - 0x02EE60 0B:AE50: A5 9E     LDA ram_номер_боя_story
 C - - - - - 0x02EE62 0B:AE52: 8D 5C 01  STA ram_tournament_индекс_игрока + $07
 C - - - - - 0x02EE65 0B:AE55: EE 52 01  INC ram_0152
 C - - - - - 0x02EE68 0B:AE58: 20 8C FC  JSR sub_0x03FC9C_set_mirroring_V
@@ -1043,7 +1043,7 @@ C - - - - - 0x02EE7A 0B:AE6A: A9 01     LDA #con_0048_01
 C - - - - - 0x02EE7C 0B:AE6C: 85 48     STA ram_irq_handler
                                         LDA #$01    ; enable irq
 C - - - - - 0x02EE7E 0B:AE6E: 85 49     STA ram_irq_flag
-C - - - - - 0x02EE80 0B:AE70: A5 9E     LDA ram_009E
+C - - - - - 0x02EE80 0B:AE70: A5 9E     LDA ram_номер_боя_story
 C - - - - - 0x02EE82 0B:AE72: 0A        ASL
 C - - - - - 0x02EE83 0B:AE73: A8        TAY
 C - - - - - 0x02EE84 0B:AE74: A9 D0     LDA #< ofs_0x03F8E0
@@ -1054,6 +1054,7 @@ C - - - - - 0x02EE8C 0B:AE7C: B9 30 AE  LDA tbl_AE30,Y
 C - - - - - 0x02EE8F 0B:AE7F: 85 4E     STA ram_alt_chr_bank_bg_1
 C - - - - - 0x02EE91 0B:AE81: B9 31 AE  LDA tbl_AE30 + $01,Y
 C - - - - - 0x02EE94 0B:AE84: 85 4F     STA ram_alt_chr_bank_bg_1 + $01
+; bzk optimize, сделать выбора офсета по таблице
 C - - - - - 0x02EE9A 0B:AE8A: AD 2B 01  LDA ram_option_misc
 C - - - - - 0x02EE9D 0B:AE8D: 29 02     AND #$02
 C - - - - - 0x02EE9F 0B:AE8F: F0 02     BEQ bra_AE93
@@ -1063,12 +1064,12 @@ bra_AE93:
                                         .byte $2C   ; BIT
                                         LDA #$00
                                         CLC
-C - - - - - 0x02EEA3 0B:AE93: 65 9E     ADC ram_009E
+C - - - - - 0x02EEA3 0B:AE93: 65 9E     ADC ram_номер_боя_story
                                         ASL
 C - - - - - 0x02EEA5 0B:AE95: AA        TAX
-C - - - - - 0x02EEA6 0B:AE96: BD B0 AC  LDA tbl_ACB0,X
+C - - - - - 0x02EEA6 0B:AE96: BD B0 AC  LDA tbl_ACB0_палитра_боя,X
 C - - - - - 0x02EEA9 0B:AE99: 85 00     STA ram_0000
-                                        LDA tbl_ACB0 + $01,X
+                                        LDA tbl_ACB0_палитра_боя + $01,X
                                         STA ram_0001
 C - - - - - 0x02EEAB 0B:AE9B: A0 0B     LDY #$0B
 bra_AE9D_loop:
@@ -1078,7 +1079,7 @@ C - - - - - 0x02EEB2 0B:AEA2: 88        DEY
 C - - - - - 0x02EEB3 0B:AEA3: 10 F8     BPL bra_AE9D_loop
 C - - - - - 0x02EEB5 0B:AEA5: A0 13     LDY #$13
 bra_AEA7_loop:
-C - - - - - 0x02EEB7 0B:AEA7: B9 D0 AC  LDA tbl_ACD0_палитра,Y
+C - - - - - 0x02EEB7 0B:AEA7: B9 D0 AC  LDA tbl_ACD0_фиксированная_палитра,Y
 C - - - - - 0x02EEBA 0B:AEAA: 99 59 06  STA ram_pal_buffer + $0C,Y
 C - - - - - 0x02EEBD 0B:AEAD: 88        DEY
 C - - - - - 0x02EEBE 0B:AEAE: 10 F7     BPL bra_AEA7_loop
@@ -1088,7 +1089,7 @@ C - - - - - 0x02EEC3 0B:AEB3: 20 BE DA  JSR sub_0x03DACE_удалить_все_�
 C - - - - - 0x02EEC6 0B:AEB6: E6 95     INC ram_0095_стадия_игры    ; 05 -> 06
 C - - - - - 0x02EEC8 0B:AEB8: A9 60     LDA #$60
 C - - - - - 0x02EECA 0B:AEBA: 85 A6     STA ram_screen_pos_X
-C - - - - - 0x02EECC 0B:AEBC: A4 9E     LDY ram_009E
+C - - - - - 0x02EECC 0B:AEBC: A4 9E     LDY ram_номер_боя_story
 C - - - - - 0x02EECE 0B:AEBE: BE 20 AE  LDX tbl_AE20_уровень_для_отрисовки,Y
 C - - - - - 0x02EED1 0B:AEC1: 60        RTS
 
@@ -2427,8 +2428,8 @@ C - - - - - 0x02FF84 0B:BF74: CD 5C 01  CMP ram_tournament_индекс_игро
 C - - - - - 0x02FF87 0B:BF77: D0 02     BNE bra_BF7B
 C - - - - - 0x02FF89 0B:BF79: 49 01     EOR #$01
 bra_BF7B:
-C - - - - - 0x02FF8B 0B:BF7B: 85 9E     STA ram_009E
-C - - - - - 0x02FF8D 0B:BF7D: E0 04     CPX #$04
+C - - - - - 0x02FF8B 0B:BF7B: 85 9E     STA ram_номер_боя_story
+C - - - - - 0x02FF8D 0B:BF7D: E0 04     CPX #con_fighter_casey
 C - - - - - 0x02FF8F 0B:BF7F: D0 03     BNE bra_BF84
 C - - - - - 0x02FF91 0B:BF81: 4C 19 E2  JMP loc_0x03E229_отрисовать_турнирную_сетку
 bra_BF84:

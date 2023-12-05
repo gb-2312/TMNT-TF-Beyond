@@ -3331,14 +3331,14 @@ C - - - - - 0x03E226 0F:E216: 4C 70 BF  JMP loc_0x02FF80
 
 ofs_087_E231_00_story:
 ; con_новые_персы
-C - - - - - 0x03E241 0F:E231: A5 9E     LDA ram_009E
+C - - - - - 0x03E241 0F:E231: A5 9E     LDA ram_номер_боя_story
                                         CMP #con_fighter_shred
                                         BEQ bra_E244
 C - - - - - 0x03E243 0F:E233: C5 A2     CMP ram_plr_id
 C - - - - - 0x03E245 0F:E235: D0 0D     BNE bra_E244
 C - - - - - 0x03E247 0F:E237: 69 00     ADC #$00
-C - - - - - 0x03E249 0F:E239: 85 9E     STA ram_009E
-C - - - - - 0x03E24B 0F:E23B: C9 04     CMP #$04
+C - - - - - 0x03E249 0F:E239: 85 9E     STA ram_номер_боя_story
+C - - - - - 0x03E24B 0F:E23B: C9 04     CMP #con_fighter_casey
 C - - - - - 0x03E24D 0F:E23D: D0 05     BNE bra_E244
 C - - - - - 0x03E24F 0F:E23F: 85 A3     STA ram_plr_id + $01
 C - - - - - 0x03E251 0F:E241: 4C F8 E5  LDA #con_0095_bonus_game_отрисовка_1
@@ -3625,7 +3625,7 @@ C - - - - - 0x03E3B7 0F:E3A7: A5 2C     LDA ram_game_mode
 ; con_gm_tournament
 C - - - - - 0x03E3B9 0F:E3A9: D0 0A     BNE bra_E3B5
 ; con_gm_story
-C - - - - - 0x03E3BB 0F:E3AB: A5 9E     LDA ram_009E
+C - - - - - 0x03E3BB 0F:E3AB: A5 9E     LDA ram_номер_боя_story
 C - - - - - 0x03E3BD 0F:E3AD: C9 06     CMP #$06
 C - - - - - 0x03E3BF 0F:E3AF: 90 04     BCC bra_E3B5
 C - - - - - 0x03E3C1 0F:E3B1: A9 1D     LDA #con_0095_старт_угроз_шреда_в_story
@@ -3720,7 +3720,7 @@ tbl_E46B:
 
 
 ofs_001_E46D_06_подготовка_к_бою:
-C - - J - - 0x03E47D 0F:E46D: A4 9E     LDY ram_009E
+C - - J - - 0x03E47D 0F:E46D: A4 9E     LDY ram_номер_боя_story
 C - - - - - 0x03E47F 0F:E46F: B9 AB FC  LDA tbl_FCAB,Y
 C - - - - - 0x03E482 0F:E472: 20 8B F6  JSR sub_F68B_выключить_звуки_и_записать_новый
                                        ;LDA #con_0095_раунд_идет
@@ -3999,19 +3999,19 @@ bra_E5EC_story:
 ; if con_gm_story
 C - - - - - 0x03E5FC 0F:E5EC: A5 08     LDA ram_0008
 C - - - - - 0x03E5FE 0F:E5EE: D0 0C     BNE bra_E5FC
-C - - - - - 0x03E600 0F:E5F0: E6 9E     INC ram_009E
-C - - - - - 0x03E602 0F:E5F2: A5 9E     LDA ram_009E
-C - - - - - 0x03E604 0F:E5F4: C9 04     CMP #$04
+C - - - - - 0x03E600 0F:E5F0: E6 9E     INC ram_номер_боя_story
+C - - - - - 0x03E602 0F:E5F2: A5 9E     LDA ram_номер_боя_story
+C - - - - - 0x03E604 0F:E5F4: C9 04     CMP #con_fighter_casey
 C - - - - - 0x03E606 0F:E5F6: D0 07     BNE bra_E5FF
 C D 3 - - - 0x03E608 0F:E5F8: A9 17     LDA #con_0095_bonus_game_отрисовка_1
 C - - - - - 0x03E60A 0F:E5FA: D0 0D     BNE bra_E609    ; jmp
 bra_E5FC:
 C - - - - - 0x03E60C 0F:E5FC: 4C 7D E6  JMP loc_E67D
 bra_E5FF:
-C - - - - - 0x03E60F 0F:E5FF: A5 9E     LDA ram_009E
+C - - - - - 0x03E60F 0F:E5FF: A5 9E     LDA ram_номер_боя_story
 C - - - - - 0x03E611 0F:E601: C9 07     CMP #$07
 C - - - - - 0x03E613 0F:E603: 90 67     BCC bra_E66C
-C - - - - - 0x03E615 0F:E605: C6 9E     DEC ram_009E
+C - - - - - 0x03E615 0F:E605: C6 9E     DEC ram_номер_боя_story
 C - - - - - 0x03E617 0F:E607: A9 15     LDA #con_0095_победа_в_story
 bra_E609:
 C - - - - - 0x03E619 0F:E609: 85 95     STA ram_0095_стадия_игры
@@ -4100,7 +4100,7 @@ C D 3 - - - 0x03E68D 0F:E67D: A5 2C     LDA ram_game_mode
 ; con_gm_story
 C - - - - - 0x03E68F 0F:E67F: D0 09     BNE bra_E68A
 ; if con_gm_story
-C - - - - - 0x03E691 0F:E681: A5 9E     LDA ram_009E
+C - - - - - 0x03E691 0F:E681: A5 9E     LDA ram_номер_боя_story
 C - - - - - 0x03E693 0F:E683: C9 06     CMP #$06
 C - - - - - 0x03E695 0F:E685: 90 03     BCC bra_E68A
 - - - - - - 0x03E697 0F:E687: A9 1F     LDA #con_0095_старт_победной_речи_шреда_в_story
@@ -4259,7 +4259,7 @@ C - - - - - 0x03E77F 0F:E76F: 60        RTS
 
 ofs_001_E770_13_переход_из_vs_cpu_в_vs_player___подготовка:
 - - - - - - 0x03E780 0F:E770: 20 65 E1  JSR sub_E165
-- - - - - - 0x03E783 0F:E773: A5 9E     LDA ram_009E
+- - - - - - 0x03E783 0F:E773: A5 9E     LDA ram_номер_боя_story
 - - - - - - 0x03E785 0F:E775: 85 9F     STA ram_009F
 - - - - - - 0x03E787 0F:E777: A9 60     LDA #$60
 - - - - - - 0x03E789 0F:E779: 8D 60 05  STA ram_obj_timer
@@ -4949,7 +4949,7 @@ C - - - - - 0x03EB07 0F:EAF7: D0 0E     BNE bra_EB07
 C - - - - - 0x03EB09 0F:EAF9: A5 95     LDA ram_0095_стадия_игры
 C - - - - - 0x03EB0B 0F:EAFB: C9 10     CMP #$10
 C - - - - - 0x03EB0D 0F:EAFD: B0 08     BCS bra_EB07
-C - - - - - 0x03EB0F 0F:EAFF: A4 9E     LDY ram_009E
+C - - - - - 0x03EB0F 0F:EAFF: A4 9E     LDY ram_номер_боя_story
 C - - - - - 0x03EB11 0F:EB01: B9 BA FC  LDA tbl_FCBA,Y
 C - - - - - 0x03EB14 0F:EB04: 20 90 F6  JSR sub_F690_записать_звук_сохранив_X_Y
 bra_EB07:
@@ -7270,20 +7270,20 @@ C - - - - - 0x03F894 0F:F884: 60        RTS
 
 
 tbl_F885:
-- D 3 - - - 0x03F895 0F:F885: 00        .byte off_F890_00 - tbl_F890
-- D 3 - - - 0x03F896 0F:F886: 0A        .byte off_F89A_01 - tbl_F890
-- D 3 - - - 0x03F897 0F:F887: 00        .byte off_F890_02 - tbl_F890
-- D 3 - - - 0x03F898 0F:F888: 0A        .byte off_F89A_03 - tbl_F890
-- D 3 - - - 0x03F899 0F:F889: 0A        .byte off_F89A_04 - tbl_F890
-- D 3 - - - 0x03F89A 0F:F88A: 0A        .byte off_F89A_05 - tbl_F890
-- D 3 - - - 0x03F89B 0F:F88B: 14        .byte off_F8A4_06 - tbl_F890
+- D 3 - - - 0x03F895 0F:F885: 00        .byte off_F890_00_leo - tbl_F890
+- D 3 - - - 0x03F896 0F:F886: 0A        .byte off_F89A_01_raph - tbl_F890
+- D 3 - - - 0x03F897 0F:F887: 00        .byte off_F890_02_mike - tbl_F890
+- D 3 - - - 0x03F898 0F:F888: 0A        .byte off_F89A_03_don - tbl_F890
+- D 3 - - - 0x03F899 0F:F889: 0A        .byte off_F89A_04_casey - tbl_F890
+- D 3 - - - 0x03F89A 0F:F88A: 0A        .byte off_F89A_05_hot - tbl_F890
+- D 3 - - - 0x03F89B 0F:F88B: 14        .byte off_F8A4_06_shred - tbl_F890
 - D 3 - - - 0x03F89C 0F:F88C: 1E        .byte off_F8AE_07 - tbl_F890
 
 
 
 tbl_F890:
-off_F890_00:
-off_F890_02:
+off_F890_00_leo:
+off_F890_02_mike:
 - D 3 - - - 0x03F8A0 0F:F890: 04        .byte $04   ; 
 - D 3 - - - 0x03F8A1 0F:F891: 4F        .byte $4F   ; 
 - D 3 - - - 0x03F8A2 0F:F892: 10        .byte $10   ; 
@@ -7298,10 +7298,10 @@ off_F890_02:
 
 
 
-off_F89A_01:
-off_F89A_03:
-off_F89A_04:
-off_F89A_05:
+off_F89A_01_raph:
+off_F89A_03_don:
+off_F89A_04_casey:
+off_F89A_05_hot:
 - D 3 - - - 0x03F8AA 0F:F89A: 04        .byte $04   ; 
 - D 3 - - - 0x03F8AB 0F:F89B: 4A        .byte $4A   ; 
 - D 3 - - - 0x03F8AC 0F:F89C: 05        .byte $05   ; 
@@ -7316,7 +7316,7 @@ off_F89A_05:
 
 
 
-off_F8A4_06:
+off_F8A4_06_shred:
 - D 3 - - - 0x03F8B4 0F:F8A4: 04        .byte $04   ; 
 - D 3 - - - 0x03F8B5 0F:F8A5: 4A        .byte $4A   ; 
 - D 3 - - - 0x03F8B6 0F:F8A6: 05        .byte $05   ; 
@@ -7357,7 +7357,7 @@ C - - - - - 0x03F8E7 0F:F8D7: F0 49     BEQ bra_F922
 C - - - - - 0x03F8E9 0F:F8D9: C9 06     CMP #$06
 C - - - - - 0x03F8EB 0F:F8DB: B0 4E     BCS bra_F92B
 ; A = 01-05
-C - - - - - 0x03F8ED 0F:F8DD: A6 9E     LDX ram_009E
+C - - - - - 0x03F8ED 0F:F8DD: A6 9E     LDX ram_номер_боя_story
 C - - - - - 0x03F8EF 0F:F8DF: 7D 85 F8  ADC tbl_F885,X
 C - - - - - 0x03F8F2 0F:F8E2: A8        TAY
 C - - - - - 0x03F8F3 0F:F8E3: B9 8F F8  LDA tbl_F890 - $01,Y
@@ -7851,26 +7851,26 @@ tbl_FC9A_scanline:
 
 
 tbl_FCAB:
-- D 3 - - - 0x03FCBB 0F:FCAB: 2E        .byte con_music_ost_sewer   ; 00
-- D 3 - - - 0x03FCBC 0F:FCAC: 2F        .byte con_music_ost_down_town   ; 01
-- D 3 - - - 0x03FCBD 0F:FCAD: 2E        .byte con_music_ost_sewer   ; 02
-- D 3 - - - 0x03FCBE 0F:FCAE: 2F        .byte con_music_ost_down_town   ; 03
-- D 3 - - - 0x03FCBF 0F:FCAF: 30        .byte con_music_ost_pirate_ship   ; 04
-- D 3 - - - 0x03FCC0 0F:FCB0: 30        .byte con_music_ost_pirate_ship   ; 05
-- D 3 - - - 0x03FCC1 0F:FCB1: 31        .byte con_music_ost_water_front   ; 06
-- D 3 - - - 0x03FCC2 0F:FCB2: 42        .byte con_music_ost_technodrome   ; 07
+- D 3 - - - 0x03FCBB 0F:FCAB: 2E        .byte con_music_ost_sewer   ; 00 con_fighter_leo
+- D 3 - - - 0x03FCBC 0F:FCAC: 2F        .byte con_music_ost_down_town   ; 01 con_fighter_raph
+- D 3 - - - 0x03FCBD 0F:FCAD: 2E        .byte con_music_ost_sewer   ; 02 con_fighter_mike
+- D 3 - - - 0x03FCBE 0F:FCAE: 2F        .byte con_music_ost_down_town   ; 03 con_fighter_don
+- D 3 - - - 0x03FCBF 0F:FCAF: 30        .byte con_music_ost_pirate_ship   ; 04 con_fighter_casey
+- D 3 - - - 0x03FCC0 0F:FCB0: 30        .byte con_music_ost_pirate_ship   ; 05 con_fighter_hot
+- D 3 - - - 0x03FCC1 0F:FCB1: 31        .byte con_music_ost_water_front   ; 06 con_fighter_shred
+- D 3 - - - 0x03FCC2 0F:FCB2: 42        .byte con_music_ost_technodrome   ; 07 
 
 
 
 tbl_FCBA:
-- D 3 - - - 0x03FCCA 0F:FCBA: 33        .byte con_music_no_time_sewer   ; 00
-- D 3 - - - 0x03FCCB 0F:FCBB: 34        .byte con_music_no_time_down_town   ; 01
-- D 3 - - - 0x03FCCC 0F:FCBC: 33        .byte con_music_no_time_sewer   ; 02
-- D 3 - - - 0x03FCCD 0F:FCBD: 34        .byte con_music_no_time_down_town   ; 03
-- D 3 - - - 0x03FCCE 0F:FCBE: 35        .byte con_music_no_time_pirate_ship   ; 04
-- D 3 - - - 0x03FCCF 0F:FCBF: 35        .byte con_music_no_time_pirate_ship   ; 05
-- D 3 - - - 0x03FCD0 0F:FCC0: 36        .byte con_music_no_time_water_front   ; 06
-- - - - - - 0x03FCD1 0F:FCC1: 3B        .byte con_0x03F6AD_3B   ; 07
+- D 3 - - - 0x03FCCA 0F:FCBA: 33        .byte con_music_no_time_sewer   ; 00 con_fighter_leo
+- D 3 - - - 0x03FCCB 0F:FCBB: 34        .byte con_music_no_time_down_town   ; 01 con_fighter_raph
+- D 3 - - - 0x03FCCC 0F:FCBC: 33        .byte con_music_no_time_sewer   ; 02 con_fighter_mike
+- D 3 - - - 0x03FCCD 0F:FCBD: 34        .byte con_music_no_time_down_town   ; 03 con_fighter_don
+- D 3 - - - 0x03FCCE 0F:FCBE: 35        .byte con_music_no_time_pirate_ship   ; 04 con_fighter_casey
+- D 3 - - - 0x03FCCF 0F:FCBF: 35        .byte con_music_no_time_pirate_ship   ; 05 con_fighter_hot
+- D 3 - - - 0x03FCD0 0F:FCC0: 36        .byte con_music_no_time_water_front   ; 06 con_fighter_shred
+- - - - - - 0x03FCD1 0F:FCC1: 3B        .byte con_0x03F6AD_3B   ; 07 
 
 
 

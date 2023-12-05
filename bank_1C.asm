@@ -1775,7 +1775,7 @@ C - - - - - 0x03897C 0E:896C: 20 16 B0  LDA ram_obj_spd_Y_hi
                                         ORA ram_номер_боя_vs_team_и_переключатель
                                         TAY
 C - - - - - 0x03897F 0E:896F: B9 F1 BF  LDA tbl_BFF1_конвертация_в_индекс_уровня,Y
-C - - - - - 0x038982 0E:8972: 85 9E     STA ram_009E
+C - - - - - 0x038982 0E:8972: 85 9E     STA ram_номер_боя_story
 C - - - - - 0x038984 0E:8974: A9 14     LDA #$14
 C - - - - - 0x038986 0E:8976: 8D 00 04  STA ram_obj_anim_id
 C - - - - - 0x038989 0E:8979: 8D 01 04  STA ram_obj_anim_id + $01
@@ -6140,7 +6140,7 @@ C - - - - - 0x03A4F6 0E:A4E6: A0 02     LDY #$02
 C - - - - - 0x03A4F8 0E:A4E8: AD 30 06  LDA ram_0630
 C - - - - - 0x03A4FB 0E:A4EB: F0 1C     BEQ bra_A509
 C - - - - - 0x03A4FD 0E:A4ED: A5 9F     LDA ram_009F
-C - - - - - 0x03A4FF 0E:A4EF: 85 9E     STA ram_009E
+C - - - - - 0x03A4FF 0E:A4EF: 85 9E     STA ram_номер_боя_story
 C - - - - - 0x03A501 0E:A4F1: A5 27     LDA ram_0027
 C - - - - - 0x03A503 0E:A4F3: C5 2C     CMP ram_game_mode
 C - - - - - 0x03A505 0E:A4F5: F0 1A     BEQ bra_A511

@@ -96,6 +96,7 @@ con_script_draw_topscore                = $0C ; телка с микрофоно
 
 ; ram_plr_id
 ; ram_obj_id
+; ram_номер_боя_story
 con_fighter_leo                         = $00 ; 00 leo
 con_fighter_raph                        = $01 ; 01 raph
 con_fighter_mike                        = $02 ; 02 mike
