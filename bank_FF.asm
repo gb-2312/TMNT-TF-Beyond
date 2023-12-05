@@ -5121,98 +5121,122 @@ C - - - - - 0x03EC0F 0F:EBFF: F0 DB     BEQ bra_EBDC    ; jmp
 
 
 tbl_EC00_индекс:
-                                        .byte off_EC01_00 - tbl_EC02
-                                        .byte off_EC05_01 - tbl_EC02
-                                        .byte off_EC0A_02 - tbl_EC02
-                                        .byte off_EC0F_03 - tbl_EC02
-                                        .byte off_EC13_04 - tbl_EC02
-                                        .byte off_EC19_05 - tbl_EC02
-                                        .byte off_EC21_06 - tbl_EC02
+; имя в статусбаре
+                                        .byte off_EC01_00_leo - tbl_EC02
+                                        .byte off_EC05_01_raph - tbl_EC02
+                                        .byte off_EC0A_02_mike - tbl_EC02
+                                        .byte off_EC0F_03_don - tbl_EC02
+                                        .byte off_EC13_04_casey - tbl_EC02
+                                        .byte off_EC19_05_hot - tbl_EC02
+                                        .byte off_EC21_06_shred - tbl_EC02
+                                    .if con_новые_персы <> $00
+                                        .byte off_EC01_07 - tbl_EC02   ; 07 con_fighter_07
+                                        .byte off_EC05_08 - tbl_EC02   ; 08 con_fighter_08
+                                        .byte off_EC0A_09 - tbl_EC02   ; 09 con_fighter_09
+                                        .byte off_EC0F_0A - tbl_EC02   ; 0A con_fighter_0A
+                                        .byte off_EC13_0B - tbl_EC02   ; 0B con_fighter_0B
+                                        .byte off_EC19_0C - tbl_EC02   ; 0C con_fighter_0C
+                                        .byte off_EC21_0D - tbl_EC02   ; 0D con_fighter_0D
+                                    .endif
 
 
 
 tbl_EC01_имя_перса_в_статусбаре:
 tbl_EC02:
-; con_новые_персы
-; leo
-off_EC01_00:
+off_EC01_00_leo:
+off_EC01_07:
 - D 3 - - - 0x03EC11 0F:EC01: 07        .byte $07, $04, $0A   ; LEO
 - D 3 - - - 0x03EC14 0F:EC04: FF        .byte $FF   ; 
 
-; raph
-off_EC05_01:
+off_EC05_01_raph:
+off_EC05_08:
 - D 3 - - - 0x03EC15 0F:EC05: 0C        .byte $0C, $01, $0B, $05   ; RAPH
 - D 3 - - - 0x03EC19 0F:EC09: FF        .byte $FF   ; 
 
-; mike
-off_EC0A_02:
+off_EC0A_02_mike:
+off_EC0A_09:
 - D 3 - - - 0x03EC1A 0F:EC0A: 08        .byte $08, $06, $60, $04   ; MIKE
 - D 3 - - - 0x03EC1E 0F:EC0E: FF        .byte $FF   ; 
 
-; don
-off_EC0F_03:
+off_EC0F_03_don:
+off_EC0F_0A:
 - D 3 - - - 0x03EC1F 0F:EC0F: 03        .byte $03, $0A, $09   ; DON
 - D 3 - - - 0x03EC22 0F:EC12: FF        .byte $FF   ; 
 
-; casey
-off_EC13_04:
+off_EC13_04_casey:
+off_EC13_0B:
 - D 3 - - - 0x03EC23 0F:EC13: 02        .byte $02, $01, $0D, $04, $0F   ; CASEY
 - D 3 - - - 0x03EC28 0F:EC18: FF        .byte $FF   ; 
 
-; hot
-off_EC19_05:
+off_EC19_05_hot:
+off_EC19_0C:
 - D 3 - - - 0x03EC29 0F:EC19: 05        .byte $05, $0A, $0E, $05, $04, $01, $03   ; HOTHEAD
 - D 3 - - - 0x03EC30 0F:EC20: FF        .byte $FF   ; 
 
-; shred
-off_EC21_06:
+off_EC21_06_shred:
+off_EC21_0D:
 - D 3 - - - 0x03EC31 0F:EC21: 0D        .byte $0D, $05, $0C, $04, $03, $03, $04, $0C   ; SHREDDER
 - D 3 - - - 0x03EC39 0F:EC29: FF        .byte $FF   ; 
 
 
 
 tbl_EC29_индекс:
-                                        .byte off_EC2A_00 - tbl_EC2B
-                                        .byte off_EC2E_01 - tbl_EC2B
-                                        .byte off_EC33_02 - tbl_EC2B
-                                        .byte off_EC38_03 - tbl_EC2B
-                                        .byte off_EC3C_04 - tbl_EC2B
-                                        .byte off_EC42_05 - tbl_EC2B
-                                        .byte off_EC4A_06 - tbl_EC2B
+; имя на vs экране
+                                        .byte off_EC2A_00_leo - tbl_EC2B
+                                        .byte off_EC2E_01_raph - tbl_EC2B
+                                        .byte off_EC33_02_mike - tbl_EC2B
+                                        .byte off_EC38_03_don - tbl_EC2B
+                                        .byte off_EC3C_04_casey - tbl_EC2B
+                                        .byte off_EC42_05_hot - tbl_EC2B
+                                        .byte off_EC4A_06_shred - tbl_EC2B
+                                    .if con_новые_персы <> $00
+                                        .byte off_EC2A_07 - tbl_EC2B   ; 07 con_fighter_07
+                                        .byte off_EC2E_08 - tbl_EC2B   ; 08 con_fighter_08
+                                        .byte off_EC33_09 - tbl_EC2B   ; 09 con_fighter_09
+                                        .byte off_EC38_0A - tbl_EC2B   ; 0A con_fighter_0A
+                                        .byte off_EC3C_0B - tbl_EC2B   ; 0B con_fighter_0B
+                                        .byte off_EC42_0C - tbl_EC2B   ; 0C con_fighter_0C
+                                        .byte off_EC4A_0D - tbl_EC2B   ; 0D con_fighter_0D
+                                    .endif
 
 
 
 tbl_EC2A_имя_перса_на_vs_экране:
 tbl_EC2B:
-; con_новые_персы
-; leo
-off_EC2A_00:
+off_EC2A_00_leo:
+off_EC2A_07:
 - D 3 - - - 0x03EC3A 0F:EC2A: 16        .byte $16, $0F, $19   ; LEO
-- D 3 - - - 0x03EC3D 0F:EC2D: FF        .byte $FF   ; 
-; raph
-off_EC2E_01:
+- D 3 - - - 0x03EC3D 0F:EC2D: FF        .byte $FF   ; end token
+
+off_EC2E_01_raph:
+off_EC2E_08:
 - D 3 - - - 0x03EC3E 0F:EC2E: 1C        .byte $1C, $0B, $1A, $12   ; RAPH
-- D 3 - - - 0x03EC42 0F:EC32: FF        .byte $FF   ; 
-; mike
-off_EC33_02:
+- D 3 - - - 0x03EC42 0F:EC32: FF        .byte $FF   ; end token
+
+off_EC33_02_mike:
+off_EC33_09:
 - D 3 - - - 0x03EC43 0F:EC33: 17        .byte $17, $13, $15, $0F   ; MIKE
-- D 3 - - - 0x03EC47 0F:EC37: FF        .byte $FF   ; 
-; don
-off_EC38_03:
+- D 3 - - - 0x03EC47 0F:EC37: FF        .byte $FF   ; end token
+
+off_EC38_03_don:
+off_EC38_0A:
 - D 3 - - - 0x03EC48 0F:EC38: 0E        .byte $0E, $19, $18   ; DON
-- D 3 - - - 0x03EC4B 0F:EC3B: FF        .byte $FF   ; 
-; casey
-off_EC3C_04:
+- D 3 - - - 0x03EC4B 0F:EC3B: FF        .byte $FF   ; end token
+
+off_EC3C_04_casey:
+off_EC3C_0B:
 - D 3 - - - 0x03EC4C 0F:EC3C: 0D        .byte $0D, $0B, $1D, $0F, $23   ; CASEY
-- D 3 - - - 0x03EC51 0F:EC41: FF        .byte $FF   ; 
-; hot
-off_EC42_05:
+- D 3 - - - 0x03EC51 0F:EC41: FF        .byte $FF   ; end token
+
+off_EC42_05_hot:
+off_EC42_0C:
 - D 3 - - - 0x03EC52 0F:EC42: 12        .byte $12, $19, $1E, $12, $0F, $0B, $0E   ; HOTHEAD
-- D 3 - - - 0x03EC59 0F:EC49: FF        .byte $FF   ; 
-; shred
-off_EC4A_06:
+- D 3 - - - 0x03EC59 0F:EC49: FF        .byte $FF   ; end token
+
+off_EC4A_06_shred:
+off_EC4A_0D:
 - D 3 - - - 0x03EC5A 0F:EC4A: 1D        .byte $1D, $12, $1C, $0F, $0E, $0E, $0F, $1C   ; SHREDDER
-- D 3 - - - 0x03EC62 0F:EC52: FF        .byte $FF   ; 
+- D 3 - - - 0x03EC62 0F:EC52: FF        .byte $FF   ; end token
 
 
 
