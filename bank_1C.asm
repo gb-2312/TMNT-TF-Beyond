@@ -1092,6 +1092,7 @@ C - - - - - 0x0384ED 0E:84DD: 60        RTS
 
 
 tbl_84FA:
+; con_новые_персы
 - - - - - - 0x03850A 0E:84FA: 08 85     .word _off017_8508_00_leo
 - - - - - - 0x03850C 0E:84FC: 22 85     .word _off017_8522_01_raph
 - - - - - - 0x03850E 0E:84FE: 3C 85     .word _off017_853C_02_mike
@@ -2830,6 +2831,7 @@ bra_8FA0_loop:
 - - - - - - 0x038FBF 0E:8FAF: D0 D8     BNE bra_8F89_loop
 bra_8FB1:
 C - - - - - 0x038FC1 0E:8FB1: A6 A8     LDX ram_local_obj_index
+; con_новые_персы
 C - - - - - 0x038FC3 0E:8FB3: 9D 4C 01  STA ram_tournament_fighter,X ; 014C 014D 014E 014F 
 C - - - - - 0x038FC6 0E:8FB6: 8D 50 05  STA ram_obj_id
 C - - - - - 0x038FC9 0E:8FB9: A9 27     LDA #con_0x03F6AD_27
@@ -2978,6 +2980,14 @@ tbl_907A:
 - D 0 - - - 0x03908E 0E:907E: 68        .byte $68   ; 04 con_fighter_casey
 - D 0 - - - 0x03908F 0E:907F: 76        .byte $76   ; 05 con_fighter_hot
 - D 0 - - - 0x039090 0E:9080: 70        .byte $70   ; 06 con_fighter_shred
+                                    .if con_новые_персы <> $00
+                                        .byte $68   ; 07 con_fighter_07
+                                        .byte $68   ; 08 con_fighter_08
+                                        .byte $68   ; 09 con_fighter_09
+                                        .byte $68   ; 0A con_fighter_0A
+                                        .byte $68   ; 0B con_fighter_0B
+                                        .byte $68   ; 0C con_fighter_0C
+                                    .endif
 
 
 
@@ -3865,6 +3875,7 @@ C - - - - - 0x03963E 0E:962E: A9 41     LDA #con_0x03F6AD_41
 C - - - - - 0x039640 0E:9630: 20 90 F6  JSR sub_0x03F6A0_записать_звук_сохранив_X_Y
 C - - - - - 0x039643 0E:9633: A9 0B     LDA #con_0048_0B
 C - - - - - 0x039645 0E:9635: 20 14 F8  JSR sub_0x03F824_подготовить_irq_handler
+; con_новые_персы
 C - - - - - 0x039648 0E:9638: A5 A2     LDA ram_plr_id
 C - - - - - 0x03964A 0E:963A: 8D 50 05  STA ram_obj_id
 C - - - - - 0x03964D 0E:963D: A9 06     LDA #con_fighter_shred
@@ -3953,6 +3964,7 @@ C - - - - - 0x0396DF 0E:96CF: 20 94 D3  JSR sub_0x03D3A4_записать_пал
 C - - - - - 0x0396EA 0E:96DA: A2 01     LDX #$01
 bra_96DC_loop:
 C - - - - - 0x0396E4 0E:96D4: AD 50 05  LDA ram_obj_id,X
+; con_новые_персы
 C - - - - - 0x0396E7 0E:96D7: 20 2A E3  JSR sub_0x03DE0C_выбор_палитры_перса_с_сохранением_X
 C - - - - - 0x0396EC 0E:96DC: BD 13 97  LDA tbl_9713_анимация,X
 C - - - - - 0x0396EF 0E:96DF: 9D 00 04  STA ram_obj_anim_id,X ; 0400 0401 
@@ -4203,6 +4215,7 @@ C - - - - - 0x03987C 0E:986C: 8D 60 05  STA ram_obj_timer
 C - - - - - 0x03987F 0E:986F: A0 01     LDY #$01
 C - - - - - 0x039881 0E:9871: 20 5C 96  JSR sub_965C_выбор_текста_палитры_речи_анимации
 C - - - - - 0x039884 0E:9874: A5 A2     LDA ram_plr_id
+; con_новые_персы
                                         AND #$03 ; фикс палитры конечной заставки перед титрами
 C - - - - - 0x039886 0E:9876: 0A        ASL
 C - - - - - 0x039887 0E:9877: 0A        ASL
@@ -5488,6 +5501,7 @@ C - - - - - 0x03A232 0E:A222: 60        RTS
 
 
 tbl_A223_индекс:
+; con_новые_персы
 - D 1 - - - 0x03A233 0E:A223: 00        .byte off_A22A_00_leo - tbl_A22A
 - D 1 - - - 0x03A234 0E:A224: 00        .byte off_A22A_01_raph - tbl_A22A
 - D 1 - - - 0x03A235 0E:A225: 00        .byte off_A22A_02_mike - tbl_A22A
@@ -5755,10 +5769,19 @@ tbl_A317_индекс:
 - D 1 - - - 0x03A32B 0E:A31B: 04        .byte $04   ; 04 con_fighter_casey
 - D 1 - - - 0x03A32C 0E:A31C: 08        .byte $08   ; 05 con_fighter_hot
 - D 1 - - - 0x03A32D 0E:A31D: 0C        .byte $0C   ; 06 con_fighter_shred
+                                    .if con_новые_персы <> $00
+                                        .byte $00   ; 07 con_fighter_07
+                                        .byte $00   ; 08 con_fighter_08
+                                        .byte $00   ; 09 con_fighter_09
+                                        .byte $00   ; 0A con_fighter_0A
+                                        .byte $00   ; 0B con_fighter_0B
+                                        .byte $00   ; 0C con_fighter_0C
+                                    .endif
 
 
 
 tbl_A31E:
+; con_новые_персы
 ; 00 черепахи
 - D 1 - - - 0x03A32E 0E:A31E: 22        .byte con_chr_bank_bg + $22   ; 
 - D 1 - - - 0x03A32F 0E:A31F: 22        .byte con_chr_bank_bg + $22   ; 
@@ -5815,6 +5838,14 @@ tbl_A33C:
 - D 1 - - - 0x03A350 0E:A340: 38        .byte $38   ; 04 con_fighter_casey
 - D 1 - - - 0x03A351 0E:A341: 3A        .byte $3A   ; 05 con_fighter_hot
 - D 1 - - - 0x03A352 0E:A342: 3C        .byte $3C   ; 06 con_fighter_shred
+                                    .if con_новые_персы <> $00
+                                        .byte $36   ; 07 con_fighter_07
+                                        .byte $36   ; 08 con_fighter_08
+                                        .byte $36   ; 09 con_fighter_09
+                                        .byte $36   ; 0A con_fighter_0A
+                                        .byte $36   ; 0B con_fighter_0B
+                                        .byte $36   ; 0C con_fighter_0C
+                                    .endif
 
 
 
@@ -6404,6 +6435,7 @@ C - - - - - 0x03BF18 0E:BF08: 4C 5C A1  JMP loc_A15C
 
 
 sub_BF0B_конвертация_индекса:
+; con_новые_персы
 ; Y = ram_plr_id,X
 C - - - - - 0x03BF1B 0E:BF0B: 20 33 BF  JSR sub_BF33
 C - - - - - 0x03BF1E 0E:BF0E: D0 03     BNE bra_BF13

@@ -1193,6 +1193,7 @@ C - - - - - 0x03D2E3 0F:D2D3: F0 CE     BEQ bra_D2A3
 C - - - - - 0x03D2E5 0F:D2D5: 60        RTS
 bra_D2D6:
 C - - - - - 0x03D2E6 0F:D2D6: A5 28     LDA ram_random_1
+; con_новые_персы
 C - - - - - 0x03D2E8 0F:D2D8: 29 07     AND #$07
 C - - - - - 0x03D2EA 0F:D2DA: A8        TAY
 C - - - - - 0x03D2EB 0F:D2DB: B9 EE D2  LDA tbl_D2EE,Y
@@ -2004,6 +2005,7 @@ C - - - - - 0x03D87C 0F:D86C: 60        RTS
 
 
 tbl_D87E_спрайты_персов:
+; con_новые_персы
 - D 2 - - - 0x03D88E 0F:D87E: 01 80     .word _off000_0x028011_00_leo
 - D 2 - - - 0x03D890 0F:D880: 01 80     .word _off000_0x028011_01_raph
 - D 2 - - - 0x03D892 0F:D882: 01 80     .word _off000_0x028011_02_mike
@@ -2608,6 +2610,7 @@ C - - - - - 0x03DED1 0F:DEC1: 7D 45 06  ADC ram_plr_damage,X ; 0645 0646
 C - - - - - 0x03DED4 0F:DEC4: 9D 45 06  STA ram_plr_damage,X ; 0645 0646 
 C - - - - - 0x03DED7 0F:DEC7: A4 A9     LDY ram_global_obj_index
 C - - - - - 0x03DED9 0F:DEC9: B9 50 05  LDA ram_obj_id,Y ; 0550 0551 
+; con_новые_персы
 C - - - - - 0x03DEDC 0F:DECC: C9 04     CMP #con_fighter_casey
 C - - - - - 0x03DEDE 0F:DECE: F0 D9     BEQ bra_DEA9
 C - - - - - 0x03DEE0 0F:DED0: A9 80     LDA #$80
@@ -2673,6 +2676,14 @@ tbl_0x03DF2C_рейндж_броска:
 - D 2 - - - 0x03DF30 0F:DF20: 09        .byte $09   ; 04 con_fighter_casey
 - D 2 - - - 0x03DF31 0F:DF21: 07        .byte $07   ; 05 con_fighter_hot
 - D 2 - - - 0x03DF32 0F:DF22: 08        .byte $08   ; 06 con_fighter_shred
+                                    .if con_новые_персы <> $00
+                                        .byte $07   ; 07 con_fighter_07
+                                        .byte $07   ; 08 con_fighter_08
+                                        .byte $07   ; 09 con_fighter_09
+                                        .byte $07   ; 0A con_fighter_0A
+                                        .byte $07   ; 0B con_fighter_0B
+                                        .byte $07   ; 0C con_fighter_0C
+                                    .endif
 
 
 
@@ -2705,6 +2716,14 @@ tbl_DF41:
 - D 2 - - - 0x03DF55 0F:DF45: 0F        .byte $0F   ; 04 con_fighter_casey
 - D 2 - - - 0x03DF56 0F:DF46: 10        .byte $10   ; 05 con_fighter_hot
 - D 2 - - - 0x03DF57 0F:DF47: 11        .byte $11   ; 06 con_fighter_shred
+                                    .if con_новые_персы <> $00
+                                        .byte $0E   ; 07 con_fighter_07
+                                        .byte $0E   ; 08 con_fighter_08
+                                        .byte $0E   ; 09 con_fighter_09
+                                        .byte $0E   ; 0A con_fighter_0A
+                                        .byte $0E   ; 0B con_fighter_0B
+                                        .byte $0E   ; 0C con_fighter_0C
+                                    .endif
 
 tbl_DF48:
 - D 2 - - - 0x03DF58 0F:DF48: 04        .byte $04   ; 00 con_fighter_leo
@@ -2714,6 +2733,14 @@ tbl_DF48:
 - D 2 - - - 0x03DF5C 0F:DF4C: 02        .byte $02   ; 04 con_fighter_casey
 - D 2 - - - 0x03DF5D 0F:DF4D: 04        .byte $04   ; 05 con_fighter_hot
 - D 2 - - - 0x03DF5E 0F:DF4E: 04        .byte $04   ; 06 con_fighter_shred
+                                    .if con_новые_персы <> $00
+                                        .byte $04   ; 07 con_fighter_07
+                                        .byte $04   ; 08 con_fighter_08
+                                        .byte $04   ; 09 con_fighter_09
+                                        .byte $04   ; 0A con_fighter_0A
+                                        .byte $04   ; 0B con_fighter_0B
+                                        .byte $04   ; 0C con_fighter_0C
+                                    .endif
 
 
 
@@ -3031,6 +3058,14 @@ tbl_E100:
 - D 3 - - - 0x03E114 0F:E104: 06        .byte $06   ; 04 con_fighter_casey
 - D 3 - - - 0x03E115 0F:E105: 13        .byte $13   ; 05 con_fighter_hot
 - D 3 - - - 0x03E116 0F:E106: 05        .byte $05   ; 06 con_fighter_shred
+                                    .if con_новые_персы <> $00
+                                        .byte $0A   ; 07 con_fighter_07
+                                        .byte $0A   ; 08 con_fighter_08
+                                        .byte $0A   ; 09 con_fighter_09
+                                        .byte $0A   ; 0A con_fighter_0A
+                                        .byte $0A   ; 0B con_fighter_0B
+                                        .byte $0A   ; 0C con_fighter_0C
+                                    .endif
 
 
 
@@ -3042,6 +3077,14 @@ tbl_E107:
 - D 3 - - - 0x03E11B 0F:E10B: 02        .byte $02   ; 04 con_fighter_casey
 - D 3 - - - 0x03E11C 0F:E10C: 03        .byte $03   ; 05 con_fighter_hot
 - D 3 - - - 0x03E11D 0F:E10D: 04        .byte $04   ; 06 con_fighter_shred
+                                    .if con_новые_персы <> $00
+                                        .byte $05   ; 07 con_fighter_07
+                                        .byte $05   ; 08 con_fighter_08
+                                        .byte $05   ; 09 con_fighter_09
+                                        .byte $05   ; 0A con_fighter_0A
+                                        .byte $05   ; 0B con_fighter_0B
+                                        .byte $05   ; 0C con_fighter_0C
+                                    .endif
 
 
 
@@ -3130,6 +3173,14 @@ tbl_0x03E16E_звук_выбора_перса:
 - D 3 - - - 0x03E172 0F:E162: 55        .byte con_dpcm_warcry_casey_1   ; 04 con_fighter_casey
 - D 3 - - - 0x03E173 0F:E163: 59        .byte con_dpcm_warcry_hot_1   ; 05 con_fighter_hot
 - D 3 - - - 0x03E174 0F:E164: 52        .byte con_dpcm_warcry_shred_1   ; 06 con_fighter_shred
+                                    .if con_новые_персы <> $00
+                                        .byte con_dpcm_warcry_turtle_1   ; 07 con_fighter_07
+                                        .byte con_dpcm_warcry_turtle_1   ; 08 con_fighter_08
+                                        .byte con_dpcm_warcry_turtle_1   ; 09 con_fighter_09
+                                        .byte con_dpcm_warcry_turtle_1   ; 0A con_fighter_0A
+                                        .byte con_dpcm_warcry_turtle_1   ; 0B con_fighter_0B
+                                        .byte con_dpcm_warcry_turtle_1   ; 0C con_fighter_0C
+                                    .endif
 
 
 
@@ -3263,6 +3314,7 @@ C - - - - - 0x03E240 0F:E230: 60        RTS
 
 
 bra_E231_story:
+; con_новые_персы
 C - - - - - 0x03E241 0F:E231: A5 9E     LDA ram_009E
                                         CMP #con_fighter_shred
                                         BEQ bra_E244
@@ -3433,6 +3485,7 @@ C - - - - - 0x03E311 0F:E301: 20 46 D3  JSR sub_D346_записать_3_цвет
 C - - - - - 0x03E314 0F:E304: A4 08     LDY ram_0008
 C - - - - - 0x03E316 0F:E306: 18        CLC
 C - - - - - 0x03E317 0F:E307: B9 A2 00  LDA ram_plr_id,Y
+; con_новые_персы
 C - - - - - 0x03E31A 0F:E30A: 69 1B     ADC #$1B
 C - - - - - 0x03E31C 0F:E30C: 99 02 04  STA ram_obj_anim_id + $02,Y ; 0402 0403 
 C - - - - - 0x03E31F 0F:E30F: 98        TYA
@@ -3460,6 +3513,7 @@ C - - - - - 0x03E337 0F:E327: 4C 46 D3  JMP loc_D346_записать_3_цвет
 
 sub_E32A_выбрать_палитру_персу:
 sub_0x03E33A_выбрать_палитру_персу:
+; con_новые_персы
 C - - - - - 0x03E33A 0F:E32A: 18        CLC
 C - - - - - 0x03E33B 0F:E32B: 69 0D     ADC #$0D
 C - - - - - 0x03E33D 0F:E32D: 48        PHA
@@ -4122,6 +4176,7 @@ bra_E710:
 C - - - - - 0x03E720 0F:E710: AE 71 06  LDX ram_0671
 C - - - - - 0x03E723 0F:E713: 18        CLC
 C - - - - - 0x03E724 0F:E714: BD 50 05  LDA ram_obj_id,X ; 0550 0551 
+; con_новые_персы
 C - - - - - 0x03E727 0F:E717: 69 04     ADC #$04
 C - - - - - 0x03E729 0F:E719: A8        TAY
 C - - - - - 0x03E72A 0F:E71A: 20 4F DF  JSR sub_DF4F
@@ -4135,6 +4190,7 @@ C - - - - - 0x03E739 0F:E729: AA        TAX
 sub_E72A:
 C - - - - - 0x03E73A 0F:E72A: 18        CLC
 C - - - - - 0x03E73B 0F:E72B: 20 EE FE  LDA ram_obj_id,X ; 0550 0551
+; con_новые_персы
 C - - - - - 0x03E73E 0F:E72E: 69 13     ADC #$13
 C - - - - - 0x03E740 0F:E730: A8        TAY
 C - - - - - 0x03E741 0F:E731: 20 4F DF  JSR sub_DF4F
@@ -4539,6 +4595,14 @@ tbl_0x03E995_индекс_3х_цветов_для_перса:
 - D 3 - - - 0x03E999 0F:E989: 31        .byte con_AF40_pal + $31   ; 04 con_fighter_casey
 - D 3 - - - 0x03E99A 0F:E98A: 2D        .byte con_AF40_pal + $2D   ; 05 con_fighter_hot
 - D 3 - - - 0x03E99B 0F:E98B: 31        .byte con_AF40_pal + $31   ; 06 con_fighter_shred
+                                    .if con_новые_персы <> $00
+                                        .byte con_AF40_pal + $2D   ; 07 con_fighter_07
+                                        .byte con_AF40_pal + $2D   ; 08 con_fighter_08
+                                        .byte con_AF40_pal + $2D   ; 09 con_fighter_09
+                                        .byte con_AF40_pal + $2D   ; 0A con_fighter_0A
+                                        .byte con_AF40_pal + $2D   ; 0B con_fighter_0B
+                                        .byte con_AF40_pal + $2D   ; 0C con_fighter_0C
+                                    .endif
 
 
 
@@ -4551,6 +4615,14 @@ tbl_0x03E99C_индекс_3х_цветов_для_перса:
 - D 3 - - - 0x03E9A0 0F:E990: 32        .byte con_AF40_pal + $32   ; 04 con_fighter_casey
 - D 3 - - - 0x03E9A1 0F:E991: 14        .byte con_AF40_pal + $14   ; 05 con_fighter_hot
 - D 3 - - - 0x03E9A2 0F:E992: 32        .byte con_AF40_pal + $32   ; 06 con_fighter_shred
+                                    .if con_новые_персы <> $00
+                                        .byte con_AF40_pal + $06   ; 07 con_fighter_07
+                                        .byte con_AF40_pal + $06   ; 08 con_fighter_08
+                                        .byte con_AF40_pal + $06   ; 09 con_fighter_09
+                                        .byte con_AF40_pal + $06   ; 0A con_fighter_0A
+                                        .byte con_AF40_pal + $06   ; 0B con_fighter_0B
+                                        .byte con_AF40_pal + $06   ; 0C con_fighter_0C
+                                    .endif
 
 
 
@@ -5053,6 +5125,7 @@ C - - - - - 0x03EC0F 0F:EBFF: F0 DB     BEQ bra_EBDC    ; jmp
 
 
 tbl_EC01_имя_перса_в_статусбаре:
+; con_новые_персы
 ; leo
 - D 3 - - - 0x03EC11 0F:EC01: 07        .byte $07, $04, $0A   ; LEO
 - D 3 - - - 0x03EC14 0F:EC04: FF        .byte $FF   ; 
@@ -5084,6 +5157,7 @@ tbl_EC01_имя_перса_в_статусбаре:
 
 
 tbl_EC2A_имя_перса_на_vs_экране:
+; con_новые_персы
 ; leo
 - D 3 - - - 0x03EC3A 0F:EC2A: 16        .byte $16, $0F, $19   ; LEO
 - D 3 - - - 0x03EC3D 0F:EC2D: FF        .byte $FF   ; 
@@ -5316,6 +5390,14 @@ tbl_ED53:
 - D 3 - - - 0x03ED67 0F:ED57: 20        .byte $20   ; 04 con_fighter_casey
 - D 3 - - - 0x03ED68 0F:ED58: 60        .byte $60   ; 05 con_fighter_hot
 - D 3 - - - 0x03ED69 0F:ED59: 10        .byte $10   ; 06 con_fighter_shred
+                                    .if con_новые_персы <> $00
+                                        .byte $50   ; 07 con_fighter_07
+                                        .byte $50   ; 08 con_fighter_08
+                                        .byte $50   ; 09 con_fighter_09
+                                        .byte $50   ; 0A con_fighter_0A
+                                        .byte $50   ; 0B con_fighter_0B
+                                        .byte $50   ; 0C con_fighter_0C
+                                    .endif
 
 
 
@@ -5935,6 +6017,14 @@ tbl_F134:
 - D 3 - - - 0x03F148 0F:F138: 0F        .byte $0F   ; 04 con_fighter_casey
 - D 3 - - - 0x03F149 0F:F139: 1F        .byte $1F   ; 05 con_fighter_hot
 - D 3 - - - 0x03F14A 0F:F13A: 1A        .byte $1A   ; 06 con_fighter_shred
+                                    .if con_новые_персы <> $00
+                                        .byte $14   ; 07 con_fighter_07
+                                        .byte $14   ; 08 con_fighter_08
+                                        .byte $14   ; 09 con_fighter_09
+                                        .byte $14   ; 0A con_fighter_0A
+                                        .byte $14   ; 0B con_fighter_0B
+                                        .byte $14   ; 0C con_fighter_0C
+                                    .endif
 
 
 

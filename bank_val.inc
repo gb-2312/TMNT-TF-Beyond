@@ -33,7 +33,14 @@ con_AF40_pal                            = $00 ; индекс для 0x02EF56
 
 
 ; CUSTOM для будущего расширения списков с данными
-con_колво_персов                        = $07 ; для вычислений
+con_новые_персы                         = $00 ; 00 = выкл, остальные = вкл
+
+.if con_новые_персы = $00
+    con_колво_персов                    = $07 ; для вычислений (оригинал)
+.else
+    con_колво_персов                    = $0C ; для вычислений (новые персы)
+.endif
+
 con_колво_шаблонов_ai                   = $46 ; для вычислений
 con_колво_обычных_ударов                = $3F ; для вычислений
 
@@ -96,6 +103,12 @@ con_fighter_don                         = $03 ; 03 don
 con_fighter_casey                       = $04 ; 04 casey
 con_fighter_hot                         = $05 ; 05 hot
 con_fighter_shred                       = $06 ; 06 shred
+con_fighter_07                          = $07 ; 07 
+con_fighter_08                          = $08 ; 08 
+con_fighter_09                          = $09 ; 09 
+con_fighter_0A                          = $0A ; 0A 
+con_fighter_0B                          = $0B ; 0B 
+con_fighter_0C                          = $0C ; 0C 
 
 
 

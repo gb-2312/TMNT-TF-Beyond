@@ -6253,6 +6253,14 @@ tbl_BFCE_hp_стен_в_story_для_персов:
                                         .byte $A0   ; 04 con_fighter_casey
                                         .byte $A0   ; 05 con_fighter_hot
                                         .byte $90   ; 06 con_fighter_shred
+                                    .if con_новые_персы <> $00
+                                        .byte $B0   ; 07 con_fighter_07
+                                        .byte $B0   ; 08 con_fighter_08
+                                        .byte $B0   ; 09 con_fighter_09
+                                        .byte $B0   ; 0A con_fighter_0A
+                                        .byte $B0   ; 0B con_fighter_0B
+                                        .byte $B0   ; 0C con_fighter_0C
+                                    .endif
 
 
 
