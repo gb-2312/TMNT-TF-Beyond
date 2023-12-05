@@ -3218,6 +3218,21 @@ bra_E186_RTS:
 
 
 
+loc_0x03E229_отрисовать_турнирную_сетку:
+C D 3 - - - 0x03E229 0F:E219: AD 54 01  LDA ram_0154
+C - - - - - 0x03E22C 0F:E21C: 0A        ASL
+C - - - - - 0x03E22D 0F:E21D: A8        TAY
+C - - - - - 0x03E22E 0F:E21E: B9 4C 01  LDA ram_tournament_fighter,Y ; 014C 014E 0150 
+C - - - - - 0x03E231 0F:E221: 85 A2     STA ram_plr_id
+C - - - - - 0x03E233 0F:E223: B9 4D 01  LDA ram_tournament_fighter + $01,Y ; 014D 014F 0151 
+C - - - - - 0x03E236 0F:E226: 85 A3     STA ram_plr_id + $01
+C - - - - - 0x03E238 0F:E228: 20 26 F7  JSR sub_F726_отрисовать_турнирную_сетку
+C - - - - - 0x03E23B 0F:E22B: A9 40     LDA #$40
+C - - - - - 0x03E23D 0F:E22D: 8D 60 05  STA ram_obj_timer
+C - - - - - 0x03E240 0F:E230: 60        RTS
+
+
+
 sub_E187_обработчик_стадии_игры:
 C - - - - - 0x03E197 0F:E187: A5 95     LDA ram_0095_стадия_игры
 C - - - - - 0x03E199 0F:E189: 20 32 D0  JSR sub_D032_поинтеры_после_JSR
@@ -3311,21 +3326,6 @@ ofs_087_E20F_03_vs_team:
 ofs_087_E20F_04_tournament:
 C - - - - - 0x03E21F 0F:E20F: 20 00 F6  JSR sub_F600_swap_prg_16_no_return
 C - - - - - 0x03E226 0F:E216: 4C 70 BF  JMP loc_0x02FF80
-
-
-
-loc_0x03E229_отрисовать_турнирную_сетку:
-C D 3 - - - 0x03E229 0F:E219: AD 54 01  LDA ram_0154
-C - - - - - 0x03E22C 0F:E21C: 0A        ASL
-C - - - - - 0x03E22D 0F:E21D: A8        TAY
-C - - - - - 0x03E22E 0F:E21E: B9 4C 01  LDA ram_tournament_fighter,Y ; 014C 014E 0150 
-C - - - - - 0x03E231 0F:E221: 85 A2     STA ram_plr_id
-C - - - - - 0x03E233 0F:E223: B9 4D 01  LDA ram_tournament_fighter + $01,Y ; 014D 014F 0151 
-C - - - - - 0x03E236 0F:E226: 85 A3     STA ram_plr_id + $01
-C - - - - - 0x03E238 0F:E228: 20 26 F7  JSR sub_F726_отрисовать_турнирную_сетку
-C - - - - - 0x03E23B 0F:E22B: A9 40     LDA #$40
-C - - - - - 0x03E23D 0F:E22D: 8D 60 05  STA ram_obj_timer
-C - - - - - 0x03E240 0F:E230: 60        RTS
 
 
 
