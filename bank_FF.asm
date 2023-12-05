@@ -4087,7 +4087,7 @@ C - - - - - 0x03E68F 0F:E67F: D0 09     BNE bra_E68A
 C - - - - - 0x03E691 0F:E681: A5 9E     LDA ram_009E
 C - - - - - 0x03E693 0F:E683: C9 06     CMP #$06
 C - - - - - 0x03E695 0F:E685: 90 03     BCC bra_E68A
-- - - - - - 0x03E697 0F:E687: A9 1F     LDA #$1F
+- - - - - - 0x03E697 0F:E687: A9 1F     LDA #con_0095_старт_победной_речи_шреда_в_story
 - - - - - - 0x03E699 0F:E689: 2C        .byte $2C   ; BIT
 bra_E68A:
 sub_E68A:
