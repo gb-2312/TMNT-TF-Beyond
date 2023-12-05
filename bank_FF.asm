@@ -1125,7 +1125,7 @@ C - - - - - 0x03D293 0F:D283: 20 32 D0  JSR sub_D032_поинтеры_после
 - D 2 - I - 0x03D298 0F:D288: AD D2     .word ofs_002_D2AD_01
 - D 2 - I - 0x03D29A 0F:D28A: BB D2     .word ofs_002_D2BB_02
 - D 2 - I - 0x03D29C 0F:D28C: 48 F7     .word ofs_002_F748_03_обработка_экрана_с_выбором_арены
-- D 2 - I - 0x03D29E 0F:D28E: F7 D2     .word ofs_002_D2F7_04
+- D 2 - I - 0x03D29E 0F:D28E: F7 D2     .word ofs_002_D2F7_04_обработка_стадии_игры
 
 
 
@@ -1218,8 +1218,8 @@ tbl_D2EE:
 
 
 
-ofs_002_D2F7_04:
-C - - J - - 0x03D307 0F:D2F7: 20 87 E1  JSR sub_E187
+ofs_002_D2F7_04_обработка_стадии_игры:
+C - - J - - 0x03D307 0F:D2F7: 20 87 E1  JSR sub_E187_обработчик_стадии_игры
 C - - - - - 0x03D30A 0F:D2FA: 4C A1 E9  JMP loc_E9A1
 
 
@@ -3218,7 +3218,7 @@ bra_E186_RTS:
 
 
 
-sub_E187:
+sub_E187_обработчик_стадии_игры:
 C - - - - - 0x03E197 0F:E187: A5 95     LDA ram_0095_стадия_игры
 C - - - - - 0x03E199 0F:E189: 20 32 D0  JSR sub_D032_поинтеры_после_JSR
 - D 3 - I - 0x03E19C 0F:E18C: CE E1     .word ofs_001_E1CE_00_отрисовать_пустой_экран_и_очистить_оперативку
@@ -3232,7 +3232,7 @@ C - - - - - 0x03E199 0F:E189: 20 32 D0  JSR sub_D032_поинтеры_после
 - D 3 - I - 0x03E1AC 0F:E19C: 2E E5     .word ofs_001_E52E_08_подготовка_к_подсчету_очков_после_боя
 - D 3 - I - 0x03E1AE 0F:E19E: 5D E5     .word ofs_001_E55D_09_подсчет_очков_после_боя
 - D 3 - I - 0x03E1B0 0F:E1A0: D5 E5     .word ofs_001_E5D5_0A_подготовка_экрана_с_поражением_после_боя
-- D 3 - I - 0x03E1B2 0F:E1A2: 8F E6     .word ofs_001_E68F_0B_ничья_во_время_боя
+- D 3 - I - 0x03E1B2 0F:E1A2: 8F E6     .word ofs_001_E68F_0B_время_боя_закончилось
 - D 3 - I - 0x03E1B4 0F:E1A4: FF E6     .word ofs_001_E6FF_0C
 - D 3 - I - 0x03E1B6 0F:E1A6: 42 E7     .word ofs_001_E742_0D
 - D 3 - I - 0x03E1B8 0F:E1A8: 3F F7     .word ofs_001_F73F_0E_обработка_экрана_continue
@@ -3240,16 +3240,16 @@ C - - - - - 0x03E199 0F:E189: 20 32 D0  JSR sub_D032_поинтеры_после
 - D 3 - I - 0x03E1BC 0F:E1AC: 5D E7     .word ofs_001_E75D_10
 - D 3 - I - 0x03E1BE 0F:E1AE: F9 F7     .word ofs_001_F7F9_11_подготовка_экрана_rematch
 - D 3 - I - 0x03E1C0 0F:E1B0: F0 F7     .word ofs_001_F7F0_12_обработка_экрана_rematch
-- - - - - - 0x03E1C2 0F:E1B2: 70 E7     .word ofs_001_E770_13
-- - - - - - 0x03E1C4 0F:E1B4: 8B E7     .word ofs_001_E78B_14
+- - - - - - 0x03E1C2 0F:E1B2: 70 E7     .word ofs_001_E770_13_переход_из_vs_cpu_в_vs_player___подготовка
+- - - - - - 0x03E1C4 0F:E1B4: 8B E7     .word ofs_001_E78B_14_переход_из_vs_cpu_в_vs_player___обработка
 - D 3 - I - 0x03E1C6 0F:E1B6: 99 E7     .word ofs_001_E799_15
 - - - - - - 0x03E1C8 0F:E1B8: A1 E7     .word ofs_001_E7A1_16
 - D 3 - I - 0x03E1CA 0F:E1BA: A1 E7     .word ofs_001_E7A1_17
-- D 3 - I - 0x03E1CC 0F:E1BC: BE E7     .word ofs_001_E7BE_18_отрисовать_bonus_stage
-- D 3 - I - 0x03E1CE 0F:E1BE: 30 E8     .word ofs_001_E830_19
-- D 3 - I - 0x03E1D0 0F:E1C0: 5C E8     .word ofs_001_E85C_1A
-- D 3 - I - 0x03E1D2 0F:E1C2: 81 E8     .word ofs_001_E881_1B
-- D 3 - I - 0x03E1D4 0F:E1C4: 92 E8     .word ofs_001_E892_1C
+- D 3 - I - 0x03E1CC 0F:E1BC: BE E7     .word ofs_001_E7BE_18_bonus_stage_отрисовка
+- D 3 - I - 0x03E1CE 0F:E1BE: 30 E8     .word ofs_001_E830_19_bonus_stage_обработка
+- D 3 - I - 0x03E1D0 0F:E1C0: 5C E8     .word ofs_001_E85C_1A_bonus_stage_win
+- D 3 - I - 0x03E1D2 0F:E1C2: 81 E8     .word ofs_001_E881_1B_bonus_stage_lose
+- D 3 - I - 0x03E1D4 0F:E1C4: 92 E8     .word ofs_001_E892_1C_bonus_stage_закончен
 - D 3 - I - 0x03E1D6 0F:E1C6: A4 E8     .word ofs_001_E8A4_1D
 - D 3 - I - 0x03E1D8 0F:E1C8: EA E8     .word ofs_001_E8EA_1E
 - - - - - - 0x03E1DA 0F:E1CA: A7 E8     .word ofs_001_E8A7_1F
@@ -3284,7 +3284,7 @@ C - - - - - 0x03E202 0F:E1F2: 68        PLA
 C - - - - - 0x03E203 0F:E1F3: 85 AF     STA ram_p1_score + $01
 C - - - - - 0x03E205 0F:E1F5: 68        PLA
 C - - - - - 0x03E206 0F:E1F6: 85 AE     STA ram_p1_score
-                                       ;LDA #con_0095_01
+                                       ;LDA #con_0095_очистка_2
 C - - - - - 0x03E208 0F:E1F8: E6 95     INC ram_0095_стадия_игры    ; 00 -> 01
 C - - - - - 0x03E20A 0F:E1FA: 4C 8C FC  JMP loc_FC8C_set_mirroring_V
 
@@ -3292,7 +3292,7 @@ C - - - - - 0x03E20A 0F:E1FA: 4C 8C FC  JMP loc_FC8C_set_mirroring_V
 
 ofs_001_E1FD_01_еще_одна_чистка_экрана_и_прочего___отрисовка_турнирной_сетки:
 ; bzk optimize, повторная отрисовка пустого экрана после 00
-                                       ;LDA #con_0095_02
+                                       ;LDA #con_0095_рожи_в_турнирной_сетке
 C - - J - - 0x03E20D 0F:E1FD: E6 95     INC ram_0095_стадия_игры    ; 01 -> 02
 C - - - - - 0x03E20F 0F:E1FF: 20 3C F0  JSR sub_F03C_выключить_irq___удалить_все_объекты___отрисовать_пустой_экран
 C - - - - - 0x03E212 0F:E202: 20 C2 F6  JSR sub_F6C2_выключить_музыку_и_звуки
@@ -3613,7 +3613,7 @@ C - - - - - 0x03E3AD 0F:E39D: A9 01     LDA #$01
 C - - - - - 0x03E3AF 0F:E39F: 8D 60 05  STA ram_obj_timer
 C - - - - - 0x03E3B2 0F:E3A2: 4C 2E E1  JMP loc_E12E_подготовить_затемнение_из_цветного_в_черный
 bra_E3A5:
-                                       ;LDA #con_0095_смена_раунда
+                                       ;LDA #con_0095_подготовка_арены
 C - - - - - 0x03E3B5 0F:E3A5: E6 95     INC ram_0095_стадия_игры    ; 04 -> 05
 C - - - - - 0x03E3B7 0F:E3A7: A5 2C     LDA ram_game_mode
 ; con_gm_story
@@ -3762,7 +3762,8 @@ C - - J - - 0x03E4B3 0F:E4A3: A4 2C     LDY ram_game_mode
 ; con_gm_tournament
 C - - - - - 0x03E4B5 0F:E4A5: AD 72 06  LDA ram_время_десятки
 C - - - - - 0x03E4B8 0F:E4A8: 0D 73 06  ORA ram_время_единицы
-C - - - - - 0x03E4BB 0F:E4AB: F0 50     BEQ bra_E4FD
+C - - - - - 0x03E4BB 0F:E4AB: F0 50     BEQ bra_E4FD_время_вышло
+; if время еще есть
 C - - - - - 0x03E4BD 0F:E4AD: C0 03     CPY #$03
 C - - - - - 0x03E4BF 0F:E4AF: 90 35     BCC bra_E4E6
 ; con_gm_vs_team
@@ -3820,7 +3821,7 @@ bra_E4FA:
 ; con_gm_vs_team
 ; con_gm_tournament
 C - - - - - 0x03E50A 0F:E4FA: 4C 94 F7  JMP loc_F794
-bra_E4FD:
+bra_E4FD_время_вышло:
 bra_E4FD_loop:
 ; bzk bug, проследить чтобы объекты hitspark были удалены когда время вышло,
 ; они почему-то могут остаться висеть на экране, несмотря на 0x03E525,
@@ -3840,7 +3841,7 @@ bra_E515_loop:
 C - - - - - 0x03E525 0F:E515: 20 20 DE  JSR sub_DE20_удалить_объекты_перса
 C - - - - - 0x03E528 0F:E518: CA        DEX
 C - - - - - 0x03E529 0F:E519: 10 FA     BPL bra_E515_loop
-C - - - - - 0x03E52B 0F:E51B: A9 0B     LDA #con_0095_время_закончилось
+C - - - - - 0x03E52B 0F:E51B: A9 0B     LDA #con_0095_время_вышло
 C - - - - - 0x03E52D 0F:E51D: 85 95     STA ram_0095_стадия_игры
 C - - - - - 0x03E52F 0F:E51F: 85 98     STA ram_0098
 C - - - - - 0x03E531 0F:E521: 60        RTS
@@ -3848,14 +3849,14 @@ bra_E522_перейти_в_режим_vs_player:
 loc_E522_перейти_в_режим_vs_player:
 - - - - - - 0x03E532 0F:E522: A9 29     LDA #con_0x03F6AD_29
 - - - - - - 0x03E534 0F:E524: 20 8B F6  JSR sub_F68B_выключить_звуки_и_записать_новый
-- - - - - - 0x03E537 0F:E527: A9 13     LDA #con_0095_переход_из_vs_cpu_в_vs_player
+- - - - - - 0x03E537 0F:E527: A9 13     LDA #con_0095_переход_из_vs_cpu_в_vs_player_1
 - - - - - - 0x03E539 0F:E529: 85 95     STA ram_0095_стадия_игры
 - - - - - - 0x03E53B 0F:E52B: 4C 2E E1  JMP loc_E12E_подготовить_затемнение_из_цветного_в_черный
 
 
 
 ofs_001_E52E_08_подготовка_к_подсчету_очков_после_боя:
-                                       ;LDA #con_0095_подсчёт_hp_и_очков
+                                       ;LDA #con_0095_подсчет_очков
 C - - J - - 0x03E53E 0F:E52E: E6 95     INC ram_0095_стадия_игры    ; 08 -> 09
 C - - - - - 0x03E540 0F:E530: A9 00     LDA #$00
 C - - - - - 0x03E542 0F:E532: 8D 07 04  STA ram_obj_anim_id + $07
@@ -3962,7 +3963,7 @@ C - - - - - 0x03E5CF 0F:E5BF: F0 4D     BEQ bra_E60E    ; if con_gm_vs_player
 - - - - - - 0x03E5D1 0F:E5C1: 4C 7D E6  JMP loc_E67D
 bra_E5C4:
 sub_E5C4:
-C - - - - - 0x03E5D4 0F:E5C4: A9 05     LDA #con_0095_смена_раунда
+C - - - - - 0x03E5D4 0F:E5C4: A9 05     LDA #con_0095_подготовка_арены
 C - - - - - 0x03E5D6 0F:E5C6: 85 95     STA ram_0095_стадия_игры
 C - - - - - 0x03E5D8 0F:E5C8: A2 06     LDX #$06
 C - - - - - 0x03E5DA 0F:E5CA: 20 D3 DA  JSR sub_DAD3_удалить_объект
@@ -4001,7 +4002,7 @@ C - - - - - 0x03E602 0F:E5F2: A5 9E     LDA ram_009E
 C - - - - - 0x03E604 0F:E5F4: C9 04     CMP #$04
 C - - - - - 0x03E606 0F:E5F6: D0 07     BNE bra_E5FF
 loc_E5F8:
-C D 3 - - - 0x03E608 0F:E5F8: A9 17     LDA #con_0095_надпись_bonus_game
+C D 3 - - - 0x03E608 0F:E5F8: A9 17     LDA #con_0095_bonus_game_отрисовка_1
 C - - - - - 0x03E60A 0F:E5FA: D0 0D     BNE bra_E609    ; jmp
 bra_E5FC:
 C - - - - - 0x03E60C 0F:E5FC: 4C 7D E6  JMP loc_E67D
@@ -4079,7 +4080,7 @@ C - - - - - 0x03E678 0F:E668: E0 02     CPX #$02
 C - - - - - 0x03E67A 0F:E66A: B0 05     BCS bra_E671
 bra_E66C:
 loc_0x03E67C:
-C D 3 - - - 0x03E67C 0F:E66C: A9 01     LDA #con_0095_01
+C D 3 - - - 0x03E67C 0F:E66C: A9 01     LDA #con_0095_очистка_2
 C - - - - - 0x03E67E 0F:E66E: 85 95     STA ram_0095_стадия_игры
 C - - - - - 0x03E680 0F:E670: 60        RTS
 bra_E671:
@@ -4114,7 +4115,8 @@ C - - - - - 0x03E69E 0F:E68E: 60        RTS
 
 
 
-ofs_001_E68F_0B_ничья_во_время_боя:
+ofs_001_E68F_0B_время_боя_закончилось:
+; возможная ничья
 C - - J - - 0x03E69F 0F:E68F: A9 00     LDA #$00
 C - - - - - 0x03E6A1 0F:E691: 8D 07 04  STA ram_obj_anim_id + $07
 C - - - - - 0x03E6A4 0F:E694: 8D 10 06  STA ram_plr_флаг_индекса_атаки
@@ -4210,7 +4212,7 @@ C - - - - - 0x03E740 0F:E730: A8        TAY
 C - - - - - 0x03E741 0F:E731: 20 4F DF  JSR sub_DF4F
 C - - - - - 0x03E744 0F:E734: 4C 14 F7  JMP loc_F714_смена_тайловых_наборов_для_анимаций
 bra_E737:
-C - - - - - 0x03E747 0F:E737: A9 08     LDA #con_0095_раунд_окончен
+C - - - - - 0x03E747 0F:E737: A9 08     LDA #con_0095__раунд_окончен
 C - - - - - 0x03E749 0F:E739: 85 95     STA ram_0095_стадия_игры
 C - - - - - 0x03E74B 0F:E73B: A9 00     LDA #$00
 C - - - - - 0x03E74D 0F:E73D: A0 01     LDY #$01
@@ -4254,13 +4256,13 @@ C - - - - - 0x03E77F 0F:E76F: 60        RTS
 
 
 
-ofs_001_E770_13:
+ofs_001_E770_13_переход_из_vs_cpu_в_vs_player___подготовка:
 - - - - - - 0x03E780 0F:E770: 20 65 E1  JSR sub_E165
 - - - - - - 0x03E783 0F:E773: A5 9E     LDA ram_009E
 - - - - - - 0x03E785 0F:E775: 85 9F     STA ram_009F
 - - - - - - 0x03E787 0F:E777: A9 60     LDA #$60
 - - - - - - 0x03E789 0F:E779: 8D 60 05  STA ram_obj_timer
-                                       ;LDA #con_0095_14
+                                       ;LDA #con_0095_переход_из_vs_cpu_в_vs_player_2
 - - - - - - 0x03E78C 0F:E77C: E6 95     INC ram_0095_стадия_игры    ; 13 -> 14
 - - - - - - 0x03E78E 0F:E77E: A5 AE     LDA ram_p1_score
 - - - - - - 0x03E790 0F:E780: 20 02 D2  JSR sub_D202_ASLx4
@@ -4268,7 +4270,7 @@ ofs_001_E770_13:
 - - - - - - 0x03E794 0F:E784: 20 E7 F5  JSR sub_F5E7_swap_prg_16
 - - - - - - 0x03E797 0F:E787: 68        PLA
 - - - - - - 0x03E798 0F:E788: 20 3B A7  JSR sub_0x02E74B
-ofs_001_E78B_14:
+ofs_001_E78B_14_переход_из_vs_cpu_в_vs_player___обработка:
 - - - - - - 0x03E79B 0F:E78B: CE 60 05  DEC ram_obj_timer
 - - - - - - 0x03E79E 0F:E78E: D0 DF     BNE bra_E76F_RTS
 - - - - - - 0x03E7A0 0F:E790: A9 01     LDA #$01    ; con_gm_vs_player
@@ -4287,7 +4289,7 @@ C - - - - - 0x03E7AE 0F:E79E: 4C AE F5  JMP loc_F5AE_подготовить_ск
 
 ofs_001_E7A1_16:
 ofs_001_E7A1_17:
-                                       ;LDA #con_0095_bonus_game_начинается
+                                       ;LDA #con_0095_bonus_game_отрисовка_2
 C - - J - - 0x03E7B1 0F:E7A1: E6 95     INC ram_0095_стадия_игры    ; 17 -> 18
 C - - - - - 0x03E7B3 0F:E7A3: 20 3C F0  JSR sub_F03C_выключить_irq___удалить_все_объекты___отрисовать_пустой_экран
 C - - - - - 0x03E7B6 0F:E7A6: 20 25 DC  JSR sub_DC25_запись_пары_chr_bg_06
@@ -4303,7 +4305,7 @@ C - - - - - 0x03E7CB 0F:E7BB: 4C 41 E1  JMP loc_E141_подготовить_ос
 
 
 
-ofs_001_E7BE_18_отрисовать_bonus_stage:
+ofs_001_E7BE_18_bonus_stage_отрисовка:
 C - - J - - 0x03E7CE 0F:E7BE: A5 96     LDA ram_0096
 C - - - - - 0x03E7D0 0F:E7C0: D0 0A     BNE bra_E7CC
 C - - - - - 0x03E7D2 0F:E7C2: CE 60 05  DEC ram_obj_timer
@@ -4311,7 +4313,7 @@ C - - - - - 0x03E7D5 0F:E7C5: D0 A8     BNE bra_E76F_RTS
 C - - - - - 0x03E7D7 0F:E7C7: E6 96     INC ram_0096
 C - - - - - 0x03E7D9 0F:E7C9: 4C 2E E1  JMP loc_E12E_подготовить_затемнение_из_цветного_в_черный
 bra_E7CC:
-                                       ;LDA #con_0095_bonus_game_идет
+                                       ;LDA #con_0095_bonus_game_обработка
 C - - - - - 0x03E7DC 0F:E7CC: E6 95     INC ram_0095_стадия_игры    ; 18 -> 19
 ; bzk optimize, нахрена эта запись, если чуть будет перезаписано?
 C - - - - - 0x03E7DE 0F:E7CE: A9 08     LDA #$08
@@ -4357,7 +4359,7 @@ C - - - - - 0x03E83D 0F:E82D: 4C 41 E1  JMP loc_E141_подготовить_ос
 
 
 
-ofs_001_E830_19:
+ofs_001_E830_19_bonus_stage_обработка:
 C - - J - - 0x03E840 0F:E830: A5 92     LDA ram_btn_hold + $01
 C - - - - - 0x03E842 0F:E832: C9 C8     CMP #con_btns_AB + con_btn_Up
 C - - - - - 0x03E844 0F:E834: D0 03     BNE bra_E839
@@ -4370,7 +4372,7 @@ C - - - - - 0x03E852 0F:E842: D0 3C     BNE bra_E880_RTS
 C - - - - - 0x03E854 0F:E844: AD 10 04  LDA ram_obj_pos_Y_lo
 C - - - - - 0x03E857 0F:E847: C9 AF     CMP #$AF
 C - - - - - 0x03E859 0F:E849: 90 35     BCC bra_E880_RTS
-                                       ;LDA #con_0095_bonus_game_проигран
+                                       ;LDA #con_0095_bonus_game_lose
 C - - - - - 0x03E85B 0F:E84B: E6 95     INC ram_0095_стадия_игры    ; 19 -> 1A
 C - - - - - 0x03E85D 0F:E84D: E6 95     INC ram_0095_стадия_игры    ; 1A -> 1B
 C - - - - - 0x03E85F 0F:E84F: A9 00     LDA #$00
@@ -4384,7 +4386,7 @@ C - - - - - 0x03E869 0F:E859: 4C 8B F6  JMP loc_F68B_выключить_звук
 
 
 
-ofs_001_E85C_1A:
+ofs_001_E85C_1A_bonus_stage_win:
 C - - J - - 0x03E86C 0F:E85C: A0 00     LDY #$00
 C - - - - - 0x03E86E 0F:E85E: 8C 71 06  STY ram_0671
 C - - - - - 0x03E871 0F:E861: 88        DEY ; FF
@@ -4392,10 +4394,10 @@ C - - - - - 0x03E872 0F:E862: 84 98     STY ram_0098
 C - - - - - 0x03E874 0F:E864: 20 A6 F7  JSR sub_F7A6_подсчитать_время_и_здоровье_после_боя
 C - - - - - 0x03E877 0F:E867: AD 24 06  LDA ram_plr_0624
 C - - - - - 0x03E87A 0F:E86A: D0 14     BNE bra_E880_RTS
-                                       ;LDA #con_0095_bonus_game_проигран
+                                       ;LDA #con_0095_bonus_game_lose
 C - - - - - 0x03E87C 0F:E86C: E6 95     INC ram_0095_стадия_игры    ; 1A -> 1B
 bra_E86E:
-                                       ;LDA #con_0095_bonus_game_окончен
+                                       ;LDA #con_0095_bonus_game_закончен
 C - - - - - 0x03E87E 0F:E86E: E6 95     INC ram_0095_стадия_игры    ; 1B -> 1C
 C - - - - - 0x03E880 0F:E870: A2 03     LDX #$03
 bra_E872_loop:
@@ -4411,7 +4413,7 @@ C - - - - - 0x03E890 0F:E880: 60        RTS
 
 
 
-ofs_001_E881_1B:
+ofs_001_E881_1B_bonus_stage_lose:
 C - - J - - 0x03E891 0F:E881: A2 FF     LDX #$FF
 C - - - - - 0x03E893 0F:E883: 86 98     STX ram_0098
 C - - - - - 0x03E895 0F:E885: E8        INX ; 00
@@ -4427,13 +4429,13 @@ bra_E891_RTS:
 
 
 
-ofs_001_E892_1C:
+ofs_001_E892_1C_bonus_stage_закончен:
 C - - J - - 0x03E8A2 0F:E892: A5 22     LDA ram_счетчик_кадров
 C - - - - - 0x03E8A4 0F:E894: 29 03     AND #$03
 C - - - - - 0x03E8A6 0F:E896: D0 E8     BNE bra_E880_RTS
 C - - - - - 0x03E8A8 0F:E898: CE 60 05  DEC ram_obj_timer
 C - - - - - 0x03E8AB 0F:E89B: D0 E3     BNE bra_E880_RTS
-C - - - - - 0x03E8AD 0F:E89D: A9 01     LDA #con_0095_01
+C - - - - - 0x03E8AD 0F:E89D: A9 01     LDA #con_0095_очистка_2
 C - - - - - 0x03E8AF 0F:E89F: 85 95     STA ram_0095_стадия_игры
 C - - - - - 0x03E8B1 0F:E8A1: 4C 2E E1  JMP loc_E12E_подготовить_затемнение_из_цветного_в_черный
 
@@ -4663,7 +4665,7 @@ C - - - - - 0x03E9B3 0F:E9A3: 8C 3C 06  STY ram_063C
 C - - - - - 0x03E9B6 0F:E9A6: 8C 3D 06  STY ram_063D
 C - - - - - 0x03E9B9 0F:E9A9: A2 01     LDX #$01
 C - - - - - 0x03E9BB 0F:E9AB: A5 95     LDA ram_0095_стадия_игры
-C - - - - - 0x03E9BD 0F:E9AD: C9 01     CMP #con_0095_01
+C - - - - - 0x03E9BD 0F:E9AD: C9 01     CMP #con_0095_очистка_2
 C - - - - - 0x03E9BF 0F:E9AF: F0 EF     BEQ bra_E9A0_RTS
 C - - - - - 0x03E9C1 0F:E9B1: C9 1A     CMP #$1A
 C - - - - - 0x03E9C3 0F:E9B3: B0 EB     BCS bra_E9A0_RTS
@@ -4671,8 +4673,8 @@ C - - - - - 0x03E9C5 0F:E9B5: C9 08     CMP #$08
 C - - - - - 0x03E9C7 0F:E9B7: 90 06     BCC bra_E9BF
 C - - - - - 0x03E9C9 0F:E9B9: C9 17     CMP #$17
 C - - - - - 0x03E9CB 0F:E9BB: 90 E3     BCC bra_E9A0_RTS
-C - - - - - 0x03E9CD 0F:E9BD: CA        DEX
-C - - - - - 0x03E9CE 0F:E9BE: C8        INY
+C - - - - - 0x03E9CD 0F:E9BD: CA        DEX ; 00
+C - - - - - 0x03E9CE 0F:E9BE: C8        INY ; 01
 bra_E9BF:
 bra_E9BF_loop:
 C - - - - - 0x03E9CF 0F:E9BF: A5 95     LDA ram_0095_стадия_игры
@@ -4757,7 +4759,7 @@ C - - - - - 0x027F3C 09:BF2C: 29 0F     AND #$0F
 C - - - - - 0x027F3E 09:BF2E: 4A        LSR
 C - - - - - 0x027F3F 09:BF2F: 85 03     STA ram_0003
 C - - - - - 0x027F41 09:BF31: A5 95     ;LDA ram_0095_стадия_игры
-C - - - - - 0x027F43 09:BF33: C9 09     ;CMP #con_0095_подсчёт_hp_и_очков
+C - - - - - 0x027F43 09:BF33: C9 09     ;CMP #con_0095_подсчет_очков
 C - - - - - 0x027F45 09:BF35: D0 03     ;BNE bra_BF3A_RTS
 C - - - - - 0x027F47 09:BF37: 4C 17 F6  ;JMP loc_0x03F627_restore_prg
 bra_BF3A_RTS:
@@ -4919,7 +4921,7 @@ C - - - - - 0x03EACF 0F:EABF: CE 74 06  DEC ram_время_милисекунд�
 C - - - - - 0x03EAD2 0F:EAC2: 10 6E     BPL bra_EB32_RTS
 C - - - - - 0x03EAD4 0F:EAC4: A9 4E     LDA #$4E
                                         LDY ram_0095_стадия_игры
-                                        CPY #con_0095_bonus_game_идет
+                                        CPY #con_0095_bonus_game_обработка
                                         BEQ bra_EAEA
 C - - - - - 0x03EAD6 0F:EAC6: 20 0E E1  JSR sub_E10E_корректировка_значения_A_для_turbo
 bra_EAEA:
@@ -5146,37 +5148,37 @@ tbl_EC02:
 off_EC01_00_leo:
 off_EC01_07:
 - D 3 - - - 0x03EC11 0F:EC01: 07        .byte $07, $04, $0A   ; LEO
-- D 3 - - - 0x03EC14 0F:EC04: FF        .byte $FF   ; 
+- D 3 - - - 0x03EC14 0F:EC04: FF        .byte $FF   ; end token
 
 off_EC05_01_raph:
 off_EC05_08:
 - D 3 - - - 0x03EC15 0F:EC05: 0C        .byte $0C, $01, $0B, $05   ; RAPH
-- D 3 - - - 0x03EC19 0F:EC09: FF        .byte $FF   ; 
+- D 3 - - - 0x03EC19 0F:EC09: FF        .byte $FF   ; end token
 
 off_EC0A_02_mike:
 off_EC0A_09:
 - D 3 - - - 0x03EC1A 0F:EC0A: 08        .byte $08, $06, $60, $04   ; MIKE
-- D 3 - - - 0x03EC1E 0F:EC0E: FF        .byte $FF   ; 
+- D 3 - - - 0x03EC1E 0F:EC0E: FF        .byte $FF   ; end token
 
 off_EC0F_03_don:
 off_EC0F_0A:
 - D 3 - - - 0x03EC1F 0F:EC0F: 03        .byte $03, $0A, $09   ; DON
-- D 3 - - - 0x03EC22 0F:EC12: FF        .byte $FF   ; 
+- D 3 - - - 0x03EC22 0F:EC12: FF        .byte $FF   ; end token
 
 off_EC13_04_casey:
 off_EC13_0B:
 - D 3 - - - 0x03EC23 0F:EC13: 02        .byte $02, $01, $0D, $04, $0F   ; CASEY
-- D 3 - - - 0x03EC28 0F:EC18: FF        .byte $FF   ; 
+- D 3 - - - 0x03EC28 0F:EC18: FF        .byte $FF   ; end token
 
 off_EC19_05_hot:
 off_EC19_0C:
 - D 3 - - - 0x03EC29 0F:EC19: 05        .byte $05, $0A, $0E, $05, $04, $01, $03   ; HOTHEAD
-- D 3 - - - 0x03EC30 0F:EC20: FF        .byte $FF   ; 
+- D 3 - - - 0x03EC30 0F:EC20: FF        .byte $FF   ; end token
 
 off_EC21_06_shred:
 off_EC21_0D:
 - D 3 - - - 0x03EC31 0F:EC21: 0D        .byte $0D, $05, $0C, $04, $03, $03, $04, $0C   ; SHREDDER
-- D 3 - - - 0x03EC39 0F:EC29: FF        .byte $FF   ; 
+- D 3 - - - 0x03EC39 0F:EC29: FF        .byte $FF   ; end token
 
 
 
