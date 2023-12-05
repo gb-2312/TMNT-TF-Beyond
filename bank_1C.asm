@@ -6037,7 +6037,7 @@ C - - - - - 0x03A45C 0E:A44C: 4C E5 F6  JMP loc_0x03F6F5_написать_тек
 bra_A44F:
 C - - - - - 0x03A45F 0E:A44F: A9 00     LDA #$00
 C - - - - - 0x03A461 0E:A451: 85 96     STA ram_0096
-                                       ;LDA #con_0095_12
+                                       ;LDA #con_0095_экран_rematch_end
 C - - - - - 0x03A463 0E:A453: E6 95     INC ram_0095_стадия_игры    ; 11 -> 12
 C - - - - - 0x03A465 0E:A455: A9 00     LDA #$00
 C - - - - - 0x03A467 0E:A457: 8D 30 06  STA ram_0630
