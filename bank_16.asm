@@ -1054,15 +1054,10 @@ C - - - - - 0x02EE8C 0B:AE7C: B9 30 AE  LDA tbl_AE30,Y
 C - - - - - 0x02EE8F 0B:AE7F: 85 4E     STA ram_alt_chr_bank_bg_1
 C - - - - - 0x02EE91 0B:AE81: B9 31 AE  LDA tbl_AE30 + $01,Y
 C - - - - - 0x02EE94 0B:AE84: 85 4F     STA ram_alt_chr_bank_bg_1 + $01
-; bzk optimize, сделать выбора офсета по таблице
 C - - - - - 0x02EE9A 0B:AE8A: AD 2B 01  LDA ram_option_misc
-C - - - - - 0x02EE9D 0B:AE8D: 29 02     AND #$02
-C - - - - - 0x02EE9F 0B:AE8F: F0 02     BEQ bra_AE93
-; if night
-- - - - - - 0x02EEA1 0B:AE91: A9 10     LDA #$08
-bra_AE93:
-                                        .byte $2C   ; BIT
-                                        LDA #$00
+C - - - - - 0x02EE9D 0B:AE8D: 29 02     AND #$03
+                                        TAX
+                                        LDA tbl_AEC2_индекс,X
                                         CLC
 C - - - - - 0x02EEA3 0B:AE93: 65 9E     ADC ram_номер_боя_story
                                         ASL
@@ -1092,6 +1087,13 @@ C - - - - - 0x02EECA 0B:AEBA: 85 A6     STA ram_screen_pos_X
 C - - - - - 0x02EECC 0B:AEBC: A4 9E     LDY ram_номер_боя_story
 C - - - - - 0x02EECE 0B:AEBE: BE 20 AE  LDX tbl_AE20_уровень_для_отрисовки,Y
 C - - - - - 0x02EED1 0B:AEC1: 60        RTS
+
+
+
+tbl_AEC2_индекс:
+                                        .byte $00 ; 00 green
+                                        .byte $00 ; 01 original
+                                        .byte $08 ; 02 night
 
 
 
