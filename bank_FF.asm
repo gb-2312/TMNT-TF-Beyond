@@ -7060,12 +7060,12 @@ C - - - - - 0x03F84B 0F:F83B: 60        RTS
 
 
 tbl_F83C_irq_handler:
-; con_0048
-- - - - - - 0x03F84C 0F:F83C: 7D F8     .word $FFFF      ; 00 ; unused, индекс не существует  
-- - - - - - 0x03F84E 0F:F83E: 85 F8     .word $FFFF      ; 01 ; unused, индекс не существует  
+; смотреть con_0048
+- - - - - - 0x03F84C 0F:F83C: 7D F8     .word $FFFF              ; 00 ; unused, индекс не существует  
+- - - - - - 0x03F84E 0F:F83E: 85 F8     .word $FFFF              ; 01 ; unused, индекс не существует  
 - D 3 - - - 0x03F850 0F:F840: D0 F8     .word ofs_irq_handler_F8D0_02
-- - - - - - 0x03F852 0F:F842: 40 F9     .word $FFFF      ; 03 ; unused, индекс не существует
-- - - - - - 0x03F854 0F:F844: 57 F9     .word $FFFF      ; 04 ; unused, индекс не существует
+- - - - - - 0x03F852 0F:F842: 40 F9     .word $FFFF              ; 03 ; unused, индекс не существует
+- - - - - - 0x03F854 0F:F844: 57 F9     .word $FFFF              ; 04 ; unused, индекс не существует
 - D 3 - - - 0x03F856 0F:F846: 38 FA     .word ofs_irq_handler_FA38_05
 - D 3 - - - 0x03F858 0F:F848: 6E F9     .word ofs_irq_handler_F96E_06_скроллинг_фона_vs_экрана
 - D 3 - - - 0x03F85A 0F:F84A: 96 FA     .word ofs_irq_handler_FA96_07
