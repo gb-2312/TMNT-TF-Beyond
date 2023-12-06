@@ -1400,18 +1400,11 @@ C - - - - - 0x0248F5 09:88E5: A9 3F     LDA #con_music_bonus_game_win
 bra_88E7:
 C - - - - - 0x0248F7 09:88E7: 20 90 F6  JSR sub_0x03F6A0_записать_звук_сохранив_X_Y
 bra_88EA:
-C - - - - - 0x0248FA 09:88EA: 18        CLC
 C - - - - - 0x0248FB 09:88EB: BD 50 05  LDA ram_obj_id,X ; 0550 0551 
 ; con_новые_персы
-C - - - - - 0x0248FE 09:88EE: 69 04     ADC #$04
 C - - - - - 0x024900 09:88F0: A8        TAY
-; con_DFE6_04
-; con_DFE6_05
-; con_DFE6_06
-; con_DFE6_07
-; con_DFE6_08
-; con_DFE6_09
-; con_DFE6_0A
+                                        LDA tbl_0x03E750,Y
+                                        TAY
 C - - - - - 0x024901 09:88F1: 20 4F DF  JSR sub_0x03DF5F
 C - - - - - 0x024904 09:88F4: 4C 42 B1  JMP loc_B142
 bra_88F7:

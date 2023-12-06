@@ -74,6 +74,7 @@
 .export sub_0x03DD14
 .export sub_0x03DD75_повернуть_объект_в_противоположную_сторону_по_горизонтали
 .export loc_0x03DD75_повернуть_объект_в_противоположную_сторону_по_горизонтали
+.export tbl_0x03E750
 .export sub_0x03DD7E
 .export sub_0x03DD96
 .export tbl_0x03DDC6
@@ -4178,20 +4179,10 @@ C - - - - - 0x03E71B 0F:E70B: CE 60 05  DEC ram_obj_timer
 C - - - - - 0x03E71E 0F:E70E: D0 12     BNE bra_E722
 bra_E710:
 C - - - - - 0x03E720 0F:E710: AE 71 06  LDX ram_0671
-C - - - - - 0x03E723 0F:E713: 18        CLC
 C - - - - - 0x03E724 0F:E714: BD 50 05  LDA ram_obj_id,X ; 0550 0551 
-                                    .if con_новые_персы <> $00
-                                        JSR sub_FF72_временная_корректировка_индекса_перса
-                                    .endif
-C - - - - - 0x03E727 0F:E717: 69 04     ADC #$04
 C - - - - - 0x03E729 0F:E719: A8        TAY
-; con_DFE6_04
-; con_DFE6_05
-; con_DFE6_06
-; con_DFE6_07
-; con_DFE6_08
-; con_DFE6_09
-; con_DFE6_0A
+                                        LDA tbl_E740,Y
+                                        TAY
 C - - - - - 0x03E72A 0F:E71A: 20 4F DF  JSR sub_DF4F
 C - - - - - 0x03E72D 0F:E71D: BD C0 05  LDA ram_obj_anim_timer,X ; 05C0 05C1 
 C - - - - - 0x03E730 0F:E720: 30 15     BMI bra_E737
@@ -4201,20 +4192,10 @@ C - - - - - 0x03E735 0F:E725: 49 01     EOR #$01
 C - - - - - 0x03E737 0F:E727: 29 01     AND #$01
 C - - - - - 0x03E739 0F:E729: AA        TAX
 sub_E72A:
-C - - - - - 0x03E73A 0F:E72A: 18        CLC
 C - - - - - 0x03E73B 0F:E72B: 20 EE FE  LDA ram_obj_id,X ; 0550 0551
-                                    .if con_новые_персы <> $00
-                                        JSR sub_FF72_временная_корректировка_индекса_перса
-                                    .endif
-C - - - - - 0x03E73E 0F:E72E: 69 13     ADC #$13
 C - - - - - 0x03E740 0F:E730: A8        TAY
-; con_DFE6_13
-; con_DFE6_14
-; con_DFE6_15
-; con_DFE6_16
-; con_DFE6_17
-; con_DFE6_18
-; con_DFE6_19
+                                        LDA tbl_E741,Y
+                                        TAY
 C - - - - - 0x03E741 0F:E731: 20 4F DF  JSR sub_DF4F
 C - - - - - 0x03E744 0F:E734: 4C 14 F7  JMP loc_F714_смена_тайловых_наборов_для_анимаций
 bra_E737:
@@ -4223,6 +4204,29 @@ C - - - - - 0x03E749 0F:E739: 85 95     STA ram_0095_стадия_игры
 C - - - - - 0x03E74B 0F:E73B: A9 00     LDA #$00
 C - - - - - 0x03E74D 0F:E73D: A0 01     LDY #$01
 C - - - - - 0x03E74F 0F:E73F: 4C CC F5  RTS
+
+
+
+tbl_E740:
+tbl_0x03E750:
+                                        .byte con_DFE6_04   ; 00 con_fighter_leo
+                                        .byte con_DFE6_05   ; 01 con_fighter_raph
+                                        .byte con_DFE6_06   ; 02 con_fighter_mike
+                                        .byte con_DFE6_07   ; 03 con_fighter_don
+                                        .byte con_DFE6_08   ; 04 con_fighter_casey
+                                        .byte con_DFE6_09   ; 05 con_fighter_hot
+                                        .byte con_DFE6_0A   ; 06 con_fighter_shred
+
+
+
+tbl_E741:
+                                        .byte con_DFE6_13   ; 00 con_fighter_leo
+                                        .byte con_DFE6_14   ; 01 con_fighter_raph
+                                        .byte con_DFE6_15   ; 02 con_fighter_mike
+                                        .byte con_DFE6_16   ; 03 con_fighter_don
+                                        .byte con_DFE6_17   ; 04 con_fighter_casey
+                                        .byte con_DFE6_18   ; 05 con_fighter_hot
+                                        .byte con_DFE6_19   ; 06 con_fighter_shred
 
 
 
@@ -8255,7 +8259,7 @@ C - - - - - 0x03FF81 0F:FF71: 60        RTS
 
 
 
-sub_FF72_временная_корректировка_индекса_перса:
+; sub_FF72_временная_корректировка_индекса_перса:
 sub_0x03FF82_временная_корректировка_индекса_перса:
                                     .if con_новые_персы <> $00
                                         CMP #$07
