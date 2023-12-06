@@ -203,6 +203,7 @@
 .export sub_0x03FF1D
 .export sub_0x03FF4B_вычисление_приоритета_игрока_в_бою
 .export sub_0x03F723_отрисовка_финальной_стойки
+.export sub_0x03FF82_временная_корректировка_индекса_перса
 .export _общий_RTS
 
 
@@ -4193,7 +4194,9 @@ bra_E710:
 C - - - - - 0x03E720 0F:E710: AE 71 06  LDX ram_0671
 C - - - - - 0x03E723 0F:E713: 18        CLC
 C - - - - - 0x03E724 0F:E714: BD 50 05  LDA ram_obj_id,X ; 0550 0551 
-; con_новые_персы
+                                    .if con_новые_персы <> $00
+                                        JSR sub_FF72_временная_корректировка_индекса_перса
+                                    .endif
 C - - - - - 0x03E727 0F:E717: 69 04     ADC #$04
 C - - - - - 0x03E729 0F:E719: A8        TAY
 C - - - - - 0x03E72A 0F:E71A: 20 4F DF  JSR sub_DF4F
@@ -4207,7 +4210,9 @@ C - - - - - 0x03E739 0F:E729: AA        TAX
 sub_E72A:
 C - - - - - 0x03E73A 0F:E72A: 18        CLC
 C - - - - - 0x03E73B 0F:E72B: 20 EE FE  LDA ram_obj_id,X ; 0550 0551
-; con_новые_персы
+                                    .if con_новые_персы <> $00
+                                        JSR sub_FF72_временная_корректировка_индекса_перса
+                                    .endif
 C - - - - - 0x03E73E 0F:E72E: 69 13     ADC #$13
 C - - - - - 0x03E740 0F:E730: A8        TAY
 C - - - - - 0x03E741 0F:E731: 20 4F DF  JSR sub_DF4F
@@ -8249,6 +8254,20 @@ bra_FF6D:
 C - - - - - 0x03FF7D 0F:FF6D: 86 9D     STX ram_009D
 C - - - - - 0x03FF7F 0F:FF6F: 86 AD     STX ram_00AD
 C - - - - - 0x03FF81 0F:FF71: 60        RTS
+
+
+
+sub_FF72_временная_корректировка_индекса_перса:
+sub_0x03FF82_временная_корректировка_индекса_перса:
+                                    .if con_новые_персы <> $00
+                                        CMP #$07
+                                        BCC bra_FF73
+                                        SEC
+                                        SBC #$07
+                                        CLC
+bra_FF73:
+                                        RTS
+                                    .endif
 
 
 
