@@ -2750,7 +2750,7 @@ C - - - - - 0x025058 09:9048: 20 A4 90  JSR sub_90A4
 C - - - - - 0x02505B 09:904B: BD 40 05  LDA ram_obj_0540,X ; 0540 0541 
 C - - - - - 0x02505E 09:904E: C9 02     CMP #$02
 C - - - - - 0x025060 09:9050: F0 51     BEQ bra_90A3_RTS
-C - - - - - 0x025062 09:9052: B9 4D 97  LDA tbl_974C_звуки_и_анимации_бросков + $01,Y
+C - - - - - 0x025062 09:9052: B9 4D 97  LDA (ram_0008),Y    ; 01
 C - - - - - 0x025065 09:9055: 85 08     STA ram_0008
 C - - - - - 0x025067 09:9057: 29 9F     AND #$9F
 C - - - - - 0x025069 09:9059: 9D 60 05  STA ram_obj_timer,X ; 0560 0561 
@@ -2806,25 +2806,33 @@ sub_90A4:
 loc_90A4:
 C D 0 - - - 0x0250B4 09:90A4: BC 50 05  LDA ram_obj_id,X ; 0550 0551 
                                         ASL
+                                        ASL
+                                        ADC ram_индекс_броска_перса,X
                                         ADC ram_индекс_броска_перса,X
                                         TAY
+                                        LDA tbl_9745_звуки_и_анимации_бросков,Y
+                                        STA ram_0008
+                                        LDA tbl_9745_звуки_и_анимации_бросков + $01,Y
+                                        STA ram_0009
 C - - - - - 0x0250B7 09:90A7: BD D0 05  LDA ram_obj_05D0,X ; 05D0 05D1 
 C - - - - - 0x0250BA 09:90AA: 0A        ASL
 C - - - - - 0x0250BB 09:90AB: 0A        ASL
-C - - - - - 0x0250BC 09:90AC: 79 45 97  ADC tbl_9745_индекс,Y
 C - - - - - 0x0250BF 09:90AF: A8        TAY
-C - - - - - 0x0250C0 09:90B0: 85 1F     STA ram_001F
-C - - - - - 0x0250C2 09:90B2: B9 4C 97  LDA tbl_974C_звуки_и_анимации_бросков,Y
+C - - - - - 0x0250C0 09:90B0: 85 1F     STY ram_001F
+C - - - - - 0x0250C2 09:90B2: B9 4C 97  LDA (ram_0008),Y    ; 00
 C - - - - - 0x0250C5 09:90B5: D0 06     BNE bra_90BD
 ; if 00, то следующий байт = номер звука, а 3й и 4й байты игнорируются
 C - - - - - 0x0250C7 09:90B7: 20 5D 91  JSR sub_915D_записать_звук
 C - - - - - 0x0250CA 09:90BA: 4C 30 91  JMP loc_9130
 bra_90BD:
 C - - - - - 0x0250CD 09:90BD: 9D 00 04  STA ram_obj_anim_id,X ; 0400 0401 
-C - - - - - 0x0250D1 09:90C1: B9 4E 97  LDA tbl_974C_звуки_и_анимации_бросков + $02,Y
+                                        INY
+                                        INY
+C - - - - - 0x0250D1 09:90C1: B9 4E 97  LDA (ram_0008),Y    ; 02
 C - - - - - 0x0250D4 09:90C4: 85 01     STA ram_0001
 C - - - - - 0x0250D6 09:90C6: 18        CLC
-C - - - - - 0x0250D7 09:90C7: B9 4F 97  LDA tbl_974C_звуки_и_анимации_бросков + $03,Y
+                                        INY
+C - - - - - 0x0250D7 09:90C7: B9 4F 97  LDA (ram_0008),Y    ; 03
 C - - - - - 0x0250DA 09:90CA: 7D 10 04  ADC ram_obj_pos_Y_lo,X ; 0410 0411 
 C - - - - - 0x0250DD 09:90CD: 85 02     STA ram_0002
 C - - - - - 0x0250DF 09:90CF: 20 8C 91  JSR sub_918C
@@ -2880,6 +2888,7 @@ C - - - - - 0x02513A 09:912A: 7D 40 04  ADC ram_obj_pos_X_lo,X ; 0440 0441
 C - - - - - 0x02513D 09:912D: 99 40 04  STA ram_obj_pos_X_lo,Y ; 0440 0441 
 loc_9130:
 C D 0 - - - 0x025140 09:9130: A4 1F     LDY ram_001F
+                                        INY
 bra_9132_RTS:
 C - - - - - 0x025142 09:9132: 60        RTS
 bra_9133:
@@ -2907,7 +2916,8 @@ C - - - - - 0x02516A 09:915A: 20 7C DE  JMP loc_0x03DE8E
 
 
 sub_915D_записать_звук:
-C - - - - - 0x02516D 09:915D: B9 4D 97  LDA tbl_974C_звуки_и_анимации_бросков + $01,Y
+                                        INY
+C - - - - - 0x02516D 09:915D: B9 4D 97  LDA (ram_0008),Y    ; 01
 C - - - - - 0x025170 09:9160: 20 94 F6  JSR sub_0x03F6A4_записать_звук
 C - - - - - 0x025173 09:9163: A6 AD     LDX ram_00AD
 C - - - - - 0x025175 09:9165: FE D0 05  INC ram_obj_05D0,X ; 05D0 05D1 
@@ -4290,35 +4300,32 @@ tbl_973E_урон_от_бросков:
 
 
 
-; пойнтеры для загрузки таблицы tbl_974C_звуки_и_анимации_бросков
 ; con_новые_персы
-tbl_9745_индекс:
+tbl_9745_звуки_и_анимации_бросков:
 ; 00 con_fighter_leo
-- D 0 - - - 0x025755 09:9745: 00        .byte off_974C_00_leo_00 - tbl_974D
-                                        .byte off_974C_00_leo_01 - tbl_974D
+- D 0 - - - 0x025755 09:9745: 00        .word off_974C_00_leo_00
+                                        .word off_974C_00_leo_01
 ; 01 con_fighter_raph
-- D 0 - - - 0x025756 09:9746: 48        .byte off_9794_01_raph_00 - tbl_974D
-                                        .byte off_9794_01_raph_01 - tbl_974D
+- D 0 - - - 0x025756 09:9746: 48        .word off_9794_01_raph_00
+                                        .word off_9794_01_raph_01
 ; 02 con_fighter_mike
-- D 0 - - - 0x025757 09:9747: 24        .byte off_9770_02_mike_00 - tbl_974D
-                                        .byte off_9770_02_mike_01 - tbl_974D
+- D 0 - - - 0x025757 09:9747: 24        .word off_9770_02_mike_00
+                                        .word off_9770_02_mike_01
 ; 03 con_fighter_don
-- D 0 - - - 0x025758 09:9748: 00        .byte off_974C_03_don_00 - tbl_974D
-                                        .byte off_974C_03_don_01 - tbl_974D
+- D 0 - - - 0x025758 09:9748: 00        .word off_974C_03_don_00
+                                        .word off_974C_03_don_01
 ; 04 con_fighter_casey
-- D 0 - - - 0x025759 09:9749: 68        .byte off_97B4_04_casey_00 - tbl_974D
-                                        .byte off_97B4_04_casey_01 - tbl_974D
+- D 0 - - - 0x025759 09:9749: 68        .word off_97B4_04_casey_00
+                                        .word off_97B4_04_casey_01
 ; 05 con_fighter_hot
-- D 0 - - - 0x02575A 09:974A: 90        .byte off_97DC_05_hot_00 - tbl_974D
-                                        .byte off_97DC_05_hot_01 - tbl_974D
+- D 0 - - - 0x02575A 09:974A: 90        .word off_97DC_05_hot_00
+                                        .word off_97DC_05_hot_01
 ; 06 con_fighter_shred
-- D 0 - - - 0x02575B 09:974B: B2        .byte off_97FE_06_shred_00 - tbl_974D
-                                        .byte off_97FE_06_shred_01 - tbl_974D
+- D 0 - - - 0x02575B 09:974B: B2        .word off_97FE_06_shred_00
+                                        .word off_97FE_06_shred_01
 
 
 
-tbl_974D:
-tbl_974C_звуки_и_анимации_бросков:
 off_974C_00_leo_00:
 off_974C_00_leo_01:
 off_974C_03_don_00:
