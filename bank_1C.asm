@@ -6148,6 +6148,8 @@ C - - - - - 0x03A505 0E:A4F5: F0 1A     BEQ bra_A511
 - - - - - - 0x03A509 0E:A4F9: AD 0F 01  LDA ram_010F
 - - - - - - 0x03A50C 0E:A4FC: 29 F0     AND #$F0
 - - - - - - 0x03A50E 0E:A4FE: 20 19 A6  JSR sub_A619
+                                        LDA #$00
+                                        STA ram_strength
 - - - - - - 0x03A511 0E:A501: 85 A1     STA ram_strength + $01
 - - - - - - 0x03A513 0E:A503: 88        DEY ; 01
 - - - - - - 0x03A514 0E:A504: 84 94     STY ram_0094_скрипт
@@ -6344,8 +6346,6 @@ sub_A619:
 - - - - - - 0x03A63F 0E:A62F: AD 10 01  LDA ram_0110
 - - - - - - 0x03A642 0E:A632: 29 0F     AND #$0F
 - - - - - - 0x03A644 0E:A634: 85 B1     STA ram_p1_score + $03
-- - - - - - 0x03A646 0E:A636: A9 00     LDA #$00
-- - - - - - 0x03A648 0E:A638: 85 A0     STA ram_strength
 - - - - - - 0x03A64A 0E:A63A: 60        RTS
 
 
