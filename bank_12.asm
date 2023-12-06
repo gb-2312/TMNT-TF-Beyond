@@ -4300,7 +4300,6 @@ tbl_973E_урон_от_бросков:
 
 
 
-; con_новые_персы
 tbl_9745_звуки_и_анимации_бросков:
 ; 00 con_fighter_leo
 - D 0 - - - 0x025755 09:9745: 00        .word off_974C_00_leo_00
@@ -4323,13 +4322,40 @@ tbl_9745_звуки_и_анимации_бросков:
 ; 06 con_fighter_shred
 - D 0 - - - 0x02575B 09:974B: B2        .word off_97FE_06_shred_00
                                         .word off_97FE_06_shred_01
+                                    .if con_новые_персы <> $00
+; 07 con_fighter_07
+                                        .word off_974C_07_00
+                                        .word off_974C_07_01
+; 08 con_fighter_08
+                                        .word off_9794_08_00
+                                        .word off_9794_08_01
+; 09 con_fighter_09
+                                        .word off_9770_09_00
+                                        .word off_9770_09_01
+; 0A con_fighter_0A
+                                        .word off_974C_0A_00
+                                        .word off_974C_0A_01
+; 0B con_fighter_0B
+                                        .word off_97B4_0B_00
+                                        .word off_97B4_0B_01
+; 0C con_fighter_0C
+                                        .word off_97DC_0C_00
+                                        .word off_97DC_0C_01
+; 0D con_fighter_0D
+                                        .word off_97FE_0D_00
+                                        .word off_97FE_0D_01
+                                    .endif
 
 
 
 off_974C_00_leo_00:
+off_974C_07_00:
 off_974C_00_leo_01:
+off_974C_07_01:
 off_974C_03_don_00:
+off_974C_0A_00:
 off_974C_03_don_01:
+off_974C_0A_01:
 ; 00
 - D 0 - - - 0x02575C 09:974C: 00        .byte $00   ; записать звук
 - D 0 - - - 0x02575D 09:974D: 53        .byte con_dpcm_warcry_turtle_1   ; 
@@ -4379,7 +4405,9 @@ off_974C_03_don_01:
 
 
 off_9770_02_mike_00:
+off_9770_09_00:
 off_9770_02_mike_01:
+off_9770_09_01:
 ; 00
 - D 0 - - - 0x025780 09:9770: 00        .byte $00   ; записать звук
 - D 0 - - - 0x025781 09:9771: 53        .byte con_dpcm_warcry_turtle_1   ; 
@@ -4429,7 +4457,9 @@ off_9770_02_mike_01:
 
 
 off_9794_01_raph_00:
+off_9794_08_00:
 off_9794_01_raph_01:
+off_9794_08_01:
 ; 00
 - D 0 - - - 0x0257A4 09:9794: CC        .byte $CC   ; номер анимации
 - D 0 - - - 0x0257A5 09:9795: 0C        .byte $0C   ; длительность анимации + тряска экрана
@@ -4474,7 +4504,9 @@ off_9794_01_raph_01:
 
 
 off_97B4_04_casey_00:
+off_97B4_0B_00:
 off_97B4_04_casey_01:
+off_97B4_0B_01:
 ; 00
 - D 0 - - - 0x0257C4 09:97B4: 00        .byte $00   ; записать звук
 - D 0 - - - 0x0257C5 09:97B5: 55        .byte con_dpcm_warcry_casey_1   ; 
@@ -4529,6 +4561,7 @@ off_97B4_04_casey_01:
 
 
 off_97DC_05_hot_00:
+off_97DC_0C_00:
 ; 00
 - D 0 - - - 0x0257EC 09:97DC: 00        .byte $00   ; записать звук
 - D 0 - - - 0x0257ED 09:97DD: 5A        .byte con_dpcm_warcry_hot_2   ; 
@@ -4574,7 +4607,9 @@ off_97DC_05_hot_00:
 - D 0 - - - 0x02580D 09:97FD: 88        .byte $88   ; длительность анимации + тряска экрана
 ; bzk bug? стремно смешанные таблицы
 off_97FE_06_shred_00:
+off_97FE_0D_00:
 off_97FE_06_shred_01:
+off_97FE_0D_01:
 ; 00
 - D 0 - - - 0x02580E 09:97FE: 00        .byte $00   ; записать звук
 - D 0 - - - 0x02580F 09:97FF: 57        .byte con_dpcm_warcry_shred_2   ; 
@@ -4609,6 +4644,7 @@ off_97FE_06_shred_01:
 - D 0 - - - 0x025826 09:9816: B7        .byte $B7   ; номер анимации
 - D 0 - - - 0x025827 09:9817: 8C        .byte $8C   ; длительность анимации + тряска экрана
 off_97DC_05_hot_01:
+off_97DC_0C_01:
 ; 00
                                         .byte $00   ; записать звук
                                         .byte con_dpcm_warcry_hot_2   ; 
