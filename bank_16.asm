@@ -2481,6 +2481,8 @@ C - - - - - 0x02FF78 0B:BF68: 60        RTS
 
 
 loc_0x02FF80:
+; con_gm_vs_team
+; con_gm_tournament
                                         LDA ram_random_1
                                         AND #$0F
 C D 1 - - - 0x02FF80 0B:BF70: A8        TAY
@@ -2490,7 +2492,8 @@ C - - - - - 0x02FF87 0B:BF77: D0 02     BNE bra_BF7B
 C - - - - - 0x02FF89 0B:BF79: 49 01     EOR #$01
 bra_BF7B:
 C - - - - - 0x02FF8B 0B:BF7B: 85 9E     STA ram_номер_боя_story
-C - - - - - 0x02FF8D 0B:BF7D: E0 04     CPX #con_fighter_casey
+                                       ;LDX ram_game_mode
+C - - - - - 0x02FF8D 0B:BF7D: E0 04     CPX #$04    ; con_gm_tournament
 C - - - - - 0x02FF8F 0B:BF7F: D0 03     BNE bra_BF84
 C - - - - - 0x02FF91 0B:BF81: 4C 19 E2  JMP loc_0x03E229_отрисовать_турнирную_сетку
 bra_BF84:
