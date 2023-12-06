@@ -110,7 +110,6 @@
 .export tbl_0x03E16E_звук_выбора_перса
 .export loc_0x03E229_отрисовать_турнирную_сетку
 .export loc_0x03E256
-.export sub_0x03E2FF_портреты_на_экране_выбора_уровня
 .export sub_0x03E32D
 .export sub_0x03E33A_выбрать_палитру_персу
 .export tbl_0x03E479
@@ -3484,40 +3483,6 @@ tbl_BF1E:
 
 
 
-sub_0x03E2FF_портреты_на_экране_выбора_уровня:
-C - - - - - 0x03E2FF 0F:E2EF: A9 01     LDA #$01
-C - - - - - 0x03E301 0F:E2F1: 85 08     STA ram_0008
-bra_E2F3_loop:
-C - - - - - 0x03E303 0F:E2F3: A4 08     LDY ram_0008
-C - - - - - 0x03E305 0F:E2F5: 98        TYA
-C - - - - - 0x03E306 0F:E2F6: 18        CLC
-C - - - - - 0x03E307 0F:E2F7: 69 06     ADC #$06
-C - - - - - 0x03E309 0F:E2F9: AA        TAX
-C - - - - - 0x03E30A 0F:E2FA: B9 A2 00  LDA ram_plr_id,Y
-C - - - - - 0x03E30D 0F:E2FD: A8        TAY
-C - - - - - 0x03E30E 0F:E2FE: B9 85 E9  LDA tbl_E985_индекс_3х_цветов_для_перса,Y
-; tip_индекс_буфера_палитры + $06
-; tip_индекс_буфера_палитры + $07
-C - - - - - 0x03E311 0F:E301: 20 46 D3  JSR sub_D346_записать_3_цвета_в_буфер
-; выбор анимации портретам на экране выбора карты
-C - - - - - 0x03E314 0F:E304: A4 08     LDY ram_0008
-C - - - - - 0x03E316 0F:E306: 18        CLC
-C - - - - - 0x03E317 0F:E307: B9 A2 00  LDA ram_plr_id,Y
-                                    .if con_новые_персы <> $00
-                                        JSR sub_FF72_временная_корректировка_индекса_перса
-                                    .endif
-C - - - - - 0x03E31A 0F:E30A: 69 1B     ADC #$1B
-C - - - - - 0x03E31C 0F:E30C: 99 02 04  STA ram_obj_anim_id + $02,Y ; 0402 0403 
-C - - - - - 0x03E31F 0F:E30F: 98        TYA
-C - - - - - 0x03E320 0F:E310: 09 82     ORA #$82
-C - - - - - 0x03E322 0F:E312: 99 02 05  STA ram_obj_0500 + $02,Y ; 0502 0503 
-C - - - - - 0x03E325 0F:E315: 99 32 04  STA ram_obj_pos_X_hi + $02,Y ; 0432 0433 
-C - - - - - 0x03E328 0F:E318: C6 08     DEC ram_0008
-C - - - - - 0x03E32A 0F:E31A: 10 D7     BPL bra_E2F3_loop
-C - - - - - 0x03E32C 0F:E31C: 60        RTS
-
-
-
 sub_0x03E32D:
 C - - - - - 0x03E32D 0F:E31D: 8A        TXA
 C - - - - - 0x03E32E 0F:E31E: 4A        LSR
@@ -4611,7 +4576,6 @@ tbl_E979:
 
 
 
-tbl_E985_индекс_3х_цветов_для_перса:
 tbl_0x03E995_индекс_3х_цветов_для_перса:
 - D 3 - - - 0x03E995 0F:E985: 2D        .byte con_AF40_pal + $2D   ; 00 con_fighter_leo
 - D 3 - - - 0x03E996 0F:E986: 2E        .byte con_AF40_pal + $2E   ; 01 con_fighter_raph
