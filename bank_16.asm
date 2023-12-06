@@ -594,7 +594,6 @@ C - - - - - 0x02E6FE 0B:A6EE: A9 23     LDA #con_колво_персов * $05  
 C - - - - - 0x02E700 0B:A6F0: 18        CLC
 bra_A6F1:
 C - - - - - 0x02E701 0B:A6F1: 7D 50 05  ADC ram_obj_id,X ; 0550 0551 
-; con_новые_персы
 C - - - - - 0x02E704 0B:A6F4: 85 12     STA ram_0012
 C - - - - - 0x02E706 0B:A6F6: 4C 17 F6  RTS
 
@@ -854,6 +853,7 @@ C - - - - - 0x02EB15 0B:AB05: 49 01     EOR #$01
 C - - - - - 0x02EB17 0B:AB07: A8        TAY
 C - - - - - 0x02EB18 0B:AB08: 84 1A     STY ram_001A
 ; * 07
+; con_колво_персов
 C - - - - - 0x02EB1A 0B:AB0A: B9 50 05  LDA ram_obj_id,Y ; 0550 0551 
 ; con_новые_персы
 C - - - - - 0x02EB1D 0B:AB0D: 0A        ASL

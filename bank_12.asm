@@ -224,6 +224,7 @@ C - - - - - 0x024126 09:8116: E5 01     SBC ram_0001
 C - - - - - 0x024128 09:8118: 85 01     STA ram_0001
 C - - - - - 0x02412A 09:811A: BC 50 05  LDY ram_obj_id,X ; 0550 0551 
 C - - - - - 0x02412D 09:811D: BD 26 06  LDA ram_plr_0626,X ; 0626 0627 
+; con_новые_персы
 C - - - - - 0x024130 09:8120: C9 02     CMP #$02
 C - - - - - 0x024132 09:8122: 90 0D     BCC bra_8131
 C - - - - - 0x024134 09:8124: 98        TYA
@@ -1687,7 +1688,6 @@ C - - - - - 0x024AEF 09:8ADF: A9 07     LDA #con_колво_персов    ; д
 bra_8AE1:
 C - - - - - 0x024AF1 09:8AE1: 18        CLC
 C - - - - - 0x024AF2 09:8AE2: 7D 50 05  ADC ram_obj_id,X ; 0550 0551 
-; con_новые_персы?
 C - - - - - 0x024AF5 09:8AE5: A8        TAY
 bra_8AE6_RTS:
 C - - - - - 0x024AF6 09:8AE6: 60        RTS
@@ -3214,10 +3214,10 @@ tbl_936A:
 - D 0 - - - 0x02537C 09:936C: 0A        .byte con_init_anim_падение_после_броска   ; 02
 
 tbl_936D:
-- D 0 - - - 0x02537D 09:936D: 0C        .byte $0C   ; 
-- D 0 - - - 0x02537E 09:936E: 0C        .byte $0C   ; 
-- D 0 - - - 0x02537F 09:936F: 10        .byte $10   ; 
-- - - - - - 0x025380 09:9370: 00        .byte $00   ; 
+- D 0 - - - 0x02537D 09:936D: 0C        .byte $0C   ; 04 con_fighter_casey
+- D 0 - - - 0x02537E 09:936E: 0C        .byte $0C   ; 05 con_fighter_hot
+- D 0 - - - 0x02537F 09:936F: 10        .byte $10   ; 06 con_fighter_shred
+- - - - - - 0x025380 09:9370: 00        .byte $00   ; bzk garbage?
 
 
 
