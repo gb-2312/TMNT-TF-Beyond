@@ -2542,7 +2542,7 @@ C - - - - - 0x03DE5E 0F:DE4E: B5 A0     LDA ram_strength,X
 C - - - - - 0x03DE60 0F:DE50: 0A        ASL
 C - - - - - 0x03DE61 0F:DE51: BC 50 05  LDY ram_obj_id,X ; 0550 0551 
 C - - - - - 0x03DE64 0F:DE54: 18        CLC
-C - - - - - 0x03DE65 0F:DE55: 79 34 F1  ADC tbl_F134,Y
+C - - - - - 0x03DE65 0F:DE55: 79 34 F1  ADC tbl_F134_прочность_персов,Y
 C - - - - - 0x03DE68 0F:DE58: BC 20 05  LDY ram_obj_0520,X ; 0520 0521 
 C - - - - - 0x03DE6B 0F:DE5B: C0 0A     CPY #$0A
 C - - - - - 0x03DE6D 0F:DE5D: D0 08     BNE bra_DE67
@@ -6071,7 +6071,8 @@ C - - - - - 0x03F060 0F:F050: 4C 17 F6  JMP loc_F617_restore_prg
 
 
 
-tbl_F134:
+tbl_F134_прочность_персов:
+; базовая strength персов, суммируется с ram_strength
 - D 3 - - - 0x03F144 0F:F134: 14        .byte $14   ; 00 con_fighter_leo
 - D 3 - - - 0x03F145 0F:F135: 13        .byte $13   ; 01 con_fighter_raph
 - D 3 - - - 0x03F146 0F:F136: 12        .byte $12   ; 02 con_fighter_mike
