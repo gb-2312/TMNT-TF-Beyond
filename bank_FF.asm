@@ -3514,6 +3514,15 @@ tbl_E33E_индексы_палитры_перса:
                                         .byte con_AF40_pal + $11   ; 04 con_fighter_casey
                                         .byte con_AF40_pal + $12   ; 05 con_fighter_hot
                                         .byte con_AF40_pal + $13   ; 06 con_fighter_shred
+                                    .if con_новые_персы <> $00
+                                        .byte con_AF40_pal + $0D   ; 07 con_fighter_07
+                                        .byte con_AF40_pal + $0E   ; 08 con_fighter_08
+                                        .byte con_AF40_pal + $0F   ; 09 con_fighter_09
+                                        .byte con_AF40_pal + $10   ; 0A con_fighter_0A
+                                        .byte con_AF40_pal + $11   ; 0B con_fighter_0B
+                                        .byte con_AF40_pal + $12   ; 0C con_fighter_0C
+                                        .byte con_AF40_pal + $13   ; 0D con_fighter_0D
+                                    .endif
 ; запасная палитра
                                         .byte con_AF40_pal + $19   ; 00 con_fighter_leo
                                         .byte con_AF40_pal + $1A   ; 01 con_fighter_raph
@@ -3522,6 +3531,15 @@ tbl_E33E_индексы_палитры_перса:
                                         .byte con_AF40_pal + $1D   ; 04 con_fighter_casey
                                         .byte con_AF40_pal + $1E   ; 05 con_fighter_hot
                                         .byte con_AF40_pal + $1F   ; 06 con_fighter_shred
+                                    .if con_новые_персы <> $00
+                                        .byte con_AF40_pal + $0D   ; 07 con_fighter_07
+                                        .byte con_AF40_pal + $0E   ; 08 con_fighter_08
+                                        .byte con_AF40_pal + $0F   ; 09 con_fighter_09
+                                        .byte con_AF40_pal + $10   ; 0A con_fighter_0A
+                                        .byte con_AF40_pal + $11   ; 0B con_fighter_0B
+                                        .byte con_AF40_pal + $12   ; 0C con_fighter_0C
+                                        .byte con_AF40_pal + $13   ; 0D con_fighter_0D
+                                    .endif
 
 
 
