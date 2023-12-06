@@ -5342,6 +5342,7 @@ tbl_A0DD:
 
 
 sub_0x03A0F3_отрисовать_портреты:
+; большие портреты как на vs экране
 ; 00 = 0x03E2E0
 ; 01 = 0x03860B
 ; 02 = 0x038725
@@ -5517,6 +5518,7 @@ C - - - - - 0x03A1D0 0E:A1C0: 60        RTS
 
 
 loc_A1C1_палитра_и_chr_банки_на_экранах_с_портретами:
+; большие портреты как на vs экране
 C D 1 - - - 0x03A1D1 0E:A1C1: 20 6D D4  JSR sub_0x03D47D_запись_черной_палитры_в_буфер
 C - - - - - 0x03A1D4 0E:A1C4: A9 14     LDA #con_D57A_14
 C - - - - - 0x03A1D6 0E:A1C6: 20 B0 D3  JSR sub_0x03D3C0_записать_палитру_для_фона
@@ -5527,13 +5529,13 @@ C - - - - - 0x03A1DD 0E:A1CD: A6 A8     LDX ram_local_obj_index
 C - - - - - 0x03A1DF 0E:A1CF: B4 A2     LDY ram_plr_id,X ; 00A2 00A3 
 C - - - - - 0x03A1E1 0E:A1D1: 20 0B BF  JSR sub_BF0B_конвертация_индекса
 C - - - - - 0x03A1E4 0E:A1D4: A8        TAY
-C - - - - - 0x03A1E5 0E:A1D5: B9 1E A3  LDA tbl_A31E,Y
+C - - - - - 0x03A1E5 0E:A1D5: B9 1E A3  LDA tbl_A31E_chr_банки_портрета,Y
 C - - - - - 0x03A1E8 0E:A1D8: 95 4E     STA ram_alt_chr_bank_bg_1,X
-C - - - - - 0x03A1EA 0E:A1DA: B9 1F A3  LDA tbl_A31E + $01,Y
+C - - - - - 0x03A1EA 0E:A1DA: B9 1F A3  LDA tbl_A31E_chr_банки_портрета + $01,Y
 C - - - - - 0x03A1ED 0E:A1DD: 95 50     STA ram_alt_chr_bank_bg_2,X
-C - - - - - 0x03A1EF 0E:A1DF: B9 20 A3  LDA tbl_A31E + $02,Y
+C - - - - - 0x03A1EF 0E:A1DF: B9 20 A3  LDA tbl_A31E_chr_банки_портрета + $02,Y
 C - - - - - 0x03A1F2 0E:A1E2: 95 52     STA ram_alt_chr_bank_spr_1,X
-C - - - - - 0x03A1F4 0E:A1E4: B9 21 A3  LDA tbl_A31E + $03,Y
+C - - - - - 0x03A1F4 0E:A1E4: B9 21 A3  LDA tbl_A31E_chr_банки_портрета + $03,Y
 C - - - - - 0x03A1F7 0E:A1E7: 95 54     STA ram_alt_chr_bank_spr_2,X
 C - - - - - 0x03A1F9 0E:A1E9: B4 A2     LDY ram_plr_id,X ; 00A2 00A3 
 C - - - - - 0x03A1FB 0E:A1EB: 20 17 BF  JSR sub_BF17
@@ -5545,7 +5547,7 @@ C - - - - - 0x03A207 0E:A1F7: 9D 30 04  STA ram_obj_pos_X_hi,X ; 0430 0431
 C - - - - - 0x03A20A 0E:A1FA: 98        TYA
 C - - - - - 0x03A20B 0E:A1FB: 0A        ASL
 C - - - - - 0x03A20C 0E:A1FC: A8        TAY
-C - - - - - 0x03A20D 0E:A1FD: B9 2E A3  LDA tbl_A32E_индекс_палитры,Y
+C - - - - - 0x03A20D 0E:A1FD: B9 2E A3  LDA tbl_A32E_индекс_палитры_портрета,Y
 ; tip_индекс_буфера_палитры + $00
 ; tip_индекс_буфера_палитры + $01
 C - - - - - 0x03A210 0E:A200: 20 46 D3  JSR sub_0x03D356_записать_3_цвета_в_буфер
@@ -5553,7 +5555,7 @@ C - - - - - 0x03A213 0E:A203: 18        CLC
 C - - - - - 0x03A214 0E:A204: 8A        TXA
 C - - - - - 0x03A215 0E:A205: 69 04     ADC #$04
 C - - - - - 0x03A217 0E:A207: AA        TAX
-C - - - - - 0x03A218 0E:A208: B9 2F A3  LDA tbl_A32E_индекс_палитры + $01,Y
+C - - - - - 0x03A218 0E:A208: B9 2F A3  LDA tbl_A32E_индекс_палитры_портрета + $01,Y
 ; tip_индекс_буфера_палитры + $04
 ; tip_индекс_буфера_палитры + $05
 C - - - - - 0x03A21B 0E:A20B: 20 46 D3  JSR sub_0x03D356_записать_3_цвета_в_буфер
@@ -5574,7 +5576,6 @@ C - - - - - 0x03A232 0E:A222: 60        RTS
 
 
 tbl_A223_тайлы_рож:
-; con_новые_персы
 - D 1 - - - 0x03A233 0E:A223: 00        .word off_A22A_00_leo
 - D 1 - - - 0x03A234 0E:A224: 00        .word off_A22A_01_raph
 - D 1 - - - 0x03A235 0E:A225: 00        .word off_A22A_02_mike
@@ -5582,6 +5583,15 @@ tbl_A223_тайлы_рож:
 - D 1 - - - 0x03A237 0E:A227: 32        .word off_A25C_04_casey
 - D 1 - - - 0x03A238 0E:A228: 73        .word off_A29D_05_hot
 - D 1 - - - 0x03A239 0E:A229: A2        .word off_A2CC_06_shred
+                                    .if con_новые_персы <> $00
+                                        .word off_A22A_07
+                                        .word off_A22A_08
+                                        .word off_A22A_09
+                                        .word off_A22A_0A
+                                        .word off_A25C_0B
+                                        .word off_A29D_0C
+                                        .word off_A2CC_0D
+                                    .endif
 
 
 
@@ -5589,6 +5599,10 @@ off_A22A_00_leo:
 off_A22A_01_raph:
 off_A22A_02_mike:
 off_A22A_03_don:
+off_A22A_07:
+off_A22A_08:
+off_A22A_09:
+off_A22A_0A:
 - D 1 - - - 0x03A23A 0E:A22A: 21        .byte $21   ; смещение ppu
 - D 1 - - - 0x03A23B 0E:A22B: 05        .byte $05, $01   ; байт 01 с увеличением, 05 раз
 
@@ -5641,6 +5655,7 @@ off_A22A_03_don:
 
 
 off_A25C_04_casey:
+off_A25C_0B:
 - D 1 - - - 0x03A26C 0E:A25C: 00        .byte $00   ; смещение ppu
 - D 1 - - - 0x03A26D 0E:A25D: 06        .byte $06, $40   ; байт 40 с увеличением, 06 раз
 
@@ -5702,6 +5717,7 @@ off_A25C_04_casey:
 
 
 off_A29D_05_hot:
+off_A29D_0C:
 - D 1 - - - 0x03A2AD 0E:A29D: 03        .byte $03   ; смещение ppu
 - D 1 - - - 0x03A2AE 0E:A29E: 05        .byte $05, $5C   ; байт 5C с увеличением, 05 раз
 
@@ -5754,6 +5770,7 @@ off_A29D_05_hot:
 
 
 off_A2CC_06_shred:
+off_A2CC_0D:
 - D 1 - - - 0x03A2DC 0E:A2CC: 02        .byte $02   ; смещение ppu
 - D 1 - - - 0x03A2DD 0E:A2CD: 04        .byte $04, $94   ; байт 94 с увеличением, 04 раз
 
@@ -5852,24 +5869,28 @@ tbl_A317_индекс:
 
 
 
-tbl_A31E:
+tbl_A31E_chr_банки_портрета:
 ; con_новые_персы
-; 00 черепахи
+; 00 
+; con_fighter_leo
+; con_fighter_raph
+; con_fighter_mike
+; con_fighter_don
 - D 1 - - - 0x03A32E 0E:A31E: 22        .byte con_chr_bank_bg + $22   ; 
 - D 1 - - - 0x03A32F 0E:A31F: 22        .byte con_chr_bank_bg + $22   ; 
 - D 1 - - - 0x03A330 0E:A320: 26        .byte con_chr_bank_spr + $26   ; 
 - D 1 - - - 0x03A331 0E:A321: 27        .byte con_chr_bank_spr + $27   ; 
-; 04 casey
+; 04 con_fighter_casey
 - D 1 - - - 0x03A332 0E:A322: 22        .byte con_chr_bank_bg + $22   ; 
 - D 1 - - - 0x03A333 0E:A323: 24        .byte con_chr_bank_bg + $24   ; 
 - D 1 - - - 0x03A334 0E:A324: 0E        .byte con_chr_bank_spr + $0E   ; 
 - D 1 - - - 0x03A335 0E:A325: 0E        .byte con_chr_bank_spr + $0E   ; 
-; 08 hot
+; 08 con_fighter_hot
 - D 1 - - - 0x03A336 0E:A326: 24        .byte con_chr_bank_bg + $24   ; 
 - D 1 - - - 0x03A337 0E:A327: 26        .byte con_chr_bank_bg + $26   ; 
 - D 1 - - - 0x03A338 0E:A328: 13        .byte con_chr_bank_spr + $13   ; 
 - D 1 - - - 0x03A339 0E:A329: 13        .byte con_chr_bank_spr + $13   ; 
-; 0C shred
+; 0C con_fighter_shred
 - D 1 - - - 0x03A33A 0E:A32A: 22        .byte con_chr_bank_bg + $22   ; 
 - D 1 - - - 0x03A33B 0E:A32B: 24        .byte con_chr_bank_bg + $24   ; 
 - D 1 - - - 0x03A33C 0E:A32C: 26        .byte con_chr_bank_spr + $26   ; 
@@ -5877,28 +5898,51 @@ tbl_A31E:
 
 
 
-tbl_A32E_индекс_палитры:
-; 00
+tbl_A32E_индекс_палитры_портрета:
+; 00 con_fighter_leo
 - D 1 - - - 0x03A33E 0E:A32E: 43        .byte con_AF40_pal + $43   ; 
 - D 1 - - - 0x03A33F 0E:A32F: 66        .byte con_AF40_pal + $66   ; 
-; 01
+; 01 con_fighter_raph
 - D 1 - - - 0x03A340 0E:A330: 44        .byte con_AF40_pal + $44   ; 
 - D 1 - - - 0x03A341 0E:A331: 48        .byte con_AF40_pal + $48   ; 
-; 02
+; 02 con_fighter_mike
 - D 1 - - - 0x03A342 0E:A332: 45        .byte con_AF40_pal + $45   ; 
 - D 1 - - - 0x03A343 0E:A333: 48        .byte con_AF40_pal + $48   ; 
-; 03
+; 03 con_fighter_don
 - D 1 - - - 0x03A344 0E:A334: 46        .byte con_AF40_pal + $46   ; 
 - D 1 - - - 0x03A345 0E:A335: 66        .byte con_AF40_pal + $66   ; 
-; 04
+; 04 con_fighter_casey
 - D 1 - - - 0x03A346 0E:A336: 47        .byte con_AF40_pal + $47   ; 
 - D 1 - - - 0x03A347 0E:A337: 2A        .byte con_AF40_pal + $2A   ; 
-; 05
+; 05 con_fighter_hot
 - D 1 - - - 0x03A348 0E:A338: 48        .byte con_AF40_pal + $48   ; 
 - D 1 - - - 0x03A349 0E:A339: 49        .byte con_AF40_pal + $49   ; 
-; 06
+; 06 con_fighter_shred
 - D 1 - - - 0x03A34A 0E:A33A: 02        .byte con_AF40_pal + $02   ; 
 - D 1 - - - 0x03A34B 0E:A33B: 4A        .byte con_AF40_pal + $4A   ; 
+                                    .if con_новые_персы <> $00
+; 07 con_fighter_07
+                                        .byte con_AF40_pal + $43   ; 
+                                        .byte con_AF40_pal + $66   ; 
+; 08 con_fighter_08
+                                        .byte con_AF40_pal + $44   ; 
+                                        .byte con_AF40_pal + $48   ; 
+; 09 con_fighter_09
+                                        .byte con_AF40_pal + $45   ; 
+                                        .byte con_AF40_pal + $48   ; 
+; 0A con_fighter_0A
+                                        .byte con_AF40_pal + $46   ; 
+                                        .byte con_AF40_pal + $66   ; 
+; 0B con_fighter_0B
+                                        .byte con_AF40_pal + $47   ; 
+                                        .byte con_AF40_pal + $2A   ; 
+; 0C con_fighter_0C
+                                        .byte con_AF40_pal + $48   ; 
+                                        .byte con_AF40_pal + $49   ; 
+; 0D con_fighter_0D
+                                        .byte con_AF40_pal + $02   ; 
+                                        .byte con_AF40_pal + $4A   ; 
+                                    .endif
 
 
 
