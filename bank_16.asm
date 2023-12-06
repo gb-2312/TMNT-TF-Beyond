@@ -1890,7 +1890,7 @@ C - - - - - 0x02F7B8 0B:B7A8: 10 02     BPL bra_B7AC
 C - - - - - 0x02F7BA 0B:B7AA: A9 90     LDA #$90
 bra_B7AC:
 C - - - - - 0x02F7BC 0B:B7AC: 20 7D D1  JSR sub_0x03D18D
-C - - - - - 0x02F7BF 0B:B7AF: A0 0D     LDY #$0D
+C - - - - - 0x02F7BF 0B:B7AF: A0 0D     LDY #con_DFE6_0D
 C - - - - - 0x02F7C1 0B:B7B1: AD 26 01  LDA ram_option_speed
 C - - - - - 0x02F7C4 0B:B7B4: 85 02     STA ram_0002
 C - - - - - 0x02F7C6 0B:B7B6: BD A0 04  LDA ram_obj_spd_Y_hi,X ; 04A0 04A1 
@@ -1938,7 +1938,7 @@ C - - - - - 0x02F81B 0B:B80B: 20 4C E1  JSR sub_0x03E15C
 C - - - - - 0x02F81E 0B:B80E: 20 58 DC  JSR sub_0x03DC68_добавить_A_00_к_spd_Z
 C - - - - - 0x02F821 0B:B811: A9 41     LDA #$41
 C - - - - - 0x02F823 0B:B813: 20 7D D1  JSR sub_0x03D18D
-C - - - - - 0x02F826 0B:B816: A0 12     LDY #$12
+C - - - - - 0x02F826 0B:B816: A0 12     LDY #con_DFE6_12
 C - - - - - 0x02F828 0B:B818: 20 4F DF  JSR sub_0x03DF5F
 C - - - - - 0x02F82B 0B:B81B: BD 60 04  LDA ram_obj_spd_Z_hi,X ; 0460 0461 
 C - - - - - 0x02F82E 0B:B81E: 30 D9     BMI bra_B7F9

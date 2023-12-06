@@ -2715,21 +2715,21 @@ C - - - - - 0x03DF50 0F:DF40: 60        RTS
 
 
 tbl_DF41:
-- D 2 - - - 0x03DF51 0F:DF41: 0E        .byte $0E   ; 00 con_fighter_leo
-- D 2 - - - 0x03DF52 0F:DF42: 0E        .byte $0E   ; 01 con_fighter_raph
-- D 2 - - - 0x03DF53 0F:DF43: 0E        .byte $0E   ; 02 con_fighter_mike
-- D 2 - - - 0x03DF54 0F:DF44: 0E        .byte $0E   ; 03 con_fighter_don
-- D 2 - - - 0x03DF55 0F:DF45: 0F        .byte $0F   ; 04 con_fighter_casey
-- D 2 - - - 0x03DF56 0F:DF46: 10        .byte $10   ; 05 con_fighter_hot
-- D 2 - - - 0x03DF57 0F:DF47: 11        .byte $11   ; 06 con_fighter_shred
+- D 2 - - - 0x03DF51 0F:DF41: 0E        .byte con_DFE6_0E   ; 00 con_fighter_leo
+- D 2 - - - 0x03DF52 0F:DF42: 0E        .byte con_DFE6_0E   ; 01 con_fighter_raph
+- D 2 - - - 0x03DF53 0F:DF43: 0E        .byte con_DFE6_0E   ; 02 con_fighter_mike
+- D 2 - - - 0x03DF54 0F:DF44: 0E        .byte con_DFE6_0E   ; 03 con_fighter_don
+- D 2 - - - 0x03DF55 0F:DF45: 0F        .byte con_DFE6_0F   ; 04 con_fighter_casey
+- D 2 - - - 0x03DF56 0F:DF46: 10        .byte con_DFE6_10   ; 05 con_fighter_hot
+- D 2 - - - 0x03DF57 0F:DF47: 11        .byte con_DFE6_11   ; 06 con_fighter_shred
                                     .if con_новые_персы <> $00
-                                        .byte $0E   ; 07 con_fighter_07
-                                        .byte $0E   ; 08 con_fighter_08
-                                        .byte $0E   ; 09 con_fighter_09
-                                        .byte $0E   ; 0A con_fighter_0A
-                                        .byte $0F   ; 0B con_fighter_0B
-                                        .byte $10   ; 0C con_fighter_0C
-                                        .byte $11   ; 0D con_fighter_0D
+                                        .byte con_DFE6_0E   ; 07 con_fighter_07
+                                        .byte con_DFE6_0E   ; 08 con_fighter_08
+                                        .byte con_DFE6_0E   ; 09 con_fighter_09
+                                        .byte con_DFE6_0E   ; 0A con_fighter_0A
+                                        .byte con_DFE6_0F   ; 0B con_fighter_0B
+                                        .byte con_DFE6_10   ; 0C con_fighter_0C
+                                        .byte con_DFE6_11   ; 0D con_fighter_0D
                                     .endif
 
 tbl_DF48:
@@ -2849,36 +2849,38 @@ C - - - - - 0x03DFF3 0F:DFE3: 4C 38 DF  JMP loc_DF38
 
 
 tbl_DFE6:
-- D 2 - - - 0x03DFF6 0F:DFE6: 00        .byte off_E000_00 - tbl_E000
-- D 2 - - - 0x03DFF7 0F:DFE7: 06        .byte off_E006_01 - tbl_E000
-- D 2 - - - 0x03DFF8 0F:DFE8: 12        .byte off_E012_02 - tbl_E000
-- D 2 - - - 0x03DFF9 0F:DFE9: 1E        .byte off_E01E_03 - tbl_E000
-- D 2 - - - 0x03DFFA 0F:DFEA: 26        .byte off_E026_04 - tbl_E000
-- D 2 - - - 0x03DFFB 0F:DFEB: 3A        .byte off_E03A_05 - tbl_E000
-- D 2 - - - 0x03DFFC 0F:DFEC: 58        .byte off_E058_06 - tbl_E000
-- D 2 - - - 0x03DFFD 0F:DFED: 58        .byte off_E058_07 - tbl_E000
-- D 2 - - - 0x03DFFE 0F:DFEE: 6A        .byte off_E06A_08 - tbl_E000
-- D 2 - - - 0x03DFFF 0F:DFEF: 76        .byte off_E076_09 - tbl_E000
-- D 2 - - - 0x03E000 0F:DFF0: 9C        .byte off_E09C_0A - tbl_E000
-- D 2 - - - 0x03E001 0F:DFF1: A6        .byte off_E0A6_0B - tbl_E000
-- D 2 - - - 0x03E002 0F:DFF2: AA        .byte off_E0AA_0C - tbl_E000
-- D 2 - - - 0x03E003 0F:DFF3: B6        .byte off_E0B6_0D - tbl_E000
-- D 2 - - - 0x03E004 0F:DFF4: C2        .byte off_E0C2_0E - tbl_E000
-- D 2 - - - 0x03E005 0F:DFF5: CA        .byte off_E0CA_0F - tbl_E000
-- D 2 - - - 0x03E006 0F:DFF6: CE        .byte off_E0CE_10 - tbl_E000
-- D 2 - - - 0x03E007 0F:DFF7: D6        .byte off_E0D6_11 - tbl_E000
-- D 2 - - - 0x03E008 0F:DFF8: DE        .byte off_E0DE_12 - tbl_E000
-- D 2 - - - 0x03E009 0F:DFF9: E4        .byte off_E0E4_13 - tbl_E000
-- D 2 - - - 0x03E00A 0F:DFFA: E4        .byte off_E0E4_14 - tbl_E000
-- - - - - - 0x03E00B 0F:DFFB: E4        .byte off_E0E4_15 - tbl_E000
-- D 2 - - - 0x03E00C 0F:DFFC: E4        .byte off_E0E4_16 - tbl_E000
-- D 2 - - - 0x03E00D 0F:DFFD: EE        .byte off_E0EE_17 - tbl_E000
-- D 2 - - - 0x03E00E 0F:DFFE: F2        .byte off_E0F2_18 - tbl_E000
-- D 2 - - - 0x03E00F 0F:DFFF: F8        .byte off_E0F8_19 - tbl_E000
+; смотреть con_DFE6
+- D 2 - - - 0x03DFF6 0F:DFE6: 00        .byte off_E000_00 - tbl_E001
+- D 2 - - - 0x03DFF7 0F:DFE7: 06        .byte off_E006_01 - tbl_E001
+- D 2 - - - 0x03DFF8 0F:DFE8: 12        .byte off_E012_02 - tbl_E001
+- D 2 - - - 0x03DFF9 0F:DFE9: 1E        .byte off_E01E_03 - tbl_E001
+- D 2 - - - 0x03DFFA 0F:DFEA: 26        .byte off_E026_04 - tbl_E001
+- D 2 - - - 0x03DFFB 0F:DFEB: 3A        .byte off_E03A_05 - tbl_E001
+- D 2 - - - 0x03DFFC 0F:DFEC: 58        .byte off_E058_06 - tbl_E001
+- D 2 - - - 0x03DFFD 0F:DFED: 58        .byte off_E058_07 - tbl_E001
+- D 2 - - - 0x03DFFE 0F:DFEE: 6A        .byte off_E06A_08 - tbl_E001
+- D 2 - - - 0x03DFFF 0F:DFEF: 76        .byte off_E076_09 - tbl_E001
+- D 2 - - - 0x03E000 0F:DFF0: 9C        .byte off_E09C_0A - tbl_E001
+- D 2 - - - 0x03E001 0F:DFF1: A6        .byte off_E0A6_0B - tbl_E001
+- D 2 - - - 0x03E002 0F:DFF2: AA        .byte off_E0AA_0C - tbl_E001
+- D 2 - - - 0x03E003 0F:DFF3: B6        .byte off_E0B6_0D - tbl_E001
+- D 2 - - - 0x03E004 0F:DFF4: C2        .byte off_E0C2_0E - tbl_E001
+- D 2 - - - 0x03E005 0F:DFF5: CA        .byte off_E0CA_0F - tbl_E001
+- D 2 - - - 0x03E006 0F:DFF6: CE        .byte off_E0CE_10 - tbl_E001
+- D 2 - - - 0x03E007 0F:DFF7: D6        .byte off_E0D6_11 - tbl_E001
+- D 2 - - - 0x03E008 0F:DFF8: DE        .byte off_E0DE_12 - tbl_E001
+- D 2 - - - 0x03E009 0F:DFF9: E4        .byte off_E0E4_13 - tbl_E001
+- D 2 - - - 0x03E00A 0F:DFFA: E4        .byte off_E0E4_14 - tbl_E001
+- - - - - - 0x03E00B 0F:DFFB: E4        .byte off_E0E4_15 - tbl_E001
+- D 2 - - - 0x03E00C 0F:DFFC: E4        .byte off_E0E4_16 - tbl_E001
+- D 2 - - - 0x03E00D 0F:DFFD: EE        .byte off_E0EE_17 - tbl_E001
+- D 2 - - - 0x03E00E 0F:DFFE: F2        .byte off_E0F2_18 - tbl_E001
+- D 2 - - - 0x03E00F 0F:DFFF: F8        .byte off_E0F8_19 - tbl_E001
 
 
 
 tbl_E000:
+tbl_E001:
 ; todo разобрать, проверить есть ли смежные
 off_E000_00:
 - D 3 - - - 0x03E010 0F:E000: 99        .byte $99, con_0x03F6AD_04   ; 00
@@ -4183,6 +4185,13 @@ C - - - - - 0x03E724 0F:E714: BD 50 05  LDA ram_obj_id,X ; 0550 0551
                                     .endif
 C - - - - - 0x03E727 0F:E717: 69 04     ADC #$04
 C - - - - - 0x03E729 0F:E719: A8        TAY
+; con_DFE6_04
+; con_DFE6_05
+; con_DFE6_06
+; con_DFE6_07
+; con_DFE6_08
+; con_DFE6_09
+; con_DFE6_0A
 C - - - - - 0x03E72A 0F:E71A: 20 4F DF  JSR sub_DF4F
 C - - - - - 0x03E72D 0F:E71D: BD C0 05  LDA ram_obj_anim_timer,X ; 05C0 05C1 
 C - - - - - 0x03E730 0F:E720: 30 15     BMI bra_E737
@@ -4199,6 +4208,13 @@ C - - - - - 0x03E73B 0F:E72B: 20 EE FE  LDA ram_obj_id,X ; 0550 0551
                                     .endif
 C - - - - - 0x03E73E 0F:E72E: 69 13     ADC #$13
 C - - - - - 0x03E740 0F:E730: A8        TAY
+; con_DFE6_13
+; con_DFE6_14
+; con_DFE6_15
+; con_DFE6_16
+; con_DFE6_17
+; con_DFE6_18
+; con_DFE6_19
 C - - - - - 0x03E741 0F:E731: 20 4F DF  JSR sub_DF4F
 C - - - - - 0x03E744 0F:E734: 4C 14 F7  JMP loc_F714_смена_тайловых_наборов_для_анимаций
 bra_E737:

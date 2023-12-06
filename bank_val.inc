@@ -310,6 +310,36 @@ con_0095_экран_победной_речи_шреда_в_story      = $20 ;
 
 
 
+; индекс для 0x03DFF6
+con_DFE6_00                             = $00 ; 
+con_DFE6_01                             = $01 ; 
+con_DFE6_02                             = $02 ; 
+con_DFE6_03                             = $03 ; 
+con_DFE6_04                             = $04 ; 
+con_DFE6_05                             = $05 ; 
+con_DFE6_06                             = $06 ; 
+con_DFE6_07                             = $07 ; 
+con_DFE6_08                             = $08 ; 
+con_DFE6_09                             = $09 ; 
+con_DFE6_0A                             = $0A ; 
+con_DFE6_0B                             = $0B ; 
+con_DFE6_0C                             = $0C ; 
+con_DFE6_0D                             = $0D ; 
+con_DFE6_0E                             = $0E ; 
+con_DFE6_0F                             = $0F ; 
+con_DFE6_10                             = $10 ; 
+con_DFE6_11                             = $11 ; 
+con_DFE6_12                             = $12 ; 
+con_DFE6_13                             = $13 ; 
+con_DFE6_14                             = $14 ; 
+con_DFE6_15                             = $15 ; 
+con_DFE6_16                             = $16 ; 
+con_DFE6_17                             = $17 ; 
+con_DFE6_18                             = $18 ; 
+con_DFE6_19                             = $19 ; 
+
+
+
 ; ram_obj_04C0
 ; обработчик в 0x024C3B
 ; todo комменты 0x037F2B 0x036792

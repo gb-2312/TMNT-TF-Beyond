@@ -1405,6 +1405,13 @@ C - - - - - 0x0248FB 09:88EB: BD 50 05  LDA ram_obj_id,X ; 0550 0551
 ; con_новые_персы
 C - - - - - 0x0248FE 09:88EE: 69 04     ADC #$04
 C - - - - - 0x024900 09:88F0: A8        TAY
+; con_DFE6_04
+; con_DFE6_05
+; con_DFE6_06
+; con_DFE6_07
+; con_DFE6_08
+; con_DFE6_09
+; con_DFE6_0A
 C - - - - - 0x024901 09:88F1: 20 4F DF  JSR sub_0x03DF5F
 C - - - - - 0x024904 09:88F4: 4C 42 B1  JMP loc_B142
 bra_88F7:
@@ -1970,7 +1977,7 @@ C - - - - - 0x024CAA 09:8C9A: BD 50 05  LDA ram_obj_id,X ; 0550 0551
 ; con_новые_персы
 C - - - - - 0x024CAD 09:8C9D: C9 04     CMP #$04
 C - - - - - 0x024CAF 09:8C9F: B0 1A     BCS bra_8CBB_RTS
-C - - - - - 0x024CB1 09:8CA1: A0 00     LDY #$00
+C - - - - - 0x024CB1 09:8CA1: A0 00     LDY #con_DFE6_00
 C - - - - - 0x024CB3 09:8CA3: 4C 4F DF  JMP loc_0x03DF5F
 bra_8CA6:
 C - - - - - 0x024CB6 09:8CA6: A9 08     LDA #$08
@@ -2393,10 +2400,10 @@ C - - - - - 0x024DFA 09:8DEA: C9 06     CMP #con_fighter_shred
 C - - - - - 0x024DFC 09:8DEC: F0 07     BEQ bra_8DF5
 C - - - - - 0x024DFE 09:8DEE: C9 04     CMP #$04
 C - - - - - 0x024E00 09:8DF0: B0 11     BCS bra_8E03
-C - - - - - 0x024E02 09:8DF2: A0 01     LDY #$01
+C - - - - - 0x024E02 09:8DF2: A0 01     LDY #con_DFE6_01
 C - - - - - 0x024E04 09:8DF4: 2C        .byte $2C   ; BIT
 bra_8DF5:
-C - - - - - 0x024E05 09:8DF5: A0 0C     LDY #$0C
+C - - - - - 0x024E05 09:8DF5: A0 0C     LDY #con_DFE6_0C
 C - - - - - 0x024E07 09:8DF7: 20 4F DF  JSR sub_0x03DF5F
 C - - - - - 0x024E0A 09:8DFA: BD C0 05  LDA ram_obj_anim_timer,X ; 05C0 05C1 
 C - - - - - 0x024E0D 09:8DFD: 10 03     BPL bra_8E02_RTS
@@ -3196,10 +3203,10 @@ C - - - - - 0x025364 09:9354: A9 04     LDA #$04
 C - - - - - 0x025366 09:9356: 9D F0 05  STA ram_obj_05F0,X ; 05F0 05F1 
 C - - - - - 0x025369 09:9359: 4C 6D 84  JMP loc_846D
 bra_935C:
-C - - - - - 0x02536C 09:935C: A0 0C     LDY #$0C
+C - - - - - 0x02536C 09:935C: A0 0C     LDY #con_DFE6_0C
 C - - - - - 0x02536E 09:935E: 2C        .byte $2C   ; BIT
 bra_935F:
-C - - - - - 0x02536F 09:935F: A0 01     LDY #$01
+C - - - - - 0x02536F 09:935F: A0 01     LDY #con_DFE6_01
 C - - - - - 0x025371 09:9361: 20 4F DF  JSR sub_0x03DF5F
 C - - - - - 0x025374 09:9364: BD C0 05  LDA ram_obj_anim_timer,X ; 05C0 05C1 
 C - - - - - 0x025377 09:9367: 30 E3     BMI bra_934C
@@ -9809,7 +9816,7 @@ C - - - - - 0x02753F 09:B52F: 9D C0 05  STA ram_obj_anim_timer,X ; 05C0 05C1
 C - - - - - 0x027542 09:B532: A9 04     LDA #$04
 C - - - - - 0x027544 09:B534: 9D D0 05  STA ram_obj_05D0,X ; 05D0 05D1 
 C - - - - - 0x027547 09:B537: 9D 7A 06  STA ram_plr_067A,X ; 067A 067B 
-C - - - - - 0x02754A 09:B53A: A9 03     LDA #$03
+C - - - - - 0x02754A 09:B53A: A9 03     LDA #con_DFE6_03
 C - - - - - 0x02754C 09:B53C: D0 20     BNE bra_B55E    ; jmp
 bra_B53E:
 C - - - - - 0x02754E 09:B53E: A9 00     LDA #$00
@@ -9825,7 +9832,7 @@ C - - - - - 0x027561 09:B551: 9D 60 04  STA ram_obj_spd_Z_hi,X ; 0460 0461
 C - - - - - 0x027564 09:B554: A9 06     LDA #$06
 C - - - - - 0x027566 09:B556: 9D 7A 06  STA ram_plr_067A,X ; 067A 067B 
 C - - - - - 0x027569 09:B559: 20 38 DF  JSR sub_0x03DF48
-C - - - - - 0x02756C 09:B55C: A9 02     LDA #$02
+C - - - - - 0x02756C 09:B55C: A9 02     LDA #con_DFE6_02
 bra_B55E:
 C - - - - - 0x02756E 09:B55E: 48        PHA
 C - - - - - 0x02756F 09:B55F: A9 AC     LDA #$AC
@@ -9849,7 +9856,7 @@ C - - - - - 0x027582 09:B572: A9 41     LDA #$41
                                         LDA tbl_8772,Y
 bra_FEDC:
                                         JSR sub_0x03D17A
-C - - - - - 0x027587 09:B577: A0 02     LDY #$02
+C - - - - - 0x027587 09:B577: A0 02     LDY #con_DFE6_02
 bra_B579:
 C - - - - - 0x027589 09:B579: 20 4F DF  JSR sub_0x03DF5F
 C - - - - - 0x02758C 09:B57C: 20 69 DC  JSR sub_0x03DC79
@@ -9874,7 +9881,7 @@ C - - - - - 0x0275A9 09:B599: 4C E9 DD  JMP loc_0x03DDF9
 ofs_048_B59C_04:
 C - - J - - 0x0275AC 09:B59C: A9 01     LDA #$01
 C - - - - - 0x0275AE 09:B59E: 20 7D D1  JSR sub_0x03D18D
-C - - - - - 0x0275B1 09:B5A1: A0 03     LDY #$03
+C - - - - - 0x0275B1 09:B5A1: A0 03     LDY #con_DFE6_03
 C - - - - - 0x0275B3 09:B5A3: D0 D4     BNE bra_B579    ; jmp
 
 
@@ -10107,7 +10114,7 @@ C - - - - - 0x027739 09:B729: A9 38     LDA #con_0552_special_don_пила_по�
 C - - - - - 0x02773B 09:B72B: 20 CC B3  JSR sub_B3CC_записать_спешал_без_звука
 C - - - - - 0x02773E 09:B72E: A9 02     LDA #$02
 C - - - - - 0x027740 09:B730: 20 38 DF  JSR sub_0x03DF48
-C - - - - - 0x027743 09:B733: A0 0B     LDY #$0B
+C - - - - - 0x027743 09:B733: A0 0B     LDY #con_DFE6_0B
 C - - - - - 0x027745 09:B735: 20 4F DF  JSR sub_0x03DF5F
 C - - - - - 0x027748 09:B738: A9 0C     LDA #$0C
 C - - - - - 0x02774A 09:B73A: 20 0E E1  JSR sub_0x03E11E_корректировка_значения_A_для_turbo
@@ -10122,7 +10129,7 @@ C - - - - - 0x027753 09:B743: 60        RTS
 ofs_046_B744_05:
 C - - J - - 0x027754 09:B744: 20 B8 B3  JSR sub_B3B8
 C - - - - - 0x027757 09:B747: 20 69 DC  JSR sub_0x03DC79
-C - - - - - 0x02775A 09:B74A: A0 0B     LDY #$0B
+C - - - - - 0x02775A 09:B74A: A0 0B     LDY #con_DFE6_0B
 C - - - - - 0x02775C 09:B74C: 20 4F DF  JSR sub_0x03DF5F
 C - - - - - 0x02775F 09:B74F: BD C0 05  LDA ram_obj_anim_timer,X ; 05C0 05C1 
 C - - - - - 0x027762 09:B752: 10 EF     BPL bra_B743_RTS

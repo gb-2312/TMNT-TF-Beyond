@@ -4097,7 +4097,7 @@ C - - - - - 0x039750 0E:9740: D0 6F     BNE bra_97B1_RTS
 C - - - - - 0x039752 0E:9742: EE 31 05  INC ram_obj_0530 + $01
 ofs_006_9745_01:
 ; X = 01
-C - - - - - 0x039755 0E:9745: A0 0C     LDY #$0C
+C - - - - - 0x039755 0E:9745: A0 0C     LDY #con_DFE6_0C
 C - - - - - 0x039757 0E:9747: 20 4F DF  JSR sub_0x03DF5F
 C - - - - - 0x03975A 0E:974A: AD C1 05  LDA ram_obj_anim_timer + $01
 C - - - - - 0x03975D 0E:974D: 30 03     BMI bra_9752
