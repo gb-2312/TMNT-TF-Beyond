@@ -1688,7 +1688,7 @@ C - - - - - 0x0388EE 0E:88DE: A2 02     LDX #$02    ; tip_индекс_буфе�
 C - - - - - 0x0388F0 0E:88E0: 20 1D E3  JSR sub_0x03E32D
 C - - - - - 0x0388F3 0E:88E3: A9 05     LDA #con_0048_05
 C - - - - - 0x0388F5 0E:88E5: 20 14 F8  JSR sub_0x03F824_подготовить_irq_handler
-C - - - - - 0x0388F8 0E:88E8: 20 EF E2  JSR sub_0x03E2FF
+C - - - - - 0x0388F8 0E:88E8: 20 EF E2  JSR sub_0x03E2FF_портреты_на_экране_выбора_уровня
 C - - - - - 0x0388FB 0E:88EB: A9 2F     LDA #$2F
 C - - - - - 0x0388FD 0E:88ED: 8D 12 04  STA ram_obj_pos_Y_lo + $02
 C - - - - - 0x038900 0E:88F0: 8D 13 04  STA ram_obj_pos_Y_lo + $03
