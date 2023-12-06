@@ -616,7 +616,6 @@ ofs_0x02E7CA:
 ; бряк срабатывает после нанесения урона персу обычными ударами
 ; не суперкой, не мячом
 C - - - - - 0x02E7CA 0B:A7BA: BC 50 05  LDY ram_obj_id,X ; 0550 0551 
-; con_новые_персы
 C - - - - - 0x02E7CD 0B:A7BD: B9 E0 B5  LDA tbl_B5E0_lo,Y
 C - - - - - 0x02E7D0 0B:A7C0: 85 00     STA ram_0000
 C - - - - - 0x02E7D2 0B:A7C2: B9 E7 B5  LDA tbl_B5E7_hi,Y
@@ -818,13 +817,13 @@ tbl_AA90_автобаланс:
 ;                                              |    |    |    |    +-------------------------------------------------- 04 con_fighter_casey
 ;                                              |    |    |    |    |    +--------------------------------------------- 05 con_fighter_hot
 ;                                              |    |    |    |    |    |    +---------------------------------------- 06 con_fighter_shred
-;                                              |    |    |    |    |    |    |    ------------------------------------ 07 con_fighter_07
-;                                              |    |    |    |    |    |    |    |    ------------------------------- 08 con_fighter_08
-;                                              |    |    |    |    |    |    |    |    |    -------------------------- 09 con_fighter_09
-;                                              |    |    |    |    |    |    |    |    |    |    --------------------- 0A con_fighter_0A
-;                                              |    |    |    |    |    |    |    |    |    |    |    ---------------- 0B con_fighter_0B
-;                                              |    |    |    |    |    |    |    |    |    |    |    |    ----------- 0C con_fighter_0C
-;                                              |    |    |    |    |    |    |    |    |    |    |    |    |    ------ 0D con_fighter_0D
+;                                              |    |    |    |    |    |    |    +----------------------------------- 07 con_fighter_07
+;                                              |    |    |    |    |    |    |    |    +------------------------------ 08 con_fighter_08
+;                                              |    |    |    |    |    |    |    |    |    +------------------------- 09 con_fighter_09
+;                                              |    |    |    |    |    |    |    |    |    |    +-------------------- 0A con_fighter_0A
+;                                              |    |    |    |    |    |    |    |    |    |    |    +--------------- 0B con_fighter_0B
+;                                              |    |    |    |    |    |    |    |    |    |    |    |    +---------- 0C con_fighter_0C
+;                                              |    |    |    |    |    |    |    |    |    |    |    |    |    +----- 0D con_fighter_0D
 ;                                              |    |    |    |    |    |    |    |    |    |    |    |    |    |
 ;                                              |    |    |    |    |    |    |    |    |    |    |    |    |    |
 ;                                              |    |    |    |    |    |    |    |    |    |    |    |    |    |
@@ -1566,31 +1565,54 @@ tbl_B3EA_выбор_палитры_фона:
 
 
 tbl_B5E0_lo:
-- D 1 - - - 0x02F5F0 0B:B5E0: F0        .byte < _off013_B5F0_00_leo
-- D 1 - - - 0x02F5F1 0B:B5E1: F0        .byte < _off013_B5F0_01_raph
-- D 1 - - - 0x02F5F2 0B:B5E2: F0        .byte < _off013_B5F0_02_mike
-- D 1 - - - 0x02F5F3 0B:B5E3: F0        .byte < _off013_B5F0_03_don
-- D 1 - - - 0x02F5F4 0B:B5E4: F0        .byte < _off013_B5F0_04_casey
-- D 1 - - - 0x02F5F5 0B:B5E5: 50        .byte < _off013_B650_05_hot
-- D 1 - - - 0x02F5F6 0B:B5E6: B0        .byte < _off013_B6B0_06_shred
+- D 1 - - - 0x02F5F0 0B:B5E0: F0        .byte < _off013_B5F0_00_leo ; con_fighter_leo
+- D 1 - - - 0x02F5F1 0B:B5E1: F0        .byte < _off013_B5F0_01_raph ; con_fighter_raph
+- D 1 - - - 0x02F5F2 0B:B5E2: F0        .byte < _off013_B5F0_02_mike ; con_fighter_mike
+- D 1 - - - 0x02F5F3 0B:B5E3: F0        .byte < _off013_B5F0_03_don ; con_fighter_don
+- D 1 - - - 0x02F5F4 0B:B5E4: F0        .byte < _off013_B5F0_04_casey ; con_fighter_casey
+- D 1 - - - 0x02F5F5 0B:B5E5: 50        .byte < _off013_B650_05_hot ; con_fighter_hot
+- D 1 - - - 0x02F5F6 0B:B5E6: B0        .byte < _off013_B6B0_06_shred ; con_fighter_shred
+                                    .if con_новые_персы <> $00
+                                        .byte < _off013_B5F0_07 ; con_fighter_07
+                                        .byte < _off013_B5F0_08 ; con_fighter_08
+                                        .byte < _off013_B5F0_09 ; con_fighter_09
+                                        .byte < _off013_B5F0_0A ; con_fighter_0A
+                                        .byte < _off013_B5F0_0B ; con_fighter_0B
+                                        .byte < _off013_B650_0C ; con_fighter_0C
+                                        .byte < _off013_B6B0_0D ; con_fighter_0D
+                                    .endif
 
 tbl_B5E7_hi:
-- D 1 - - - 0x02F5F7 0B:B5E7: B5        .byte > _off013_B5F0_00_leo
-- D 1 - - - 0x02F5F8 0B:B5E8: B5        .byte > _off013_B5F0_01_raph
-- D 1 - - - 0x02F5F9 0B:B5E9: B5        .byte > _off013_B5F0_02_mike
-- D 1 - - - 0x02F5FA 0B:B5EA: B5        .byte > _off013_B5F0_03_don
-- D 1 - - - 0x02F5FB 0B:B5EB: B5        .byte > _off013_B5F0_04_casey
-- D 1 - - - 0x02F5FC 0B:B5EC: B6        .byte > _off013_B650_05_hot
-- D 1 - - - 0x02F5FD 0B:B5ED: B6        .byte > _off013_B6B0_06_shred
+- D 1 - - - 0x02F5F7 0B:B5E7: B5        .byte > _off013_B5F0_00_leo ; con_fighter_leo
+- D 1 - - - 0x02F5F8 0B:B5E8: B5        .byte > _off013_B5F0_01_raph ; con_fighter_raph
+- D 1 - - - 0x02F5F9 0B:B5E9: B5        .byte > _off013_B5F0_02_mike ; con_fighter_mike
+- D 1 - - - 0x02F5FA 0B:B5EA: B5        .byte > _off013_B5F0_03_don ; con_fighter_don
+- D 1 - - - 0x02F5FB 0B:B5EB: B5        .byte > _off013_B5F0_04_casey ; con_fighter_casey
+- D 1 - - - 0x02F5FC 0B:B5EC: B6        .byte > _off013_B650_05_hot ; con_fighter_hot
+- D 1 - - - 0x02F5FD 0B:B5ED: B6        .byte > _off013_B6B0_06_shred ; con_fighter_shred
+                                    .if con_новые_персы <> $00
+                                        .byte > _off013_B5F0_07 ; con_fighter_07
+                                        .byte > _off013_B5F0_08 ; con_fighter_08
+                                        .byte > _off013_B5F0_09 ; con_fighter_09
+                                        .byte > _off013_B5F0_0A ; con_fighter_0A
+                                        .byte > _off013_B5F0_0B ; con_fighter_0B
+                                        .byte > _off013_B650_0C ; con_fighter_0C
+                                        .byte > _off013_B6B0_0D ; con_fighter_0D
+                                    .endif
 
 
 
 ; таблицы времени стана, получаемого персонажами от нормальных ударов
 _off013_B5F0_00_leo:
+_off013_B5F0_07:
 _off013_B5F0_01_raph:
+_off013_B5F0_08:
 _off013_B5F0_02_mike:
+_off013_B5F0_09:
 _off013_B5F0_03_don:
-_off013_B5F0_04_casey:
+_off013_B5F0_0A:
+_off013_B5F0_04_casey: 
+_off013_B5F0_0B:
 - D 1 - I - 0x02F600 0B:B5F0: 0C        .byte $0C, $0B   ; 00
 - D 1 - I - 0x02F602 0B:B5F2: 0C        .byte $0C, $0B   ; 01
 - D 1 - I - 0x02F604 0B:B5F4: 0C        .byte $0C, $0B   ; 02
@@ -1657,6 +1679,7 @@ _off013_B5F0_04_casey:
 
 
 _off013_B650_05_hot:
+_off013_B650_0C:
 - D 1 - I - 0x02F660 0B:B650: 0B        .byte $0B, $0B   ; 00
 - D 1 - I - 0x02F662 0B:B652: 0B        .byte $0B, $0B   ; 01
 - - - - - - 0x02F664 0B:B654: 0B        .byte $0B, $0B   ; 02
@@ -1723,6 +1746,7 @@ _off013_B650_05_hot:
 
 
 _off013_B6B0_06_shred:
+_off013_B6B0_0D:
 - D 1 - I - 0x02F6C0 0B:B6B0: 0B        .byte $0B, $0B   ; 00
 - - - - - - 0x02F6C2 0B:B6B2: 0B        .byte $0B, $0B   ; 01
 - - - - - - 0x02F6C4 0B:B6B4: 0B        .byte $0B, $0B   ; 02
@@ -2730,21 +2754,21 @@ C - - - - - 0x025FB9 09:9FA9: AC 26 05  LDY ram_obj_0520 + $06
 C - - - - - 0x025FBC 09:9FAC: B9 50 05  LDA ram_obj_id,Y ; 0550 0551 
 C - - - - - 0x025FBF 09:9FAF: AC 46 05  LDY ram_obj_0540 + $06
 C - - - - - 0x025FC2 09:9FB2: 20 32 D0  JSR sub_0x03D042_поинтеры_после_JSR
-- D 0 - I - 0x025FC5 09:9FB5: 0E A0     .word ofs_051_A00E_00_leo
-- D 0 - I - 0x025FC7 09:9FB7: 0E A0     .word ofs_051_A00E_01_raph
-- D 0 - I - 0x025FC9 09:9FB9: AC A1     .word ofs_051_A1AC_02_mike
-- D 0 - I - 0x025FCB 09:9FBB: 8C A1     .word ofs_051_A18C_03_don
-- D 0 - I - 0x025FCD 09:9FBD: 65 A0     .word ofs_051_A065_04_casey
-- D 0 - I - 0x025FCF 09:9FBF: 40 A1     .word ofs_051_A140_05_hot
-- D 0 - I - 0x025FD1 09:9FC1: BD A0     .word ofs_051_A0BD_06_shred
+- D 0 - I - 0x025FC5 09:9FB5: 0E A0     .word ofs_051_A00E_00_leo   ; con_fighter_leo
+- D 0 - I - 0x025FC7 09:9FB7: 0E A0     .word ofs_051_A00E_01_raph   ; con_fighter_raph
+- D 0 - I - 0x025FC9 09:9FB9: AC A1     .word ofs_051_A1AC_02_mike   ; con_fighter_mike
+- D 0 - I - 0x025FCB 09:9FBB: 8C A1     .word ofs_051_A18C_03_don   ; con_fighter_don
+- D 0 - I - 0x025FCD 09:9FBD: 65 A0     .word ofs_051_A065_04_casey   ; con_fighter_casey
+- D 0 - I - 0x025FCF 09:9FBF: 40 A1     .word ofs_051_A140_05_hot   ; con_fighter_hot
+- D 0 - I - 0x025FD1 09:9FC1: BD A0     .word ofs_051_A0BD_06_shred   ; con_fighter_shred
                                     .if con_новые_персы <> $00
-                                        .word ofs_051_A00E_07
-                                        .word ofs_051_A00E_08
-                                        .word ofs_051_A1AC_09
-                                        .word ofs_051_A18C_0A
-                                        .word ofs_051_A065_0B
-                                        .word ofs_051_A140_0C
-                                        .word ofs_051_A0BD_0D
+                                        .word ofs_051_A00E_07   ; con_fighter_07
+                                        .word ofs_051_A00E_08   ; con_fighter_08
+                                        .word ofs_051_A1AC_09   ; con_fighter_09
+                                        .word ofs_051_A18C_0A   ; con_fighter_0A
+                                        .word ofs_051_A065_0B   ; con_fighter_0B
+                                        .word ofs_051_A140_0C   ; con_fighter_0C
+                                        .word ofs_051_A0BD_0D   ; con_fighter_0D
                                     .endif
 
 

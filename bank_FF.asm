@@ -2004,21 +2004,21 @@ C - - - - - 0x03D87C 0F:D86C: 60        RTS
 
 
 tbl_D87E_спрайты_персов:
-- D 2 - - - 0x03D88E 0F:D87E: 01 80     .word _off000_0x028011_00_leo
-- D 2 - - - 0x03D890 0F:D880: 01 80     .word _off000_0x028011_01_raph
-- D 2 - - - 0x03D892 0F:D882: 01 80     .word _off000_0x028011_02_mike
-- D 2 - - - 0x03D894 0F:D884: 01 80     .word _off000_0x028011_03_don
-- D 2 - - - 0x03D896 0F:D886: 13 8E     .word _off000_0x028E23_04_casey
-- D 2 - - - 0x03D898 0F:D888: 52 9B     .word _off000_0x029B62_05_hot
-- D 2 - - - 0x03D89A 0F:D88A: C5 AE     .word _off000_0x02AED5_06_shred
+- D 2 - - - 0x03D88E 0F:D87E: 01 80     .word _off000_0x028011_00_leo ; con_fighter_leo
+- D 2 - - - 0x03D890 0F:D880: 01 80     .word _off000_0x028011_01_raph ; con_fighter_raph
+- D 2 - - - 0x03D892 0F:D882: 01 80     .word _off000_0x028011_02_mike ; con_fighter_mike
+- D 2 - - - 0x03D894 0F:D884: 01 80     .word _off000_0x028011_03_don ; con_fighter_don
+- D 2 - - - 0x03D896 0F:D886: 13 8E     .word _off000_0x028E23_04_casey ; con_fighter_casey
+- D 2 - - - 0x03D898 0F:D888: 52 9B     .word _off000_0x029B62_05_hot ; con_fighter_hot
+- D 2 - - - 0x03D89A 0F:D88A: C5 AE     .word _off000_0x02AED5_06_shred ; con_fighter_shred
                                     .if con_новые_персы <> $00
-                                        .word _off000_0x028011_07
-                                        .word _off000_0x028011_08
-                                        .word _off000_0x028011_09
-                                        .word _off000_0x028011_0A
-                                        .word _off000_0x028E23_0B
-                                        .word _off000_0x029B62_0C
-                                        .word _off000_0x02AED5_0D
+                                        .word _off000_0x028011_07 ; con_fighter_07
+                                        .word _off000_0x028011_08 ; con_fighter_08
+                                        .word _off000_0x028011_09 ; con_fighter_09
+                                        .word _off000_0x028011_0A ; con_fighter_0A
+                                        .word _off000_0x028E23_0B ; con_fighter_0B
+                                        .word _off000_0x029B62_0C ; con_fighter_0C
+                                        .word _off000_0x02AED5_0D ; con_fighter_0D
                                     .endif
 
 
@@ -5082,21 +5082,21 @@ C - - - - - 0x03EC0F 0F:EBFF: F0 DB     BEQ bra_EBDC    ; jmp
 
 tbl_EC00_индекс:
 ; имя в статусбаре
-                                        .byte off_EC01_00_leo - tbl_EC02
-                                        .byte off_EC05_01_raph - tbl_EC02
-                                        .byte off_EC0A_02_mike - tbl_EC02
-                                        .byte off_EC0F_03_don - tbl_EC02
-                                        .byte off_EC13_04_casey - tbl_EC02
-                                        .byte off_EC19_05_hot - tbl_EC02
-                                        .byte off_EC21_06_shred - tbl_EC02
+                                        .byte off_EC01_00_leo - tbl_EC02   ; con_fighter_leo
+                                        .byte off_EC05_01_raph - tbl_EC02   ; con_fighter_raph
+                                        .byte off_EC0A_02_mike - tbl_EC02   ; con_fighter_mike
+                                        .byte off_EC0F_03_don - tbl_EC02   ; con_fighter_don
+                                        .byte off_EC13_04_casey - tbl_EC02   ; con_fighter_casey
+                                        .byte off_EC19_05_hot - tbl_EC02   ; con_fighter_hot
+                                        .byte off_EC21_06_shred - tbl_EC02   ; con_fighter_shred
                                     .if con_новые_персы <> $00
-                                        .byte off_EC01_07 - tbl_EC02   ; 07 con_fighter_07
-                                        .byte off_EC05_08 - tbl_EC02   ; 08 con_fighter_08
-                                        .byte off_EC0A_09 - tbl_EC02   ; 09 con_fighter_09
-                                        .byte off_EC0F_0A - tbl_EC02   ; 0A con_fighter_0A
-                                        .byte off_EC13_0B - tbl_EC02   ; 0B con_fighter_0B
-                                        .byte off_EC19_0C - tbl_EC02   ; 0C con_fighter_0C
-                                        .byte off_EC21_0D - tbl_EC02   ; 0D con_fighter_0D
+                                        .byte off_EC01_07 - tbl_EC02   ; con_fighter_07
+                                        .byte off_EC05_08 - tbl_EC02   ; con_fighter_08
+                                        .byte off_EC0A_09 - tbl_EC02   ; con_fighter_09
+                                        .byte off_EC0F_0A - tbl_EC02   ; con_fighter_0A
+                                        .byte off_EC13_0B - tbl_EC02   ; con_fighter_0B
+                                        .byte off_EC19_0C - tbl_EC02   ; con_fighter_0C
+                                        .byte off_EC21_0D - tbl_EC02   ; con_fighter_0D
                                     .endif
 
 
@@ -5142,21 +5142,21 @@ off_EC21_0D:
 
 tbl_EC29_индекс:
 ; имя на vs экране
-                                        .byte off_EC2A_00_leo - tbl_EC2B
-                                        .byte off_EC2E_01_raph - tbl_EC2B
-                                        .byte off_EC33_02_mike - tbl_EC2B
-                                        .byte off_EC38_03_don - tbl_EC2B
-                                        .byte off_EC3C_04_casey - tbl_EC2B
-                                        .byte off_EC42_05_hot - tbl_EC2B
-                                        .byte off_EC4A_06_shred - tbl_EC2B
+                                        .byte off_EC2A_00_leo - tbl_EC2B   ; con_fighter_leo
+                                        .byte off_EC2E_01_raph - tbl_EC2B   ; con_fighter_raph
+                                        .byte off_EC33_02_mike - tbl_EC2B   ; con_fighter_mike
+                                        .byte off_EC38_03_don - tbl_EC2B   ; con_fighter_don
+                                        .byte off_EC3C_04_casey - tbl_EC2B   ; con_fighter_casey
+                                        .byte off_EC42_05_hot - tbl_EC2B   ; con_fighter_hot
+                                        .byte off_EC4A_06_shred - tbl_EC2B   ; con_fighter_shred
                                     .if con_новые_персы <> $00
-                                        .byte off_EC2A_07 - tbl_EC2B   ; 07 con_fighter_07
-                                        .byte off_EC2E_08 - tbl_EC2B   ; 08 con_fighter_08
-                                        .byte off_EC33_09 - tbl_EC2B   ; 09 con_fighter_09
-                                        .byte off_EC38_0A - tbl_EC2B   ; 0A con_fighter_0A
-                                        .byte off_EC3C_0B - tbl_EC2B   ; 0B con_fighter_0B
-                                        .byte off_EC42_0C - tbl_EC2B   ; 0C con_fighter_0C
-                                        .byte off_EC4A_0D - tbl_EC2B   ; 0D con_fighter_0D
+                                        .byte off_EC2A_07 - tbl_EC2B   ; con_fighter_07
+                                        .byte off_EC2E_08 - tbl_EC2B   ; con_fighter_08
+                                        .byte off_EC33_09 - tbl_EC2B   ; con_fighter_09
+                                        .byte off_EC38_0A - tbl_EC2B   ; con_fighter_0A
+                                        .byte off_EC3C_0B - tbl_EC2B   ; con_fighter_0B
+                                        .byte off_EC42_0C - tbl_EC2B   ; con_fighter_0C
+                                        .byte off_EC4A_0D - tbl_EC2B   ; con_fighter_0D
                                     .endif
 
 

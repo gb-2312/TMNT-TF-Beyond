@@ -1092,21 +1092,21 @@ C - - - - - 0x0384ED 0E:84DD: 60        RTS
 
 
 tbl_84FA:
-- - - - - - 0x03850A 0E:84FA: 08 85     .word _off017_8508_00_leo
-- - - - - - 0x03850C 0E:84FC: 22 85     .word _off017_8522_01_raph
-- - - - - - 0x03850E 0E:84FE: 3C 85     .word _off017_853C_02_mike
-- - - - - - 0x038510 0E:8500: 56 85     .word _off017_8556_03_don
-- D 0 - - - 0x038512 0E:8502: 70 85     .word _off017_8570_04_casey
-- D 0 - - - 0x038514 0E:8504: 8A 85     .word _off017_858A_05_hot
-- D 0 - - - 0x038516 0E:8506: A4 85     .word _off017_85A4_06_shred
+- - - - - - 0x03850A 0E:84FA: 08 85     .word _off017_8508_00_leo   ; con_fighter_leo
+- - - - - - 0x03850C 0E:84FC: 22 85     .word _off017_8522_01_raph   ; con_fighter_raph
+- - - - - - 0x03850E 0E:84FE: 3C 85     .word _off017_853C_02_mike   ; con_fighter_mike
+- - - - - - 0x038510 0E:8500: 56 85     .word _off017_8556_03_don   ; con_fighter_don
+- D 0 - - - 0x038512 0E:8502: 70 85     .word _off017_8570_04_casey   ; con_fighter_casey
+- D 0 - - - 0x038514 0E:8504: 8A 85     .word _off017_858A_05_hot   ; con_fighter_hot
+- D 0 - - - 0x038516 0E:8506: A4 85     .word _off017_85A4_06_shred   ; con_fighter_shred
                                     .if con_новые_персы <> $00
-                                        .word _off017_8508_07
-                                        .word _off017_8522_08
-                                        .word _off017_853C_09
-                                        .word _off017_8556_0A
-                                        .word _off017_8570_0B
-                                        .word _off017_858A_0C
-                                        .word _off017_85A4_0D
+                                        .word _off017_8508_07   ; con_fighter_07
+                                        .word _off017_8522_08   ; con_fighter_08
+                                        .word _off017_853C_09   ; con_fighter_09
+                                        .word _off017_8556_0A   ; con_fighter_0A
+                                        .word _off017_8570_0B   ; con_fighter_0B
+                                        .word _off017_858A_0C   ; con_fighter_0C
+                                        .word _off017_85A4_0D   ; con_fighter_0D
                                     .endif
 
 
@@ -4030,7 +4030,6 @@ C - - - - - 0x0396EA 0E:96DA: A2 01     LDX #$01
 bra_96DC_loop:
 ; bzk optimize, A будет перезаписан
 C - - - - - 0x0396E4 0E:96D4: AD 50 05  LDA ram_obj_id,X
-; con_новые_персы
 C - - - - - 0x0396E7 0E:96D7: 20 2A E3  JSR sub_0x03DE0C_выбор_палитры_перса_с_сохранением_X
 C - - - - - 0x0396EC 0E:96DC: BD 13 97  LDA tbl_9713_анимация,X
 C - - - - - 0x0396EF 0E:96DF: 9D 00 04  STA ram_obj_anim_id,X ; 0400 0401 
@@ -5576,21 +5575,21 @@ C - - - - - 0x03A232 0E:A222: 60        RTS
 
 
 tbl_A223_тайлы_рож:
-- D 1 - - - 0x03A233 0E:A223: 00        .word off_A22A_00_leo
-- D 1 - - - 0x03A234 0E:A224: 00        .word off_A22A_01_raph
-- D 1 - - - 0x03A235 0E:A225: 00        .word off_A22A_02_mike
-- D 1 - - - 0x03A236 0E:A226: 00        .word off_A22A_03_don
-- D 1 - - - 0x03A237 0E:A227: 32        .word off_A25C_04_casey
-- D 1 - - - 0x03A238 0E:A228: 73        .word off_A29D_05_hot
-- D 1 - - - 0x03A239 0E:A229: A2        .word off_A2CC_06_shred
+- D 1 - - - 0x03A233 0E:A223: 00        .word off_A22A_00_leo   ; con_fighter_leo
+- D 1 - - - 0x03A234 0E:A224: 00        .word off_A22A_01_raph   ; con_fighter_raph
+- D 1 - - - 0x03A235 0E:A225: 00        .word off_A22A_02_mike   ; con_fighter_mike
+- D 1 - - - 0x03A236 0E:A226: 00        .word off_A22A_03_don   ; con_fighter_don
+- D 1 - - - 0x03A237 0E:A227: 32        .word off_A25C_04_casey   ; con_fighter_casey
+- D 1 - - - 0x03A238 0E:A228: 73        .word off_A29D_05_hot   ; con_fighter_hot
+- D 1 - - - 0x03A239 0E:A229: A2        .word off_A2CC_06_shred   ; con_fighter_shred
                                     .if con_новые_персы <> $00
-                                        .word off_A22A_07
-                                        .word off_A22A_08
-                                        .word off_A22A_09
-                                        .word off_A22A_0A
-                                        .word off_A25C_0B
-                                        .word off_A29D_0C
-                                        .word off_A2CC_0D
+                                        .word off_A22A_07   ; off_A22A_00_leo
+                                        .word off_A22A_08   ; off_A22A_00_leo
+                                        .word off_A22A_09   ; off_A22A_00_leo
+                                        .word off_A22A_0A   ; off_A22A_00_leo
+                                        .word off_A25C_0B   ; off_A22A_00_leo
+                                        .word off_A29D_0C   ; off_A22A_00_leo
+                                        .word off_A2CC_0D   ; off_A22A_00_leo
                                     .endif
 
 
@@ -6558,7 +6557,6 @@ C - - - - - 0x03BF18 0E:BF08: 4C 5C A1  JMP loc_A15C
 
 
 sub_BF0B_конвертация_индекса:
-; con_новые_персы
 ; Y = ram_plr_id,X
 C - - - - - 0x03BF1B 0E:BF0B: 20 33 BF  JSR sub_BF33
 C - - - - - 0x03BF1E 0E:BF0E: D0 03     BNE bra_BF13
