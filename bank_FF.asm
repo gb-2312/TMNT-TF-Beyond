@@ -525,36 +525,36 @@ C - - - - - 0x03D0C2 0F:D0B2: 60        RTS
 
 
 tbl_D0B3_индекс:
-- D 2 - - - 0x03D0C3 0F:D0B3: 00        .byte off_D101_00_черепахи_ходьба_вперед - tbl_D101
-- - - - - - 0x03D0C4 0F:D0B4: 03        .byte off_D104_01 - tbl_D101
-- D 2 - - - 0x03D0C5 0F:D0B5: 0E        .byte off_D10F_02_черепахи_ходьба_назад - tbl_D101
-- D 2 - - - 0x03D0C6 0F:D0B6: 12        .byte off_D113_03_сверло_рафа - tbl_D101
-- D 2 - - - 0x03D0C7 0F:D0B7: 15        .byte off_D116_04_черепахи_бег_вперед - tbl_D101
-- D 2 - - - 0x03D0C8 0F:D0B8: 1B        .byte off_D11C_05_casey_бег_вперед - tbl_D101
-- D 2 - - - 0x03D0C9 0F:D0B9: 21        .byte off_D122_06_casey_ходьба_вперед - tbl_D101
-- D 2 - - - 0x03D0CA 0F:D0BA: 25        .byte off_D126_07_casey_ходьба_назад - tbl_D101
-- D 2 - - - 0x03D0CB 0F:D0BB: 25        .byte off_D126_08_casey_бег_назад - tbl_D101
-- D 2 - - - 0x03D0CC 0F:D0BC: 0E        .byte off_D10F_09_черепахи_бег_назад - tbl_D101
-- D 2 - - - 0x03D0CD 0F:D0BD: 29        .byte off_D12A_0A_hot_бег_вперед - tbl_D101
-- D 2 - - - 0x03D0CE 0F:D0BE: 33        .byte off_D134_0B_hot_бег_назад - tbl_D101
-- D 2 - - - 0x03D0CF 0F:D0BF: 2F        .byte off_D130_0C_hot_ходьба_вперед - tbl_D101
-- D 2 - - - 0x03D0D0 0F:D0C0: 33        .byte off_D134_0D_hot_ходьба_назад - tbl_D101
-- D 2 - - - 0x03D0D1 0F:D0C1: 37        .byte off_D138_0E_shred_бег_вперед - tbl_D101
-- D 2 - - - 0x03D0D2 0F:D0C2: 3D        .byte off_D13E_0F_shred_бег_назад - tbl_D101
-- D 2 - - - 0x03D0D3 0F:D0C3: 41        .byte off_D142_10_shred_ходьба_вперед - tbl_D101
-- D 2 - - - 0x03D0D4 0F:D0C4: 45        .byte off_D146_11_shred_ходьба_назад - tbl_D101
-- D 2 - - - 0x03D0D5 0F:D0C5: 49        .byte off_D14A_12_волна_шрушера - tbl_D101
-- D 2 - - - 0x03D0D6 0F:D0C6: 4C        .byte off_D14D_13_черепахи_сальто_вперед - tbl_D101
-- D 2 - - - 0x03D0D7 0F:D0C7: 50        .byte off_D151_14_черепахи_сальто_назад - tbl_D101
-- D 2 - - - 0x03D0D8 0F:D0C8: 54        .byte off_D155_15_casey_сальто_вперед - tbl_D101
-- D 2 - - - 0x03D0D9 0F:D0C9: 59        .byte off_D15A_16_casey_сальто_назад - tbl_D101
-- D 2 - - - 0x03D0DA 0F:D0CA: 5E        .byte off_D15F_17_мяч_хота - tbl_D101
-- D 2 - - - 0x03D0DB 0F:D0CB: 61        .byte off_D162_18_песок_казея - tbl_D101
-- D 2 - - - 0x03D0DC 0F:D0CC: 65        .byte off_D166_19_shred_съебывается - tbl_D101
+- D 2 - - - 0x03D0C3 0F:D0B3: 00        .byte off_D101_00_черепахи_ходьба_вперед - tbl_D102
+- - - - - - 0x03D0C4 0F:D0B4: 03        .byte off_D104_01 - tbl_D102
+- D 2 - - - 0x03D0C5 0F:D0B5: 0E        .byte off_D10F_02_черепахи_ходьба_назад - tbl_D102
+- D 2 - - - 0x03D0C6 0F:D0B6: 12        .byte off_D113_03_сверло_рафа - tbl_D102
+- D 2 - - - 0x03D0C7 0F:D0B7: 15        .byte off_D116_04_черепахи_бег_вперед - tbl_D102
+- D 2 - - - 0x03D0C8 0F:D0B8: 1B        .byte off_D11C_05_casey_бег_вперед - tbl_D102
+- D 2 - - - 0x03D0C9 0F:D0B9: 21        .byte off_D122_06_casey_ходьба_вперед - tbl_D102
+- D 2 - - - 0x03D0CA 0F:D0BA: 25        .byte off_D126_07_casey_ходьба_назад - tbl_D102
+- D 2 - - - 0x03D0CB 0F:D0BB: 25        .byte off_D126_08_casey_бег_назад - tbl_D102
+- D 2 - - - 0x03D0CC 0F:D0BC: 0E        .byte off_D10F_09_черепахи_бег_назад - tbl_D102
+- D 2 - - - 0x03D0CD 0F:D0BD: 29        .byte off_D12A_0A_hot_бег_вперед - tbl_D102
+- D 2 - - - 0x03D0CE 0F:D0BE: 33        .byte off_D134_0B_hot_бег_назад - tbl_D102
+- D 2 - - - 0x03D0CF 0F:D0BF: 2F        .byte off_D130_0C_hot_ходьба_вперед - tbl_D102
+- D 2 - - - 0x03D0D0 0F:D0C0: 33        .byte off_D134_0D_hot_ходьба_назад - tbl_D102
+- D 2 - - - 0x03D0D1 0F:D0C1: 37        .byte off_D138_0E_shred_бег_вперед - tbl_D102
+- D 2 - - - 0x03D0D2 0F:D0C2: 3D        .byte off_D13E_0F_shred_бег_назад - tbl_D102
+- D 2 - - - 0x03D0D3 0F:D0C3: 41        .byte off_D142_10_shred_ходьба_вперед - tbl_D102
+- D 2 - - - 0x03D0D4 0F:D0C4: 45        .byte off_D146_11_shred_ходьба_назад - tbl_D102
+- D 2 - - - 0x03D0D5 0F:D0C5: 49        .byte off_D14A_12_волна_шрушера - tbl_D102
+- D 2 - - - 0x03D0D6 0F:D0C6: 4C        .byte off_D14D_13_черепахи_сальто_вперед - tbl_D102
+- D 2 - - - 0x03D0D7 0F:D0C7: 50        .byte off_D151_14_черепахи_сальто_назад - tbl_D102
+- D 2 - - - 0x03D0D8 0F:D0C8: 54        .byte off_D155_15_casey_сальто_вперед - tbl_D102
+- D 2 - - - 0x03D0D9 0F:D0C9: 59        .byte off_D15A_16_casey_сальто_назад - tbl_D102
+- D 2 - - - 0x03D0DA 0F:D0CA: 5E        .byte off_D15F_17_мяч_хота - tbl_D102
+- D 2 - - - 0x03D0DB 0F:D0CB: 61        .byte off_D162_18_песок_казея - tbl_D102
+- D 2 - - - 0x03D0DC 0F:D0CC: 65        .byte off_D166_19_shred_съебывается - tbl_D102
 
 
 
-tbl_D101:
+tbl_D102:
 tbl_D101_колво_картинок_в_анимации:
 tbl_D101_продолжительность_кадра_анимации:
 tbl_D101_индекс_картинки_анимации:

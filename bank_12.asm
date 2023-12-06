@@ -3368,17 +3368,17 @@ tbl_93B2_конвертация_индексов_атаки_ногой:
 
 tbl_93DC_индекс:
 ; con_новые_персы
-- D 0 - - - 0x0253EC 09:93DC: 00        .byte off_93E3_00_leo - tbl_93E3
-- D 0 - - - 0x0253ED 09:93DD: 00        .byte off_93E3_01_raph - tbl_93E3
-- D 0 - - - 0x0253EE 09:93DE: 00        .byte off_93E3_02_mike - tbl_93E3
-- D 0 - - - 0x0253EF 09:93DF: 00        .byte off_93E3_03_don - tbl_93E3
-- D 0 - - - 0x0253F0 09:93E0: 09        .byte off_93EC_04_casey - tbl_93E3
-- D 0 - - - 0x0253F1 09:93E1: 0E        .byte off_93F1_05_hot - tbl_93E3
-- D 0 - - - 0x0253F2 09:93E2: 15        .byte off_93F8_06_shred - tbl_93E3
+- D 0 - - - 0x0253EC 09:93DC: 00        .byte off_93E3_00_leo - tbl_93E4
+- D 0 - - - 0x0253ED 09:93DD: 00        .byte off_93E3_01_raph - tbl_93E4
+- D 0 - - - 0x0253EE 09:93DE: 00        .byte off_93E3_02_mike - tbl_93E4
+- D 0 - - - 0x0253EF 09:93DF: 00        .byte off_93E3_03_don - tbl_93E4
+- D 0 - - - 0x0253F0 09:93E0: 09        .byte off_93EC_04_casey - tbl_93E4
+- D 0 - - - 0x0253F1 09:93E1: 0E        .byte off_93F1_05_hot - tbl_93E4
+- D 0 - - - 0x0253F2 09:93E2: 15        .byte off_93F8_06_shred - tbl_93E4
 
 
 
-tbl_93E3:
+tbl_93E4:
 tbl_93E3_анимация_стойки:
 off_93E3_00_leo:
 off_93E3_01_raph:
@@ -4236,30 +4236,30 @@ tbl_973E_урон_от_бросков:
 ; con_новые_персы
 tbl_9745_индекс:
 ; 00 con_fighter_leo
-- D 0 - - - 0x025755 09:9745: 00        .byte off_974C_00_leo_00 - tbl_974C
-                                        .byte off_974C_00_leo_01 - tbl_974C
+- D 0 - - - 0x025755 09:9745: 00        .byte off_974C_00_leo_00 - tbl_974D
+                                        .byte off_974C_00_leo_01 - tbl_974D
 ; 01 con_fighter_raph
-- D 0 - - - 0x025756 09:9746: 48        .byte off_9794_01_raph_00 - tbl_974C
-                                        .byte off_9794_01_raph_01 - tbl_974C
+- D 0 - - - 0x025756 09:9746: 48        .byte off_9794_01_raph_00 - tbl_974D
+                                        .byte off_9794_01_raph_01 - tbl_974D
 ; 02 con_fighter_mike
-- D 0 - - - 0x025757 09:9747: 24        .byte off_9770_02_mike_00 - tbl_974C
-                                        .byte off_9770_02_mike_01 - tbl_974C
+- D 0 - - - 0x025757 09:9747: 24        .byte off_9770_02_mike_00 - tbl_974D
+                                        .byte off_9770_02_mike_01 - tbl_974D
 ; 03 con_fighter_don
-- D 0 - - - 0x025758 09:9748: 00        .byte off_974C_03_don_00 - tbl_974C
-                                        .byte off_974C_03_don_01 - tbl_974C
+- D 0 - - - 0x025758 09:9748: 00        .byte off_974C_03_don_00 - tbl_974D
+                                        .byte off_974C_03_don_01 - tbl_974D
 ; 04 con_fighter_casey
-- D 0 - - - 0x025759 09:9749: 68        .byte off_97B4_04_casey_00 - tbl_974C
-                                        .byte off_97B4_04_casey_01 - tbl_974C
+- D 0 - - - 0x025759 09:9749: 68        .byte off_97B4_04_casey_00 - tbl_974D
+                                        .byte off_97B4_04_casey_01 - tbl_974D
 ; 05 con_fighter_hot
-- D 0 - - - 0x02575A 09:974A: 90        .byte off_97DC_05_hot_00 - tbl_974C
-                                        .byte off_97DC_05_hot_01 - tbl_974C
+- D 0 - - - 0x02575A 09:974A: 90        .byte off_97DC_05_hot_00 - tbl_974D
+                                        .byte off_97DC_05_hot_01 - tbl_974D
 ; 06 con_fighter_shred
-- D 0 - - - 0x02575B 09:974B: B2        .byte off_97FE_06_shred_00 - tbl_974C
-                                        .byte off_97FE_06_shred_01 - tbl_974C
+- D 0 - - - 0x02575B 09:974B: B2        .byte off_97FE_06_shred_00 - tbl_974D
+                                        .byte off_97FE_06_shred_01 - tbl_974D
 
 
 
-tbl_974C:
+tbl_974D:
 tbl_974C_звуки_и_анимации_бросков:
 off_974C_00_leo_00:
 off_974C_00_leo_01:
