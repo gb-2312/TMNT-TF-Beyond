@@ -3482,8 +3482,7 @@ tbl_BF1E:
 
 sub_E32A_выбрать_палитру_персу:
 ; con_новые_персы
-C - - - - - 0x03E33A 0F:E32A: 18        CLC
-C - - - - - 0x03E33B 0F:E32B: 69 0D     ADC #$0D
+                                        STY ram_0004
 C - - - - - 0x03E33D 0F:E32D: 48        PHA
 ; X = tip_индекс_буфера_палитры
 C - - - - - 0x03E33E 0F:E32E: 8A        TXA
@@ -3495,18 +3494,34 @@ C - - - - - 0x03E347 0F:E337: D0 04     BNE bra_E33D    ; if персы разн
 ; if персы одинаковые
 ; C = 1
 C - - - - - 0x03E349 0F:E339: 68        PLA
-C - - - - - 0x03E34A 0F:E33A: 69 0B     ADC #$0B
+C - - - - - 0x03E34A 0F:E33A: 69 0B     ADC #con_колво_персов - $01
 C - - - - - 0x03E34C 0F:E33C: 48        PHA
 bra_E33D:
 C - - - - - 0x03E34D 0F:E33D: 68        PLA
-; con_AF40_pal + $0D    con_AF40_pal + $19
-; con_AF40_pal + $0E    con_AF40_pal + $1A
-; con_AF40_pal + $0F    con_AF40_pal + $1B
-; con_AF40_pal + $10    con_AF40_pal + $1C
-; con_AF40_pal + $11    con_AF40_pal + $1D
-; con_AF40_pal + $12    con_AF40_pal + $1E
-; con_AF40_pal + $13    con_AF40_pal + $1F
+                                        TAY
+                                        LDA tbl_E33E_индексы_палитры_перса,Y
+                                        LDY ram_0004
 C - - - - - 0x03E34E 0F:E33E: 4C 46 D3  JMP loc_D346_записать_3_цвета_в_буфер
+
+
+
+tbl_E33E_индексы_палитры_перса:
+; обычная палитра
+                                        .byte con_AF40_pal + $0D   ; 00 con_fighter_leo
+                                        .byte con_AF40_pal + $0E   ; 01 con_fighter_raph
+                                        .byte con_AF40_pal + $0F   ; 02 con_fighter_mike
+                                        .byte con_AF40_pal + $10   ; 03 con_fighter_don
+                                        .byte con_AF40_pal + $11   ; 04 con_fighter_casey
+                                        .byte con_AF40_pal + $12   ; 05 con_fighter_hot
+                                        .byte con_AF40_pal + $13   ; 06 con_fighter_shred
+; запасная палитра
+                                        .byte con_AF40_pal + $19   ; 00 con_fighter_leo
+                                        .byte con_AF40_pal + $1A   ; 01 con_fighter_raph
+                                        .byte con_AF40_pal + $1B   ; 02 con_fighter_mike
+                                        .byte con_AF40_pal + $1C   ; 03 con_fighter_don
+                                        .byte con_AF40_pal + $1D   ; 04 con_fighter_casey
+                                        .byte con_AF40_pal + $1E   ; 05 con_fighter_hot
+                                        .byte con_AF40_pal + $1F   ; 06 con_fighter_shred
 
 
 
