@@ -1209,27 +1209,6 @@ tbl_8774:
 
 
 
-tbl_8776:
-; bzk optimize, одинаковые байты
-- D 0 - - - 0x024786 09:8776: 3C        .byte $3C   ; 00 con_fighter_leo
-- D 0 - - - 0x024787 09:8777: 3C        .byte $3C   ; 01 con_fighter_raph
-- - - - - - 0x024788 09:8778: 3C        .byte $3C   ; 02 con_fighter_mike
-- D 0 - - - 0x024789 09:8779: 3C        .byte $3C   ; 03 con_fighter_don
-- - - - - - 0x02478A 09:877A: 3C        .byte $3C   ; 04 con_fighter_casey
-- - - - - - 0x02478B 09:877B: 3C        .byte $3C   ; 05 con_fighter_hot
-- - - - - - 0x02478C 09:877C: 3C        .byte $3C   ; 06 con_fighter_shred
-                                    .if con_новые_персы <> $00
-                                        .byte $3C   ; 07 con_fighter_07
-                                        .byte $3C   ; 08 con_fighter_08
-                                        .byte $3C   ; 09 con_fighter_09
-                                        .byte $3C   ; 0A con_fighter_0A
-                                        .byte $3C   ; 0B con_fighter_0B
-                                        .byte $3C   ; 0C con_fighter_0C
-                                        .byte $3C   ; 0D con_fighter_0D
-                                    .endif
-
-
-
 ofs_060_877D_0B_перс_попался_в_мясо:
 C - - J - - 0x02478D 09:877D: A0 03     LDY #con_init_anim_попался_в_мясо
 C - - - - - 0x02478F 09:877F: 20 E7 8A  JSR sub_8AE7_выбор_начальной_анимации_персу
@@ -10103,9 +10082,10 @@ C - - - - - 0x02797B 09:B96B: A4 A9     LDY ram_global_obj_index
 C - - - - - 0x02797D 09:B96D: B9 20 05  LDA ram_obj_0520,Y ; 0520 0521 
 C - - - - - 0x027980 09:B970: C9 0B     CMP #con_plr_state_попался_в_мясо
 C - - - - - 0x027982 09:B972: D0 0D     BNE bra_B981
-C - - - - - 0x027984 09:B974: B9 50 05  LDA ram_obj_id,Y ; 0550 0551 
-C - - - - - 0x027987 09:B977: A8        TAY
-C - - - - - 0x027988 09:B978: B9 76 87  LDA tbl_8776,Y
+; в оригинале читался байт из таблицы 0x024786 по индексу перса,
+; но в таблице все байты были 3C
+                                       ;LDA ram_obj_id,Y ; 0550 0551 
+C - - - - - 0x027984 09:B974: B9 50 05  LDA #$3C
 C - - - - - 0x02798B 09:B97B: 9D 60 05  STA ram_obj_timer,X ; 0560 0561 
 C - - - - - 0x02798E 09:B97E: 9D D0 04  STA ram_obj_04D0,X ; 04D0 04D1 
 bra_B981:
