@@ -184,7 +184,6 @@ C - - - - - 0x0240E8 09:80D8: 4C 38 DB  JMP loc_0x03DB48_очистить_spd_X_
 sub_80DB:
 C - - - - - 0x0240EB 09:80DB: 20 01 81  JSR sub_8101
 C - - - - - 0x0240EE 09:80DE: BC 50 05  LDY ram_obj_id,X ; 0550 0551 
-; con_новые_персы
 C - - - - - 0x0240F1 09:80E1: BD 10 05  LDA ram_obj_spr_flip,X ; 0510 0511 
 C - - - - - 0x0240F4 09:80E4: 0A        ASL
 C - - - - - 0x0240F5 09:80E5: 5D 80 04  EOR ram_obj_spd_X_hi,X ; 0480 0481 
@@ -224,7 +223,6 @@ C - - - - - 0x024125 09:8115: 38        SEC
 C - - - - - 0x024126 09:8116: E5 01     SBC ram_0001
 C - - - - - 0x024128 09:8118: 85 01     STA ram_0001
 C - - - - - 0x02412A 09:811A: BC 50 05  LDY ram_obj_id,X ; 0550 0551 
-; con_новые_персы
 C - - - - - 0x02412D 09:811D: BD 26 06  LDA ram_plr_0626,X ; 0626 0627 
 C - - - - - 0x024130 09:8120: C9 02     CMP #$02
 C - - - - - 0x024132 09:8122: 90 0D     BCC bra_8131
@@ -424,7 +422,6 @@ bra_825B:
 C - - - - - 0x02426B 09:825B: A9 15     LDA #con_колво_персов * $03    ; для атаки ногой сидя
 C - - - - - 0x02426D 09:825D: 18        CLC
 C - - - - - 0x02426E 09:825E: 7D 50 05  ADC ram_obj_id,X ; 0550 0551 
-; con_новые_персы
 C - - - - - 0x024271 09:8261: A8        TAY
 bra_8262:
 C - - - - - 0x024272 09:8262: B5 8E     LDA ram_btn_press,X
@@ -448,10 +445,8 @@ C - - - - - 0x02428D 09:827D: BD 10 05  LDA ram_obj_spr_flip,X ; 0510 0511
 C - - - - - 0x024290 09:8280: DD 1C 06  CMP ram_plr_061C,X ; 061C 061D 
 C - - - - - 0x024293 09:8283: D0 06     BNE bra_828B
 ; C = 1
-; bzk bug? нету CLC
 C - - - - - 0x024295 09:8285: A9 22     LDA #con_колво_персов * $05 - $01  ; для дешей ногой
 C - - - - - 0x024297 09:8287: 7D 50 05  ADC ram_obj_id,X ; 0550 0551 
-; con_новые_персы
 C - - - - - 0x02429A 09:828A: A8        TAY
 bra_828B:
 ; con_fighter_casey
@@ -3290,6 +3285,15 @@ tbl_9388_конвертация_индексов_атаки_рукой:
 - D 0 - - - 0x02539C 09:938C: 11        .byte con_0612_casey_рука_ближняя   ; 04 con_fighter_casey
 - D 0 - - - 0x02539D 09:938D: 18        .byte con_0612_hot_рука_ближняя   ; 05 con_fighter_hot
 - D 0 - - - 0x02539E 09:938E: 23        .byte con_0612_shred_рука_ближняя   ; 06 con_fighter_shred
+                                    .if con_новые_персы <> $00
+                                        .byte con_0612_черепаха_рука_ближняя   ; con_fighter_07
+                                        .byte con_0612_черепаха_рука_ближняя   ; con_fighter_08
+                                        .byte con_0612_черепаха_рука_ближняя   ; con_fighter_09
+                                        .byte con_0612_черепаха_рука_ближняя   ; con_fighter_0A
+                                        .byte con_0612_casey_рука_ближняя   ; con_fighter_0B
+                                        .byte con_0612_hot_рука_ближняя   ; con_fighter_0C
+                                        .byte con_0612_shred_рука_ближняя   ; con_fighter_0D
+                                    .endif
 ; 07 дальняя
 - D 0 - - - 0x02539F 09:938F: 00        .byte con_0612_черепаха_рука_дальняя   ; 07 con_fighter_leo
 - D 0 - - - 0x0253A0 09:9390: 00        .byte con_0612_черепаха_рука_дальняя   ; 08 con_fighter_raph
@@ -3298,6 +3302,15 @@ tbl_9388_конвертация_индексов_атаки_рукой:
 - D 0 - - - 0x0253A3 09:9393: 0E        .byte con_0612_casey_рука_дальняя   ; 0B con_fighter_casey
 - D 0 - - - 0x0253A4 09:9394: 19        .byte con_0612_hot_рука_дальняя   ; 0C con_fighter_hot
 - D 0 - - - 0x0253A5 09:9395: 24        .byte con_0612_shred_рука_средняя   ; 0D con_fighter_shred
+                                    .if con_новые_персы <> $00
+                                        .byte con_0612_черепаха_рука_дальняя   ; con_fighter_07
+                                        .byte con_0612_черепаха_рука_дальняя   ; con_fighter_08
+                                        .byte con_0612_черепаха_рука_дальняя   ; con_fighter_09
+                                        .byte con_0612_черепаха_рука_дальняя   ; con_fighter_0A
+                                        .byte con_0612_casey_рука_дальняя   ; con_fighter_0B
+                                        .byte con_0612_hot_рука_дальняя   ; con_fighter_0C
+                                        .byte con_0612_shred_рука_средняя   ; con_fighter_0D
+                                    .endif
 ; 0E в воздухе
 - D 0 - - - 0x0253A6 09:9396: 02        .byte con_0612_черепаха_рука_в_воздухе   ; 0E con_fighter_leo
 - D 0 - - - 0x0253A7 09:9397: 02        .byte con_0612_черепаха_рука_в_воздухе   ; 0F con_fighter_raph
@@ -3306,6 +3319,15 @@ tbl_9388_конвертация_индексов_атаки_рукой:
 - D 0 - - - 0x0253AA 09:939A: 0F        .byte con_0612_casey_рука_в_воздухе   ; 12 con_fighter_casey
 - D 0 - - - 0x0253AB 09:939B: 1A        .byte con_0612_hot_рука_в_воздухе   ; 13 con_fighter_hot
 - D 0 - - - 0x0253AC 09:939C: 27        .byte con_0612_shred_рука_в_воздухе   ; 14 con_fighter_shred
+                                    .if con_новые_персы <> $00
+                                        .byte con_0612_черепаха_рука_в_воздухе   ; con_fighter_07
+                                        .byte con_0612_черепаха_рука_в_воздухе   ; con_fighter_08
+                                        .byte con_0612_черепаха_рука_в_воздухе   ; con_fighter_09
+                                        .byte con_0612_черепаха_рука_в_воздухе   ; con_fighter_0A
+                                        .byte con_0612_casey_рука_в_воздухе   ; con_fighter_0B
+                                        .byte con_0612_hot_рука_в_воздухе   ; con_fighter_0C
+                                        .byte con_0612_shred_рука_в_воздухе   ; con_fighter_0D
+                                    .endif
 ; 15 сидя
 - D 0 - - - 0x0253AD 09:939D: 04        .byte con_0612_черепаха_рука_сидя   ; 15 con_fighter_leo
 - D 0 - - - 0x0253AE 09:939E: 04        .byte con_0612_черепаха_рука_сидя   ; 16 con_fighter_raph
@@ -3314,6 +3336,15 @@ tbl_9388_конвертация_индексов_атаки_рукой:
 - D 0 - - - 0x0253B1 09:93A1: 10        .byte con_0612_casey_рука_сидя   ; 19 con_fighter_casey
 - D 0 - - - 0x0253B2 09:93A2: 1B        .byte con_0612_hot_рука_сидя   ; 1A con_fighter_hot
 - D 0 - - - 0x0253B3 09:93A3: 28        .byte con_0612_shred_рука_сидя   ; 1B con_fighter_shred
+                                    .if con_новые_персы <> $00
+                                        .byte con_0612_черепаха_рука_сидя   ; con_fighter_07
+                                        .byte con_0612_черепаха_рука_сидя   ; con_fighter_08
+                                        .byte con_0612_черепаха_рука_сидя   ; con_fighter_09
+                                        .byte con_0612_черепаха_рука_сидя   ; con_fighter_0A
+                                        .byte con_0612_casey_рука_сидя   ; con_fighter_0B
+                                        .byte con_0612_hot_рука_сидя   ; con_fighter_0C
+                                        .byte con_0612_shred_рука_сидя   ; con_fighter_0D
+                                    .endif
 ; 16 антиэйр
 - D 0 - - - 0x0253B4 09:93A4: 0C        .byte con_0612_черепаха_рука_антиэйр   ; 1C con_fighter_leo
 - D 0 - - - 0x0253B5 09:93A5: 0C        .byte con_0612_черепаха_рука_антиэйр   ; 1D con_fighter_raph
@@ -3322,16 +3353,32 @@ tbl_9388_конвертация_индексов_атаки_рукой:
 - D 0 - - - 0x0253B8 09:93A8: 12        .byte con_0612_casey_рука_антиэйр   ; 20 con_fighter_casey
 - D 0 - - - 0x0253B9 09:93A9: 21        .byte con_0612_hot_рука_антиэйр   ; 21 con_fighter_hot
 - D 0 - - - 0x0253BA 09:93AA: 26        .byte con_0612_shred_рука_антиэйр   ; 22 con_fighter_shred
-; 23 деш
+                                    .if con_новые_персы <> $00
+                                        .byte con_0612_черепаха_рука_антиэйр   ; con_fighter_07
+                                        .byte con_0612_черепаха_рука_антиэйр   ; con_fighter_08
+                                        .byte con_0612_черепаха_рука_антиэйр   ; con_fighter_09
+                                        .byte con_0612_черепаха_рука_антиэйр   ; con_fighter_0A
+                                        .byte con_0612_casey_рука_антиэйр   ; con_fighter_0B
+                                        .byte con_0612_hot_рука_антиэйр   ; con_fighter_0C
+                                        .byte con_0612_shred_рука_антиэйр   ; con_fighter_0D
+                                    .endif
+; 23 деш (только черепахи умеют)
 - D 0 - - - 0x0253BB 09:93AB: 0A        .byte con_0612_черепаха_деш_локтем   ; 23 con_fighter_leo
 - D 0 - - - 0x0253BC 09:93AC: 0A        .byte con_0612_черепаха_деш_локтем   ; 24 con_fighter_raph
 - D 0 - - - 0x0253BD 09:93AD: 0A        .byte con_0612_черепаха_деш_локтем   ; 25 con_fighter_mike
 - D 0 - - - 0x0253BE 09:93AE: 0A        .byte con_0612_черепаха_деш_локтем   ; 26 con_fighter_don
-; bzk garbage, только черепахи умеют дешить
-; но если добавлять чета новое ниже, эти 3 байта будут служить как placeholder
 - - - - - - 0x0253BF 09:93AF: 0E        .byte con_0612_casey_рука_дальняя   ; 27 con_fighter_casey
 - - - - - - 0x0253C0 09:93B0: 19        .byte con_0612_hot_ручка_быстрая   ; 28 con_fighter_hot
 - - - - - - 0x0253C1 09:93B1: 25        .byte con_0612_shred_рука_дальняя   ; 29 con_fighter_shred
+                                    .if con_новые_персы <> $00
+                                        .byte con_0612_черепаха_деш_локтем   ; con_fighter_07
+                                        .byte con_0612_черепаха_деш_локтем   ; con_fighter_08
+                                        .byte con_0612_черепаха_деш_локтем   ; con_fighter_09
+                                        .byte con_0612_черепаха_деш_локтем   ; con_fighter_0A
+                                        .byte con_0612_casey_рука_дальняя   ; con_fighter_0B
+                                        .byte con_0612_hot_ручка_быстрая   ; con_fighter_0C
+                                        .byte con_0612_shred_рука_дальняя   ; con_fighter_0D
+                                    .endif
 
 
 
@@ -3344,6 +3391,15 @@ tbl_93B2_конвертация_индексов_атаки_ногой:
 - D 0 - - - 0x0253C6 09:93B6: 13        .byte con_0612_casey_нога_ближняя   ; 04 con_fighter_casey
 - D 0 - - - 0x0253C7 09:93B7: 1C        .byte con_0612_hot_нога_ближняя   ; 05 con_fighter_hot
 - D 0 - - - 0x0253C8 09:93B8: 29        .byte con_0612_shred_нога_ближняя   ; 06 con_fighter_shred
+                                    .if con_новые_персы <> $00
+                                        .byte con_0612_черепаха_нога_ближняя   ; con_fighter_07
+                                        .byte con_0612_черепаха_нога_ближняя   ; con_fighter_08
+                                        .byte con_0612_черепаха_нога_ближняя   ; con_fighter_09
+                                        .byte con_0612_черепаха_нога_ближняя   ; con_fighter_0A
+                                        .byte con_0612_casey_нога_ближняя   ; con_fighter_0B
+                                        .byte con_0612_hot_нога_ближняя   ; con_fighter_0C
+                                        .byte con_0612_shred_нога_ближняя   ; con_fighter_0D
+                                    .endif
 ; 07 дальняя
 - D 0 - - - 0x0253C9 09:93B9: 07        .byte con_0612_черепаха_нога_дальняя_обычная   ; 07 con_fighter_leo
 - D 0 - - - 0x0253CA 09:93BA: 08        .byte con_0612_черепаха_нога_дальняя_raph   ; 08 con_fighter_raph
@@ -3352,6 +3408,15 @@ tbl_93B2_конвертация_индексов_атаки_ногой:
 - D 0 - - - 0x0253CD 09:93BD: 14        .byte con_0612_casey_нога_дальняя   ; 0B con_fighter_casey
 - D 0 - - - 0x0253CE 09:93BE: 1D        .byte con_0612_hot_нога_дальняя   ; 0C con_fighter_hot
 - D 0 - - - 0x0253CF 09:93BF: 2A        .byte con_0612_shred_нога_дальняя   ; 0D con_fighter_shred
+                                    .if con_новые_персы <> $00
+                                        .byte con_0612_черепаха_нога_дальняя_обычная   ; con_fighter_07
+                                        .byte con_0612_черепаха_нога_дальняя_raph   ; con_fighter_08
+                                        .byte con_0612_черепаха_нога_дальняя_обычная   ; con_fighter_09
+                                        .byte con_0612_черепаха_нога_дальняя_raph   ; con_fighter_0A
+                                        .byte con_0612_casey_нога_дальняя   ; con_fighter_0B
+                                        .byte con_0612_hot_нога_дальняя   ; con_fighter_0C
+                                        .byte con_0612_shred_нога_дальняя   ; con_fighter_0D
+                                    .endif
 ; 0E в воздухе
 - D 0 - - - 0x0253D0 09:93C0: 03        .byte con_0612_черепаха_нога_в_воздухе   ; 0E con_fighter_leo
 - D 0 - - - 0x0253D1 09:93C1: 03        .byte con_0612_черепаха_нога_в_воздухе   ; 0F con_fighter_raph
@@ -3360,6 +3425,15 @@ tbl_93B2_конвертация_индексов_атаки_ногой:
 - D 0 - - - 0x0253D4 09:93C4: 15        .byte con_0612_casey_нога_в_воздухе   ; 12 con_fighter_casey
 - D 0 - - - 0x0253D5 09:93C5: 1E        .byte con_0612_hot_нога_в_воздухе   ; 13 con_fighter_hot
 - D 0 - - - 0x0253D6 09:93C6: 2B        .byte con_0612_shred_нога_в_воздухе   ; 14 con_fighter_shred
+                                    .if con_новые_персы <> $00
+                                        .byte con_0612_черепаха_нога_в_воздухе   ; con_fighter_07
+                                        .byte con_0612_черепаха_нога_в_воздухе   ; con_fighter_08
+                                        .byte con_0612_черепаха_нога_в_воздухе   ; con_fighter_09
+                                        .byte con_0612_черепаха_нога_в_воздухе   ; con_fighter_0A
+                                        .byte con_0612_casey_нога_в_воздухе   ; con_fighter_0B
+                                        .byte con_0612_hot_нога_в_воздухе   ; con_fighter_0C
+                                        .byte con_0612_shred_нога_в_воздухе   ; con_fighter_0D
+                                    .endif
 ; 15 сидя
 - D 0 - - - 0x0253D7 09:93C7: 09        .byte con_0612_черепаха_нога_сидя_leo   ; 15 con_fighter_leo
 - D 0 - - - 0x0253D8 09:93C8: 05        .byte con_0612_черепаха_нога_сидя_обычная   ; 16 con_fighter_raph
@@ -3368,6 +3442,15 @@ tbl_93B2_конвертация_индексов_атаки_ногой:
 - D 0 - - - 0x0253DB 09:93CB: 16        .byte con_0612_casey_нога_сидя   ; 19 con_fighter_casey
 - D 0 - - - 0x0253DC 09:93CC: 1F        .byte con_0612_hot_нога_сидя   ; 1A con_fighter_hot
 - D 0 - - - 0x0253DD 09:93CD: 2C        .byte con_0612_shred_нога_сидя   ; 1B con_fighter_shred
+                                    .if con_новые_персы <> $00
+                                        .byte con_0612_черепаха_нога_сидя_leo   ; con_fighter_07
+                                        .byte con_0612_черепаха_нога_сидя_обычная   ; con_fighter_08
+                                        .byte con_0612_черепаха_нога_сидя_обычная   ; con_fighter_09
+                                        .byte con_0612_черепаха_нога_сидя_обычная   ; con_fighter_0A
+                                        .byte con_0612_casey_нога_сидя   ; con_fighter_0B
+                                        .byte con_0612_hot_нога_сидя   ; con_fighter_0C
+                                        .byte con_0612_shred_нога_сидя   ; con_fighter_0D
+                                    .endif
 ; 16 антиэйр
 - D 0 - - - 0x0253DE 09:93CE: 0B        .byte con_0612_черепаха_нога_антиэйр   ; 1C con_fighter_leo
 - D 0 - - - 0x0253DF 09:93CF: 0B        .byte con_0612_черепаха_нога_антиэйр   ; 1D con_fighter_raph
@@ -3376,16 +3459,32 @@ tbl_93B2_конвертация_индексов_атаки_ногой:
 - D 0 - - - 0x0253E2 09:93D2: 17        .byte con_0612_casey_нога_антиэйр   ; 20 con_fighter_casey
 - D 0 - - - 0x0253E3 09:93D3: 22        .byte con_0612_hot_нога_антиэйр   ; 21 con_fighter_hot
 - D 0 - - - 0x0253E4 09:93D4: 2D        .byte con_0612_shred_нога_антиэйр   ; 22 con_fighter_shred
-; 23 деш
+                                    .if con_новые_персы <> $00
+                                        .byte con_0612_черепаха_нога_антиэйр   ; con_fighter_07
+                                        .byte con_0612_черепаха_нога_антиэйр   ; con_fighter_08
+                                        .byte con_0612_черепаха_нога_антиэйр   ; con_fighter_09
+                                        .byte con_0612_черепаха_нога_антиэйр   ; con_fighter_0A
+                                        .byte con_0612_casey_нога_антиэйр   ; con_fighter_0B
+                                        .byte con_0612_hot_нога_антиэйр   ; con_fighter_0C
+                                        .byte con_0612_shred_нога_антиэйр   ; con_fighter_0D
+                                    .endif
+; 23 деш (только черепахи умеют)
 - D 0 - - - 0x0253E5 09:93D5: 0D        .byte con_0612_черепаха_деш_ногой   ; 23 con_fighter_leo
 - D 0 - - - 0x0253E6 09:93D6: 0D        .byte con_0612_черепаха_деш_ногой   ; 24 con_fighter_raph
 - D 0 - - - 0x0253E7 09:93D7: 0D        .byte con_0612_черепаха_деш_ногой   ; 25 con_fighter_mike
 - D 0 - - - 0x0253E8 09:93D8: 0D        .byte con_0612_черепаха_деш_ногой   ; 26 con_fighter_don
-; bzk garbage, только черепахи умеют дешить
-; но если добавлять чета новое ниже, эти 3 байта будут служить как placeholder
 - - - - - - 0x0253E9 09:93D9: 14        .byte con_0612_casey_нога_дальняя   ; 27 con_fighter_casey
 - - - - - - 0x0253EA 09:93DA: 1D        .byte con_0612_hot_нога_дальняя   ; 28 con_fighter_hot
 - - - - - - 0x0253EB 09:93DB: 29        .byte con_0612_shred_нога_ближняя   ; 29 con_fighter_shred
+                                    .if con_новые_персы <> $00
+                                        .byte con_0612_черепаха_деш_ногой   ; con_fighter_07
+                                        .byte con_0612_черепаха_деш_ногой   ; con_fighter_08
+                                        .byte con_0612_черепаха_деш_ногой   ; con_fighter_09
+                                        .byte con_0612_черепаха_деш_ногой   ; con_fighter_0A
+                                        .byte con_0612_casey_нога_дальняя   ; con_fighter_0B
+                                        .byte con_0612_hot_нога_дальняя   ; con_fighter_0C
+                                        .byte con_0612_shred_нога_ближняя   ; con_fighter_0D
+                                    .endif
 
 
 
@@ -4181,6 +4280,15 @@ tbl_96F8:
 - D 0 - - - 0x02570C 09:96FC: 31        .byte $31   ; 04 con_fighter_casey
 - D 0 - - - 0x02570D 09:96FD: C0        .byte $C0   ; 05 con_fighter_hot
 - D 0 - - - 0x02570E 09:96FE: F0        .byte $F0   ; 06 con_fighter_shred
+                                    .if con_новые_персы <> $00
+                                        .byte $01   ; 07 con_fighter_07
+                                        .byte $F0   ; 08 con_fighter_08
+                                        .byte $11   ; 09 con_fighter_09
+                                        .byte $E0   ; 0A con_fighter_0A
+                                        .byte $31   ; 0B con_fighter_0B
+                                        .byte $C0   ; 0C con_fighter_0C
+                                        .byte $F0   ; 0D con_fighter_0D
+                                    .endif
 ; 
 - D 0 - - - 0x02570F 09:96FF: B1        .byte $B1   ; 00 con_fighter_leo
 - D 0 - - - 0x025710 09:9700: A1        .byte $A1   ; 01 con_fighter_raph
@@ -4189,6 +4297,15 @@ tbl_96F8:
 - D 0 - - - 0x025713 09:9703: 02        .byte $02   ; 04 con_fighter_casey
 - D 0 - - - 0x025714 09:9704: 71        .byte $71   ; 05 con_fighter_hot
 - D 0 - - - 0x025715 09:9705: A1        .byte $A1   ; 06 con_fighter_shred
+                                    .if con_новые_персы <> $00
+                                        .byte $B1   ; 07 con_fighter_07
+                                        .byte $A1   ; 08 con_fighter_08
+                                        .byte $D1   ; 09 con_fighter_09
+                                        .byte $91   ; 0A con_fighter_0A
+                                        .byte $02   ; 0B con_fighter_0B
+                                        .byte $71   ; 0C con_fighter_0C
+                                        .byte $A1   ; 0D con_fighter_0D
+                                    .endif
 ; 
 - D 0 - - - 0x025716 09:9706: 31        .byte $31   ; 00 con_fighter_leo
 - D 0 - - - 0x025717 09:9707: 21        .byte $21   ; 01 con_fighter_raph
@@ -4197,6 +4314,15 @@ tbl_96F8:
 - D 0 - - - 0x02571A 09:970A: 61        .byte $61   ; 04 con_fighter_casey
 - D 0 - - - 0x02571B 09:970B: E0        .byte $E0   ; 05 con_fighter_hot
 - D 0 - - - 0x02571C 09:970C: 21        .byte $21   ; 06 con_fighter_shred
+                                    .if con_новые_персы <> $00
+                                        .byte $31   ; 07 con_fighter_07
+                                        .byte $21   ; 08 con_fighter_08
+                                        .byte $41   ; 09 con_fighter_09
+                                        .byte $11   ; 0A con_fighter_0A
+                                        .byte $61   ; 0B con_fighter_0B
+                                        .byte $E0   ; 0C con_fighter_0C
+                                        .byte $21   ; 0D con_fighter_0D
+                                    .endif
 
 
 
@@ -4209,6 +4335,15 @@ tbl_970D:
 - D 0 - - - 0x025721 09:9711: 06        .byte con_0x03D0C3_casey_ходьба_вперед   ; 04 con_fighter_casey
 - D 0 - - - 0x025722 09:9712: 0C        .byte con_0x03D0C3_hot_ходьба_вперед   ; 05 con_fighter_hot
 - D 0 - - - 0x025723 09:9713: 10        .byte con_0x03D0C3_shred_ходьба_вперед   ; 06 con_fighter_shred
+                                    .if con_новые_персы <> $00
+                                        .byte con_0x03D0C3_черепахи_ходьба_вперед   ; 07 con_fighter_07
+                                        .byte con_0x03D0C3_черепахи_ходьба_вперед   ; 08 con_fighter_08
+                                        .byte con_0x03D0C3_черепахи_ходьба_вперед   ; 09 con_fighter_09
+                                        .byte con_0x03D0C3_черепахи_ходьба_вперед   ; 0A con_fighter_0A
+                                        .byte con_0x03D0C3_casey_ходьба_вперед   ; 0B con_fighter_0B
+                                        .byte con_0x03D0C3_hot_ходьба_вперед   ; 0C con_fighter_0C
+                                        .byte con_0x03D0C3_shred_ходьба_вперед   ; 0D con_fighter_0D
+                                    .endif
 ; ходьба назад
 - D 0 - - - 0x025724 09:9714: 02        .byte con_0x03D0C3_черепахи_ходьба_назад   ; 00 con_fighter_leo
 - D 0 - - - 0x025725 09:9715: 02        .byte con_0x03D0C3_черепахи_ходьба_назад   ; 01 con_fighter_raph
@@ -4217,6 +4352,15 @@ tbl_970D:
 - D 0 - - - 0x025728 09:9718: 07        .byte con_0x03D0C3_casey_ходьба_назад   ; 04 con_fighter_casey
 - D 0 - - - 0x025729 09:9719: 0D        .byte con_0x03D0C3_hot_ходьба_назад   ; 05 con_fighter_hot
 - D 0 - - - 0x02572A 09:971A: 11        .byte con_0x03D0C3_shred_ходьба_назад   ; 06 con_fighter_shred
+                                    .if con_новые_персы <> $00
+                                        .byte con_0x03D0C3_черепахи_ходьба_назад   ; 07 con_fighter_07
+                                        .byte con_0x03D0C3_черепахи_ходьба_назад   ; 08 con_fighter_08
+                                        .byte con_0x03D0C3_черепахи_ходьба_назад   ; 09 con_fighter_09
+                                        .byte con_0x03D0C3_черепахи_ходьба_назад   ; 0A con_fighter_0A
+                                        .byte con_0x03D0C3_casey_ходьба_назад   ; 0B con_fighter_0B
+                                        .byte con_0x03D0C3_hot_ходьба_назад   ; 0C con_fighter_0C
+                                        .byte con_0x03D0C3_shred_ходьба_назад   ; 0D con_fighter_0D
+                                    .endif
 
 
 
@@ -4228,6 +4372,15 @@ tbl_970D:
 - D 0 - - - 0x02572F 09:971F: 05        .byte con_0x03D0C3_casey_бег_вперед   ; 04 con_fighter_casey
 - D 0 - - - 0x025730 09:9720: 0A        .byte con_0x03D0C3_hot_бег_вперед   ; 05 con_fighter_hot
 - D 0 - - - 0x025731 09:9721: 0E        .byte con_0x03D0C3_shred_бег_вперед   ; 06 con_fighter_shred
+                                    .if con_новые_персы <> $00
+                                        .byte con_0x03D0C3_черепахи_бег_вперед   ; 07 con_fighter_07
+                                        .byte con_0x03D0C3_черепахи_бег_вперед   ; 08 con_fighter_08
+                                        .byte con_0x03D0C3_черепахи_бег_вперед   ; 09 con_fighter_09
+                                        .byte con_0x03D0C3_черепахи_бег_вперед   ; 0A con_fighter_0A
+                                        .byte con_0x03D0C3_casey_бег_вперед   ; 0B con_fighter_0B
+                                        .byte con_0x03D0C3_hot_бег_вперед   ; 0C con_fighter_0C
+                                        .byte con_0x03D0C3_shred_бег_вперед   ; 0D con_fighter_0D
+                                    .endif
 ; бег назад
 - D 0 - - - 0x025732 09:9722: 09        .byte con_0x03D0C3_черепахи_бег_назад   ; 00 con_fighter_leo
 - D 0 - - - 0x025733 09:9723: 09        .byte con_0x03D0C3_черепахи_бег_назад   ; 01 con_fighter_raph
@@ -4236,6 +4389,15 @@ tbl_970D:
 - D 0 - - - 0x025736 09:9726: 08        .byte con_0x03D0C3_casey_бег_назад   ; 04 con_fighter_casey
 - D 0 - - - 0x025737 09:9727: 0B        .byte con_0x03D0C3_hot_бег_назад   ; 05 con_fighter_hot
 - D 0 - - - 0x025738 09:9728: 0F        .byte con_0x03D0C3_shred_бег_назад   ; 06 con_fighter_shred
+                                    .if con_новые_персы <> $00
+                                        .byte con_0x03D0C3_черепахи_бег_назад   ; 07 con_fighter_07
+                                        .byte con_0x03D0C3_черепахи_бег_назад   ; 08 con_fighter_08
+                                        .byte con_0x03D0C3_черепахи_бег_назад   ; 09 con_fighter_09
+                                        .byte con_0x03D0C3_черепахи_бег_назад   ; 0A con_fighter_0A
+                                        .byte con_0x03D0C3_casey_бег_назад   ; 0B con_fighter_0B
+                                        .byte con_0x03D0C3_hot_бег_назад   ; 0C con_fighter_0C
+                                        .byte con_0x03D0C3_shred_бег_назад   ; 0D con_fighter_0D
+                                    .endif
 
 
 

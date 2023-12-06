@@ -721,6 +721,7 @@ C - - - - - 0x02EA2A 0B:AA1A: 8A        TXA
 C - - - - - 0x02EA2B 0B:AA1B: 49 01     EOR #$01
 C - - - - - 0x02EA2D 0B:AA1D: A8        TAY
 sub_AA1E_расчет_автобаланса:
+; con_колво_персов
                                     .if con_новые_персы = $00
 C - - - - - 0x02EA2E 0B:AA1E: B9 A2 00  LDA ram_plr_id,Y
 C - - - - - 0x02EA31 0B:AA21: 0A        ASL
