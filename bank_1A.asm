@@ -6595,10 +6595,13 @@ C - - - - - 0x0363D5 0D:A3C5: D0 1C     BNE bra_A3E3
 - - - - - - 0x0363D7 0D:A3C7: B9 50 05  LDA ram_obj_id,Y ; 0550 0551 
 ; con_новые_персы
 - - - - - - 0x0363DA 0D:A3CA: C9 02     CMP #con_fighter_mike
-- - - - - - 0x0363DC 0D:A3CC: F0 04     BEQ bra_A3D2
+- - - - - - 0x0363DC 0D:A3CC: F0 04     BEQ bra_A3D2_mike
 - - - - - - 0x0363DE 0D:A3CE: C9 05     CMP #$05
-- - - - - - 0x0363E0 0D:A3D0: 90 3F     BCC bra_A411
-bra_A3D2:
+- - - - - - 0x0363E0 0D:A3D0: 90 3F     BCC bra_A411    ; if leo raph don casey
+; con_fighter_hot
+; con_fighter_shred
+bra_A3D2_mike:
+; con_fighter_mike
 - - - - - - 0x0363E2 0D:A3D2: AD 46 04  LDA ram_obj_pos_X_lo + $06
 - - - - - - 0x0363E5 0D:A3D5: DD 40 04  CMP ram_obj_pos_X_lo,X
 - - - - - - 0x0363E8 0D:A3D8: A9 00     LDA #$00
@@ -6631,7 +6634,7 @@ bra_A408:
 - - - - - - 0x03641A 0D:A40A: DD 10 05  CMP ram_obj_spr_flip,X
 ; con_btn_Down + con_btn_Right          con_btn_Down + con_btn_Left
 - - - - - - 0x03641D 0D:A40D: 69 05     ADC #$05
-- - - - - - 0x03641F 0D:A40F: D0 07     BNE bra_A418
+- - - - - - 0x03641F 0D:A40F: D0 07     BNE bra_A418    ; jmp?
 bra_A411:
 - - - - - - 0x036421 0D:A411: A9 00     LDA #$00
 - - - - - - 0x036423 0D:A413: DD 10 05  CMP ram_obj_spr_flip,X
@@ -6732,14 +6735,21 @@ bra_A4ED:
 - - - - - - 0x0364FD 0D:A4ED: B9 20 05  LDA ram_obj_0520,Y
 - - - - - - 0x036500 0D:A4F0: C9 01     CMP #con_plr_state_в_прыжке
 - - - - - - 0x036502 0D:A4F2: D0 1F     BNE bra_A513
+                                       ;LDA ram_obj_id,Y
+                                       ;CMP #$04
+                                       ;BCS bra_A513_не_черепаха
 - - - - - - 0x036504 0D:A4F4: B9 50 05  LDA ram_флаг_черепахи,Y
 - - - - - - 0x036507 0D:A4F7: C9 04     CMP #$40
 - - - - - - 0x036509 0D:A4F9: B0 18     BEQ bra_A513_не_черепаха
 ; C = 0
 ; con_fighter_leo
+; con_fighter___leo
 ; con_fighter_raph
+; con_fighter___raph
 ; con_fighter_mike
+; con_fighter___mike
 ; con_fighter_don
+; con_fighter___don
 - - - - - - 0x03650B 0D:A4FB: B9 80 04  LDA ram_obj_spd_X_hi,Y
 - - - - - - 0x03650E 0D:A4FE: D0 04     BNE bra_A504
 - - - - - - 0x036510 0D:A500: A9 24     LDA #con_шаблон_ai_24
