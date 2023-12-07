@@ -1717,7 +1717,7 @@ C - - - - - 0x024AD1 09:8AC1: 85 14     STA ram_0014
 C - - - - - 0x024AD3 09:8AC3: A4 A9     LDY ram_global_obj_index
 C - - - - - 0x024AD5 09:8AC5: B9 10 04  LDA ram_obj_pos_Y_lo,Y ; 0410 0411 
 C - - - - - 0x024AD8 09:8AC8: C9 A6     CMP #$A6
-C - - - - - 0x024ADA 09:8ACA: A9 1C     LDA #$1C
+C - - - - - 0x024ADA 09:8ACA: A9 1C     LDA #con_колво_персов * $04     ; для антиэйра
 C - - - - - 0x024ADC 09:8ACC: 90 13     BCC bra_8AE1
 C - - - - - 0x024ADE 09:8ACE: BC 50 05  LDY ram_obj_id,X ; 0550 0551 
 C - - - - - 0x024AE1 09:8AD1: 46 14     LSR ram_0014
