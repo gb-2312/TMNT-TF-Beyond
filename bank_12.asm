@@ -1699,8 +1699,8 @@ loc_8AE7_выбор_начальной_анимации_персу:
 sub_0x024AF7_выбор_начальной_анимации_персу:
 ; con_колво_персов
 C D 0 - - - 0x024AF7 09:8AE7: 98        TYA
-C - - - - - 0x024AF8 09:8AE8: 85 00     STA ram_0000
                                     .if con_новые_персы = $00
+C - - - - - 0x024AF8 09:8AE8: 85 00     STA ram_0000
 ; * 07
 C - - - - - 0x024AFA 09:8AEA: 0A        ASL
 C - - - - - 0x024AFB 09:8AEB: 0A        ASL
@@ -1709,7 +1709,13 @@ C - - - - - 0x024AFD 09:8AED: 38        SEC
 C - - - - - 0x024AFE 09:8AEE: E5 00     SBC ram_0000
 C - - - - - 0x024B00 09:8AF0: 18        CLC
 C - - - - - 0x024B01 09:8AF1: 7D 50 05  ADC ram_obj_id,X ; 0550 0551 
+C - - - - - 0x024B04 09:8AF4: A8        TAY
+C - - - - - 0x024B05 09:8AF5: B9 E8 98  LDA tbl_98E8,Y
                                     .else
+                                        CMP #$10
+                                        PHP ; запомнить было ли < 10
+                                        AND #$0F
+                                        STA ram_0000
 ; * 0E
                                         ASL
                                         ASL
@@ -1720,9 +1726,15 @@ C - - - - - 0x024B01 09:8AF1: 7D 50 05  ADC ram_obj_id,X ; 0550 0551
                                         SBC ram_0000
                                         CLC
                                         ADC ram_obj_id,X ; 0550 0551 
+                                        TAY
+                                        PLP
+                                        BCS bra_8AF7
+                                        LDA tbl_98E8,Y  ; 00-0F
+                                        BNE bra_8AF8    ; jmp
+bra_8AF7:
+                                        LDA tbl_9958,Y  ; 10+
+bra_8AF8:
                                     .endif
-C - - - - - 0x024B04 09:8AF4: A8        TAY
-C - - - - - 0x024B05 09:8AF5: B9 E8 98  LDA tbl_98E8,Y
 C - - - - - 0x024B08 09:8AF8: 4C 94 DF  STA ram_obj_anim_id,X ; 0400 0401 
                                         RTS
 
@@ -5187,9 +5199,9 @@ tbl_98E1:
 
 
 
-tbl_98E8:
 ; смотреть con_init_anim
                                     .if con_новые_персы = $00
+tbl_98E8:
 ;                                              +----------------------------------- 00 con_fighter_leo
 ;                                              |    +------------------------------ 01 con_fighter_raph
 ;                                              |    |    +------------------------- 02 con_fighter_mike
@@ -5222,6 +5234,7 @@ tbl_98E8:
 - D 0 - - - 0x02598B 09:997B: A4        .byte $A4, $A4, $A4, $A4, $A8, $A2, $A7   ; 15
 - D 0 - - - 0x025992 09:9982: C4        .byte $C4, $C4, $C4, $C4, $A2, $9D, $A2   ; 16
                                     .else
+tbl_98E8:
 ;                                              +--------------------------------------------------------------------- 00 con_fighter_leo
 ;                                              |    +---------------------------------------------------------------- 01 con_fighter_raph
 ;                                              |    |    +----------------------------------------------------------- 02 con_fighter_mike
@@ -5255,6 +5268,7 @@ tbl_98E8:
 - D 0 - - - 0x025953 09:9943: C4        .byte $C4, $C4, $C4, $C4, $A1, $9C, $A1, $C4, $C4, $C4, $C4, $A1, $9C, $A1   ; 0D
 - D 0 - - - 0x02595A 09:994A: D1        .byte $D1, $D1, $D1, $D1, $B1, $9C, $A4, $D1, $D1, $D1, $D1, $B1, $9C, $A4   ; 0E
 - D 0 - - - 0x025961 09:9951: A1        .byte $A1, $A1, $A1, $A1, $A3, $9E, $A3, $A1, $A1, $A1, $A1, $A3, $9E, $A3   ; 0F
+tbl_9958:
 - - - - - - 0x025968 09:9958: 8F        .byte $8F, $8D, $93, $94, $96, $96, $93, $8F, $8D, $93, $94, $96, $96, $93   ; 10 unused, индекс не найден
 - - - - - - 0x02596F 09:995F: D1        .byte $D1, $D1, $D1, $D1, $CD, $B9, $C9, $D1, $D1, $D1, $D1, $CD, $B9, $C9   ; 11 unused, индекс не найден
 - D 0 - - - 0x025976 09:9966: A2        .byte $A2, $A2, $A2, $A2, $A4, $9F, $C8, $A2, $A2, $A2, $A2, $A4, $9F, $C8   ; 12
@@ -5366,13 +5380,13 @@ tbl_99BC:
 - - - - - - 0x0259D1 09:99C1: 13        .byte con_0x03D0C3_черепахи_сальто_вперед   ; 05 con_fighter_hot
 - - - - - - 0x0259D2 09:99C2: 13        .byte con_0x03D0C3_черепахи_сальто_вперед   ; 06 con_fighter_shred
                                     .if con_новые_персы <> $00
-                                        .word con_0x03D0C3_черепахи_сальто_вперед   ; 07 con_fighter_07
-                                        .word con_0x03D0C3_черепахи_сальто_вперед   ; 08 con_fighter_08
-                                        .word con_0x03D0C3_черепахи_сальто_вперед   ; 09 con_fighter_09
-                                        .word con_0x03D0C3_черепахи_сальто_вперед   ; 0A con_fighter_0A
-                                        .word con_0x03D0C3_casey_сальто_вперед   ; 0B con_fighter_0B
-                                        .word con_0x03D0C3_черепахи_сальто_вперед   ; 0C con_fighter_0C
-                                        .word con_0x03D0C3_черепахи_сальто_вперед   ; 0D con_fighter_0D
+                                        .byte con_0x03D0C3_черепахи_сальто_вперед   ; 07 con_fighter_07
+                                        .byte con_0x03D0C3_черепахи_сальто_вперед   ; 08 con_fighter_08
+                                        .byte con_0x03D0C3_черепахи_сальто_вперед   ; 09 con_fighter_09
+                                        .byte con_0x03D0C3_черепахи_сальто_вперед   ; 0A con_fighter_0A
+                                        .byte con_0x03D0C3_casey_сальто_вперед   ; 0B con_fighter_0B
+                                        .byte con_0x03D0C3_черепахи_сальто_вперед   ; 0C con_fighter_0C
+                                        .byte con_0x03D0C3_черепахи_сальто_вперед   ; 0D con_fighter_0D
                                     .endif
 ; сальто назад
 - D 0 - - - 0x0259D3 09:99C3: 14        .byte con_0x03D0C3_черепахи_сальто_назад   ; 00 con_fighter_leo
@@ -5383,13 +5397,13 @@ tbl_99BC:
 - - - - - - 0x0259D8 09:99C8: 14        .byte con_0x03D0C3_черепахи_сальто_назад   ; 05 con_fighter_hot
 - - - - - - 0x0259D9 09:99C9: 14        .byte con_0x03D0C3_черепахи_сальто_назад   ; 06 con_fighter_shred
                                     .if con_новые_персы <> $00
-                                        .word con_0x03D0C3_черепахи_сальто_назад   ; 07 con_fighter_07
-                                        .word con_0x03D0C3_черепахи_сальто_назад   ; 08 con_fighter_08
-                                        .word con_0x03D0C3_черепахи_сальто_назад   ; 09 con_fighter_09
-                                        .word con_0x03D0C3_черепахи_сальто_назад   ; 0A con_fighter_0A
-                                        .word con_0x03D0C3_casey_сальто_назад   ; 0B con_fighter_0B
-                                        .word con_0x03D0C3_черепахи_сальто_назад   ; 0C con_fighter_0C
-                                        .word con_0x03D0C3_черепахи_сальто_назад   ; 0D con_fighter_0D
+                                        .byte con_0x03D0C3_черепахи_сальто_назад   ; 07 con_fighter_07
+                                        .byte con_0x03D0C3_черепахи_сальто_назад   ; 08 con_fighter_08
+                                        .byte con_0x03D0C3_черепахи_сальто_назад   ; 09 con_fighter_09
+                                        .byte con_0x03D0C3_черепахи_сальто_назад   ; 0A con_fighter_0A
+                                        .byte con_0x03D0C3_casey_сальто_назад   ; 0B con_fighter_0B
+                                        .byte con_0x03D0C3_черепахи_сальто_назад   ; 0C con_fighter_0C
+                                        .byte con_0x03D0C3_черепахи_сальто_назад   ; 0D con_fighter_0D
                                     .endif
 
 
