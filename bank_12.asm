@@ -3163,7 +3163,7 @@ C - - - - - 0x0251FB 09:91EB: BD D0 05  LDA ram_obj_05D0,X ; 05D0 05D1
 C - - - - - 0x0251FE 09:91EE: 18        CLC
 C - - - - - 0x0251FF 09:91EF: 79 18 98  ADC tbl_9818_индекс,Y
 C - - - - - 0x025202 09:91F2: A8        TAY
-C - - - - - 0x025203 09:91F3: B9 1F 98  LDA tbl_981F,Y
+C - - - - - 0x025203 09:91F3: B9 1F 98  LDA tbl_981F_броски_хз,Y
 C - - - - - 0x025206 09:91F6: 48        PHA
 C - - - - - 0x025207 09:91F7: A6 A9     LDX ram_global_obj_index
 C - - - - - 0x025209 09:91F9: 20 18 D2  JSR sub_0x03D228
@@ -5085,26 +5085,27 @@ off_97DC_0C_01:
 tbl_9818_индекс:
 ; bzk bug? первые 2 байта читаются как продолжение 0x025826
     ; шрушер поместил off_97DC_05_hot_01 перед 0x025827, теперь первые 2 байта читаются оттуда
-- D 0 - - - 0x025828 09:9818: 00        .byte off_981F_00_leo - tbl_981F   ; con_fighter_leo
-- D 0 - - - 0x025829 09:9819: 09        .byte off_9828_01_raph - tbl_981F   ; con_fighter_raph
-- D 0 - - - 0x02582A 09:981A: 01        .byte off_9820_02_mike - tbl_981F   ; con_fighter_mike
-- D 0 - - - 0x02582B 09:981B: 00        .byte off_981F_03_don - tbl_981F   ; con_fighter_don
-- D 0 - - - 0x02582C 09:981C: 13        .byte off_9832_04_casey - tbl_981F   ; con_fighter_casey
-- D 0 - - - 0x02582D 09:981D: 0B        .byte off_982A_05_hot - tbl_981F   ; con_fighter_hot
-- D 0 - - - 0x02582E 09:981E: 1A        .byte off_9839_06_shred - tbl_981F   ; con_fighter_shred
+- D 0 - - - 0x025828 09:9818: 00        .byte off_981F_00_leo - tbl_9820   ; con_fighter_leo
+- D 0 - - - 0x025829 09:9819: 09        .byte off_9828_01_raph - tbl_9820   ; con_fighter_raph
+- D 0 - - - 0x02582A 09:981A: 01        .byte off_9820_02_mike - tbl_9820   ; con_fighter_mike
+- D 0 - - - 0x02582B 09:981B: 00        .byte off_981F_03_don - tbl_9820   ; con_fighter_don
+- D 0 - - - 0x02582C 09:981C: 13        .byte off_9832_04_casey - tbl_9820   ; con_fighter_casey
+- D 0 - - - 0x02582D 09:981D: 0B        .byte off_982A_05_hot - tbl_9820   ; con_fighter_hot
+- D 0 - - - 0x02582E 09:981E: 1A        .byte off_9839_06_shred - tbl_9820   ; con_fighter_shred
                                     .if con_новые_персы <> $00
-                                        .byte off_981F_07 - tbl_981F   ; con_fighter___leo
-                                        .byte off_9828_08 - tbl_981F   ; con_fighter___raph
-                                        .byte off_9820_09 - tbl_981F   ; con_fighter___mike
-                                        .byte off_981F_0A - tbl_981F   ; con_fighter___don
-                                        .byte off_9832_0B - tbl_981F   ; con_fighter___casey
-                                        .byte off_982A_0C - tbl_981F   ; con_fighter___hot
-                                        .byte off_9839_0D - tbl_981F   ; con_fighter___shred
+                                        .byte off_981F_07 - tbl_9820   ; con_fighter___leo
+                                        .byte off_9828_08 - tbl_9820   ; con_fighter___raph
+                                        .byte off_9820_09 - tbl_9820   ; con_fighter___mike
+                                        .byte off_981F_0A - tbl_9820   ; con_fighter___don
+                                        .byte off_9832_0B - tbl_9820   ; con_fighter___casey
+                                        .byte off_982A_0C - tbl_9820   ; con_fighter___hot
+                                        .byte off_9839_0D - tbl_9820   ; con_fighter___shred
                                     .endif
 
 
 
-tbl_981F:
+tbl_981F_броски_хз:
+tbl_9820:
 off_981F_00_leo:
 off_981F_07:
 off_981F_03_don:
