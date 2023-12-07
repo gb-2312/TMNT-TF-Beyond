@@ -201,7 +201,6 @@
 .export sub_0x03FF4B_вычисление_приоритета_игрока_в_бою
 .export sub_0x03F723_отрисовка_финальной_стойки
 .export tbl_0x03E32D_индекс_анимации_портрета
-.export sub_0x03FF82_временная_корректировка_индекса_перса
 .export _общий_RTS
 
 
@@ -8315,20 +8314,6 @@ tbl_0x03E32D_индекс_анимации_портрета:
                                         .byte $1F ; 0B con_fighter___casey
                                         .byte $20 ; 0C con_fighter___hot
                                         .byte $21 ; 0D con_fighter___shred
-                                    .endif
-
-
-
-; sub_FF72_временная_корректировка_индекса_перса:
-sub_0x03FF82_временная_корректировка_индекса_перса:
-                                    .if con_новые_персы <> $00
-                                        CMP #$07
-                                        BCC bra_FF73
-                                        SEC
-                                        SBC #$07
-                                        CLC
-bra_FF73:
-                                        RTS
                                     .endif
 
 
