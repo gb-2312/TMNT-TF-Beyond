@@ -6654,7 +6654,6 @@ C - - - - - 0x03643A 0D:A42A: 60        RTS
 
 
 tbl_A42B_условие_для_перехода:
-; con_новые_персы
 ; 00 = branch, 40 = no branch
                                         .byte $00 ; 00 con_fighter_leo
                                         .byte $00 ; 01 con_fighter_raph
