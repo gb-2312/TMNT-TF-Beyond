@@ -2480,6 +2480,8 @@ C - - - - - 0x024E0F 09:8DFF: 4C 6E 8F  JMP loc_8F6E
 bra_8E02_RTS:
 C - - - - - 0x024E12 09:8E02: 60        RTS
 bra_8E03_не_черепаха:
+; con_fighter_casey
+; con_fighter_hot
 C - - - - - 0x024E13 09:8E03: DE C0 05  DEC ram_obj_anim_timer,X ; 05C0 05C1 
 C - - - - - 0x024E16 09:8E06: 10 0A     BPL bra_8E12
 C - - - - - 0x024E18 09:8E08: DE D0 05  DEC ram_obj_05D0,X ; 05D0 05D1 
