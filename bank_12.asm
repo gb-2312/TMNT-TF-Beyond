@@ -2405,6 +2405,9 @@ C - - - - - 0x024D9B 09:8D8B: 20 69 DC  JSR sub_0x03DC79
 C - - - - - 0x024D9E 09:8D8E: 90 72     BCC bra_8E02_RTS
 C - - - - - 0x024DA0 09:8D90: BD 50 05  LDA ram_флаг_черепахи,X
 C - - - - - 0x024DA5 09:8D95: 90 0D     BEQ bra_8DA4_черепаха
+; con_fighter_casey
+; con_fighter_hot
+; con_fighter_shred
 C - - - - - 0x024DA7 09:8D97: DE B0 04  DEC ram_obj_spd_Y_lo,X ; 04B0 04B1 
 C - - - - - 0x024DAA 09:8D9A: 30 31     BMI bra_8DCD
 C - - - - - 0x024DAC 09:8D9C: A9 08     LDA #$08
