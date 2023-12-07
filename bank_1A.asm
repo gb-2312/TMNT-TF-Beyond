@@ -6592,16 +6592,15 @@ C - - - - - 0x0363CD 0D:A3BD: 90 45     BCC bra_A404
 C - - - - - 0x0363CF 0D:A3BF: BC DE 06  LDY ram_plr_06DE,X ; 06DE 06DF 
 C - - - - - 0x0363D2 0D:A3C2: 20 42 BF  JSR sub_BF42
 C - - - - - 0x0363D5 0D:A3C5: D0 1C     BNE bra_A3E3
-- - - - - - 0x0363D7 0D:A3C7: B9 50 05  LDA ram_obj_id,Y ; 0550 0551 
-; con_новые_персы
-- - - - - - 0x0363DA 0D:A3CA: C9 02     CMP #con_fighter_mike
-- - - - - - 0x0363DC 0D:A3CC: F0 04     BEQ bra_A3D2_mike
-- - - - - - 0x0363DE 0D:A3CE: C9 05     CMP #$05
-- - - - - - 0x0363E0 0D:A3D0: 90 3F     BCC bra_A411    ; if leo raph don casey
+- - - - - - 0x0363D7 0D:A3C7: B9 50 05  LDX ram_obj_id,Y
+                                        LDA tbl_A42B_условие_для_перехода,X
+                                        STA ram_0099_temp
+                                        LDX ram_0000    ; здесь хранится текущий X
+                                        BIT ram_0099_temp
+                                        BVC bra_A411
+; con_fighter_mike
 ; con_fighter_hot
 ; con_fighter_shred
-bra_A3D2_mike:
-; con_fighter_mike
 - - - - - - 0x0363E2 0D:A3D2: AD 46 04  LDA ram_obj_pos_X_lo + $06
 - - - - - - 0x0363E5 0D:A3D5: DD 40 04  CMP ram_obj_pos_X_lo,X
 - - - - - - 0x0363E8 0D:A3D8: A9 00     LDA #$00
@@ -6651,6 +6650,19 @@ C - - - - - 0x036433 0D:A423: B0 DF     BCS bra_A404
 C - - - - - 0x036435 0D:A425: 20 74 A3  JSR sub_A374
 C - - - - - 0x036438 0D:A428: A9 01     LDA #con_шаблон_ai_01
 C - - - - - 0x03643A 0D:A42A: 60        RTS
+
+
+
+tbl_A42B_условие_для_перехода:
+; con_новые_персы
+; 00 = branch, 40 = no branch
+                                        .byte $00 ; 00 con_fighter_leo
+                                        .byte $00 ; 01 con_fighter_raph
+                                        .byte $40 ; 02 con_fighter_mike
+                                        .byte $00 ; 03 con_fighter_don
+                                        .byte $00 ; 04 con_fighter_casey
+                                        .byte $40 ; 05 con_fighter_hot
+                                        .byte $40 ; 06 con_fighter_shred
 
 
 
