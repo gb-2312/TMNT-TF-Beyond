@@ -2518,10 +2518,9 @@ ofs_055_8E38_07:
 ; бряк срабатывает при попадании мячом в соперника
 ; X = игрок, в которого попали мячом
 ; Y = игрок, который запустил мяч (0x024E4F)
-C - - J - - 0x024E48 09:8E38: A9 03     LDA #$03
-C - - - - - 0x024E4A 09:8E3A: DD 50 05  CMP ram_obj_id,X ; 0550 0551 
-; con_новые_персы
-C - - - - - 0x024E4D 09:8E3D: 90 09     BCC bra_8E48
+C - - - - - 0x024E4A 09:8E3A: DD 50 05  LDY ram_obj_id,X ; 0550 0551 
+                                        LDA tbl_8EC8_условие_для_перехода,Y
+                                        BEQ bra_8E48
 ; con_fighter_don
 ; con_fighter_casey
 ; con_fighter_hot
@@ -2613,6 +2612,19 @@ C - - - - - 0x024ED3 09:8EC3: 9D C0 05  STA ram_obj_anim_timer,X ; 05C0 05C1
 C - - - - - 0x024ED6 09:8EC6: 60        RTS
 bra_8EC7:
 C - - - - - 0x024ED7 09:8EC7: 4C E7 8D  JMP loc_8DE7
+
+
+
+tbl_8EC8_условие_для_перехода:
+; con_новые_персы
+; 00 = branch, 40 = no branch
+                                        .byte $00 ; 00 con_fighter_leo
+                                        .byte $00 ; 01 con_fighter_raph
+                                        .byte $00 ; 02 con_fighter_mike
+                                        .byte $40 ; 03 con_fighter_don
+                                        .byte $40 ; 04 con_fighter_casey
+                                        .byte $40 ; 05 con_fighter_hot
+                                        .byte $40 ; 06 con_fighter_shred
 
 
 
