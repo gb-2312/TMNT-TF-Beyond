@@ -452,6 +452,15 @@ tbl_832E_ppu:
                                         .dbyt $23E1 ; 04 con_fighter_casey
                                         .dbyt $23E3 ; 05 con_fighter_hot
                                         .dbyt $23E5 ; 06 con_fighter_shred
+                                    .if con_новые_персы <> $00
+                                        .dbyt $23D0 ; 07 con_fighter___leo
+                                        .dbyt $23D2 ; 08 con_fighter___raph
+                                        .dbyt $23D4 ; 09 con_fighter___mike
+                                        .dbyt $23D6 ; 0A con_fighter___don
+                                        .dbyt $23E1 ; 0B con_fighter___casey
+                                        .dbyt $23E3 ; 0C con_fighter___hot
+                                        .dbyt $23E5 ; 0D con_fighter___shred
+                                    .endif
 
 
 

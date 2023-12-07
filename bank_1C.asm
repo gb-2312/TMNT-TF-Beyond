@@ -1759,6 +1759,15 @@ tbl_E31D_индекс_анимации_портрета:
                                         .byte $1F ; 04 con_fighter_casey
                                         .byte $20 ; 05 con_fighter_hot
                                         .byte $21 ; 06 con_fighter_shred
+                                    .if con_новые_персы <> $00
+                                        .byte $1B ; 07 con_fighter___leo
+                                        .byte $1C ; 08 con_fighter___raph
+                                        .byte $1D ; 09 con_fighter___mike
+                                        .byte $1E ; 0A con_fighter___don
+                                        .byte $1F ; 0B con_fighter___casey
+                                        .byte $20 ; 0C con_fighter___hot
+                                        .byte $21 ; 0D con_fighter___shred
+                                    .endif
 
 
 
