@@ -8411,6 +8411,15 @@ tbl_AD45:
 - D 1 - - - 0x026D59 09:AD49: 26        .byte $26   ; 04 con_fighter_casey
 - D 1 - - - 0x026D5A 09:AD4A: 28        .byte $28   ; 05 con_fighter_hot
 - D 1 - - - 0x026D5B 09:AD4B: 2D        .byte $2D   ; 06 con_fighter_shred
+                                    .if con_новые_персы <> $00
+                                        .byte $26   ; 07 con_fighter___leo
+                                        .byte $26   ; 08 con_fighter___raph
+                                        .byte $26   ; 09 con_fighter___mike
+                                        .byte $26   ; 0A con_fighter___don
+                                        .byte $26   ; 0B con_fighter___casey
+                                        .byte $28   ; 0C con_fighter___hot
+                                        .byte $2D   ; 0D con_fighter___shred
+                                    .endif
 
 
 
