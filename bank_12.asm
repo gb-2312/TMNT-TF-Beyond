@@ -3287,7 +3287,7 @@ C - - - - - 0x0252B0 09:92A0: A9 20     LDA #$20
 C - - - - - 0x0252B2 09:92A2: 8D 30 06  STA ram_0630
 C - - - - - 0x0252B5 09:92A5: BC 40 05  LDY ram_obj_0540,X ; 0540 0541 
 bra_92A8:
-C - - - - - 0x0252B8 09:92A8: B9 71 93  LDA tbl_9371,Y
+C - - - - - 0x0252B8 09:92A8: B9 71 93  LDA tbl_9374 - $03,Y
 C - - - - - 0x0252BB 09:92AB: 20 94 F6  JSR sub_0x03F6A4_записать_звук
 C - - - - - 0x0252BE 09:92AE: BD 40 05  LDA ram_obj_0540,X ; 0540 0541 
 C - - - - - 0x0252C1 09:92B1: C9 04     CMP #$04
@@ -3357,6 +3357,8 @@ C - - - - - 0x025310 09:9300: F0 5A     BEQ bra_935C_shred
                                     .endif
 C - - - - - 0x025312 09:9302: C9 04     LDA ram_флаг_черепахи,X
 C - - - - - 0x025314 09:9304: 90 59     BEQ bra_935F_черепаха
+; con_fighter_casey
+; con_fighter_hot
 C - - - - - 0x025316 09:9306: DE 60 05  DEC ram_obj_timer,X ; 0560 0561 
 C - - - - - 0x025319 09:9309: 10 1A     BPL bra_9325
 C - - - - - 0x02531B 09:930B: DE D0 05  DEC ram_obj_05D0,X ; 05D0 05D1 
@@ -3446,21 +3448,27 @@ tbl_936A:
 - D 0 - - - 0x02537B 09:936B: 09        .byte con_init_anim_получение_урона_2   ; 01
 - D 0 - - - 0x02537C 09:936C: 0A        .byte con_init_anim_падение_после_броска   ; 02
 
+
+
 tbl_936D:
-- D 0 - - - 0x02537D 09:936D: 0C        .byte $0C   ; 04 con_fighter_casey
-- D 0 - - - 0x02537E 09:936E: 0C        .byte $0C   ; 05 con_fighter_hot
-- D 0 - - - 0x02537F 09:936F: 10        .byte $10   ; 06 con_fighter_shred
-- - - - - - 0x025380 09:9370: 00        .byte $00   ; bzk garbage?
+;                                              +-------------------- 
+;                                              |    +--------------- 
+;                                              |    |    +---------- 
+;                                              |    |    |    +----- placeholder
+;                                              |    |    |    |
+;                                              |    |    |    |
+- D 0 - - - 0x02537D 09:936D: 0C        .byte $0C, $0C, $10, $00   ; 04 con_fighter_casey
+- D 0 - - - 0x025381 09:9371: 0E        .byte $0E, $0E, $12        ; 05 con_fighter_hot
 
 
 
-tbl_9371:
-- D 0 - - - 0x025381 09:9371: 0E        .byte con_0x03F6AD_0E   ; 00
-- D 0 - - - 0x025382 09:9372: 0E        .byte con_0x03F6AD_0E   ; 01
-- D 0 - - - 0x025383 09:9373: 12        .byte con_0x03F6AD_12   ; 02
-- D 0 - - - 0x025384 09:9374: 21        .byte con_0x03F6AD_21   ; 03
-- D 0 - - - 0x025385 09:9375: 21        .byte con_0x03F6AD_21   ; 04
-- - - - - - 0x025386 09:9376: 22        .byte con_0x03F6AD_22   ; 05
+tbl_9374:
+- D 0 - - - 0x025384 09:9374: 21        .byte con_0x03F6AD_21   ; 03 
+- D 0 - - - 0x025385 09:9375: 21        .byte con_0x03F6AD_21   ; 04 
+
+
+; bzk garbage
+- - - - - - 0x025386 09:9376: 22        .byte $22   ; 
 
 
 
