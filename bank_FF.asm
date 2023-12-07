@@ -77,7 +77,6 @@
 .export tbl_0x03E750
 .export sub_0x03DD7E
 .export sub_0x03DD96
-.export tbl_0x03DDC6
 .export sub_0x03DDF9
 .export loc_0x03DDF9
 .export sub_0x03DE0C_выбор_палитры_перса_с_сохранением_X
@@ -2421,26 +2420,6 @@ C - - - - - 0x03DDB7 0F:DDA7: 60        RTS
 bra_DDA8:
 C - - - - - 0x03DDB8 0F:DDA8: A9 80     LDA #$80
 C - - - - - 0x03DDBA 0F:DDAA: 60        RTS
-
-
-
-tbl_0x03DDC6:
-; con_новые_персы
-;                                              +----------------------------------- 00 con_fighter_leo
-;                                              |    +------------------------------ 01 con_fighter_raph
-;                                              |    |    +------------------------- 02 con_fighter_mike
-;                                              |    |    |    +-------------------- 03 con_fighter_don
-;                                              |    |    |    |    +--------------- 04 con_fighter_casey
-;                                              |    |    |    |    |    +---------- 05 con_fighter_hot
-;                                              |    |    |    |    |    |    +----- 06 con_fighter_shred
-;                                              |    |    |    |    |    |    |
-- D 2 - - - 0x03DDC6 0F:DDB6: FC        .byte $FC, $FD, $FC, $FC, $FE, $03, $FF   ; 00 con_fighter_leo
-- D 2 - - - 0x03DDCD 0F:DDBD: FE        .byte $FE, $FD, $FC, $FD, $FE, $01, $00   ; 01 con_fighter_raph
-- D 2 - - - 0x03DDD4 0F:DDC4: FD        .byte $FD, $FE, $FD, $FD, $FF, $05, $FF   ; 02 con_fighter_mike
-- D 2 - - - 0x03DDDB 0F:DDCB: FC        .byte $FC, $FD, $FC, $FC, $FE, $03, $FF   ; 03 con_fighter_don
-- D 2 - - - 0x03DDE2 0F:DDD2: FC        .byte $FC, $FD, $FC, $FC, $FE, $01, $FF   ; 04 con_fighter_casey
-- D 2 - - - 0x03DDE9 0F:DDD9: FC        .byte $FC, $FD, $FC, $FC, $FE, $03, $00   ; 05 con_fighter_hot
-- D 2 - - - 0x03DDF0 0F:DDE0: FC        .byte $FC, $FD, $FC, $FC, $FE, $00, $00   ; 06 con_fighter_shred
 
 
 

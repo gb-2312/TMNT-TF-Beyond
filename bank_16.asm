@@ -894,13 +894,34 @@ C - - - - - 0x02EB57 0B:AB47: 18        CLC
 C - - - - - 0x02EB58 0B:AB48: 65 1C     ADC ram_001C
 C - - - - - 0x02EB5A 0B:AB4A: 65 1C     ADC ram_001C
 C - - - - - 0x02EB5C 0B:AB4C: 38        SEC
-C - - - - - 0x02EB5D 0B:AB4D: F9 B6 DD  SBC tbl_0x03DDC6,Y
+C - - - - - 0x02EB5D 0B:AB4D: F9 B6 DD  SBC tbl_DDB6,Y
 C - - - - - 0x02EB60 0B:AB50: 48        PHA
 C - - - - - 0x02EB61 0B:AB51: A9 DE     LDA #> (ofs_0x03DE76 - $01)
 C - - - - - 0x02EB63 0B:AB53: 48        PHA
 C - - - - - 0x02EB64 0B:AB54: A9 65     LDA #< (ofs_0x03DE76 - $01)
 C - - - - - 0x02EB66 0B:AB56: 48        PHA
 C - - - - - 0x02EB67 0B:AB57: 4C 17 F6  JMP loc_0x03F627_restore_prg
+
+
+
+tbl_DDB6:
+; перемещено из банка FF
+; con_новые_персы
+;                                              +----------------------------------- 00 con_fighter_leo
+;                                              |    +------------------------------ 01 con_fighter_raph
+;                                              |    |    +------------------------- 02 con_fighter_mike
+;                                              |    |    |    +-------------------- 03 con_fighter_don
+;                                              |    |    |    |    +--------------- 04 con_fighter_casey
+;                                              |    |    |    |    |    +---------- 05 con_fighter_hot
+;                                              |    |    |    |    |    |    +----- 06 con_fighter_shred
+;                                              |    |    |    |    |    |    |
+- D 2 - - - 0x03DDC6 0F:DDB6: FC        .byte $FC, $FD, $FC, $FC, $FE, $03, $FF   ; 00 con_fighter_leo
+- D 2 - - - 0x03DDCD 0F:DDBD: FE        .byte $FE, $FD, $FC, $FD, $FE, $01, $00   ; 01 con_fighter_raph
+- D 2 - - - 0x03DDD4 0F:DDC4: FD        .byte $FD, $FE, $FD, $FD, $FF, $05, $FF   ; 02 con_fighter_mike
+- D 2 - - - 0x03DDDB 0F:DDCB: FC        .byte $FC, $FD, $FC, $FC, $FE, $03, $FF   ; 03 con_fighter_don
+- D 2 - - - 0x03DDE2 0F:DDD2: FC        .byte $FC, $FD, $FC, $FC, $FE, $01, $FF   ; 04 con_fighter_casey
+- D 2 - - - 0x03DDE9 0F:DDD9: FC        .byte $FC, $FD, $FC, $FC, $FE, $03, $00   ; 05 con_fighter_hot
+- D 2 - - - 0x03DDF0 0F:DDE0: FC        .byte $FC, $FD, $FC, $FC, $FE, $00, $00   ; 06 con_fighter_shred
 
 
 
