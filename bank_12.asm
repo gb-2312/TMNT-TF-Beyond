@@ -3331,17 +3331,27 @@ C - - - - - 0x02533B 09:932B: A8        TAY
 C - - - - - 0x02533C 09:932C: 20 E7 8A  JSR sub_8AE7_выбор_начальной_анимации_персу
 C - - - - - 0x02533F 09:932F: A4 A9     LDY ram_global_obj_index
 C - - - - - 0x025341 09:9331: B9 50 05  LDA ram_obj_id,Y ; 0550 0551 
-; con_новые_персы
-C - - - - - 0x025344 09:9334: C9 04     CMP #$04
-C - - - - - 0x025346 09:9336: B0 31     BCS bra_9369_RTS    ; if не черепаха
+; Y в дальнейшем не понадобится и будет перезаписан в 0x026F60/0x03D23B
+                                        TAY
+                                        LDA tbl_9340_условие_для_перехода,Y
+                                        BEQ bra_9369_RTS
 ; con_fighter_leo
-; con_fighter_raph
 ; con_fighter_mike
 ; con_fighter_don
-C - - - - - 0x025348 09:9338: C9 01     CMP #con_fighter_raph
-C - - - - - 0x02534A 09:933A: F0 2D     BEQ bra_9369_RTS
 C - - - - - 0x02534C 09:933C: 20 18 D2  JSR sub_0x03D228
 C - - - - - 0x02534F 09:933F: 4C 65 DD  JMP loc_0x03DD75_повернуть_объект_в_противоположную_сторону_по_горизонтали
+
+
+
+tbl_9340_условие_для_перехода:
+; 00 = branch, 40 = no branch
+                                        .byte $40 ; 00 con_fighter_leo
+                                        .byte $00 ; 01 con_fighter_raph
+                                        .byte $40 ; 02 con_fighter_mike
+                                        .byte $40 ; 03 con_fighter_don
+                                        .byte $00 ; 04 con_fighter_casey
+                                        .byte $00 ; 05 con_fighter_hot
+                                        .byte $00 ; 06 con_fighter_shred
 
 
 
