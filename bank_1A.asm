@@ -7433,8 +7433,8 @@ bra_BECD:
 - - - - - - 0x037EDD 0D:BECD: F0 07     BEQ bra_BED6
 - - - - - - 0x037EDF 0D:BECF: B9 50 05  LDA ram_obj_id,Y
 ; con_новые_персы
-- - - - - - 0x037EE2 0D:BED2: 49 04     EOR #con_fighter_casey
-- - - - - - 0x037EE4 0D:BED4: F0 0C     BEQ bra_BEE2    ; A = 00
+- - - - - - 0x037EE2 0D:BED2: 49 04     CMP #con_fighter_casey
+- - - - - - 0x037EE4 0D:BED4: F0 0C     BEQ bra_BEE3_casey
 bra_BED6:
 - - - - - - 0x037EE6 0D:BED6: B9 0C 06  LDA ram_plr_таймер_для_суперки,Y
 - - - - - - 0x037EE9 0D:BED9: F0 0A     BEQ bra_BEE5
@@ -7445,6 +7445,10 @@ bra_BEE2:
 - - - - - - 0x037EF2 0D:BEE2: 85 17     STA ram_0017
 bra_BEE4_RTS:
 C - - - - - 0x037EF4 0D:BEE4: 60        RTS
+bra_BEE3_casey:
+                                        LDA #$00
+                                        STA ram_0017
+                                        RTS
 
 
 
