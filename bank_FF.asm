@@ -110,7 +110,7 @@
 .export tbl_0x03E16E_звук_выбора_перса
 .export loc_0x03E229_отрисовать_турнирную_сетку
 .export loc_0x03E256
-.export tbl_0x03E479
+.export tbl_0x03E479_default_pos_X_перса
 .export loc_0x03E61C
 .export loc_0x03E62D
 .export loc_0x03E67C
@@ -3647,11 +3647,11 @@ C - - - - - 0x03E42F 0F:E41F: A2 01     LDX #$01
 bra_E421_loop:
 C - - - - - 0x03E431 0F:E421: B5 A2     LDA ram_plr_id,X ; 00A2 00A3 
 C - - - - - 0x03E433 0F:E423: 9D 50 05  STA ram_obj_id,X ; 0550 0551 
-C - - - - - 0x03E436 0F:E426: BD 69 E4  LDA tbl_E469,X
+C - - - - - 0x03E436 0F:E426: BD 69 E4  LDA tbl_E469_default_pos_X_перса,X
 C - - - - - 0x03E439 0F:E429: 9D 40 04  STA ram_obj_pos_X_lo,X ; 0440 0441 
 C - - - - - 0x03E43C 0F:E42C: A9 B0     LDA #$B0
 C - - - - - 0x03E43E 0F:E42E: 9D 10 04  STA ram_obj_pos_Y_lo,X ; 0410 0411 
-                                        LDA tbl_E46B,X
+                                        LDA tbl_E46B_default_flip_перса,X
                                         STA ram_obj_spr_flip,X ; 0510 0511 
                                         JSR sub_F5DF_swap_prg_12
                                         LDY #con_init_anim_обычная_стойка
@@ -3676,12 +3676,12 @@ C - - - - - 0x03E476 0F:E466: 4C 41 E1  JMP loc_E141_подготовить_ос
 
 
 
-tbl_E469:
-tbl_0x03E479:
+tbl_E469_default_pos_X_перса:
+tbl_0x03E479_default_pos_X_перса:
 - D 3 - - - 0x03E479 0F:E469: 58        .byte $58   ; 00
 - D 3 - - - 0x03E47A 0F:E46A: A8        .byte $A8   ; 01
 
-tbl_E46B:
+tbl_E46B_default_flip_перса:
 - D 3 - - - 0x03E47B 0F:E46B: 00        .byte $00   ; 00
 - D 3 - - - 0x03E47C 0F:E46C: 40        .byte $40   ; 01
 

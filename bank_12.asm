@@ -123,7 +123,7 @@ C - - - - - 0x024093 09:8083: 20 32 D0  JSR sub_0x03D042_поинтеры_пос
 
 
 ofs_061_8090_00:
-C - - J - - 0x0240A0 09:8090: BD 69 E4  LDA tbl_0x03E479,X
+C - - J - - 0x0240A0 09:8090: BD 69 E4  LDA tbl_0x03E479_default_pos_X_перса,X
 C - - - - - 0x0240A3 09:8093: 9D 40 04  STA ram_obj_pos_X_lo,X ; 0440 0441 
 C - - - - - 0x0240A6 09:8096: A9 B0     LDA #$B0
 C - - - - - 0x0240A8 09:8098: 9D 10 04  STA ram_obj_pos_Y_lo,X ; 0410 0411 
