@@ -439,10 +439,8 @@ C - - - - - 0x024276 09:8266: A5 10     LDA ram_0010
 C - - - - - 0x024278 09:8268: D0 21     BNE bra_828B
 C - - - - - 0x02427A 09:826A: A9 01     LDA #$01
 C - - - - - 0x02427C 09:826C: 20 C1 8A  JSR sub_8AC1
-C - - - - - 0x02427F 09:826F: BD 50 05  LDA ram_obj_id,X ; 0550 0551 
-; con_новые_персы
-C - - - - - 0x024282 09:8272: C9 04     CMP #$04
-C - - - - - 0x024284 09:8274: B0 15     BCS bra_828B_не_черепаха
+C - - - - - 0x02427F 09:826F: BD 50 05  LDA ram_флаг_черепахи,X
+C - - - - - 0x024284 09:8274: B0 15     BNE bra_828B_не_черепаха
 ; con_fighter_leo
 ; con_fighter_raph
 ; con_fighter_mike
