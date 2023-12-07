@@ -2230,21 +2230,21 @@ tbl_8CD8_скорость_X_пушбэка_в_блок:
 
 ; начальная (основная) скорость X пушбэков от заблоченного мяча
 tbl_8CD9_скорость_X_пушбэка_от_мяча:
-    .byte $C0   ; 50 (00 con_fighter_leo)
-    .byte $C0   ; 51 (01 con_fighter_raph)
-    .byte $C0   ; 52 (02 con_fighter_mike)
-    .byte $C0   ; 53 (03 con_fighter_don)
-    .byte $01   ; 54 (04 con_fighter_casey)
-    .byte $A1   ; 55 (05 con_fighter_hot)
-    .byte $C0   ; 56 (06 con_fighter_shred)
+    .byte $C0   ; 00 con_fighter_leo
+    .byte $C0   ; 01 con_fighter_raph
+    .byte $C0   ; 02 con_fighter_mike
+    .byte $C0   ; 03 con_fighter_don
+    .byte $01   ; 04 con_fighter_casey
+    .byte $A1   ; 05 con_fighter_hot
+    .byte $C0   ; 06 con_fighter_shred
 .if con_новые_персы <> $00
-    .byte $C0   ; 57 (07 con_fighter_07)
-    .byte $C0   ; 58 (08 con_fighter_08)
-    .byte $C0   ; 59 (09 con_fighter_09)
-    .byte $C0   ; 5A (0A con_fighter_0A)
-    .byte $01   ; 5B (0B con_fighter_0B)
-    .byte $A1   ; 5C (0C con_fighter_0C)
-    .byte $C0   ; 5D (0D con_fighter_0D)
+    .byte $C0   ; 07 con_fighter_07
+    .byte $C0   ; 08 con_fighter_08
+    .byte $C0   ; 09 con_fighter_09
+    .byte $C0   ; 0A con_fighter_0A
+    .byte $01   ; 0B con_fighter_0B
+    .byte $A1   ; 0C con_fighter_0C
+    .byte $C0   ; 0D con_fighter_0D
 .endif
 
 
