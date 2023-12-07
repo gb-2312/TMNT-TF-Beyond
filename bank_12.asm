@@ -442,7 +442,7 @@ C - - - - - 0x02427C 09:826C: 20 C1 8A  JSR sub_8AC1
 C - - - - - 0x02427F 09:826F: BD 50 05  LDA ram_obj_id,X ; 0550 0551 
 ; con_новые_персы
 C - - - - - 0x024282 09:8272: C9 04     CMP #$04
-C - - - - - 0x024284 09:8274: B0 15     BCS bra_828B
+C - - - - - 0x024284 09:8274: B0 15     BCS bra_828B_не_черепаха
 ; con_fighter_leo
 ; con_fighter_raph
 ; con_fighter_mike
@@ -458,6 +458,7 @@ C - - - - - 0x024295 09:8285: A9 22     LDA #con_колво_персов * $05 -
 C - - - - - 0x024297 09:8287: 7D 50 05  ADC ram_obj_id,X ; 0550 0551 
 C - - - - - 0x02429A 09:828A: A8        TAY
 bra_828B:
+bra_828B_не_черепаха:
 ; con_fighter_casey
 ; con_fighter_hot
 ; con_fighter_shred
@@ -519,7 +520,7 @@ C - - - - - 0x0242F1 09:82E1: 20 C1 8A  JSR sub_8AC1
 C - - - - - 0x0242F4 09:82E4: BD 50 05  LDA ram_obj_id,X ; 0550 0551 
 ; con_новые_персы
 C - - - - - 0x0242F7 09:82E7: C9 04     CMP #$04
-C - - - - - 0x0242F9 09:82E9: B0 15     BCS bra_8300
+C - - - - - 0x0242F9 09:82E9: B0 15     BCS bra_8300_не_черепаха
 ; con_fighter_leo
 ; con_fighter_raph
 ; con_fighter_mike
@@ -534,6 +535,7 @@ C - - - - - 0x02430A 09:82FA: 20 0D FF  JSR sub_0x03FF1D
 C - - - - - 0x02430D 09:82FD: A5 12     LDA ram_0012
 C - - - - - 0x02430F 09:82FF: A8        TAY
 bra_8300:
+bra_8300_не_черепаха:
 ; con_fighter_casey
 ; con_fighter_hot
 ; con_fighter_shred
@@ -2015,7 +2017,7 @@ bra_8C9A:
 C - - - - - 0x024CAA 09:8C9A: BD 50 05  LDA ram_obj_id,X ; 0550 0551 
 ; con_новые_персы
 C - - - - - 0x024CAD 09:8C9D: C9 04     CMP #$04
-C - - - - - 0x024CAF 09:8C9F: B0 1A     BCS bra_8CBB_RTS
+C - - - - - 0x024CAF 09:8C9F: B0 1A     BCS bra_8CBB_RTS    ; if не черепаха
 ; con_fighter_leo
 ; con_fighter_raph
 ; con_fighter_mike
@@ -2404,13 +2406,13 @@ C - - - - - 0x024D9E 09:8D8E: 90 72     BCC bra_8E02_RTS
 C - - - - - 0x024DA0 09:8D90: BD 50 05  LDA ram_obj_id,X ; 0550 0551 
 ; con_новые_персы
 C - - - - - 0x024DA3 09:8D93: C9 04     CMP #$04
-C - - - - - 0x024DA5 09:8D95: 90 0D     BCC bra_8DA4
+C - - - - - 0x024DA5 09:8D95: 90 0D     BCC bra_8DA4_черепаха
 C - - - - - 0x024DA7 09:8D97: DE B0 04  DEC ram_obj_spd_Y_lo,X ; 04B0 04B1 
 C - - - - - 0x024DAA 09:8D9A: 30 31     BMI bra_8DCD
 C - - - - - 0x024DAC 09:8D9C: A9 08     LDA #$08
 C - - - - - 0x024DAE 09:8D9E: 9D D0 04  STA ram_obj_04D0,X ; 04D0 04D1 
 C - - - - - 0x024DB1 09:8DA1: 4C BA 8F  JMP loc_8FBA
-bra_8DA4:
+bra_8DA4_черепаха:
 ; con_fighter_leo
 ; con_fighter_raph
 ; con_fighter_mike
@@ -2455,7 +2457,7 @@ C D 0 - - - 0x024DF7 09:8DE7: BD 50 05  LDA ram_obj_id,X ; 0550 0551
 C - - - - - 0x024DFA 09:8DEA: C9 06     CMP #con_fighter_shred
 C - - - - - 0x024DFC 09:8DEC: F0 07     BEQ bra_8DF5
 C - - - - - 0x024DFE 09:8DEE: C9 04     CMP #$04
-C - - - - - 0x024E00 09:8DF0: B0 11     BCS bra_8E03
+C - - - - - 0x024E00 09:8DF0: B0 11     BCS bra_8E03_не_черепаха
 ; con_fighter_leo
 ; con_fighter_raph
 ; con_fighter_mike
@@ -2471,7 +2473,7 @@ bra_8DFF:
 C - - - - - 0x024E0F 09:8DFF: 4C 6E 8F  JMP loc_8F6E
 bra_8E02_RTS:
 C - - - - - 0x024E12 09:8E02: 60        RTS
-bra_8E03:
+bra_8E03_не_черепаха:
 C - - - - - 0x024E13 09:8E03: DE C0 05  DEC ram_obj_anim_timer,X ; 05C0 05C1 
 C - - - - - 0x024E16 09:8E06: 10 0A     BPL bra_8E12
 C - - - - - 0x024E18 09:8E08: DE D0 05  DEC ram_obj_05D0,X ; 05D0 05D1 
@@ -3306,7 +3308,7 @@ C - - J - - 0x02530B 09:92FB: BD 50 05  LDA ram_obj_id,X ; 0550 0551
 C - - - - - 0x02530E 09:92FE: C9 06     CMP #con_fighter_shred
 C - - - - - 0x025310 09:9300: F0 5A     BEQ bra_935C
 C - - - - - 0x025312 09:9302: C9 04     CMP #$04
-C - - - - - 0x025314 09:9304: 90 59     BCC bra_935F
+C - - - - - 0x025314 09:9304: 90 59     BCC bra_935F_черепаха
 C - - - - - 0x025316 09:9306: DE 60 05  DEC ram_obj_timer,X ; 0560 0561 
 C - - - - - 0x025319 09:9309: 10 1A     BPL bra_9325
 C - - - - - 0x02531B 09:930B: DE D0 05  DEC ram_obj_05D0,X ; 05D0 05D1 
@@ -3331,7 +3333,7 @@ C - - - - - 0x02533F 09:932F: A4 A9     LDY ram_global_obj_index
 C - - - - - 0x025341 09:9331: B9 50 05  LDA ram_obj_id,Y ; 0550 0551 
 ; con_новые_персы
 C - - - - - 0x025344 09:9334: C9 04     CMP #$04
-C - - - - - 0x025346 09:9336: B0 31     BCS bra_9369_RTS
+C - - - - - 0x025346 09:9336: B0 31     BCS bra_9369_RTS    ; if не черепаха
 ; con_fighter_leo
 ; con_fighter_raph
 ; con_fighter_mike
@@ -3353,7 +3355,7 @@ C - - - - - 0x025369 09:9359: 4C 6D 84  JMP loc_846D
 bra_935C:
 C - - - - - 0x02536C 09:935C: A0 0C     LDY #con_DFE6_0C
 C - - - - - 0x02536E 09:935E: 2C        .byte $2C   ; BIT
-bra_935F:
+bra_935F_черепаха:
 ; con_fighter_leo
 ; con_fighter_raph
 ; con_fighter_mike
@@ -11472,7 +11474,7 @@ C - - - - - 0x027E64 09:BE54: BC 50 05  LDY ram_obj_id,X ; 0550 0551
 C - - - - - 0x027E67 09:BE57: B0 06     BCS bra_BE5F
 C - - - - - 0x027E69 09:BE59: F0 29     BEQ bra_BE84
 C - - - - - 0x027E6B 09:BE5B: C0 03     CPY #$03
-C - - - - - 0x027E6D 09:BE5D: B0 25     BCS bra_BE84
+C - - - - - 0x027E6D 09:BE5D: B0 25     BCS bra_BE84_не_черепаха
 ; con_fighter_leo
 ; con_fighter_raph
 ; con_fighter_mike
@@ -11497,6 +11499,7 @@ bra_BE82:
 C - - - - - 0x027E92 09:BE82: 68        PLA
 C - - - - - 0x027E93 09:BE83: 68        PLA
 bra_BE84:
+bra_BE84_не_черепаха:
 C - - - - - 0x027E94 09:BE84: 4C DF FE  JMP loc_0x03FEEF
 
 

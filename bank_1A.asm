@@ -5249,7 +5249,7 @@ C - - - - - 0x035BE6 0D:9BD6: BC DE 06  LDY ram_plr_06DE,X ; 06DE 06DF
 C - - - - - 0x035BE9 0D:9BD9: B9 50 05  LDA ram_obj_id,Y ; 0550 0551 
 ; con_новые_персы
 C - - - - - 0x035BEC 0D:9BDC: C9 04     CMP #$04
-C - - - - - 0x035BEE 0D:9BDE: B0 29     BCS bra_9C09
+C - - - - - 0x035BEE 0D:9BDE: B0 29     BCS bra_9C09_не_черепаха
 ; con_fighter_leo
 ; con_fighter_raph
 ; con_fighter_mike
@@ -5274,6 +5274,7 @@ C - - - - - 0x035C13 0D:9C03: F0 07     BEQ bra_9C0C
 C - - - - - 0x035C15 0D:9C05: C9 0A     CMP #con_0612_черепаха_деш_локтем
 C - - - - - 0x035C17 0D:9C07: F0 03     BEQ bra_9C0C
 bra_9C09:
+bra_9C09_не_черепаха:
 C - - - - - 0x035C19 0D:9C09: A9 00     LDA #$00
 C - - - - - 0x035C1B 0D:9C0B: 60        RTS
 bra_9C0C:
@@ -6491,7 +6492,8 @@ bra_A316_ограничение_ai_броска:
 C - - - - - 0x036326 0D:A316: BD 50 05  LDA ram_obj_id,X ; 0550 0551 
 ; con_новые_персы
 C - - - - - 0x036329 0D:A319: 49 06     CMP #$04
-C - - - - - 0x03632B 0D:A31B: F0 09     BCS bra_A326
+C - - - - - 0x03632B 0D:A31B: F0 09     BCS bra_A326_не_черепаха
+; C = 0
 ; con_fighter_leo
 ; con_fighter_raph
 ; con_fighter_mike
@@ -6500,7 +6502,7 @@ C - - - - - 0x03632D 0D:A31D: A5 8C     LDA ram_random_2
 C - - - - - 0x03632F 0D:A31F: 1D 10 06  ORA ram_plr_флаг_индекса_атаки,X ; 0610 0611 
 C - - - - - 0x036332 0D:A322: 29 80     AND #$80
 C - - - - - 0x036334 0D:A324: D0 23     BNE bra_A349
-bra_A326:
+bra_A326_не_черепаха:   ; C = 1
 C - - - - - 0x036336 0D:A326: A9 40     LDA #con_btn_B
 C - - - - - 0x036338 0D:A328: 95 8E     STA ram_btn_press,X
 ; C = 0 1
@@ -6732,7 +6734,7 @@ bra_A4ED:
 - - - - - - 0x036502 0D:A4F2: D0 1F     BNE bra_A513
 - - - - - - 0x036504 0D:A4F4: B9 50 05  LDA ram_флаг_черепахи,Y
 - - - - - - 0x036507 0D:A4F7: C9 04     CMP #$40
-- - - - - - 0x036509 0D:A4F9: B0 18     BEQ bra_A513    ; if не черепаха
+- - - - - - 0x036509 0D:A4F9: B0 18     BEQ bra_A513_не_черепаха
 ; C = 0
 ; con_fighter_leo
 ; con_fighter_raph
@@ -6752,6 +6754,7 @@ bra_A50F:
 - - - - - - 0x03651F 0D:A50F: A9 0A     LDA #con_шаблон_ai_0A
 - - - - - - 0x036521 0D:A511: D0 30     BNE bra_A543    ; jmp
 bra_A513:
+bra_A513_не_черепаха:
 - - - - - - 0x036523 0D:A513: B9 50 05  LDA ram_obj_id,Y
                                     .if con_новые_персы = $00
 - - - - - - 0x036526 0D:A516: C9 01     CMP #con_fighter_raph
