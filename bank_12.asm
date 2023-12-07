@@ -517,10 +517,8 @@ bra_82DF:
 loc_82DF:
 C D 0 - - - 0x0242EF 09:82DF: A9 00     LDA #$00
 C - - - - - 0x0242F1 09:82E1: 20 C1 8A  JSR sub_8AC1
-C - - - - - 0x0242F4 09:82E4: BD 50 05  LDA ram_obj_id,X ; 0550 0551 
-; con_новые_персы
-C - - - - - 0x0242F7 09:82E7: C9 04     CMP #$04
-C - - - - - 0x0242F9 09:82E9: B0 15     BCS bra_8300_не_черепаха
+C - - - - - 0x0242F4 09:82E4: BD 50 05  LDA ram_флаг_черепахи,X
+C - - - - - 0x0242F9 09:82E9: B0 15     BNE bra_8300_не_черепаха
 ; con_fighter_leo
 ; con_fighter_raph
 ; con_fighter_mike
