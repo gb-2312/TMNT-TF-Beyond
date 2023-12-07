@@ -6316,6 +6316,7 @@ bra_A219:
 bra_A21E:
 - - - - - - 0x03622E 0D:A21E: A9 08     LDA #$08
 - - - - - - 0x036230 0D:A220: 9D 33 06  STA ram_0633,X
+                                        LDA #con_btn_Up
 - - - - - - 0x036233 0D:A223: D0 62     JMP loc_8059
 bra_A225:
 C - - - - - 0x036235 0D:A225: BD 50 05  LDA ram_obj_id,X ; 0550 0551 
