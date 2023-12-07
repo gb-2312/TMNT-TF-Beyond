@@ -3450,6 +3450,7 @@ tbl_936A:
 
 
 tbl_936D:
+                                    .if con_новые_персы = $00
 ;                                              +-------------------- 
 ;                                              |    +--------------- 
 ;                                              |    |    +---------- 
@@ -3458,6 +3459,17 @@ tbl_936D:
 ;                                              |    |    |    |
 - D 0 - - - 0x02537D 09:936D: 0C        .byte $0C, $0C, $10, $00   ; 04 con_fighter_casey
 - D 0 - - - 0x025381 09:9371: 0E        .byte $0E, $0E, $12        ; 05 con_fighter_hot
+                                    .else
+                                        .byte $0C, $0C, $10, $00   ; 04 con_fighter_casey
+                                        .byte $0E, $0E, $12, $00   ; 05 con_fighter_hot
+                                        .byte $00, $00, $00, $00   ; 07 placeholder
+                                        .byte $00, $00, $00, $00   ; 08 placeholder
+                                        .byte $00, $00, $00, $00   ; 09 placeholder
+                                        .byte $00, $00, $00, $00   ; 0A placeholder
+                                        .byte $00, $00, $00, $00   ; 0B con_fighter___casey
+                                        .byte $00, $00, $00, $00   ; 0C con_fighter___hot
+                                        .byte $00, $00, $00, $00   ; 0D placeholder
+                                    .endif
 
 
 
