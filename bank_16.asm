@@ -863,7 +863,7 @@ C - - - - - 0x02EB20 0B:AB10: 38        SEC
 C - - - - - 0x02EB21 0B:AB11: F9 50 05  SBC ram_obj_id,Y ; 0550 0551 
 C - - - - - 0x02EB24 0B:AB14: 18        CLC
 C - - - - - 0x02EB25 0B:AB15: 7D 50 05  ADC ram_obj_id,X ; 0550 0551 
-C - - - - - 0x02EB28 0B:AB18: C9 21     CMP #$21
+C - - - - - 0x02EB28 0B:AB18: C9 21     CMP #$21    ; con_fighter_hot vs con_fighter_casey ?
 C - - - - - 0x02EB2A 0B:AB1A: D0 29     BNE bra_AB45
 C - - - - - 0x02EB2C 0B:AB1C: 48        PHA
 C - - - - - 0x02EB2D 0B:AB1D: B9 0D 01  LDA ram_plr_hp_hi,Y

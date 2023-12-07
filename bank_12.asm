@@ -1730,7 +1730,7 @@ C - - - - - 0x024B05 09:8AF5: B9 E8 98  LDA tbl_98E8,Y
                                         PLP
                                         BCS bra_8AF7
                                         LDA tbl_98E8,Y  ; 00-0F
-                                        BNE bra_8AF8    ; jmp
+                                        BCC bra_8AF8    ; jmp
 bra_8AF7:
                                         LDA tbl_9958,Y  ; 10+
 bra_8AF8:
@@ -7507,11 +7507,22 @@ tbl_A820:
 
 tbl_A82D:
 ; только для черепах
-; con_новые_персы
 - D 1 - - - 0x02683D 09:A82D: 00        .byte $00   ; 00 con_fighter_leo
 - D 1 - - - 0x02683E 09:A82E: 01        .byte $01   ; 01 con_fighter_raph
 - D 1 - - - 0x02683F 09:A82F: 00        .byte $00   ; 02 con_fighter_mike
 - D 1 - - - 0x026840 09:A830: FF        .byte $FF   ; 03 con_fighter_don
+                                    .if con_новые_персы <> $00
+                                        .byte $00   ; 04 placeholder
+                                        .byte $00   ; 05 placeholder
+                                        .byte $00   ; 06 placeholder
+                                        .byte $00   ; 07 con_fighter_07
+                                        .byte $01   ; 08 con_fighter_08
+                                        .byte $00   ; 09 con_fighter_09
+                                        .byte $FF   ; 0A con_fighter_0A
+                                        .byte $00   ; 0B con_fighter_0B
+                                        .byte $00   ; 0C con_fighter_0C
+                                        .byte $00   ; 0D con_fighter_0D
+                                    .endif
 
 
 
