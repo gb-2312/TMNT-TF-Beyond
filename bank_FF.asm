@@ -4216,6 +4216,15 @@ tbl_0x03E750:
                                         .byte con_DFE6_08   ; 04 con_fighter_casey
                                         .byte con_DFE6_09   ; 05 con_fighter_hot
                                         .byte con_DFE6_0A   ; 06 con_fighter_shred
+                                    .if con_новые_персы <> $00
+                                        .byte con_DFE6_04   ; 07 con_fighter_07
+                                        .byte con_DFE6_05   ; 08 con_fighter_08
+                                        .byte con_DFE6_06   ; 09 con_fighter_09
+                                        .byte con_DFE6_07   ; 0A con_fighter_0A
+                                        .byte con_DFE6_08   ; 0B con_fighter_0B
+                                        .byte con_DFE6_09   ; 0C con_fighter_0C
+                                        .byte con_DFE6_0A   ; 0D con_fighter_0D
+                                    .endif
 
 
 
@@ -4227,6 +4236,15 @@ tbl_E741:
                                         .byte con_DFE6_17   ; 04 con_fighter_casey
                                         .byte con_DFE6_18   ; 05 con_fighter_hot
                                         .byte con_DFE6_19   ; 06 con_fighter_shred
+                                    .if con_новые_персы <> $00
+                                        .byte con_DFE6_13   ; 07 con_fighter_07
+                                        .byte con_DFE6_14   ; 08 con_fighter_08
+                                        .byte con_DFE6_15   ; 09 con_fighter_09
+                                        .byte con_DFE6_16   ; 0A con_fighter_0A
+                                        .byte con_DFE6_17   ; 0B con_fighter_0B
+                                        .byte con_DFE6_18   ; 0C con_fighter_0C
+                                        .byte con_DFE6_19   ; 0D con_fighter_0D
+                                    .endif
 
 
 
