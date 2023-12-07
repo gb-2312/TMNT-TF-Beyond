@@ -5373,6 +5373,15 @@ tbl_98D3_скорость_X_брошенного_перса:
 - D 0 - - - 0x0258E7 09:98D7: 01        .byte $01, $01  ; 04 con_fighter_casey
 - D 0 - - - 0x0258E8 09:98D8: 02        .byte $02, $02  ; 05 con_fighter_hot
 - D 0 - - - 0x0258E9 09:98D9: 04        .byte $04, $04  ; 06 con_fighter_shred
+                                    .if con_новые_персы <> $00
+                                        .byte $81, $81   ; 07 con_fighter___leo
+                                        .byte $01, $01   ; 08 con_fighter___raph
+                                        .byte $02, $02   ; 09 con_fighter___mike
+                                        .byte $81, $81   ; 0A con_fighter___don
+                                        .byte $01, $01   ; 0B con_fighter___casey
+                                        .byte $02, $02   ; 0C con_fighter___hot
+                                        .byte $04, $04   ; 0D con_fighter___shred
+                                    .endif
 
 
 
