@@ -852,10 +852,10 @@ C - - - - - 0x02EB14 0B:AB04: 8A        TXA
 C - - - - - 0x02EB15 0B:AB05: 49 01     EOR #$01
 C - - - - - 0x02EB17 0B:AB07: A8        TAY
 C - - - - - 0x02EB18 0B:AB08: 84 1A     STY ram_001A
-; * 07
 ; con_колво_персов
 C - - - - - 0x02EB1A 0B:AB0A: B9 50 05  LDA ram_obj_id,Y ; 0550 0551 
-; con_новые_персы
+                                    .if con_новые_персы = $00
+; * 07
 C - - - - - 0x02EB1D 0B:AB0D: 0A        ASL
 C - - - - - 0x02EB1E 0B:AB0E: 0A        ASL
 C - - - - - 0x02EB1F 0B:AB0F: 0A        ASL
@@ -863,8 +863,29 @@ C - - - - - 0x02EB20 0B:AB10: 38        SEC
 C - - - - - 0x02EB21 0B:AB11: F9 50 05  SBC ram_obj_id,Y ; 0550 0551 
 C - - - - - 0x02EB24 0B:AB14: 18        CLC
 C - - - - - 0x02EB25 0B:AB15: 7D 50 05  ADC ram_obj_id,X ; 0550 0551 
-C - - - - - 0x02EB28 0B:AB18: C9 21     CMP #$21    ; con_fighter_hot vs con_fighter_casey ?
+C - - - - - 0x02EB28 0B:AB18: C9 21     CMP #$21    ; con_fighter_hot (X) vs con_fighter_casey (Y)
 C - - - - - 0x02EB2A 0B:AB1A: D0 29     BNE bra_AB45
+                                    .else
+; * 0E
+                                        ASL
+                                        ASL
+                                        ASL
+                                        ASL
+                                        SEC
+                                        SBC ram_obj_id,Y ; 0550 0551 
+                                        SBC ram_obj_id,Y ; 0550 0551 
+                                        CLC
+                                        ADC ram_obj_id,X ; 0550 0551 
+                                        CMP #$3D    ; con_fighter_hot (X) vs con_fighter_casey (Y)
+                                        BEQ bra_AB1C_hot_vs_casey
+                                        CMP #$9F    ; con_fighter_hot (X) vs con_fighter___casey (Y)
+                                        BEQ bra_AB1C_hot_vs_casey
+                                        CMP #$44    ; con_fighter___hot (X) vs con_fighter_casey (Y)
+                                        BEQ bra_AB1C_hot_vs_casey
+                                        CMP #$A6    ; con_fighter___hot (X) vs con_fighter___casey (Y)
+                                        BNE bra_AB45                            
+bra_AB1C_hot_vs_casey:
+                                    .endif
 C - - - - - 0x02EB2C 0B:AB1C: 48        PHA
 C - - - - - 0x02EB2D 0B:AB1D: B9 0D 01  LDA ram_plr_hp_hi,Y
 C - - - - - 0x02EB30 0B:AB20: F0 03     BEQ bra_AB25
@@ -906,7 +927,7 @@ C - - - - - 0x02EB67 0B:AB57: 4C 17 F6  JMP loc_0x03F627_restore_prg
 
 tbl_DDB6:
 ; перемещено из банка FF
-; con_новые_персы
+                                    .if con_новые_персы = $00
 ;                                              +----------------------------------- 00 con_fighter_leo
 ;                                              |    +------------------------------ 01 con_fighter_raph
 ;                                              |    |    +------------------------- 02 con_fighter_mike
@@ -922,6 +943,39 @@ tbl_DDB6:
 - D 2 - - - 0x03DDE2 0F:DDD2: FC        .byte $FC, $FD, $FC, $FC, $FE, $01, $FF   ; 04 con_fighter_casey
 - D 2 - - - 0x03DDE9 0F:DDD9: FC        .byte $FC, $FD, $FC, $FC, $FE, $03, $00   ; 05 con_fighter_hot
 - D 2 - - - 0x03DDF0 0F:DDE0: FC        .byte $FC, $FD, $FC, $FC, $FE, $00, $00   ; 06 con_fighter_shred
+                                    .else
+;                                              +---------------------------------------------------------------------- 00 con_fighter_leo
+;                                              |    +----------------------------------------------------------------- 01 con_fighter_raph
+;                                              |    |    +------------------------------------------------------------ 02 con_fighter_mike
+;                                              |    |    |    +------------------------------------------------------- 03 con_fighter_don
+;                                              |    |    |    |    +-------------------------------------------------- 04 con_fighter_casey
+;                                              |    |    |    |    |    +--------------------------------------------- 05 con_fighter_hot
+;                                              |    |    |    |    |    |    +---------------------------------------- 06 con_fighter_shred
+;                                              |    |    |    |    |    |    |    +----------------------------------- 07 con_fighter___leo
+;                                              |    |    |    |    |    |    |    |    +------------------------------ 08 con_fighter___raph
+;                                              |    |    |    |    |    |    |    |    |    +------------------------- 09 con_fighter___mike
+;                                              |    |    |    |    |    |    |    |    |    |    +-------------------- 0A con_fighter___don
+;                                              |    |    |    |    |    |    |    |    |    |    |    +--------------- 0B con_fighter___casey
+;                                              |    |    |    |    |    |    |    |    |    |    |    |    +---------- 0C con_fighter___hot
+;                                              |    |    |    |    |    |    |    |    |    |    |    |    |    +----- 0D con_fighter___shred
+;                                              |    |    |    |    |    |    |    |    |    |    |    |    |    |
+;                                              |    |    |    |    |    |    |    |    |    |    |    |    |    |
+;                                              |    |    |    |    |    |    |    |    |    |    |    |    |    |
+                                        .byte $FC, $FD, $FC, $FC, $FE, $03, $FF, $FC, $FD, $FC, $FC, $FE, $03, $FF   ; 00 con_fighter_leo
+                                        .byte $FE, $FD, $FC, $FD, $FE, $01, $00, $FE, $FD, $FC, $FD, $FE, $01, $00   ; 01 con_fighter_raph
+                                        .byte $FD, $FE, $FD, $FD, $FF, $05, $FF, $FD, $FE, $FD, $FD, $FF, $05, $FF   ; 02 con_fighter_mike
+                                        .byte $FC, $FD, $FC, $FC, $FE, $03, $FF, $FC, $FD, $FC, $FC, $FE, $03, $FF   ; 03 con_fighter_don
+                                        .byte $FC, $FD, $FC, $FC, $FE, $01, $FF, $FC, $FD, $FC, $FC, $FE, $01, $FF   ; 04 con_fighter_casey
+                                        .byte $FC, $FD, $FC, $FC, $FE, $03, $00, $FC, $FD, $FC, $FC, $FE, $03, $00   ; 05 con_fighter_hot
+                                        .byte $FC, $FD, $FC, $FC, $FE, $00, $00, $FC, $FD, $FC, $FC, $FE, $00, $00   ; 06 con_fighter_shred
+                                        .byte $FC, $FD, $FC, $FC, $FE, $03, $FF, $FC, $FD, $FC, $FC, $FE, $03, $FF   ; 07 con_fighter___leo
+                                        .byte $FE, $FD, $FC, $FD, $FE, $01, $00, $FE, $FD, $FC, $FD, $FE, $01, $00   ; 08 con_fighter___raph
+                                        .byte $FD, $FE, $FD, $FD, $FF, $05, $FF, $FD, $FE, $FD, $FD, $FF, $05, $FF   ; 09 con_fighter___mike
+                                        .byte $FC, $FD, $FC, $FC, $FE, $03, $FF, $FC, $FD, $FC, $FC, $FE, $03, $FF   ; 0A con_fighter___don
+                                        .byte $FC, $FD, $FC, $FC, $FE, $01, $FF, $FC, $FD, $FC, $FC, $FE, $01, $FF   ; 0B con_fighter___casey
+                                        .byte $FC, $FD, $FC, $FC, $FE, $03, $00, $FC, $FD, $FC, $FC, $FE, $03, $00   ; 0C con_fighter___hot
+                                        .byte $FC, $FD, $FC, $FC, $FE, $00, $00, $FC, $FD, $FC, $FC, $FE, $00, $00   ; 0D con_fighter___shred
+                                    .endif
 
 
 
