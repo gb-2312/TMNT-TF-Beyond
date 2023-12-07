@@ -11469,15 +11469,15 @@ sub_BE4C:
 C - - - - - 0x027E5C 09:BE4C: AD 72 06  LDA ram_время_десятки
 C - - - - - 0x027E5F 09:BE4F: 0D 73 06  ORA ram_время_единицы
 C - - - - - 0x027E62 09:BE52: F0 2E     BEQ bra_BE82
-C - - - - - 0x027E64 09:BE54: BC 50 05  LDY ram_obj_id,X ; 0550 0551 
-; con_новые_персы
 C - - - - - 0x027E67 09:BE57: B0 06     BCS bra_BE5F
-C - - - - - 0x027E69 09:BE59: F0 29     BEQ bra_BE84    ; if leo
-C - - - - - 0x027E6B 09:BE5B: C0 03     CPY #$03
-C - - - - - 0x027E6D 09:BE5D: B0 25     BCS bra_BE84    ; if don casey hot shred
+                                        LDY ram_obj_id,X ; 0550 0551 
+                                        TYA
+                                        LDA tbl_BE85_условие_для_перехода,Y
+                                        BEQ bra_BE84
 ; con_fighter_raph
 ; con_fighter_mike
 bra_BE5F:
+                                        LDY ram_obj_id,X ; 0550 0551 
 C - - - - - 0x027E6F 09:BE5F: AD 38 06  LDA ram_0638
 C - - - - - 0x027E72 09:BE62: D9 1C DF  CMP tbl_0x03DF2C_рейндж_броска,Y
 C - - - - - 0x027E75 09:BE65: B0 1D     BCS bra_BE84
@@ -11498,6 +11498,19 @@ C - - - - - 0x027E92 09:BE82: 68        PLA
 C - - - - - 0x027E93 09:BE83: 68        PLA
 bra_BE84:
 C - - - - - 0x027E94 09:BE84: 4C DF FE  JMP loc_0x03FEEF
+
+
+
+tbl_BE85_условие_для_перехода:
+; con_новые_персы
+; 00 = branch, 40 = no branch
+                                        .byte $00 ; 00 con_fighter_leo
+                                        .byte $40 ; 01 con_fighter_raph
+                                        .byte $40 ; 02 con_fighter_mike
+                                        .byte $00 ; 03 con_fighter_don
+                                        .byte $00 ; 04 con_fighter_casey
+                                        .byte $00 ; 05 con_fighter_hot
+                                        .byte $00 ; 06 con_fighter_shred
 
 
 
