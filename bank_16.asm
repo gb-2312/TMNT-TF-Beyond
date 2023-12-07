@@ -417,19 +417,14 @@ bra_82FE_loop:
 C - - - - - 0x02C30E 0B:82FE: A6 00     LDX ram_0000
 ; запись атрибутов для добавления цветов роже на экране выбора персов
 C - - - - - 0x02C310 0B:8300: B5 A2     LDA ram_plr_id,X ; 00A2 00A3 
-                                    .if con_новые_персы <> $00
-                                        JSR sub_0x03FF82_временная_корректировка_индекса_перса
-                                    .endif
-C - - - - - 0x02C312 0B:8302: 0A        ASL
-C - - - - - 0x02C313 0B:8303: C9 08     CMP #$08
-C - - - - - 0x02C315 0B:8305: 90 02     BCC bra_8309
-C - - - - - 0x02C317 0B:8307: 69 08     ADC #$08
-bra_8309:
-C - - - - - 0x02C319 0B:8309: 18        CLC
-C - - - - - 0x02C31A 0B:830A: 69 D0     ADC #< $23D0
+                                        ASL
+                                        TAY
+                                        LDA tbl_832E_ppu,Y
+                                        PHA ; 2006 hi
+                                        LDA tbl_832E_ppu + $01,Y
 C - - - - - 0x02C31C 0B:830C: 85 01     STA ram_0001
-C - - - - - 0x02C31E 0B:830E: A8        TAY
-C - - - - - 0x02C31F 0B:830F: A9 23     LDA #> $23D0
+C - - - - - 0x02C31E 0B:830E: A8        TAY ; 2006 lo
+                                        PLA ; 2006 hi
 C - - - - - 0x02C321 0B:8311: 20 6B D2  JSR sub_0x03D27B_записать_адрес_2006_Y_и_A_в_буфер
 C - - - - - 0x02C324 0B:8314: A6 00     LDX ram_0000
 C - - - - - 0x02C326 0B:8316: 20 30 83  JSR sub_8330
@@ -446,6 +441,17 @@ C - - - - - 0x02C338 0B:8328: 20 30 83  JSR sub_8330
 C - - - - - 0x02C33B 0B:832B: C6 00     DEC ram_0000
 C - - - - - 0x02C33D 0B:832D: 10 CF     BPL bra_82FE_loop
 C - - - - - 0x02C33F 0B:832F: 60        RTS
+
+
+
+tbl_832E_ppu:
+                                        .dbyt $23D0 ; 00 con_fighter_leo
+                                        .dbyt $23D2 ; 01 con_fighter_raph
+                                        .dbyt $23D4 ; 02 con_fighter_mike
+                                        .dbyt $23D6 ; 03 con_fighter_don
+                                        .dbyt $23E1 ; 04 con_fighter_casey
+                                        .dbyt $23E3 ; 05 con_fighter_hot
+                                        .dbyt $23E5 ; 06 con_fighter_shred
 
 
 
