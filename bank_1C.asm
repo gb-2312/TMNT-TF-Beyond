@@ -1740,8 +1740,9 @@ C - - - - - 0x03E314 0F:E304: A4 08     LDY ram_0008
 C - - - - - 0x03E317 0F:E307: B9 A2 00  LDA ram_plr_id,Y
                                         TAY
                                         LDA tbl_0x03E32D_индекс_анимации_портрета,Y
+                                        LDY ram_0008
 C - - - - - 0x03E31C 0F:E30C: 99 02 04  STA ram_obj_anim_id + $02,Y ; 0402 0403 
-C - - - - - 0x03E31F 0F:E30F: 98        LDA ram_0008
+C - - - - - 0x03E31F 0F:E30F: 98        TYA
 C - - - - - 0x03E320 0F:E310: 09 82     ORA #$82
 C - - - - - 0x03E322 0F:E312: 99 02 05  STA ram_obj_0500 + $02,Y ; 0502 0503 
 C - - - - - 0x03E325 0F:E315: 99 32 04  STA ram_obj_pos_X_hi + $02,Y ; 0432 0433 
