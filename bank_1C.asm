@@ -1739,7 +1739,7 @@ C - - - - - 0x03E311 0F:E301: 20 46 D3  JSR sub_0x03D356_записать_3_цв
 C - - - - - 0x03E314 0F:E304: A4 08     LDY ram_0008
 C - - - - - 0x03E317 0F:E307: B9 A2 00  LDA ram_plr_id,Y
                                         TAY
-                                        LDA tbl_E31D_индекс_анимации_портрета,Y
+                                        LDA tbl_0x03E32D_индекс_анимации_портрета,Y
 C - - - - - 0x03E31C 0F:E30C: 99 02 04  STA ram_obj_anim_id + $02,Y ; 0402 0403 
 C - - - - - 0x03E31F 0F:E30F: 98        LDA ram_0008
 C - - - - - 0x03E320 0F:E310: 09 82     ORA #$82
@@ -1748,26 +1748,6 @@ C - - - - - 0x03E325 0F:E315: 99 32 04  STA ram_obj_pos_X_hi + $02,Y ; 0432 0433
 C - - - - - 0x03E328 0F:E318: C6 08     DEC ram_0008
 C - - - - - 0x03E32A 0F:E31A: 10 D7     BPL bra_E2F3_loop
 C - - - - - 0x03E32C 0F:E31C: 60        RTS
-
-
-
-tbl_E31D_индекс_анимации_портрета:
-                                        .byte $1B ; 00 con_fighter_leo
-                                        .byte $1C ; 01 con_fighter_raph
-                                        .byte $1D ; 02 con_fighter_mike
-                                        .byte $1E ; 03 con_fighter_don
-                                        .byte $1F ; 04 con_fighter_casey
-                                        .byte $20 ; 05 con_fighter_hot
-                                        .byte $21 ; 06 con_fighter_shred
-                                    .if con_новые_персы <> $00
-                                        .byte $1B ; 07 con_fighter___leo
-                                        .byte $1C ; 08 con_fighter___raph
-                                        .byte $1D ; 09 con_fighter___mike
-                                        .byte $1E ; 0A con_fighter___don
-                                        .byte $1F ; 0B con_fighter___casey
-                                        .byte $20 ; 0C con_fighter___hot
-                                        .byte $21 ; 0D con_fighter___shred
-                                    .endif
 
 
 

@@ -200,6 +200,7 @@
 .export sub_0x03FF1D
 .export sub_0x03FF4B_вычисление_приоритета_игрока_в_бою
 .export sub_0x03F723_отрисовка_финальной_стойки
+.export tbl_0x03E32D_индекс_анимации_портрета
 .export sub_0x03FF82_временная_корректировка_индекса_перса
 .export _общий_RTS
 
@@ -8295,6 +8296,26 @@ bra_FF6D:
 C - - - - - 0x03FF7D 0F:FF6D: 86 9D     STX ram_009D
 C - - - - - 0x03FF7F 0F:FF6F: 86 AD     STX ram_00AD
 C - - - - - 0x03FF81 0F:FF71: 60        RTS
+
+
+
+tbl_0x03E32D_индекс_анимации_портрета:
+                                        .byte $1B ; 00 con_fighter_leo
+                                        .byte $1C ; 01 con_fighter_raph
+                                        .byte $1D ; 02 con_fighter_mike
+                                        .byte $1E ; 03 con_fighter_don
+                                        .byte $1F ; 04 con_fighter_casey
+                                        .byte $20 ; 05 con_fighter_hot
+                                        .byte $21 ; 06 con_fighter_shred
+                                    .if con_новые_персы <> $00
+                                        .byte $1B ; 07 con_fighter___leo
+                                        .byte $1C ; 08 con_fighter___raph
+                                        .byte $1D ; 09 con_fighter___mike
+                                        .byte $1E ; 0A con_fighter___don
+                                        .byte $1F ; 0B con_fighter___casey
+                                        .byte $20 ; 0C con_fighter___hot
+                                        .byte $21 ; 0D con_fighter___shred
+                                    .endif
 
 
 
