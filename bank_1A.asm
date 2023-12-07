@@ -6316,7 +6316,7 @@ bra_A219:
 bra_A21E:
 - - - - - - 0x03622E 0D:A21E: A9 08     LDA #$08
 - - - - - - 0x036230 0D:A220: 9D 33 06  STA ram_0633,X
-- - - - - - 0x036233 0D:A223: D0 62     BNE bra_A287   ; jmp
+- - - - - - 0x036233 0D:A223: D0 62     JMP loc_8059
 bra_A225:
 C - - - - - 0x036235 0D:A225: BD 50 05  LDA ram_obj_id,X ; 0550 0551 
                                     .if con_новые_персы = $00
@@ -6401,7 +6401,6 @@ loc_A282:
 - - - - - - 0x036294 0D:A284: 2C        .byte $2C   ; BIT
 bra_A285:
 C - - - - - 0x036295 0D:A285: A9 80     LDA #con_btn_A
-bra_A287:
 C - - - - - 0x036297 0D:A287: 4C 59 80  JMP loc_8059
 bra_A28A:
 C - - - - - 0x03629A 0D:A28A: B9 54 05  LDA ram_obj_id + $04,Y ; 0554 0555 
