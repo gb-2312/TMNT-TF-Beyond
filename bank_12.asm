@@ -11502,7 +11502,6 @@ C - - - - - 0x027E94 09:BE84: 4C DF FE  JMP loc_0x03FEEF
 
 
 tbl_BE85_условие_для_перехода:
-; con_новые_персы
 ; 00 = branch, 40 = no branch
                                         .byte $00 ; 00 con_fighter_leo
                                         .byte $40 ; 01 con_fighter_raph
@@ -11511,6 +11510,15 @@ tbl_BE85_условие_для_перехода:
                                         .byte $00 ; 04 con_fighter_casey
                                         .byte $00 ; 05 con_fighter_hot
                                         .byte $00 ; 06 con_fighter_shred
+                                    .if con_новые_персы <> $00
+                                        .byte $00 ; 07 con_fighter___leo
+                                        .byte $40 ; 08 con_fighter___raph
+                                        .byte $40 ; 09 con_fighter___mike
+                                        .byte $00 ; 0A con_fighter___don
+                                        .byte $00 ; 0B con_fighter___casey
+                                        .byte $00 ; 0C con_fighter___hot
+                                        .byte $00 ; 0D con_fighter___shred
+                                    .endif
 
 
 
