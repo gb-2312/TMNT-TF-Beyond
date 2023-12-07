@@ -807,10 +807,10 @@ C - - - - - 0x0364B0 0D:A4A0: C9 06     CMP #con_fighter_shred
 C - - - - - 0x0364B2 0D:A4A2: D0 0A     BNE bra_A4AE
                                     .else
                                         CMP #con_fighter_shred
-                                        BEQ bra_A4A4
+                                        BEQ bra_A4A4_shred
                                         CMP #con_fighter___shred
                                         BNE bra_A4AE
-bra_A4A4:
+bra_A4A4_shred:
                                     .endif
 ; con_fighter_shred
 ; con_fighter___shred
@@ -1686,10 +1686,10 @@ C - - - - - 0x0349C1 0D:89B1: C9 03     CMP #con_fighter_don
 C - - - - - 0x0349C3 0D:89B3: D0 18     BNE bra_89CD
                                     .else
                                         CMP #con_fighter_don
-                                        BEQ bra_89B5
+                                        BEQ bra_89B5_don
                                         CMP #con_fighter___don
                                         BNE bra_89CD
-bra_89B5:
+bra_89B5_don:
                                     .endif
 ; con_fighter_don
 ; con_fighter___don
@@ -6331,10 +6331,10 @@ C - - - - - 0x03623A 0D:A22A: D0 5E     BNE bra_A28A
                                         CMP #con_fighter___shred
                                         BEQ bra_A226_shred
                                         CMP #con_fighter_casey
-                                        BEQ bra_A22B
+                                        BEQ bra_A22B_casey
                                         CMP #con_fighter___casey
                                         BNE bra_A28A
-bra_A22B:
+bra_A22B_casey:
                                     .endif
 ; con_fighter_casey
 ; con_fighter___casey
@@ -6358,10 +6358,10 @@ bra_A226_shred:
 - - - - - - 0x03624B 0D:A23B: D0 03     BNE bra_A240
                                     .else
                                        ;CMP #con_fighter_leo
-                                        BEQ bra_A23D
+                                        BEQ bra_A23D_leo
                                         CMP #con_fighter___leo
                                         BNE bra_A240
-bra_A23D:
+bra_A23D_leo:
                                     .endif
 ; con_fighter_leo
 ; con_fighter___leo
@@ -6476,10 +6476,10 @@ C - - - - - 0x03631A 0D:A30A: B9 50 05  LDA ram_obj_id,Y ; 0550 0551
 C - - - - - 0x03631D 0D:A30D: D0 3A     BNE bra_A349
                                     .else
                                        ;CMP #con_fighter_leo
-                                        BEQ bra_A30E
+                                        BEQ bra_A30E_leo
                                         CMP #con_fighter___leo
                                         BNE bra_A349
-bra_A30E:
+bra_A30E_leo:
                                     .endif
 ; con_fighter_leo
 ; con_fighter___leo
@@ -6519,10 +6519,10 @@ C - - - - - 0x03634E 0D:A33E: C9 06     CMP #con_fighter_shred
 C - - - - - 0x036350 0D:A340: D0 07     BNE bra_A349
                                     .else
                                         CMP #con_fighter_shred
-                                        BEQ bra_A342
+                                        BEQ bra_A342_shred
                                         CMP #con_fighter___shred
                                         BNE bra_A349
-bra_A342:
+bra_A342_shred:
                                     .endif
 ; con_fighter_shred
 ; con_fighter___shred
@@ -6674,10 +6674,10 @@ C - - - - - 0x03648A 0D:A47A: 90 1E     BCC bra_A49A
 - - - - - - 0x036491 0D:A481: D0 17     BNE bra_A49A
                                     .else
                                         CMP #con_fighter_raph
-                                        BEQ bra_A483
+                                        BEQ bra_A483_raph
                                         CMP #con_fighter___raph
                                         BNE bra_A49A
-bra_A483:
+bra_A483_raph:
                                     .endif
 ; con_fighter_raph
 ; con_fighter___raph
@@ -6758,10 +6758,10 @@ bra_A513:
 - - - - - - 0x036528 0D:A518: D0 2C     BNE bra_A546
                                     .else
                                         CMP #con_fighter_raph
-                                        BEQ bra_A51A
+                                        BEQ bra_A51A_raph
                                         CMP #con_fighter___raph
                                         BNE bra_A546
-bra_A51A:
+bra_A51A_raph:
                                     .endif
 ; con_fighter_raph
 ; con_fighter___raph
@@ -6959,10 +6959,10 @@ bra_A5A3:
 - - - - - - 0x0365B6 0D:A5A6: D0 1C     BNE bra_A5C4
                                     .else
                                        ;CMP #con_fighter_leo
-                                        BEQ bra_A5A8
+                                        BEQ bra_A5A8_leo
                                         CMP #con_fighter___leo
                                         BNE bra_A5C4
-bra_A5A8:
+bra_A5A8_leo:
                                     .endif
 ; con_fighter_leo
 ; con_fighter___leo
@@ -7113,17 +7113,17 @@ bra_A694:
                                         LDA ram_obj_id,Y
                                     .if con_новые_персы = $00
                                         CMP #con_fighter_shred
-                                        BEQ bra_A6A8
+                                        BEQ bra_A6A8_shred
                                     .else
                                         CMP #con_fighter_shred
-                                        BEQ bra_A6A8
+                                        BEQ bra_A6A8_shred
                                         CMP #con_fighter___shred
-                                        BEQ bra_A6A8
+                                        BEQ bra_A6A8_shred
                                     .endif
 - - - - - - 0x0366AB 0D:A69B: BD C0 04  LDA ram_obj_04C0,X
 - - - - - - 0x0366AE 0D:A69E: C9 09     CMP #$09
 - - - - - - 0x0366B0 0D:A6A0: F0 57     BEQ bra_A6F9
-bra_A6A8:
+bra_A6A8_shred:
 ; con_fighter_shred
 ; con_fighter___shred
 - - - - - - 0x0366B2 0D:A6A2: B9 12 06  LDA ram_plr_индекс_атаки,Y
@@ -7431,10 +7431,10 @@ C - - - - - 0x037D9D 0D:BD8D: C9 06     CMP #con_fighter_shred
 C - - - - - 0x037D9F 0D:BD8F: D0 51     BNE bra_BDE2
                                     .else
                                         CMP #con_fighter_shred
-                                        BEQ bra_BD91
+                                        BEQ bra_BD91_shred
                                         CMP #con_fighter___shred
                                         BNE bra_BDE2
-bra_BD91:
+bra_BD91_shred:
                                     .endif
 ; con_fighter_shred
 ; con_fighter___shred
@@ -7610,10 +7610,10 @@ bra_BEEE:
 - - - - - - 0x037F03 0D:BEF3: D0 0F     BNE bra_BF04
                                     .else
                                         CMP #con_fighter_hot
-                                        BEQ bra_BEF5
+                                        BEQ bra_BEF5_hot
                                         CMP con_fighter___hot
                                         BNE bra_BF04
-bra_BEF5:
+bra_BEF5_hot:
                                     .endif
 ; con_fighter_hot
 ; con_fighter___hot
@@ -7685,10 +7685,10 @@ C - - - - - 0x037F79 0D:BF69: C9 06     CMP #con_fighter_shred
 C - - - - - 0x037F7B 0D:BF6B: D0 2D     BNE bra_BF9A
                                     .else
                                         CMP #con_fighter_shred
-                                        BEQ bra_BF6D
+                                        BEQ bra_BF6D_shred
                                         CMP #con_fighter___shred
                                         BNE bra_BF9A
-bra_BF6D:
+bra_BF6D_shred:
                                     .endif
 ; con_fighter_shred
 ; con_fighter___shred

@@ -2570,7 +2570,7 @@ sub_0x03DEB2:
 C - - - - - 0x03DEB2 0F:DEA2: 18        CLC
 C - - - - - 0x03DEB3 0F:DEA3: 7D 45 06  ADC ram_plr_damage,X ; 0645 0646 
 C - - - - - 0x03DEB6 0F:DEA6: 9D 45 06  STA ram_plr_damage,X ; 0645 0646 
-bra_DEA9:
+bra_DEA9_casey:
 ; con_fighter_casey
 ; con_fighter___casey
 C - - - - - 0x03DEB9 0F:DEA9: A9 00     LDA #$00
@@ -2600,12 +2600,12 @@ C - - - - - 0x03DED7 0F:DEC7: A4 A9     LDY ram_global_obj_index
 C - - - - - 0x03DED9 0F:DEC9: B9 50 05  LDA ram_obj_id,Y ; 0550 0551 
                                     .if con_новые_персы = $00
 C - - - - - 0x03DEDC 0F:DECC: C9 04     CMP #con_fighter_casey
-C - - - - - 0x03DEDE 0F:DECE: F0 D9     BEQ bra_DEA9
+C - - - - - 0x03DEDE 0F:DECE: F0 D9     BEQ bra_DEA9_casey
                                     .else
                                         CMP #con_fighter_casey
-                                        BEQ bra_DEA9
+                                        BEQ bra_DEA9_casey
                                         CMP #con_fighter___casey
-                                        BEQ bra_DEA9
+                                        BEQ bra_DEA9_casey
                                     .endif
 C - - - - - 0x03DEE0 0F:DED0: A9 80     LDA #$80
 C - - - - - 0x03DEE2 0F:DED2: D0 D7     BNE bra_DEAB    ; jmp

@@ -2548,10 +2548,10 @@ C - - - - - 0x024E68 09:8E58: C0 04     CPY #con_fighter_casey
 C - - - - - 0x024E6A 09:8E5A: D0 02     BNE bra_8E5E
                                     .else
                                         CPY #con_fighter_casey
-                                        BEQ bra_8E5C
+                                        BEQ bra_8E5C_casey
                                         CPY #con_fighter___casey
                                         BNE bra_8E5E
-bra_8E5C:
+bra_8E5C_casey:
                                     .endif
 ; con_fighter_casey
 ; con_fighter___casey
@@ -3094,10 +3094,10 @@ C - - - - - 0x0251DA 09:91CA: C9 04     CMP #con_fighter_casey
 C - - - - - 0x0251DC 09:91CC: D0 19     BNE bra_91E7
                                     .else
                                         CMP #con_fighter_casey
-                                        BEQ bra_91CE
+                                        BEQ bra_91CE_casey
                                         CMP #con_fighter___casey
                                         BNE bra_91E7
-bra_91CE:
+bra_91CE_casey:
                                     .endif
 ; con_fighter_casey
 ; con_fighter___casey

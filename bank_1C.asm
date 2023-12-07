@@ -5583,13 +5583,13 @@ tbl_A223_тайлы_рож:
 - D 1 - - - 0x03A238 0E:A228: 73        .word off_A29D_05_hot   ; con_fighter_hot
 - D 1 - - - 0x03A239 0E:A229: A2        .word off_A2CC_06_shred   ; con_fighter_shred
                                     .if con_новые_персы <> $00
-                                        .word off_A22A_07   ; off_A22A_00_leo
-                                        .word off_A22A_08   ; off_A22A_00_leo
-                                        .word off_A22A_09   ; off_A22A_00_leo
-                                        .word off_A22A_0A   ; off_A22A_00_leo
-                                        .word off_A25C_0B   ; off_A22A_00_leo
-                                        .word off_A29D_0C   ; off_A22A_00_leo
-                                        .word off_A2CC_0D   ; off_A22A_00_leo
+                                        .word off_A22A_07   ; con_fighter___leo
+                                        .word off_A22A_08   ; con_fighter___raph
+                                        .word off_A22A_09   ; con_fighter___mike
+                                        .word off_A22A_0A   ; con_fighter___don
+                                        .word off_A25C_0B   ; con_fighter___casey
+                                        .word off_A29D_0C   ; con_fighter___hot
+                                        .word off_A2CC_0D   ; con_fighter___shred
                                     .endif
 
 
