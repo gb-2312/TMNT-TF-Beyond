@@ -3698,21 +3698,21 @@ C - - - - - 0x03E476 0F:E466: 4C 41 E1  JMP loc_E141_подготовить_ос
 
 
 tbl_E467_флаг_черепахи:
-                                        .byte $40 ; 00 con_fighter_leo
-                                        .byte $40 ; 01 con_fighter_raph
-                                        .byte $40 ; 02 con_fighter_mike
-                                        .byte $40 ; 03 con_fighter_don
-                                        .byte $00 ; 04 con_fighter_casey
-                                        .byte $00 ; 05 con_fighter_hot
-                                        .byte $00 ; 06 con_fighter_shred
+                                        .byte $00 ; 00 con_fighter_leo
+                                        .byte $00 ; 01 con_fighter_raph
+                                        .byte $00 ; 02 con_fighter_mike
+                                        .byte $00 ; 03 con_fighter_don
+                                        .byte $40 ; 04 con_fighter_casey
+                                        .byte $40 ; 05 con_fighter_hot
+                                        .byte $40 ; 06 con_fighter_shred
                                     .if con_новые_персы <> $00
-                                        .byte $40 ; 07 con_fighter___leo
-                                        .byte $40 ; 08 con_fighter___raph
-                                        .byte $40 ; 09 con_fighter___mike
-                                        .byte $40 ; 0A con_fighter___don
-                                        .byte $00 ; 0B con_fighter___casey
-                                        .byte $00 ; 0C con_fighter___hot
-                                        .byte $00 ; 0D con_fighter___shred
+                                        .byte $00 ; 07 con_fighter___leo
+                                        .byte $00 ; 08 con_fighter___raph
+                                        .byte $00 ; 09 con_fighter___mike
+                                        .byte $00 ; 0A con_fighter___don
+                                        .byte $40 ; 0B con_fighter___casey
+                                        .byte $40 ; 0C con_fighter___hot
+                                        .byte $40 ; 0D con_fighter___shred
                                     .endif
 
 
