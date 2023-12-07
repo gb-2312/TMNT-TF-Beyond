@@ -3647,6 +3647,9 @@ C - - - - - 0x03E42F 0F:E41F: A2 01     LDX #$01
 bra_E421_loop:
 C - - - - - 0x03E431 0F:E421: B5 A2     LDA ram_plr_id,X ; 00A2 00A3 
 C - - - - - 0x03E433 0F:E423: 9D 50 05  STA ram_obj_id,X ; 0550 0551 
+                                        TAY
+                                        LDA tbl_E467_флаг_черепахи,Y
+                                        STA ram_флаг_черепахи,X
 C - - - - - 0x03E436 0F:E426: BD 69 E4  LDA tbl_E469_default_pos_X_перса,X
 C - - - - - 0x03E439 0F:E429: 9D 40 04  STA ram_obj_pos_X_lo,X ; 0440 0441 
 C - - - - - 0x03E43C 0F:E42C: A9 B0     LDA #$B0
@@ -3673,6 +3676,18 @@ C - - - - - 0x03E45D 0F:E44D: B0 F8     BCS bra_E447_loop
 C - - - - - 0x03E470 0F:E460: 20 14 F7  JSR sub_F714_смена_тайловых_наборов_для_анимаций
 C - - - - - 0x03E473 0F:E463: 20 0B F8  JSR sub_F80B
 C - - - - - 0x03E476 0F:E466: 4C 41 E1  JMP loc_E141_подготовить_осветление_из_черного_в_цветной
+
+
+
+tbl_E467_флаг_черепахи:
+; con_новые_персы
+                                        .byte $40 ; 00 con_fighter_leo
+                                        .byte $40 ; 01 con_fighter_raph
+                                        .byte $40 ; 02 con_fighter_mike
+                                        .byte $40 ; 03 con_fighter_don
+                                        .byte $00 ; 04 con_fighter_casey
+                                        .byte $00 ; 05 con_fighter_hot
+                                        .byte $00 ; 06 con_fighter_shred
 
 
 
