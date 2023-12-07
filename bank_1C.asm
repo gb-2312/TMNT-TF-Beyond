@@ -5453,9 +5453,9 @@ C D 1 - - - 0x03A16C 0E:A15C: 84 03     STY ram_0003    ; bzk optimize, оно �
                                         ASL
                                         TAY
 C - - - - - 0x03A16E 0E:A15E: B9 23 A2  LDA tbl_A223_тайлы_рож,Y
-                                        STA ram_0008
+                                        STA ram_008A_data
                                         LDA tbl_A223_тайлы_рож + $01,Y
-                                        STA ram_0009
+                                        STA ram_008A_data + $01
                                         LDY #$00
 C - - - - - 0x03A171 0E:A161: 85 00     STY ram_0000
 C - - - - - 0x03A173 0E:A163: BD 0B A3  LDA tbl_A30B_ppu_hi,X
@@ -5464,7 +5464,7 @@ C - - - - - 0x03A178 0E:A168: BD 11 A3  LDA tbl_A311_ppu_lo,X
 C - - - - - 0x03A17B 0E:A16B: 85 02     STA ram_0002
 bra_A16D_main_loop:
 C - - - - - 0x03A17D 0E:A16D: A4 00     LDY ram_0000
-C - - - - - 0x03A17F 0E:A16F: B9 2A A2  LDA (ram_0008),Y
+C - - - - - 0x03A17F 0E:A16F: B9 2A A2  LDA (ram_008A_data),Y
 C - - - - - 0x03A182 0E:A172: C9 FE     CMP #$FE
 C - - - - - 0x03A184 0E:A174: F0 4A     BEQ bra_A1C0_RTS
 C - - - - - 0x03A186 0E:A176: C9 FF     CMP #$FF
@@ -5482,14 +5482,14 @@ C - - - - - 0x03A196 0E:A186: 65 01     ADC ram_0001
 C - - - - - 0x03A198 0E:A188: 20 6B D2  JSR sub_0x03D27B_записать_адрес_2006_Y_и_A_в_буфер
 C - - - - - 0x03A19B 0E:A18B: E6 00     INC ram_0000
 C - - - - - 0x03A19D 0E:A18D: A4 00     LDY ram_0000
-C - - - - - 0x03A19F 0E:A18F: B9 2A A2  LDA (ram_0008),Y
+C - - - - - 0x03A19F 0E:A18F: B9 2A A2  LDA (ram_008A_data),Y
 C - - - - - 0x03A1A2 0E:A192: F0 19     BEQ bra_A1AD
 C - - - - - 0x03A1A4 0E:A194: C9 10     CMP #$10
 C - - - - - 0x03A1A6 0E:A196: B0 15     BCS bra_A1AD
 ; 01-0F
 C - - - - - 0x03A1A8 0E:A198: 20 5D D2  JSR sub_0x03D26D_записать_A_в_буфер_с_чтением_индекса
 C - - - - - 0x03A1AB 0E:A19B: C8        INY
-C - - - - - 0x03A1AC 0E:A19C: B9 2A A2  LDA (ram_0008),Y
+C - - - - - 0x03A1AC 0E:A19C: B9 2A A2  LDA (ram_008A_data),Y
 C - - - - - 0x03A1AF 0E:A19F: 20 5D D2  JSR sub_0x03D26D_записать_A_в_буфер_с_чтением_индекса
 ; поменять режим 01 на 04
 C - - - - - 0x03A1B2 0E:A1A2: A9 04     LDA #con_buf_mode_04
@@ -5505,7 +5505,7 @@ C - - - - - 0x03A1BD 0E:A1AD: 20 5D D2  JSR sub_0x03D26D_записать_A_в_�
 bra_A1B0_loop:
 C - - - - - 0x03A1C0 0E:A1B0: E6 00     INC ram_0000
 C - - - - - 0x03A1C2 0E:A1B2: A4 00     LDY ram_0000
-C - - - - - 0x03A1C4 0E:A1B4: B9 2A A2  LDA (ram_0008),Y
+C - - - - - 0x03A1C4 0E:A1B4: B9 2A A2  LDA (ram_008A_data),Y
 C - - - - - 0x03A1C7 0E:A1B7: 20 5D D2  JSR sub_0x03D26D_записать_A_в_буфер_с_чтением_индекса
 C - - - - - 0x03A1CA 0E:A1BA: C9 FF     CMP #$FF
 C - - - - - 0x03A1CC 0E:A1BC: D0 F2     BNE bra_A1B0_loop
