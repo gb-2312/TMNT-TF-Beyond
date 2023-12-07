@@ -2014,10 +2014,8 @@ C - - - - - 0x024CA5 09:8C95: B0 03     BCS bra_8C9A
 bra_8C97:
 C - - - - - 0x024CA7 09:8C97: 4C E7 8A  JMP loc_8AE7_выбор_начальной_анимации_персу
 bra_8C9A:
-C - - - - - 0x024CAA 09:8C9A: BD 50 05  LDA ram_obj_id,X ; 0550 0551 
-; con_новые_персы
-C - - - - - 0x024CAD 09:8C9D: C9 04     CMP #$04
-C - - - - - 0x024CAF 09:8C9F: B0 1A     BCS bra_8CBB_RTS    ; if не черепаха
+C - - - - - 0x024CAA 09:8C9A: BD 50 05  LDA ram_флаг_черепахи,X
+C - - - - - 0x024CAF 09:8C9F: B0 1A     BNE bra_8CBB_RTS    ; if не черепаха
 ; con_fighter_leo
 ; con_fighter_raph
 ; con_fighter_mike
