@@ -5246,10 +5246,8 @@ tbl_9BD2:
 
 sub_9BD6:
 C - - - - - 0x035BE6 0D:9BD6: BC DE 06  LDY ram_plr_06DE,X ; 06DE 06DF 
-C - - - - - 0x035BE9 0D:9BD9: B9 50 05  LDA ram_obj_id,Y ; 0550 0551 
-; con_новые_персы
-C - - - - - 0x035BEC 0D:9BDC: C9 04     CMP #$04
-C - - - - - 0x035BEE 0D:9BDE: B0 29     BCS bra_9C09_не_черепаха
+C - - - - - 0x035BE9 0D:9BD9: B9 50 05  LDA ram_флаг_черепахи,Y
+C - - - - - 0x035BEE 0D:9BDE: B0 29     BNE bra_9C09_не_черепаха
 ; con_fighter_leo
 ; con_fighter_raph
 ; con_fighter_mike
