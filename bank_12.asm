@@ -224,7 +224,6 @@ C - - - - - 0x024126 09:8116: E5 01     SBC ram_0001
 C - - - - - 0x024128 09:8118: 85 01     STA ram_0001
 C - - - - - 0x02412A 09:811A: BC 50 05  LDY ram_obj_id,X ; 0550 0551 
 C - - - - - 0x02412D 09:811D: BD 26 06  LDA ram_plr_0626,X ; 0626 0627 
-; con_новые_персы
 C - - - - - 0x024130 09:8120: C9 02     CMP #$02
 C - - - - - 0x024132 09:8122: 90 0D     BCC bra_8131
 C - - - - - 0x024134 09:8124: 98        TYA
@@ -902,8 +901,11 @@ C - - - - - 0x024582 09:8572: BD 50 05  LDA ram_obj_id,X ; 0550 0551
 ; con_новые_персы
 C - - - - - 0x024585 09:8575: C9 05     CMP #$05
 C - - - - - 0x024587 09:8577: B0 27     BCS bra_85A0
-; con_fighter_hot
-; con_fighter_shred
+; con_fighter_leo
+; con_fighter_raph
+; con_fighter_mike
+; con_fighter_don
+; con_fighter_casey
 C - - - - - 0x024589 09:8579: BC 60 04  LDY ram_obj_spd_Z_hi,X ; 0460 0461 
 C - - - - - 0x02458C 09:857C: C8        INY
 C - - - - - 0x02458D 09:857D: C8        INY
@@ -1401,7 +1403,6 @@ bra_88E7:
 C - - - - - 0x0248F7 09:88E7: 20 90 F6  JSR sub_0x03F6A0_записать_звук_сохранив_X_Y
 bra_88EA:
 C - - - - - 0x0248FB 09:88EB: BD 50 05  LDA ram_obj_id,X ; 0550 0551 
-; con_новые_персы
 C - - - - - 0x024900 09:88F0: A8        TAY
                                         LDA tbl_0x03E750,Y
                                         TAY
@@ -1982,6 +1983,10 @@ C - - - - - 0x024CAA 09:8C9A: BD 50 05  LDA ram_obj_id,X ; 0550 0551
 ; con_новые_персы
 C - - - - - 0x024CAD 09:8C9D: C9 04     CMP #$04
 C - - - - - 0x024CAF 09:8C9F: B0 1A     BCS bra_8CBB_RTS
+; con_fighter_leo
+; con_fighter_raph
+; con_fighter_mike
+; con_fighter_don
 C - - - - - 0x024CB1 09:8CA1: A0 00     LDY #con_DFE6_00
 C - - - - - 0x024CB3 09:8CA3: 4C 4F DF  JMP loc_0x03DF5F
 bra_8CA6:
@@ -2364,6 +2369,10 @@ C - - - - - 0x024DAC 09:8D9C: A9 08     LDA #$08
 C - - - - - 0x024DAE 09:8D9E: 9D D0 04  STA ram_obj_04D0,X ; 04D0 04D1 
 C - - - - - 0x024DB1 09:8DA1: 4C BA 8F  JMP loc_8FBA
 bra_8DA4:
+; con_fighter_leo
+; con_fighter_raph
+; con_fighter_mike
+; con_fighter_don
 C - - - - - 0x024DB4 09:8DA4: FE 40 05  INC ram_obj_0540,X ; 0540 0541 
 C - - - - - 0x024DB7 09:8DA7: A9 1C     LDA #$1C
 C - - - - - 0x024DB9 09:8DA9: 9D 60 05  STA ram_obj_timer,X ; 0560 0561 
@@ -2405,6 +2414,10 @@ C - - - - - 0x024DFA 09:8DEA: C9 06     CMP #con_fighter_shred
 C - - - - - 0x024DFC 09:8DEC: F0 07     BEQ bra_8DF5
 C - - - - - 0x024DFE 09:8DEE: C9 04     CMP #$04
 C - - - - - 0x024E00 09:8DF0: B0 11     BCS bra_8E03
+; con_fighter_leo
+; con_fighter_raph
+; con_fighter_mike
+; con_fighter_don
 C - - - - - 0x024E02 09:8DF2: A0 01     LDY #con_DFE6_01
 C - - - - - 0x024E04 09:8DF4: 2C        .byte $2C   ; BIT
 bra_8DF5:
@@ -3193,6 +3206,10 @@ C - - - - - 0x025341 09:9331: B9 50 05  LDA ram_obj_id,Y ; 0550 0551
 ; con_новые_персы
 C - - - - - 0x025344 09:9334: C9 04     CMP #$04
 C - - - - - 0x025346 09:9336: B0 31     BCS bra_9369_RTS
+; con_fighter_leo
+; con_fighter_raph
+; con_fighter_mike
+; con_fighter_don
 C - - - - - 0x025348 09:9338: C9 01     CMP #con_fighter_raph
 C - - - - - 0x02534A 09:933A: F0 2D     BEQ bra_9369_RTS
 C - - - - - 0x02534C 09:933C: 20 18 D2  JSR sub_0x03D228
@@ -3211,6 +3228,10 @@ bra_935C:
 C - - - - - 0x02536C 09:935C: A0 0C     LDY #con_DFE6_0C
 C - - - - - 0x02536E 09:935E: 2C        .byte $2C   ; BIT
 bra_935F:
+; con_fighter_leo
+; con_fighter_raph
+; con_fighter_mike
+; con_fighter_don
 C - - - - - 0x02536F 09:935F: A0 01     LDY #con_DFE6_01
 C - - - - - 0x025371 09:9361: 20 4F DF  JSR sub_0x03DF5F
 C - - - - - 0x025374 09:9364: BD C0 05  LDA ram_obj_anim_timer,X ; 05C0 05C1 
@@ -11294,6 +11315,10 @@ C - - - - - 0x027E67 09:BE57: B0 06     BCS bra_BE5F
 C - - - - - 0x027E69 09:BE59: F0 29     BEQ bra_BE84
 C - - - - - 0x027E6B 09:BE5B: C0 03     CPY #$03
 C - - - - - 0x027E6D 09:BE5D: B0 25     BCS bra_BE84
+; con_fighter_leo
+; con_fighter_raph
+; con_fighter_mike
+; con_fighter_don
 bra_BE5F:
 C - - - - - 0x027E6F 09:BE5F: AD 38 06  LDA ram_0638
 C - - - - - 0x027E72 09:BE62: D9 1C DF  CMP tbl_0x03DF2C_рейндж_броска,Y

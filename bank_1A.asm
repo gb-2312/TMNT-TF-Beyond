@@ -5226,6 +5226,10 @@ C - - - - - 0x035BE9 0D:9BD9: B9 50 05  LDA ram_obj_id,Y ; 0550 0551
 ; con_новые_персы
 C - - - - - 0x035BEC 0D:9BDC: C9 04     CMP #$04
 C - - - - - 0x035BEE 0D:9BDE: B0 29     BCS bra_9C09
+; con_fighter_leo
+; con_fighter_raph
+; con_fighter_mike
+; con_fighter_don
 C - - - - - 0x035BF0 0D:9BE0: A5 13     LDA ram_0013
 C - - - - - 0x035BF2 0D:9BE2: C9 01     CMP #$01
 C - - - - - 0x035BF4 0D:9BE4: D0 10     BNE bra_9BF6
@@ -6427,6 +6431,10 @@ C - - - - - 0x036326 0D:A316: BD 50 05  LDA ram_obj_id,X ; 0550 0551
 ; con_новые_персы
 C - - - - - 0x036329 0D:A319: 49 06     CMP #$04
 C - - - - - 0x03632B 0D:A31B: F0 09     BCS bra_A326
+; con_fighter_leo
+; con_fighter_raph
+; con_fighter_mike
+; con_fighter_don
 C - - - - - 0x03632D 0D:A31D: A5 8C     LDA ram_random_2
 C - - - - - 0x03632F 0D:A31F: 1D 10 06  ORA ram_plr_флаг_индекса_атаки,X ; 0610 0611 
 C - - - - - 0x036332 0D:A322: 29 80     AND #$80
@@ -6647,6 +6655,10 @@ bra_A4ED:
 ; con_новые_персы
 - - - - - - 0x036507 0D:A4F7: C9 04     CMP #$04
 - - - - - - 0x036509 0D:A4F9: B0 18     BCS bra_A513
+; con_fighter_leo
+; con_fighter_raph
+; con_fighter_mike
+; con_fighter_don
 - - - - - - 0x03650B 0D:A4FB: B9 80 04  LDA ram_obj_spd_X_hi,Y
 - - - - - - 0x03650E 0D:A4FE: D0 04     BNE bra_A504
 - - - - - - 0x036510 0D:A500: A9 24     LDA #con_шаблон_ai_24

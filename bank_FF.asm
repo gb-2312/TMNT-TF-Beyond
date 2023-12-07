@@ -3680,7 +3680,6 @@ C - - - - - 0x03E476 0F:E466: 4C 41 E1  JMP loc_E141_подготовить_ос
 
 
 tbl_E467_флаг_черепахи:
-; con_новые_персы
                                         .byte $40 ; 00 con_fighter_leo
                                         .byte $40 ; 01 con_fighter_raph
                                         .byte $40 ; 02 con_fighter_mike
