@@ -6589,10 +6589,13 @@ C - - - - - 0x0363CD 0D:A3BD: 90 45     BCC bra_A404
 C - - - - - 0x0363CF 0D:A3BF: BC DE 06  LDY ram_plr_06DE,X ; 06DE 06DF 
 C - - - - - 0x0363D2 0D:A3C2: 20 42 BF  JSR sub_BF42
 C - - - - - 0x0363D5 0D:A3C5: D0 1C     BNE bra_A3E3
+                                        TXA
+                                        PHA
 - - - - - - 0x0363D7 0D:A3C7: B9 50 05  LDX ram_obj_id,Y ; 0550 0551 
                                         LDA tbl_A42B_условие_для_перехода,X
                                         STA ram_0099_temp
-                                        LDX ram_0000    ; здесь хранится текущий X
+                                        PLA
+                                        TAX
                                         BIT ram_0099_temp
                                         BVC bra_A411
 ; con_fighter_mike
