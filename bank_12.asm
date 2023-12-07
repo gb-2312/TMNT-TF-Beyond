@@ -2462,9 +2462,8 @@ C - - - - - 0x024DFC 09:8DEC: F0 07     BEQ bra_8DF5_shred
                                         CMP #con_fighter___shred
                                         BEQ bra_8DF5_shred
                                     .endif
-; con_новые_персы
-C - - - - - 0x024DFE 09:8DEE: C9 04     CMP #$04
-C - - - - - 0x024E00 09:8DF0: B0 11     BCS bra_8E03_не_черепаха
+C - - - - - 0x024DFE 09:8DEE: C9 04     LDA ram_флаг_черепахи,X
+C - - - - - 0x024E00 09:8DF0: B0 11     BNE bra_8E03_не_черепаха
 ; con_fighter_leo
 ; con_fighter_raph
 ; con_fighter_mike
