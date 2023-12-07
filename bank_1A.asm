@@ -6730,10 +6730,10 @@ bra_A4ED:
 - - - - - - 0x0364FD 0D:A4ED: B9 20 05  LDA ram_obj_0520,Y
 - - - - - - 0x036500 0D:A4F0: C9 01     CMP #con_plr_state_в_прыжке
 - - - - - - 0x036502 0D:A4F2: D0 1F     BNE bra_A513
-- - - - - - 0x036504 0D:A4F4: B9 50 05  LDA ram_obj_id,Y
-; con_новые_персы
-- - - - - - 0x036507 0D:A4F7: C9 04     CMP #$04
-- - - - - - 0x036509 0D:A4F9: B0 18     BCS bra_A513
+- - - - - - 0x036504 0D:A4F4: B9 50 05  LDA ram_флаг_черепахи,Y
+- - - - - - 0x036507 0D:A4F7: C9 04     CMP #$40
+- - - - - - 0x036509 0D:A4F9: B0 18     BEQ bra_A513    ; if не черепаха
+; C = 0
 ; con_fighter_leo
 ; con_fighter_raph
 ; con_fighter_mike
