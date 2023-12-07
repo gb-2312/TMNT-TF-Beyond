@@ -3304,9 +3304,16 @@ C - - - - - 0x02530A 09:92FA: 60        RTS
 
 ofs_055_92FB_05:
 C - - J - - 0x02530B 09:92FB: BD 50 05  LDA ram_obj_id,X ; 0550 0551 
-; con_новые_персы
+                                    .if con_новые_персы = $00
 C - - - - - 0x02530E 09:92FE: C9 06     CMP #con_fighter_shred
 C - - - - - 0x025310 09:9300: F0 5A     BEQ bra_935C_shred
+                                    .else
+                                        CMP #con_fighter_shred
+                                        BEQ bra_935C_shred
+                                        CMP #con_fighter___shred
+                                        BEQ bra_935C_shred
+                                    .endif
+; con_новые_персы
 C - - - - - 0x025312 09:9302: C9 04     CMP #$04
 C - - - - - 0x025314 09:9304: 90 59     BCC bra_935F_черепаха
 C - - - - - 0x025316 09:9306: DE 60 05  DEC ram_obj_timer,X ; 0560 0561 
@@ -3375,6 +3382,8 @@ C - - - - - 0x025369 09:9359: 4C 6D 84  JMP loc_846D
 
 
 bra_935C_shred:
+; con_fighter_shred
+; con_fighter___shred
 C - - - - - 0x02536C 09:935C: A0 0C     LDY #con_DFE6_0C
 C - - - - - 0x02536E 09:935E: 2C        .byte $2C   ; BIT
 bra_935F_черепаха:
