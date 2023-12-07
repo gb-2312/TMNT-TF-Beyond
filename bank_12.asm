@@ -2453,9 +2453,16 @@ C - - - - - 0x024DF4 09:8DE4: 20 18 D2  JSR sub_0x03D228
 bra_8DE7:
 loc_8DE7:
 C D 0 - - - 0x024DF7 09:8DE7: BD 50 05  LDA ram_obj_id,X ; 0550 0551 
-; con_новые_персы
+                                    .if con_новые_персы = $00
 C - - - - - 0x024DFA 09:8DEA: C9 06     CMP #con_fighter_shred
-C - - - - - 0x024DFC 09:8DEC: F0 07     BEQ bra_8DF5
+C - - - - - 0x024DFC 09:8DEC: F0 07     BEQ bra_8DF5_shred
+                                    .else
+                                        CMP #con_fighter_shred
+                                        BEQ bra_8DF5_shred
+                                        CMP #con_fighter___shred
+                                        BEQ bra_8DF5_shred
+                                    .endif
+; con_новые_персы
 C - - - - - 0x024DFE 09:8DEE: C9 04     CMP #$04
 C - - - - - 0x024E00 09:8DF0: B0 11     BCS bra_8E03_не_черепаха
 ; con_fighter_leo
@@ -2464,7 +2471,7 @@ C - - - - - 0x024E00 09:8DF0: B0 11     BCS bra_8E03_не_черепаха
 ; con_fighter_don
 C - - - - - 0x024E02 09:8DF2: A0 01     LDY #con_DFE6_01
 C - - - - - 0x024E04 09:8DF4: 2C        .byte $2C   ; BIT
-bra_8DF5:
+bra_8DF5_shred:
 C - - - - - 0x024E05 09:8DF5: A0 0C     LDY #con_DFE6_0C
 C - - - - - 0x024E07 09:8DF7: 20 4F DF  JSR sub_0x03DF5F
 C - - - - - 0x024E0A 09:8DFA: BD C0 05  LDA ram_obj_anim_timer,X ; 05C0 05C1 
