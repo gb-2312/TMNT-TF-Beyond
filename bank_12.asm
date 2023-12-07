@@ -2544,10 +2544,9 @@ ofs_055_8E38_07:
 C - - - - - 0x024E4A 09:8E3A: DD 50 05  LDY ram_obj_id,X ; 0550 0551 
                                         LDA tbl_8EC8_условие_для_перехода,Y
                                         BEQ bra_8E48
-; con_fighter_don
-; con_fighter_casey
-; con_fighter_hot
-; con_fighter_shred
+; con_fighter_leo
+; con_fighter_raph
+; con_fighter_mike
 C - - - - - 0x024E4F 09:8E3F: A4 A9     LDY ram_global_obj_index
 C - - - - - 0x024E51 09:8E41: B9 50 05  LDA ram_obj_id,Y ; 0550 0551 
                                     .if con_новые_персы = $00
@@ -2640,21 +2639,21 @@ C - - - - - 0x024ED7 09:8EC7: 4C E7 8D  JMP loc_8DE7
 
 tbl_8EC8_условие_для_перехода:
 ; 00 = branch, 40 = no branch
-                                        .byte $00 ; 00 con_fighter_leo
-                                        .byte $00 ; 01 con_fighter_raph
-                                        .byte $00 ; 02 con_fighter_mike
-                                        .byte $40 ; 03 con_fighter_don
-                                        .byte $40 ; 04 con_fighter_casey
-                                        .byte $40 ; 05 con_fighter_hot
-                                        .byte $40 ; 06 con_fighter_shred
+                                        .byte $40 ; 00 con_fighter_leo
+                                        .byte $40 ; 01 con_fighter_raph
+                                        .byte $40 ; 02 con_fighter_mike
+                                        .byte $00 ; 03 con_fighter_don
+                                        .byte $00 ; 04 con_fighter_casey
+                                        .byte $00 ; 05 con_fighter_hot
+                                        .byte $00 ; 06 con_fighter_shred
                                     .if con_новые_персы <> $00
-                                        .byte $00 ; 07 con_fighter___leo
-                                        .byte $00 ; 08 con_fighter___raph
-                                        .byte $00 ; 09 con_fighter___mike
-                                        .byte $40 ; 0A con_fighter___don
-                                        .byte $40 ; 0B con_fighter___casey
-                                        .byte $40 ; 0C con_fighter___hot
-                                        .byte $40 ; 0D con_fighter___shred
+                                        .byte $40 ; 07 con_fighter___leo
+                                        .byte $40 ; 08 con_fighter___raph
+                                        .byte $40 ; 09 con_fighter___mike
+                                        .byte $00 ; 0A con_fighter___don
+                                        .byte $00 ; 0B con_fighter___casey
+                                        .byte $00 ; 0C con_fighter___hot
+                                        .byte $00 ; 0D con_fighter___shred
                                     .endif
 
 
