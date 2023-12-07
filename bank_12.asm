@@ -913,10 +913,9 @@ C - - - - - 0x024578 09:8568: D0 4D     BNE bra_85B7
 C - - - - - 0x02457A 09:856A: BD A0 04  LDA ram_obj_spd_Y_hi,X ; 04A0 04A1 
 C - - - - - 0x02457D 09:856D: 1D B0 04  ORA ram_obj_spd_Y_lo,X ; 04B0 04B1 
 C - - - - - 0x024580 09:8570: F0 2E     BEQ bra_85A0
-C - - - - - 0x024582 09:8572: BD 50 05  LDA ram_obj_id,X ; 0550 0551 
-; con_новые_персы
-C - - - - - 0x024585 09:8575: C9 05     CMP #$05
-C - - - - - 0x024587 09:8577: B0 27     BCS bra_85A0
+C - - - - - 0x024582 09:8572: BD 50 05  LDY ram_obj_id,X ; 0550 0551 
+                                        LDA tbl_8623_условие_для_перехода,Y
+                                        BEQ bra_85A0
 ; con_fighter_leo
 ; con_fighter_raph
 ; con_fighter_mike
@@ -1013,6 +1012,19 @@ C - - - - - 0x02462E 09:861E: 48        PHA
 C - - - - - 0x02462F 09:861F: A9 5D     LDA #< (ofs_0x02E86E - $01)
 C - - - - - 0x024631 09:8621: 48        PHA
 C - - - - - 0x024632 09:8622: 4C E7 F5  JMP loc_0x03F5F7_swap_prg_16
+
+
+
+tbl_8623_условие_для_перехода:
+; con_новые_персы
+; 00 = branch, 40 = no branch
+                                        .byte $40 ; 00 con_fighter_leo
+                                        .byte $40 ; 01 con_fighter_raph
+                                        .byte $40 ; 02 con_fighter_mike
+                                        .byte $40 ; 03 con_fighter_don
+                                        .byte $40 ; 04 con_fighter_casey
+                                        .byte $00 ; 05 con_fighter_hot
+                                        .byte $00 ; 06 con_fighter_shred
 
 
 
