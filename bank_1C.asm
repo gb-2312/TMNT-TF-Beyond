@@ -1737,20 +1737,28 @@ C - - - - - 0x03E30E 0F:E2FE: B9 85 E9  LDA tbl_0x03E995_индекс_3х_цве
 C - - - - - 0x03E311 0F:E301: 20 46 D3  JSR sub_0x03D356_записать_3_цвета_в_буфер
 ; выбор анимации портретам на экране выбора карты
 C - - - - - 0x03E314 0F:E304: A4 08     LDY ram_0008
-C - - - - - 0x03E316 0F:E306: 18        CLC
 C - - - - - 0x03E317 0F:E307: B9 A2 00  LDA ram_plr_id,Y
-                                    .if con_новые_персы <> $00
-                                        JSR sub_0x03FF82_временная_корректировка_индекса_перса
-                                    .endif
-C - - - - - 0x03E31A 0F:E30A: 69 1B     ADC #$1B
+                                        TAY
+                                        LDA tbl_E31D_индекс_анимации_портрета,Y
 C - - - - - 0x03E31C 0F:E30C: 99 02 04  STA ram_obj_anim_id + $02,Y ; 0402 0403 
-C - - - - - 0x03E31F 0F:E30F: 98        TYA
+C - - - - - 0x03E31F 0F:E30F: 98        LDA ram_0008
 C - - - - - 0x03E320 0F:E310: 09 82     ORA #$82
 C - - - - - 0x03E322 0F:E312: 99 02 05  STA ram_obj_0500 + $02,Y ; 0502 0503 
 C - - - - - 0x03E325 0F:E315: 99 32 04  STA ram_obj_pos_X_hi + $02,Y ; 0432 0433 
 C - - - - - 0x03E328 0F:E318: C6 08     DEC ram_0008
 C - - - - - 0x03E32A 0F:E31A: 10 D7     BPL bra_E2F3_loop
 C - - - - - 0x03E32C 0F:E31C: 60        RTS
+
+
+
+tbl_E31D_индекс_анимации_портрета:
+                                        .byte $1B ; 00 con_fighter_leo
+                                        .byte $1C ; 01 con_fighter_raph
+                                        .byte $1D ; 02 con_fighter_mike
+                                        .byte $1E ; 03 con_fighter_don
+                                        .byte $1F ; 04 con_fighter_casey
+                                        .byte $20 ; 05 con_fighter_hot
+                                        .byte $21 ; 06 con_fighter_shred
 
 
 
