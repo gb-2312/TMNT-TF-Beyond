@@ -3313,9 +3313,8 @@ C - - - - - 0x025310 09:9300: F0 5A     BEQ bra_935C_shred
                                         CMP #con_fighter___shred
                                         BEQ bra_935C_shred
                                     .endif
-; con_новые_персы
-C - - - - - 0x025312 09:9302: C9 04     CMP #$04
-C - - - - - 0x025314 09:9304: 90 59     BCC bra_935F_черепаха
+C - - - - - 0x025312 09:9302: C9 04     LDA ram_флаг_черепахи,X
+C - - - - - 0x025314 09:9304: 90 59     BEQ bra_935F_черепаха
 C - - - - - 0x025316 09:9306: DE 60 05  DEC ram_obj_timer,X ; 0560 0561 
 C - - - - - 0x025319 09:9309: 10 1A     BPL bra_9325
 C - - - - - 0x02531B 09:930B: DE D0 05  DEC ram_obj_05D0,X ; 05D0 05D1 
