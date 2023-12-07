@@ -2616,7 +2616,6 @@ C - - - - - 0x024ED7 09:8EC7: 4C E7 8D  JMP loc_8DE7
 
 
 tbl_8EC8_условие_для_перехода:
-; con_новые_персы
 ; 00 = branch, 40 = no branch
                                         .byte $00 ; 00 con_fighter_leo
                                         .byte $00 ; 01 con_fighter_raph
@@ -2625,6 +2624,15 @@ tbl_8EC8_условие_для_перехода:
                                         .byte $40 ; 04 con_fighter_casey
                                         .byte $40 ; 05 con_fighter_hot
                                         .byte $40 ; 06 con_fighter_shred
+                                    .if con_новые_персы <> $00
+                                        .byte $00 ; 07 con_fighter___leo
+                                        .byte $00 ; 08 con_fighter___raph
+                                        .byte $00 ; 09 con_fighter___mike
+                                        .byte $40 ; 0A con_fighter___don
+                                        .byte $40 ; 0B con_fighter___casey
+                                        .byte $40 ; 0C con_fighter___hot
+                                        .byte $40 ; 0D con_fighter___shred
+                                    .endif
 
 
 
