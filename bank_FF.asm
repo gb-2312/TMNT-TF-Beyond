@@ -3688,6 +3688,15 @@ tbl_E467_флаг_черепахи:
                                         .byte $00 ; 04 con_fighter_casey
                                         .byte $00 ; 05 con_fighter_hot
                                         .byte $00 ; 06 con_fighter_shred
+                                    .if con_новые_персы <> $00
+                                        .byte $40 ; 07 con_fighter_07
+                                        .byte $40 ; 08 con_fighter_08
+                                        .byte $40 ; 09 con_fighter_09
+                                        .byte $40 ; 0A con_fighter_0A
+                                        .byte $00 ; 0B con_fighter_0B
+                                        .byte $00 ; 0C con_fighter_0C
+                                        .byte $00 ; 0D con_fighter_0D
+                                    .endif
 
 
 
