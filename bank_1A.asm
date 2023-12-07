@@ -7455,9 +7455,18 @@ bra_BEE5:
 - - - - - - 0x037EFC 0D:BEEC: D0 F4     BNE bra_BEE2
 bra_BEEE:
 - - - - - - 0x037EFE 0D:BEEE: B9 50 05  LDA ram_obj_id,Y
-; con_новые_персы
+                                    .if con_новые_персы = $00
 - - - - - - 0x037F01 0D:BEF1: C9 05     CMP #con_fighter_hot
 - - - - - - 0x037F03 0D:BEF3: D0 0F     BNE bra_BF04
+                                    .else
+                                        CMP #con_fighter_hot
+                                        BEQ bra_BEF5
+                                        CMP con_fighter_0C
+                                        BNE bra_BF04
+bra_BEF5:
+                                    .endif
+; con_fighter_hot
+; con_fighter_0C
 - - - - - - 0x037F05 0D:BEF5: AD 38 06  LDA ram_0638
 - - - - - - 0x037F08 0D:BEF8: C9 12     CMP #$12
 - - - - - - 0x037F0A 0D:BEFA: 90 08     BCC bra_BF04
@@ -7521,9 +7530,18 @@ C D 1 - - - 0x037F6F 0D:BF5F: AD 25 01  LDA ram_option_difficulty
 C - - - - - 0x037F72 0D:BF62: C9 03     CMP #$03
 C - - - - - 0x037F74 0D:BF64: 90 34     BCC bra_BF9A
 C - - - - - 0x037F76 0D:BF66: BD 50 05  LDA ram_obj_id,X ; 0550 
-; con_новые_персы
+                                    .if con_новые_персы = $00
 C - - - - - 0x037F79 0D:BF69: C9 06     CMP #con_fighter_shred
 C - - - - - 0x037F7B 0D:BF6B: D0 2D     BNE bra_BF9A
+                                    .else
+                                        CMP #con_fighter_shred
+                                        BEQ bra_BF6D
+                                        CMP #con_fighter_0D
+                                        BNE bra_BF9A
+bra_BF6D:
+                                    .endif
+; con_fighter_shred
+; con_fighter_0D
 - - - - - - 0x037F7D 0D:BF6D: BD 10 05  LDA ram_obj_spr_flip,X
 - - - - - - 0x037F80 0D:BF70: D9 10 05  CMP ram_obj_spr_flip,Y
 - - - - - - 0x037F83 0D:BF73: F0 24     BEQ bra_BF99_RTS

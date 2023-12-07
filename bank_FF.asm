@@ -2571,6 +2571,8 @@ C - - - - - 0x03DEB2 0F:DEA2: 18        CLC
 C - - - - - 0x03DEB3 0F:DEA3: 7D 45 06  ADC ram_plr_damage,X ; 0645 0646 
 C - - - - - 0x03DEB6 0F:DEA6: 9D 45 06  STA ram_plr_damage,X ; 0645 0646 
 bra_DEA9:
+; con_fighter_casey
+; con_fighter_0B
 C - - - - - 0x03DEB9 0F:DEA9: A9 00     LDA #$00
 bra_DEAB:
 C - - - - - 0x03DEBB 0F:DEAB: 85 00     STA ram_0000
@@ -2596,9 +2598,15 @@ C - - - - - 0x03DED1 0F:DEC1: 7D 45 06  ADC ram_plr_damage,X ; 0645 0646
 C - - - - - 0x03DED4 0F:DEC4: 9D 45 06  STA ram_plr_damage,X ; 0645 0646 
 C - - - - - 0x03DED7 0F:DEC7: A4 A9     LDY ram_global_obj_index
 C - - - - - 0x03DED9 0F:DEC9: B9 50 05  LDA ram_obj_id,Y ; 0550 0551 
-; con_новые_персы
+                                    .if con_новые_персы = $00
 C - - - - - 0x03DEDC 0F:DECC: C9 04     CMP #con_fighter_casey
 C - - - - - 0x03DEDE 0F:DECE: F0 D9     BEQ bra_DEA9
+                                    .else
+                                        CMP #con_fighter_casey
+                                        BEQ bra_DEA9
+                                        CMP #con_fighter_0B
+                                        BEQ bra_DEA9
+                                    .endif
 C - - - - - 0x03DEE0 0F:DED0: A9 80     LDA #$80
 C - - - - - 0x03DEE2 0F:DED2: D0 D7     BNE bra_DEAB    ; jmp
 
@@ -3312,8 +3320,17 @@ C - - - - - 0x03E226 0F:E216: 4C 70 BF  JMP loc_0x02FF80
 ofs_087_E231_00_story:
 ; con_новые_персы
 C - - - - - 0x03E241 0F:E231: A5 9E     LDA ram_номер_боя_story
+; по идее нахрен не нужно это условие,
+; вряд ли в story будет несколько финальных боссов
+                                    .if con_новые_персы = $00
                                         CMP #con_fighter_shred
                                         BEQ bra_E244
+                                    .else
+                                        CMP #con_fighter_shred
+                                        BEQ bra_E244
+                                        CMP #con_fighter_0D
+                                        BEQ bra_E244
+                                    .endif
 C - - - - - 0x03E243 0F:E233: C5 A2     CMP ram_plr_id
 C - - - - - 0x03E245 0F:E235: D0 0D     BNE bra_E244
 C - - - - - 0x03E247 0F:E237: 69 00     ADC #$00
@@ -3325,6 +3342,8 @@ C - - - - - 0x03E251 0F:E241: 4C F8 E5  LDA #con_0095_bonus_game_отрисов�
                                         STA ram_0095_стадия_игры
                                         RTS
 bra_E244:
+; con_fighter_shred
+; con_fighter_0D
 C - - - - - 0x03E254 0F:E244: 85 A3     STA ram_plr_id + $01
 ofs_087_E246_01_vs_player:
 ofs_087_E246_02_vs_cpu:
