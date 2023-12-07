@@ -6755,15 +6755,16 @@ bra_A570:
                                         LDA ram_plr_флаг_индекса_атаки,Y
                                         BEQ bra_A572
                                         LDA ram_obj_id,Y
-; con_новые_персы
                                         CMP #con_fighter_shred
-                                        BEQ bra_A573_casey_ai_сидит
+                                        BEQ bra_A573_shred
                                         CMP #con_fighter_hot
                                         BNE bra_A571
+; con_fighter_hot
+; con_fighter_0C
                                         LDA ram_obj_0520,Y
                                         CMP #con_plr_state_сидит
                                         BEQ bra_A573_casey_ai_сидит
-                                        BNE bra_A573_casey_ai_ждет
+                                        BNE bra_A573_casey_ai_ждет    ; jmp
 bra_A571:
                                         LDA ram_plr_индекс_атаки,Y
                                         CMP #con_0612_черепаха_деш_ногой
@@ -6810,6 +6811,7 @@ loc_A573_ai_рука:
 bra_A573_casey_ai_ждет:
                                         LDA #con_шаблон_ai_0A
                                         .byte $2C   ; BIT
+bra_A573_shred:
 bra_A573_casey_ai_сидит:
                                         LDA #con_шаблон_ai_02
                                         .byte $2C   ; BIT
@@ -6842,9 +6844,17 @@ bra_A5A0:
 - - - - - - 0x0365B0 0D:A5A0: 4C 54 A6  JMP loc_A654
 bra_A5A3:
 - - - - - - 0x0365B3 0D:A5A3: B9 50 05  LDA ram_obj_id,Y
-; con_новые_персы
+                                    .if con_новые_персы = $00
 - - - - - - 0x0365B6 0D:A5A6: D0 1C     BNE bra_A5C4
-; if con_fighter_leo
+                                    .else
+                                       ;CMP #con_fighter_leo
+                                        BEQ bra_A5A8
+                                        CMP #con_fighter_07
+                                        BNE bra_A5C4
+bra_A5A8:
+                                    .endif
+; con_fighter_leo
+; con_fighter_07
 - - - - - - 0x0365B8 0D:A5A8: BD 20 05  LDA ram_obj_0520,X
 - - - - - - 0x0365BB 0D:A5AB: 49 0A     EOR #con_plr_state_брошен_соперником
 - - - - - - 0x0365BD 0D:A5AD: F0 F1     BEQ bra_A5A0
@@ -6990,13 +7000,21 @@ bra_A694:
 - - - - - - 0x0366A7 0D:A697: C9 25     CMP #con_шаблон_ai_25
 - - - - - - 0x0366A9 0D:A699: D0 0E     BNE bra_A6A9
                                         LDA ram_obj_id,Y
-; con_новые_персы
+                                    .if con_новые_персы = $00
                                         CMP #con_fighter_shred
                                         BEQ bra_A6A8
+                                    .else
+                                        CMP #con_fighter_shred
+                                        BEQ bra_A6A8
+                                        CMP #con_fighter_0D
+                                        BEQ bra_A6A8
+                                    .endif
 - - - - - - 0x0366AB 0D:A69B: BD C0 04  LDA ram_obj_04C0,X
 - - - - - - 0x0366AE 0D:A69E: C9 09     CMP #$09
 - - - - - - 0x0366B0 0D:A6A0: F0 57     BEQ bra_A6F9
 bra_A6A8:
+; con_fighter_shred
+; con_fighter_0D
 - - - - - - 0x0366B2 0D:A6A2: B9 12 06  LDA ram_plr_индекс_атаки,Y
 - - - - - - 0x0366B5 0D:A6A5: C9 07     CMP #con_0612_черепаха_нога_дальняя_обычная
 - - - - - - 0x0366B7 0D:A6A7: F0 50     BEQ bra_A6F9
@@ -7297,9 +7315,18 @@ C - - - - - 0x037D93 0D:BD83: AD 25 01  LDA ram_option_difficulty
 C - - - - - 0x037D96 0D:BD86: C9 03     CMP #$03
 C - - - - - 0x037D98 0D:BD88: 90 58     BCC bra_BDE2
 C - - - - - 0x037D9A 0D:BD8A: BD 50 05  LDA ram_obj_id,X ; 0550 0551 
-; con_новые_персы
+                                    .if con_новые_персы = $00
 C - - - - - 0x037D9D 0D:BD8D: C9 06     CMP #con_fighter_shred
 C - - - - - 0x037D9F 0D:BD8F: D0 51     BNE bra_BDE2
+                                    .else
+                                        CMP #con_fighter_shred
+                                        BEQ bra_BD91
+                                        CMP #con_fighter_0D
+                                        BNE bra_BDE2
+bra_BD91:
+                                    .endif
+; con_fighter_shred
+; con_fighter_0D
 - - - - - - 0x037DA1 0D:BD91: BC DE 06  LDY ram_plr_06DE,X
 - - - - - - 0x037DA4 0D:BD94: AD 38 06  LDA ram_0638
 - - - - - - 0x037DA7 0D:BD97: F0 4C     BEQ bra_BDE5
@@ -7432,9 +7459,15 @@ bra_BEAA:
 bra_BECD:
 - - - - - - 0x037EDD 0D:BECD: F0 07     BEQ bra_BED6
 - - - - - - 0x037EDF 0D:BECF: B9 50 05  LDA ram_obj_id,Y
-; con_новые_персы
+                                    .if con_новые_персы = $00
 - - - - - - 0x037EE2 0D:BED2: 49 04     CMP #con_fighter_casey
 - - - - - - 0x037EE4 0D:BED4: F0 0C     BEQ bra_BEE3_casey
+                                    .else
+                                        CMP #con_fighter_casey
+                                        BEQ bra_BEE3_casey
+                                        CMP #con_fighter_0B
+                                        BEQ bra_BEE3_casey
+                                    .endif
 bra_BED6:
 - - - - - - 0x037EE6 0D:BED6: B9 0C 06  LDA ram_plr_таймер_для_суперки,Y
 - - - - - - 0x037EE9 0D:BED9: F0 0A     BEQ bra_BEE5
@@ -7446,6 +7479,8 @@ bra_BEE2:
 bra_BEE4_RTS:
 C - - - - - 0x037EF4 0D:BEE4: 60        RTS
 bra_BEE3_casey:
+; con_fighter_casey
+; con_fighter_0B
                                         LDA #$00
                                         STA ram_0017
                                         RTS
