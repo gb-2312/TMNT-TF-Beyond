@@ -1016,7 +1016,6 @@ C - - - - - 0x024632 09:8622: 4C E7 F5  JMP loc_0x03F5F7_swap_prg_16
 
 
 tbl_8623_условие_для_перехода:
-; con_новые_персы
 ; 00 = branch, 40 = no branch
                                         .byte $40 ; 00 con_fighter_leo
                                         .byte $40 ; 01 con_fighter_raph
@@ -1025,6 +1024,15 @@ tbl_8623_условие_для_перехода:
                                         .byte $40 ; 04 con_fighter_casey
                                         .byte $00 ; 05 con_fighter_hot
                                         .byte $00 ; 06 con_fighter_shred
+                                    .if con_новые_персы <> $00
+                                        .byte $40 ; 07 con_fighter___leo
+                                        .byte $40 ; 08 con_fighter___raph
+                                        .byte $40 ; 09 con_fighter___mike
+                                        .byte $40 ; 0A con_fighter___don
+                                        .byte $40 ; 0B con_fighter___casey
+                                        .byte $00 ; 0C con_fighter___hot
+                                        .byte $00 ; 0D con_fighter___shred
+                                    .endif
 
 
 
