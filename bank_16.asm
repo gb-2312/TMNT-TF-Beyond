@@ -473,13 +473,13 @@ tbl_8342_pos_Y_спрайты_портрета:
 - D 0 - - - 0x02C357 0B:8347: 97        .byte $97   ; 05 con_fighter_hot
 - D 0 - - - 0x02C358 0B:8348: 97        .byte $97   ; 06 con_fighter_shred
                                     .if con_новые_персы <> $00
-                                        .byte $4F   ; 07 con_fighter_07
-                                        .byte $4F   ; 08 con_fighter_08
-                                        .byte $4F   ; 09 con_fighter_09
-                                        .byte $4F   ; 0A con_fighter_0A
-                                        .byte $97   ; 0B con_fighter_0B
-                                        .byte $97   ; 0C con_fighter_0C
-                                        .byte $97   ; 0D con_fighter_0D
+                                        .byte $4F   ; 07 con_fighter___leo
+                                        .byte $4F   ; 08 con_fighter___raph
+                                        .byte $4F   ; 09 con_fighter___mike
+                                        .byte $4F   ; 0A con_fighter___don
+                                        .byte $97   ; 0B con_fighter___casey
+                                        .byte $97   ; 0C con_fighter___hot
+                                        .byte $97   ; 0D con_fighter___shred
                                     .endif
 
 tbl_8349_pos_X_спрайты_портрета:
@@ -491,13 +491,13 @@ tbl_8349_pos_X_спрайты_портрета:
 - D 0 - - - 0x02C35E 0B:834E: 70        .byte $70   ; 05 con_fighter_hot
 - D 0 - - - 0x02C35F 0B:834F: B0        .byte $B0   ; 06 con_fighter_shred
                                     .if con_новые_персы <> $00
-                                        .byte $18   ; 07 con_fighter_07
-                                        .byte $50   ; 08 con_fighter_08
-                                        .byte $88   ; 09 con_fighter_09
-                                        .byte $C0   ; 0A con_fighter_0A
-                                        .byte $30   ; 0B con_fighter_0B
-                                        .byte $70   ; 0C con_fighter_0C
-                                        .byte $B0   ; 0D con_fighter_0D
+                                        .byte $18   ; 07 con_fighter___leo
+                                        .byte $50   ; 08 con_fighter___raph
+                                        .byte $88   ; 09 con_fighter___mike
+                                        .byte $C0   ; 0A con_fighter___don
+                                        .byte $30   ; 0B con_fighter___casey
+                                        .byte $70   ; 0C con_fighter___hot
+                                        .byte $B0   ; 0D con_fighter___shred
                                     .endif
 
 tbl_8350_pos_X_курсор:
@@ -509,13 +509,13 @@ tbl_8350_pos_X_курсор:
 - D 0 - - - 0x02C365 0B:8355: 6C        .byte $6C   ; 05 con_fighter_hot
 - D 0 - - - 0x02C366 0B:8356: AC        .byte $AC   ; 06 con_fighter_shred
                                     .if con_новые_персы <> $00
-                                        .byte $14   ; 07 con_fighter_07
-                                        .byte $4C   ; 08 con_fighter_08
-                                        .byte $84   ; 09 con_fighter_09
-                                        .byte $BC   ; 0A con_fighter_0A
-                                        .byte $2C   ; 0B con_fighter_0B
-                                        .byte $6C   ; 0C con_fighter_0C
-                                        .byte $AC   ; 0D con_fighter_0D
+                                        .byte $14   ; 07 con_fighter___leo
+                                        .byte $4C   ; 08 con_fighter___raph
+                                        .byte $84   ; 09 con_fighter___mike
+                                        .byte $BC   ; 0A con_fighter___don
+                                        .byte $2C   ; 0B con_fighter___casey
+                                        .byte $6C   ; 0C con_fighter___hot
+                                        .byte $AC   ; 0D con_fighter___shred
                                     .endif
 
 tbl_8357_pos_Y_курсор:
@@ -527,13 +527,13 @@ tbl_8357_pos_Y_курсор:
 - D 0 - - - 0x02C36C 0B:835C: 8E        .byte $8E   ; 05 con_fighter_hot
 - D 0 - - - 0x02C36D 0B:835D: 8E        .byte $8E   ; 06 con_fighter_shred
                                     .if con_новые_персы <> $00
-                                        .byte $46 - $08   ; 07 con_fighter_07
-                                        .byte $46 - $08   ; 08 con_fighter_08
-                                        .byte $46 - $08   ; 09 con_fighter_09
-                                        .byte $46 - $08   ; 0A con_fighter_0A
-                                        .byte $8E - $08   ; 0B con_fighter_0B
-                                        .byte $8E - $08   ; 0C con_fighter_0C
-                                        .byte $8E - $08   ; 0D con_fighter_0D
+                                        .byte $46 - $08   ; 07 con_fighter___leo
+                                        .byte $46 - $08   ; 08 con_fighter___raph
+                                        .byte $46 - $08   ; 09 con_fighter___mike
+                                        .byte $46 - $08   ; 0A con_fighter___don
+                                        .byte $8E - $08   ; 0B con_fighter___casey
+                                        .byte $8E - $08   ; 0C con_fighter___hot
+                                        .byte $8E - $08   ; 0D con_fighter___shred
                                     .endif
 
 
@@ -683,13 +683,13 @@ tbl_A89C:
 - - - - - - 0x02E8B1 0B:A8A1: 09        .byte $09   ; 05 con_fighter_hot
 - - - - - - 0x02E8B2 0B:A8A2: 06        .byte $06   ; 06 con_fighter_shred
                                     .if con_новые_персы <> $00
-                                        .byte $04   ; 07 con_fighter_07
-                                        .byte $05   ; 08 con_fighter_08
-                                        .byte $04   ; 09 con_fighter_09
-                                        .byte $05   ; 0A con_fighter_0A
-                                        .byte $05   ; 0B con_fighter_0B
-                                        .byte $09   ; 0C con_fighter_0C
-                                        .byte $06   ; 0D con_fighter_0D
+                                        .byte $04   ; 07 con_fighter___leo
+                                        .byte $05   ; 08 con_fighter___raph
+                                        .byte $04   ; 09 con_fighter___mike
+                                        .byte $05   ; 0A con_fighter___don
+                                        .byte $05   ; 0B con_fighter___casey
+                                        .byte $09   ; 0C con_fighter___hot
+                                        .byte $06   ; 0D con_fighter___shred
                                     .endif
 
 
@@ -703,13 +703,13 @@ tbl_A8A6:
 - D 1 - - - 0x02E8BB 0B:A8AB: 09        .byte $09   ; 05 con_fighter_hot
 - D 1 - - - 0x02E8BC 0B:A8AC: 07        .byte $07   ; 06 con_fighter_shred
                                     .if con_новые_персы <> $00
-                                        .byte $05   ; 07 con_fighter_07
-                                        .byte $06   ; 08 con_fighter_08
-                                        .byte $05   ; 09 con_fighter_09
-                                        .byte $06   ; 0A con_fighter_0A
-                                        .byte $05   ; 0B con_fighter_0B
-                                        .byte $09   ; 0C con_fighter_0C
-                                        .byte $07   ; 0D con_fighter_0D
+                                        .byte $05   ; 07 con_fighter___leo
+                                        .byte $06   ; 08 con_fighter___raph
+                                        .byte $05   ; 09 con_fighter___mike
+                                        .byte $06   ; 0A con_fighter___don
+                                        .byte $05   ; 0B con_fighter___casey
+                                        .byte $09   ; 0C con_fighter___hot
+                                        .byte $07   ; 0D con_fighter___shred
                                     .endif
 
 
@@ -817,13 +817,13 @@ tbl_AA90_автобаланс:
 ;                                              |    |    |    |    +-------------------------------------------------- 04 con_fighter_casey
 ;                                              |    |    |    |    |    +--------------------------------------------- 05 con_fighter_hot
 ;                                              |    |    |    |    |    |    +---------------------------------------- 06 con_fighter_shred
-;                                              |    |    |    |    |    |    |    +----------------------------------- 07 con_fighter_07
-;                                              |    |    |    |    |    |    |    |    +------------------------------ 08 con_fighter_08
-;                                              |    |    |    |    |    |    |    |    |    +------------------------- 09 con_fighter_09
-;                                              |    |    |    |    |    |    |    |    |    |    +-------------------- 0A con_fighter_0A
-;                                              |    |    |    |    |    |    |    |    |    |    |    +--------------- 0B con_fighter_0B
-;                                              |    |    |    |    |    |    |    |    |    |    |    |    +---------- 0C con_fighter_0C
-;                                              |    |    |    |    |    |    |    |    |    |    |    |    |    +----- 0D con_fighter_0D
+;                                              |    |    |    |    |    |    |    +----------------------------------- 07 con_fighter___leo
+;                                              |    |    |    |    |    |    |    |    +------------------------------ 08 con_fighter___raph
+;                                              |    |    |    |    |    |    |    |    |    +------------------------- 09 con_fighter___mike
+;                                              |    |    |    |    |    |    |    |    |    |    +-------------------- 0A con_fighter___don
+;                                              |    |    |    |    |    |    |    |    |    |    |    +--------------- 0B con_fighter___casey
+;                                              |    |    |    |    |    |    |    |    |    |    |    |    +---------- 0C con_fighter___hot
+;                                              |    |    |    |    |    |    |    |    |    |    |    |    |    +----- 0D con_fighter___shred
 ;                                              |    |    |    |    |    |    |    |    |    |    |    |    |    |
 ;                                              |    |    |    |    |    |    |    |    |    |    |    |    |    |
 ;                                              |    |    |    |    |    |    |    |    |    |    |    |    |    |
@@ -834,13 +834,13 @@ tbl_AA90_автобаланс:
                                         .byte $00, $00, $01, $00, $01, $FE, $FD, $00, $00, $01, $00, $01, $FE, $FD   ; 04 con_fighter_casey
                                         .byte $01, $01, $02, $02, $01, $FE, $FE, $01, $01, $02, $02, $01, $FE, $FE   ; 05 con_fighter_hot
                                         .byte $02, $02, $04, $03, $04, $00, $FE, $02, $02, $04, $03, $04, $00, $FE   ; 06 con_fighter_shred
-                                        .byte $00, $00, $01, $00, $01, $FE, $FC, $00, $00, $01, $00, $01, $FE, $FC   ; 07 con_fighter_07
-                                        .byte $00, $00, $01, $00, $01, $FE, $FD, $00, $00, $01, $00, $01, $FE, $FD   ; 08 con_fighter_08
-                                        .byte $00, $00, $00, $00, $00, $FD, $FC, $00, $00, $00, $00, $00, $FD, $FC   ; 09 con_fighter_09
-                                        .byte $00, $00, $01, $00, $01, $FE, $FC, $00, $00, $01, $00, $01, $FE, $FC   ; 0A con_fighter_0A
-                                        .byte $00, $00, $01, $00, $01, $FE, $FD, $00, $00, $01, $00, $01, $FE, $FD   ; 0B con_fighter_0B
-                                        .byte $01, $01, $02, $02, $01, $FE, $FE, $01, $01, $02, $02, $01, $FE, $FE   ; 0C con_fighter_0C
-                                        .byte $02, $02, $04, $03, $04, $00, $FE, $02, $02, $04, $03, $04, $00, $FE   ; 0D con_fighter_0D
+                                        .byte $00, $00, $01, $00, $01, $FE, $FC, $00, $00, $01, $00, $01, $FE, $FC   ; 07 con_fighter___leo
+                                        .byte $00, $00, $01, $00, $01, $FE, $FD, $00, $00, $01, $00, $01, $FE, $FD   ; 08 con_fighter___raph
+                                        .byte $00, $00, $00, $00, $00, $FD, $FC, $00, $00, $00, $00, $00, $FD, $FC   ; 09 con_fighter___mike
+                                        .byte $00, $00, $01, $00, $01, $FE, $FC, $00, $00, $01, $00, $01, $FE, $FC   ; 0A con_fighter___don
+                                        .byte $00, $00, $01, $00, $01, $FE, $FD, $00, $00, $01, $00, $01, $FE, $FD   ; 0B con_fighter___casey
+                                        .byte $01, $01, $02, $02, $01, $FE, $FE, $01, $01, $02, $02, $01, $FE, $FE   ; 0C con_fighter___hot
+                                        .byte $02, $02, $04, $03, $04, $00, $FE, $02, $02, $04, $03, $04, $00, $FE   ; 0D con_fighter___shred
                                     .endif
 
 
@@ -1595,13 +1595,13 @@ tbl_B5E0_lo:
 - D 1 - - - 0x02F5F5 0B:B5E5: 50        .byte < _off013_B650_05_hot ; con_fighter_hot
 - D 1 - - - 0x02F5F6 0B:B5E6: B0        .byte < _off013_B6B0_06_shred ; con_fighter_shred
                                     .if con_новые_персы <> $00
-                                        .byte < _off013_B5F0_07 ; con_fighter_07
-                                        .byte < _off013_B5F0_08 ; con_fighter_08
-                                        .byte < _off013_B5F0_09 ; con_fighter_09
-                                        .byte < _off013_B5F0_0A ; con_fighter_0A
-                                        .byte < _off013_B5F0_0B ; con_fighter_0B
-                                        .byte < _off013_B650_0C ; con_fighter_0C
-                                        .byte < _off013_B6B0_0D ; con_fighter_0D
+                                        .byte < _off013_B5F0_07 ; con_fighter___leo
+                                        .byte < _off013_B5F0_08 ; con_fighter___raph
+                                        .byte < _off013_B5F0_09 ; con_fighter___mike
+                                        .byte < _off013_B5F0_0A ; con_fighter___don
+                                        .byte < _off013_B5F0_0B ; con_fighter___casey
+                                        .byte < _off013_B650_0C ; con_fighter___hot
+                                        .byte < _off013_B6B0_0D ; con_fighter___shred
                                     .endif
 
 tbl_B5E7_hi:
@@ -1613,13 +1613,13 @@ tbl_B5E7_hi:
 - D 1 - - - 0x02F5FC 0B:B5EC: B6        .byte > _off013_B650_05_hot ; con_fighter_hot
 - D 1 - - - 0x02F5FD 0B:B5ED: B6        .byte > _off013_B6B0_06_shred ; con_fighter_shred
                                     .if con_новые_персы <> $00
-                                        .byte > _off013_B5F0_07 ; con_fighter_07
-                                        .byte > _off013_B5F0_08 ; con_fighter_08
-                                        .byte > _off013_B5F0_09 ; con_fighter_09
-                                        .byte > _off013_B5F0_0A ; con_fighter_0A
-                                        .byte > _off013_B5F0_0B ; con_fighter_0B
-                                        .byte > _off013_B650_0C ; con_fighter_0C
-                                        .byte > _off013_B6B0_0D ; con_fighter_0D
+                                        .byte > _off013_B5F0_07 ; con_fighter___leo
+                                        .byte > _off013_B5F0_08 ; con_fighter___raph
+                                        .byte > _off013_B5F0_09 ; con_fighter___mike
+                                        .byte > _off013_B5F0_0A ; con_fighter___don
+                                        .byte > _off013_B5F0_0B ; con_fighter___casey
+                                        .byte > _off013_B650_0C ; con_fighter___hot
+                                        .byte > _off013_B6B0_0D ; con_fighter___shred
                                     .endif
 
 
@@ -2787,13 +2787,13 @@ C - - - - - 0x025FC2 09:9FB2: 20 32 D0  JSR sub_0x03D042_поинтеры_пос
 - D 0 - I - 0x025FCF 09:9FBF: 40 A1     .word ofs_051_A140_05_hot   ; con_fighter_hot
 - D 0 - I - 0x025FD1 09:9FC1: BD A0     .word ofs_051_A0BD_06_shred   ; con_fighter_shred
                                     .if con_новые_персы <> $00
-                                        .word ofs_051_A00E_07   ; con_fighter_07
-                                        .word ofs_051_A00E_08   ; con_fighter_08
-                                        .word ofs_051_A1AC_09   ; con_fighter_09
-                                        .word ofs_051_A18C_0A   ; con_fighter_0A
-                                        .word ofs_051_A065_0B   ; con_fighter_0B
-                                        .word ofs_051_A140_0C   ; con_fighter_0C
-                                        .word ofs_051_A0BD_0D   ; con_fighter_0D
+                                        .word ofs_051_A00E_07   ; con_fighter___leo
+                                        .word ofs_051_A00E_08   ; con_fighter___raph
+                                        .word ofs_051_A1AC_09   ; con_fighter___mike
+                                        .word ofs_051_A18C_0A   ; con_fighter___don
+                                        .word ofs_051_A065_0B   ; con_fighter___casey
+                                        .word ofs_051_A140_0C   ; con_fighter___hot
+                                        .word ofs_051_A0BD_0D   ; con_fighter___shred
                                     .endif
 
 

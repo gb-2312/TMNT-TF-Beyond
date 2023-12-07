@@ -6268,13 +6268,13 @@ tbl_BFCE_hp_стен_в_story_для_персов:
                                         .byte $A0   ; 05 con_fighter_hot
                                         .byte $90   ; 06 con_fighter_shred
                                     .if con_новые_персы <> $00
-                                        .byte $B0   ; 07 con_fighter_07
-                                        .byte $90   ; 08 con_fighter_08
-                                        .byte $BF   ; 09 con_fighter_09
-                                        .byte $B0   ; 0A con_fighter_0A
-                                        .byte $A0   ; 0B con_fighter_0B
-                                        .byte $A0   ; 0C con_fighter_0C
-                                        .byte $90   ; 0D con_fighter_0D
+                                        .byte $B0   ; 07 con_fighter___leo
+                                        .byte $90   ; 08 con_fighter___raph
+                                        .byte $BF   ; 09 con_fighter___mike
+                                        .byte $B0   ; 0A con_fighter___don
+                                        .byte $A0   ; 0B con_fighter___casey
+                                        .byte $A0   ; 0C con_fighter___hot
+                                        .byte $90   ; 0D con_fighter___shred
                                     .endif
 
 

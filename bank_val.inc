@@ -98,6 +98,7 @@ con_script_draw_topscore                = $0C ; телка с микрофоно
 ; ram_plr_id
 ; ram_obj_id
 ; ram_номер_боя_story
+; оригинальные персы
 con_fighter_leo                         = $00 ; 00 leo
 con_fighter_raph                        = $01 ; 01 raph
 con_fighter_mike                        = $02 ; 02 mike
@@ -105,13 +106,14 @@ con_fighter_don                         = $03 ; 03 don
 con_fighter_casey                       = $04 ; 04 casey
 con_fighter_hot                         = $05 ; 05 hot
 con_fighter_shred                       = $06 ; 06 shred
-con_fighter_07                          = $07 ; 07 
-con_fighter_08                          = $08 ; 08 
-con_fighter_09                          = $09 ; 09 
-con_fighter_0A                          = $0A ; 0A 
-con_fighter_0B                          = $0B ; 0B 
-con_fighter_0C                          = $0C ; 0C 
-con_fighter_0D                          = $0D ; 0D 
+; копии оригинальных персов
+con_fighter___leo                       = $07 ; 07 
+con_fighter___raph                      = $08 ; 08 
+con_fighter___mike                      = $09 ; 09 
+con_fighter___don                       = $0A ; 0A 
+con_fighter___casey                     = $0B ; 0B 
+con_fighter___hot                       = $0C ; 0C 
+con_fighter___shred                     = $0D ; 0D 
 
 
 

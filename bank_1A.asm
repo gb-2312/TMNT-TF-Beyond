@@ -165,37 +165,37 @@ tbl_80FA:
 - D 0 - - - 0x034124 0D:8114: 5A        .byte $5A   ; 
 - D 0 - - - 0x034125 0D:8115: 96        .byte $96   ; 
                                     .if con_новые_персы <> $00
-; 07 con_fighter_07
+; 07 con_fighter___leo
                                         .byte $00   ; 
                                         .byte $1C   ; 
                                         .byte $38   ; 
                                         .byte $8C   ; 
-; 08 con_fighter_08
+; 08 con_fighter___raph
                                         .byte $00   ; 
                                         .byte $1C   ; 
                                         .byte $54   ; 
                                         .byte $8C   ; 
-; 09 con_fighter_09
+; 09 con_fighter___mike
                                         .byte $00   ; 
                                         .byte $1C   ; 
                                         .byte $54   ; 
                                         .byte $8C   ; 
-; 0A con_fighter_0A
+; 0A con_fighter___don
                                         .byte $00   ; 
                                         .byte $1C   ; 
                                         .byte $3C   ; 
                                         .byte $8C   ; 
-; 0B con_fighter_0B
+; 0B con_fighter___casey
                                         .byte $00   ; 
                                         .byte $20   ; 
                                         .byte $60   ; 
                                         .byte $A0   ; 
-; 0C con_fighter_0C
+; 0C con_fighter___hot
                                         .byte $00   ; 
                                         .byte $24   ; 
                                         .byte $6C   ; 
                                         .byte $B4   ; 
-; 0D con_fighter_0D
+; 0D con_fighter___shred
                                         .byte $00   ; 
                                         .byte $1E   ; 
                                         .byte $5A   ; 
@@ -283,13 +283,13 @@ C - - - - - 0x0341A6 0D:8196: 20 32 D0  JSR sub_0x03D042_поинтеры_пос
 - D 0 - I - 0x0341B3 0D:81A3: E4 9E     .word ofs_036_9EE4_05_hot   ; con_fighter_hot
 - D 0 - I - 0x0341B5 0D:81A5: AF 9F     .word ofs_036_9FAF_06_shred   ; con_fighter_shred
                                     .if con_новые_персы <> $00
-                                        .word ofs_036_9C11_07   ; con_fighter_07
-                                        .word ofs_036_9CF6_08   ; con_fighter_08
-                                        .word ofs_036_9D1C_09   ; con_fighter_09
-                                        .word ofs_036_9D64_0A   ; con_fighter_0A
-                                        .word ofs_036_9DAF_0B   ; con_fighter_0B
-                                        .word ofs_036_9EE4_0C   ; con_fighter_0C
-                                        .word ofs_036_9FAF_0D   ; con_fighter_0D
+                                        .word ofs_036_9C11_07   ; con_fighter___leo
+                                        .word ofs_036_9CF6_08   ; con_fighter___raph
+                                        .word ofs_036_9D1C_09   ; con_fighter___mike
+                                        .word ofs_036_9D64_0A   ; con_fighter___don
+                                        .word ofs_036_9DAF_0B   ; con_fighter___casey
+                                        .word ofs_036_9EE4_0C   ; con_fighter___hot
+                                        .word ofs_036_9FAF_0D   ; con_fighter___shred
                                     .endif
 
 
@@ -305,13 +305,13 @@ C - - - - - 0x0341BA 0D:81AA: 20 32 D0  JSR sub_0x03D042_поинтеры_пос
 - D 0 - I - 0x0341C7 0D:81B7: 5C 98     .word ofs_035_985C_05_hot   ; con_fighter_hot
 - D 0 - I - 0x0341C9 0D:81B9: CA 99     .word ofs_035_99CA_06_shred   ; con_fighter_shred
                                     .if con_новые_персы <> $00
-                                        .word ofs_035_8DEB_07   ; con_fighter_07
-                                        .word ofs_035_90BC_08   ; con_fighter_08
-                                        .word ofs_035_93BD_09   ; con_fighter_09
-                                        .word ofs_035_92A4_0A   ; con_fighter_0A
-                                        .word ofs_035_9597_0B   ; con_fighter_0B
-                                        .word ofs_035_985C_0C   ; con_fighter_0C
-                                        .word ofs_035_99CA_0D   ; con_fighter_0D
+                                        .word ofs_035_8DEB_07   ; con_fighter___leo
+                                        .word ofs_035_90BC_08   ; con_fighter___raph
+                                        .word ofs_035_93BD_09   ; con_fighter___mike
+                                        .word ofs_035_92A4_0A   ; con_fighter___don
+                                        .word ofs_035_9597_0B   ; con_fighter___casey
+                                        .word ofs_035_985C_0C   ; con_fighter___hot
+                                        .word ofs_035_99CA_0D   ; con_fighter___shred
                                     .endif
 
 
@@ -802,10 +802,18 @@ C - - - - - 0x03440A 0D:83FA: 60        RTS
 sub_A49D:
 ofs_084_841A_DF:
 C D 1 - - - 0x0364AD 0D:A49D: BD 50 05  LDA ram_obj_id,X ; 0550 0551 
-; con_новые_персы
+                                    .if con_новые_персы = $00
 C - - - - - 0x0364B0 0D:A4A0: C9 06     CMP #con_fighter_shred
 C - - - - - 0x0364B2 0D:A4A2: D0 0A     BNE bra_A4AE
-; if con_fighter_shred
+                                    .else
+                                        CMP #con_fighter_shred
+                                        BEQ bra_A4A4
+                                        CMP #con_fighter___shred
+                                        BNE bra_A4AE
+bra_A4A4:
+                                    .endif
+; con_fighter_shred
+; con_fighter___shred
 C - - - - - 0x0364B4 0D:A4A4: BD C0 06  LDA ram_шаблон_ai,X
 C - - - - - 0x0364B7 0D:A4A7: C9 40     CMP #con_шаблон_ai_40
 C - - - - - 0x0364B9 0D:A4A9: D0 03     BNE bra_A4AE
@@ -1673,10 +1681,18 @@ C - - - - - 0x0349B5 0D:89A5: B9 91 A1  LDA tbl_A191,Y
 C - - - - - 0x0349B8 0D:89A8: 9D DA 06  STA ram_plr_06DA,X ; 06DA 06DB 
 C - - - - - 0x0349BB 0D:89AB: BC DE 06  LDY ram_plr_06DE,X ; 06DE 06DF 
 C - - - - - 0x0349BE 0D:89AE: B9 50 05  LDA ram_obj_id,Y ; 0550 0551 
-; con_новые_персы
+                                    .if con_новые_персы = $00
 C - - - - - 0x0349C1 0D:89B1: C9 03     CMP #con_fighter_don
 C - - - - - 0x0349C3 0D:89B3: D0 18     BNE bra_89CD
-; if con_fighter_don
+                                    .else
+                                        CMP #con_fighter_don
+                                        BEQ bra_89B5
+                                        CMP #con_fighter___don
+                                        BNE bra_89CD
+bra_89B5:
+                                    .endif
+; con_fighter_don
+; con_fighter___don
 C - - - - - 0x0349C5 0D:89B5: B9 7A 06  LDA ram_plr_067A,Y
 C - - - - - 0x0349C8 0D:89B8: D0 13     BNE bra_89CD
 C - - - - - 0x0349CA 0D:89BA: A5 11     LDA ram_0011
@@ -2797,13 +2813,13 @@ tbl_8DB5:
 - D 0 - - - 0x034DD9 0D:8DC9: 20        .byte $20, $10, $00, $00   ; 05 con_fighter_hot
 - D 0 - - - 0x034DDD 0D:8DCD: 08        .byte $08, $04, $00, $00   ; 06 con_fighter_shred
                                     .if con_новые_персы <> $00
-                                        .byte $40, $20, $00, $00   ; 07 con_fighter_07
-                                        .byte $10, $08, $00, $00   ; 08 con_fighter_08
-                                        .byte $10, $08, $00, $00   ; 09 con_fighter_09
-                                        .byte $10, $08, $00, $00   ; 0A con_fighter_0A
-                                        .byte $10, $08, $00, $00   ; 0B con_fighter_0B
-                                        .byte $20, $10, $00, $00   ; 0C con_fighter_0C
-                                        .byte $08, $04, $00, $00   ; 0D con_fighter_0D
+                                        .byte $40, $20, $00, $00   ; 07 con_fighter___leo
+                                        .byte $10, $08, $00, $00   ; 08 con_fighter___raph
+                                        .byte $10, $08, $00, $00   ; 09 con_fighter___mike
+                                        .byte $10, $08, $00, $00   ; 0A con_fighter___don
+                                        .byte $10, $08, $00, $00   ; 0B con_fighter___casey
+                                        .byte $20, $10, $00, $00   ; 0C con_fighter___hot
+                                        .byte $08, $04, $00, $00   ; 0D con_fighter___shred
                                     .endif
 
 
@@ -2822,13 +2838,13 @@ tbl_8DD0:
 - - - - - - 0x034DF4 0D:8DE4: 18        .byte $18, $0A, $05, $01   ; 05 con_fighter_hot
 - - - - - - 0x034DF8 0D:8DE8: 10        .byte $10, $05, $01, $01   ; 06 con_fighter_shred
                                     .if con_новые_персы <> $00
-                                        .byte $14, $08, $03, $01   ; 07 con_fighter_07
-                                        .byte $14, $08, $03, $01   ; 08 con_fighter_08
-                                        .byte $14, $08, $03, $01   ; 09 con_fighter_09
-                                        .byte $14, $08, $03, $01   ; 0A con_fighter_0A
-                                        .byte $08, $04, $01, $01   ; 0B con_fighter_0B
-                                        .byte $18, $0A, $05, $01   ; 0C con_fighter_0C
-                                        .byte $10, $05, $01, $01   ; 0D con_fighter_0D
+                                        .byte $14, $08, $03, $01   ; 07 con_fighter___leo
+                                        .byte $14, $08, $03, $01   ; 08 con_fighter___raph
+                                        .byte $14, $08, $03, $01   ; 09 con_fighter___mike
+                                        .byte $14, $08, $03, $01   ; 0A con_fighter___don
+                                        .byte $08, $04, $01, $01   ; 0B con_fighter___casey
+                                        .byte $18, $0A, $05, $01   ; 0C con_fighter___hot
+                                        .byte $10, $05, $01, $01   ; 0D con_fighter___shred
                                     .endif
 
 
@@ -4545,13 +4561,21 @@ bra_9826:
 loc_9826:
 C D 0 - - - 0x035836 0D:9826: BC DE 06  LDY ram_plr_06DE,X ; 06DF 
 C - - - - - 0x035839 0D:9829: B9 50 05  LDA ram_obj_id,Y ; 0550 
-; con_новые_персы
+                                    .if con_новые_персы = $00
 C - - - - - 0x03583C 0D:982C: C9 01     CMP #con_fighter_raph
 C - - - - - 0x03583E 0D:982E: F0 06     BEQ bra_9836_raph
+                                    .else
+                                        CMP #con_fighter_raph
+                                        BEQ bra_9836_raph
+                                        CMP #con_fighter___raph
+                                        BEQ bra_9836_raph
+                                    .endif
 C - - - - - 0x035840 0D:9830: 20 96 ED  JSR sub_0x03EDA6
 C - - - - - 0x035843 0D:9833: A9 3A     LDA #con_шаблон_ai_3A
 C - - - - - 0x035845 0D:9835: 60        RTS
 bra_9836_raph:
+; con_fighter_raph
+; con_fighter___raph
 C - - - - - 0x035846 0D:9836: 20 96 ED  JSR sub_0x03EDA6
 C - - - - - 0x035849 0D:9839: A9 42     LDA #con_шаблон_ai_42
 C - - - - - 0x03584B 0D:983B: 60        RTS
@@ -5279,13 +5303,13 @@ C - - - - - 0x035C31 0D:9C21: 20 32 D0  JSR sub_0x03D042_поинтеры_пос
 - - - - - - 0x035C3E 0D:9C2E: C5 9C     .word ofs_022_9CC5_05_hot   ; con_fighter_hot
 - - - - - - 0x035C40 0D:9C30: D0 9C     .word ofs_022_9CD0_06_shred   ; con_fighter_shred
                                     .if con_новые_персы <> $00
-                                        .word ofs_022_9C32_07   ; con_fighter_07
-                                        .word ofs_022_9C75_08   ; con_fighter_08
-                                        .word _общий_RTS ; 09   ; con_fighter_09
-                                        .word ofs_022_9CB3_0A   ; con_fighter_0A
-                                        .word _общий_RTS ; 0B   ; con_fighter_0B
-                                        .word ofs_022_9CC5_0C   ; con_fighter_0C
-                                        .word ofs_022_9CD0_0D   ; con_fighter_0D
+                                        .word ofs_022_9C32_07   ; con_fighter___leo
+                                        .word ofs_022_9C75_08   ; con_fighter___raph
+                                        .word _общий_RTS ; 09   ; con_fighter___mike
+                                        .word ofs_022_9CB3_0A   ; con_fighter___don
+                                        .word _общий_RTS ; 0B   ; con_fighter___casey
+                                        .word ofs_022_9CC5_0C   ; con_fighter___hot
+                                        .word ofs_022_9CD0_0D   ; con_fighter___shred
                                     .endif
 
 
@@ -5374,13 +5398,13 @@ tbl_9CAB:
 - - - - - - 0x035CC0 0D:9CB0: 20        .byte $20   ; 05 con_fighter_hot
 - D 0 - - - 0x035CC1 0D:9CB1: 10        .byte $10   ; 06 con_fighter_shred
                                     .if con_новые_персы <> $00
-                                        .byte $30   ; 07 con_fighter_07
-                                        .byte $30   ; 08 con_fighter_08
-                                        .byte $40   ; 09 con_fighter_09
-                                        .byte $40   ; 0A con_fighter_0A
-                                        .byte $18   ; 0B con_fighter_0B
-                                        .byte $20   ; 0C con_fighter_0C
-                                        .byte $10   ; 0D con_fighter_0D
+                                        .byte $30   ; 07 con_fighter___leo
+                                        .byte $30   ; 08 con_fighter___raph
+                                        .byte $40   ; 09 con_fighter___mike
+                                        .byte $40   ; 0A con_fighter___don
+                                        .byte $18   ; 0B con_fighter___casey
+                                        .byte $20   ; 0C con_fighter___hot
+                                        .byte $10   ; 0D con_fighter___shred
                                     .endif
 
 
@@ -5480,13 +5504,13 @@ C - - - - - 0x035D16 0D:9D06: 20 32 D0  JSR sub_0x03D042_поинтеры_пос
 - - - - - - 0x035D23 0D:9D13: 1A 9D     .word _общий_RTS ; 05   ; con_fighter_hot
 - - - - - - 0x035D25 0D:9D15: 1B 9D     .word _общий_RTS ; 06   ; con_fighter_shred
                                     .if con_новые_персы <> $00
-                                        .word ofs_021_9C32_07   ; con_fighter_07
-                                        .word ofs_021_9C75_08   ; con_fighter_08
-                                        .word _общий_RTS ; 09   ; con_fighter_09
-                                        .word ofs_021_9CB3_0A   ; con_fighter_0A
-                                        .word _общий_RTS ; 0B   ; con_fighter_0B
-                                        .word _общий_RTS ; 0C   ; con_fighter_0C
-                                        .word _общий_RTS ; 0D   ; con_fighter_0D
+                                        .word ofs_021_9C32_07   ; con_fighter___leo
+                                        .word ofs_021_9C75_08   ; con_fighter___raph
+                                        .word _общий_RTS ; 09   ; con_fighter___mike
+                                        .word ofs_021_9CB3_0A   ; con_fighter___don
+                                        .word _общий_RTS ; 0B   ; con_fighter___casey
+                                        .word _общий_RTS ; 0C   ; con_fighter___hot
+                                        .word _общий_RTS ; 0D   ; con_fighter___shred
                                     .endif
 
 
@@ -5510,13 +5534,13 @@ C - - - - - 0x035D3C 0D:9D2C: 20 32 D0  JSR sub_0x03D042_поинтеры_пос
 - - - - - - 0x035D49 0D:9D39: 62 9D     .word _общий_RTS ; 05   ; con_fighter_hot
 - - - - - - 0x035D4B 0D:9D3B: 63 9D     .word _общий_RTS ; 06   ; con_fighter_shred
                                     .if con_новые_персы <> $00
-                                        .word ofs_020_9D3D_07   ; con_fighter_07
-                                        .word ofs_020_9C75_08   ; con_fighter_08
-                                        .word _общий_RTS ; 09   ; con_fighter_09
-                                        .word ofs_020_9CB3_0A   ; con_fighter_0A
-                                        .word _общий_RTS ; 0B   ; con_fighter_0B
-                                        .word _общий_RTS ; 0C   ; con_fighter_0C
-                                        .word _общий_RTS ; 0D   ; con_fighter_0D
+                                        .word ofs_020_9D3D_07   ; con_fighter___leo
+                                        .word ofs_020_9C75_08   ; con_fighter___raph
+                                        .word _общий_RTS ; 09   ; con_fighter___mike
+                                        .word ofs_020_9CB3_0A   ; con_fighter___don
+                                        .word _общий_RTS ; 0B   ; con_fighter___casey
+                                        .word _общий_RTS ; 0C   ; con_fighter___hot
+                                        .word _общий_RTS ; 0D   ; con_fighter___shred
                                     .endif
 
 
@@ -5580,13 +5604,13 @@ C - - - - - 0x035DA9 0D:9D99: 20 32 D0  JSR sub_0x03D042_поинтеры_пос
 - - - - - - 0x035DB6 0D:9DA6: AD 9D     .word _общий_RTS ; 05   ; con_fighter_hot
 - - - - - - 0x035DB8 0D:9DA8: AE 9D     .word _общий_RTS ; 06   ; con_fighter_shred
                                     .if con_новые_персы <> $00
-                                        .word ofs_019_9C32_07   ; con_fighter_07
-                                        .word ofs_019_9C75_08   ; con_fighter_08
-                                        .word _общий_RTS ; 09   ; con_fighter_09
-                                        .word ofs_019_9CB3_0A   ; con_fighter_0A
-                                        .word _общий_RTS ; 0B   ; con_fighter_0B
-                                        .word _общий_RTS ; 0C   ; con_fighter_0C
-                                        .word _общий_RTS ; 0D   ; con_fighter_0D
+                                        .word ofs_019_9C32_07   ; con_fighter___leo
+                                        .word ofs_019_9C75_08   ; con_fighter___raph
+                                        .word _общий_RTS ; 09   ; con_fighter___mike
+                                        .word ofs_019_9CB3_0A   ; con_fighter___don
+                                        .word _общий_RTS ; 0B   ; con_fighter___casey
+                                        .word _общий_RTS ; 0C   ; con_fighter___hot
+                                        .word _общий_RTS ; 0D   ; con_fighter___shred
                                     .endif
 
 
@@ -5624,13 +5648,13 @@ C - - - - - 0x035DEE 0D:9DDE: 20 32 D0  JSR sub_0x03D042_поинтеры_пос
 - - - - - - 0x035DFB 0D:9DEB: B2 9E     .word ofs_018_9EB2_05_hot   ; con_fighter_hot
 - - - - - - 0x035DFD 0D:9DED: E3 9E     .word _общий_RTS ; 06   ; con_fighter_shred
                                     .if con_новые_персы <> $00
-                                        .word ofs_018_9DEF_07   ; con_fighter_07
-                                        .word ofs_018_9E36_08   ; con_fighter_08
-                                        .word ofs_018_9E7F_09   ; con_fighter_09
-                                        .word ofs_018_9CB3_0A   ; con_fighter_0A
-                                        .word _общий_RTS ; 0B   ; con_fighter_0B
-                                        .word ofs_018_9EB2_0C   ; con_fighter_0C
-                                        .word _общий_RTS ; 0D   ; con_fighter_0D
+                                        .word ofs_018_9DEF_07   ; con_fighter___leo
+                                        .word ofs_018_9E36_08   ; con_fighter___raph
+                                        .word ofs_018_9E7F_09   ; con_fighter___mike
+                                        .word ofs_018_9CB3_0A   ; con_fighter___don
+                                        .word _общий_RTS ; 0B   ; con_fighter___casey
+                                        .word ofs_018_9EB2_0C   ; con_fighter___hot
+                                        .word _общий_RTS ; 0D   ; con_fighter___shred
                                     .endif
 
 
@@ -5816,13 +5840,13 @@ C - - - - - 0x035F1B 0D:9F0B: 20 32 D0  JSR sub_0x03D042_поинтеры_пос
 - - - - - - 0x035F28 0D:9F18: 9D 9F     .word _общий_RTS ; 05   ; con_fighter_hot
 - D 0 - I - 0x035F2A 0D:9F1A: 9E 9F     .word ofs_017_9F9E_06_shred   ; con_fighter_shred
                                     .if con_новые_персы <> $00
-                                        .word ofs_017_9F1C_07   ; con_fighter_07
-                                        .word ofs_017_9F68_08   ; con_fighter_08
-                                        .word ofs_017_A084_09   ; con_fighter_09
-                                        .word ofs_017_9CB3_0A   ; con_fighter_0A
-                                        .word ofs_017_A115_0B   ; con_fighter_0B
-                                        .word _общий_RTS ; 0C   ; con_fighter_0C
-                                        .word ofs_017_9F9E_0D   ; con_fighter_0D
+                                        .word ofs_017_9F1C_07   ; con_fighter___leo
+                                        .word ofs_017_9F68_08   ; con_fighter___raph
+                                        .word ofs_017_A084_09   ; con_fighter___mike
+                                        .word ofs_017_9CB3_0A   ; con_fighter___don
+                                        .word ofs_017_A115_0B   ; con_fighter___casey
+                                        .word _общий_RTS ; 0C   ; con_fighter___hot
+                                        .word ofs_017_9F9E_0D   ; con_fighter___shred
                                     .endif
 
 
@@ -5983,13 +6007,13 @@ C - - - - - 0x03600F 0D:9FFF: 20 32 D0  JSR sub_0x03D042_поинтеры_пос
 - D 1 - I - 0x03601C 0D:A00C: 30 A1     .word ofs_016_A130_05_hot   ; con_fighter_hot
 - - - - - - 0x03601E 0D:A00E: 67 A1     .word ofs_016_A167_06_shred   ; con_fighter_shred
                                     .if con_новые_персы <> $00
-                                        .word ofs_016_A010_07   ; con_fighter_07
-                                        .word ofs_016_A046_08   ; con_fighter_08
-                                        .word ofs_016_A084_09   ; con_fighter_09
-                                        .word ofs_016_9CB3_0A   ; con_fighter_0A
-                                        .word ofs_016_A115_0B   ; con_fighter_0B
-                                        .word ofs_016_A130_0C   ; con_fighter_0C
-                                        .word ofs_016_A167_0D   ; con_fighter_0D
+                                        .word ofs_016_A010_07   ; con_fighter___leo
+                                        .word ofs_016_A046_08   ; con_fighter___raph
+                                        .word ofs_016_A084_09   ; con_fighter___mike
+                                        .word ofs_016_9CB3_0A   ; con_fighter___don
+                                        .word ofs_016_A115_0B   ; con_fighter___casey
+                                        .word ofs_016_A130_0C   ; con_fighter___hot
+                                        .word ofs_016_A167_0D   ; con_fighter___shred
                                     .endif
 
 
@@ -6295,11 +6319,24 @@ bra_A21E:
 - - - - - - 0x036233 0D:A223: D0 62     BNE bra_A287   ; jmp
 bra_A225:
 C - - - - - 0x036235 0D:A225: BD 50 05  LDA ram_obj_id,X ; 0550 0551 
-; con_новые_персы
+                                    .if con_новые_персы = $00
 C - - - - - 0x036238 0D:A228: C9 06     CMP #con_fighter_shred
-                                        BEQ bra_A226
+                                        BEQ bra_A226_shred
                                         CMP #con_fighter_casey
 C - - - - - 0x03623A 0D:A22A: D0 5E     BNE bra_A28A
+                                    .else
+                                        CMP #con_fighter_shred
+                                        BEQ bra_A226_shred
+                                        CMP #con_fighter___shred
+                                        BEQ bra_A226_shred
+                                        CMP #con_fighter_casey
+                                        BEQ bra_A22B
+                                        CMP #con_fighter___casey
+                                        BNE bra_A28A
+bra_A22B:
+                                    .endif
+; con_fighter_casey
+; con_fighter___casey
                                         LDA ram_obj_0520,X
                                         CMP #con_plr_state_делает_суперку
                                         BNE bra_A28A
@@ -6307,16 +6344,26 @@ C - - - - - 0x03623A 0D:A22A: D0 5E     BNE bra_A28A
                                         CMP #$10
                                         BCC bra_A28A
                                         BCS bra_A285    ; jmp
-bra_A226:
+bra_A226_shred:
+; con_fighter_shred
+; con_fighter___shred
 - - - - - - 0x03623C 0D:A22C: 20 B4 A4  JSR sub_A4B4
 - - - - - - 0x03623F 0D:A22F: D0 36     BNE bra_A267
 - - - - - - 0x036241 0D:A231: B9 20 05  LDA ram_obj_0520,Y
 - - - - - - 0x036244 0D:A234: C9 08     CMP #con_plr_state_делает_суперку
 - - - - - - 0x036246 0D:A236: D0 1E     BNE bra_A256
 - - - - - - 0x036248 0D:A238: B9 50 05  LDA ram_obj_id,Y
-; con_новые_персы
+                                    .if con_новые_персы = $00
 - - - - - - 0x03624B 0D:A23B: D0 03     BNE bra_A240
-; if con_fighter_leo
+                                    .else
+                                       ;CMP #con_fighter_leo
+                                        BEQ bra_A23D
+                                        CMP #con_fighter___leo
+                                        BNE bra_A240
+bra_A23D:
+                                    .endif
+; con_fighter_leo
+; con_fighter___leo
 - - - - - - 0x03624D 0D:A23D: 4C 56 A4  JMP loc_A456
 bra_A240:
 - - - - - - 0x036251 0D:A241: C9 04     CMP #$04
@@ -6392,9 +6439,15 @@ C - - - - - 0x0362D8 0D:A2C8: 9D C0 06  STA ram_шаблон_ai,X
 C - - - - - 0x0362DB 0D:A2CB: 20 7C A3  JSR sub_A374
 bra_A2CE_выход_ai_из_песка_нокдауна_и_кусания:
 C - - - - - 0x0362DE 0D:A2CE: BD 50 05  LDA ram_obj_id,X ; 0550 0551 
-; con_новые_персы
+                                    .if con_новые_персы = $00
 C - - - - - 0x0362E1 0D:A2D1: 49 06     EOR #con_fighter_shred
 C - - - - - 0x0362E3 0D:A2D3: F0 5A     BEQ bra_A32F
+                                    .else
+                                        CMP #con_fighter_shred
+                                        BEQ bra_A32F
+                                        CMP #con_fighter___shred
+                                        BEQ bra_A32F
+                                    .endif
 C - - - - - 0x0362E5 0D:A2D5: A5 8C     LDA ram_random_2
 C - - - - - 0x0362E7 0D:A2D7: 29 C0     AND #$C0
 C - - - - - 0x0362E9 0D:A2D9: F0 54     BEQ bra_A32F
@@ -6419,9 +6472,17 @@ C - - - - - 0x036314 0D:A304: F0 2E     BEQ bra_A334
 C - - - - - 0x036316 0D:A306: C9 07     CMP #con_plr_state_сидит
 C - - - - - 0x036318 0D:A308: D0 3F     BNE bra_A349
 C - - - - - 0x03631A 0D:A30A: B9 50 05  LDA ram_obj_id,Y ; 0550 0551 
-; con_новые_персы
+                                    .if con_новые_персы = $00
 C - - - - - 0x03631D 0D:A30D: D0 3A     BNE bra_A349
-; if con_fighter_leo
+                                    .else
+                                       ;CMP #con_fighter_leo
+                                        BEQ bra_A30E
+                                        CMP #con_fighter___leo
+                                        BNE bra_A349
+bra_A30E:
+                                    .endif
+; con_fighter_leo
+; con_fighter___leo
                                         LDA ram_plr_индекс_атаки,Y
                                         ORA ram_plr_флаг_индекса_атаки,Y
                                         CMP #con_0612_черепаха_нога_сидя_leo + $80
@@ -6453,9 +6514,18 @@ C - - - - - 0x036344 0D:A334: B9 20 05  LDA ram_obj_0520,Y ; 0520 0521
 C - - - - - 0x036347 0D:A337: C9 04     CMP #con_plr_state_нокаут
 C - - - - - 0x036349 0D:A339: F0 0E     BEQ bra_A349
 C - - - - - 0x03634B 0D:A33B: BD 50 05  LDA ram_obj_id,X ; 0550 0551 
-; con_новые_персы
+                                    .if con_новые_персы = $00
 C - - - - - 0x03634E 0D:A33E: C9 06     CMP #con_fighter_shred
 C - - - - - 0x036350 0D:A340: D0 07     BNE bra_A349
+                                    .else
+                                        CMP #con_fighter_shred
+                                        BEQ bra_A342
+                                        CMP #con_fighter___shred
+                                        BNE bra_A349
+bra_A342:
+                                    .endif
+; con_fighter_shred
+; con_fighter___shred
 - - - - - - 0x036352 0D:A342: BD 10 04  LDA ram_obj_pos_Y_lo,X
 - - - - - - 0x036355 0D:A345: C9 A0     CMP #$A0
 - - - - - - 0x036357 0D:A347: B0 E6     BCS bra_A32F
@@ -6599,9 +6669,18 @@ C D 1 - - - 0x036485 0D:A475: AD 25 01  LDA ram_option_difficulty
 C - - - - - 0x036488 0D:A478: C9 03     CMP #$03
 C - - - - - 0x03648A 0D:A47A: 90 1E     BCC bra_A49A
 - - - - - - 0x03648C 0D:A47C: B9 50 05  LDA ram_obj_id,Y ; 0551
-; con_новые_персы
+                                    .if con_новые_персы = $00
 - - - - - - 0x03648F 0D:A47F: C9 01     CMP #con_fighter_raph
 - - - - - - 0x036491 0D:A481: D0 17     BNE bra_A49A
+                                    .else
+                                        CMP #con_fighter_raph
+                                        BEQ bra_A483
+                                        CMP #con_fighter___raph
+                                        BNE bra_A49A
+bra_A483:
+                                    .endif
+; con_fighter_raph
+; con_fighter___raph
 - - - - - - 0x036493 0D:A483: AD 38 06  LDA ram_0638
 - - - - - - 0x036496 0D:A486: C9 60     CMP #$60
 - - - - - - 0x036498 0D:A488: B0 10     BCS bra_A49A
@@ -6674,9 +6753,18 @@ bra_A50F:
 - - - - - - 0x036521 0D:A511: D0 30     BNE bra_A543    ; jmp
 bra_A513:
 - - - - - - 0x036523 0D:A513: B9 50 05  LDA ram_obj_id,Y
-; con_новые_персы
+                                    .if con_новые_персы = $00
 - - - - - - 0x036526 0D:A516: C9 01     CMP #con_fighter_raph
 - - - - - - 0x036528 0D:A518: D0 2C     BNE bra_A546
+                                    .else
+                                        CMP #con_fighter_raph
+                                        BEQ bra_A51A
+                                        CMP #con_fighter___raph
+                                        BNE bra_A546
+bra_A51A:
+                                    .endif
+; con_fighter_raph
+; con_fighter___raph
 - - - - - - 0x03652A 0D:A51A: BD F0 05  LDA ram_obj_05F0,X
 - - - - - - 0x03652D 0D:A51D: C9 16     CMP #$16
 - - - - - - 0x03652F 0D:A51F: D0 25     BNE bra_A546
@@ -6729,11 +6817,19 @@ C - - - - - 0x036584 0D:A574: C0 03     CPY #$03
 C - - - - - 0x036586 0D:A576: 90 61     BCC bra_A547_RTS
 - - - - - - 0x03658F 0D:A57F: BC DE 06  LDY ram_plr_06DE,X
 C - - - - - 0x036588 0D:A578: BD 50 05  LDA ram_obj_id,X ; 0550 0551 
-; con_новые_персы
+                                    .if con_новые_персы = $00
                                         CMP #con_fighter_casey
                                         BEQ bra_A56F_casey
+                                    .else
+                                        CMP #con_fighter_casey
+                                        BEQ bra_A56F_casey
+                                        CMP #con_fighter___casey
+                                        BEQ bra_A56F_casey
+                                    .endif
                                         JMP loc_A574_shred_ai
 bra_A56F_casey:
+; con_fighter_casey
+; con_fighter___casey
                                         LDA ram_obj_0520,Y
                                         CMP #con_plr_state_получает_урон
                                         BEQ bra_A547_RTS
@@ -6757,12 +6853,24 @@ bra_A570:
                                         LDA ram_plr_флаг_индекса_атаки,Y
                                         BEQ bra_A572
                                         LDA ram_obj_id,Y
+                                    .if con_новые_персы = $00
                                         CMP #con_fighter_shred
                                         BEQ bra_A573_shred
                                         CMP #con_fighter_hot
                                         BNE bra_A571
+                                    .else
+                                        CMP #con_fighter_shred
+                                        BEQ bra_A573_shred
+                                        CMP #con_fighter___shred
+                                        BEQ bra_A573_shred
+                                        CMP #con_fighter_hot
+                                        BEQ bra_A57D_hot
+                                        CMP #con_fighter___hot
+                                        BNE bra_A571         
+bra_A57D_hot:
+                                    .endif
 ; con_fighter_hot
-; con_fighter_0C
+; con_fighter___hot
                                         LDA ram_obj_0520,Y
                                         CMP #con_plr_state_сидит
                                         BEQ bra_A573_casey_ai_сидит
@@ -6852,12 +6960,12 @@ bra_A5A3:
                                     .else
                                        ;CMP #con_fighter_leo
                                         BEQ bra_A5A8
-                                        CMP #con_fighter_07
+                                        CMP #con_fighter___leo
                                         BNE bra_A5C4
 bra_A5A8:
                                     .endif
 ; con_fighter_leo
-; con_fighter_07
+; con_fighter___leo
 - - - - - - 0x0365B8 0D:A5A8: BD 20 05  LDA ram_obj_0520,X
 - - - - - - 0x0365BB 0D:A5AB: 49 0A     EOR #con_plr_state_брошен_соперником
 - - - - - - 0x0365BD 0D:A5AD: F0 F1     BEQ bra_A5A0
@@ -7009,7 +7117,7 @@ bra_A694:
                                     .else
                                         CMP #con_fighter_shred
                                         BEQ bra_A6A8
-                                        CMP #con_fighter_0D
+                                        CMP #con_fighter___shred
                                         BEQ bra_A6A8
                                     .endif
 - - - - - - 0x0366AB 0D:A69B: BD C0 04  LDA ram_obj_04C0,X
@@ -7017,7 +7125,7 @@ bra_A694:
 - - - - - - 0x0366B0 0D:A6A0: F0 57     BEQ bra_A6F9
 bra_A6A8:
 ; con_fighter_shred
-; con_fighter_0D
+; con_fighter___shred
 - - - - - - 0x0366B2 0D:A6A2: B9 12 06  LDA ram_plr_индекс_атаки,Y
 - - - - - - 0x0366B5 0D:A6A5: C9 07     CMP #con_0612_черепаха_нога_дальняя_обычная
 - - - - - - 0x0366B7 0D:A6A7: F0 50     BEQ bra_A6F9
@@ -7282,13 +7390,13 @@ tbl_BD60:
 - - - - - - 0x037D75 0D:BD65: 00        .byte $00   ; 05 con_fighter_hot
 - - - - - - 0x037D76 0D:BD66: 00        .byte $00   ; 06 con_fighter_shred
                                     .if con_новые_персы <> $00
-                                        .byte $00   ; 07 con_fighter_07
-                                        .byte $00   ; 08 con_fighter_08
-                                        .byte $00   ; 09 con_fighter_09
-                                        .byte con_шаблон_ai_01   ; 0A con_fighter_0A
-                                        .byte con_шаблон_ai_01   ; 0B con_fighter_0B
-                                        .byte $00   ; 0C con_fighter_0C
-                                        .byte $00   ; 0D con_fighter_0D
+                                        .byte $00   ; 07 con_fighter___leo
+                                        .byte $00   ; 08 con_fighter___raph
+                                        .byte $00   ; 09 con_fighter___mike
+                                        .byte con_шаблон_ai_01   ; 0A con_fighter___don
+                                        .byte con_шаблон_ai_01   ; 0B con_fighter___casey
+                                        .byte $00   ; 0C con_fighter___hot
+                                        .byte $00   ; 0D con_fighter___shred
                                     .endif
 
 
@@ -7302,13 +7410,13 @@ tbl_BD70:
 - - - - - - 0x037D85 0D:BD75: 00        .byte $00   ; 05 con_fighter_hot
 - - - - - - 0x037D86 0D:BD76: 00        .byte $00   ; 06 con_fighter_shred
                                     .if con_новые_персы <> $00
-                                        .byte $00   ; 07 con_fighter_07
-                                        .byte $00   ; 08 con_fighter_08
-                                        .byte $01   ; 09 con_fighter_09
-                                        .byte $01   ; 0A con_fighter_0A
-                                        .byte $01   ; 0B con_fighter_0B
-                                        .byte $00   ; 0C con_fighter_0C
-                                        .byte $00   ; 0D con_fighter_0D
+                                        .byte $00   ; 07 con_fighter___leo
+                                        .byte $00   ; 08 con_fighter___raph
+                                        .byte $01   ; 09 con_fighter___mike
+                                        .byte $01   ; 0A con_fighter___don
+                                        .byte $01   ; 0B con_fighter___casey
+                                        .byte $00   ; 0C con_fighter___hot
+                                        .byte $00   ; 0D con_fighter___shred
                                     .endif
 
 
@@ -7324,12 +7432,12 @@ C - - - - - 0x037D9F 0D:BD8F: D0 51     BNE bra_BDE2
                                     .else
                                         CMP #con_fighter_shred
                                         BEQ bra_BD91
-                                        CMP #con_fighter_0D
+                                        CMP #con_fighter___shred
                                         BNE bra_BDE2
 bra_BD91:
                                     .endif
 ; con_fighter_shred
-; con_fighter_0D
+; con_fighter___shred
 - - - - - - 0x037DA1 0D:BD91: BC DE 06  LDY ram_plr_06DE,X
 - - - - - - 0x037DA4 0D:BD94: AD 38 06  LDA ram_0638
 - - - - - - 0x037DA7 0D:BD97: F0 4C     BEQ bra_BDE5
@@ -7468,7 +7576,7 @@ bra_BECD:
                                     .else
                                         CMP #con_fighter_casey
                                         BEQ bra_BEE3_casey
-                                        CMP #con_fighter_0B
+                                        CMP #con_fighter___casey
                                         BEQ bra_BEE3_casey
                                     .endif
 bra_BED6:
@@ -7483,7 +7591,7 @@ bra_BEE4_RTS:
 C - - - - - 0x037EF4 0D:BEE4: 60        RTS
 bra_BEE3_casey:
 ; con_fighter_casey
-; con_fighter_0B
+; con_fighter___casey
                                         LDA #$00
                                         STA ram_0017
                                         RTS
@@ -7503,12 +7611,12 @@ bra_BEEE:
                                     .else
                                         CMP #con_fighter_hot
                                         BEQ bra_BEF5
-                                        CMP con_fighter_0C
+                                        CMP con_fighter___hot
                                         BNE bra_BF04
 bra_BEF5:
                                     .endif
 ; con_fighter_hot
-; con_fighter_0C
+; con_fighter___hot
 - - - - - - 0x037F05 0D:BEF5: AD 38 06  LDA ram_0638
 - - - - - - 0x037F08 0D:BEF8: C9 12     CMP #$12
 - - - - - - 0x037F0A 0D:BEFA: 90 08     BCC bra_BF04
@@ -7578,12 +7686,12 @@ C - - - - - 0x037F7B 0D:BF6B: D0 2D     BNE bra_BF9A
                                     .else
                                         CMP #con_fighter_shred
                                         BEQ bra_BF6D
-                                        CMP #con_fighter_0D
+                                        CMP #con_fighter___shred
                                         BNE bra_BF9A
 bra_BF6D:
                                     .endif
 ; con_fighter_shred
-; con_fighter_0D
+; con_fighter___shred
 - - - - - - 0x037F7D 0D:BF6D: BD 10 05  LDA ram_obj_spr_flip,X
 - - - - - - 0x037F80 0D:BF70: D9 10 05  CMP ram_obj_spr_flip,Y
 - - - - - - 0x037F83 0D:BF73: F0 24     BEQ bra_BF99_RTS
