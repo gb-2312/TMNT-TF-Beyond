@@ -6740,7 +6740,9 @@ bra_A56F_casey:
                                         CMP #con_plr_state_брошен_соперником
                                         BEQ bra_A547_RTS
                                         CMP #con_plr_state_делает_суперку
-                                        BEQ bra_A573_casey_ai_блок
+                                        BNE bra_A56C
+                                        JMP loc_A573_casey_ai_блок
+bra_A56C:
                                         LDA ram_obj_0520,X
                                         CMP #con_plr_state_делает_суперку
                                         BCC bra_A570
@@ -6815,6 +6817,7 @@ bra_A573_shred:
 bra_A573_casey_ai_сидит:
                                         LDA #con_шаблон_ai_02
                                         .byte $2C   ; BIT
+loc_A573_casey_ai_блок:
 bra_A573_casey_ai_блок:
                                         LDA #con_шаблон_ai_01
                                         .byte $2C   ; BIT
