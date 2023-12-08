@@ -3104,9 +3104,10 @@ sub_918C:
 C - - - - - 0x02519C 09:918C: A4 A9     LDY ram_global_obj_index
 C - - - - - 0x02519E 09:918E: B9 20 05  LDA ram_obj_0520,Y ; 0520 0521 
 C - - - - - 0x0251A1 09:9191: C9 0A     CMP #con_plr_state_брошен_соперником
-C - - - - - 0x0251A3 09:9193: D0 72     BNE bra_9207_RTS
+C - - - - - 0x0251A3 09:9193: D0 72     BNE bra_9199_RTS
 C - - - - - 0x0251A5 09:9195: B9 40 05  LDA ram_obj_0540,Y ; 0540 0541 
 C - - - - - 0x0251A8 09:9198: 4A        LSR
+bra_9199_RTS:
 C - - - - - 0x0251A9 09:9199: 60        RTS
 
 
