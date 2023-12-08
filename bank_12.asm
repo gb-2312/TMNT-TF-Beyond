@@ -357,6 +357,15 @@ bra_81F0:
 C - - - - - 0x024200 09:81F0: 4C 5B 83  JMP loc_835B
 bra_81F3:
 C - - - - - 0x024203 09:81F3: 4C 4F 83  JMP loc_834F
+bra_8210:
+- - - - - - 0x024220 09:8210: A9 01     LDA #con_plr_state_в_прыжке
+- - - - - - 0x024222 09:8212: 20 7F 84  JSR sub_847F
+- - - - - - 0x024225 09:8215: FE 40 05  INC ram_obj_state_lo,X
+- - - - - - 0x024228 09:8218: A9 00     LDA #$00
+- - - - - - 0x02422A 09:821A: 9D A0 04  STA ram_obj_spd_Y_hi,X
+- - - - - - 0x02422D 09:821D: 9D B0 04  STA ram_obj_spd_Y_lo,X
+bra_8220_RTS:
+C - - - - - 0x024230 09:8220: 60        RTS
 
 
 
@@ -371,18 +380,6 @@ C - - - - - 0x024215 09:8205: DD 10 05  CMP ram_obj_flip,X ; 0510 0511
 C - - - - - 0x024218 09:8208: F0 16     BEQ bra_8220_RTS
 C - - - - - 0x02421A 09:820A: 9D 10 05  STA ram_obj_flip,X ; 0510 0511 
 C - - - - - 0x02421D 09:820D: 4C B2 83  JMP loc_83B2
-
-
-
-bra_8210:
-- - - - - - 0x024220 09:8210: A9 01     LDA #con_plr_state_в_прыжке
-- - - - - - 0x024222 09:8212: 20 7F 84  JSR sub_847F
-- - - - - - 0x024225 09:8215: FE 40 05  INC ram_obj_state_lo,X
-- - - - - - 0x024228 09:8218: A9 00     LDA #$00
-- - - - - - 0x02422A 09:821A: 9D A0 04  STA ram_obj_spd_Y_hi,X
-- - - - - - 0x02422D 09:821D: 9D B0 04  STA ram_obj_spd_Y_lo,X
-bra_8220_RTS:
-C - - - - - 0x024230 09:8220: 60        RTS
 
 
 
