@@ -2979,7 +2979,7 @@ C - - - - - 0x0250D6 09:90C6: 18        CLC
 C - - - - - 0x0250D7 09:90C7: B9 4F 97  LDA (ram_0008),Y    ; 03
 C - - - - - 0x0250DA 09:90CA: 7D 10 04  ADC ram_obj_pos_Y_lo,X ; 0410 0411 
 C - - - - - 0x0250DD 09:90CD: 85 02     STA ram_0002
-C - - - - - 0x0250DF 09:90CF: 20 8C 91  JSR sub_918C
+C - - - - - 0x0250DF 09:90CF: 20 8C 91  JSR sub_0x02519C
 C - - - - - 0x0250E2 09:90D2: F0 03     BEQ bra_90D7
 C - - - - - 0x0250E4 09:90D4: 4C 30 91  JMP loc_9130
 bra_90D7:
@@ -3100,25 +3100,13 @@ C - - - - - 0x025199 09:9189: 4C 6D 84  JMP loc_846D
 
 
 
-sub_918C:
-C - - - - - 0x02519C 09:918C: A4 A9     LDY ram_global_obj_index
-C - - - - - 0x02519E 09:918E: B9 20 05  LDA ram_obj_0520,Y ; 0520 0521 
-C - - - - - 0x0251A1 09:9191: C9 0A     CMP #con_plr_state_брошен_соперником
-C - - - - - 0x0251A3 09:9193: D0 72     BNE bra_9199_RTS
-C - - - - - 0x0251A5 09:9195: B9 40 05  LDA ram_obj_0540,Y ; 0540 0541 
-C - - - - - 0x0251A8 09:9198: 4A        LSR
-bra_9199_RTS:
-C - - - - - 0x0251A9 09:9199: 60        RTS
-
-
-
 loc_919A:
 ; X = кто бросил
 ; Y = кого бросили (0x0251BE)
 C D 0 - - - 0x0251AA 09:919A: BD 20 05  LDA ram_obj_0520,X ; 0520 0521 
 C - - - - - 0x0251AD 09:919D: C9 09     CMP #con_plr_state_бросает_соперника
 C - - - - - 0x0251AF 09:919F: D0 66     BNE bra_9207_RTS
-C - - - - - 0x0251B1 09:91A1: 20 8C 91  JSR sub_918C
+C - - - - - 0x0251B1 09:91A1: 20 8C 91  JSR sub_0x02519C
 C - - - - - 0x0251B4 09:91A4: D0 61     BNE bra_9207_RTS
 C - - - - - 0x0251B6 09:91A6: BC 50 05  LDY ram_obj_id,X ; 0550 0551 
 C - - - - - 0x0251B9 09:91A9: B9 3F 98  LDA tbl_983F_индекс_кто_бросил,Y

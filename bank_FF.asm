@@ -200,6 +200,7 @@
 .export sub_0x03FF1D
 .export sub_0x03FF4B_вычисление_приоритета_игрока_в_бою
 .export sub_0x03F723_отрисовка_финальной_стойки
+.export sub_0x02519C
 .export tbl_0x03E32D_индекс_анимации_портрета
 .export _общий_RTS
 
@@ -8295,6 +8296,19 @@ bra_FF6D:
 C - - - - - 0x03FF7D 0F:FF6D: 86 9D     STX ram_009D
 C - - - - - 0x03FF7F 0F:FF6F: 86 AD     STX ram_00AD
 C - - - - - 0x03FF81 0F:FF71: 60        RTS
+
+
+
+sub_0x02519C:
+; перемещено из банка 1A
+C - - - - - 0x02519C 09:918C: A4 A9     LDY ram_global_obj_index
+C - - - - - 0x02519E 09:918E: B9 20 05  LDA ram_obj_0520,Y ; 0520 0521 
+C - - - - - 0x0251A1 09:9191: C9 0A     CMP #con_plr_state_брошен_соперником
+C - - - - - 0x0251A3 09:9193: D0 72     BNE bra_9199_RTS
+C - - - - - 0x0251A5 09:9195: B9 40 05  LDA ram_obj_0540,Y ; 0540 0541 
+C - - - - - 0x0251A8 09:9198: 4A        LSR
+bra_9199_RTS:
+C - - - - - 0x0251A9 09:9199: 60        RTS
 
 
 
