@@ -16,7 +16,7 @@
 
 
 
-loc_8006:
+loc_8006_запись_буферов_в_ppu:
                                         BIT $2002
 C D 0 - - - 0x030016 0C:8006: A0 00     LDY #$00
 loc_8008_main_loop:
@@ -1887,8 +1887,17 @@ tbl_8FD1_имена_из_3х_букв:
 - D 0 - - - 0x030FF1 0C:8FE1: BD        .byte $B2, $B1, $BE, $FF   ; 04 CAS
 - D 0 - - - 0x030FF5 0C:8FE5: C2        .byte $B5, $BB, $BF, $FF   ; 05 HOT
 - D 0 - - - 0x030FF9 0C:8FE9: CD        .byte $BE, $B5, $BD, $FF   ; 06 SHR
-- - - - - - 0x030FFD 0C:8FED: CC        .byte $BD, $BA, $B3, $FF   ; 07 RND
-- D 0 - - - 0x031001 0C:8FF1: A9        .byte $B0, $B0, $B0, $FF   ; 08 ???
+                                    .if con_новые_персы <> $00
+                                        .byte $B8, $B4, $BB, $FF   ; 07 LEO
+                                        .byte $BD, $B1, $BC, $FF   ; 08 RAP
+                                        .byte $B9, $B6, $B7, $FF   ; 09 MIK
+                                        .byte $B3, $BB, $BA, $FF   ; 0A DON
+                                        .byte $B2, $B1, $BE, $FF   ; 0B CAS
+                                        .byte $B5, $BB, $BF, $FF   ; 0C HOT
+                                        .byte $BE, $B5, $BD, $FF   ; 0D SHR
+                                    .endif
+- - - - - - 0x030FFD 0C:8FED: CC        .byte $BD, $BA, $B3, $FF   ; 07 (0E) RND
+- D 0 - - - 0x031001 0C:8FF1: A9        .byte $B0, $B0, $B0, $FF   ; 08 (0F) ???
 
 
 
@@ -1911,7 +1920,7 @@ C - - - - - 0x031010 0C:9000: A5 2C     LDA ram_game_mode
 ; con_gm_tournament
 ; con_gm_options
 C - - - - - 0x031012 0C:9002: 49 03     EOR #$03
-C - - - - - 0x031014 0C:9004: D0 0A     BNE bra_9010
+C - - - - - 0x031014 0C:9004: D0 0A     BNE bra_9010_выход
 ; con_gm_vs_team
 C - - - - - 0x031016 0C:9006: A2 01     LDX #$01
 bra_9008_loop:
@@ -1919,8 +1928,8 @@ C - - - - - 0x031018 0C:9008: BD 44 01  LDA ram_0144,X ; 0144 0145
 C - - - - - 0x03101B 0C:900B: 30 06     BMI bra_9013
 C - - - - - 0x03101D 0C:900D: CA        DEX
 C - - - - - 0x03101E 0C:900E: 10 F8     BPL bra_9008_loop
-bra_9010:
-C - - - - - 0x031020 0C:9010: 4C 06 80  JMP loc_8006
+bra_9010_выход:
+C - - - - - 0x031020 0C:9010: 4C 06 80  JMP loc_8006_запись_буферов_в_ppu
 bra_9013:
                                         LDA ram_tournament_индекс_игрока,X
                                         LSR
@@ -1939,14 +1948,24 @@ C - - - - - 0x031036 0C:9026: 8D 48 01  STA ram_0148
 C - - - - - 0x031039 0C:9029: FE 44 01  INC ram_0144,X ; 0144 0145 
 C - - - - - 0x03103C 0C:902C: F0 13     BEQ bra_9041_FF
 C - - - - - 0x03103E 0C:902E: FE 44 01  INC ram_0144,X ; 0144 0145 
-C - - - - - 0x031041 0C:9031: D0 07     BNE bra_903A_FD
-; FE
+C - - - - - 0x031041 0C:9031: D0 07     BNE bra_903A_FD_рандомный_перс
+; FE для текста "???"
 C - - - - - 0x031043 0C:9033: DE 40 01  DEC ram_plr_колво_персов_в_цепочке_vs_team,X ; 0140 0141 
+; con_колво_персов
+                                    .if con_новые_персы = $00
 C - - - - - 0x031046 0C:9036: A2 24     LDX #$24
+                                    .else
+                                        LDX #$24 + $1C
+                                    .endif
 C - - - - - 0x031048 0C:9038: D0 17     BNE bra_9051    ; jmp
-bra_903A_FD:
+bra_903A_FD_рандомный_перс:
 - - - - - - 0x03104A 0C:903A: FE 44 01  INC ram_0144,X
+; con_колво_персов
+                                    .if con_новые_персы = $00
 - - - - - - 0x03104D 0C:903D: A2 20     LDX #$20
+                                    .else
+                                        LDX #$20 + $1C
+                                    .endif
 - - - - - - 0x03104F 0C:903F: D0 10     BNE bra_9051   ; jmp
 bra_9041_FF:
 C - - - - - 0x031051 0C:9041: 8A        TXA
@@ -1965,9 +1984,10 @@ C - - - - - 0x031061 0C:9051: A0 04     LDY #$04
 bra_9053_loop:
 C - - - - - 0x031063 0C:9053: BD D0 8F  LDA tbl_8FD1_имена_из_3х_букв - $01,X
                                         CMP #$FF
-                                        BEQ bra_9054
+                                        BEQ bra_9054_end_token
+; C = 0
                                         ADC ram_0000
-bra_9054:
+bra_9054_end_token:
 C - - - - - 0x031066 0C:9056: 99 48 01  STA ram_0149 - $01,Y ; 0149 014A 014B 014C 
 C - - - - - 0x031069 0C:9059: CA        DEX
 C - - - - - 0x03106A 0C:905A: 88        DEY
@@ -1977,7 +1997,7 @@ C - - - - - 0x03106D 0C:905D: A6 25     LDX ram_index_ppu_buffer
 bra_905F_loop:
 C - - - - - 0x03106F 0C:905F: B9 46 01  LDA ram_0146,Y ; 0146 0147 0148 0149 014A 014B 014C 014D 
 C - - - - - 0x031072 0C:9062: 9D FF 02  STA ram_ppu_buffer - $01,X
-C - - - - - 0x031075 0C:9065: F0 A9     BEQ bra_9010    ; if найден end token
+C - - - - - 0x031075 0C:9065: F0 A9     BEQ bra_9010_выход    ; if найден end token
 C - - - - - 0x031077 0C:9067: E8        INX
 C - - - - - 0x031078 0C:9068: C8        INY
 C - - - - - 0x031079 0C:9069: D0 F4     BNE bra_905F_loop    ; jmp

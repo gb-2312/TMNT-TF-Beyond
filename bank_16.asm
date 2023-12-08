@@ -2434,6 +2434,7 @@ bra_BE64:
 
 
 sub_BE7C_случайный_выбор_перса:
+; con_новые_персы
 - - - - - - 0x02FE8C 0B:BE7C: A5 28     LDA ram_random_1
 - - - - - - 0x02FE8E 0B:BE7E: 29 07     AND #$07
 - - - - - - 0x02FE90 0B:BE80: 69 FF     ADC #$FF
