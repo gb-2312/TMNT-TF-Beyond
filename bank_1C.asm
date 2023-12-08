@@ -6712,13 +6712,12 @@ tbl_983F_индекс_кто_бросил:
                                         .byte _off019_9846_0A - tbl_9847   ; con_fighter___don
                                         .byte _off019_984D_0B - tbl_9847   ; con_fighter___casey
                                         .byte _off019_9846_0C - tbl_9847   ; con_fighter___hot
-                                        .byte _off019_9985B_0D - tbl_9847   ; con_fighter___shred
+                                        .byte _off019_985B_0D - tbl_9847   ; con_fighter___shred
                                     .endif
 
 
 
 tbl_9846_индекс_кого_бросили:
-; con_новые_персы
 tbl_9847:
 _off019_9846_00_leo:
 _off019_9846_07:
@@ -6735,6 +6734,15 @@ _off019_9846_0C:
 - D 0 - - - 0x02585A 09:984A: 08        .byte off_986A_08 - tbl_9863   ; 04 con_fighter_casey
 - D 0 - - - 0x02585B 09:984B: 10        .byte off_9872_10 - tbl_9863   ; 05 con_fighter_hot
 - D 0 - - - 0x02585C 09:984C: 18        .byte off_987A_18 - tbl_9863   ; 06 con_fighter_shred
+                                    .if con_новые_персы <> $00
+                                        .byte off_9862_00 - tbl_9863   ; 07 con_fighter___leo
+                                        .byte off_9862_00 - tbl_9863   ; 08 con_fighter___raph
+                                        .byte off_9862_00 - tbl_9863   ; 09 con_fighter___mike
+                                        .byte off_9862_00 - tbl_9863   ; 0A con_fighter___don
+                                        .byte off_986A_08 - tbl_9863   ; 0B con_fighter___casey
+                                        .byte off_9872_10 - tbl_9863   ; 0C con_fighter___hot
+                                        .byte off_987A_18 - tbl_9863   ; 0D con_fighter___shred
+                                    .endif
 
 _off019_984D_04_casey:
 _off019_984D_0B:
@@ -6745,6 +6753,15 @@ _off019_984D_0B:
 - - - - - - 0x025861 09:9851: 26        .byte off_9888_26 - tbl_9863   ; 04 con_fighter_casey
 - D 0 - - - 0x025862 09:9852: 2C        .byte off_988E_2C - tbl_9863   ; 05 con_fighter_hot
 - D 0 - - - 0x025863 09:9853: 32        .byte off_9894_32 - tbl_9863   ; 06 con_fighter_shred
+                                    .if con_новые_персы <> $00
+                                        .byte off_9882_20 - tbl_9863   ; 07 con_fighter___leo
+                                        .byte off_9882_20 - tbl_9863   ; 08 con_fighter___raph
+                                        .byte off_9882_20 - tbl_9863   ; 09 con_fighter___mike
+                                        .byte off_9882_20 - tbl_9863   ; 0A con_fighter___don
+                                        .byte off_9888_26 - tbl_9863   ; 0B con_fighter___casey
+                                        .byte off_988E_2C - tbl_9863   ; 0C con_fighter___hot
+                                        .byte off_9894_32 - tbl_9863   ; 0D con_fighter___shred
+                                    .endif
 
 _off019_9854_01_raph:
 _off019_9854_08:
@@ -6755,9 +6772,18 @@ _off019_9854_08:
 - D 0 - - - 0x025868 09:9858: 40        .byte off_98A2_40 - tbl_9863   ; 04 con_fighter_casey
 - - - - - - 0x025869 09:9859: 48        .byte off_98AA_48 - tbl_9863   ; 05 con_fighter_hot
 - D 0 - - - 0x02586A 09:985A: 51        .byte off_98B3_51 - tbl_9863   ; 06 con_fighter_shred
+                                    .if con_новые_персы <> $00
+                                        .byte off_989A_38 - tbl_9863   ; 07 con_fighter___leo
+                                        .byte off_989A_38 - tbl_9863   ; 08 con_fighter___raph
+                                        .byte off_989A_38 - tbl_9863   ; 09 con_fighter___mike
+                                        .byte off_989A_38 - tbl_9863   ; 0A con_fighter___don
+                                        .byte off_98A2_40 - tbl_9863   ; 0B con_fighter___casey
+                                        .byte off_98AA_48 - tbl_9863   ; 0C con_fighter___hot
+                                        .byte off_98B3_51 - tbl_9863   ; 0D con_fighter___shred
+                                    .endif
 
 _off019_985B_06_shred:
-_off019_9985B_0D:
+_off019_985B_0D:
 - D 0 - - - 0x02586B 09:985B: 59        .byte off_98BB_59 - tbl_9863   ; 00 con_fighter_leo
 - D 0 - - - 0x02586C 09:985C: 59        .byte off_98BB_59 - tbl_9863   ; 01 con_fighter_raph
 - - - - - - 0x02586D 09:985D: 59        .byte off_98BB_59 - tbl_9863   ; 02 con_fighter_mike
@@ -6765,6 +6791,15 @@ _off019_9985B_0D:
 - D 0 - - - 0x02586F 09:985F: 5F        .byte off_98C1_5F - tbl_9863   ; 04 con_fighter_casey
 - D 0 - - - 0x025870 09:9860: 65        .byte off_98C7_65 - tbl_9863   ; 05 con_fighter_hot
 - - - - - - 0x025871 09:9861: 6B        .byte off_98CD_6B - tbl_9863   ; 06 con_fighter_shred
+                                    .if con_новые_персы <> $00
+                                        .byte off_98BB_59 - tbl_9863   ; 07 con_fighter___leo
+                                        .byte off_98BB_59 - tbl_9863   ; 08 con_fighter___raph
+                                        .byte off_98BB_59 - tbl_9863   ; 09 con_fighter___mike
+                                        .byte off_98BB_59 - tbl_9863   ; 0A con_fighter___don
+                                        .byte off_98C1_5F - tbl_9863   ; 0B con_fighter___casey
+                                        .byte off_98C7_65 - tbl_9863   ; 0C con_fighter___hot
+                                        .byte off_98CD_6B - tbl_9863   ; 0D con_fighter___shred
+                                    .endif
 
 
 
