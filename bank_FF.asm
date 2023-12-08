@@ -200,6 +200,7 @@
 .export sub_0x03FF1D
 .export sub_0x03FF4B_вычисление_приоритета_игрока_в_бою
 .export sub_0x03F723_отрисовка_финальной_стойки
+.export loc_0x03F6EC_броски
 .export sub_0x02519C
 .export tbl_0x03E32D_индекс_анимации_портрета
 .export _общий_RTS
@@ -8296,6 +8297,13 @@ bra_FF6D:
 C - - - - - 0x03FF7D 0F:FF6D: 86 9D     STX ram_009D
 C - - - - - 0x03FF7F 0F:FF6F: 86 AD     STX ram_00AD
 C - - - - - 0x03FF81 0F:FF71: 60        RTS
+
+
+
+loc_0x03F6EC_броски:
+C - - J - - 0x03F6EC 0F:F6DC: 20 F3 F5  JSR sub_F5F3_swap_prg_1C
+C - - - - - 0x03F6EF 0F:F6DF: 20 01 80  JSR sub_0x0251AA_броски
+C - - - - - 0x03F6F2 0F:F6E2: 4C 17 F6  JMP loc_F617_restore_prg
 
 
 
