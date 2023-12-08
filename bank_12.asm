@@ -1977,14 +1977,6 @@ C - - - - - 0x024C3B 09:8C2B: 20 32 D0  JSR sub_0x03D042_поинтеры_пос
 
 
 
-loc_8C41:
-C D 0 - - - 0x024C51 09:8C41: A9 0C     LDA #$0C
-C - - - - - 0x024C53 09:8C43: 9D D0 04  STA ram_obj_04D0,X ; 04D0 04D1 
-C - - - - - 0x024C56 09:8C46: FE 40 05  INC ram_obj_0540,X ; 0540 0541 
-C - - - - - 0x024C59 09:8C49: 4C ED 8C  JMP loc_8CED
-
-
-
 loc_8C4C:
 C D 0 - - - 0x024C5C 09:8C4C: A9 14     LDA #$14
 C - - - - - 0x024C5E 09:8C4E: 9D F0 05  STA ram_obj_05F0,X ; 05F0 05F1 
@@ -2524,7 +2516,10 @@ tbl_8E1C:
 ofs_055_8E22_06:
                                        ;LDY ram_obj_0540,X
 C - - J - - 0x024E32 09:8E22: D0 03     BNE bra_8E27
-C - - - - - 0x024E34 09:8E24: 4C 41 8C  JMP loc_8C41
+C D 0 - - - 0x024C51 09:8C41: A9 0C     LDA #$0C
+C - - - - - 0x024C53 09:8C43: 9D D0 04  STA ram_obj_04D0,X ; 04D0 04D1 
+C - - - - - 0x024C56 09:8C46: FE 40 05  INC ram_obj_0540,X ; 0540 0541 
+C - - - - - 0x024C59 09:8C49: 4C ED 8C  JMP loc_8CED
 bra_8E27:
 C - - - - - 0x024E37 09:8E27: A5 22     LDA ram_счетчик_кадров
 C - - - - - 0x024E39 09:8E29: 29 02     AND #$02
