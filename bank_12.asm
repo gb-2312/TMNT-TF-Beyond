@@ -379,7 +379,12 @@ C - - - - - 0x024212 09:8202: BD 43 06  LDA ram_plr_copy_flip,X ; 0643 0644
 C - - - - - 0x024215 09:8205: DD 10 05  CMP ram_obj_flip,X ; 0510 0511 
 C - - - - - 0x024218 09:8208: F0 16     BEQ bra_8220_RTS
 C - - - - - 0x02421A 09:820A: 9D 10 05  STA ram_obj_flip,X ; 0510 0511 
-C - - - - - 0x02421D 09:820D: 4C B2 83  JMP loc_83B2
+C D 0 - - - 0x0243C2 09:83B2: A9 06     LDA #con_plr_state_поворачивается
+C - - - - - 0x0243C4 09:83B4: 9D 20 05  STA ram_obj_state_hi,X ; 0520 0521 
+C - - - - - 0x0243C7 09:83B7: A9 06     LDA #$06
+C - - - - - 0x0243C9 09:83B9: 20 0E E1  JSR sub_0x03E11E_корректировка_значения_A_для_turbo
+C - - - - - 0x0243CC 09:83BC: 9D 60 05  STA ram_obj_timer,X ; 0560 0561 
+C - - - - - 0x0243CF 09:83BF: 4C 3C DB  JMP loc_0x03DB4C_очистить_spd_X
 
 
 
@@ -659,16 +664,6 @@ C - - - - - 0x0243B3 09:83A3: B9 E3 93  LDA tbl_93E3_анимация_стойк
 C - - - - - 0x0243B6 09:83A6: F0 03     BEQ bra_83AB
 C - - - - - 0x0243B8 09:83A8: 4C 94 DF  STA ram_obj_anim_id,X ; 0400 0401 
                                         RTS
-
-
-
-loc_83B2:
-C D 0 - - - 0x0243C2 09:83B2: A9 06     LDA #con_plr_state_поворачивается
-C - - - - - 0x0243C4 09:83B4: 9D 20 05  STA ram_obj_state_hi,X ; 0520 0521 
-C - - - - - 0x0243C7 09:83B7: A9 06     LDA #$06
-C - - - - - 0x0243C9 09:83B9: 20 0E E1  JSR sub_0x03E11E_корректировка_значения_A_для_turbo
-C - - - - - 0x0243CC 09:83BC: 9D 60 05  STA ram_obj_timer,X ; 0560 0561 
-C - - - - - 0x0243CF 09:83BF: 4C 3C DB  JMP loc_0x03DB4C_очистить_spd_X
 
 
 
