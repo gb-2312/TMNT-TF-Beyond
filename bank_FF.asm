@@ -144,8 +144,8 @@
 .export sub_0x03EDA6
 .export loc_0x03EDA6
 .export sub_0x03EDAB
-.export sub_0x03EDD6
-.export sub_0x03EDE8
+.export sub_0x03EDD6_генератор_рандома_по_сложности_игры_1
+.export sub_0x03EDE8_генератор_рандома_по_сложности_игры_2
 .export sub_0x03EE0E
 .export sub_0x03EE24
 .export loc_0x03EE24
@@ -1801,23 +1801,23 @@ bra_D60C:
 
 sub_D71F_спрайтовый_движок:
 C - - - - - 0x03D72F 0F:D71F: A9 3F     LDA #$3F
-C - - - - - 0x03D731 0F:D721: 85 0A     STA ram_000A
+C - - - - - 0x03D731 0F:D721: 85 0A     STA ram_000A    ; кол-во спрайтов
 C - - - - - 0x03D733 0F:D723: A9 00     LDA #$00
-C - - - - - 0x03D735 0F:D725: 85 05     STA ram_0005
-C - - - - - 0x03D737 0F:D727: A5 2F     LDA ram_002F
+C - - - - - 0x03D735 0F:D725: 85 05     STA ram_0005    ; индекс объекта
+C - - - - - 0x03D737 0F:D727: A5 2F     LDA ram_индекс_oam
 C - - - - - 0x03D739 0F:D729: 69 34     ADC #$34
-C - - - - - 0x03D73B 0F:D72B: 85 2F     STA ram_002F
+C - - - - - 0x03D73B 0F:D72B: 85 2F     STA ram_индекс_oam
 bra_D72D_loop:
-C - - - - - 0x03D73D 0F:D72D: A6 05     LDX ram_0005
+C - - - - - 0x03D73D 0F:D72D: A6 05     LDX ram_0005    ; индекс объекта
 C - - - - - 0x03D73F 0F:D72F: E0 10     CPX #$10
-C - - - - - 0x03D741 0F:D731: B0 5F     BCS bra_D792
-C - - - - - 0x03D743 0F:D733: A5 0A     LDA ram_000A
+C - - - - - 0x03D741 0F:D731: B0 5F     BCS bra_D792_выход
+C - - - - - 0x03D743 0F:D733: A5 0A     LDA ram_000A    ; кол-во спрайтов
 C - - - - - 0x03D745 0F:D735: 30 6B     BMI bra_D7A2_RTS
 C - - - - - 0x03D747 0F:D737: BD 00 04  LDA ram_obj_anim_id,X ; 0400 0401 0402 0403 0404 0405 0406 0407 0408 0409 040A 040B 040C 040D 040E 040F 
 C - - - - - 0x03D74A 0F:D73A: F0 52     BEQ bra_D78E
 C - - - - - 0x03D74C 0F:D73C: BC 30 04  LDY ram_obj_pos_X_hi,X ; 0430 0431 0432 0433 0434 0435 0436 0437 0439 043A 043B 043C 043D 043E 043F 
 C - - - - - 0x03D74F 0F:D73F: D0 4D     BNE bra_D78E
-C - - - - - 0x03D751 0F:D741: A8        TAY
+C - - - - - 0x03D751 0F:D741: A8        TAY ; обновить N
 C - - - - - 0x03D752 0F:D742: 30 03     BMI bra_D747
 C - - - - - 0x03D754 0F:D744: 20 EB F5  JSR sub_F5EB_swap_prg_18
 bra_D747:
@@ -1854,15 +1854,15 @@ C - - - - - 0x03D789 0F:D779: BC 10 05  LDY ram_obj_spr_flip,X ; 0510 0511 0512 
 C - - - - - 0x03D78C 0F:D77C: 84 06     STY ram_0006
 C - - - - - 0x03D78E 0F:D77E: BD 00 04  LDA ram_obj_anim_id,X ; 0400 0401 0402 0403 0404 0405 0406 0407 0409 040A 040B 040C 040D 040E 040F 
 C - - - - - 0x03D791 0F:D781: 20 A3 D7  JSR sub_D7A3
-C - - - - - 0x03D794 0F:D784: A6 05     LDX ram_0005
+C - - - - - 0x03D794 0F:D784: A6 05     LDX ram_0005    ; индекс объекта
 C - - - - - 0x03D796 0F:D786: BD 00 04  LDA ram_obj_anim_id,X ; 0400 0401 0402 0403 0404 0405 0406 0407 0409 040A 040B 040C 040D 040E 040F 
 C - - - - - 0x03D799 0F:D789: 30 03     BMI bra_D78E
 C - - - - - 0x03D79B 0F:D78B: 20 17 F6  JSR sub_F617_restore_prg
 bra_D78E:
-C - - - - - 0x03D79E 0F:D78E: E6 05     INC ram_0005
-C - - - - - 0x03D7A0 0F:D790: D0 9B     BNE bra_D72D_loop
-bra_D792:
-C - - - - - 0x03D7A2 0F:D792: A6 2F     LDX ram_002F
+C - - - - - 0x03D79E 0F:D78E: E6 05     INC ram_0005    ; индекс объекта
+C - - - - - 0x03D7A0 0F:D790: D0 9B     BNE bra_D72D_loop    ; jmp
+bra_D792_выход:
+C - - - - - 0x03D7A2 0F:D792: A6 2F     LDX ram_индекс_oam
 bra_D794_loop:
 C - - - - - 0x03D7A4 0F:D794: A9 F4     LDA #$F4
 C - - - - - 0x03D7A6 0F:D796: 9D 00 02  STA ram_spr_Y,X
@@ -1870,7 +1870,7 @@ C - - - - - 0x03D7A9 0F:D799: 8A        TXA
 C - - - - - 0x03D7AA 0F:D79A: 18        CLC
 C - - - - - 0x03D7AB 0F:D79B: 69 1C     ADC #$1C
 C - - - - - 0x03D7AD 0F:D79D: AA        TAX
-C - - - - - 0x03D7AE 0F:D79E: C6 0A     DEC ram_000A
+C - - - - - 0x03D7AE 0F:D79E: C6 0A     DEC ram_000A    ; кол-во спрайтов
 C - - - - - 0x03D7B0 0F:D7A0: 10 F2     BPL bra_D794_loop
 bra_D7A2_RTS:
 C - - - - - 0x03D7B2 0F:D7A2: 60        RTS
@@ -1880,14 +1880,16 @@ C - - - - - 0x03D7B2 0F:D7A2: 60        RTS
 sub_D7A3:
 C - - - - - 0x03D7B3 0F:D7A3: 0A        ASL
 C - - - - - 0x03D7B4 0F:D7A4: A8        TAY
-C - - - - - 0x03D7B5 0F:D7A5: 90 2D     BCC bra_D7D4
+C - - - - - 0x03D7B5 0F:D7A5: 90 2D     BCC bra_D7D4_объект
 C - - - - - 0x03D7B7 0F:D7A7: E0 06     CPX #$06
-C - - - - - 0x03D7B9 0F:D7A9: D0 08     BNE bra_D7B3
+C - - - - - 0x03D7B9 0F:D7A9: D0 08     BNE bra_D7B3_перс
+; if мяч?
 C - - - - - 0x03D7BB 0F:D7AB: 98        TYA
 C - - - - - 0x03D7BC 0F:D7AC: 48        PHA
 C - - - - - 0x03D7BD 0F:D7AD: AD 26 05  LDA ram_obj_0520 + $06
 C - - - - - 0x03D7C0 0F:D7B0: 4C B6 D7  JMP loc_D7B6
-bra_D7B3:
+bra_D7B3_перс:
+; if любой из персов
 C - - - - - 0x03D7C3 0F:D7B3: 98        TYA
 C - - - - - 0x03D7C4 0F:D7B4: 48        PHA
 C - - - - - 0x03D7C5 0F:D7B5: 8A        TXA
@@ -1908,7 +1910,7 @@ C - - - - - 0x03D7DC 0F:D7CC: 85 08     STA ram_0008
 C - - - - - 0x03D7DE 0F:D7CE: C8        INY
 C - - - - - 0x03D7DF 0F:D7CF: B1 10     LDA (ram_0010),Y
 C - - - - - 0x03D7E1 0F:D7D1: 4C DC D7  JMP loc_D7DC
-bra_D7D4:
+bra_D7D4_объект:
 C - - - - - 0x03D7E4 0F:D7D4: B9 33 82  LDA tbl_0x030245_спрайты_объектов - $02,Y
 C - - - - - 0x03D7E7 0F:D7D7: 85 08     STA ram_0008
 C - - - - - 0x03D7E9 0F:D7D9: B9 34 82  LDA tbl_0x030245_спрайты_объектов - $01,Y
@@ -1924,7 +1926,7 @@ C - - - - - 0x03D7F9 0F:D7E9: B1 08     LDA (ram_0008),Y
 C - - - - - 0x03D7FB 0F:D7EB: F0 7F     BEQ bra_D86C_RTS
 C - - - - - 0x03D7FD 0F:D7ED: 29 7F     AND #$7F
 C - - - - - 0x03D7FF 0F:D7EF: 85 03     STA ram_0003
-C - - - - - 0x03D801 0F:D7F1: A6 2F     LDX ram_002F
+C - - - - - 0x03D801 0F:D7F1: A6 2F     LDX ram_индекс_oam
 bra_D7F3_loop:
 C D 2 - - - 0x03D803 0F:D7F3: C8        INY
 C - - - - - 0x03D804 0F:D7F4: B1 08     LDA (ram_0008),Y
@@ -1992,9 +1994,9 @@ C - - - - - 0x03D86A 0F:D85A: 9D 03 02  STA ram_spr_X,X
 C - - - - - 0x03D86D 0F:D85D: 8A        TXA
 C - - - - - 0x03D86E 0F:D85E: 18        CLC
 C - - - - - 0x03D86F 0F:D85F: 69 1C     ADC #$1C
-C - - - - - 0x03D871 0F:D861: 85 2F     STA ram_002F
+C - - - - - 0x03D871 0F:D861: 85 2F     STA ram_индекс_oam
 C - - - - - 0x03D873 0F:D863: AA        TAX
-C - - - - - 0x03D874 0F:D864: C6 0A     DEC ram_000A
+C - - - - - 0x03D874 0F:D864: C6 0A     DEC ram_000A    ; кол-во спрайтов
 C - - - - - 0x03D876 0F:D866: 30 04     BMI bra_D86C_RTS
 C - - - - - 0x03D878 0F:D868: C6 03     DEC ram_0003
 C - - - - - 0x03D87A 0F:D86A: D0 87     BNE bra_D7F3_loop
@@ -5373,7 +5375,7 @@ C - - - - - 0x03ECD0 0F:ECC0: 30 F0     BMI bra_ECB2    ; jmp
 
 
 sub_0x03ECD2:
-C - - - - - 0x03ECD2 0F:ECC2: 20 D8 ED  JSR sub_EDD8
+C - - - - - 0x03ECD2 0F:ECC2: 20 D8 ED  JSR sub_EDD8_генератор_рандома_по_сложности_игры_2
 C - - - - - 0x03ECD5 0F:ECC5: 29 C0     AND #$C0
 C - - - - - 0x03ECD7 0F:ECC7: 18        CLC
 C - - - - - 0x03ECD8 0F:ECC8: 2A        ROL
@@ -5385,7 +5387,7 @@ C - - - - - 0x03ECDC 0F:ECCC: 60        RTS
 
 
 sub_0x03ECDD:
-C - - - - - 0x03ECDD 0F:ECCD: 20 D8 ED  JSR sub_EDD8
+C - - - - - 0x03ECDD 0F:ECCD: 20 D8 ED  JSR sub_EDD8_генератор_рандома_по_сложности_игры_2
 C - - - - - 0x03ECE0 0F:ECD0: 29 E0     AND #$E0
 C - - - - - 0x03ECE2 0F:ECD2: 18        CLC
 C - - - - - 0x03ECE3 0F:ECD3: 2A        ROL
@@ -5474,7 +5476,7 @@ C - - - - - 0x03ED3F 0F:ED2F: B0 18     BCS bra_ED49
 C - - - - - 0x03ED41 0F:ED31: AD F3 06  LDA ram_06F3
 C - - - - - 0x03ED44 0F:ED34: D0 18     BNE bra_ED4E
 C - - - - - 0x03ED46 0F:ED36: EE F3 06  INC ram_06F3
-C - - - - - 0x03ED49 0F:ED39: 20 C6 ED  JSR sub_EDC6
+C - - - - - 0x03ED49 0F:ED39: 20 C6 ED  JSR sub_EDC6_генератор_рандома_по_сложности_игры_1
 C - - - - - 0x03ED4C 0F:ED3C: BC 50 05  LDY ram_obj_id,X ; 0550 0551 
 C - - - - - 0x03ED4F 0F:ED3F: D9 53 ED  CMP tbl_ED53,Y
 C - - - - - 0x03ED52 0F:ED42: 90 0A     BCC bra_ED4E
@@ -5586,8 +5588,8 @@ C - - - - - 0x03EDD5 0F:EDC5: 60        RTS
 
 
 
-sub_EDC6:
-sub_0x03EDD6:   ; на выходе A = con_шаблон_ai если < 60?
+sub_EDC6_генератор_рандома_по_сложности_игры_1:
+sub_0x03EDD6_генератор_рандома_по_сложности_игры_1:   ; на выходе A = con_шаблон_ai если < 60?
 C - - - - - 0x03EDD6 0F:EDC6: 20 04 F2  JSR sub_F204_генератор_рандома
 C - - - - - 0x03EDD9 0F:EDC9: A5 28     LDA ram_random_1
 C - - - - - 0x03EDDB 0F:EDCB: AC 25 01  LDY ram_option_difficulty
@@ -5602,8 +5604,8 @@ C - - - - - 0x03EDE7 0F:EDD7: 60        RTS
 
 
 
-sub_EDD8:
-sub_0x03EDE8:
+sub_EDD8_генератор_рандома_по_сложности_игры_2:
+sub_0x03EDE8_генератор_рандома_по_сложности_игры_2:
 C - - - - - 0x03EDE8 0F:EDD8: 20 04 F2  JSR sub_F204_генератор_рандома
 C - - - - - 0x03EDEB 0F:EDDB: A5 28     LDA ram_random_1
 C - - - - - 0x03EDED 0F:EDDD: A0 02     LDY #$02
