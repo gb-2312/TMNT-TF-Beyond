@@ -2434,7 +2434,6 @@ bra_BE64:
 
 
 sub_BE7C_случайный_выбор_перса:
-; con_новые_персы
 - - - - - - 0x02FE8C 0B:BE7C: A5 28     LDA ram_random_1
 - - - - - - 0x02FE8E 0B:BE7E: 29 07     AND #$07
 - - - - - - 0x02FE90 0B:BE80: 69 FF     ADC #$FF
@@ -2442,6 +2441,13 @@ sub_BE7C_случайный_выбор_перса:
 - - - - - - 0x02FE94 0B:BE84: A5 8C     LDA ram_random_2
 - - - - - - 0x02FE96 0B:BE86: 29 06     AND #$06
 bra_BE88_RTS:
+                                    .if con_новые_персы <> $00
+                                        BIT ram_random_1
+                                        BMI bra_BE89_RTS
+                                        CLC
+                                        ADC #$07
+bra_BE89_RTS:
+                                    .endif
 - - - - - - 0x02FE98 0B:BE88: 60        RTS
 
 
