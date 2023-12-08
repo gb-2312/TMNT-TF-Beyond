@@ -3534,13 +3534,13 @@ tbl_E33E_индексы_палитры_перса:
                                         .byte con_AF40_pal + $1E   ; 05 con_fighter_hot
                                         .byte con_AF40_pal + $1F   ; 06 con_fighter_shred
                                     .if con_новые_персы <> $00
-                                        .byte con_AF40_pal + $0D   ; 07 con_fighter___leo
-                                        .byte con_AF40_pal + $0E   ; 08 con_fighter___raph
-                                        .byte con_AF40_pal + $0F   ; 09 con_fighter___mike
-                                        .byte con_AF40_pal + $10   ; 0A con_fighter___don
-                                        .byte con_AF40_pal + $11   ; 0B con_fighter___casey
-                                        .byte con_AF40_pal + $12   ; 0C con_fighter___hot
-                                        .byte con_AF40_pal + $13   ; 0D con_fighter___shred
+                                        .byte con_AF40_pal + $19   ; 07 con_fighter___leo
+                                        .byte con_AF40_pal + $1A   ; 08 con_fighter___raph
+                                        .byte con_AF40_pal + $1B   ; 09 con_fighter___mike
+                                        .byte con_AF40_pal + $1C   ; 0A con_fighter___don
+                                        .byte con_AF40_pal + $1D   ; 0B con_fighter___casey
+                                        .byte con_AF40_pal + $1E   ; 0C con_fighter___hot
+                                        .byte con_AF40_pal + $1F   ; 0D con_fighter___shred
                                     .endif
 
 
