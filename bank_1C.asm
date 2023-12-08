@@ -2093,7 +2093,7 @@ C - - - - - 0x038ACD 0E:8ABD: 0D 73 06  ORA ram_время_единицы
 C - - - - - 0x038AD0 0E:8AC0: D0 13     BNE bra_8ACA_RTS
 bra_8AC2:
 C - - - - - 0x038AD2 0E:8AC2: A9 00     LDA #$00
-C - - - - - 0x038AD4 0E:8AC4: 8D 2F 06  STA ram_062F
+C - - - - - 0x038AD4 0E:8AC4: 8D 2F 06  STA ram_062F_задержка
 C - - - - - 0x038AD7 0E:8AC7: EE 24 06  INC ram_plr_0624
 bra_8ACA_RTS:
 C - - - - - 0x038ADA 0E:8ACA: 60        RTS
@@ -2112,7 +2112,7 @@ C - - - - - 0x038AE5 0E:8AD5: 60        RTS
 
 
 ofs_012_8AD6_01_подсчет_оставшегося_времени_после_боя:
-C - - J - - 0x038AE6 0E:8AD6: 20 19 8B  JSR sub_8B19    ; возможен PLA PLA
+C - - J - - 0x038AE6 0E:8AD6: 20 19 8B  JSR sub_8B19_ожидание_четного_кадра    ; возможен PLA PLA
 C - - - - - 0x038AE9 0E:8AD9: A9 16     LDA #$16
 C - - - - - 0x038AEB 0E:8ADB: 20 21 8B  JSR sub_8B21
 C - - - - - 0x038AEE 0E:8ADE: A5 22     LDA ram_счетчик_кадров
@@ -2139,7 +2139,7 @@ C - - - - - 0x038B0D 0E:8AFD: A0 01     LDY #$01
 C - - - - - 0x038B0F 0E:8AFF: 84 13     STY ram_0013
                                         LDY #$00
                                         STY ram_0014
-C - - - - - 0x038B14 0E:8B04: F0 07     JMP loc_8B11
+C - - - - - 0x038B14 0E:8B04: F0 07     JMP loc_8B11_добавить_очки    ; bzk optimize, BEQ
 bra_8B06:
 loc_8B06:
                                         LDY #$00
@@ -2150,18 +2150,19 @@ loc_8B06:
                                         STY ram_0013
 C D 0 - - - 0x038B16 0E:8B06: A0 01     LDY #$01
 C - - - - - 0x038B18 0E:8B08: 84 14     STY ram_0014
-loc_8B11:
-sub_8B11:
+loc_8B11_добавить_очки:
+sub_8B11_добавить_очки:
 C - - - - - 0x038B21 0E:8B11: 20 A4 8B  JSR sub_8BA4_подсчитать_очки
 C - - - - - 0x038B24 0E:8B14: A9 27     LDA #con_0x03F6AD_27
 C - - - - - 0x038B26 0E:8B16: 4C 90 F6  JMP loc_0x03F6A0_записать_звук_сохранив_X_Y
 
 
 
-sub_8B19:
+sub_8B19_ожидание_четного_кадра:
 C - - - - - 0x038B29 0E:8B19: A5 22     LDA ram_счетчик_кадров
 C - - - - - 0x038B2B 0E:8B1B: 4A        LSR
 C - - - - - 0x038B2C 0E:8B1C: 90 02     BCC bra_8B20_RTS
+; if нечетный кадр
 C - - - - - 0x038B2E 0E:8B1E: 68        PLA
 C - - - - - 0x038B2F 0E:8B1F: 68        PLA
 bra_8B20_RTS:
@@ -2203,7 +2204,7 @@ bra_8B44:
 ; con_print_life
 C - - - - - 0x038B54 0E:8B44: 20 E5 F6  JSR sub_0x03F6F5_написать_текст_на_экране
 C - - - - - 0x038B57 0E:8B47: A9 10     LDA #$10
-C - - - - - 0x038B59 0E:8B49: 8D 2F 06  STA ram_062F
+C - - - - - 0x038B59 0E:8B49: 8D 2F 06  STA ram_062F_задержка
 bra_8B4C:
 C - - - - - 0x038B5C 0E:8B4C: EE 24 06  INC ram_plr_0624
 C - - - - - 0x038B5F 0E:8B4F: 4C CB 8A  JMP loc_8ACB
@@ -2213,7 +2214,7 @@ C - - - - - 0x038B5F 0E:8B4F: 4C CB 8A  JMP loc_8ACB
 ofs_012_8B52_02_завершение_подсчета_времени_после_боя:
 C - - - - - 0x038B64 0E:8B54: 20 40 A7  JSR sub_A740
 C - - - - - 0x038B67 0E:8B57: D0 F3     BNE bra_8B4C
-C - - - - - 0x038B69 0E:8B59: 20 55 8C  JSR sub_8C55    ; возможен PLA PLA
+C - - - - - 0x038B69 0E:8B59: 20 55 8C  JSR sub_8C55_ожидание    ; возможен PLA PLA
                                         LDY #$00
                                         STY ram_0011
 C - - - - - 0x038B6C 0E:8B5C: A9 02     LDA #$02
@@ -2222,7 +2223,7 @@ C - - - - - 0x038B6E 0E:8B5E: 85 12     STA ram_0012
 C - - - - - 0x038B74 0E:8B64: 84 13     STY ram_0013
 C - - - - - 0x038B70 0E:8B60: A0 00     LDY #$00
 C - - - - - 0x038B72 0E:8B62: 84 14     STY ram_0014
-C - - - - - 0x038B76 0E:8B66: 20 0F 8B  JSR sub_8B11
+C - - - - - 0x038B76 0E:8B66: 20 0F 8B  JSR sub_8B11_добавить_очки
 C - - - - - 0x038B79 0E:8B69: A9 25     LDA #con_0x03F6AD_25
 C - - - - - 0x038B7B 0E:8B6B: 20 90 F6  JSR sub_0x03F6A0_записать_звук_сохранив_X_Y
 C - - - - - 0x038B7E 0E:8B6E: EE 24 06  INC ram_plr_0624
@@ -2232,8 +2233,8 @@ C - - - - - 0x038B83 0E:8B73: D0 CF     BNE bra_8B44    ; jmp
 
 
 ofs_012_8B75_03_подсчет_оставшегося_здоровья_после_боя:
-C - - J - - 0x038B85 0E:8B75: 20 55 8C  JSR sub_8C55    ; возможен PLA PLA
-C - - - - - 0x038B88 0E:8B78: 20 19 8B  JSR sub_8B19    ; возможен PLA PLA
+C - - J - - 0x038B85 0E:8B75: 20 55 8C  JSR sub_8C55_ожидание    ; возможен PLA PLA
+C - - - - - 0x038B88 0E:8B78: 20 19 8B  JSR sub_8B19_ожидание_четного_кадра    ; возможен PLA PLA
 C - - - - - 0x038B8B 0E:8B7B: A9 18     LDA #$18
 C - - - - - 0x038B8D 0E:8B7D: 20 21 8B  JSR sub_8B21
 C - - - - - 0x038B90 0E:8B80: AE 71 06  LDX ram_0671
@@ -2249,7 +2250,7 @@ C - - - - - 0x038BA7 0E:8B97: 0A        ASL
 ; bzk bug? стремная запись в 068F
 C - - - - - 0x038BA8 0E:8B98: 9D 90 05  STA ram_obj_0590,X ; 068F 
 ofs_012_8B9B_04_завершение_подсчета_оставшегося_здоровья_после_боя:
-C - - - - - 0x038BAB 0E:8B9B: 20 55 8C  JSR sub_8C55    ; возможен PLA PLA
+C - - - - - 0x038BAB 0E:8B9B: 20 55 8C  JSR sub_8C55_ожидание    ; возможен PLA PLA
 C - - - - - 0x038BAE 0E:8B9E: A9 00     LDA #$00
 C - - - - - 0x038BB0 0E:8BA0: 8D 24 06  STA ram_plr_0624
 C - - - - - 0x038BB3 0E:8BA3: 60        RTS
@@ -2363,13 +2364,13 @@ C - - - - - 0x038C64 0E:8C54: 60        RTS
 
 
 
-sub_8C55:
-C - - - - - 0x038C65 0E:8C55: AD 2F 06  LDA ram_062F
+sub_8C55_ожидание:
+C - - - - - 0x038C65 0E:8C55: AD 2F 06  LDA ram_062F_задержка
 C - - - - - 0x038C68 0E:8C58: F0 0B     BEQ bra_8C65_RTS
 C - - - - - 0x038C6A 0E:8C5A: A5 22     LDA ram_счетчик_кадров
 C - - - - - 0x038C6C 0E:8C5C: 29 03     AND #$03
 C - - - - - 0x038C6E 0E:8C5E: D0 03     BNE bra_8C63
-C - - - - - 0x038C70 0E:8C60: CE 2F 06  DEC ram_062F
+C - - - - - 0x038C70 0E:8C60: CE 2F 06  DEC ram_062F_задержка
 bra_8C63:
 C - - - - - 0x038C73 0E:8C63: 68        PLA
 C - - - - - 0x038C74 0E:8C64: 68        PLA
@@ -6161,7 +6162,7 @@ C - - - - - 0x03A461 0E:A451: 85 96     STA ram_0096
                                        ;LDA #con_0095_экран_rematch_end
 C - - - - - 0x03A463 0E:A453: E6 95     INC ram_0095_стадия_игры    ; 11 -> 12
 C - - - - - 0x03A465 0E:A455: A9 00     LDA #$00
-C - - - - - 0x03A467 0E:A457: 8D 30 06  STA ram_0630
+C - - - - - 0x03A467 0E:A457: 8D 30 06  STA ram_0630_unk
 C - - - - - 0x03A46A 0E:A45A: A9 03     LDA #$03
 C - - - - - 0x03A46C 0E:A45C: 20 D3 F7  JSR sub_0x03F7E3_отрисовать_портреты
 C - - - - - 0x03A46F 0E:A45F: A2 06     LDX #$06    ; tip_индекс_буфера_палитры + $06
@@ -6195,13 +6196,13 @@ C - - - - - 0x03A4A1 0E:A491: D0 3E     BNE bra_A4D1
 C - - - - - 0x03A4A3 0E:A493: A5 90     LDA ram_sum_btn_press
 C - - - - - 0x03A4A5 0E:A495: 29 2C     AND #con_btn_Select + con_btns_UD
 C - - - - - 0x03A4A7 0E:A497: F0 0D     BEQ bra_A4A6
-C - - - - - 0x03A4A9 0E:A499: AD 30 06  LDA ram_0630
+C - - - - - 0x03A4A9 0E:A499: AD 30 06  LDA ram_0630_unk
 C - - - - - 0x03A4AC 0E:A49C: 49 01     EOR #$01
-C - - - - - 0x03A4AE 0E:A49E: 8D 30 06  STA ram_0630
+C - - - - - 0x03A4AE 0E:A49E: 8D 30 06  STA ram_0630_unk
 C - - - - - 0x03A4B1 0E:A4A1: A9 25     LDA #con_0x03F6AD_25
 C - - - - - 0x03A4B3 0E:A4A3: 20 90 F6  JSR sub_0x03F6A0_записать_звук_сохранив_X_Y
 bra_A4A6:
-C - - - - - 0x03A4B6 0E:A4A6: AC 30 06  LDY ram_0630
+C - - - - - 0x03A4B6 0E:A4A6: AC 30 06  LDY ram_0630_unk
 C - - - - - 0x03A4B9 0E:A4A9: B9 18 A5  LDA tbl_A518,Y
 C - - - - - 0x03A4BC 0E:A4AC: 8D 12 04  STA ram_obj_pos_Y_lo + $02
 C - - - - - 0x03A4BF 0E:A4AF: A9 58     LDA #$58
@@ -6227,13 +6228,14 @@ C - - - - - 0x03A4E6 0E:A4D6: AD 60 05  LDA ram_obj_timer
 C - - - - - 0x03A4E9 0E:A4D9: 29 08     AND #$08
 C - - - - - 0x03A4EB 0E:A4DB: 20 02 D2  JSR sub_0x03D212_ASLx4
 C - - - - - 0x03A4EE 0E:A4DE: 09 19     ORA #$19
-C - - - - - 0x03A4F0 0E:A4E0: 6D 30 06  ADC ram_0630
+C - - - - - 0x03A4F0 0E:A4E0: 6D 30 06  ADC ram_0630_unk
 ; con_print_rematch
+; con_print_end
 ; возможен индекс +80
 C - - - - - 0x03A4F3 0E:A4E3: 4C E5 F6  JMP loc_0x03F6F5_написать_текст_на_экране
 bra_A4E6:
 C - - - - - 0x03A4F6 0E:A4E6: A0 02     LDY #$02
-C - - - - - 0x03A4F8 0E:A4E8: AD 30 06  LDA ram_0630
+C - - - - - 0x03A4F8 0E:A4E8: AD 30 06  LDA ram_0630_unk
 C - - - - - 0x03A4FB 0E:A4EB: F0 1C     BEQ bra_A509
 C - - - - - 0x03A4FD 0E:A4ED: A5 9F     LDA ram_009F
 C - - - - - 0x03A4FF 0E:A4EF: 85 9E     STA ram_номер_боя_story

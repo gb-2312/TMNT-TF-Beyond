@@ -5933,6 +5933,7 @@ tbl_0x03EFA5:
 
 
 sub_0x03EFB0:
+; bzk optimize, переместить в банк 12 когда там будет место
 C - - - - - 0x03EFB0 0F:EFA0: A2 01     LDX #$01
 C - - - - - 0x03EFB2 0F:EFA2: 86 9D     STX ram_009D
 C - - - - - 0x03EFB4 0F:EFA4: CA        DEX ; 00
@@ -5945,6 +5946,7 @@ C - - - - - 0x03EFC0 0F:EFB0: 4C 17 F6  JMP loc_F617_restore_prg
 
 
 sub_0x03EFD1:
+; bzk optimize, переместить в банк 12 когда там будет место
 C - - - - - 0x03EFD1 0F:EFC1: 98        TYA
 C - - - - - 0x03EFD2 0F:EFC2: 0A        ASL
 C - - - - - 0x03EFD3 0F:EFC3: A8        TAY
@@ -8013,9 +8015,9 @@ C - - - - - 0x03FD44 0F:FD34: 90 F4     BCC bra_FD2A
 C - - - - - 0x03FD46 0F:FD36: 85 AB     STA ram_таймер_замедления_фпс
 bra_FD38:
 C - - - - - 0x03FD48 0F:FD38: E6 2A     INC ram_002A
-C - - - - - 0x03FD4A 0F:FD3A: AC 30 06  LDY ram_0630
+C - - - - - 0x03FD4A 0F:FD3A: AC 30 06  LDY ram_0630_таймер
 C - - - - - 0x03FD4D 0F:FD3D: F0 08     BEQ bra_FD47
-C - - - - - 0x03FD4F 0F:FD3F: CE 30 06  DEC ram_0630
+C - - - - - 0x03FD4F 0F:FD3F: CE 30 06  DEC ram_0630_таймер
 C - - - - - 0x03FD52 0F:FD42: B9 36 FE  LDA tbl_FE37 - $01,Y
 C - - - - - 0x03FD55 0F:FD45: 85 86     STA ram_0086
 bra_FD47:
@@ -8199,6 +8201,7 @@ C - - - - - 0x03FE73 0F:FE63: 4C 3E E1  JMP loc_E13E_подготовить_за
 
 
 sub_0x03FE76:
+; bzk optimize, переместить в банк 12 когда там будет место
 C - - - - - 0x03FE76 0F:FE66: AC 28 01  LDY ram_option_health
 C - - - - - 0x03FE79 0F:FE69: C0 03     CPY #$03
 C - - - - - 0x03FE7B 0F:FE6B: F0 0C     BEQ bra_FE79_RTS
@@ -8214,6 +8217,7 @@ C - - - - - 0x03FE89 0F:FE79: 60        RTS
 
 
 sub_0x03FE8A:
+; bzk optimize, переместить в банк 12 когда там будет место
 C - - - - - 0x03FE8A 0F:FE7A: BD 0D 01  LDA ram_plr_hp_hi,X ; 010D 010E 
 C - - - - - 0x03FE8D 0F:FE7D: D0 03     BNE bra_FE82_RTS
 C - - - - - 0x03FE8F 0F:FE7F: BD 90 05  LDA ram_obj_0590,X ; 0590 0591 
@@ -8290,7 +8294,7 @@ C - - - - - 0x03FF52 0F:FF42: B9 56 01  LDA ram_tournament_индекс_игро
                                         BPL bra_FF5A    ; if никто из соперников cpu, либо оба cpu
                                         LDA ram_tournament_индекс_игрока,Y ; 0155 0157 0159 
                                         BPL bra_FF6D    ; if 2 соперник cpu
-                                        BMI bra_FF6C    ; if 1 соперник cpu
+                                        BMI bra_FF6C    ; jmp if 1 соперник cpu
 bra_FF5A:
 C - - - - - 0x03FF5A 0F:FF4A: AD 0D 01  LDA ram_plr_hp_hi
 C - - - - - 0x03FF5D 0F:FF4D: 0D 0E 01  ORA ram_plr_hp_hi + $01
