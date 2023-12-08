@@ -3492,9 +3492,24 @@ C - - - - - 0x03E33D 0F:E32D: 48        PHA
 C - - - - - 0x03E33E 0F:E32E: 8A        TXA
 C - - - - - 0x03E33F 0F:E32F: 29 03     AND #$03
 C - - - - - 0x03E341 0F:E331: F0 0A     BEQ bra_E33D    ; if палитра фона 00/палитра спрайтов 00
+                                    .if con_новые_персы = $00
 C - - - - - 0x03E343 0F:E333: A5 A2     LDA ram_plr_id
 C - - - - - 0x03E345 0F:E335: C5 A3     CMP ram_plr_id + $01
 C - - - - - 0x03E347 0F:E337: D0 04     BNE bra_E33D    ; if персы разные
+                                    .else
+                                        LDA ram_plr_id
+                                        CMP ram_plr_id + $01
+                                        BEQ bra_E339_персы_одинаковые
+                                        CLC
+                                        ADC #$07
+                                        CMP ram_plr_id + $01
+                                        BEQ bra_E339_персы_одинаковые
+                                        SEC
+                                        SBC #$07 * $02
+                                        CMP ram_plr_id + $01
+                                        BNE bra_E33D    ; if персы разные
+bra_E339_персы_одинаковые:
+                                    .endif
 ; if персы одинаковые
 ; C = 1
 C - - - - - 0x03E349 0F:E339: 68        PLA
