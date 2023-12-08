@@ -3151,7 +3151,7 @@ C - - - - - 0x03910C 0E:90FC: D0 27     BNE bra_9125    ; jmp
 
 ofs_010_90FE_02:
 C - - J - - 0x03910E 0E:90FE: 20 36 9B  JSR sub_9B36_обработка_выбранного_speech
-C - - - - - 0x039111 0E:9101: AD 31 06  LDA ram_0631
+C - - - - - 0x039111 0E:9101: AD 31 06  LDA ram_0631_unk
 C - - - - - 0x039114 0E:9104: D0 0A     BNE bra_9110_RTS
 C - - - - - 0x039116 0E:9106: A9 A0     LDA #$A0
 C - - - - - 0x039118 0E:9108: 8D 60 05  STA ram_obj_timer
@@ -3184,7 +3184,7 @@ C - - - - - 0x03913E 0E:912E: 20 94 D3  JSR sub_0x03D3A4_записать_пал
 C - - - - - 0x039141 0E:9131: A9 80     LDA #$80
 C - - - - - 0x039143 0E:9133: 8D 40 04  STA ram_obj_pos_X_lo
 C - - - - - 0x039146 0E:9136: A9 00     LDA #$00
-C - - - - - 0x039148 0E:9138: 8D 31 06  STA ram_0631
+C - - - - - 0x039148 0E:9138: 8D 31 06  STA ram_0631_unk
 C - - - - - 0x03914B 0E:913B: A9 1F     LDA #$1F
 C - - - - - 0x03914D 0E:913D: 8D 10 04  STA ram_obj_pos_Y_lo
 C - - - - - 0x039150 0E:9140: A9 21     LDA #con_chr_bank_spr + $21
@@ -3196,7 +3196,7 @@ C - - - - - 0x039156 0E:9146: 4C 41 E1  JMP loc_0x03E151_подготовить_
 
 ofs_010_9149_04:
 C - - J - - 0x039159 0E:9149: 20 36 9B  JSR sub_9B36_обработка_выбранного_speech
-C - - - - - 0x03915C 0E:914C: AD 31 06  LDA ram_0631
+C - - - - - 0x03915C 0E:914C: AD 31 06  LDA ram_0631_unk
 C - - - - - 0x03915F 0E:914F: D0 07     BNE bra_9158_RTS
 C - - - - - 0x039161 0E:9151: A9 20     LDA #$20
 C - - - - - 0x039163 0E:9153: 8D 60 05  STA ram_obj_timer
@@ -3252,7 +3252,7 @@ C - - - - - 0x0391AD 0E:919D: 60        RTS
 
 ofs_010_919E_08:
 C - - J - - 0x0391AE 0E:919E: 20 36 9B  JSR sub_9B36_обработка_выбранного_speech
-C - - - - - 0x0391B1 0E:91A1: AD 31 06  LDA ram_0631
+C - - - - - 0x0391B1 0E:91A1: AD 31 06  LDA ram_0631_unk
 C - - - - - 0x0391B4 0E:91A4: D0 F7     BNE bra_919D_RTS
 C - - - - - 0x0391B6 0E:91A6: A9 60     LDA #$60
 C - - - - - 0x0391B8 0E:91A8: 8D 60 05  STA ram_obj_timer
@@ -3996,7 +3996,7 @@ C - - - - - 0x0396AB 0E:969B: 4C 41 E1  JMP loc_0x03E151_подготовить_
 
 ofs_007_969E_02:
 C - - J - - 0x0396AE 0E:969E: 20 36 9B  JSR sub_9B36_обработка_выбранного_speech
-C - - - - - 0x0396B1 0E:96A1: AD 31 06  LDA ram_0631
+C - - - - - 0x0396B1 0E:96A1: AD 31 06  LDA ram_0631_unk
 C - - - - - 0x0396B4 0E:96A4: D0 B2     BNE bra_9658_RTS
 C - - - - - 0x0396B6 0E:96A6: AD 25 01  LDA ram_option_difficulty
 C - - - - - 0x0396B9 0E:96A9: F0 05     BEQ bra_96B0
@@ -4267,7 +4267,7 @@ C - - - - - 0x03986A 0E:985A: 4C 41 E1  JMP loc_0x03E151_подготовить_
 
 ofs_007_985D_07:
 C - - J - - 0x03986D 0E:985D: 20 36 9B  JSR sub_9B36_обработка_выбранного_speech
-C - - - - - 0x039870 0E:9860: AD 31 06  LDA ram_0631
+C - - - - - 0x039870 0E:9860: AD 31 06  LDA ram_0631_unk
 C - - - - - 0x039873 0E:9863: D0 2C     BNE bra_9891_RTS
 C - - - - - 0x039875 0E:9865: E6 21     INC ram_script_draw_lo
 C - - - - - 0x039877 0E:9867: 4C 2E E1  JMP loc_0x03E13E_подготовить_затемнение_из_цветного_в_черный
@@ -4408,7 +4408,7 @@ ofs_007_9935_0E_try_hard_mode:
 C - - J - - 0x039945 0E:9935: A9 07     LDA #con_speech_try_hard_mode
 C - - - - - 0x039947 0E:9937: 85 B6     STA ram_speech
 C - - - - - 0x039949 0E:9939: 20 36 9B  JSR sub_9B36_обработка_выбранного_speech
-C - - - - - 0x03994C 0E:993C: AD 31 06  LDA ram_0631
+C - - - - - 0x03994C 0E:993C: AD 31 06  LDA ram_0631_unk
 C - - - - - 0x03994F 0E:993F: D0 BB     BNE bra_98FC_RTS
 C - - - - - 0x039951 0E:9941: A9 40     LDA #$40
 C - - - - - 0x039953 0E:9943: 8D 60 05  STA ram_obj_timer
@@ -4686,7 +4686,7 @@ tbl_99E2_credits:
 
 sub_9B36_обработка_выбранного_speech:
 sub_0x039B46_обработка_выбранного_speech:
-C - - - - - 0x039B46 0E:9B36: AD 31 06  LDA ram_0631
+C - - - - - 0x039B46 0E:9B36: AD 31 06  LDA ram_0631_unk
 C - - - - - 0x039B49 0E:9B39: 20 32 D0  JSR sub_0x03D042_поинтеры_после_JSR
 - D 0 - I - 0x039B4C 0E:9B3C: 40 9B     .word ofs_005_9B40_00_подготовить_поинтеры_speech
 - D 0 - I - 0x039B4E 0E:9B3E: 6F 9B     .word ofs_005_9B6F_01_печатание_текста_speech
@@ -4703,7 +4703,7 @@ C - - - - - 0x039B5A 0E:9B4A: 8D 33 06  STA ram_0633
 C - - - - - 0x039B5D 0E:9B4D: B9 91 A7  LDA tbl_A790 + $01,Y
 C - - - - - 0x039B60 0E:9B50: 8D 34 06  STA ram_0634
 C - - - - - 0x039B63 0E:9B53: A9 00     LDA #$00
-C - - - - - 0x039B65 0E:9B55: 8D 32 06  STA ram_0632
+C - - - - - 0x039B65 0E:9B55: 8D 32 06  STA ram_0632_unk
 C - - - - - 0x039B68 0E:9B58: 8D 39 06  STA ram_plr_0639
 C - - - - - 0x039B6B 0E:9B5B: 20 01 A6  JSR sub_A601_попытка_подготовить_надпись_с_предложением_пройти_expert
 sub_9B5E_задержка_6_кадров:
@@ -4739,7 +4739,7 @@ C - - - - - 0x039B87 0E:9B77: AD 33 06  LDA ram_0633
 C - - - - - 0x039B8A 0E:9B7A: 85 00     STA ram_0000
 C - - - - - 0x039B8C 0E:9B7C: AD 34 06  LDA ram_0634
 C - - - - - 0x039B8F 0E:9B7F: 85 01     STA ram_0001
-C - - - - - 0x039B91 0E:9B81: AC 32 06  LDY ram_0632
+C - - - - - 0x039B91 0E:9B81: AC 32 06  LDY ram_0632_unk
 C - - - - - 0x039B94 0E:9B84: B1 00     LDA (ram_0000),Y
 C - - - - - 0x039B96 0E:9B86: C9 BD     CMP #con_9B6F_BD_новая_строка
 C - - - - - 0x039B98 0E:9B88: F0 33     BEQ bra_9BBD_BD
@@ -4768,7 +4768,7 @@ loc_9BB6:
 bra_9BB6:
 C D 0 - - - 0x039BC6 0E:9BB6: EE 39 06  INC ram_plr_0639
 bra_9BB9:
-C - - - - - 0x039BC9 0E:9BB9: EE 32 06  INC ram_0632
+C - - - - - 0x039BC9 0E:9BB9: EE 32 06  INC ram_0632_unk
 C - - - - - 0x039BCC 0E:9BBC: 60        RTS
 bra_9BBD_BD:
 ; новая строка
@@ -4783,11 +4783,11 @@ C - - - - - 0x039BDE 0E:9BCE: 8D 35 06  STA ram_0635
 C - - - - - 0x039BE1 0E:9BD1: 10 E6     BPL bra_9BB9    ; jmp
 bra_9BD3_BB:
 ; записать задержку
-C - - - - - 0x039BE3 0E:9BD3: EE 32 06  INC ram_0632
-C - - - - - 0x039BE6 0E:9BD6: AC 32 06  LDY ram_0632
+C - - - - - 0x039BE3 0E:9BD3: EE 32 06  INC ram_0632_unk
+C - - - - - 0x039BE6 0E:9BD6: AC 32 06  LDY ram_0632_unk
 C - - - - - 0x039BE9 0E:9BD9: B1 00     LDA (ram_0000),Y
 C - - - - - 0x039BEB 0E:9BDB: 8D 37 06  STA ram_plr_0636 + $01
-C - - - - - 0x039BEE 0E:9BDE: EE 32 06  INC ram_0632
+C - - - - - 0x039BEE 0E:9BDE: EE 32 06  INC ram_0632_unk
 C - - - - - 0x039BF1 0E:9BE1: 60        RTS
 bra_9BE2_BC:
 ; очистить текст
@@ -4802,7 +4802,7 @@ C - - - - - 0x039C01 0E:9BF1: C8        INY
 C - - - - - 0x039C02 0E:9BF2: D0 F3     BNE bra_9BE7_loop
 bra_9BF4_FF:
 ; завершить вывод текста
-C - - - - - 0x039C04 0E:9BF4: EE 32 06  INC ram_0632
+C - - - - - 0x039C04 0E:9BF4: EE 32 06  INC ram_0632_unk
 C - - - - - 0x039C07 0E:9BF7: 4C 64 9B  JMP loc_9B64
 
 
@@ -4828,7 +4828,7 @@ bra_9C07:
 bra_9C07_FF:
 ; закончить вывод текста
 C - - - - - 0x039C17 0E:9C07: A9 00     LDA #$00
-C - - - - - 0x039C19 0E:9C09: 8D 31 06  STA ram_0631
+C - - - - - 0x039C19 0E:9C09: 8D 31 06  STA ram_0631_unk
 C - - - - - 0x039C1C 0E:9C0C: 60        RTS
 
 
@@ -6416,7 +6416,7 @@ tbl_A5AA_challenge_expert_mode:
 
 
 sub_A601_попытка_подготовить_надпись_с_предложением_пройти_expert:
-C - - - - - 0x03A611 0E:A601: EE 31 06  INC ram_0631
+C - - - - - 0x03A611 0E:A601: EE 31 06  INC ram_0631_unk
 C - - - - - 0x03A614 0E:A604: C0 0E     CPY #$0E
 C - - - - - 0x03A616 0E:A606: D0 10     BNE bra_A618_RTS
 C - - - - - 0x03A618 0E:A608: AD 25 01  LDA ram_option_difficulty

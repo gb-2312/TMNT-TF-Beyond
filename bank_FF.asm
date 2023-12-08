@@ -4559,7 +4559,7 @@ C - - - - - 0x03E8F7 0F:E8E7: 4C 04 DC  JMP loc_DC04_запись_1й_пары_c
 ofs_001_E8EA_1E:
 C - - J - - 0x03E8FA 0F:E8EA: 20 33 D3  JSR sub_D333_выбрать_речь_перед_финальным_боем_в_story
 C - - - - - 0x03E8FE 0F:E8EE: 20 DE F7  JSR sub_F7DE
-C - - - - - 0x03E901 0F:E8F1: AD 31 06  LDA ram_0631
+C - - - - - 0x03E901 0F:E8F1: AD 31 06  LDA ram_0631_unk
 C - - - - - 0x03E904 0F:E8F4: D0 8A     BNE bra_E880_RTS
 C - - - - - 0x03E906 0F:E8F6: 20 C4 E5  JSR sub_E5C4
 C - - - - - 0x03E909 0F:E8F9: 4C 2E E1  JMP loc_E12E_подготовить_затемнение_из_цветного_в_черный
@@ -4570,7 +4570,7 @@ ofs_001_E8FC_20_expected_tougher:
 - - - - - - 0x03E90C 0F:E8FC: A9 06     LDA #con_speech_expected_tougher
 - - - - - - 0x03E90E 0F:E8FE: 85 B6     STA ram_speech
 - - - - - - 0x03E910 0F:E900: 20 DE F7  JSR sub_F7DE
-- - - - - - 0x03E913 0F:E903: AD 31 06  LDA ram_0631
+- - - - - - 0x03E913 0F:E903: AD 31 06  LDA ram_0631_unk
 - - - - - - 0x03E916 0F:E906: D0 89     BNE bra_E891_RTS
 - - - - - - 0x03E918 0F:E908: 20 8A E6  JSR sub_E68A
 - - - - - - 0x03E91B 0F:E90B: 4C 2E E1  JMP loc_E12E_подготовить_затемнение_из_цветного_в_черный

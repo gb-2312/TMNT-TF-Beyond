@@ -1902,16 +1902,16 @@ _off013_B6B0_0D:
 ofs_0x02F73B_суперка_casey_песок:
 C - - - - - 0x02F73B 0B:B72B: BD 40 05  LDA ram_obj_state_lo,X ; 0540 0541 
 C - - - - - 0x02F73E 0B:B72E: 20 32 D0  JSR sub_0x03D042_поинтеры_после_JSR
-- D 1 - I - 0x02F741 0B:B731: 3D B7     .word ofs_038_B73D_00
-- D 1 - I - 0x02F743 0B:B733: 50 B7     .word ofs_038_B750_01
-- D 1 - I - 0x02F745 0B:B735: 71 B7     .word ofs_038_B771_02
-- D 1 - I - 0x02F747 0B:B737: A3 B7     .word ofs_038_B7A3_03
-- D 1 - I - 0x02F749 0B:B739: 09 B8     .word ofs_038_B809_04
-- D 1 - I - 0x02F74B 0B:B73B: 4E B8     .word ofs_038_B84E_05
+- D 1 - I - 0x02F741 0B:B731: 3D B7     .word ofs_суперка_casey_песок_B73D_00
+- D 1 - I - 0x02F743 0B:B733: 50 B7     .word ofs_суперка_casey_песок_B750_01
+- D 1 - I - 0x02F745 0B:B735: 71 B7     .word ofs_суперка_casey_песок_B771_02
+- D 1 - I - 0x02F747 0B:B737: A3 B7     .word ofs_суперка_casey_песок_B7A3_03
+- D 1 - I - 0x02F749 0B:B739: 09 B8     .word ofs_суперка_casey_песок_B809_04
+- D 1 - I - 0x02F74B 0B:B73B: 4E B8     .word ofs_суперка_casey_песок_B84E_05
 
 
 
-ofs_038_B73D_00:
+ofs_суперка_casey_песок_B73D_00:
 C - - J - - 0x02F74D 0B:B73D: A9 0C     LDA #$0C
 loc_B73F:
 C D 1 - - - 0x02F74F 0B:B73F: 20 0E E1  JSR sub_0x03E11E_корректировка_значения_A_для_turbo
@@ -1924,7 +1924,7 @@ C - - - - - 0x02F75D 0B:B74D: 4C 17 F6  JMP loc_0x03F627_restore_prg
 
 
 
-ofs_038_B750_01:
+ofs_суперка_casey_песок_B750_01:
 C - - J - - 0x02F760 0B:B750: DE 60 05  DEC ram_obj_timer,X ; 0560 0561 
 C - - - - - 0x02F763 0B:B753: D0 F8     BNE bra_B74D
 C - - - - - 0x02F765 0B:B755: FE 40 05  INC ram_obj_state_lo,X ; 0540 0541 
@@ -1943,7 +1943,7 @@ C - - - - - 0x02F77E 0B:B76E: 4C 17 F6  JMP loc_0x03F627_restore_prg
 
 
 
-ofs_038_B771_02:
+ofs_суперка_casey_песок_B771_02:
 C - - J - - 0x02F781 0B:B771: BC 10 04  LDY ram_obj_pos_Y_lo,X ; 0410 0411 
 C - - - - - 0x02F784 0B:B774: C0 68     CPY #$68
 C - - - - - 0x02F786 0B:B776: 90 19     BCC bra_B791
@@ -1969,7 +1969,7 @@ C - - - - - 0x02F7B0 0B:B7A0: 4C 48 B8  JMP loc_B848
 
 
 
-ofs_038_B7A3_03:
+ofs_суперка_casey_песок_B7A3_03:
 C - - J - - 0x02F7B3 0B:B7A3: A9 C0     LDA #$C0
 C - - - - - 0x02F7B5 0B:B7A5: BC A0 04  LDY ram_obj_spd_Y_hi,X ; 04A0 04A1 
 C - - - - - 0x02F7B8 0B:B7A8: 10 02     BPL bra_B7AC
@@ -2018,7 +2018,7 @@ C - - - - - 0x02F816 0B:B806: 4C 48 B8  JMP loc_B848
 
 
 
-ofs_038_B809_04:
+ofs_суперка_casey_песок_B809_04:
 C - - J - - 0x02F819 0B:B809: A9 48     LDA #$48
 C - - - - - 0x02F81B 0B:B80B: 20 4C E1  JSR sub_0x03E15C
 C - - - - - 0x02F81E 0B:B80E: 20 58 DC  JSR sub_0x03DC68_добавить_A_00_к_spd_Z
@@ -2053,7 +2053,7 @@ C - - - - - 0x02F85B 0B:B84B: 4C 17 F6  JMP loc_0x03F627_restore_prg
 
 
 
-ofs_038_B84E_05:
+ofs_суперка_casey_песок_B84E_05:
 C - - J - - 0x02F85E 0B:B84E: A9 B8     LDA #> (ofs_0x0278CB_суперка_casey_песок_финальная_стадия - $01)
 C - - - - - 0x02F860 0B:B850: 48        PHA
 C - - - - - 0x02F861 0B:B851: A9 BA     LDA #< (ofs_0x0278CB_суперка_casey_песок_финальная_стадия - $01)
