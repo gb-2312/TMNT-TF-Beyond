@@ -1977,14 +1977,6 @@ C - - - - - 0x024C3B 09:8C2B: 20 32 D0  JSR sub_0x03D042_поинтеры_пос
 
 
 
-loc_8C4C:
-C D 0 - - - 0x024C5C 09:8C4C: A9 14     LDA #$14
-C - - - - - 0x024C5E 09:8C4E: 9D F0 05  STA ram_obj_05F0,X ; 05F0 05F1 
-C - - - - - 0x024C61 09:8C51: FE 40 05  INC ram_obj_0540,X ; 0540 0541 
-C - - - - - 0x024C64 09:8C54: 60        RTS
-
-
-
 ofs_055_8C55_01:
                                        ;LDY ram_obj_0540,X
 C - - J - - 0x024C65 09:8C55: D0 1F     BNE bra_8C76
@@ -2001,7 +1993,10 @@ C - - - - - 0x024C79 09:8C69: A9 03     LDA #$03
 C - - - - - 0x024C7B 09:8C6B: 9D D0 05  STA ram_obj_05D0,X ; 05D0 05D1 
 C - - - - - 0x024C7E 09:8C6E: A9 00     LDA #$00
 C - - - - - 0x024C80 09:8C70: 9D C0 05  STA ram_obj_anim_timer,X ; 05C0 05C1 
-C - - - - - 0x024C83 09:8C73: 4C 4C 8C  JMP loc_8C4C
+C D 0 - - - 0x024C5C 09:8C4C: A9 14     LDA #$14
+C - - - - - 0x024C5E 09:8C4E: 9D F0 05  STA ram_obj_05F0,X ; 05F0 05F1 
+C - - - - - 0x024C61 09:8C51: FE 40 05  INC ram_obj_0540,X ; 0540 0541 
+C - - - - - 0x024C64 09:8C54: 60        RTS
 bra_8C76:
 C - - - - - 0x024C86 09:8C76: A8        TAY
 C - - - - - 0x024C87 09:8C77: 88        DEY
