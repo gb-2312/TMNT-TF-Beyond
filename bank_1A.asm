@@ -6422,7 +6422,7 @@ C - - - - - 0x0362B8 0D:A2A8: C0 04     CPY #$04
 C - - - - - 0x0362BA 0D:A2AA: F0 22     BEQ bra_A2CE_выход_ai_из_песка_нокдауна_и_кусания
 C - - - - - 0x0362BC 0D:A2AC: C0 03     CPY #$03
 C - - - - - 0x0362BE 0D:A2AE: D0 2B     BNE bra_A2DB
-C - - - - - 0x0362C0 0D:A2B0: BD C0 04  LDA ram_obj_04C0,X ; 04C0 04C1 
+C - - - - - 0x0362C0 0D:A2B0: BD C0 04  LDA ram_hit_state,X ; 04C0 04C1 
 C - - - - - 0x0362C3 0D:A2B3: C9 08     CMP #$08
 C - - - - - 0x0362C5 0D:A2B5: F0 17     BEQ bra_A2CE_выход_ai_из_песка_нокдауна_и_кусания
 C - - - - - 0x0362C7 0D:A2B7: C9 07     CMP #$07
@@ -6620,7 +6620,7 @@ C - - - - - 0x036400 0D:A3F0: F0 16     BEQ bra_A408
 C - - - - - 0x036402 0D:A3F2: BD 20 05  LDA ram_obj_state_hi,X ; 0520 0521 
 C - - - - - 0x036405 0D:A3F5: C9 03     CMP #con_plr_state_получает_урон
 C - - - - - 0x036407 0D:A3F7: D0 0B     BNE bra_A404
-C - - - - - 0x036409 0D:A3F9: BD C0 04  LDA ram_obj_04C0,X ; 04C0 04C1 
+C - - - - - 0x036409 0D:A3F9: BD C0 04  LDA ram_hit_state,X ; 04C0 04C1 
 C - - - - - 0x03640C 0D:A3FC: C9 04     CMP #$04
 C - - - - - 0x03640E 0D:A3FE: F0 11     BEQ bra_A411
 C - - - - - 0x036410 0D:A400: C9 07     CMP #$07
@@ -6739,7 +6739,7 @@ sub_A4B4:
 - - - - - - 0x0364DF 0D:A4CF: A9 00     LDA #$00
 - - - - - - 0x0364E1 0D:A4D1: 9D D2 06  STA ram_plr_06D2,X
 bra_A4D4:
-- - - - - - 0x0364E4 0D:A4D4: BD C0 04  LDA ram_obj_04C0,X
+- - - - - - 0x0364E4 0D:A4D4: BD C0 04  LDA ram_hit_state,X
 - - - - - - 0x0364E7 0D:A4D7: D0 3A     BNE bra_A513
 - - - - - - 0x0364E9 0D:A4D9: AD 38 06  LDA ram_0638
 - - - - - - 0x0364EC 0D:A4DC: C9 18     CMP #$18
@@ -6801,7 +6801,7 @@ bra_A51A_raph:
 - - - - - - 0x03652A 0D:A51A: BD F0 05  LDA ram_obj_05F0,X
 - - - - - - 0x03652D 0D:A51D: C9 16     CMP #$16
 - - - - - - 0x03652F 0D:A51F: D0 25     BNE bra_A546
-- - - - - - 0x036531 0D:A521: BD C0 04  LDA ram_obj_04C0,X
+- - - - - - 0x036531 0D:A521: BD C0 04  LDA ram_hit_state,X
 - - - - - - 0x036534 0D:A524: C9 06     CMP #$06
 - - - - - - 0x036536 0D:A526: D0 1E     BNE bra_A546
 - - - - - - 0x036538 0D:A528: AD 16 04  LDA ram_obj_pos_Y_lo + $06
@@ -7153,7 +7153,7 @@ bra_A694:
                                         CMP #con_fighter___shred
                                         BEQ bra_A6A8_shred
                                     .endif
-- - - - - - 0x0366AB 0D:A69B: BD C0 04  LDA ram_obj_04C0,X
+- - - - - - 0x0366AB 0D:A69B: BD C0 04  LDA ram_hit_state,X
 - - - - - - 0x0366AE 0D:A69E: C9 09     CMP #$09
 - - - - - - 0x0366B0 0D:A6A0: F0 57     BEQ bra_A6F9
 bra_A6A8_shred:
@@ -7260,7 +7260,7 @@ C - - - - - 0x036775 0D:A765: 90 31     BCC bra_A798
                                         LDA ram_plr_062C,X
                                         CMP #$12
                                         BCS bra_A78F
-                                        LDA ram_obj_04C0,X
+                                        LDA ram_hit_state,X
                                         CMP #$05
                                         BEQ bra_A78F
 bra_A78D:
@@ -7486,7 +7486,7 @@ bra_BDA8:
 - - - - - - 0x037DBA 0D:BDAA: 90 13     BCC bra_BDBF
                                         JSR sub_BDEE_проверка_нахождения_в_углу
                                         BCC bra_BDBF
-- - - - - - 0x037DC7 0D:BDB7: BD C0 04  LDA ram_obj_04C0,X
+- - - - - - 0x037DC7 0D:BDB7: BD C0 04  LDA ram_hit_state,X
 - - - - - - 0x037DCA 0D:BDBA: 49 06     EOR #$06
 - - - - - - 0x037DCC 0D:BDBC: D0 27     BNE bra_BDE5
 bra_BDBF:
@@ -7665,7 +7665,7 @@ bra_BF04:
 - - - - - - 0x037F21 0D:BF11: F0 0C     BEQ bra_BF1F
 - - - - - - 0x037F23 0D:BF13: BD F0 05  LDA ram_obj_05F0,X
 - - - - - - 0x037F26 0D:BF16: F0 07     BEQ bra_BF1F
-- - - - - - 0x037F28 0D:BF18: BD C0 04  LDA ram_obj_04C0,X
+- - - - - - 0x037F28 0D:BF18: BD C0 04  LDA ram_hit_state,X
 ; bzk bug? вроде ж не бывает индекса 09
 - - - - - - 0x037F2B 0D:BF1B: C9 09     CMP #$09
 - - - - - - 0x037F2D 0D:BF1D: F0 1B     BEQ bra_BF3A

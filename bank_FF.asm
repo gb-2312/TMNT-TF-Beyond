@@ -2121,7 +2121,7 @@ C - - - - - 0x03DB23 0F:DB13: 9D E0 05  STA ram_obj_05E0,X
 C - - - - - 0x03DB26 0F:DB16: 9D F0 05  STA ram_obj_05F0,X
 C - - - - - 0x03DB29 0F:DB19: 9D A0 04  STA ram_obj_spd_Y_hi,X
 C - - - - - 0x03DB2C 0F:DB1C: 9D B0 04  STA ram_obj_spd_Y_lo,X
-C - - - - - 0x03DB2F 0F:DB1F: 9D C0 04  STA ram_obj_04C0,X
+C - - - - - 0x03DB2F 0F:DB1F: 9D C0 04  STA ram_hit_state,X
 C - - - - - 0x03DB32 0F:DB22: 9D D0 04  STA ram_obj_04D0,X
 C - - - - - 0x03DB35 0F:DB25: 9D E0 04  STA ram_obj_04E0,X
 C - - - - - 0x03DB38 0F:DB28: 9D F0 04  STA ram_obj_04F0,X

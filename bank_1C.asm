@@ -394,7 +394,7 @@ ofs_086_8060_02_bgm:
                                         LDA ram_btn_press
                                         AND #con_btn_B
                                         BEQ bra_81B3_RTS
-                                        LDY ram_obj_04C0
+                                        LDY ram_hit_state
                                         LDA tbl_829E_sound,Y
                                         JMP loc_0x03F6A0_записать_звук_сохранив_X_Y
 bra_81B4:
@@ -404,15 +404,15 @@ bra_81B4:
                                         AND #con_btn_Right
                                         BNE bra_81B0_right
 ; if left
-                                        LDA ram_obj_04C0
+                                        LDA ram_hit_state
                                         BEQ bra_81B3_RTS
-                                        DEC ram_obj_04C0
+                                        DEC ram_hit_state
                                         BPL bra_81B2    ; jmp
 bra_81B0_right:
-                                        LDA ram_obj_04C0
+                                        LDA ram_hit_state
                                         CMP #$11
                                         BCS bra_81B3_RTS
-                                        INC ram_obj_04C0
+                                        INC ram_hit_state
 bra_81B2:
                                        ;JSR sub_81A9_воспроизвести_звук_27
                                         JSR sub_81BE_отрисовать_вариант_bgm
@@ -444,7 +444,7 @@ tbl_829E_sound:
 
 
 sub_81BE_отрисовать_вариант_bgm:
-                                        LDY ram_obj_04C0
+                                        LDY ram_hit_state
                                         LDA tbl_81BF_bgm,Y
                                         JSR sub_0x03F6F5_написать_текст_на_экране
                                         RTS
@@ -3292,7 +3292,7 @@ C - - - - - 0x0391F2 0E:91E2: 8D 0C 01  STA ram_custom_scanline
 loc_91E5:
 C D 0 - - - 0x0391F5 0E:91E5: E6 21     INC ram_script_draw_lo
 C - - - - - 0x0391F7 0E:91E7: A9 00     LDA #$00
-C - - - - - 0x0391F9 0E:91E9: 8D C0 04  STA ram_obj_04C0
+C - - - - - 0x0391F9 0E:91E9: 8D C0 04  STA ram_hit_state
 C - - - - - 0x0391FC 0E:91EC: AD B0 04  LDA ram_obj_spd_Y_lo
 C - - - - - 0x0391FF 0E:91EF: 0A        CLC
 C - - - - - 0x039200 0E:91F0: 69 30     ADC #$18
@@ -3378,7 +3378,7 @@ C - - - - - 0x03927E 0E:926E: 60        RTS
 
 sub_926F:
 ; бряк срабатывает при показе персов в опенинге
-C - - - - - 0x03927F 0E:926F: AD C0 04  LDA ram_obj_04C0
+C - - - - - 0x03927F 0E:926F: AD C0 04  LDA ram_hit_state
 C - - - - - 0x039282 0E:9272: 20 32 D0  JSR sub_0x03D042_поинтеры_после_JSR
 - D 0 - I - 0x039285 0E:9275: 7D 92     .word ofs_009_927D_00_скролл_экрана_с_персом
 - D 0 - I - 0x039287 0E:9277: 06 93     .word ofs_009_9306_01_печатание_имени_перса
@@ -3396,7 +3396,7 @@ C - - - - - 0x039296 0E:9286: A5 FC     LDA ram_scroll_Y
 C - - - - - 0x039298 0E:9288: 29 FC     AND #$FC
 C - - - - - 0x03929A 0E:928A: C9 E0     CMP #$E0
 C - - - - - 0x03929C 0E:928C: D0 08     BNE bra_9296_RTS
-C - - - - - 0x03929E 0E:928E: EE C0 04  INC ram_obj_04C0    ; 01
+C - - - - - 0x03929E 0E:928E: EE C0 04  INC ram_hit_state    ; 01
 C - - - - - 0x0392A1 0E:9291: A9 00     LDA #$00
 C - - - - - 0x0392A3 0E:9293: 8D 30 05  STA ram_obj_state_0530
 bra_9296_RTS:
@@ -3550,7 +3550,7 @@ C - - - - - 0x0393A5 0E:9395: D0 23     BNE bra_93BA_RTS
 C - - - - - 0x0393A7 0E:9397: A5 21     LDA ram_script_draw_lo
 C - - - - - 0x0393A9 0E:9399: C9 10     CMP #$10
 C - - - - - 0x0393AB 0E:939B: B0 15     BCS bra_93B2
-C - - - - - 0x0393AD 0E:939D: EE C0 04  INC ram_obj_04C0    ; 02
+C - - - - - 0x0393AD 0E:939D: EE C0 04  INC ram_hit_state    ; 02
 C - - - - - 0x0393B0 0E:93A0: 4C 2E E1  JMP loc_0x03E13E_подготовить_затемнение_из_цветного_в_черный
 bra_93BA_RTS:
 C - - - - - 0x0393CA 0E:93BA: 60        RTS
@@ -3560,7 +3560,7 @@ C - - - - - 0x0393CA 0E:93BA: 60        RTS
 ofs_009_93A3_02:
 C - - J - - 0x0393B3 0E:93A3: A9 00     LDA #$00
 C - - - - - 0x0393B5 0E:93A5: 8D 00 04  STA ram_obj_anim_id
-C - - - - - 0x0393B8 0E:93A8: EE C0 04  INC ram_obj_04C0    ; 03
+C - - - - - 0x0393B8 0E:93A8: EE C0 04  INC ram_hit_state    ; 03
 C - - - - - 0x0393BB 0E:93AB: 60        RTS
 
 
