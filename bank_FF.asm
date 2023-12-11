@@ -134,8 +134,8 @@
 .export sub_0x03ECE9_проверить_ограничение_по_X
 .export sub_0x03ECF8
 .export loc_0x03ED15
-.export sub_0x03ED24_запись_cpu_btn
-.export sub_0x03ED30_чтение_cpu_btn
+.export sub_0x03ED24_запись_поведения_cpu
+.export sub_0x03ED30_чтение_поведения_cpu
 .export sub_0x03ED3C
 .export sub_0x03ED6A
 .export sub_0x03ED9F_запись_кнопки_hold_и_press
@@ -5318,7 +5318,7 @@ tbl_EC53_ppu:
 
 
 sub_0x03EC6B:
-C - - - - - 0x03EC6B 0F:EC5B: BC DE 06  LDY ram_06DE_plr,X ; 06DE 06DF 
+C - - - - - 0x03EC6B 0F:EC5B: BC DE 06  LDY ram_06DE_cpu_индекс_соперника,X ; 06DE 06DF 
 C - - - - - 0x03EC6E 0F:EC5E: B9 54 05  LDA ram_obj_id + $04,Y ; 0554 0555 
 C - - - - - 0x03EC71 0F:EC61: C9 30     CMP #con_0552_special_shred_волна
 C - - - - - 0x03EC73 0F:EC63: F0 0A     BEQ bra_EC6F
@@ -5339,7 +5339,7 @@ C - - - - - 0x03EC8A 0F:EC7A: 60        RTS
 
 
 sub_0x03EC8B:
-C - - - - - 0x03EC8B 0F:EC7B: AD D6 06  LDA ram_06D6
+C - - - - - 0x03EC8B 0F:EC7B: AD D6 06  LDA ram_дистанция_до_соперника_X_hi
 C - - - - - 0x03EC8E 0F:EC7E: 10 03     BPL bra_EC83
 C - - - - - 0x03EC90 0F:EC80: A9 02     LDA #con_btn_Left
 C - - - - - 0x03EC92 0F:EC82: 60        RTS
@@ -5350,7 +5350,7 @@ C - - - - - 0x03EC95 0F:EC85: 60        RTS
 
 
 sub_0x03EC96:
-C - - - - - 0x03EC96 0F:EC86: AD D6 06  LDA ram_06D6
+C - - - - - 0x03EC96 0F:EC86: AD D6 06  LDA ram_дистанция_до_соперника_X_hi
 C - - - - - 0x03EC99 0F:EC89: 30 F8     BMI bra_EC83
 C - - - - - 0x03EC9B 0F:EC8B: A9 02     LDA #con_btn_Left
 C - - - - - 0x03EC9D 0F:EC8D: 60        RTS
@@ -5358,13 +5358,13 @@ C - - - - - 0x03EC9D 0F:EC8D: 60        RTS
 
 
 sub_0x03EC9E:
-C - - - - - 0x03EC9E 0F:EC8E: BC DE 06  LDY ram_06DE_plr,X ; 06DE 06DF 
+C - - - - - 0x03EC9E 0F:EC8E: BC DE 06  LDY ram_06DE_cpu_индекс_соперника,X ; 06DE 06DF 
 C - - - - - 0x03ECA1 0F:EC91: BD 80 04  LDA ram_obj_spd_X_hi,X ; 0480 0481 
 C - - - - - 0x03ECA4 0F:EC94: 1D 90 04  ORA ram_obj_spd_X_lo,X ; 0490 0491 
 C - - - - - 0x03ECA7 0F:EC97: 19 80 04  ORA ram_obj_spd_X_hi,Y ; 0480 0481 
 C - - - - - 0x03ECAA 0F:EC9A: 19 90 04  ORA ram_obj_spd_X_lo,Y ; 0490 0491 
 C - - - - - 0x03ECAD 0F:EC9D: F0 13     BEQ bra_ECB2
-C - - - - - 0x03ECAF 0F:EC9F: AD D6 06  LDA ram_06D6
+C - - - - - 0x03ECAF 0F:EC9F: AD D6 06  LDA ram_дистанция_до_соперника_X_hi
 C - - - - - 0x03ECB2 0F:ECA2: 30 10     BMI bra_ECB4
 C - - - - - 0x03ECB4 0F:ECA4: BD 80 04  LDA ram_obj_spd_X_hi,X ; 0480 0481 
 C - - - - - 0x03ECB7 0F:ECA7: 30 09     BMI bra_ECB2
@@ -5444,32 +5444,34 @@ C - - - - - 0x03ED08 0F:ECF8: 60        RTS
 
 
 loc_0x03ED15:
-C D 3 - - - 0x03ED15 0F:ED05: BD C6 06  LDA ram_06C6_plr,X ; 06C6 06C7 
-C - - - - - 0x03ED18 0F:ED08: 1D C8 06  ORA ram_06C8_plr,X ; 06C8 06C9 
+C D 3 - - - 0x03ED15 0F:ED05: BD C6 06  LDA ram_06C6_cpu,X ; 06C6 06C7 
+C - - - - - 0x03ED18 0F:ED08: 1D C8 06  ORA ram_06C8_cpu,X ; 06C8 06C9 
 C - - - - - 0x03ED1B 0F:ED0B: 95 91     STA ram_btn_hold,X
-C - - - - - 0x03ED1D 0F:ED0D: 9D C6 06  STA ram_06C6_plr,X ; 06C6 06C7 
-C - - - - - 0x03ED20 0F:ED10: 9D C8 06  STA ram_06C8_plr,X ; 06C8 06C9 
+C - - - - - 0x03ED1D 0F:ED0D: 9D C6 06  STA ram_06C6_cpu,X ; 06C6 06C7 
+C - - - - - 0x03ED20 0F:ED10: 9D C8 06  STA ram_06C8_cpu,X ; 06C8 06C9 
 C - - - - - 0x03ED23 0F:ED13: 60        RTS
 
 
 
-sub_0x03ED24_запись_cpu_btn:
+sub_0x03ED24_запись_поведения_cpu:
 C - - - - - 0x03ED24 0F:ED14: E0 00     CPX #$00
-C - - - - - 0x03ED26 0F:ED16: D0 04     BNE bra_ED1C
+C - - - - - 0x03ED26 0F:ED16: D0 04     BNE bra_ED1C_2й_игрок
+; if 1й игрок
 C - - - - - 0x03ED28 0F:ED18: 99 80 06  STA ram_поведение_cpu_1,Y
 C - - - - - 0x03ED2B 0F:ED1B: 60        RTS
-bra_ED1C:
+bra_ED1C_2й_игрок:
 C - - - - - 0x03ED2C 0F:ED1C: 99 A0 06  STA ram_поведение_cpu_2,Y
 C - - - - - 0x03ED2F 0F:ED1F: 60        RTS
 
 
 
-sub_0x03ED30_чтение_cpu_btn:
+sub_0x03ED30_чтение_поведения_cpu:
 C - - - - - 0x03ED30 0F:ED20: E0 00     CPX #$00
-C - - - - - 0x03ED32 0F:ED22: D0 04     BNE bra_ED28
+C - - - - - 0x03ED32 0F:ED22: D0 04     BNE bra_ED28_2й_игрок
+; if 1й игрок
 C - - - - - 0x03ED34 0F:ED24: B9 80 06  LDA ram_поведение_cpu_1,Y ; 0680 0681 0682 0683 0684 0685 0686 0687 0688 0689 068A 068B 068C 068D 068E 068F 0690 
 C - - - - - 0x03ED37 0F:ED27: 60        RTS
-bra_ED28:
+bra_ED28_2й_игрок:
 C - - - - - 0x03ED38 0F:ED28: B9 A0 06  LDA ram_поведение_cpu_2,Y ; 06A0 06A1 06A2 06A3 06A4 06A5 06A6 06A7 06A8 06A9 06AA 06AB 06AC 06AD 06AE 06AF 06B0 06B1 06B2 
 C - - - - - 0x03ED3B 0F:ED2B: 60        RTS
 
@@ -5486,14 +5488,14 @@ C - - - - - 0x03ED4C 0F:ED3C: BC 50 05  LDY ram_obj_id,X ; 0550 0551
 C - - - - - 0x03ED4F 0F:ED3F: D9 53 ED  CMP tbl_ED53,Y
 C - - - - - 0x03ED52 0F:ED42: 90 0A     BCC bra_ED4E
 C - - - - - 0x03ED54 0F:ED44: 18        CLC
-C - - - - - 0x03ED55 0F:ED45: BC DE 06  LDY ram_06DE_plr,X ; 06DE 06DF 
+C - - - - - 0x03ED55 0F:ED45: BC DE 06  LDY ram_06DE_cpu_индекс_соперника,X ; 06DE 06DF 
 C - - - - - 0x03ED58 0F:ED48: 60        RTS
 bra_ED49:
 C - - - - - 0x03ED59 0F:ED49: A9 00     LDA #$00
 C - - - - - 0x03ED5B 0F:ED4B: 8D F3 06  STA ram_06F3
 bra_ED4E:
 C - - - - - 0x03ED5E 0F:ED4E: 38        SEC
-C - - - - - 0x03ED5F 0F:ED4F: BC DE 06  LDY ram_06DE_plr,X ; 06DE 06DF 
+C - - - - - 0x03ED5F 0F:ED4F: BC DE 06  LDY ram_06DE_cpu_индекс_соперника,X ; 06DE 06DF 
 C - - - - - 0x03ED62 0F:ED52: 60        RTS
 
 
@@ -5519,21 +5521,22 @@ tbl_ED53:
 
 
 sub_0x03ED6A:
-C - - - - - 0x03ED6A 0F:ED5A: BC DE 06  LDY ram_06DE_plr,X ; 06DE 06DF 
+C - - - - - 0x03ED6A 0F:ED5A: BC DE 06  LDY ram_06DE_cpu_индекс_соперника,X ; 06DE 06DF 
 C - - - - - 0x03ED6D 0F:ED5D: A5 11     LDA ram_0011
 C - - - - - 0x03ED6F 0F:ED5F: C9 08     CMP #$08
 C - - - - - 0x03ED71 0F:ED61: D0 24     BNE bra_ED87
 C - - - - - 0x03ED73 0F:ED63: B9 80 04  LDA ram_obj_spd_X_hi,Y ; 0480 0481 
 C - - - - - 0x03ED76 0F:ED66: 19 90 04  ORA ram_obj_spd_X_lo,Y ; 0490 0491 
 C - - - - - 0x03ED79 0F:ED69: F0 0C     BEQ bra_ED77
-C - - - - - 0x03ED7B 0F:ED6B: B9 D6 06  LDA ram_06D6,Y ; 06D6 06D7 
+; bzk bug? должно быть просто LDA ram_дистанция_до_соперника_X_hi ?
+C - - - - - 0x03ED7B 0F:ED6B: B9 D6 06  LDA ram_дистанция_до_соперника_X_hi,Y ; 06D6 06D7 
 C - - - - - 0x03ED7E 0F:ED6E: 59 80 04  EOR ram_obj_spd_X_hi,Y ; 0480 0481 
 C - - - - - 0x03ED81 0F:ED71: 29 80     AND #$80
 C - - - - - 0x03ED83 0F:ED73: D0 10     BNE bra_ED85
 C - - - - - 0x03ED85 0F:ED75: F0 10     BEQ bra_ED87    ; jmp
 bra_ED77:
-C - - - - - 0x03ED87 0F:ED77: BC DE 06  LDY ram_06DE_plr,X ; 06DE 06DF 
-C - - - - - 0x03ED8A 0F:ED7A: AD D6 06  LDA ram_06D6
+C - - - - - 0x03ED87 0F:ED77: BC DE 06  LDY ram_06DE_cpu_индекс_соперника,X ; 06DE 06DF 
+C - - - - - 0x03ED8A 0F:ED7A: AD D6 06  LDA ram_дистанция_до_соперника_X_hi
 C - - - - - 0x03ED8D 0F:ED7D: 4A        LSR
 C - - - - - 0x03ED8E 0F:ED7E: 59 10 05  EOR ram_obj_flip,Y ; 0510 0511 
 C - - - - - 0x03ED91 0F:ED81: 29 40     AND #$40
@@ -5568,22 +5571,22 @@ C - - - - - 0x03EDA5 0F:ED95: 60        RTS
 
 sub_0x03EDA6:
 loc_0x03EDA6:
-C D 3 - - - 0x03EDA6 0F:ED96: BD E6 06  LDA ram_06E6_plr,X ; 06E6 06E7 
+C D 3 - - - 0x03EDA6 0F:ED96: BD E6 06  LDA ram_06E6_cpu,X ; 06E6 06E7 
 C - - - - - 0x03EDA9 0F:ED99: D0 28     BNE bra_EDC3
 sub_0x03EDAB:
 ; очистка шаблонов и вспомогательных адресов для ai?
 C - - - - - 0x03EDAB 0F:ED9B: A9 FF     LDA #$FF
-C - - - - - 0x03EDAD 0F:ED9D: 9D C0 06  STA ram_шаблон_ai,X ; 06C0 06C1 
+C - - - - - 0x03EDAD 0F:ED9D: 9D C0 06  STA ram_cpu_шаблон_ai,X ; 06C0 06C1 
 C - - - - - 0x03EDB0 0F:EDA0: A9 00     LDA #$00
-C - - - - - 0x03EDB2 0F:EDA2: 9D CC 06  STA ram_06CC_plr,X ; 06CC 06CD 
-C - - - - - 0x03EDB5 0F:EDA5: 9D D2 06  STA ram_06D2_plr,X ; 06D2 06D3 
-C - - - - - 0x03EDB8 0F:EDA8: 9D C8 06  STA ram_06C8_plr,X ; 06C8 06C9 
-C - - - - - 0x03EDBB 0F:EDAB: 9D C6 06  STA ram_06C6_plr,X ; 06C6 06C7 
-C - - - - - 0x03EDBE 0F:EDAE: 9D DA 06  STA ram_06DA_plr,X ; 06DA 06DB 
+C - - - - - 0x03EDB2 0F:EDA2: 9D CC 06  STA ram_06CC_cpu,X ; 06CC 06CD 
+C - - - - - 0x03EDB5 0F:EDA5: 9D D2 06  STA ram_06D2_cpu_script,X ; 06D2 06D3 
+C - - - - - 0x03EDB8 0F:EDA8: 9D C8 06  STA ram_06C8_cpu,X ; 06C8 06C9 
+C - - - - - 0x03EDBB 0F:EDAB: 9D C6 06  STA ram_06C6_cpu,X ; 06C6 06C7 
+C - - - - - 0x03EDBE 0F:EDAE: 9D DA 06  STA ram_06DA_cpu_script,X ; 06DA 06DB 
 C - - - - - 0x03EDC1 0F:EDB1: 95 91     STA ram_btn_hold,X
-C - - - - - 0x03EDC3 0F:EDB3: 9D DC 06  STA ram_06DC_plr,X ; 06DC 06DD 
-C - - - - - 0x03EDC6 0F:EDB6: 9D C2 06  STA ram_06C2_plr,X ; 06C2 06C3 
-C - - - - - 0x03EDC9 0F:EDB9: 9D E4 06  STA ram_06E4_plr,X ; 06E4 06E5 
+C - - - - - 0x03EDC3 0F:EDB3: 9D DC 06  STA ram_06DC_cpu,X ; 06DC 06DD 
+C - - - - - 0x03EDC6 0F:EDB6: 9D C2 06  STA ram_06C2_cpu,X ; 06C2 06C3 
+C - - - - - 0x03EDC9 0F:EDB9: 9D E4 06  STA ram_06E4_cpu,X ; 06E4 06E5 
 C - - - - - 0x03EDCC 0F:EDBC: 8D F0 06  STA ram_06F0
 C - - - - - 0x03EDD2 0F:EDC2: 60        RTS
 bra_EDC3:
@@ -5604,7 +5607,7 @@ C - - - - - 0x03EDE0 0F:EDD0: 4A        LSR
 C - - - - - 0x03EDE1 0F:EDD1: 88        DEY
 C - - - - - 0x03EDE2 0F:EDD2: D0 FA     BNE bra_EDCE_loop
 bra_EDD4:
-C - - - - - 0x03EDE4 0F:EDD4: BC DE 06  LDY ram_06DE_plr,X ; 06DE 06DF 
+C - - - - - 0x03EDE4 0F:EDD4: BC DE 06  LDY ram_06DE_cpu_индекс_соперника,X ; 06DE 06DF 
 C - - - - - 0x03EDE7 0F:EDD7: 60        RTS
 
 
@@ -5628,7 +5631,7 @@ C - - - - - 0x03EDF8 0F:EDE8: 10 F5     BPL bra_EDDF
 - - - - - - 0x03EE00 0F:EDF0: D0 3B     BNE bra_EE2D
 bra_EDF2:
 - - - - - - 0x03EE02 0F:EDF2: 86 17     STX ram_0017
-- - - - - - 0x03EE04 0F:EDF4: BD DE 06  LDA ram_06DE_plr,X
+- - - - - - 0x03EE04 0F:EDF4: BD DE 06  LDA ram_06DE_cpu_индекс_соперника,X
 - - - - - - 0x03EE07 0F:EDF7: AA        TAX
 - - - - - - 0x03EE08 0F:EDF8: 20 FE ED  JSR sub_EDFE
 - - - - - - 0x03EE0B 0F:EDFB: A6 17     LDX ram_0017
@@ -5777,7 +5780,7 @@ sub_0x03EEB9_вычислить_разницу_pos_Y_персов:
 ; 50 берется из 0x035622, возможно также из 0x0356BB 0x035624
 ; скорее всего баг оригинала
 ; предположительно чинится одной командой
-                                       ;LDY ram_06DE_plr,X
+                                       ;LDY ram_06DE_cpu_индекс_соперника,X
 C - - - - - 0x03EEB9 0F:EEA9: B9 10 04  LDA ram_obj_pos_Y_lo,Y ; 0410 0411 0460 
 C - - - - - 0x03EEBC 0F:EEAC: 38        SEC
 C - - - - - 0x03EEBD 0F:EEAD: FD 10 04  SBC ram_obj_pos_Y_lo,X ; 0410 0411 
@@ -5796,12 +5799,12 @@ C - - - - - 0x03EEC9 0F:EEB9: A0 06     LDY #$06
 C - - - - - 0x03EECB 0F:EEBB: B9 00 04  LDA ram_obj_anim_id,Y ; 0406 
 C - - - - - 0x03EECE 0F:EEBE: F0 60     BEQ bra_EF20
 C - - - - - 0x03EED0 0F:EEC0: 20 97 EE  JSR sub_EE97_вычислить_разницу_pos_X_объектов
-C - - - - - 0x03EED3 0F:EEC3: BC DE 06  LDY ram_06DE_plr,X ; 06DE 06DF 
+C - - - - - 0x03EED3 0F:EEC3: BC DE 06  LDY ram_06DE_cpu_индекс_соперника,X ; 06DE 06DF 
 C - - - - - 0x03EED6 0F:EEC6: A5 0E     LDA ram_000E    ; разница координат lo
 C - - - - - 0x03EED8 0F:EEC8: 8D D9 06  STA ram_06D9
 C - - - - - 0x03EEDB 0F:EECB: A5 0F     LDA ram_000F    ; разница координат hi
 C - - - - - 0x03EEDD 0F:EECD: 8D D8 06  STA ram_06D8
-C - - - - - 0x03EEE0 0F:EED0: AD D6 06  LDA ram_06D6
+C - - - - - 0x03EEE0 0F:EED0: AD D6 06  LDA ram_дистанция_до_соперника_X_hi
 C - - - - - 0x03EEE3 0F:EED3: 45 0F     EOR ram_000F    ; разница координат hi
 C - - - - - 0x03EEE5 0F:EED5: 30 4C     BMI bra_EF23
 C - - - - - 0x03EEE7 0F:EED7: A5 0F     LDA ram_000F    ; разница координат hi
@@ -5817,11 +5820,11 @@ C - - - - - 0x03EEF8 0F:EEE8: A5 0F     LDA ram_000F    ; разница коо�
 C - - - - - 0x03EEFA 0F:EEEA: 69 00     ADC #> $0001
 C - - - - - 0x03EEFC 0F:EEEC: 85 0F     STA ram_000F    ; разница координат hi
 bra_EEEE:
-C - - - - - 0x03EEFE 0F:EEEE: AD D6 06  LDA ram_06D6
+C - - - - - 0x03EEFE 0F:EEEE: AD D6 06  LDA ram_дистанция_до_соперника_X_hi
 C - - - - - 0x03EF01 0F:EEF1: 10 14     BPL bra_EF07
 C - - - - - 0x03EF03 0F:EEF3: 49 FF     EOR #$FF
 C - - - - - 0x03EF05 0F:EEF5: 85 05     STA ram_0005
-C - - - - - 0x03EF07 0F:EEF7: AD D7 06  LDA ram_06D7
+C - - - - - 0x03EF07 0F:EEF7: AD D7 06  LDA ram_дистанция_до_соперника_X_lo
 C - - - - - 0x03EF0A 0F:EEFA: 49 FF     EOR #$FF
 C - - - - - 0x03EF0C 0F:EEFC: 18        CLC
 C - - - - - 0x03EF0D 0F:EEFD: 69 01     ADC #< $0001
@@ -5857,9 +5860,9 @@ sub_EF26:
 sub_0x03EF36:
 C - - - - - 0x03EF36 0F:EF26: 20 97 EE  JSR sub_EE97_вычислить_разницу_pos_X_объектов
 C D 3 - - - 0x03EF39 0F:EF29: A5 0E     LDA ram_000E    ; разница координат lo
-C - - - - - 0x03EF3B 0F:EF2B: 8D D7 06  STA ram_06D7
+C - - - - - 0x03EF3B 0F:EF2B: 8D D7 06  STA ram_дистанция_до_соперника_X_lo
 C - - - - - 0x03EF3E 0F:EF2E: A5 0F     LDA ram_000F    ; разница координат hi
-C - - - - - 0x03EF40 0F:EF30: 8D D6 06  STA ram_06D6
+C - - - - - 0x03EF40 0F:EF30: 8D D6 06  STA ram_дистанция_до_соперника_X_hi
 C - - - - - 0x03EF43 0F:EF33: 8A        TXA
 C - - - - - 0x03EF44 0F:EF34: 0A        ASL
 C - - - - - 0x03EF45 0F:EF35: 0A        ASL
@@ -5870,7 +5873,7 @@ C - - - - - 0x03EF4C 0F:EF3C: B9 E9 06  LDA ram_06E9,Y ; 06E9 06ED
 C - - - - - 0x03EF4F 0F:EF3F: 85 15     STA ram_0015
 C - - - - - 0x03EF51 0F:EF41: B9 EA 06  LDA ram_06EA,Y ; 06EA 06EE 
 C - - - - - 0x03EF54 0F:EF44: 85 14     STA ram_0014
-C - - - - - 0x03EF56 0F:EF46: BC DE 06  LDY ram_06DE_plr,X ; 06DE 06DF 
+C - - - - - 0x03EF56 0F:EF46: BC DE 06  LDY ram_06DE_cpu_индекс_соперника,X ; 06DE 06DF 
 C - - - - - 0x03EF59 0F:EF49: AD 38 06  LDA ram_0638
 C - - - - - 0x03EF5C 0F:EF4C: C5 14     CMP ram_0014
 C - - - - - 0x03EF5E 0F:EF4E: B0 D0     BCS bra_EF20
