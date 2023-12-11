@@ -8379,26 +8379,27 @@ C - - - - - 0x026F8E 09:AF7E: 60        RTS
 
 
 tbl_AF7F_индекс:
-- D 1 - - - 0x026F8F 09:AF7F: 00        .byte off_AF86_00_leo - tbl_AF86    ; con_fighter_leo
-- D 1 - - - 0x026F90 09:AF80: 00        .byte off_AF86_01_raph - tbl_AF86    ; con_fighter_raph
-- D 1 - - - 0x026F91 09:AF81: 00        .byte off_AF86_02_mike - tbl_AF86    ; con_fighter_mike
-- D 1 - - - 0x026F92 09:AF82: 00        .byte off_AF86_03_don - tbl_AF86    ; con_fighter_don
-- D 1 - - - 0x026F93 09:AF83: 09        .byte off_AF8F_04_casey - tbl_AF86    ; con_fighter_casey
-- D 1 - - - 0x026F94 09:AF84: 18        .byte off_AF9E_05_hot - tbl_AF86    ; con_fighter_hot
-- D 1 - - - 0x026F95 09:AF85: 21        .byte off_AFA7_06_shred - tbl_AF86    ; con_fighter_shred
+- D 1 - - - 0x026F8F 09:AF7F: 00        .byte off_AF86_00_leo - tbl_AF87    ; con_fighter_leo
+- D 1 - - - 0x026F90 09:AF80: 00        .byte off_AF86_01_raph - tbl_AF87    ; con_fighter_raph
+- D 1 - - - 0x026F91 09:AF81: 00        .byte off_AF86_02_mike - tbl_AF87    ; con_fighter_mike
+- D 1 - - - 0x026F92 09:AF82: 00        .byte off_AF86_03_don - tbl_AF87    ; con_fighter_don
+- D 1 - - - 0x026F93 09:AF83: 09        .byte off_AF8F_04_casey - tbl_AF87    ; con_fighter_casey
+- D 1 - - - 0x026F94 09:AF84: 18        .byte off_AF9E_05_hot - tbl_AF87    ; con_fighter_hot
+- D 1 - - - 0x026F95 09:AF85: 21        .byte off_AFA7_06_shred - tbl_AF87    ; con_fighter_shred
                                     .if con_новые_персы <> $00
-                                        .byte off_AF86_07 - tbl_AF86    ; con_fighter___leo
-                                        .byte off_AF86_08 - tbl_AF86    ; con_fighter___raph
-                                        .byte off_AF86_09 - tbl_AF86    ; con_fighter___mike
-                                        .byte off_AF86_0A - tbl_AF86    ; con_fighter___don
-                                        .byte off_AF8F_0B - tbl_AF86    ; con_fighter___casey
-                                        .byte off_AF9E_0C - tbl_AF86    ; con_fighter___hot
-                                        .byte off_AFA7_0D - tbl_AF86    ; con_fighter___shred
+                                        .byte off_AF86_07 - tbl_AF87    ; con_fighter___leo
+                                        .byte off_AF86_08 - tbl_AF87    ; con_fighter___raph
+                                        .byte off_AF86_09 - tbl_AF87    ; con_fighter___mike
+                                        .byte off_AF86_0A - tbl_AF87    ; con_fighter___don
+                                        .byte off_AF8F_0B - tbl_AF87    ; con_fighter___casey
+                                        .byte off_AF9E_0C - tbl_AF87    ; con_fighter___hot
+                                        .byte off_AFA7_0D - tbl_AF87    ; con_fighter___shred
                                     .endif
 
 
 
 tbl_AF86:
+tbl_AF87:
 off_AF86_00_leo:
 off_AF86_07:
 off_AF86_01_raph:
