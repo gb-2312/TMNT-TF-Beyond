@@ -105,19 +105,20 @@ C - - - - - 0x0340D9 0D:80C9: E9 01     SBC #$01
 C - - - - - 0x0340DB 0D:80CB: A4 10     LDY ram_0010
 C - - - - - 0x0340DD 0D:80CD: 99 E8 06  STA ram_06E8,Y ; 06E8 06EC 
 C - - - - - 0x0340E0 0D:80D0: BD 50 05  LDA ram_obj_id,X ; 0550 0551 
+; * 03
 C - - - - - 0x0340E3 0D:80D3: 0A        ASL
-C - - - - - 0x0340E4 0D:80D4: 0A        ASL
+C - - - - - 0x0340E4 0D:80D4: 0A        ADC ram_obj_id,X ; 0550 0551 
 C - - - - - 0x0340E5 0D:80D5: 85 11     STA ram_0011
 C - - - - - 0x0340E7 0D:80D7: A8        TAY
-C - - - - - 0x0340E8 0D:80D8: B9 FB 80  LDA tbl_80FA + $01,Y
+C - - - - - 0x0340E8 0D:80D8: B9 FB 80  LDA tbl_80FA,Y
 C - - - - - 0x0340EB 0D:80DB: A4 10     LDY ram_0010
 C - - - - - 0x0340ED 0D:80DD: 99 E9 06  STA ram_06E9,Y ; 06E9 06ED 
 C - - - - - 0x0340F0 0D:80E0: A4 11     LDY ram_0011
-C - - - - - 0x0340F2 0D:80E2: B9 FC 80  LDA tbl_80FA + $02,Y
+C - - - - - 0x0340F2 0D:80E2: B9 FC 80  LDA tbl_80FA + $01,Y
 C - - - - - 0x0340F5 0D:80E5: A4 10     LDY ram_0010
 C - - - - - 0x0340F7 0D:80E7: 99 EA 06  STA ram_06EA,Y ; 06EA 06EE 
 C - - - - - 0x0340FA 0D:80EA: A4 11     LDY ram_0011
-C - - - - - 0x0340FC 0D:80EC: B9 FD 80  LDA tbl_80FA + $03,Y
+C - - - - - 0x0340FC 0D:80EC: B9 FD 80  LDA tbl_80FA + $02,Y
 C - - - - - 0x0340FF 0D:80EF: A4 10     LDY ram_0010
 C - - - - - 0x034101 0D:80F1: 99 EB 06  STA ram_06EB,Y ; 06EB 06EF 
 C - - - - - 0x034104 0D:80F4: A9 01     LDA #$01
@@ -127,75 +128,60 @@ C - - - - - 0x034109 0D:80F9: 60        RTS
 
 
 tbl_80FA:
-; bzk optimize, 1й байт placeholder
 ; 00 con_fighter_leo
-- - - - - - 0x03410A 0D:80FA: 00        .byte $00   ; 
 - D 0 - - - 0x03410B 0D:80FB: 1C        .byte $1C   ; 
 - D 0 - - - 0x03410C 0D:80FC: 38        .byte $38   ; 
 - D 0 - - - 0x03410D 0D:80FD: 8C        .byte $8C   ; 
 ; 01 con_fighter_raph
-- - - - - - 0x03410E 0D:80FE: 00        .byte $00   ; 
 - D 0 - - - 0x03410F 0D:80FF: 1C        .byte $1C   ; 
 - D 0 - - - 0x034110 0D:8100: 54        .byte $54   ; 
 - D 0 - - - 0x034111 0D:8101: 8C        .byte $8C   ; 
 ; 02 con_fighter_mike
-- - - - - - 0x034112 0D:8102: 00        .byte $00   ; 
 - D 0 - - - 0x034113 0D:8103: 1C        .byte $1C   ; 
 - D 0 - - - 0x034114 0D:8104: 54        .byte $54   ; 
 - D 0 - - - 0x034115 0D:8105: 8C        .byte $8C   ; 
 ; 03 con_fighter_don
-- - - - - - 0x034116 0D:8106: 00        .byte $00   ; 
 - D 0 - - - 0x034117 0D:8107: 1C        .byte $1C   ; 
 - D 0 - - - 0x034118 0D:8108: 3C        .byte $3C   ; 
 - D 0 - - - 0x034119 0D:8109: 8C        .byte $8C   ; 
 ; 04 con_fighter_casey
-- - - - - - 0x03411A 0D:810A: 00        .byte $00   ; 
 - D 0 - - - 0x03411B 0D:810B: 20        .byte $20   ; 
 - D 0 - - - 0x03411C 0D:810C: 60        .byte $60   ; 
 - D 0 - - - 0x03411D 0D:810D: A0        .byte $A0   ; 
 ; 05 con_fighter_hot
-- - - - - - 0x03411E 0D:810E: 00        .byte $00   ; 
 - D 0 - - - 0x03411F 0D:810F: 24        .byte $24   ; 
 - D 0 - - - 0x034120 0D:8110: 6C        .byte $6C   ; 
 - D 0 - - - 0x034121 0D:8111: B4        .byte $B4   ; 
 ; 06 con_fighter_shred
-- - - - - - 0x034122 0D:8112: 00        .byte $00   ; 
 - D 0 - - - 0x034123 0D:8113: 1E        .byte $1E   ; 
 - D 0 - - - 0x034124 0D:8114: 5A        .byte $5A   ; 
 - D 0 - - - 0x034125 0D:8115: 96        .byte $96   ; 
                                     .if con_новые_персы <> $00
 ; 07 con_fighter___leo
-                                        .byte $00   ; 
                                         .byte $1C   ; 
                                         .byte $38   ; 
                                         .byte $8C   ; 
 ; 08 con_fighter___raph
-                                        .byte $00   ; 
                                         .byte $1C   ; 
                                         .byte $54   ; 
                                         .byte $8C   ; 
 ; 09 con_fighter___mike
-                                        .byte $00   ; 
                                         .byte $1C   ; 
                                         .byte $54   ; 
                                         .byte $8C   ; 
 ; 0A con_fighter___don
-                                        .byte $00   ; 
                                         .byte $1C   ; 
                                         .byte $3C   ; 
                                         .byte $8C   ; 
 ; 0B con_fighter___casey
-                                        .byte $00   ; 
                                         .byte $20   ; 
                                         .byte $60   ; 
                                         .byte $A0   ; 
 ; 0C con_fighter___hot
-                                        .byte $00   ; 
                                         .byte $24   ; 
                                         .byte $6C   ; 
                                         .byte $B4   ; 
 ; 0D con_fighter___shred
-                                        .byte $00   ; 
                                         .byte $1E   ; 
                                         .byte $5A   ; 
                                         .byte $96   ; 
