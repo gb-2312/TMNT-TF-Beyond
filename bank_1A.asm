@@ -65,6 +65,7 @@ C - - - - - 0x034070 0D:8060: 20 32 D0  JSR sub_0x03D042_поинтеры_пос
 
 
 ofs_037_8069_00:
+; свободный адрес 0011
 C - - J - - 0x034079 0D:8069: A9 FF     LDA #$FF
 C - - - - - 0x03407B 0D:806B: 8D 9F 06  STA ram_поведение_cpu_1 + $1F
 C - - - - - 0x03407E 0D:806E: 8D BF 06  STA ram_поведение_cpu_2 + $1F
@@ -108,19 +109,18 @@ C - - - - - 0x0340E0 0D:80D0: BD 50 05  LDA ram_obj_id,X ; 0550 0551
 ; * 03
 C - - - - - 0x0340E3 0D:80D3: 0A        ASL
 C - - - - - 0x0340E4 0D:80D4: 0A        ADC ram_obj_id,X ; 0550 0551 
-C - - - - - 0x0340E5 0D:80D5: 85 11     STA ram_0011
 C - - - - - 0x0340E7 0D:80D7: A8        TAY
-C - - - - - 0x0340E8 0D:80D8: B9 FB 80  LDA tbl_80FA,Y
-C - - - - - 0x0340EB 0D:80DB: A4 10     LDY ram_0010
-C - - - - - 0x0340ED 0D:80DD: 99 E9 06  STA ram_06E9,Y ; 06E9 06ED 
-C - - - - - 0x0340F0 0D:80E0: A4 11     LDY ram_0011
-C - - - - - 0x0340F2 0D:80E2: B9 FC 80  LDA tbl_80FA + $01,Y
-C - - - - - 0x0340F5 0D:80E5: A4 10     LDY ram_0010
-C - - - - - 0x0340F7 0D:80E7: 99 EA 06  STA ram_06EA,Y ; 06EA 06EE 
-C - - - - - 0x0340FA 0D:80EA: A4 11     LDY ram_0011
-C - - - - - 0x0340FC 0D:80EC: B9 FD 80  LDA tbl_80FA + $02,Y
-C - - - - - 0x0340FF 0D:80EF: A4 10     LDY ram_0010
-C - - - - - 0x034101 0D:80F1: 99 EB 06  STA ram_06EB,Y ; 06EB 06EF 
+C - - - - - 0x0340E8 0D:80D8: B9 FB 80  LDA tbl_80FA + $02,Y
+                                        PHA
+                                        LDA tbl_80FA + $01,Y
+                                        PHA
+                                        LDA tbl_80FA,Y
+                                        LDY ram_0010
+                                        STA ram_06E9,Y ; 06EB 06EF 
+                                        PLA
+                                        STA ram_06EA,Y ; 06EA 06EE 
+                                        PLA
+C - - - - - 0x0340ED 0D:80DD: 99 E9 06  STA ram_06EB,Y ; 06E9 06ED 
 C - - - - - 0x034104 0D:80F4: A9 01     LDA #$01
 C - - - - - 0x034106 0D:80F6: 9D CA 06  STA ram_06CA_cpu_script,X ; 06CA 06CB 
 C - - - - - 0x034109 0D:80F9: 60        RTS
