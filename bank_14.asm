@@ -7686,7 +7686,7 @@ C - - - - - 0x02BDFE 0A:BDEE: 8D 1F 06  STA ram_061E_plr + $01
 bra_BDF1:
 C - - - - - 0x02BE01 0A:BDF1: AD 91 05  LDA ram_0590_obj + $01
 C - - - - - 0x02BE04 0A:BDF4: AC B1 04  LDY ram_obj_spd_Y_lo + $01
-C - - - - - 0x02BE07 0A:BDF7: D9 E2 BF  CMP tbl_BFE2,Y
+C - - - - - 0x02BE07 0A:BDF7: D9 E2 BF  CMP tbl_BFE2_hp_стены,Y
 C - - - - - 0x02BE0A 0A:BDFA: B0 49     BCS bra_BE45_RTS
 C - - - - - 0x02BE0C 0A:BDFC: A9 01     LDA #$01
 C - - - - - 0x02BE0E 0A:BDFE: 85 04     STA ram_0004
@@ -7837,6 +7837,7 @@ C - - - - - 0x02BF1E 0A:BF0E: 4C 5B D2  JMP loc_0x03D26B_записать_FF_в_
 
 sub_BF11:
 sub_0x02BF21:
+; бряк постоянно срабатывает во время bonus game
 C - - - - - 0x02BF21 0A:BF11: A2 03     LDX #$03
 bra_BF13_loop:
 C - - - - - 0x02BF23 0A:BF13: BD 30 05  LDA ram_0530_obj_state,X ; 0533 0535 0537 0539 053B 053D 053F 
@@ -7974,10 +7975,10 @@ tbl_BFD2:
 
 
 
-tbl_BFE2:
-- D 1 - - - 0x02BFF2 0A:BFE2: 50        .byte $50   ; 00
-- D 1 - - - 0x02BFF3 0A:BFE3: 20        .byte $20   ; 01
-- D 1 - - - 0x02BFF4 0A:BFE4: 00        .byte $00   ; 02
+tbl_BFE2_hp_стены:
+- D 1 - - - 0x02BFF2 0A:BFE2: 50        .byte $50   ; 00 целая
+- D 1 - - - 0x02BFF3 0A:BFE3: 20        .byte $20   ; 01 треснутая
+- D 1 - - - 0x02BFF4 0A:BFE4: 00        .byte $00   ; 02 сломанная
 
 
 
