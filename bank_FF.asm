@@ -7070,7 +7070,7 @@ C - - - - - 0x03F718 0F:F708: 4C 17 F6  JMP loc_F617_restore_prg
 
 sub_F70B_обработчик_персов:
 C - - - - - 0x03F71B 0F:F70B: 20 EF F5  JSR sub_F5EF_swap_prg_1A
-C - - - - - 0x03F71E 0F:F70E: 20 01 80  JSR sub_0x034011_обработчик_персов
+C - - - - - 0x03F71E 0F:F70E: 20 01 80  JSR sub_0x034011_обработчик_ai
 C - - - - - 0x03F721 0F:F711: 4C 17 F6  JMP loc_F617_restore_prg
 
 
