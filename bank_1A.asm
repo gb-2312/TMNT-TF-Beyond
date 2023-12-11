@@ -5358,7 +5358,24 @@ C - - - - - 0x035C84 0D:9C74: 60        RTS
 
 
 
-loc_9C79:
+
+
+
+
+loc_BFA4:
+ofs_019_9C75_01_raph:
+ofs_019_9C75_08:
+ofs_020_9C75_01_raph:
+ofs_020_9C75_08:
+ofs_021_9C75_01_raph:
+ofs_021_9C75_08:
+ofs_022_9C75_01_raph:
+ofs_022_9C75_08:
+C D 1 - - - 0x037FB4 0D:BFA4: AD 25 01  LDA ram_option_difficulty
+C - - - - - 0x037FB7 0D:BFA7: C9 03     CMP #$03
+C - - - - - 0x037FB9 0D:BFA9: B0 07     BCS bra_9CAA_RTS
+C - - - - - 0x037FBB 0D:BFAB: A5 11     LDA ram_0011
+C - - - - - 0x037FBD 0D:BFAD: C9 08     CMP #$08
 C D 0 - - - 0x035C89 0D:9C79: D0 1D     BNE bra_9C98
 C - - - - - 0x035C8B 0D:9C7B: 20 C6 ED  JSR sub_0x03EDD6_генератор_рандома_по_сложности_игры_1
 C - - - - - 0x035C8E 0D:9C7E: C9 10     CMP #$10
@@ -7760,26 +7777,6 @@ C - - - - - 0x037FAE 0D:BF9E: 4C BD 9C  JMP loc_9CBD
 
 bra_BFA1:
 - - - - - - 0x037FB1 0D:BFA1: 4C BF 9C  JMP loc_9CBF
-
-
-
-loc_BFA4:
-ofs_019_9C75_01_raph:
-ofs_019_9C75_08:
-ofs_020_9C75_01_raph:
-ofs_020_9C75_08:
-ofs_021_9C75_01_raph:
-ofs_021_9C75_08:
-ofs_022_9C75_01_raph:
-ofs_022_9C75_08:
-C D 1 - - - 0x037FB4 0D:BFA4: AD 25 01  LDA ram_option_difficulty
-C - - - - - 0x037FB7 0D:BFA7: C9 03     CMP #$03
-C - - - - - 0x037FB9 0D:BFA9: B0 07     BCS bra_BFB2_RTS
-C - - - - - 0x037FBB 0D:BFAB: A5 11     LDA ram_0011
-C - - - - - 0x037FBD 0D:BFAD: C9 08     CMP #$08
-C - - - - - 0x037FBF 0D:BFAF: 4C 79 9C  JMP loc_9C79
-bra_BFB2_RTS:
-C - - - - - 0x037FC2 0D:BFB2: 60        RTS
 
 
 
