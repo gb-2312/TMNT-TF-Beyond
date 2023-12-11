@@ -133,7 +133,6 @@
 .export sub_0x03ECDD
 .export sub_0x03ECE9_проверить_ограничение_по_X
 .export sub_0x03ECF8
-.export loc_0x03ED09
 .export loc_0x03ED15
 .export sub_0x03ED24_запись_cpu_btn
 .export sub_0x03ED30_чтение_cpu_btn
@@ -5441,15 +5440,6 @@ bra_ECF3:
 C - - - - - 0x03ED03 0F:ECF3: BD 40 04  LDA ram_obj_pos_X_lo,X ; 0440 0441 
 C - - - - - 0x03ED06 0F:ECF6: C9 19     CMP #$19
 C - - - - - 0x03ED08 0F:ECF8: 60        RTS
-
-
-
-loc_0x03ED09:
-C D 3 - - - 0x03ED09 0F:ECF9: BD C6 06  LDA ram_plr_06C6,X ; 06C6 06C7 
-C - - - - - 0x03ED0C 0F:ECFC: 1D C8 06  ORA ram_plr_06C8,X ; 06C8 06C9 
-C - - - - - 0x03ED0F 0F:ECFF: 95 91     STA ram_btn_hold,X
-                                        STA ram_plr_06C6,X ; 06C6 06C7 
-C - - - - - 0x03ED11 0F:ED01: 4C 4C A3  JMP loc_0x03635C
 
 
 

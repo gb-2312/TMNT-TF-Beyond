@@ -7,7 +7,6 @@
 
 
 .export sub_0x034011
-.export loc_0x03635C
 
 
 
@@ -1669,7 +1668,7 @@ C - - - - - 0x0349A5 0D:8995: D9 EA 06  CMP ram_06EA,Y ; 06EA 06EE
 C - - - - - 0x0349A8 0D:8998: B0 61     BCS bra_89FB
 bra_899A:
 loc_899A:
-C D 0 - - - 0x0349AA 0D:899A: 4C F9 EC  JMP loc_0x03ED09
+C D 0 - - - 0x0349AA 0D:899A: 4C F9 EC  JMP loc_ECF9
 
 
 
@@ -1702,7 +1701,7 @@ C - - - - - 0x0349D0 0D:89C0: A9 19     LDA #$19
 C - - - - - 0x0349D2 0D:89C2: 9D D4 06  STA ram_plr_06D4,X ; 06D4 06D5 
 C - - - - - 0x0349D5 0D:89C5: A9 00     LDA #$00
 C - - - - - 0x0349D7 0D:89C7: 9D DA 06  STA ram_plr_06DA,X
-C - - - - - 0x0349DA 0D:89CA: 4C F9 EC  JMP loc_0x03ED09
+C - - - - - 0x0349DA 0D:89CA: 4C F9 EC  JMP loc_ECF9
 bra_89CD:
 C - - - - - 0x0349DD 0D:89CD: BC DE 06  LDY ram_plr_06DE,X ; 06DE 06DF 
 C - - - - - 0x0349E0 0D:89D0: B9 7A 06  LDA ram_plr_067A,Y
@@ -6533,7 +6532,12 @@ C - - - - - 0x036359 0D:A349: 4C 57 80  JMP loc_8057
 
 
 
-loc_0x03635C:
+loc_ECF9:
+; перемещено из банка FF
+C D 3 - - - 0x03ED09 0F:ECF9: BD C6 06  LDA ram_plr_06C6,X ; 06C6 06C7 
+C - - - - - 0x03ED0C 0F:ECFC: 1D C8 06  ORA ram_plr_06C8,X ; 06C8 06C9 
+C - - - - - 0x03ED0F 0F:ECFF: 95 91     STA ram_btn_hold,X
+                                        STA ram_plr_06C6,X ; 06C6 06C7 
 C - - - - - 0x03635F 0D:A34F: AD 25 01  LDA ram_option_difficulty
 C - - - - - 0x036362 0D:A352: C9 03     CMP #$03
 C - - - - - 0x036364 0D:A354: 90 4B     BCC bra_A3A1_RTS
