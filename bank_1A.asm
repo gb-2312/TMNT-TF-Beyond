@@ -272,6 +272,8 @@ C - - - - - 0x0341A1 0D:8191: D0 E7     BNE bra_817A    ; jmp
 
 
 sub_8193_выбрать_шаблоны_ai_на_основе_комбинации_персов:
+                                        LDA #$00    ; шаблон по умолчанию не выбран (con_шаблон_ai_00)
+                                        STA ram_0017
 C - - - - - 0x0341A3 0D:8193: BD 50 05  LDA ram_obj_id,X ; 0550 0551 
 C - - - - - 0x0341A6 0D:8196: 20 32 D0  JSR sub_0x03D042_поинтеры_после_JSR
 - D 0 - I - 0x0341A9 0D:8199: 11 9C     .word ofs_036_9C11_00_leo   ; con_fighter_leo
@@ -5284,8 +5286,6 @@ C - - - - - 0x035C20 0D:9C10: 60        RTS
 
 ofs_036_9C11_00_leo:
 ofs_036_9C11_07:
-C - - J - - 0x035C21 0D:9C11: A9 00     LDA #$00    ; con_шаблон_ai_00 ???
-C - - - - - 0x035C23 0D:9C13: 85 17     STA ram_0017
 C - - - - - 0x035C25 0D:9C15: 20 D6 9B  JSR sub_9BD6
 C - - - - - 0x035C28 0D:9C18: F0 01     BEQ bra_9C1B
 C - - - - - 0x035C2A 0D:9C1A: 60        RTS
@@ -5502,8 +5502,6 @@ tbl_9CEE:
 
 ofs_036_9CF6_01_raph:
 ofs_036_9CF6_08:
-C - - J - - 0x035D06 0D:9CF6: A9 00     LDA #$00    ; con_шаблон_ai_00 ???
-C - - - - - 0x035D08 0D:9CF8: 85 17     STA ram_0017
 C - - - - - 0x035D0A 0D:9CFA: 20 D6 9B  JSR sub_9BD6
 C - - - - - 0x035D0D 0D:9CFD: F0 01     BEQ bra_9D00
 C - - - - - 0x035D0F 0D:9CFF: 60        RTS
@@ -5532,8 +5530,6 @@ C - - - - - 0x035D16 0D:9D06: 20 32 D0  JSR sub_0x03D042_поинтеры_пос
 
 ofs_036_9D1C_02_mike:
 ofs_036_9D1C_09:
-C - - J - - 0x035D2C 0D:9D1C: A9 00     LDA #$00    ; con_шаблон_ai_00 ???
-C - - - - - 0x035D2E 0D:9D1E: 85 17     STA ram_0017
 C - - - - - 0x035D30 0D:9D20: 20 D6 9B  JSR sub_9BD6
 C - - - - - 0x035D33 0D:9D23: F0 01     BEQ bra_9D26
 C - - - - - 0x035D35 0D:9D25: 60        RTS
@@ -5584,8 +5580,6 @@ C - - - - - 0x035D6C 0D:9D5C: 4C 32 9C  JMP loc_9C32
 
 ofs_036_9D64_03_don:
 ofs_036_9D64_0A:
-C - - J - - 0x035D74 0D:9D64: A9 00     LDA #$00    ; con_шаблон_ai_00 ???
-C - - - - - 0x035D76 0D:9D66: 85 17     STA ram_0017
 C - - - - - 0x035D78 0D:9D68: 20 D6 9B  JSR sub_9BD6
 C - - - - - 0x035D7B 0D:9D6B: F0 01     BEQ bra_9D6E
 C - - - - - 0x035D7D 0D:9D6D: 60        RTS
@@ -5632,8 +5626,6 @@ C - - - - - 0x035DA9 0D:9D99: 20 32 D0  JSR sub_0x03D042_поинтеры_пос
 
 ofs_036_9DAF_04_casey:
 ofs_036_9DAF_0B:
-C - - J - - 0x035DBF 0D:9DAF: A9 00     LDA #$00    ; con_шаблон_ai_00 ???
-C - - - - - 0x035DC1 0D:9DB1: 85 17     STA ram_0017
 C - - - - - 0x035DC3 0D:9DB3: 20 D6 9B  JSR sub_9BD6
 C - - - - - 0x035DC6 0D:9DB6: F0 01     BEQ bra_9DB9
 C - - - - - 0x035DC8 0D:9DB8: 60        RTS
@@ -5826,8 +5818,6 @@ bra_9EDE:
 
 ofs_036_9EE4_05_hot:
 ofs_036_9EE4_0C:
-C - - J - - 0x035EF4 0D:9EE4: A9 00     LDA #$00    ; con_шаблон_ai_00 ???
-C - - - - - 0x035EF6 0D:9EE6: 85 17     STA ram_0017
 C - - - - - 0x035EF8 0D:9EE8: A5 13     LDA ram_0013
 C - - - - - 0x035EFA 0D:9EEA: D0 13     BNE bra_9EFF
 C - - - - - 0x035EFC 0D:9EEC: BD 20 05  LDA ram_obj_state_hi,X ; 0520 0521 
@@ -5964,8 +5954,6 @@ C - - - - - 0x035FBE 0D:9FAE: 60        RTS
 
 ofs_036_9FAF_06_shred:
 ofs_036_9FAF_0D:
-C - - J - - 0x035FBF 0D:9FAF: A9 00     LDA #$00    ; con_шаблон_ai_00 ???
-C - - - - - 0x035FC1 0D:9FB1: 85 17     STA ram_0017
 C - - - - - 0x035FC3 0D:9FB3: BC DE 06  LDY ram_06DE_plr,X ; 06DF 
 C - - - - - 0x035FC6 0D:9FB6: B9 10 06  LDA ram_plr_флаг_индекса_атаки,Y ; 0610 
 C - - - - - 0x035FC9 0D:9FB9: F0 19     BEQ bra_9FD4
