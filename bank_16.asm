@@ -2887,7 +2887,7 @@ loc_9FD5:   ; A = 80
 C D 0 - - - 0x025FE5 09:9FD5: 20 7D D1  JSR sub_0x03D18D
 C - - - - - 0x025FE8 09:9FD8: A9 00     LDA #$00
 C - - - - - 0x025FEA 09:9FDA: 8D A6 05  STA ram_05A0_obj_мяч + $06
-C - - - - - 0x025FED 09:9FDD: 8D B6 05  STA ram_05B0_obj + $06
+C - - - - - 0x025FED 09:9FDD: 8D B6 05  STA ram_05B0_obj_damage + $06
 C - - - - - 0x025FF0 09:9FE0: 8D 06 05  STA ram_0500_obj + $06
 C - - - - - 0x025FF3 09:9FE3: 20 65 DD  JSR sub_0x03DD75_повернуть_объект_в_противоположную_сторону_по_горизонтали
 C - - - - - 0x025FF6 09:9FE6: A9 01     LDA #$01
@@ -2936,8 +2936,8 @@ C - - - - - 0x02602D 09:A01D: EE 46 05  INC ram_obj_state_lo + $06
 C - - - - - 0x026030 09:A020: A9 03     LDA #$03
 C - - - - - 0x026032 09:A022: 8D 76 05  STA ram_0570_obj + $06
 C - - - - - 0x026035 09:A025: A9 30     LDA #$30
-C - - - - - 0x026037 09:A027: 8D B6 05  STA ram_05B0_obj + $06
-C - - - - - 0x02603A 09:A02A: 8D 96 05  STA ram_obj_damage + $06
+C - - - - - 0x026037 09:A027: 8D B6 05  STA ram_05B0_obj_damage + $06
+C - - - - - 0x02603A 09:A02A: 8D 96 05  STA ram_obj_приоритет_удара + $06
 C - - - - - 0x02603D 09:A02D: A9 90     LDA #$90
 C - - - - - 0x02603F 09:A02F: 8D 16 04  STA ram_obj_pos_Y_lo + $06
 C - - - - - 0x026042 09:A032: A9 01     LDA #$01
@@ -2983,8 +2983,8 @@ C - - - - - 0x026084 09:A074: 8D 06 04  STA ram_obj_anim_id + $06
 C - - - - - 0x026087 09:A077: A9 C0     LDA #$C0
 C - - - - - 0x026089 09:A079: 8D 76 04  STA ram_obj_spd_Z_lo + $06
 C - - - - - 0x02608C 09:A07C: A9 40     LDA #$40
-C - - - - - 0x02608E 09:A07E: 8D B6 05  STA ram_05B0_obj + $06
-C - - - - - 0x026091 09:A081: 8D 96 05  STA ram_obj_damage + $06
+C - - - - - 0x02608E 09:A07E: 8D B6 05  STA ram_05B0_obj_damage + $06
+C - - - - - 0x026091 09:A081: 8D 96 05  STA ram_obj_приоритет_удара + $06
 bra_A084:
 C - - - - - 0x026094 09:A084: 20 C7 A1  JSR sub_A1C7    ; возможен PLA PLA
 C - - - - - 0x026097 09:A087: AD 16 04  LDA ram_obj_pos_Y_lo + $06

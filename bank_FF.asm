@@ -2112,7 +2112,7 @@ C - - - - - 0x03DB0B 0F:DAFB: 9D 60 05  STA ram_obj_timer,X
 C - - - - - 0x03DB0E 0F:DAFE: 9D 70 05  STA ram_0570_obj,X
 C - - - - - 0x03DB11 0F:DB01: 9D 80 05  STA ram_0580_obj,X
 C - - - - - 0x03DB17 0F:DB07: 9D A0 05  STA ram_05A0_obj_мяч,X
-C - - - - - 0x03DB1A 0F:DB0A: 9D B0 05  STA ram_05B0_obj,X
+C - - - - - 0x03DB1A 0F:DB0A: 9D B0 05  STA ram_05B0_obj_damage,X
 C - - - - - 0x03DB1D 0F:DB0D: 9D C0 05  STA ram_obj_anim_timer,X
 C - - - - - 0x03DB20 0F:DB10: 9D D0 05  STA ram_05D0_obj,X
 C - - - - - 0x03DB23 0F:DB13: 9D E0 05  STA ram_05E0_obj,X
@@ -2128,7 +2128,7 @@ C - - - - - 0x03E942 0F:E932: B0 05     BCS bra_E939
 C - - - - - 0x03E944 0F:E934: AC 4F 01  LDY ram_014F    ; ram_tournament_fighter + $03 ???
 C - - - - - 0x03E947 0F:E937: 30 03     BMI bra_E93C
 bra_E939:
-C - - - - - 0x03E949 0F:E939: 9D 90 05  STA ram_obj_damage,X ; 0590 0591 0592 0593 0594 0595 0596 0597 0598 0599 059A 059B 059C 059D 059E 059F 
+C - - - - - 0x03E949 0F:E939: 9D 90 05  STA ram_obj_приоритет_удара,X ; 0590 0591 0592 0593 0594 0595 0596 0597 0598 0599 059A 059B 059C 059D 059E 059F 
 bra_E93C:
 sub_D067_очистить_spd_X_и_spd_Z:
 sub_0x03DB48_очистить_spd_X_и_spd_Z:
@@ -5934,7 +5934,7 @@ C - - - - - 0x03EFD1 0F:EFC1: 98        TYA
 C - - - - - 0x03EFD2 0F:EFC2: 0A        ASL
 C - - - - - 0x03EFD3 0F:EFC3: A8        TAY
 C - - - - - 0x03EFD4 0F:EFC4: D0 06     BNE bra_EFCC
-C - - - - - 0x03EFD6 0F:EFC6: AD B6 05  LDA ram_05B0_obj + $06
+C - - - - - 0x03EFD6 0F:EFC6: AD B6 05  LDA ram_05B0_obj_damage + $06
 C - - - - - 0x03EFD9 0F:EFC9: 4A        LSR
 C - - - - - 0x03EFDA 0F:EFCA: 4A        LSR
 C - - - - - 0x03EFDB 0F:EFCB: 60        RTS

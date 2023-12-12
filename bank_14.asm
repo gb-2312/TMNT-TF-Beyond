@@ -7662,10 +7662,10 @@ loc_BD9B:
 C D 1 - - - 0x02BDAB 0A:BD9B: AC 50 05  LDY ram_obj_id
 C - - - - - 0x02BDAE 0A:BD9E: B9 CE BF  LDA tbl_BFCE_hp_стен_в_story_для_персов,Y
 C - - - - - 0x02BDB1 0A:BDA1: 8D 91 05  STA ram_plr_hp_lo + $01
-C - - - - - 0x02BDB4 0A:BDA4: EE 31 05  INC ram_0530_obj_state + $01
+C - - - - - 0x02BDB4 0A:BDA4: EE 31 05  INC ram_0530_obj_state + $01    ; bzk optimize, чуть ниже будет перезаписано
 C - - - - - 0x02BDB7 0A:BDA7: A9 80     LDA #$80
 C - - - - - 0x02BDB9 0A:BDA9: 8D E1 05  STA ram_05E0_obj + $01
-C - - - - - 0x02BDBC 0A:BDAC: 0A        ASL
+C - - - - - 0x02BDBC 0A:BDAC: 0A        ASL ; 00
 C - - - - - 0x02BDBD 0A:BDAD: 8D B1 04  STA ram_obj_spd_Y_lo + $01
 C - - - - - 0x02BDC0 0A:BDB0: A9 01     LDA #$01
 C - - - - - 0x02BDC2 0A:BDB2: 8D 31 05  STA ram_0530_obj_state + $01
@@ -7882,8 +7882,8 @@ C - - - - - 0x02BF61 0A:BF51: FE 30 05  INC ram_0530_obj_state,X ; 0533 0535 053
 C - - - - - 0x02BF64 0A:BF54: A9 80     LDA #$80
 C - - - - - 0x02BF66 0A:BF56: 9D E0 05  STA ram_05E0_obj,X ; 05E3 05E5 05E7 05E9 05EB 
 C - - - - - 0x02BF69 0A:BF59: 9D 80 05  STA ram_0580_obj,X ; 0583 0585 0587 0589 058B 
-C - - - - - 0x02BF6C 0A:BF5C: 0A        ASL
-C - - - - - 0x02BF6D 0A:BF5D: 9D B0 05  STA ram_05B0_obj,X ; 05B3 05B5 05B7 05B9 05BB 
+C - - - - - 0x02BF6C 0A:BF5C: 0A        ASL ; 00
+C - - - - - 0x02BF6D 0A:BF5D: 9D B0 05  STA ram_05B0_obj_damage,X ; 05B3 05B5 05B7 05B9 05BB 
 bra_BF60_RTS:
 C - - - - - 0x02BF70 0A:BF60: 60        RTS
 
