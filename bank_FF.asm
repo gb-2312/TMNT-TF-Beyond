@@ -4606,6 +4606,8 @@ bra_E92B:
 
 
 sub_E930:
+; bzk optimize, вызов только из одного места
+; A = 00
 C - - - - - 0x03E940 0F:E930: E0 02     CPX #$02
 C - - - - - 0x03E942 0F:E932: B0 05     BCS bra_E939
 C - - - - - 0x03E944 0F:E934: AC 4F 01  LDY ram_014F    ; ram_tournament_fighter + $03 ???
@@ -5444,11 +5446,11 @@ C - - - - - 0x03ED08 0F:ECF8: 60        RTS
 
 
 loc_0x03ED15:
-C D 3 - - - 0x03ED15 0F:ED05: BD C6 06  LDA ram_06C6_cpu,X ; 06C6 06C7 
-C - - - - - 0x03ED18 0F:ED08: 1D C8 06  ORA ram_06C8_cpu,X ; 06C8 06C9 
+C D 3 - - - 0x03ED15 0F:ED05: BD C6 06  LDA ram_06C6_cpu_btn,X ; 06C6 06C7 
+C - - - - - 0x03ED18 0F:ED08: 1D C8 06  ORA ram_06C8_cpu_btn,X ; 06C8 06C9 
 C - - - - - 0x03ED1B 0F:ED0B: 95 91     STA ram_btn_hold,X
-C - - - - - 0x03ED1D 0F:ED0D: 9D C6 06  STA ram_06C6_cpu,X ; 06C6 06C7 
-C - - - - - 0x03ED20 0F:ED10: 9D C8 06  STA ram_06C8_cpu,X ; 06C8 06C9 
+C - - - - - 0x03ED1D 0F:ED0D: 9D C6 06  STA ram_06C6_cpu_btn,X ; 06C6 06C7 
+C - - - - - 0x03ED20 0F:ED10: 9D C8 06  STA ram_06C8_cpu_btn,X ; 06C8 06C9 
 C - - - - - 0x03ED23 0F:ED13: 60        RTS
 
 
@@ -5480,9 +5482,9 @@ C - - - - - 0x03ED3B 0F:ED2B: 60        RTS
 sub_0x03ED3C:
 C - - - - - 0x03ED3C 0F:ED2C: 20 2F EE  JSR sub_EE2F
 C - - - - - 0x03ED3F 0F:ED2F: B0 18     BCS bra_ED49
-C - - - - - 0x03ED41 0F:ED31: AD F3 06  LDA ram_06F3
+C - - - - - 0x03ED41 0F:ED31: AD F3 06  LDA ram_06F3_flag
 C - - - - - 0x03ED44 0F:ED34: D0 18     BNE bra_ED4E
-C - - - - - 0x03ED46 0F:ED36: EE F3 06  INC ram_06F3
+C - - - - - 0x03ED46 0F:ED36: EE F3 06  INC ram_06F3_flag
 C - - - - - 0x03ED49 0F:ED39: 20 C6 ED  JSR sub_EDC6_генератор_рандома_по_сложности_игры_1
 C - - - - - 0x03ED4C 0F:ED3C: BC 50 05  LDY ram_obj_id,X ; 0550 0551 
 C - - - - - 0x03ED4F 0F:ED3F: D9 53 ED  CMP tbl_ED53,Y
@@ -5492,7 +5494,7 @@ C - - - - - 0x03ED55 0F:ED45: BC DE 06  LDY ram_06DE_cpu_индекс_сопер
 C - - - - - 0x03ED58 0F:ED48: 60        RTS
 bra_ED49:
 C - - - - - 0x03ED59 0F:ED49: A9 00     LDA #$00
-C - - - - - 0x03ED5B 0F:ED4B: 8D F3 06  STA ram_06F3
+C - - - - - 0x03ED5B 0F:ED4B: 8D F3 06  STA ram_06F3_flag
 bra_ED4E:
 C - - - - - 0x03ED5E 0F:ED4E: 38        SEC
 C - - - - - 0x03ED5F 0F:ED4F: BC DE 06  LDY ram_06DE_cpu_индекс_соперника,X ; 06DE 06DF 
@@ -5578,16 +5580,16 @@ sub_0x03EDAB:
 C - - - - - 0x03EDAB 0F:ED9B: A9 FF     LDA #$FF
 C - - - - - 0x03EDAD 0F:ED9D: 9D C0 06  STA ram_cpu_шаблон_ai,X ; 06C0 06C1 
 C - - - - - 0x03EDB0 0F:EDA0: A9 00     LDA #$00
-C - - - - - 0x03EDB2 0F:EDA2: 9D CC 06  STA ram_06CC_cpu,X ; 06CC 06CD 
+C - - - - - 0x03EDB2 0F:EDA2: 9D CC 06  STA ram_06CC_cpu_flag,X ; 06CC 06CD 
 C - - - - - 0x03EDB5 0F:EDA5: 9D D2 06  STA ram_06D2_cpu_script,X ; 06D2 06D3 
-C - - - - - 0x03EDB8 0F:EDA8: 9D C8 06  STA ram_06C8_cpu,X ; 06C8 06C9 
-C - - - - - 0x03EDBB 0F:EDAB: 9D C6 06  STA ram_06C6_cpu,X ; 06C6 06C7 
+C - - - - - 0x03EDB8 0F:EDA8: 9D C8 06  STA ram_06C8_cpu_btn,X ; 06C8 06C9 
+C - - - - - 0x03EDBB 0F:EDAB: 9D C6 06  STA ram_06C6_cpu_btn,X ; 06C6 06C7 
 C - - - - - 0x03EDBE 0F:EDAE: 9D DA 06  STA ram_06DA_cpu_script,X ; 06DA 06DB 
 C - - - - - 0x03EDC1 0F:EDB1: 95 91     STA ram_btn_hold,X
-C - - - - - 0x03EDC3 0F:EDB3: 9D DC 06  STA ram_06DC_cpu,X ; 06DC 06DD 
-C - - - - - 0x03EDC6 0F:EDB6: 9D C2 06  STA ram_06C2_cpu,X ; 06C2 06C3 
-C - - - - - 0x03EDC9 0F:EDB9: 9D E4 06  STA ram_06E4_cpu,X ; 06E4 06E5 
-C - - - - - 0x03EDCC 0F:EDBC: 8D F0 06  STA ram_06F0
+C - - - - - 0x03EDC3 0F:EDB3: 9D DC 06  STA ram_06DC_cpu_flag,X ; 06DC 06DD 
+C - - - - - 0x03EDC6 0F:EDB6: 9D C2 06  STA ram_06C2_cpu_индекс_поведения,X ; 06C2 06C3 
+C - - - - - 0x03EDC9 0F:EDB9: 9D E4 06  STA ram_06E4_cpu_flag,X ; 06E4 06E5 
+C - - - - - 0x03EDCC 0F:EDBC: 8D F0 06  STA ram_06F0_flag
 C - - - - - 0x03EDD2 0F:EDC2: 60        RTS
 bra_EDC3:
 ; bzk optimize, нигде на выходе игру не интересует этот 00 (да, я все проверил, а их дохера)

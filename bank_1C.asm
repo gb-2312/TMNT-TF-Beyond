@@ -2243,9 +2243,10 @@ C - - - - - 0x038B93 0E:8B83: 20 32 EA  JSR sub_0x03EA45
 C - - - - - 0x038B96 0E:8B86: AC 28 01  LDY ram_option_health
 C - - - - - 0x038B99 0E:8B89: BD 0D 01  LDA ram_plr_hp_hi,X
 C - - - - - 0x038B9C 0E:8B8C: 20 52 A7  JSR sub_A752_уменьшить_здоровье
-C - - - - - 0x038B9F 0E:8B8F: 90 03     BCC bra_8B94
+C - - - - - 0x038B9F 0E:8B8F: 90 03     BCC bra_8B94_хп_подсчитано
+; if хп еще не подсчитано
 C - - - - - 0x038BA1 0E:8B91: 4C 06 8B  JMP loc_8B06
-bra_8B94:
+bra_8B94_хп_подсчитано:
 C - - - - - 0x038BA4 0E:8B94: 20 3E 8B  JSR sub_8B3E
 C - - - - - 0x038BA7 0E:8B97: 0A        ASL
 ; bzk bug? стремная запись в 068F

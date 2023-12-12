@@ -5118,18 +5118,16 @@ tbl_9958:
 
 
 tbl_9996:
-; !!! ???
-- - - - - - 0x0259A6 09:9996: FF        .byte $FF   ; bzk garbage?
-- D 0 - - - 0x0259A7 09:9997: 81        .byte $81   ; 
-- D 0 - - - 0x0259A8 09:9998: 01        .byte $01   ; 
-- - - - - - 0x0259A9 09:9999: 80        .byte $80   ; 
-- - - - - - 0x0259AA 09:999A: 00        .byte $00   ; 
-- - - - - - 0x0259AB 09:999B: 00        .byte $00   ; 
+- - - - - - 0x0259A6 09:9996: FF        .byte $FF   ; 00 bzk garbage?
+- D 0 - - - 0x0259A7 09:9997: 81        .byte $81   ; 01 
+- D 0 - - - 0x0259A8 09:9998: 01        .byte $01   ; 02 
+- - - - - - 0x0259A9 09:9999: 80        .byte $80   ; 03 
+- - - - - - 0x0259AA 09:999A: 00        .byte $00   ; 04 
+- - - - - - 0x0259AB 09:999B: 00        .byte $00   ; 05 
 
 
 
 tbl_999C:
-; !!! ???
 - - - - - - 0x0259AC 09:999C: 00        .byte $00   ; 00 
 - D 0 - - - 0x0259AD 09:999D: 21        .byte $21   ; 01 
 - - - - - - 0x0259AE 09:999E: 21        .byte $21   ; 02 
@@ -8023,7 +8021,7 @@ tbl_AD45:
 
 tbl_AD4C:
 tbl_0x026D5C:
-; !!! ???
+; размер хитбоксов?
 - D 1 - - - 0x026D5C 09:AD4C: 00        .byte $00   ; 
 - D 1 - - - 0x026D5D 09:AD4D: 0C        .byte $0C   ; 
 - D 1 - - - 0x026D5E 09:AD4E: 05        .byte $05   ; 
@@ -10924,7 +10922,7 @@ C - - - - - 0x027CB9 09:BCA9: A6 A8     LDX ram_local_obj_index
 C - - - - - 0x027CBB 09:BCAB: 20 0C D2  JSR sub_0x03D21C_получить_разницу_pos_X_двух_объектов
 C - - - - - 0x027CBE 09:BCAE: C5 02     CMP ram_0002
 C - - - - - 0x027CC0 09:BCB0: B0 03     BCS bra_BCB5
-C - - - - - 0x027CC2 09:BCB2: 4C C0 BC  JMP loc_BCC0
+C - - - - - 0x027CC2 09:BCB2: 4C C0 BC  JMP loc_BCC0_дамаг_по_стене
 bra_BCB5:
 C - - - - - 0x027CC5 09:BCB5: E6 A9     INC ram_global_obj_index
 C - - - - - 0x027CC7 09:BCB7: E6 A9     INC ram_global_obj_index
@@ -10935,7 +10933,7 @@ C - - - - - 0x027CCF 09:BCBF: 60        RTS
 
 
 
-loc_BCC0:
+loc_BCC0_дамаг_по_стене:
 C D 1 - - - 0x027CD0 09:BCC0: A9 01     LDA #$01
 C - - - - - 0x027CD2 09:BCC2: 9D 1E 06  STA ram_061E_plr,X ; 061F 
 C - - - - - 0x027CD5 09:BCC5: 99 F0 05  STA ram_05F0_obj,Y ; 05F2 05F4 
@@ -10948,7 +10946,8 @@ bra_BCD3:
 C - - - - - 0x027CE3 09:BCD3: A9 0A     LDA #$0A
 C - - - - - 0x027CE5 09:BCD5: 85 AA     STA ram_таймер_задержки_фпс
 C - - - - - 0x027CE7 09:BCD7: B9 B0 05  LDA ram_05B0_obj,Y ; 05B2 05B4 
-C - - - - - 0x027CEA 09:BCDA: 85 08     STA ram_0008
+; bzk optimize, если Y не изменится, тогда вычитать ram_05B0_obj напрямую в 0x027D1A
+C - - - - - 0x027CEA 09:BCDA: 85 08     STA ram_0008    ; дамаг от атаки перса
 C - - - - - 0x027CEC 09:BCDC: 20 88 B0  JSR sub_B088
 C - - - - - 0x027CF1 09:BCE1: B9 50 05  LDA ram_obj_id + $04 ; 0552 
                                         TAY
@@ -10962,13 +10961,14 @@ C - - - - - 0x027D0B 09:BCFB: 9D F0 05  STA ram_05F0_obj,X ; 05F1
 C - - - - - 0x027D0E 09:BCFE: A9 12     LDA #con_0x03F6AD_12
 C - - - - - 0x027D10 09:BD00: 20 94 F6  JSR sub_0x03F6A4_записать_звук
 C - - - - - 0x027D13 09:BD03: 20 1D BD  JSR sub_BD1D
+; уменьшение хп стены
 C - - - - - 0x027D16 09:BD06: BD 90 05  LDA ram_0590_obj,X ; 0591 
 C - - - - - 0x027D19 09:BD09: 38        SEC
-C - - - - - 0x027D1A 09:BD0A: E5 08     SBC ram_0008
+C - - - - - 0x027D1A 09:BD0A: E5 08     SBC ram_0008    ; дамаг от атаки перса
 C - - - - - 0x027D1C 09:BD0C: 9D 90 05  STA ram_0590_obj,X ; 0591 
-C - - - - - 0x027D1F 09:BD0F: 90 01     BCC bra_BD12
+C - - - - - 0x027D1F 09:BD0F: 90 01     BCC bra_BD12_стена_разрушена
 C - - - - - 0x027D21 09:BD11: 60        RTS
-bra_BD12:
+bra_BD12_стена_разрушена:
 C - - - - - 0x027D22 09:BD12: A9 00     LDA #$00
 C - - - - - 0x027D24 09:BD14: 9D 90 05  STA ram_0590_obj,X ; 0591 
 C - - - - - 0x027D27 09:BD17: A9 02     LDA #$02
