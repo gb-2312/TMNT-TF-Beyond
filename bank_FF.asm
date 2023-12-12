@@ -2111,7 +2111,6 @@ C - - - - - 0x03DB08 0F:DAF8: 9D 40 05  STA ram_obj_state_lo,X
 C - - - - - 0x03DB0B 0F:DAFB: 9D 60 05  STA ram_obj_timer,X
 C - - - - - 0x03DB0E 0F:DAFE: 9D 70 05  STA ram_0570_obj,X
 C - - - - - 0x03DB11 0F:DB01: 9D 80 05  STA ram_0580_obj,X
-C - - - - - 0x03DB14 0F:DB04: 20 30 E9  JSR sub_E930
 C - - - - - 0x03DB17 0F:DB07: 9D A0 05  STA ram_05A0_obj_мяч,X
 C - - - - - 0x03DB1A 0F:DB0A: 9D B0 05  STA ram_05B0_obj,X
 C - - - - - 0x03DB1D 0F:DB0D: 9D C0 05  STA ram_obj_anim_timer,X
@@ -2124,6 +2123,13 @@ C - - - - - 0x03DB2F 0F:DB1F: 9D C0 04  STA ram_obj_hit_state,X
 C - - - - - 0x03DB32 0F:DB22: 9D D0 04  STA ram_04D0_obj,X
 C - - - - - 0x03DB35 0F:DB25: 9D E0 04  STA ram_04E0_obj,X
 C - - - - - 0x03DB38 0F:DB28: 9D F0 04  STA ram_04F0_obj,X
+C - - - - - 0x03E940 0F:E930: E0 02     CPX #$02
+C - - - - - 0x03E942 0F:E932: B0 05     BCS bra_E939
+C - - - - - 0x03E944 0F:E934: AC 4F 01  LDY ram_014F    ; ram_tournament_fighter + $03 ???
+C - - - - - 0x03E947 0F:E937: 30 03     BMI bra_E93C
+bra_E939:
+C - - - - - 0x03E949 0F:E939: 9D 90 05  STA ram_obj_damage,X ; 0590 0591 0592 0593 0594 0595 0596 0597 0598 0599 059A 059B 059C 059D 059E 059F 
+bra_E93C:
 sub_D067_очистить_spd_X_и_spd_Z:
 sub_0x03DB48_очистить_spd_X_и_spd_Z:
 loc_0x03DB48_очистить_spd_X_и_spd_Z:
@@ -4602,20 +4608,6 @@ C - - - - - 0x03E938 0F:E928: 4C 23 B0  JMP loc_0x027033_отрисовать_о
 bra_E92B:
 - - - - - - 0x03E93B 0F:E92B: A9 00     LDA #$00
 - - - - - - 0x03E93D 0F:E92D: 4C 5E B0  JMP loc_0x02706E_ничего_не_рисовать_в_статусбаре
-
-
-
-sub_E930:
-; bzk optimize, вызов только из одного места
-; A = 00
-C - - - - - 0x03E940 0F:E930: E0 02     CPX #$02
-C - - - - - 0x03E942 0F:E932: B0 05     BCS bra_E939
-C - - - - - 0x03E944 0F:E934: AC 4F 01  LDY ram_014F    ; ram_tournament_fighter + $03 ???
-C - - - - - 0x03E947 0F:E937: 30 03     BMI bra_E93C_RTS
-bra_E939:
-C - - - - - 0x03E949 0F:E939: 9D 90 05  STA ram_obj_damage,X ; 0590 0591 0592 0593 0594 0595 0596 0597 0598 0599 059A 059B 059C 059D 059E 059F 
-bra_E93C_RTS:
-C - - - - - 0x03E94C 0F:E93C: 60        RTS
 
 
 
