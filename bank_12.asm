@@ -36,8 +36,8 @@
 
 sub_0x024014:
 C - - - - - 0x024014 09:8004: 20 3B FF  JSR sub_0x03FF4B_вычисление_приоритета_игрока_в_бою
-loc_8008:
 sub_0x024018:
+loc_8008_loop:
 C D 0 - - - 0x024018 09:8008: A6 AD     LDX ram_00AD
 C - - - - - 0x02401A 09:800A: 86 A8     STX ram_local_obj_index
 C - - - - - 0x02401C 09:800C: 8A        TXA
@@ -98,7 +98,7 @@ bra_FF34:
 C - - - - - 0x03FF44 0F:FF34: C6 AD     DEC ram_00AD
 C - - - - - 0x03FF46 0F:FF36: 30 FB     BMI bra_FF33_RTS
 bra_FF38:
-C - - - - - 0x03FF48 0F:FF38: 4C 08 80  JMP loc_8008
+C - - - - - 0x03FF48 0F:FF38: 4C 08 80  JMP loc_8008_loop
 
 
 
@@ -10971,8 +10971,8 @@ C - - - - - 0x027D21 09:BD11: 60        RTS
 bra_BD12_стена_разрушена:
 C - - - - - 0x027D22 09:BD12: A9 00     LDA #$00
 C - - - - - 0x027D24 09:BD14: 9D 90 05  STA ram_plr_hp_lo,X ; 0591 
-C - - - - - 0x027D27 09:BD17: A9 02     LDA #$02
-C - - - - - 0x027D29 09:BD19: 8D 31 05  STA ram_0530_obj_state + $01
+C - - - - - 0x027D27 09:BD17: A9 02     LDA #$02    ; стена разрушена
+C - - - - - 0x027D29 09:BD19: 8D 31 05  STA ram_0531_script_стена_bonus_game
 C - - - - - 0x027D2C 09:BD1C: 60        RTS
 
 

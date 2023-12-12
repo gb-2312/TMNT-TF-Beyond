@@ -4073,7 +4073,7 @@ ofs_007_9719_05_shred_съебывается:
 C - - J - - 0x039729 0E:9719: A2 00     LDX #$00
                                         JSR sub_0x03F723_отрисовка_финальной_стойки
 C - - - - - 0x039730 0E:9720: E8        INX ; 01
-C - - - - - 0x039731 0E:9721: AD 31 05  LDA ram_0530_script_shredder_ending
+C - - - - - 0x039731 0E:9721: AD 31 05  LDA ram_0531_script_shredder_ending
 C - - - - - 0x039734 0E:9724: 20 32 D0  JSR sub_0x03D042_поинтеры_после_JSR
 - D 0 - I - 0x039737 0E:9727: 3D 97     .word ofs_006_973D_00
 - D 0 - I - 0x039739 0E:9729: 45 97     .word ofs_006_9745_01
@@ -4093,7 +4093,7 @@ ofs_006_973D_00:
 ; X = 01
 C - - J - - 0x03974D 0E:973D: CE 61 05  DEC ram_obj_timer + $01
 C - - - - - 0x039750 0E:9740: D0 6F     BNE bra_97B1_RTS
-C - - - - - 0x039752 0E:9742: EE 31 05  INC ram_0530_script_shredder_ending  ; 00 -> 01
+C - - - - - 0x039752 0E:9742: EE 31 05  INC ram_0531_script_shredder_ending  ; 00 -> 01
 ofs_006_9745_01:
 ; X = 01
 C - - - - - 0x039755 0E:9745: A0 0C     LDY #con_DFE6_0C
@@ -4103,7 +4103,7 @@ C - - - - - 0x03975D 0E:974D: 30 03     BMI bra_9752
 bra_974F:
 C - - - - - 0x03975F 0E:974F: 4C 14 F7  JMP loc_0x03F724_смена_тайловых_наборов_для_анимаций
 bra_9752:
-C - - - - - 0x039762 0E:9752: EE 31 05  INC ram_0530_script_shredder_ending  ; 01 -> 02
+C - - - - - 0x039762 0E:9752: EE 31 05  INC ram_0531_script_shredder_ending  ; 01 -> 02
 C - - - - - 0x039765 0E:9755: A9 00     LDA #$00
 C - - - - - 0x039767 0E:9757: 8D 11 05  STA ram_obj_flip + $01
 C - - - - - 0x03976A 0E:975A: A9 41     LDA #< $0140
@@ -4130,7 +4130,7 @@ C - - - - - 0x039787 0E:9777: 20 7C D0  JSR sub_0x03D08C_обработка_ан
 C - - - - - 0x03978A 0E:977A: 20 65 DB  JSR sub_0x03DB75_добавить_spd_X_к_pos_X
 C - - - - - 0x03978D 0E:977D: AD 31 04  LDA ram_obj_pos_X_hi + $01
 C - - - - - 0x039790 0E:9780: F0 CD     BEQ bra_974F
-C - - - - - 0x039792 0E:9782: EE 31 05  INC ram_0530_script_shredder_ending  ; 02 -> 03
+C - - - - - 0x039792 0E:9782: EE 31 05  INC ram_0531_script_shredder_ending  ; 02 -> 03
 C - - - - - 0x039795 0E:9785: A9 60     LDA #$60
 C - - - - - 0x039797 0E:9787: 8D 61 05  STA ram_obj_timer + $01
 C - - - - - 0x03979A 0E:978A: A9 00     LDA #$00
@@ -4139,7 +4139,7 @@ ofs_006_978F_03:
 ; X = 01
 C - - - - - 0x03979F 0E:978F: CE 61 05  DEC ram_obj_timer + $01
 C - - - - - 0x0397A2 0E:9792: D0 1D     BNE bra_97B1_RTS
-C - - - - - 0x0397A4 0E:9794: EE 31 05  INC ram_0530_script_shredder_ending  ; 03 -> 04
+C - - - - - 0x0397A4 0E:9794: EE 31 05  INC ram_0531_script_shredder_ending  ; 03 -> 04
 C - - - - - 0x0397A7 0E:9797: A9 00     LDA #$00
 C - - - - - 0x0397A9 0E:9799: 8D 41 04  STA ram_obj_pos_X_lo + $01
 C - - - - - 0x0397AC 0E:979C: 8D 31 04  STA ram_obj_pos_X_hi + $01
@@ -4175,7 +4175,7 @@ ofs_006_97C6_05:
 ; X = 01
 C - - J - - 0x0397D6 0E:97C6: CE 61 05  DEC ram_obj_timer + $01
 C - - - - - 0x0397D9 0E:97C9: D0 F1     BNE bra_97BC
-C - - - - - 0x0397DB 0E:97CB: EE 31 05  INC ram_0530_script_shredder_ending  ; 05 -> 06
+C - - - - - 0x0397DB 0E:97CB: EE 31 05  INC ram_0531_script_shredder_ending  ; 05 -> 06
 C - - - - - 0x0397DE 0E:97CE: A0 0E     LDY #con_chr_pair_0E
 C - - - - - 0x0397E0 0E:97D0: 20 0F DC  JSR sub_0x03DC1F_запись_2й_пары_chr_spr
 C - - - - - 0x0397E3 0E:97D3: A2 05     LDX #$05    ; tip_индекс_буфера_палитры + $05
@@ -4210,7 +4210,7 @@ bra_9807:
 C - - - - - 0x039817 0E:9807: A9 28     LDA #$28
 C - - - - - 0x039819 0E:9809: 8D 01 04  STA ram_obj_anim_id + $01
 bra_980C:
-C - - - - - 0x03981C 0E:980C: EE 31 05  INC ram_0530_script_shredder_ending  ; 04/06 -> 05/07
+C - - - - - 0x03981C 0E:980C: EE 31 05  INC ram_0531_script_shredder_ending  ; 04/06 -> 05/07
 C - - - - - 0x03981F 0E:980F: 60        RTS
 
 
@@ -4220,7 +4220,7 @@ ofs_006_9810_07:
 C - - J - - 0x039820 0E:9810: 20 4C DB  JSR sub_0x03DB5C_добавить_spd_Z_к_pos_Y
 C - - - - - 0x039823 0E:9813: 20 69 DC  JSR sub_0x03DC79
 C - - - - - 0x039826 0E:9816: 90 99     BCC bra_97B1_RTS
-C - - - - - 0x039828 0E:9818: EE 31 05  INC ram_0530_script_shredder_ending  ; 07 -> 08
+C - - - - - 0x039828 0E:9818: EE 31 05  INC ram_0531_script_shredder_ending  ; 07 -> 08
 C - - - - - 0x03982B 0E:981B: A9 20     LDA #$20
 C - - - - - 0x03982D 0E:981D: 8D 61 05  STA ram_obj_timer + $01
 C - - - - - 0x039830 0E:9820: A9 29     LDA #$29
@@ -4233,7 +4233,7 @@ C - - - - - 0x039835 0E:9825: CE 61 05  DEC ram_obj_timer + $01
 C - - - - - 0x039838 0E:9828: D0 87     BNE bra_97B1_RTS
 C - - - - - 0x03983A 0E:982A: A9 60     LDA #$60
 C - - - - - 0x03983C 0E:982C: 8D 61 05  STA ram_obj_timer + $01
-C - - - - - 0x03983F 0E:982F: EE 31 05  INC ram_0530_script_shredder_ending  ; 08/09 -> 09/0A
+C - - - - - 0x03983F 0E:982F: EE 31 05  INC ram_0531_script_shredder_ending  ; 08/09 -> 09/0A
 C - - - - - 0x039842 0E:9832: A9 2A     LDA #$2A
 C - - - - - 0x039844 0E:9834: 8D 01 04  STA ram_obj_anim_id + $01
 C - - - - - 0x039847 0E:9837: 60        RTS

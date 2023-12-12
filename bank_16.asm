@@ -93,7 +93,7 @@ C - - - - - 0x02C12F 0B:811F: 20 94 D3  JSR sub_0x03D3A4_записать_пал
 C - - - - - 0x02C132 0B:8122: A0 00     LDY #$00
 C - - - - - 0x02C134 0B:8124: 8C 30 05  STY ram_0530_obj_state
 C - - - - - 0x02C137 0B:8127: 8C 31 05  STY ram_0530_obj_state + $01
-C - - - - - 0x02C13A 0B:812A: C8        INY
+C - - - - - 0x02C13A 0B:812A: C8        INY ; 01
 C - - - - - 0x02C13B 0B:812B: 84 08     STY ram_0008
 bra_812D_loop:
 C - - - - - 0x02C13D 0B:812D: A6 08     LDX ram_0008
@@ -2336,6 +2336,7 @@ C - - - - - 0x02FDD5 0B:BDC5: 8D 51 01  STA ram_переключатель_man_c
 C - - - - - 0x02FDD8 0B:BDC8: A8        TAY
 C - - - - - 0x02FDD9 0B:BDC9: 4A        LSR
 C - - - - - 0x02FDDA 0B:BDCA: 90 03     BCC bra_BDCF
+; A = 00 ?
 C - - - - - 0x02FDDC 0B:BDCC: 8D 31 05  STA ram_0530_obj_state + $01
 bra_BDCF:
                                         JSR sub_BE11_запись_игрок_или_компьютер

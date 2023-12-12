@@ -4168,7 +4168,6 @@ C - - - - - 0x03A781 0E:A771: AD 0D 01  LDA ram_plr_hp_hi
 C - - - - - 0x03A784 0E:A774: CD 0E 01  CMP ram_plr_hp_hi + $01
 C - - - - - 0x03A787 0E:A777: 4C 80 A7  JMP loc_A780
 bra_A77A:
-; проверка hp_lo
 C - - - - - 0x03A78A 0E:A77A: AD 90 05  LDA ram_plr_hp_lo
 C - - - - - 0x03A78D 0E:A77D: CD 91 05  CMP ram_plr_hp_lo + $01
 loc_A780:
@@ -5918,12 +5917,12 @@ tbl_0x03EFA5:
 sub_0x03EFB0:
 ; bzk optimize, переместить в банк 12 когда там будет место
 C - - - - - 0x03EFB0 0F:EFA0: A2 01     LDX #$01
-C - - - - - 0x03EFB2 0F:EFA2: 86 9D     STX ram_009D
+C - - - - - 0x03EFB2 0F:EFA2: 86 9D     STX ram_009D    ; индекс стены в bonus game?
 C - - - - - 0x03EFB4 0F:EFA4: CA        DEX ; 00
-C - - - - - 0x03EFB5 0F:EFA5: 86 AD     STX ram_00AD
+C - - - - - 0x03EFB5 0F:EFA5: 86 AD     STX ram_00AD    ; индекс игрока в bonus game
 C - - - - - 0x03EFB7 0F:EFA7: 20 08 80  JSR sub_0x024018
 C - - - - - 0x03EFBA 0F:EFAA: 20 E3 F5  JSR sub_F5E3_swap_prg_14
-C - - - - - 0x03EFBD 0F:EFAD: 20 7C BD  JSR sub_0x02BD8C
+C - - - - - 0x03EFBD 0F:EFAD: 20 7C BD  JSR sub_0x02BD8C_обработчик_стен_bonus_game
 C - - - - - 0x03EFC0 0F:EFB0: 4C 17 F6  JMP loc_F617_restore_prg
 
 

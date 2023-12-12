@@ -1770,6 +1770,8 @@ ram_obj_pos_Y_lo                        = $0410 ; 0240A8 0241C3 0241CA 0242D9 02
 ; ram_041D                                = $041D ; 0279BD 02F800 03D02A 03D772 03DAF0 03DBE0 03DEF2 03F1BE 
 ; ram_041E                                = $041E ; 024867 03D02A 03D772 03DAF0 03F1BE 
 ; ram_041F                                = $041F ; 024867 03D02A 03D772 03DAF0 03F1BE 
+; bzk optimize, переместить адреса
+    ram_0411_стена                          = ram_obj_pos_Y_lo + $01 ; что-то для стен в bonus game
 
 
 
@@ -1950,6 +1952,8 @@ ram_obj_spd_Y_hi                        = $04A0 ; 024562 02457A 024599 0245C7 02
 ; ram_04AD                                = $04AD ; 03D02A 03DB29 03F1BE 
 ; ram_04AE                                = $04AE ; 03D02A 03DB29 03F1BE 
 ; ram_04AF                                = $04AF ; 03D02A 03DB29 03F1BE 
+; bzk optimize, переместить адреса
+    ram_04A1_счетчик_разбитых_стен          = ram_obj_spd_Y_hi + $01 ; счетчик разбитых стен для bonus game
 
 
 
@@ -1975,6 +1979,7 @@ ram_obj_spd_Y_lo                        = $04B0 ; 024568 02457D 0245DF 0245E8 02
     ram_04B0_индекс_перса_opening           = ram_obj_spd_Y_lo ; индекс перса во время opening
     ram_04B0_отсчет_до_game_over            = ram_obj_spd_Y_lo ; счетчик до game over на экране continue (для отрисовки крупных цифр)
     ram_04B0_задержка_подсчета_очков        = ram_obj_spd_Y_lo ; задержка для подсчета очков после боя
+    ram_04B1_состояние_стены                = ram_obj_spd_Y_lo + $01 ; состояние целостности стены в bonus game (индекс для таблицы с хп 0x02BFF2)
 
 
 
@@ -2161,7 +2166,9 @@ ram_0530_obj_state                      = $0530 ; 024090 0240AB 0240E5 024184 02
     ram_0530_script_имя_перса_opening       = ram_0530_obj_state ; индекс скрипта во время печатания имени перса в opening
     ram_0530_монолог_opening                = ram_0530_obj_state ; что-то для монолога шредера в opening
     ram_0530_credits_flag                   = ram_0530_obj_state ; что-то во время печатания credits
-    ram_0530_script_shredder_ending         = ram_0530_obj_state + $01 ; индекс скрипта во время съебывания шредера в ending
+    ram_0531_script_shredder_ending         = ram_0530_obj_state + $01 ; индекс скрипта во время съебывания шредера в ending
+    ram_0531_script_стена_bonus_game        = ram_0530_obj_state + $01 ; индекс скрипта во время bonus game
+                                                ; bzk bug? этот адрес проверяется ежекадрово в 0x03EABF и иногда в 0x024964 0x0241D2
 
 
 

@@ -20,7 +20,7 @@
 .export _off000_0x028E23_0B
 .export _off000_0x029B62_0C
 .export _off000_0x02AED5_0D
-.export sub_0x02BD8C
+.export sub_0x02BD8C_обработчик_стен_bonus_game
 .export sub_0x02BF21
 
 
@@ -7640,24 +7640,24 @@ _off005_BB79_CA:
 
 
 
-sub_0x02BD8C:
+sub_0x02BD8C_обработчик_стен_bonus_game:
 C - - - - - 0x02BD8C 0A:BD7C: 20 11 BF  JSR sub_BF11
 C - - - - - 0x02BD8F 0A:BD7F: A2 01     LDX #$01
-C - - - - - 0x02BD91 0A:BD81: AD 31 05  LDA ram_0530_obj_state + $01
+C - - - - - 0x02BD91 0A:BD81: AD 31 05  LDA ram_0531_script_стена_bonus_game
 C - - - - - 0x02BD94 0A:BD84: 20 32 D0  JSR sub_0x03D042_поинтеры_после_JSR
-- D 1 - I - 0x02BD97 0A:BD87: 91 BD     .word ofs_043_BD91_00
-- D 1 - I - 0x02BD99 0A:BD89: C4 BD     .word ofs_043_BDC4_01
-- D 1 - I - 0x02BD9B 0A:BD8B: 46 BE     .word ofs_043_BE46_02
+- D 1 - I - 0x02BD97 0A:BD87: 91 BD     .word ofs_043_BD91_00_подготовка_стен
+- D 1 - I - 0x02BD99 0A:BD89: C4 BD     .word ofs_043_BDC4_01_геймплей_bonus_game
+- D 1 - I - 0x02BD9B 0A:BD8B: 46 BE     .word ofs_043_BE46_02_стена_разбита
 - D 1 - I - 0x02BD9D 0A:BD8D: B4 BE     .word ofs_043_BEB4_03
-- D 1 - I - 0x02BD9F 0A:BD8F: C2 BE     .word _общий_RTS ; 04
+- D 1 - I - 0x02BD9F 0A:BD8F: C2 BE     .word _общий_RTS ; 04 все стены разбиты
 
 
 
-ofs_043_BD91_00:
+ofs_043_BD91_00_подготовка_стен:
 C - - J - - 0x02BDA1 0A:BD91: A9 90     LDA #$90
 C - - - - - 0x02BDA3 0A:BD93: 8D 41 04  STA ram_obj_pos_X_lo + $01
 C - - - - - 0x02BDA6 0A:BD96: A9 00     LDA #$00
-C - - - - - 0x02BDA8 0A:BD98: 8D A1 04  STA ram_obj_spd_Y_hi + $01
+C - - - - - 0x02BDA8 0A:BD98: 8D A1 04  STA ram_04A1_счетчик_разбитых_стен
 loc_BD9B:
 C D 1 - - - 0x02BDAB 0A:BD9B: AC 50 05  LDY ram_obj_id
 C - - - - - 0x02BDAE 0A:BD9E: B9 CE BF  LDA tbl_BFCE_hp_стен_в_story_для_персов,Y
@@ -7665,16 +7665,16 @@ C - - - - - 0x02BDB1 0A:BDA1: 8D 91 05  STA ram_plr_hp_lo + $01
 C - - - - - 0x02BDB7 0A:BDA7: A9 80     LDA #$80
 C - - - - - 0x02BDB9 0A:BDA9: 8D E1 05  STA ram_05E0_obj + $01
 C - - - - - 0x02BDBC 0A:BDAC: 0A        ASL ; 00
-C - - - - - 0x02BDBD 0A:BDAD: 8D B1 04  STA ram_obj_spd_Y_lo + $01
+C - - - - - 0x02BDBD 0A:BDAD: 8D B1 04  STA ram_04B1_состояние_стены
 C - - - - - 0x02BDC0 0A:BDB0: A9 01     LDA #$01
-C - - - - - 0x02BDC2 0A:BDB2: 8D 31 05  STA ram_0530_obj_state + $01
+C - - - - - 0x02BDC2 0A:BDB2: 8D 31 05  STA ram_0531_script_стена_bonus_game
 C - - - - - 0x02BDC5 0A:BDB5: A9 B0     LDA #$B0
 C - - - - - 0x02BDC7 0A:BDB7: 8D 11 04  STA ram_obj_pos_Y_lo + $01
 C - - - - - 0x02BDCA 0A:BDBA: A9 09     LDA #$09
 C - - - - - 0x02BDCC 0A:BDBC: 8D 71 05  STA ram_0570_obj + $01
 C - - - - - 0x02BDCF 0A:BDBF: A9 20     LDA #$20
 C - - - - - 0x02BDD1 0A:BDC1: 8D 81 05  STA ram_0580_obj + $01
-ofs_043_BDC4_01:
+ofs_043_BDC4_01_геймплей_bonus_game:
 C - - - - - 0x02BDED 0A:BDDD: A9 1E     LDA #$1E
 C - - - - - 0x02BDEF 0A:BDDF: 8D 71 05  STA ram_0570_obj + $01
 C - - - - - 0x02BDF2 0A:BDE2: AD F1 05  LDA ram_05F0_obj + $01
@@ -7684,17 +7684,17 @@ C - - - - - 0x02BDFC 0A:BDEC: A9 00     LDA #$00
 C - - - - - 0x02BDFE 0A:BDEE: 8D 1F 06  STA ram_061E_plr + $01
 bra_BDF1:
 C - - - - - 0x02BE01 0A:BDF1: AD 91 05  LDA ram_plr_hp_lo + $01
-C - - - - - 0x02BE04 0A:BDF4: AC B1 04  LDY ram_obj_spd_Y_lo + $01
+C - - - - - 0x02BE04 0A:BDF4: AC B1 04  LDY ram_04B1_состояние_стены
 C - - - - - 0x02BE07 0A:BDF7: D9 E2 BF  CMP tbl_BFE2_hp_стены,Y
 C - - - - - 0x02BE0A 0A:BDFA: B0 49     BCS bra_BE45_RTS
 C - - - - - 0x02BE0C 0A:BDFC: A9 01     LDA #$01
 C - - - - - 0x02BE0E 0A:BDFE: 85 04     STA ram_0004
-C - - - - - 0x02BE10 0A:BE00: AD B1 04  LDA ram_obj_spd_Y_lo + $01
+C - - - - - 0x02BE10 0A:BE00: AD B1 04  LDA ram_04B1_состояние_стены
 C - - - - - 0x02BE13 0A:BE03: 0A        ASL
 C - - - - - 0x02BE14 0A:BE04: 0A        ASL
 C - - - - - 0x02BE15 0A:BE05: 0A        ASL
 C - - - - - 0x02BE16 0A:BE06: 85 02     STA ram_0002
-C - - - - - 0x02BE18 0A:BE08: AD A1 04  LDA ram_obj_spd_Y_hi + $01
+C - - - - - 0x02BE18 0A:BE08: AD A1 04  LDA ram_04A1_счетчик_разбитых_стен
 C - - - - - 0x02BE1B 0A:BE0B: 0A        ASL
 C - - - - - 0x02BE1C 0A:BE0C: A8        TAY
 C - - - - - 0x02BE1D 0A:BE0D: B9 86 BF  LDA tbl_BF86,Y
@@ -7720,26 +7720,27 @@ C - - - - - 0x02BE43 0A:BE33: 18        CLC
 C - - - - - 0x02BE44 0A:BE34: A5 01     LDA ram_0001
 C - - - - - 0x02BE46 0A:BE36: 69 20     ADC #$20
 C - - - - - 0x02BE48 0A:BE38: 85 01     STA ram_0001
-C - - - - - 0x02BE4A 0A:BE3A: 90 02     BCC bra_BE3E
+C - - - - - 0x02BE4A 0A:BE3A: 90 02     BCC bra_BE3E_not_overflow
 C - - - - - 0x02BE4C 0A:BE3C: E6 00     INC ram_0000
-bra_BE3E:
+bra_BE3E_not_overflow:
 C - - - - - 0x02BE4E 0A:BE3E: C6 04     DEC ram_0004
 C - - - - - 0x02BE50 0A:BE40: 10 D8     BPL bra_BE1A_loop
-C - - - - - 0x02BE52 0A:BE42: EE B1 04  INC ram_obj_spd_Y_lo + $01
+C - - - - - 0x02BE52 0A:BE42: EE B1 04  INC ram_04B1_состояние_стены
 bra_BE45_RTS:
 C - - - - - 0x02BE55 0A:BE45: 60        RTS
 
 
 
-ofs_043_BE46_02:
+ofs_043_BE46_02_стена_разбита:
+; 02 пишется в 0x027D27
 C - - J - - 0x02BE56 0A:BE46: A9 14     LDA #con_sfx_разбитая_стена
 C - - - - - 0x02BE58 0A:BE48: 20 90 F6  JSR sub_0x03F6A0_записать_звук_сохранив_X_Y
 C - - - - - 0x02BE5B 0A:BE4B: 20 C3 BE  JSR sub_BEC3
-C - - - - - 0x02BE5E 0A:BE4E: A9 04     LDA #$04
-C - - - - - 0x02BE60 0A:BE50: 85 00     STA ram_0000
+C - - - - - 0x02BE5E 0A:BE4E: A9 04     LDA #$04    ; 5 осколков от стены
+C - - - - - 0x02BE60 0A:BE50: 85 00     STA ram_0000    ; индекс осколка
 C - - - - - 0x02BE62 0A:BE52: A0 03     LDY #$03
 bra_BE54_loop:
-C - - - - - 0x02BE64 0A:BE54: AD 41 04  LDA ram_obj_pos_X_lo + $01
+C - - - - - 0x02BE64 0A:BE54: AD 41 04  LDA ram_obj_pos_X_lo + $01  ; координата стены
 C - - - - - 0x02BE67 0A:BE57: 99 40 04  STA ram_obj_pos_X_lo,Y ; 0443 0445 0447 0449 044B 
 C - - - - - 0x02BE6A 0A:BE5A: A9 80     LDA #$80
 C - - - - - 0x02BE6C 0A:BE5C: 99 10 04  STA ram_obj_pos_Y_lo,Y ; 0413 0415 0417 0419 041B 
@@ -7747,12 +7748,12 @@ C - - - - - 0x02BE6F 0A:BE5F: A9 01     LDA #$01
 C - - - - - 0x02BE71 0A:BE61: 99 30 05  STA ram_0530_obj_state,Y ; 0533 0535 0537 0539 053B 
 C - - - - - 0x02BE74 0A:BE64: C8        INY
 C - - - - - 0x02BE75 0A:BE65: C8        INY
-C - - - - - 0x02BE76 0A:BE66: C6 00     DEC ram_0000
+C - - - - - 0x02BE76 0A:BE66: C6 00     DEC ram_0000    ; индекс осколка
 C - - - - - 0x02BE78 0A:BE68: 10 EA     BPL bra_BE54_loop
-C - - - - - 0x02BE7A 0A:BE6A: EE A1 04  INC ram_obj_spd_Y_hi + $01
-C - - - - - 0x02BE7D 0A:BE6D: AD A1 04  LDA ram_obj_spd_Y_hi + $01
+C - - - - - 0x02BE7A 0A:BE6A: EE A1 04  INC ram_04A1_счетчик_разбитых_стен
+C - - - - - 0x02BE7D 0A:BE6D: AD A1 04  LDA ram_04A1_счетчик_разбитых_стен
 C - - - - - 0x02BE80 0A:BE70: C9 05     CMP #$05
-C - - - - - 0x02BE82 0A:BE72: B0 28     BCS bra_BE9C
+C - - - - - 0x02BE82 0A:BE72: B0 28     BCS bra_BE9C_все_стены_разбиты
 C - - - - - 0x02BE84 0A:BE74: 18        CLC
 C - - - - - 0x02BE85 0A:BE75: AD 41 04  LDA ram_obj_pos_X_lo + $01
 C - - - - - 0x02BE88 0A:BE78: 69 40     ADC #< $0040
@@ -7762,22 +7763,23 @@ C - - - - - 0x02BE90 0A:BE80: 69 00     ADC #> $0040
 C - - - - - 0x02BE92 0A:BE82: 8D 36 04  STA ram_obj_pos_X_hi + $06
 C - - - - - 0x02BE95 0A:BE85: A9 80     LDA #$80
 C - - - - - 0x02BE97 0A:BE87: 8D E6 05  STA ram_05E0_obj + $06
-C - - - - - 0x02BE9A 0A:BE8A: EE 31 05  INC ram_0530_obj_state + $01
+C - - - - - 0x02BE9A 0A:BE8A: EE 31 05  INC ram_0531_script_стена_bonus_game    ; 02 -> 03
 C - - - - - 0x02BE9D 0A:BE8D: A9 80     LDA #$80
 C - - - - - 0x02BE9F 0A:BE8F: 8D 81 05  STA ram_0580_obj + $01
-C - - - - - 0x02BEA2 0A:BE92: 0A        ASL
+C - - - - - 0x02BEA2 0A:BE92: 0A        ASL ; 00
 C - - - - - 0x02BEA3 0A:BE93: 8D E1 05  STA ram_05E0_obj + $01
 C - - - - - 0x02BEA6 0A:BE96: A9 FF     LDA #$FF
 C - - - - - 0x02BEA8 0A:BE98: 8D 41 04  STA ram_obj_pos_X_lo + $01
 C - - - - - 0x02BEAB 0A:BE9B: 60        RTS
-bra_BE9C:
+bra_BE9C_все_стены_разбиты:
 C - - - - - 0x02BEAC 0A:BE9C: A9 04     LDA #$04
-C - - - - - 0x02BEAE 0A:BE9E: 8D 31 05  STA ram_0530_obj_state + $01
+C - - - - - 0x02BEAE 0A:BE9E: 8D 31 05  STA ram_0531_script_стена_bonus_game
 C - - - - - 0x02BEB1 0A:BEA1: A0 00     LDY #$00
 C - - - - - 0x02BEB3 0A:BEA3: 8C E1 05  STY ram_05E0_obj + $01
-C - - - - - 0x02BEB6 0A:BEA6: 88        DEY
+C - - - - - 0x02BEB6 0A:BEA6: 88        DEY ; FF
 C - - - - - 0x02BEB7 0A:BEA7: 8C 41 04  STY ram_obj_pos_X_lo + $01
-C - - - - - 0x02BEBA 0A:BEAA: A9 05     LDA #con_plr_state_запускает_мяч
+; bzk optimize, наверняка эта запись для стены не нужна
+C - - - - - 0x02BEBA 0A:BEAA: A9 05     LDA #$05
 C - - - - - 0x02BEBC 0A:BEAC: 8D 21 05  STA ram_obj_state_hi + $01
 C - - - - - 0x02BEBF 0A:BEAF: A9 1D     LDA #con_sfx_взрыв
 C - - - - - 0x02BEC1 0A:BEB1: 4C 8B F6  JMP loc_0x03F69B_выключить_звуки_и_записать_новый
@@ -7794,7 +7796,7 @@ C - - - - - 0x02BECF 0A:BEBF: 4C 9B BD  JMP loc_BD9B
 
 
 sub_BEC3:
-C - - - - - 0x02BED3 0A:BEC3: AD A1 04  LDA ram_obj_spd_Y_hi + $01
+C - - - - - 0x02BED3 0A:BEC3: AD A1 04  LDA ram_04A1_счетчик_разбитых_стен
 C - - - - - 0x02BED6 0A:BEC6: 0A        ASL
 C - - - - - 0x02BED7 0A:BEC7: A8        TAY
 C - - - - - 0x02BED8 0A:BEC8: B9 86 BF  LDA tbl_BF86,Y
@@ -7822,7 +7824,7 @@ C - - - - - 0x02BF04 0A:BEF4: 30 05     BMI bra_BEFB
 C - - - - - 0x02BF06 0A:BEF6: E6 01     INC ram_0001
 C - - - - - 0x02BF08 0A:BEF8: 4C D8 BE  JMP loc_BED8_loop
 bra_BEFB:
-C - - - - - 0x02BF0B 0A:BEFB: AD A1 04  LDA ram_obj_spd_Y_hi + $01
+C - - - - - 0x02BF0B 0A:BEFB: AD A1 04  LDA ram_04A1_счетчик_разбитых_стен
 C - - - - - 0x02BF0E 0A:BEFE: 0A        ASL
 C - - - - - 0x02BF0F 0A:BEFF: AA        TAX
 C - - - - - 0x02BF10 0A:BF00: BD C4 BF  LDA tbl_BFC4,X
