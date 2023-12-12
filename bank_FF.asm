@@ -2165,15 +2165,11 @@ sub_DB4C_добавить_spd_Z_к_pos_Y:
 sub_0x03DB5C_добавить_spd_Z_к_pos_Y:
 loc_0x03DB5C_добавить_spd_Z_к_pos_Y:
 ; X = индекс объекта
-C D 2 - - - 0x03DB5C 0F:DB4C: A0 00     LDY #$00
 C - - - - - 0x03DB5E 0F:DB4E: 18        CLC
 C - - - - - 0x03DB5F 0F:DB4F: BD 70 04  LDA ram_obj_spd_Z_lo,X ; 0470 0471 0473 0475 0476 0477 0479 047B 
 C - - - - - 0x03DB62 0F:DB52: 7D 20 04  ADC ram_obj_spd_Z_fr,X ; 0420 0421 0423 0425 0426 0427 0429 042B 
 C - - - - - 0x03DB65 0F:DB55: 9D 20 04  STA ram_obj_spd_Z_fr,X ; 0420 0421 0423 0425 0426 0427 0429 042B 
 C - - - - - 0x03DB68 0F:DB58: BD 60 04  LDA ram_obj_spd_Z_hi,X ; 0460 0461 0463 0465 0466 0467 0469 046B 
-C - - - - - 0x03DB6B 0F:DB5B: 10 01     BPL bra_DB5E
-C - - - - - 0x03DB6D 0F:DB5D: 88        DEY ; FF
-bra_DB5E:
 C - - - - - 0x03DB6E 0F:DB5E: 7D 10 04  ADC ram_obj_pos_Y_lo,X ; 0410 0411 0413 0415 0416 0417 0419 041B 
 C - - - - - 0x03DB71 0F:DB61: 9D 10 04  STA ram_obj_pos_Y_lo,X ; 0410 0411 0413 0415 0416 0417 0419 041B 
 C - - - - - 0x03DB74 0F:DB64: 60        RTS
