@@ -2240,8 +2240,6 @@ C - - - - - 0x038B8B 0E:8B7B: A9 18     LDA #$18
 C - - - - - 0x038B8D 0E:8B7D: 20 21 8B  JSR sub_8B21
 C - - - - - 0x038B90 0E:8B80: AE 71 06  LDX ram_0671
 C - - - - - 0x038B93 0E:8B83: 20 32 EA  JSR sub_0x03EA45
-C - - - - - 0x038B96 0E:8B86: AC 28 01  LDY ram_option_health
-C - - - - - 0x038B99 0E:8B89: BD 0D 01  LDA ram_plr_hp_hi,X
 C - - - - - 0x038B9C 0E:8B8C: 20 52 A7  JSR sub_A752_уменьшить_здоровье
 C - - - - - 0x038B9F 0E:8B8F: 90 03     BCC bra_8B94_хп_подсчитано
 ; if хп еще не подсчитано
@@ -6463,6 +6461,8 @@ C - - - - - 0x03A761 0E:A751: 60        RTS
 
 
 sub_A752_уменьшить_здоровье:
+                                        LDY ram_option_health
+                                        LDA ram_plr_hp_hi,X
 C - - - - - 0x03A762 0E:A752: 38        SEC
 C - - - - - 0x03A763 0E:A753: F9 FD BF  SBC tbl_BFFD,Y
 C - - - - - 0x03A766 0E:A756: 90 04     BCC bra_A75C
