@@ -2112,7 +2112,7 @@ C - - - - - 0x03DB0B 0F:DAFB: 9D 60 05  STA ram_obj_timer,X
 C - - - - - 0x03DB0E 0F:DAFE: 9D 70 05  STA ram_0570_obj,X
 C - - - - - 0x03DB11 0F:DB01: 9D 80 05  STA ram_0580_obj,X
 C - - - - - 0x03DB14 0F:DB04: 20 30 E9  JSR sub_E930
-C - - - - - 0x03DB17 0F:DB07: 9D A0 05  STA ram_05A0_obj,X
+C - - - - - 0x03DB17 0F:DB07: 9D A0 05  STA ram_05A0_obj_мяч,X
 C - - - - - 0x03DB1A 0F:DB0A: 9D B0 05  STA ram_05B0_obj,X
 C - - - - - 0x03DB1D 0F:DB0D: 9D C0 05  STA ram_obj_anim_timer,X
 C - - - - - 0x03DB20 0F:DB10: 9D D0 05  STA ram_05D0_obj,X
@@ -2582,7 +2582,7 @@ C - - - - - 0x03DEBB 0F:DEAB: 85 00     STA ram_0000
 C - - - - - 0x03DEBD 0F:DEAD: A9 00     LDA #$00
 C - - - - - 0x03DEBF 0F:DEAF: 9D F0 05  STA ram_05F0_obj,X ; 05F0 05F1 
 C - - - - - 0x03DEC2 0F:DEB2: 38        SEC
-C - - - - - 0x03DEC3 0F:DEB3: BD 90 05  LDA ram_0590_obj,X ; 0590 0591 
+C - - - - - 0x03DEC3 0F:DEB3: BD 90 05  LDA ram_plr_hp_lo,X ; 0590 0591 
 C - - - - - 0x03DEC6 0F:DEB6: FD 45 06  SBC ram_plr_damage,X ; 0645 0646 
 bra_DEB9_RTS:
 C - - - - - 0x03DEC9 0F:DEB9: 60        RTS
@@ -3858,7 +3858,7 @@ bra_E4FD_loop:
 C - - - - - 0x03E50D 0F:E4FD: A9 AE     LDA #$AE
 C - - - - - 0x03E50F 0F:E4FF: DD 10 04  CMP ram_obj_pos_Y_lo,X ; 0410 0411 
 C - - - - - 0x03E512 0F:E502: B0 E2     BCS bra_E4E6
-C - - - - - 0x03E514 0F:E504: BD 90 05  LDA ram_0590_obj,X ; 0590 0591 
+C - - - - - 0x03E514 0F:E504: BD 90 05  LDA ram_plr_hp_lo,X ; 0590 0591 
 C - - - - - 0x03E517 0F:E507: F0 07     BEQ bra_E510
 C - - - - - 0x03E519 0F:E509: BD 45 06  LDA ram_plr_damage,X ; 0645 0646 
 C - - - - - 0x03E51C 0F:E50C: D0 D8     BNE bra_E4E6
@@ -4167,8 +4167,8 @@ C - - - - - 0x03A784 0E:A774: CD 0E 01  CMP ram_plr_hp_hi + $01
 C - - - - - 0x03A787 0E:A777: 4C 80 A7  JMP loc_A780
 bra_A77A:
 ; проверка hp_lo
-C - - - - - 0x03A78A 0E:A77A: AD 90 05  LDA ram_0590_obj
-C - - - - - 0x03A78D 0E:A77D: CD 91 05  CMP ram_0590_obj + $01
+C - - - - - 0x03A78A 0E:A77A: AD 90 05  LDA ram_plr_hp_lo
+C - - - - - 0x03A78D 0E:A77D: CD 91 05  CMP ram_plr_hp_lo + $01
 loc_A780:
 C - - - - - 0x03E6C6 0F:E6B6: D0 07     BNE bra_E6BF
 C - - - - - 0x03E6C8 0F:E6B8: A0 03     LDY #$03
@@ -4613,7 +4613,7 @@ C - - - - - 0x03E942 0F:E932: B0 05     BCS bra_E939
 C - - - - - 0x03E944 0F:E934: AC 4F 01  LDY ram_014F    ; ram_tournament_fighter + $03 ???
 C - - - - - 0x03E947 0F:E937: 30 03     BMI bra_E93C_RTS
 bra_E939:
-C - - - - - 0x03E949 0F:E939: 9D 90 05  STA ram_0590_obj,X ; 0590 0591 0592 0593 0594 0595 0596 0597 0598 0599 059A 059B 059C 059D 059E 059F 
+C - - - - - 0x03E949 0F:E939: 9D 90 05  STA ram_obj_damage,X ; 0590 0591 0592 0593 0594 0595 0596 0597 0598 0599 059A 059B 059C 059D 059E 059F 
 bra_E93C_RTS:
 C - - - - - 0x03E94C 0F:E93C: 60        RTS
 
@@ -4803,10 +4803,10 @@ C - - - - - 0x03EA33 0F:EA23: 60        RTS
 
 
 sub_BF03:
-C - - - - - 0x027F13 09:BF03: BD 90 05  LDA ram_0590_obj,X ; 0590 0591 
+C - - - - - 0x027F13 09:BF03: BD 90 05  LDA ram_plr_hp_lo,X ; 0590 0591 
 C - - - - - 0x027F16 09:BF06: 20 3B BF  JSR sub_BF3B
 C - - - - - 0x027F19 09:BF09: 85 02     STA ram_0002
-C - - - - - 0x027F1B 09:BF0B: BD 90 05  LDA ram_0590_obj,X ; 0590 0591 
+C - - - - - 0x027F1B 09:BF0B: BD 90 05  LDA ram_plr_hp_lo,X ; 0590 0591 
 C - - - - - 0x027F1E 09:BF0E: 20 56 BF  JSR sub_BF56
 C - - - - - 0x027F21 09:BF11: 85 05     STA ram_0005
 C - - - - - 0x027F23 09:BF13: BC 0D 01  LDY ram_plr_hp_hi,X ; 010D 010E 
@@ -5643,11 +5643,11 @@ bra_EDF2:
 
 sub_EDFE:
 sub_0x03EE0E:
-C - - - - - 0x03EE0E 0F:EDFE: AD A6 05  LDA ram_05A0_obj + $06
+C - - - - - 0x03EE0E 0F:EDFE: AD A6 05  LDA ram_05A0_obj_мяч + $06
 C - - - - - 0x03EE11 0F:EE01: 29 C0     AND #$C0
 C - - - - - 0x03EE13 0F:EE03: 30 28     BMI bra_EE2D
 C - - - - - 0x03EE15 0F:EE05: F0 26     BEQ bra_EE2D
-C - - - - - 0x03EE17 0F:EE07: AD A6 05  LDA ram_05A0_obj + $06
+C - - - - - 0x03EE17 0F:EE07: AD A6 05  LDA ram_05A0_obj_мяч + $06
 C - - - - - 0x03EE1A 0F:EE0A: 29 01     AND #$01
 C - - - - - 0x03EE1C 0F:EE0C: 85 08     STA ram_0008
 C - - - - - 0x03EE1E 0F:EE0E: E4 08     CPX ram_0008
@@ -5680,10 +5680,10 @@ C - - - - - 0x03EE3E 0F:EE2E: 60        RTS
 sub_EE2F:
 sub_0x03EE3F:
 C - - - - - 0x03EE3F 0F:EE2F: 8A        TXA
-C - - - - - 0x03EE40 0F:EE30: 4D A6 05  EOR ram_05A0_obj + $06
+C - - - - - 0x03EE40 0F:EE30: 4D A6 05  EOR ram_05A0_obj_мяч + $06
 C - - - - - 0x03EE43 0F:EE33: 29 01     AND #$01
 C - - - - - 0x03EE45 0F:EE35: F0 F6     BEQ bra_EE2D
-C - - - - - 0x03EE47 0F:EE37: AD A6 05  LDA ram_05A0_obj + $06
+C - - - - - 0x03EE47 0F:EE37: AD A6 05  LDA ram_05A0_obj_мяч + $06
 C - - - - - 0x03EE4A 0F:EE3A: 30 EF     BMI bra_EE2B
 C - - - - - 0x03EE4C 0F:EE3C: 38        SEC
 C - - - - - 0x03EE4D 0F:EE3D: 60        RTS
@@ -5728,20 +5728,20 @@ bra_EE61_loop:
 
 
 sub_0x03EE76_проверить_здоровье_персов:
-C - - - - - 0x03EE76 0F:EE66: BD 90 05  LDA ram_0590_obj,X ; 0590 0591 
-C - - - - - 0x03EE79 0F:EE69: 19 90 05  ORA ram_0590_obj,Y ; 0590 0591 
+C - - - - - 0x03EE76 0F:EE66: BD 90 05  LDA ram_plr_hp_lo,X ; 0590 0591 
+C - - - - - 0x03EE79 0F:EE69: 19 90 05  ORA ram_plr_hp_lo,Y ; 0590 0591 
 C - - - - - 0x03EE7C 0F:EE6C: C9 40     CMP #$40
 C - - - - - 0x03EE7E 0F:EE6E: 90 1B     BCC bra_EE8B
 C - - - - - 0x03EE80 0F:EE70: 38        SEC
-C - - - - - 0x03EE81 0F:EE71: BD 90 05  LDA ram_0590_obj,X ; 0590 0591 
-C - - - - - 0x03EE84 0F:EE74: F9 90 05  SBC ram_0590_obj,Y ; 0590 0591 
+C - - - - - 0x03EE81 0F:EE71: BD 90 05  LDA ram_plr_hp_lo,X ; 0590 0591 
+C - - - - - 0x03EE84 0F:EE74: F9 90 05  SBC ram_plr_hp_lo,Y ; 0590 0591 
 C - - - - - 0x03EE87 0F:EE77: 90 04     BCC bra_EE7D
 C - - - - - 0x03EE89 0F:EE79: C9 30     CMP #$30
 C - - - - - 0x03EE8B 0F:EE7B: B0 16     BCS bra_EE93
 bra_EE7D:
 C - - - - - 0x03EE8D 0F:EE7D: 38        SEC
-C - - - - - 0x03EE8E 0F:EE7E: B9 90 05  LDA ram_0590_obj,Y ; 0590 0591 
-C - - - - - 0x03EE91 0F:EE81: FD 90 05  SBC ram_0590_obj,X ; 0590 0591 
+C - - - - - 0x03EE8E 0F:EE7E: B9 90 05  LDA ram_plr_hp_lo,Y ; 0590 0591 
+C - - - - - 0x03EE91 0F:EE81: FD 90 05  SBC ram_plr_hp_lo,X ; 0590 0591 
 C - - - - - 0x03EE94 0F:EE84: C9 30     CMP #$30
 C - - - - - 0x03EE96 0F:EE86: B0 07     BCS bra_EE8F
 C - - - - - 0x03EE98 0F:EE88: A9 00     LDA #$00
@@ -8205,7 +8205,7 @@ C - - - - - 0x03FE79 0F:FE69: C0 03     CPY #$03
 C - - - - - 0x03FE7B 0F:FE6B: F0 0C     BEQ bra_FE79_RTS
 C - - - - - 0x03FE7D 0F:FE6D: BC 0D 01  LDY ram_plr_hp_hi,X ; 010D 010E 
 C - - - - - 0x03FE80 0F:FE70: D0 04     BNE bra_FE76
-C - - - - - 0x03FE82 0F:FE72: DE 90 05  DEC ram_0590_obj,X ; 0590 0591 
+C - - - - - 0x03FE82 0F:FE72: DE 90 05  DEC ram_plr_hp_lo,X ; 0590 0591 
 C - - - - - 0x03FE85 0F:FE75: 60        RTS
 bra_FE76:
 C - - - - - 0x03FE86 0F:FE76: DE 0D 01  DEC ram_plr_hp_hi,X ; 010D 010E 
@@ -8218,7 +8218,7 @@ sub_0x03FE8A:
 ; bzk optimize, переместить в банк 12 когда там будет место
 C - - - - - 0x03FE8A 0F:FE7A: BD 0D 01  LDA ram_plr_hp_hi,X ; 010D 010E 
 C - - - - - 0x03FE8D 0F:FE7D: D0 03     BNE bra_FE82_RTS
-C - - - - - 0x03FE8F 0F:FE7F: BD 90 05  LDA ram_0590_obj,X ; 0590 0591 
+C - - - - - 0x03FE8F 0F:FE7F: BD 90 05  LDA ram_plr_hp_lo,X ; 0590 0591 
 bra_FE82_RTS:
 C - - - - - 0x03FE92 0F:FE82: 60        RTS
 
@@ -8301,8 +8301,8 @@ C - - - - - 0x03FF62 0F:FF52: AD 0D 01  LDA ram_plr_hp_hi
 C - - - - - 0x03FF65 0F:FF55: CD 0E 01  CMP ram_plr_hp_hi + $01
 C - - - - - 0x03FF68 0F:FF58: 4C 61 FF  JMP loc_FF61
 bra_FF5B:
-C - - - - - 0x03FF6B 0F:FF5B: AD 90 05  LDA ram_0590_obj
-C - - - - - 0x03FF6E 0F:FF5E: CD 91 05  CMP ram_0590_obj + $01
+C - - - - - 0x03FF6B 0F:FF5B: AD 90 05  LDA ram_plr_hp_lo
+C - - - - - 0x03FF6E 0F:FF5E: CD 91 05  CMP ram_plr_hp_lo + $01
 loc_FF61:
 C D 3 - - - 0x03FF71 0F:FF61: D0 07     BNE bra_FF6A
 C - - - - - 0x03FF73 0F:FF63: AD 40 06  LDA ram_0640

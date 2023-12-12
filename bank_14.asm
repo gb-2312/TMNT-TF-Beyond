@@ -7661,7 +7661,7 @@ C - - - - - 0x02BDA8 0A:BD98: 8D A1 04  STA ram_obj_spd_Y_hi + $01
 loc_BD9B:
 C D 1 - - - 0x02BDAB 0A:BD9B: AC 50 05  LDY ram_obj_id
 C - - - - - 0x02BDAE 0A:BD9E: B9 CE BF  LDA tbl_BFCE_hp_стен_в_story_для_персов,Y
-C - - - - - 0x02BDB1 0A:BDA1: 8D 91 05  STA ram_0590_obj + $01
+C - - - - - 0x02BDB1 0A:BDA1: 8D 91 05  STA ram_plr_hp_lo + $01
 C - - - - - 0x02BDB4 0A:BDA4: EE 31 05  INC ram_0530_obj_state + $01
 C - - - - - 0x02BDB7 0A:BDA7: A9 80     LDA #$80
 C - - - - - 0x02BDB9 0A:BDA9: 8D E1 05  STA ram_05E0_obj + $01
@@ -7684,7 +7684,7 @@ C - - - - - 0x02BDF7 0A:BDE7: CE F1 05  DEC ram_05F0_obj + $01
 C - - - - - 0x02BDFC 0A:BDEC: A9 00     LDA #$00
 C - - - - - 0x02BDFE 0A:BDEE: 8D 1F 06  STA ram_061E_plr + $01
 bra_BDF1:
-C - - - - - 0x02BE01 0A:BDF1: AD 91 05  LDA ram_0590_obj + $01
+C - - - - - 0x02BE01 0A:BDF1: AD 91 05  LDA ram_plr_hp_lo + $01
 C - - - - - 0x02BE04 0A:BDF4: AC B1 04  LDY ram_obj_spd_Y_lo + $01
 C - - - - - 0x02BE07 0A:BDF7: D9 E2 BF  CMP tbl_BFE2_hp_стены,Y
 C - - - - - 0x02BE0A 0A:BDFA: B0 49     BCS bra_BE45_RTS

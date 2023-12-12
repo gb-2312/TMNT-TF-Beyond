@@ -904,7 +904,7 @@ C - - - - - 0x02EB30 0B:AB20: F0 03     BEQ bra_AB25
 bra_AB25:
 C - - - - - 0x02EB35 0B:AB25: 85 1B     STA ram_001B
 C - - - - - 0x02EB37 0B:AB27: A4 1A     LDY ram_001A
-C - - - - - 0x02EB39 0B:AB29: B9 90 05  LDA ram_0590_obj,Y ; 0590 
+C - - - - - 0x02EB39 0B:AB29: B9 90 05  LDA ram_plr_hp_lo,Y ; 0590 
 C - - - - - 0x02EB3C 0B:AB2C: 20 70 AB  JSR sub_AB70
 C - - - - - 0x02EB3F 0B:AB2F: 18        CLC
 C - - - - - 0x02EB40 0B:AB30: 65 1B     ADC ram_001B
@@ -2710,7 +2710,7 @@ ofs_052_9EAD_01_ничейный_мяч_падает_и_отскакивает:
 C - - - - - 0x025EBD 09:9EAD: 20 2D 9F  JSR sub_9F2D
 C - - - - - 0x025EC0 09:9EB0: 20 E8 A1  JSR sub_A1E8
 C - - - - - 0x025EC3 09:9EB3: A9 00     LDA #$00
-C - - - - - 0x025EC5 09:9EB5: 8D A6 05  STA ram_05A0_obj + $06
+C - - - - - 0x025EC5 09:9EB5: 8D A6 05  STA ram_05A0_obj_мяч + $06
 C - - - - - 0x025EC8 09:9EB8: A9 03     LDA #$03
 C - - - - - 0x025ECA 09:9EBA: 8D 76 05  STA ram_0570_obj + $06
 C - - - - - 0x025ECD 09:9EBD: A9 01     LDA #$01
@@ -2766,7 +2766,7 @@ C - - - - - 0x025F20 09:9F10: CE 66 05  DEC ram_obj_timer + $06
 C - - - - - 0x025F23 09:9F13: F0 3C     BEQ bra_9F51
 bra_9F15:
 C - - - - - 0x025F25 09:9F15: A9 00     LDA #$00
-C - - - - - 0x025F27 09:9F17: 8D A6 05  STA ram_05A0_obj + $06
+C - - - - - 0x025F27 09:9F17: 8D A6 05  STA ram_05A0_obj_мяч + $06
 C - - - - - 0x025F2A 09:9F1A: 8D 86 04  STA ram_obj_spd_X_hi + $06
 C - - - - - 0x025F2D 09:9F1D: 8D 96 04  STA ram_obj_spd_X_lo + $06
 C - - - - - 0x025F30 09:9F20: A2 01     LDX #$01
@@ -2817,7 +2817,7 @@ C - - - - - 0x025F7B 09:9F6B: 60        RTS
 ofs_052_9F6C_03_мяч_был_подобран_персом:
 ; 03 пишется в 0x0244C9
 C - - J - - 0x025F7C 09:9F6C: 20 67 D0  JSR sub_0x03DB48_очистить_spd_X_и_spd_Z
-C - - - - - 0x025F7F 09:9F6F: AD A6 05  LDA ram_05A0_obj + $06
+C - - - - - 0x025F7F 09:9F6F: AD A6 05  LDA ram_05A0_obj_мяч + $06
 C - - - - - 0x025F82 09:9F72: 29 01     AND #$01
 C - - - - - 0x025F84 09:9F74: A8        TAY
 C - - - - - 0x025F85 09:9F75: B9 40 04  LDA ram_obj_pos_X_lo,Y ; 0440 0441 
@@ -2851,21 +2851,21 @@ C - - - - - 0x025FB9 09:9FA9: AC 26 05  LDY ram_obj_state_hi + $06
 C - - - - - 0x025FBC 09:9FAC: B9 50 05  LDA ram_obj_id,Y ; 0550 0551 
 C - - - - - 0x025FBF 09:9FAF: AC 46 05  LDY ram_obj_state_lo + $06
 C - - - - - 0x025FC2 09:9FB2: 20 32 D0  JSR sub_0x03D042_поинтеры_после_JSR
-- D 0 - I - 0x025FC5 09:9FB5: 0E A0     .word ofs_051_A00E_00_leo   ; con_fighter_leo
-- D 0 - I - 0x025FC7 09:9FB7: 0E A0     .word ofs_051_A00E_01_raph   ; con_fighter_raph
-- D 0 - I - 0x025FC9 09:9FB9: AC A1     .word ofs_051_A1AC_02_mike   ; con_fighter_mike
-- D 0 - I - 0x025FCB 09:9FBB: 8C A1     .word ofs_051_A18C_03_don   ; con_fighter_don
-- D 0 - I - 0x025FCD 09:9FBD: 65 A0     .word ofs_051_A065_04_casey   ; con_fighter_casey
-- D 0 - I - 0x025FCF 09:9FBF: 40 A1     .word ofs_051_A140_05_hot   ; con_fighter_hot
-- D 0 - I - 0x025FD1 09:9FC1: BD A0     .word ofs_051_A0BD_06_shred   ; con_fighter_shred
+- D 0 - I - 0x025FC5 09:9FB5: 0E A0     .word ofs_запуск_мяча_A00E_00_leo   ; con_fighter_leo
+- D 0 - I - 0x025FC7 09:9FB7: 0E A0     .word ofs_запуск_мяча_A00E_01_raph   ; con_fighter_raph
+- D 0 - I - 0x025FC9 09:9FB9: AC A1     .word ofs_запуск_мяча_A1AC_02_mike   ; con_fighter_mike
+- D 0 - I - 0x025FCB 09:9FBB: 8C A1     .word ofs_запуск_мяча_A18C_03_don   ; con_fighter_don
+- D 0 - I - 0x025FCD 09:9FBD: 65 A0     .word ofs_запуск_мяча_A065_04_casey   ; con_fighter_casey
+- D 0 - I - 0x025FCF 09:9FBF: 40 A1     .word ofs_запуск_мяча_A140_05_hot   ; con_fighter_hot
+- D 0 - I - 0x025FD1 09:9FC1: BD A0     .word ofs_запуск_мяча_A0BD_06_shred   ; con_fighter_shred
                                     .if con_новые_персы <> $00
-                                        .word ofs_051_A00E_07   ; con_fighter___leo
-                                        .word ofs_051_A00E_08   ; con_fighter___raph
-                                        .word ofs_051_A1AC_09   ; con_fighter___mike
-                                        .word ofs_051_A18C_0A   ; con_fighter___don
-                                        .word ofs_051_A065_0B   ; con_fighter___casey
-                                        .word ofs_051_A140_0C   ; con_fighter___hot
-                                        .word ofs_051_A0BD_0D   ; con_fighter___shred
+                                        .word ofs_запуск_мяча_A00E_07   ; con_fighter___leo
+                                        .word ofs_запуск_мяча_A00E_08   ; con_fighter___raph
+                                        .word ofs_запуск_мяча_A1AC_09   ; con_fighter___mike
+                                        .word ofs_запуск_мяча_A18C_0A   ; con_fighter___don
+                                        .word ofs_запуск_мяча_A065_0B   ; con_fighter___casey
+                                        .word ofs_запуск_мяча_A140_0C   ; con_fighter___hot
+                                        .word ofs_запуск_мяча_A0BD_0D   ; con_fighter___shred
                                     .endif
 
 
@@ -2886,7 +2886,7 @@ C - - - - - 0x025FE3 09:9FD3: A9 40     LDA #$40
 loc_9FD5:   ; A = 80
 C D 0 - - - 0x025FE5 09:9FD5: 20 7D D1  JSR sub_0x03D18D
 C - - - - - 0x025FE8 09:9FD8: A9 00     LDA #$00
-C - - - - - 0x025FEA 09:9FDA: 8D A6 05  STA ram_05A0_obj + $06
+C - - - - - 0x025FEA 09:9FDA: 8D A6 05  STA ram_05A0_obj_мяч + $06
 C - - - - - 0x025FED 09:9FDD: 8D B6 05  STA ram_05B0_obj + $06
 C - - - - - 0x025FF0 09:9FE0: 8D 06 05  STA ram_0500_obj + $06
 C - - - - - 0x025FF3 09:9FE3: 20 65 DD  JSR sub_0x03DD75_повернуть_объект_в_противоположную_сторону_по_горизонтали
@@ -2921,10 +2921,10 @@ C - - - - - 0x02601D 09:A00D: 60        RTS
 
 
 
-ofs_051_A00E_00_leo:
-ofs_051_A00E_07:
-ofs_051_A00E_01_raph:
-ofs_051_A00E_08:
+ofs_запуск_мяча_A00E_00_leo:
+ofs_запуск_мяча_A00E_07:
+ofs_запуск_мяча_A00E_01_raph:
+ofs_запуск_мяча_A00E_08:
 C - - J - - 0x02601E 09:A00E: A9 CA     LDA #$CA
 C - - - - - 0x026020 09:A010: 8D 06 04  STA ram_obj_anim_id + $06
 C - - - - - 0x026023 09:A013: AC 46 05  LDY ram_obj_state_lo + $06
@@ -2937,7 +2937,7 @@ C - - - - - 0x026030 09:A020: A9 03     LDA #$03
 C - - - - - 0x026032 09:A022: 8D 76 05  STA ram_0570_obj + $06
 C - - - - - 0x026035 09:A025: A9 30     LDA #$30
 C - - - - - 0x026037 09:A027: 8D B6 05  STA ram_05B0_obj + $06
-C - - - - - 0x02603A 09:A02A: 8D 96 05  STA ram_0590_obj + $06
+C - - - - - 0x02603A 09:A02A: 8D 96 05  STA ram_obj_damage + $06
 C - - - - - 0x02603D 09:A02D: A9 90     LDA #$90
 C - - - - - 0x02603F 09:A02F: 8D 16 04  STA ram_obj_pos_Y_lo + $06
 C - - - - - 0x026042 09:A032: A9 01     LDA #$01
@@ -2970,8 +2970,8 @@ C - - - - - 0x026072 09:A062: 4C DD A1  JMP loc_A1DD
 
 
 
-ofs_051_A065_04_casey:
-ofs_051_A065_0B:
+ofs_запуск_мяча_A065_04_casey:
+ofs_запуск_мяча_A065_0B:
 C - - J - - 0x026075 09:A065: A8        TAY
 C - - - - - 0x026076 09:A066: D0 1C     BNE bra_A084
 C - - - - - 0x026078 09:A068: A9 83     LDA #$83
@@ -2984,7 +2984,7 @@ C - - - - - 0x026087 09:A077: A9 C0     LDA #$C0
 C - - - - - 0x026089 09:A079: 8D 76 04  STA ram_obj_spd_Z_lo + $06
 C - - - - - 0x02608C 09:A07C: A9 40     LDA #$40
 C - - - - - 0x02608E 09:A07E: 8D B6 05  STA ram_05B0_obj + $06
-C - - - - - 0x026091 09:A081: 8D 96 05  STA ram_0590_obj + $06
+C - - - - - 0x026091 09:A081: 8D 96 05  STA ram_obj_damage + $06
 bra_A084:
 C - - - - - 0x026094 09:A084: 20 C7 A1  JSR sub_A1C7    ; возможен PLA PLA
 C - - - - - 0x026097 09:A087: AD 16 04  LDA ram_obj_pos_Y_lo + $06
@@ -3016,8 +3016,8 @@ C - - - - - 0x0260CA 09:A0BA: 4C CE 9F  JMP loc_9FCE
 
 
 
-ofs_051_A0BD_06_shred:
-ofs_051_A0BD_0D:
+ofs_запуск_мяча_A0BD_06_shred:
+ofs_запуск_мяча_A0BD_0D:
 C - - J - - 0x0260CD 09:A0BD: A8        TAY
 C - - - - - 0x0260CE 09:A0BE: D0 1E     BNE bra_A0DE
 C - - - - - 0x0260D0 09:A0C0: A9 03     LDA #$03
@@ -3092,8 +3092,8 @@ tbl_A13D:
 
 
 
-ofs_051_A140_05_hot:
-ofs_051_A140_0C:
+ofs_запуск_мяча_A140_05_hot:
+ofs_запуск_мяча_A140_0C:
 C - - J - - 0x026150 09:A140: A8        TAY
 C - - - - - 0x026151 09:A141: D0 1A     BNE bra_A15D
 C - - - - - 0x026153 09:A143: A9 03     LDA #$03
@@ -3141,8 +3141,8 @@ tbl_A18A:
 
 
 
-ofs_051_A18C_03_don:
-ofs_051_A18C_0A:
+ofs_запуск_мяча_A18C_03_don:
+ofs_запуск_мяча_A18C_0A:
 C - - J - - 0x02619C 09:A18C: A8        TAY
 C - - - - - 0x02619D 09:A18D: D0 16     BNE bra_A1A5
 C - - - - - 0x02619F 09:A18F: A9 83     LDA #$83
@@ -3161,8 +3161,8 @@ C - - - - - 0x0261BB 09:A1AB: 60        RTS
 
 
 
-ofs_051_A1AC_02_mike:
-ofs_051_A1AC_09:
+ofs_запуск_мяча_A1AC_02_mike:
+ofs_запуск_мяча_A1AC_09:
 C - - J - - 0x0261BC 09:A1AC: A8        TAY
 C - - - - - 0x0261BD 09:A1AD: D0 F6     BNE bra_A1A5
 C - - - - - 0x0261BF 09:A1AF: A9 C3     LDA #$C3
@@ -3287,9 +3287,9 @@ C - - - - - 0x0268D9 09:A8C9: 4C 87 A9  JMP loc_A987
 
 ofs_050_A8CC_00_проверка_условий_для_запуска_таймера_для_прилета_сплинтера:
 C - - J - - 0x0268DC 09:A8CC: A9 58     LDA #$58
-C - - - - - 0x0268DE 09:A8CE: CD 90 05  CMP ram_0590_obj
+C - - - - - 0x0268DE 09:A8CE: CD 90 05  CMP ram_plr_hp_lo
 C - - - - - 0x0268E1 09:A8D1: B0 11     BCS bra_A8E4
-C - - - - - 0x0268E3 09:A8D3: CD 91 05  CMP ram_0590_obj + $01
+C - - - - - 0x0268E3 09:A8D3: CD 91 05  CMP ram_plr_hp_lo + $01
 C - - - - - 0x0268E6 09:A8D6: B0 0C     BCS bra_A8E4
 C - - - - - 0x0268E8 09:A8D8: AD 72 06  LDA ram_время_десятки
 C - - - - - 0x0268EB 09:A8DB: C9 03     CMP #$03

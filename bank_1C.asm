@@ -2246,7 +2246,7 @@ C - - - - - 0x038B9F 0E:8B8F: 90 03     BCC bra_8B94_хп_подсчитано
 C - - - - - 0x038BA1 0E:8B91: 4C 06 8B  JMP loc_8B06
 bra_8B94_хп_подсчитано:
                                         LDA #$00
-                                        STA ram_0590_obj,X
+                                        STA ram_plr_hp_lo,X
 C - - - - - 0x038BA4 0E:8B94: 20 3E 8B  JSR sub_8B3E
 ofs_012_8B9B_04_завершение_подсчета_оставшегося_здоровья_после_боя:
 C - - - - - 0x038BAB 0E:8B9B: 20 55 8C  JSR sub_8C55_ожидание    ; возможен PLA PLA
@@ -6454,7 +6454,7 @@ C - - - - - 0x03A755 0E:A745: BD 0D 01  LDA ram_plr_hp_hi,X
 C - - - - - 0x03A758 0E:A748: D9 91 EF  CMP tbl_0x03EFA1,Y
 C - - - - - 0x03A75B 0E:A74B: 60        RTS
 bra_A74C:
-C - - - - - 0x03A75C 0E:A74C: BD 90 05  LDA ram_0590_obj,X ; 0590 0591 
+C - - - - - 0x03A75C 0E:A74C: BD 90 05  LDA ram_plr_hp_lo,X ; 0590 0591 
 C - - - - - 0x03A75F 0E:A74F: C9 B0     CMP #$B0
 C - - - - - 0x03A761 0E:A751: 60        RTS
 
@@ -6469,10 +6469,10 @@ C - - - - - 0x03A766 0E:A756: 90 04     BCC bra_A75C
 C - - - - - 0x03A768 0E:A758: 9D 0D 01  STA ram_plr_hp_hi,X
 C - - - - - 0x03A76B 0E:A75B: 60        RTS
 bra_A75C:
-C - - - - - 0x03A76C 0E:A75C: BD 90 05  LDA ram_0590_obj,X ; 0590 
+C - - - - - 0x03A76C 0E:A75C: BD 90 05  LDA ram_plr_hp_lo,X ; 0590 
 C - - - - - 0x03A76F 0E:A75F: 38        SEC
 C - - - - - 0x03A770 0E:A760: F9 FD BF  SBC tbl_BFFD,Y
-C - - - - - 0x03A773 0E:A763: 9D 90 05  STA ram_0590_obj,X ; 0590 
+C - - - - - 0x03A773 0E:A763: 9D 90 05  STA ram_plr_hp_lo,X ; 0590 
 C - - - - - 0x03A776 0E:A766: 60        RTS
 
 

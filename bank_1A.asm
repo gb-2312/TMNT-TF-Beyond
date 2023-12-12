@@ -206,7 +206,7 @@ C - - - - - 0x03413F 0D:812F: BD 20 05  LDA ram_obj_state_hi,X ; 0520 0521
 C - - - - - 0x034142 0D:8132: 45 11     EOR ram_0011
 C - - - - - 0x034144 0D:8134: 45 13     EOR ram_0013
 C - - - - - 0x034146 0D:8136: 59 10 06  EOR ram_plr_флаг_индекса_атаки,Y ; 0610 0611 
-C - - - - - 0x034149 0D:8139: 4D A6 05  EOR ram_05A0_obj + $06
+C - - - - - 0x034149 0D:8139: 4D A6 05  EOR ram_05A0_obj_мяч + $06
 C - - - - - 0x03414C 0D:813C: 45 12     EOR ram_0012
 C - - - - - 0x03414E 0D:813E: 85 08     STA ram_0008
 C - - - - - 0x034150 0D:8140: 5D CE 06  EOR ram_06CE_cpu,X ; 06CE 06CF 
@@ -7609,7 +7609,7 @@ C - - - - - 0x037F55 0D:BF45: C9 05     CMP #con_plr_state_запускает_м
 C - - - - - 0x037F57 0D:BF47: F0 0B     BEQ bra_BF54_RTS
 C - - - - - 0x037F59 0D:BF49: 98        TYA
 C - - - - - 0x037F5A 0D:BF4A: 09 80     ORA #$80
-C - - - - - 0x037F5C 0D:BF4C: CD A6 05  CMP ram_05A0_obj + $06
+C - - - - - 0x037F5C 0D:BF4C: CD A6 05  CMP ram_05A0_obj_мяч + $06
 C - - - - - 0x037F5F 0D:BF4F: D0 03     BNE bra_BF54_RTS
 - - - - - - 0x037F61 0D:BF51: AD 36 04  LDA ram_obj_pos_X_hi + $06
 bra_BF54_RTS:
