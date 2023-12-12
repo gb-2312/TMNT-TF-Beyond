@@ -614,10 +614,10 @@ C - - - - - 0x0381AF 0E:819F: 60        RTS
 
 
 sub_81A6_воспроизвести_звук_25:
-C - - - - - 0x0381B6 0E:81A6: A9 25     LDA #con_0x03F6AD_25
+C - - - - - 0x0381B6 0E:81A6: A9 25     LDA #con_075C_25
 C - - - - - 0x0381B8 0E:81A8: 2C        .byte $2C   ; BIT
 sub_81A9_воспроизвести_звук_27:
-C - - - - - 0x0381B9 0E:81A9: A9 27     LDA #con_0x03F6AD_27
+C - - - - - 0x0381B9 0E:81A9: A9 27     LDA #con_075C_27
 C - - - - - 0x0381BB 0E:81AB: 4C 90 F6  JMP loc_0x03F6A0_записать_звук_сохранив_X_Y
 
 
@@ -1334,7 +1334,7 @@ loc_86BA:
 C D 0 - - - 0x0386CA 0E:86BA: A5 90     LDA ram_sum_btn_press
 C - - - - - 0x0386CC 0E:86BC: 29 10     AND #con_btn_Start
 C - - - - - 0x0386CE 0E:86BE: F0 DB     BEQ bra_869B_RTS
-C - - - - - 0x0386D0 0E:86C0: A9 28     LDA #con_0x03F6AD_28
+C - - - - - 0x0386D0 0E:86C0: A9 28     LDA #con_075C_28
 C - - - - - 0x0386D2 0E:86C2: 20 90 F6  JSR sub_0x03F6A0_записать_звук_сохранив_X_Y
 C - - - - - 0x0386D5 0E:86C5: A9 80     LDA #$80
 C - - - - - 0x0386D7 0E:86C7: 8D B0 04  STA ram_04B0_отсчет_до_game_over
@@ -1373,7 +1373,7 @@ C - - - - - 0x038707 0E:86F7: A9 01     LDA #$01
 C - - - - - 0x038709 0E:86F9: 8D 30 05  STA ram_0530_script_continue
 C - - - - - 0x03870C 0E:86FC: A9 60     LDA #$60
 C - - - - - 0x03870E 0E:86FE: 8D 60 05  STA ram_obj_timer
-C - - - - - 0x038711 0E:8701: A9 27     LDA #con_0x03F6AD_27
+C - - - - - 0x038711 0E:8701: A9 27     LDA #con_075C_27
 C - - - - - 0x038713 0E:8703: 4C 8B F6  JMP loc_0x03F69B_выключить_звуки_и_записать_новый
 
 
@@ -1798,7 +1798,7 @@ C - - - - - 0x038957 0E:8947: 10 E1     BPL bra_892A_loop
                                         LDA ram_0000    ; счетчик измененных сил
                                         BEQ bra_8949_пропуск_звука
 ; запись звука, если хотя бы 1 игрок изменил силу
-                                        LDA #con_0x03F6AD_25
+                                        LDA #con_075C_25
                                         JSR sub_0x03F6A0_записать_звук_сохранив_X_Y
 bra_8949_пропуск_звука:
 C - - - - - 0x038959 0E:8949: 4C B6 89  JMP loc_89B6
@@ -1815,7 +1815,7 @@ C - - - - - 0x038969 0E:8959: 6D A0 04  ADC ram_obj_spd_Y_hi
 C - - - - - 0x03896C 0E:895C: 29 03     AND #$03
 C - - - - - 0x03896E 0E:895E: 8D A0 04  STA ram_obj_spd_Y_hi
 C - - - - - 0x038971 0E:8961: 20 07 8A  JSR sub_8A07
-C - - - - - 0x038974 0E:8964: A9 27     LDA #con_0x03F6AD_27
+C - - - - - 0x038974 0E:8964: A9 27     LDA #con_075C_27
 C - - - - - 0x038976 0E:8966: 20 90 F6  JSR sub_0x03F6A0_записать_звук_сохранив_X_Y
 bra_8969:
 C - - - - - 0x038979 0E:8969: 4C 00 B0  JMP loc_B000_попытка_toggle_technodrome
@@ -1833,7 +1833,7 @@ C - - - - - 0x03898E 0E:897E: 8D 04 04  STA ram_obj_anim_id + $04
 C - - - - - 0x038991 0E:8981: A9 50     LDA #$50
 C - - - - - 0x038993 0E:8983: 8D A0 04  STA ram_obj_spd_Y_hi
 C - - - - - 0x038996 0E:8986: E6 95     INC ram_0095_стадия_игры    ; 02 -> 03
-C - - - - - 0x038998 0E:8988: A9 29     LDA #con_0x03F6AD_29
+C - - - - - 0x038998 0E:8988: A9 29     LDA #con_075C_29
 C - - - - - 0x03899A 0E:898A: 4C 8B F6  JMP loc_0x03F69B_выключить_звуки_и_записать_новый
 
 
@@ -2154,7 +2154,7 @@ C - - - - - 0x038B18 0E:8B08: 84 14     STY ram_0014
 loc_8B11_добавить_очки:
 sub_8B11_добавить_очки:
 C - - - - - 0x038B21 0E:8B11: 20 A4 8B  JSR sub_8BA4_подсчитать_очки
-C - - - - - 0x038B24 0E:8B14: A9 27     LDA #con_0x03F6AD_27
+C - - - - - 0x038B24 0E:8B14: A9 27     LDA #con_075C_27
 C - - - - - 0x038B26 0E:8B16: 4C 90 F6  JMP loc_0x03F6A0_записать_звук_сохранив_X_Y
 
 
@@ -2225,7 +2225,7 @@ C - - - - - 0x038B74 0E:8B64: 84 13     STY ram_0013
 C - - - - - 0x038B70 0E:8B60: A0 00     LDY #$00
 C - - - - - 0x038B72 0E:8B62: 84 14     STY ram_0014
 C - - - - - 0x038B76 0E:8B66: 20 0F 8B  JSR sub_8B11_добавить_очки
-C - - - - - 0x038B79 0E:8B69: A9 25     LDA #con_0x03F6AD_25
+C - - - - - 0x038B79 0E:8B69: A9 25     LDA #con_075C_25
 C - - - - - 0x038B7B 0E:8B6B: 20 90 F6  JSR sub_0x03F6A0_записать_звук_сохранив_X_Y
 C - - - - - 0x038B7E 0E:8B6E: EE 24 06  INC ram_0624_plr
 C - - - - - 0x038B81 0E:8B71: A9 17     LDA #$17
@@ -2448,7 +2448,7 @@ C - - - - - 0x038CCF 0E:8CBF: A9 38     LDA #con_music_continue ; keyboard
 C - - - - - 0x038CD1 0E:8CC1: 20 90 F6  JSR sub_0x03F6A0_записать_звук_сохранив_X_Y
 ofs_011_8CC4_04:
 C - - - - - 0x038CD4 0E:8CC4: A9 00     LDA #$00
-C - - - - - 0x038CD6 0E:8CC6: 8D D0 05  STA ram_05D0_obj
+C - - - - - 0x038CD6 0E:8CC6: 8D D0 05  STA ram_obj_anim_cnt
 C - - - - - 0x038CD9 0E:8CC9: 8D C0 05  STA ram_obj_anim_timer
 C - - - - - 0x038CDC 0E:8CCC: 8D 00 04  STA ram_obj_anim_id
 C - - - - - 0x038CDF 0E:8CCF: 8D 77 06  STA ram_0677
@@ -2500,7 +2500,7 @@ C - - - - - 0x038D39 0E:8D29: BD 55 01  LDA ram_tournament_индекс_игро
 C - - - - - 0x038D3C 0E:8D2C: 49 80     EOR #$80    ; toggle cpu flag
 C - - - - - 0x038D3E 0E:8D2E: 9D 55 01  STA ram_tournament_индекс_игрока,X ; 0155 0156 0157 0158 
 C - - - - - 0x038D41 0E:8D31: 20 46 8D  JSR sub_8D46
-C - - - - - 0x038D44 0E:8D34: A9 25     LDA #con_0x03F6AD_25
+C - - - - - 0x038D44 0E:8D34: A9 25     LDA #con_075C_25
 C - - - - - 0x038D46 0E:8D36: 20 94 F6  JSR sub_0x03F6A4_записать_звук
 bra_8D39:
 C - - - - - 0x038D49 0E:8D39: 20 24 8F  JSR sub_8F24
@@ -2556,7 +2556,7 @@ C - - - - - 0x038D95 0E:8D85: 8D 78 06  STA ram_0678
 C - - - - - 0x038D98 0E:8D88: EE 75 06  INC ram_0675
 C - - - - - 0x038D9B 0E:8D8B: 20 04 8F  JSR sub_8F04
 C - - - - - 0x038D9E 0E:8D8E: 20 24 8F  JSR sub_8F24
-C - - - - - 0x038DA1 0E:8D91: A9 28     LDA #con_0x03F6AD_28
+C - - - - - 0x038DA1 0E:8D91: A9 28     LDA #con_075C_28
 C - - - - - 0x038DA3 0E:8D93: 20 90 F6  JSR sub_0x03F6A0_записать_звук_сохранив_X_Y
 C - - - - - 0x038DA6 0E:8D96: AE 76 06  LDX ram_0676
 C - - - - - 0x038DA9 0E:8D99: BD 55 01  LDA ram_tournament_индекс_игрока,X ; 0155 0156 0157 0158 
@@ -2629,7 +2629,7 @@ bra_8DF5:
 - - - - - - 0x038E05 0E:8DF5: A9 08     LDA #$08
 - - - - - - 0x038E07 0E:8DF7: 8D 00 06  STA ram_0600_plr
 bra_8DFA:
-C - - - - - 0x038E0A 0E:8DFA: A9 26     LDA #con_0x03F6AD_26
+C - - - - - 0x038E0A 0E:8DFA: A9 26     LDA #con_075C_26
 C - - - - - 0x038E0C 0E:8DFC: 20 90 F6  JSR sub_0x03F6A0_записать_звук_сохранив_X_Y
 C - - - - - 0x038E0F 0E:8DFF: A5 93     LDA ram_sum_btn_hold
 C - - - - - 0x038E11 0E:8E01: 29 0F     AND #con_btns_Dpad
@@ -2691,7 +2691,7 @@ C - - - - - 0x038E72 0E:8E62: 4C 04 8F  JMP loc_8F04
 
 
 loc_8E65:
-C D 0 - - - 0x038E75 0E:8E65: A9 25     LDA #con_0x03F6AD_25
+C D 0 - - - 0x038E75 0E:8E65: A9 25     LDA #con_075C_25
 C - - - - - 0x038E77 0E:8E67: 20 90 F6  JSR sub_0x03F6A0_записать_звук_сохранив_X_Y
 C - - - - - 0x038E7A 0E:8E6A: 8A        TXA
 C - - - - - 0x038E7B 0E:8E6B: 0A        ASL
@@ -2770,7 +2770,7 @@ C D 0 - - - 0x038EF2 0E:8EE2: AD 77 06  LDA ram_0677
 C - - - - - 0x038EF5 0E:8EE5: F0 0A     BEQ bra_8EF1
 C - - - - - 0x038EF7 0E:8EE7: F0 3A     BEQ bra_8F23_RTS
 C - - - - - 0x038EF9 0E:8EE9: CE 77 06  DEC ram_0677
-C - - - - - 0x038EFC 0E:8EEC: A9 0A     LDA #con_0x03F6AD_0A
+C - - - - - 0x038EFC 0E:8EEC: A9 0A     LDA #con_075C_0A
 C - - - - - 0x038EFE 0E:8EEE: 4C 90 F6  JMP loc_0x03F6A0_записать_звук_сохранив_X_Y
 bra_8EF1:
 loc_8EF1:
@@ -2836,7 +2836,7 @@ C - - - - - 0x038F5C 0E:8F4C: 8E 03 04  STX ram_obj_anim_id + $03
 C - - - - - 0x038F5F 0E:8F4F: 8E 50 05  STX ram_obj_id
 C - - - - - 0x038F62 0E:8F52: AE 76 06  LDX ram_0676
 C - - - - - 0x038F65 0E:8F55: 20 CB 8F  JSR sub_8FCB
-C - - - - - 0x038F68 0E:8F58: A9 28     LDA #con_0x03F6AD_28
+C - - - - - 0x038F68 0E:8F58: A9 28     LDA #con_075C_28
 C - - - - - 0x038F6A 0E:8F5A: 4C 90 F6  JMP loc_0x03F6A0_записать_звук_сохранив_X_Y
 bra_8F5D:
 C - - - - - 0x038F6D 0E:8F5D: AE 76 06  LDX ram_0676
@@ -2897,11 +2897,11 @@ C - - - - - 0x038FC1 0E:8FB1: A6 A8     LDX ram_local_obj_index
 ; con_новые_персы
 C - - - - - 0x038FC3 0E:8FB3: 9D 4C 01  STA ram_tournament_fighter,X ; 014C 014D 014E 014F 
 C - - - - - 0x038FC6 0E:8FB6: 8D 50 05  STA ram_obj_id
-C - - - - - 0x038FC9 0E:8FB9: A9 27     LDA #con_0x03F6AD_27
+C - - - - - 0x038FC9 0E:8FB9: A9 27     LDA #con_075C_27
 C - - - - - 0x038FCB 0E:8FBB: 20 90 F6  JSR sub_0x03F6A0_записать_звук_сохранив_X_Y
 C - - - - - 0x038FCE 0E:8FBE: 20 58 90  JSR sub_9058
 C - - - - - 0x038FD1 0E:8FC1: A9 00     LDA #$00
-C - - - - - 0x038FD3 0E:8FC3: 8D D0 05  STA ram_05D0_obj
+C - - - - - 0x038FD3 0E:8FC3: 8D D0 05  STA ram_obj_anim_cnt
 C - - - - - 0x038FD6 0E:8FC6: 8D C0 05  STA ram_obj_anim_timer
 C - - - - - 0x038FD9 0E:8FC9: A6 A8     LDX ram_local_obj_index
 bra_8FCB:
@@ -2918,7 +2918,7 @@ C - - - - - 0x038FF0 0E:8FE0: A2 00     LDX #$00
 C - - - - - 0x038FF2 0E:8FE2: 20 7C D0  JSR sub_0x03D08C_обработка_анимации_объекта
 C - - - - - 0x038FF5 0E:8FE5: 4C 14 F7  JMP loc_0x03F724_смена_тайловых_наборов_для_анимаций
 bra_8FE8:
-C - - - - - 0x038FF8 0E:8FE8: A9 29     LDA #con_0x03F6AD_29
+C - - - - - 0x038FF8 0E:8FE8: A9 29     LDA #con_075C_29
 C - - - - - 0x038FFA 0E:8FEA: 20 90 F6  JSR sub_0x03F6A0_записать_звук_сохранив_X_Y
 C - - - - - 0x038FFD 0E:8FED: EE 76 06  INC ram_0676
 C - - - - - 0x039000 0E:8FF0: AD 76 06  LDA ram_0676
@@ -3027,13 +3027,13 @@ tbl_9070:
 
 
 tbl_9073:
-- D 0 - - - 0x039083 0E:9073: 04        .byte con_0x03D0C3_черепахи_бег_вперед   ; 00 con_fighter_leo
-- D 0 - - - 0x039084 0E:9074: 04        .byte con_0x03D0C3_черепахи_бег_вперед   ; 01 con_fighter_raph
-- D 0 - - - 0x039085 0E:9075: 04        .byte con_0x03D0C3_черепахи_бег_вперед   ; 02 con_fighter_mike
-- D 0 - - - 0x039086 0E:9076: 04        .byte con_0x03D0C3_черепахи_бег_вперед   ; 03 con_fighter_don
-- D 0 - - - 0x039087 0E:9077: 06        .byte con_0x03D0C3_casey_ходьба_вперед   ; 04 con_fighter_casey
-- D 0 - - - 0x039088 0E:9078: 0A        .byte con_0x03D0C3_hot_бег_вперед   ; 05 con_fighter_hot
-- D 0 - - - 0x039089 0E:9079: 10        .byte con_0x03D0C3_shred_ходьба_вперед   ; 06 con_fighter_shred
+- D 0 - - - 0x039083 0E:9073: 04        .byte con_D0B3_черепахи_бег_вперед   ; 00 con_fighter_leo
+- D 0 - - - 0x039084 0E:9074: 04        .byte con_D0B3_черепахи_бег_вперед   ; 01 con_fighter_raph
+- D 0 - - - 0x039085 0E:9075: 04        .byte con_D0B3_черепахи_бег_вперед   ; 02 con_fighter_mike
+- D 0 - - - 0x039086 0E:9076: 04        .byte con_D0B3_черепахи_бег_вперед   ; 03 con_fighter_don
+- D 0 - - - 0x039087 0E:9077: 06        .byte con_D0B3_casey_ходьба_вперед   ; 04 con_fighter_casey
+- D 0 - - - 0x039088 0E:9078: 0A        .byte con_D0B3_hot_бег_вперед   ; 05 con_fighter_hot
+- D 0 - - - 0x039089 0E:9079: 10        .byte con_D0B3_shred_ходьба_вперед   ; 06 con_fighter_shred
 
 tbl_907A:
 - D 0 - - - 0x03908A 0E:907A: 68        .byte $68   ; 00 con_fighter_leo
@@ -3216,7 +3216,7 @@ C - - - - - 0x039170 0E:9160: 4C 2E E1  JMP loc_0x03E13E_подготовить_
 
 ofs_010_9163_06_offer_challenge:
 C - - J - - 0x039173 0E:9163: 20 3C F0  JSR sub_0x03F04C_выключить_irq___удалить_все_объекты___отрисовать_пустой_экран
-C - - - - - 0x039176 0E:9166: A9 3B     LDA #con_0x03F6AD_3B
+C - - - - - 0x039176 0E:9166: A9 3B     LDA #con_075C_3B
 C - - - - - 0x039178 0E:9168: 20 8B F6  JSR sub_0x03F69B_выключить_звуки_и_записать_новый
 C - - - - - 0x03917B 0E:916B: A9 02     LDA #con_speech_offer_challenge
 C - - - - - 0x03917D 0E:916D: 85 B6     STA ram_speech
@@ -3484,7 +3484,7 @@ C - - - - - 0x039324 0E:9314: 8D E0 04  STA ram_04E0_obj
 C - - - - - 0x039327 0E:9317: 38        SEC
 C - - - - - 0x039328 0E:9318: A5 21     LDA ram_script_draw_lo
 C - - - - - 0x03932A 0E:931A: E9 0B     SBC #$0B
-C - - - - - 0x03932C 0E:931C: 8D D0 05  STA ram_05D0_obj
+C - - - - - 0x03932C 0E:931C: 8D D0 05  STA ram_obj_anim_cnt
 C - - - - - 0x03932F 0E:931F: A8        TAY
 C - - - - - 0x039330 0E:9320: B9 7F 95  LDA tbl_957F,Y
 C - - - - - 0x039333 0E:9323: 8D F0 04  STA ram_04F0_obj
@@ -3501,7 +3501,7 @@ C - - J - - 0x03933F 0E:932F: CE 60 05  DEC ram_obj_timer
 C - - - - - 0x039342 0E:9332: D0 FA     BNE bra_932E_RTS
 C - - - - - 0x039344 0E:9334: AD E0 04  LDA ram_04E0_obj
 C - - - - - 0x039347 0E:9337: 0A        ASL
-C - - - - - 0x039348 0E:9338: AC D0 05  LDY ram_05D0_obj
+C - - - - - 0x039348 0E:9338: AC D0 05  LDY ram_obj_anim_cnt
 C - - - - - 0x03934B 0E:933B: 79 79 95  ADC tbl_9579,Y
 C - - - - - 0x03934E 0E:933E: 85 00     STA ram_0000
 C - - - - - 0x039350 0E:9340: AC F0 04  LDY ram_04F0_obj
@@ -3935,7 +3935,7 @@ C - - - - - 0x039638 0E:9628: 4C 2E E1  JMP loc_0x03E13E_подготовить_
 
 ofs_007_962B_01_lousy_tricks:
 C - - J - - 0x03963B 0E:962B: 20 C1 F7  JSR sub_9F2B_сохранить_topscore
-C - - - - - 0x03963E 0E:962E: A9 41     LDA #con_0x03F6AD_41
+C - - - - - 0x03963E 0E:962E: A9 41     LDA #con_075C_41
 C - - - - - 0x039640 0E:9630: 20 90 F6  JSR sub_0x03F6A0_записать_звук_сохранив_X_Y
 C - - - - - 0x039643 0E:9633: A9 0B     LDA #con_0048_0B
 C - - - - - 0x039645 0E:9635: 20 14 F8  JSR sub_0x03F824_подготовить_irq_handler
@@ -4042,7 +4042,7 @@ C - - - - - 0x039703 0E:96F3: CA        DEX
 C - - - - - 0x039704 0E:96F4: 10 E6     BPL bra_96DC_loop
 C - - - - - 0x039706 0E:96F6: 20 14 F7  JSR sub_0x03F724_смена_тайловых_наборов_для_анимаций
 C - - - - - 0x039709 0E:96F9: A9 06     LDA #$06
-C - - - - - 0x03970B 0E:96FB: 8D D1 05  STA ram_05D0_obj + $01
+C - - - - - 0x03970B 0E:96FB: 8D D1 05  STA ram_obj_anim_cnt + $01
 C - - - - - 0x03970E 0E:96FE: A9 30     LDA #$30
 C - - - - - 0x039710 0E:9700: 8D 61 05  STA ram_obj_timer + $01
 C - - - - - 0x039713 0E:9703: A9 81     LDA #$81
@@ -4123,9 +4123,9 @@ C - - - - - 0x039775 0E:9765: 8D 91 04  STA ram_obj_spd_X_lo + $01
 C - - - - - 0x039778 0E:9768: A9 00     LDA #$00
 C - - - - - 0x03977A 0E:976A: 6D 81 04  ADC ram_obj_spd_X_hi + $01
 C - - - - - 0x03977D 0E:976D: 8D 81 04  STA ram_obj_spd_X_hi + $01
-C - - - - - 0x039780 0E:9770: A0 0E     LDY #con_0x03D0C3_shred_бег_вперед
+C - - - - - 0x039780 0E:9770: A0 0E     LDY #con_D0B3_shred_бег_вперед
 C - - - - - 0x039782 0E:9772: 20 7C D0  JSR sub_0x03D08C_обработка_анимации_объекта
-C - - - - - 0x039785 0E:9775: A0 0E     LDY #con_0x03D0C3_shred_бег_вперед
+C - - - - - 0x039785 0E:9775: A0 0E     LDY #con_D0B3_shred_бег_вперед
 C - - - - - 0x039787 0E:9777: 20 7C D0  JSR sub_0x03D08C_обработка_анимации_объекта
 C - - - - - 0x03978A 0E:977A: 20 65 DB  JSR sub_0x03DB75_добавить_spd_X_к_pos_X
 C - - - - - 0x03978D 0E:977D: AD 31 04  LDA ram_obj_pos_X_hi + $01
@@ -5265,7 +5265,7 @@ C - - - - - 0x03A06F 0E:A05F: 8D 40 04  STA ram_obj_pos_X_lo
 C - - - - - 0x03A072 0E:A062: A9 68     LDA #$68
 C - - - - - 0x03A074 0E:A064: 8D 10 04  STA ram_obj_pos_Y_lo
 C - - - - - 0x03A077 0E:A067: A9 0C     LDA #$0C
-C - - - - - 0x03A079 0E:A069: 8D D0 05  STA ram_05D0_obj
+C - - - - - 0x03A079 0E:A069: 8D D0 05  STA ram_obj_anim_cnt
 C - - - - - 0x03A07C 0E:A06C: A9 00     LDA #$00
 C - - - - - 0x03A07E 0E:A06E: 8D A0 04  STA ram_obj_spd_Y_hi
 C - - - - - 0x03A081 0E:A071: A9 12     LDA #con_D57A_12
@@ -5278,10 +5278,10 @@ C - - - - - 0x03A08D 0E:A07D: 4C 90 F6  JMP loc_0x03F6A0_записать_зву
 
 
 ofs_004_A080_01:
-C - - J - - 0x03A090 0E:A080: CE D0 05  DEC ram_05D0_obj
+C - - J - - 0x03A090 0E:A080: CE D0 05  DEC ram_obj_anim_cnt
 C - - - - - 0x03A093 0E:A083: 10 14     BPL bra_A099
 C - - - - - 0x03A095 0E:A085: A9 0C     LDA #$0C
-C - - - - - 0x03A097 0E:A087: 8D D0 05  STA ram_05D0_obj
+C - - - - - 0x03A097 0E:A087: 8D D0 05  STA ram_obj_anim_cnt
 C - - - - - 0x03A09A 0E:A08A: EE 00 04  INC ram_obj_anim_id
 C - - - - - 0x03A09D 0E:A08D: AD 00 04  LDA ram_obj_anim_id
 C - - - - - 0x03A0A0 0E:A090: C9 36     CMP #$36
@@ -6198,7 +6198,7 @@ C - - - - - 0x03A4A7 0E:A497: F0 0D     BEQ bra_A4A6
 C - - - - - 0x03A4A9 0E:A499: AD 30 06  LDA ram_0630_unk
 C - - - - - 0x03A4AC 0E:A49C: 49 01     EOR #$01
 C - - - - - 0x03A4AE 0E:A49E: 8D 30 06  STA ram_0630_unk
-C - - - - - 0x03A4B1 0E:A4A1: A9 25     LDA #con_0x03F6AD_25
+C - - - - - 0x03A4B1 0E:A4A1: A9 25     LDA #con_075C_25
 C - - - - - 0x03A4B3 0E:A4A3: 20 90 F6  JSR sub_0x03F6A0_записать_звук_сохранив_X_Y
 bra_A4A6:
 C - - - - - 0x03A4B6 0E:A4A6: AC 30 06  LDY ram_0630_unk
@@ -6218,7 +6218,7 @@ C - - - - - 0x03A4D3 0E:A4C3: F0 52     BEQ bra_A517_RTS
 C - - - - - 0x03A4D5 0E:A4C5: E6 96     INC ram_0096
 C - - - - - 0x03A4D7 0E:A4C7: A9 50     LDA #$50
 C - - - - - 0x03A4D9 0E:A4C9: 8D 60 05  STA ram_obj_timer
-C - - - - - 0x03A4DC 0E:A4CC: A9 29     LDA #con_0x03F6AD_29
+C - - - - - 0x03A4DC 0E:A4CC: A9 29     LDA #con_075C_29
 C - - - - - 0x03A4DE 0E:A4CE: 4C 90 F6  JMP loc_0x03F6A0_записать_звук_сохранив_X_Y
 bra_A4D1:
 C - - - - - 0x03A4E1 0E:A4D1: CE 60 05  DEC ram_obj_timer
@@ -6541,7 +6541,7 @@ C - - - - - 0x03B014 0E:B004: F0 0D     BEQ bra_B013
 C - - - - - 0x03B016 0E:B006: AD 50 01  LDA ram_номер_боя_vs_team_и_переключатель
 C - - - - - 0x03B019 0E:B009: 49 04     EOR #$04
 C - - - - - 0x03B01B 0E:B00B: 8D 50 01  STA ram_номер_боя_vs_team_и_переключатель
-C - - - - - 0x03B01E 0E:B00E: A9 27     LDA #con_0x03F6AD_27
+C - - - - - 0x03B01E 0E:B00E: A9 27     LDA #con_075C_27
 C - - - - - 0x03B020 0E:B010: 20 90 F6  JSR sub_0x03F6A0_записать_звук_сохранив_X_Y
 bra_B013:
 C - - - - - 0x03B023 0E:B013: 4C B6 89  JMP loc_89B6
@@ -6650,7 +6650,7 @@ C - - - - - 0x0251C4 09:91B4: 65 00     ADC ram_0000
 C - - - - - 0x0251C6 09:91B6: A8        TAY
 C - - - - - 0x0251C7 09:91B7: B9 46 98  LDA tbl_9846_индекс_кого_бросили,Y
 C - - - - - 0x0251CA 09:91BA: 18        CLC
-C - - - - - 0x0251CB 09:91BB: 7D D0 05  ADC ram_05D0_obj,X ; 05D0 05D1 
+C - - - - - 0x0251CB 09:91BB: 7D D0 05  ADC ram_obj_anim_cnt,X ; 05D0 05D1 
 C - - - - - 0x0251CE 09:91BE: A8        TAY
 C - - - - - 0x0251CF 09:91BF: B9 62 98  LDA tbl_9862_анимация_брошенного_перса,Y
 C - - - - - 0x0251D2 09:91C2: A4 A9     LDY ram_global_obj_index
@@ -6668,7 +6668,7 @@ bra_91CE_casey:
                                     .endif
 ; con_fighter_casey
 ; con_fighter___casey
-C - - - - - 0x0251DE 09:91CE: BD D0 05  LDA ram_05D0_obj,X ; 05D0 05D1 
+C - - - - - 0x0251DE 09:91CE: BD D0 05  LDA ram_obj_anim_cnt,X ; 05D0 05D1 
 C - - - - - 0x0251E1 09:91D1: C9 05     CMP #$05
 C - - - - - 0x0251E3 09:91D3: 90 12     BCC bra_91E7
 C - - - - - 0x0251E5 09:91D5: B9 50 05  LDA ram_obj_id,Y ; 0550 0551 
@@ -6682,7 +6682,7 @@ C - - - - - 0x0251F4 09:91E4: 99 10 04  STA ram_obj_pos_Y_lo,Y ; 0410 0411
 bra_91E7:
 C - - - - - 0x0251F7 09:91E7: BD 50 05  LDA ram_obj_id,X ; 0550 0551 
 C - - - - - 0x0251FA 09:91EA: A8        TAY
-C - - - - - 0x0251FB 09:91EB: BD D0 05  LDA ram_05D0_obj,X ; 05D0 05D1 
+C - - - - - 0x0251FB 09:91EB: BD D0 05  LDA ram_obj_anim_cnt,X ; 05D0 05D1 
 C - - - - - 0x0251FE 09:91EE: 18        CLC
 C - - - - - 0x0251FF 09:91EF: 79 18 98  ADC tbl_9818_индекс,Y
 C - - - - - 0x025202 09:91F2: A8        TAY

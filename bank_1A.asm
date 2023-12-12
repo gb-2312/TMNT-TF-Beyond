@@ -6923,7 +6923,7 @@ bra_A5A8_leo:
 bra_A5C4:
 - - - - - - 0x0365D4 0D:A5C4: C9 05     CMP #$05
 - - - - - - 0x0365D6 0D:A5C6: D0 11     BNE bra_A5D9_RTS
-- - - - - - 0x0365D8 0D:A5C8: B9 D0 05  LDA ram_05D0_obj,Y
+- - - - - - 0x0365D8 0D:A5C8: B9 D0 05  LDA ram_obj_anim_cnt,Y
 - - - - - - 0x0365DB 0D:A5CB: F0 0C     BEQ bra_A5D9_RTS
 - - - - - - 0x0365DD 0D:A5CD: AD 38 06  LDA ram_0638
 - - - - - - 0x0365E0 0D:A5D0: C9 26     CMP #$26
