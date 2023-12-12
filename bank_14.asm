@@ -7662,7 +7662,6 @@ loc_BD9B:
 C D 1 - - - 0x02BDAB 0A:BD9B: AC 50 05  LDY ram_obj_id
 C - - - - - 0x02BDAE 0A:BD9E: B9 CE BF  LDA tbl_BFCE_hp_стен_в_story_для_персов,Y
 C - - - - - 0x02BDB1 0A:BDA1: 8D 91 05  STA ram_plr_hp_lo + $01
-C - - - - - 0x02BDB4 0A:BDA4: EE 31 05  INC ram_0530_obj_state + $01    ; bzk optimize, чуть ниже будет перезаписано
 C - - - - - 0x02BDB7 0A:BDA7: A9 80     LDA #$80
 C - - - - - 0x02BDB9 0A:BDA9: 8D E1 05  STA ram_05E0_obj + $01
 C - - - - - 0x02BDBC 0A:BDAC: 0A        ASL ; 00
