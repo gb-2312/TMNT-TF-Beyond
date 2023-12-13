@@ -5555,7 +5555,7 @@ C - - - - - 0x03EDA5 0F:ED95: 60        RTS
 sub_0x03EDA6_очистка_адресов_cpu_при_необходимости:
 loc_0x03EDA6_очистка_адресов_cpu_при_необходимости:
 C D 3 - - - 0x03EDA6 0F:ED96: BD E6 06  LDA ram_06E6_cpu,X ; 06E6 06E7 
-C - - - - - 0x03EDA9 0F:ED99: D0 28     BNE bra_EDC3
+C - - - - - 0x03EDA9 0F:ED99: D0 28     BNE bra_EDC2_RTS
 sub_0x03EDAB_очистка_адресов_cpu:
 C - - - - - 0x03EDAB 0F:ED9B: A9 FF     LDA #$FF
 C - - - - - 0x03EDAD 0F:ED9D: 9D C0 06  STA ram_cpu_шаблон_ai,X ; 06C0 06C1 
@@ -5570,11 +5570,8 @@ C - - - - - 0x03EDC3 0F:EDB3: 9D DC 06  STA ram_06DC_cpu_flag,X ; 06DC 06DD
 C - - - - - 0x03EDC6 0F:EDB6: 9D C2 06  STA ram_06C2_cpu_индекс_поведения,X ; 06C2 06C3 
 C - - - - - 0x03EDC9 0F:EDB9: 9D E4 06  STA ram_06E4_cpu_flag,X ; 06E4 06E5 
 C - - - - - 0x03EDCC 0F:EDBC: 8D F0 06  STA ram_06F0_flag
+bra_EDC2_RTS:
 C - - - - - 0x03EDD2 0F:EDC2: 60        RTS
-bra_EDC3:
-; bzk optimize, нигде на выходе игру не интересует этот 00 (да, я все проверил, а их дохера)
-C - - - - - 0x03EDD3 0F:EDC3: A9 00     LDA #$00
-C - - - - - 0x03EDD5 0F:EDC5: 60        RTS
 
 
 
