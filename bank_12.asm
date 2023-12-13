@@ -7462,9 +7462,7 @@ sub_0x0269A1:
 ; X = 00 01
 C - - - - - 0x0269A1 09:A991: 86 0B     STX ram_000B
 C - - - - - 0x0269A3 09:A993: 20 9D A9  JSR sub_A99D
-; bzk optimize, 2 CLC подряд
 C - - - - - 0x0269A6 09:A996: 18        CLC
-C - - - - - 0x0269A7 09:A997: 18        CLC
 C - - - - - 0x0269A8 09:A998: A5 0B     LDA ram_000B
 C - - - - - 0x0269AA 09:A99A: 69 08     ADC #$08
 C - - - - - 0x0269AC 09:A99C: AA        TAX
