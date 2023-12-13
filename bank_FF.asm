@@ -129,27 +129,27 @@
 .export sub_0x03EC8B
 .export sub_0x03EC96
 .export sub_0x03EC9E
-.export sub_0x03ECD2
-.export sub_0x03ECDD
+.export sub_0x03ECD2_генератор_рандома_для_Y_1
+.export sub_0x03ECDD_генератор_рандома_для_Y_2
 .export sub_0x03ECE9_проверить_ограничение_по_X
 .export sub_0x03ECF8
 .export loc_0x03ED15
 .export sub_0x03ED24_запись_поведения_cpu
 .export sub_0x03ED30_чтение_поведения_cpu
-.export sub_0x03ED3C
+.export sub_0x03ED3C_генератор_рандома_с_учетом_запущенного_мяча
 .export sub_0x03ED6A
 .export sub_0x03ED9F_запись_кнопки_hold_и_press
 .export loc_0x03ED9F_запись_кнопки_hold_и_press
-.export sub_0x03EDA6
-.export loc_0x03EDA6
-.export sub_0x03EDAB
+.export sub_0x03EDA6_очистка_адресов_cpu_при_необходимости
+.export loc_0x03EDA6_очистка_адресов_cpu_при_необходимости
+.export sub_0x03EDAB_очистка_адресов_cpu
 .export sub_0x03EDD6_генератор_рандома_по_сложности_игры_1
 .export sub_0x03EDE8_генератор_рандома_по_сложности_игры_2
-.export sub_0x03EE0E
-.export sub_0x03EE24
-.export loc_0x03EE24
-.export sub_0x03EE3F
-.export sub_0x03EE4E_проверить_близость_объектов_с_областью_A
+.export sub_0x03EE0E_проверка_наличия_мяча_у_игрока_X
+.export sub_0x03EE24_проверка_доступности_мяча_для_подбора
+.export loc_0x03EE24_проверка_доступности_мяча_для_подбора
+.export sub_0x03EE3F_проверка_запущенного_мяча_соперником
+.export sub_0x03EE4E_проверка_близости_объектов_с_областью_A
 .export sub_0x03EE76_проверить_здоровье_персов
 .export sub_0x03EEB9_вычислить_разницу_pos_Y_персов
 .export sub_0x03EEC9
@@ -2098,7 +2098,7 @@ C - - - - - 0x03DB08 0F:DAF8: 9D 40 05  STA ram_obj_state_lo,X
 C - - - - - 0x03DB0B 0F:DAFB: 9D 60 05  STA ram_obj_timer,X
 C - - - - - 0x03DB0E 0F:DAFE: 9D 70 05  STA ram_0570_obj,X
 C - - - - - 0x03DB11 0F:DB01: 9D 80 05  STA ram_0580_obj,X
-C - - - - - 0x03DB17 0F:DB07: 9D A0 05  STA ram_05A0_obj_мяч,X
+C - - - - - 0x03DB17 0F:DB07: 9D A0 05  STA ram_05A0_obj_флаги_мяча,X
 C - - - - - 0x03DB1A 0F:DB0A: 9D B0 05  STA ram_05B0_obj_damage,X
 C - - - - - 0x03DB1D 0F:DB0D: 9D C0 05  STA ram_obj_anim_timer,X
 C - - - - - 0x03DB20 0F:DB10: 9D D0 05  STA ram_obj_anim_cnt,X
@@ -5368,7 +5368,7 @@ C - - - - - 0x03ECD0 0F:ECC0: 30 F0     BMI bra_ECB2    ; jmp
 
 
 
-sub_0x03ECD2:
+sub_0x03ECD2_генератор_рандома_для_Y_1:
 C - - - - - 0x03ECD2 0F:ECC2: 20 D8 ED  JSR sub_EDD8_генератор_рандома_по_сложности_игры_2
 C - - - - - 0x03ECD5 0F:ECC5: 29 C0     AND #$C0
 C - - - - - 0x03ECD7 0F:ECC7: 18        CLC
@@ -5380,7 +5380,7 @@ C - - - - - 0x03ECDC 0F:ECCC: 60        RTS
 
 
 
-sub_0x03ECDD:
+sub_0x03ECDD_генератор_рандома_для_Y_2:
 C - - - - - 0x03ECDD 0F:ECCD: 20 D8 ED  JSR sub_EDD8_генератор_рандома_по_сложности_игры_2
 C - - - - - 0x03ECE0 0F:ECD0: 29 E0     AND #$E0
 C - - - - - 0x03ECE2 0F:ECD2: 18        CLC
@@ -5457,22 +5457,24 @@ C - - - - - 0x03ED3B 0F:ED2B: 60        RTS
 
 
 
-sub_0x03ED3C:
-C - - - - - 0x03ED3C 0F:ED2C: 20 2F EE  JSR sub_EE2F
-C - - - - - 0x03ED3F 0F:ED2F: B0 18     BCS bra_ED49
-C - - - - - 0x03ED41 0F:ED31: AD F3 06  LDA ram_06F3_flag
+sub_0x03ED3C_генератор_рандома_с_учетом_запущенного_мяча:
+C - - - - - 0x03ED3C 0F:ED2C: 20 2F EE  JSR sub_EE2F_проверка_запущенного_мяча_соперником
+C - - - - - 0x03ED3F 0F:ED2F: B0 18     BCS bra_ED49_false
+; if соперник запустил мяч
+C - - - - - 0x03ED41 0F:ED31: AD F3 06  LDA ram_06F3_флаг_использования_рандома
 C - - - - - 0x03ED44 0F:ED34: D0 18     BNE bra_ED4E
-C - - - - - 0x03ED46 0F:ED36: EE F3 06  INC ram_06F3_flag
+; if рандом еще не был использован
+C - - - - - 0x03ED46 0F:ED36: EE F3 06  INC ram_06F3_флаг_использования_рандома
 C - - - - - 0x03ED49 0F:ED39: 20 C6 ED  JSR sub_EDC6_генератор_рандома_по_сложности_игры_1
 C - - - - - 0x03ED4C 0F:ED3C: BC 50 05  LDY ram_obj_id,X ; 0550 0551 
-C - - - - - 0x03ED4F 0F:ED3F: D9 53 ED  CMP tbl_ED53,Y
+C - - - - - 0x03ED4F 0F:ED3F: D9 53 ED  CMP tbl_ED53_рандом,Y
 C - - - - - 0x03ED52 0F:ED42: 90 0A     BCC bra_ED4E
 C - - - - - 0x03ED54 0F:ED44: 18        CLC
 C - - - - - 0x03ED55 0F:ED45: BC DE 06  LDY ram_06DE_cpu_индекс_соперника,X ; 06DE 06DF 
 C - - - - - 0x03ED58 0F:ED48: 60        RTS
-bra_ED49:
+bra_ED49_false:
 C - - - - - 0x03ED59 0F:ED49: A9 00     LDA #$00
-C - - - - - 0x03ED5B 0F:ED4B: 8D F3 06  STA ram_06F3_flag
+C - - - - - 0x03ED5B 0F:ED4B: 8D F3 06  STA ram_06F3_флаг_использования_рандома
 bra_ED4E:
 C - - - - - 0x03ED5E 0F:ED4E: 38        SEC
 C - - - - - 0x03ED5F 0F:ED4F: BC DE 06  LDY ram_06DE_cpu_индекс_соперника,X ; 06DE 06DF 
@@ -5480,7 +5482,7 @@ C - - - - - 0x03ED62 0F:ED52: 60        RTS
 
 
 
-tbl_ED53:
+tbl_ED53_рандом:
 - D 3 - - - 0x03ED63 0F:ED53: 50        .byte $50   ; 00 con_fighter_leo
 - - - - - - 0x03ED64 0F:ED54: 50        .byte $50   ; 01 con_fighter_raph
 - - - - - - 0x03ED65 0F:ED55: 50        .byte $50   ; 02 con_fighter_mike
@@ -5541,7 +5543,8 @@ loc_0x03ED9F_запись_кнопки_hold_и_press:
 ; bzk optimize, предположительно A = 00 на выходе нужен только для 0x034179,
 ; который в теории может быть записан в 0x03418A, однако ни одна из демок
 ; не показала записи 00 в шаблон, так как проверки не были пройдены.
-; для случая с sub единственное где использовался 00 это 0x03573F
+; для случая с sub единственное где использовался 00 это 0x03573F,
+; теперь там записан LDA 00, а sub сделан отдельным кодом
 C D 3 - - - 0x03ED9F 0F:ED8F: 95 91     STA ram_btn_hold,X
 C - - - - - 0x03EDA1 0F:ED91: 95 8E     STA ram_btn_press,X
 C - - - - - 0x03EDA3 0F:ED93: A9 00     LDA #$00    ; con_шаблон_ai_00 ???
@@ -5549,12 +5552,11 @@ C - - - - - 0x03EDA5 0F:ED95: 60        RTS
 
 
 
-sub_0x03EDA6:
-loc_0x03EDA6:
+sub_0x03EDA6_очистка_адресов_cpu_при_необходимости:
+loc_0x03EDA6_очистка_адресов_cpu_при_необходимости:
 C D 3 - - - 0x03EDA6 0F:ED96: BD E6 06  LDA ram_06E6_cpu,X ; 06E6 06E7 
 C - - - - - 0x03EDA9 0F:ED99: D0 28     BNE bra_EDC3
-sub_0x03EDAB:
-; очистка шаблонов и вспомогательных адресов для ai?
+sub_0x03EDAB_очистка_адресов_cpu:
 C - - - - - 0x03EDAB 0F:ED9B: A9 FF     LDA #$FF
 C - - - - - 0x03EDAD 0F:ED9D: 9D C0 06  STA ram_cpu_шаблон_ai,X ; 06C0 06C1 
 C - - - - - 0x03EDB0 0F:EDA0: A9 00     LDA #$00
@@ -5608,69 +5610,87 @@ C - - - - - 0x03EDF8 0F:EDE8: 10 F5     BPL bra_EDDF
 - - - - - - 0x03EDFA 0F:EDEA: A5 11     LDA ram_0011
 - - - - - - 0x03EDFC 0F:EDEC: F0 04     BEQ bra_EDF2
 - - - - - - 0x03EDFE 0F:EDEE: C9 07     CMP #$07
-- - - - - - 0x03EE00 0F:EDF0: D0 3B     BNE bra_EE2D
+- - - - - - 0x03EE00 0F:EDF0: D0 3B     BNE bra_EE2D_false
 bra_EDF2:
 - - - - - - 0x03EE02 0F:EDF2: 86 17     STX ram_0017
 - - - - - - 0x03EE04 0F:EDF4: BD DE 06  LDA ram_06DE_cpu_индекс_соперника,X
 - - - - - - 0x03EE07 0F:EDF7: AA        TAX
-- - - - - - 0x03EE08 0F:EDF8: 20 FE ED  JSR sub_EDFE
+- - - - - - 0x03EE08 0F:EDF8: 20 FE ED  JSR sub_EDFE_проверка_наличия_мяча_у_игрока_X
 - - - - - - 0x03EE0B 0F:EDFB: A6 17     LDX ram_0017
 - - - - - - 0x03EE0D 0F:EDFD: 60        RTS
 
 
 
-sub_EDFE:
-sub_0x03EE0E:
-C - - - - - 0x03EE0E 0F:EDFE: AD A6 05  LDA ram_05A0_obj_мяч + $06
+sub_EDFE_проверка_наличия_мяча_у_игрока_X:
+sub_0x03EE0E_проверка_наличия_мяча_у_игрока_X:
+; X = индекс игрока
+; на выходе C
+    ; 0 (true) = мяч у игрока X
+    ; 1 (false) = мяч не у игрока X
+C - - - - - 0x03EE0E 0F:EDFE: AD A6 05  LDA ram_05A0_obj_флаги_мяча + $06
 C - - - - - 0x03EE11 0F:EE01: 29 C0     AND #$C0
-C - - - - - 0x03EE13 0F:EE03: 30 28     BMI bra_EE2D
-C - - - - - 0x03EE15 0F:EE05: F0 26     BEQ bra_EE2D
-C - - - - - 0x03EE17 0F:EE07: AD A6 05  LDA ram_05A0_obj_мяч + $06
+C - - - - - 0x03EE13 0F:EE03: 30 28     BMI bra_EE2D_false  ; if мяч уже был кем-то запущен
+C - - - - - 0x03EE15 0F:EE05: F0 26     BEQ bra_EE2D_false  ; if ничейный мяч
+C - - - - - 0x03EE17 0F:EE07: AD A6 05  LDA ram_05A0_obj_флаги_мяча + $06
 C - - - - - 0x03EE1A 0F:EE0A: 29 01     AND #$01
-C - - - - - 0x03EE1C 0F:EE0C: 85 08     STA ram_0008
-C - - - - - 0x03EE1E 0F:EE0E: E4 08     CPX ram_0008
-C - - - - - 0x03EE20 0F:EE10: D0 1B     BNE bra_EE2D
-C - - - - - 0x03EE22 0F:EE12: F0 17     BEQ bra_EE2B    ; jmp
+C - - - - - 0x03EE1C 0F:EE0C: 85 08     STA ram_0008    ; индекс владеющего мячом
+C - - - - - 0x03EE1E 0F:EE0E: E4 08     CPX ram_0008    ; индекс владеющего мячом
+C - - - - - 0x03EE20 0F:EE10: D0 1B     BNE bra_EE2D_false  ; if мячом владеет другой игрок
+C - - - - - 0x03EE22 0F:EE12: F0 17     BEQ bra_EE2B_true   ; jmp мячом владеет игрок X
 
 
 
-sub_0x03EE24:
-loc_0x03EE24:
+sub_0x03EE24_проверка_доступности_мяча_для_подбора:
+loc_0x03EE24_проверка_доступности_мяча_для_подбора:
+; на выходе C
+    ; 0 (true) = мяч доступен для подбора
+    ; 1 (false) = мяч недоступен для подбора
 C D 3 - - - 0x03EE24 0F:EE14: AD 36 05  LDA ram_0530_obj_state + $06
 C - - - - - 0x03EE27 0F:EE17: C9 02     CMP #$02
-C - - - - - 0x03EE29 0F:EE19: D0 12     BNE bra_EE2D
+C - - - - - 0x03EE29 0F:EE19: D0 12     BNE bra_EE2D_false
+; if мяч лежит на земле
 C - - - - - 0x03EE2B 0F:EE1B: AD 36 04  LDA ram_obj_pos_X_hi + $06
-C - - - - - 0x03EE2E 0F:EE1E: D0 0D     BNE bra_EE2D
+C - - - - - 0x03EE2E 0F:EE1E: D0 0D     BNE bra_EE2D_false
+; if мяч виден на экране
 C - - - - - 0x03EE30 0F:EE20: AD 46 04  LDA ram_obj_pos_X_lo + $06
 C - - - - - 0x03EE33 0F:EE23: C9 E8     CMP #$E8
-C - - - - - 0x03EE35 0F:EE25: B0 06     BCS bra_EE2D
+C - - - - - 0x03EE35 0F:EE25: B0 06     BCS bra_EE2D_false
 C - - - - - 0x03EE37 0F:EE27: C9 18     CMP #$18
-C - - - - - 0x03EE39 0F:EE29: 90 02     BCC bra_EE2D
-bra_EE2B:
+C - - - - - 0x03EE39 0F:EE29: 90 02     BCC bra_EE2D_false
+; if мяч в диапазоне 18-E7
+bra_EE2B_true:
 C - - - - - 0x03EE3B 0F:EE2B: 18        CLC
 C - - - - - 0x03EE3C 0F:EE2C: 60        RTS
-bra_EE2D:
+bra_EE2D_false:
 C - - - - - 0x03EE3D 0F:EE2D: 38        SEC
 C - - - - - 0x03EE3E 0F:EE2E: 60        RTS
 
 
 
-sub_EE2F:
-sub_0x03EE3F:
+sub_EE2F_проверка_запущенного_мяча_соперником:
+sub_0x03EE3F_проверка_запущенного_мяча_соперником:
+; X = индекс cpu
+; на выходе C
+    ; 0 (true) = мяч был запущен именно соперником
+    ; 1 (false) = мяч не был запущен соперником (или вообще не был запущен)
 C - - - - - 0x03EE3F 0F:EE2F: 8A        TXA
-C - - - - - 0x03EE40 0F:EE30: 4D A6 05  EOR ram_05A0_obj_мяч + $06
+C - - - - - 0x03EE40 0F:EE30: 4D A6 05  EOR ram_05A0_obj_флаги_мяча + $06
 C - - - - - 0x03EE43 0F:EE33: 29 01     AND #$01
-C - - - - - 0x03EE45 0F:EE35: F0 F6     BEQ bra_EE2D
-C - - - - - 0x03EE47 0F:EE37: AD A6 05  LDA ram_05A0_obj_мяч + $06
-C - - - - - 0x03EE4A 0F:EE3A: 30 EF     BMI bra_EE2B
+C - - - - - 0x03EE45 0F:EE35: F0 F6     BEQ bra_EE2D_false  ; if cpu владеет мячом
+; if cpu не владеет мячом
+C - - - - - 0x03EE47 0F:EE37: AD A6 05  LDA ram_05A0_obj_флаги_мяча + $06
+C - - - - - 0x03EE4A 0F:EE3A: 30 EF     BMI bra_EE2B_true   ; if мяч уже был запущен
+; false if мяч еще не был запущен
 C - - - - - 0x03EE4C 0F:EE3C: 38        SEC
 C - - - - - 0x03EE4D 0F:EE3D: 60        RTS
 
 
 
-sub_0x03EE4E_проверить_близость_объектов_с_областью_A:
+sub_0x03EE4E_проверка_близости_объектов_с_областью_A:
 ; A = размер хитбокса
-; на выходе C = 1 если вне хитбокса, иначе C = 0 если попадает в хитбокс
+; на выходе C
+    ; 0 = попадает в хитбокс
+    ; 1 = вне хитбокса
 C - - - - - 0x03EE4E 0F:EE3E: A8        TAY
 C - - - - - 0x03EE4F 0F:EE3F: A5 0F     LDA ram_000F    ; разница координат hi
 C - - - - - 0x03EE51 0F:EE41: 10 13     BPL bra_EE56

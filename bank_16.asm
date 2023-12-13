@@ -2712,7 +2712,7 @@ ofs_052_9EAD_01_ничейный_мяч_падает_и_отскакивает:
 C - - - - - 0x025EBD 09:9EAD: 20 2D 9F  JSR sub_9F2D
 C - - - - - 0x025EC0 09:9EB0: 20 E8 A1  JSR sub_A1E8
 C - - - - - 0x025EC3 09:9EB3: A9 00     LDA #$00
-C - - - - - 0x025EC5 09:9EB5: 8D A6 05  STA ram_05A0_obj_мяч + $06
+C - - - - - 0x025EC5 09:9EB5: 8D A6 05  STA ram_05A0_obj_флаги_мяча + $06
 C - - - - - 0x025EC8 09:9EB8: A9 03     LDA #$03
 C - - - - - 0x025ECA 09:9EBA: 8D 76 05  STA ram_0570_obj + $06
 C - - - - - 0x025ECD 09:9EBD: A9 01     LDA #$01
@@ -2768,7 +2768,7 @@ C - - - - - 0x025F20 09:9F10: CE 66 05  DEC ram_obj_timer + $06
 C - - - - - 0x025F23 09:9F13: F0 3C     BEQ bra_9F51
 bra_9F15:
 C - - - - - 0x025F25 09:9F15: A9 00     LDA #$00
-C - - - - - 0x025F27 09:9F17: 8D A6 05  STA ram_05A0_obj_мяч + $06
+C - - - - - 0x025F27 09:9F17: 8D A6 05  STA ram_05A0_obj_флаги_мяча + $06
 C - - - - - 0x025F2A 09:9F1A: 8D 86 04  STA ram_obj_spd_X_hi + $06
 C - - - - - 0x025F2D 09:9F1D: 8D 96 04  STA ram_obj_spd_X_lo + $06
 C - - - - - 0x025F30 09:9F20: A2 01     LDX #$01
@@ -2819,7 +2819,7 @@ C - - - - - 0x025F7B 09:9F6B: 60        RTS
 ofs_052_9F6C_03_мяч_был_подобран_персом:
 ; 03 пишется в 0x0244C9
 C - - J - - 0x025F7C 09:9F6C: 20 67 D0  JSR sub_0x03DB48_очистить_spd_X_и_spd_Z
-C - - - - - 0x025F7F 09:9F6F: AD A6 05  LDA ram_05A0_obj_мяч + $06
+C - - - - - 0x025F7F 09:9F6F: AD A6 05  LDA ram_05A0_obj_флаги_мяча + $06
 C - - - - - 0x025F82 09:9F72: 29 01     AND #$01
 C - - - - - 0x025F84 09:9F74: A8        TAY
 C - - - - - 0x025F85 09:9F75: B9 40 04  LDA ram_obj_pos_X_lo,Y ; 0440 0441 
@@ -2888,7 +2888,7 @@ C - - - - - 0x025FE3 09:9FD3: A9 40     LDA #$40
 loc_9FD5:   ; A = 80
 C D 0 - - - 0x025FE5 09:9FD5: 20 7D D1  JSR sub_0x03D18D
 C - - - - - 0x025FE8 09:9FD8: A9 00     LDA #$00
-C - - - - - 0x025FEA 09:9FDA: 8D A6 05  STA ram_05A0_obj_мяч + $06
+C - - - - - 0x025FEA 09:9FDA: 8D A6 05  STA ram_05A0_obj_флаги_мяча + $06
 C - - - - - 0x025FED 09:9FDD: 8D B6 05  STA ram_05B0_obj_damage + $06
 C - - - - - 0x025FF0 09:9FE0: 8D 06 05  STA ram_0500_obj + $06
 C - - - - - 0x025FF3 09:9FE3: 20 65 DD  JSR sub_0x03DD75_повернуть_объект_в_противоположную_сторону_по_горизонтали
