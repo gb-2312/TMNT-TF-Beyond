@@ -78,7 +78,6 @@ C - - - - - 0x03408F 0D:807F: 9D E2 06  STA ram_06E2_cpu,X ; 06E2 06E3
 C - - - - - 0x034092 0D:8082: 9D CC 06  STA ram_06CC_cpu_flag,X ; 06CC 06CD 
 C - - - - - 0x034095 0D:8085: 8D F3 06  STA ram_06F3_flag
 C - - - - - 0x03409B 0D:808B: 9D F6 06  STA ram_06F6_plr,X ; 06F6 06F7 
-C - - - - - 0x03409E 0D:808E: 9D F1 06  STA ram_06F1,X ; 06F1 06F2 
 C - - - - - 0x0340A1 0D:8091: 9D E4 06  STA ram_06E4_cpu_flag,X ; 06E4 06E5 
 C - - - - - 0x0340A4 0D:8094: 9D DC 06  STA ram_06DC_cpu_flag,X ; 06DC 06DD 
 C - - - - - 0x0340A7 0D:8097: 9D DA 06  STA ram_06DA_cpu_script,X ; 06DA 06DB 
@@ -318,8 +317,6 @@ C - - - - - 0x0341E1 0D:81D1: 95 91     STA ram_btn_hold,X
 C - - - - - 0x0341E3 0D:81D3: 95 8E     STA ram_btn_press,X
 C - - - - - 0x0341E5 0D:81D5: 60        RTS
 bra_81D6:
-C - - - - - 0x0341E6 0D:81D6: AD 38 06  LDA ram_расстояние_между_персами
-C - - - - - 0x0341E9 0D:81D9: 9D F1 06  STA ram_06F1,X ; 06F1 06F2 
 C - - - - - 0x0341EC 0D:81DC: BD DC 06  LDA ram_06DC_cpu_flag,X ; 06DC 06DD 
 C - - - - - 0x0341EF 0D:81DF: D0 1E     BNE bra_81FF
 C - - - - - 0x0341F1 0D:81E1: BD D2 06  LDA ram_06D2_cpu_script,X ; 06D2 06D3 
