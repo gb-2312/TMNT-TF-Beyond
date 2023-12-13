@@ -4482,11 +4482,6 @@ C - - - - - 0x03E89C 0F:E88C: 30 E0     BMI bra_E86E
 C - - - - - 0x03E89E 0F:E88E: 4C 02 F8  JMP loc_F802
 
 
-; bzk garbage?
-bra_E891_RTS:
-- - - - - - 0x03E8A1 0F:E891: 60        RTS
-
-
 
 ofs_001_E892_1C_bonus_stage_закончен:
 C - - J - - 0x03E8A2 0F:E892: A5 22     LDA ram_счетчик_кадров
@@ -4565,6 +4560,8 @@ ofs_001_E8FC_20_expected_tougher:
 - - - - - - 0x03E916 0F:E906: D0 89     BNE bra_E891_RTS
 - - - - - - 0x03E918 0F:E908: 20 8A E6  JSR sub_E68A
 - - - - - - 0x03E91B 0F:E90B: 4C 2E E1  JMP loc_E12E_подготовить_затемнение_из_цветного_в_черный
+bra_E891_RTS:
+- - - - - - 0x03E8A1 0F:E891: 60        RTS
 
 
 
