@@ -4546,7 +4546,7 @@ ofs_001_E8EA_1E:
 C - - J - - 0x03E8FA 0F:E8EA: 20 33 D3  JSR sub_D333_выбрать_речь_перед_финальным_боем_в_story
 C - - - - - 0x03E8FE 0F:E8EE: 20 DE F7  JSR sub_F7DE
 C - - - - - 0x03E901 0F:E8F1: AD 31 06  LDA ram_0631_unk
-C - - - - - 0x03E904 0F:E8F4: D0 8A     BNE bra_E880_RTS
+C - - - - - 0x03E904 0F:E8F4: D0 8A     BNE bra_E891_RTS
 C - - - - - 0x03E906 0F:E8F6: 20 C4 E5  JSR sub_E5C4
 C - - - - - 0x03E909 0F:E8F9: 4C 2E E1  JMP loc_E12E_подготовить_затемнение_из_цветного_в_черный
 
