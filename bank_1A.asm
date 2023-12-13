@@ -318,7 +318,7 @@ C - - - - - 0x0341E1 0D:81D1: 95 91     STA ram_btn_hold,X
 C - - - - - 0x0341E3 0D:81D3: 95 8E     STA ram_btn_press,X
 C - - - - - 0x0341E5 0D:81D5: 60        RTS
 bra_81D6:
-C - - - - - 0x0341E6 0D:81D6: AD 38 06  LDA ram_0638
+C - - - - - 0x0341E6 0D:81D6: AD 38 06  LDA ram_расстояние_между_персами
 C - - - - - 0x0341E9 0D:81D9: 9D F1 06  STA ram_06F1,X ; 06F1 06F2 
 C - - - - - 0x0341EC 0D:81DC: BD DC 06  LDA ram_06DC_cpu_flag,X ; 06DC 06DD 
 C - - - - - 0x0341EF 0D:81DF: D0 1E     BNE bra_81FF
@@ -1030,11 +1030,12 @@ bra_8563:
 - - - - - - 0x034589 0D:8579: F0 23     BEQ bra_859E
 - - - - - - 0x03458B 0D:857B: C9 07     CMP #con_plr_state_сидит
 - - - - - - 0x03458D 0D:857D: F0 25     BEQ bra_85A4
-- - - - - - 0x03458F 0D:857F: AD 38 06  LDA ram_0638
+- - - - - - 0x03458F 0D:857F: AD 38 06  LDA ram_расстояние_между_персами
 - - - - - - 0x034592 0D:8582: C9 26     CMP #$26
-- - - - - - 0x034594 0D:8584: B0 03     BCS bra_8589
+- - - - - - 0x034594 0D:8584: B0 03     BCS bra_8589_слишком_далеко
+; if персы достаточно близко друг к другу
 - - - - - - 0x034596 0D:8586: 4C FB 89  JMP loc_89FB
-bra_8589:
+bra_8589_слишком_далеко:
 - - - - - - 0x034599 0D:8589: 20 8E EC  JSR sub_0x03EC9E
 - - - - - - 0x03459C 0D:858C: 90 10     BCC bra_859E
 bra_858E:
@@ -1385,8 +1386,9 @@ ofs_033_87CE_0E:
 - - - - - - 0x0347DE 0D:87CE: BD 10 04  LDA ram_obj_pos_Y_lo,X
 - - - - - - 0x0347E1 0D:87D1: C9 B0     CMP #$B0
 - - - - - - 0x0347E3 0D:87D3: D0 12     BNE bra_87E7
-- - - - - - 0x0347E5 0D:87D5: AD 38 06  LDA ram_0638
-- - - - - - 0x0347E8 0D:87D8: F0 10     BEQ bra_87EA
+- - - - - - 0x0347E5 0D:87D5: AD 38 06  LDA ram_расстояние_между_персами
+- - - - - - 0x0347E8 0D:87D8: F0 10     BEQ bra_87EA_вплотную
+; if персы не вплотную друг к другу
 - - - - - - 0x0347EA 0D:87DA: BD 80 04  LDA ram_obj_spd_X_hi,X
 - - - - - - 0x0347ED 0D:87DD: 1D 90 04  ORA ram_obj_spd_X_lo,X
 - - - - - - 0x0347F0 0D:87E0: F0 05     BEQ bra_87E7
@@ -1395,6 +1397,7 @@ ofs_033_87CE_0E:
 bra_87E7:
 - - - - - - 0x0347F7 0D:87E7: 4C 0E 8A  JMP loc_8A0E
 bra_87EA:
+bra_87EA_вплотную:
 C D 0 - - - 0x0347FA 0D:87EA: 4C FB 89  JMP loc_89FB
 
 
@@ -1414,16 +1417,16 @@ C - - - - - 0x034814 0D:8804: 30 04     BMI bra_880A
 C - - - - - 0x034816 0D:8806: A9 02     LDA #$02
 C - - - - - 0x034818 0D:8808: 85 0D     STA ram_000D
 bra_880A:
-C - - - - - 0x03481A 0D:880A: AD 38 06  LDA ram_0638
+C - - - - - 0x03481A 0D:880A: AD 38 06  LDA ram_расстояние_между_персами
 C - - - - - 0x03481D 0D:880D: DD DA 06  CMP ram_06DA_cpu_script,X
 C - - - - - 0x034820 0D:8810: F0 D8     BEQ bra_87EA
-C - - - - - 0x034822 0D:8812: AD 38 06  LDA ram_0638
+C - - - - - 0x034822 0D:8812: AD 38 06  LDA ram_расстояние_между_персами
 C - - - - - 0x034825 0D:8815: F0 1B     BEQ bra_8832
 C - - - - - 0x034827 0D:8817: 18        CLC
 C - - - - - 0x034828 0D:8818: 69 01     ADC #$01
 C - - - - - 0x03482A 0D:881A: DD DA 06  CMP ram_06DA_cpu_script,X
 C - - - - - 0x03482D 0D:881D: F0 CB     BEQ bra_87EA
-C - - - - - 0x03482F 0D:881F: AD 38 06  LDA ram_0638
+C - - - - - 0x03482F 0D:881F: AD 38 06  LDA ram_расстояние_между_персами
 C - - - - - 0x034832 0D:8822: 38        SEC
 C - - - - - 0x034833 0D:8823: E9 01     SBC #$01
 C - - - - - 0x034835 0D:8825: DD DA 06  CMP ram_06DA_cpu_script,X
@@ -1434,7 +1437,7 @@ C - - - - - 0x03483E 0D:882E: 09 01     ORA #$01
 C - - - - - 0x034840 0D:8830: 85 0D     STA ram_000D
 bra_8832:
 C - - - - - 0x034842 0D:8832: A4 0D     LDY ram_000D
-C - - - - - 0x034844 0D:8834: B9 6B 88  LDA tbl_886B,Y
+C - - - - - 0x034844 0D:8834: B9 6B 88  LDA tbl_886B_кнопки_dpad,Y
 C - - - - - 0x034847 0D:8837: 95 91     STA ram_btn_hold,X
 C - - - - - 0x034849 0D:8839: 29 03     AND #con_btns_LR
 ; bzk optimize, зачем эта проверка на 03?
@@ -1465,11 +1468,11 @@ C - - - - - 0x03487A 0D:886A: 60        RTS
 
 
 
-tbl_886B:
-- D 0 - - - 0x03487B 0D:886B: 01        .byte $01   ; 00
-- D 0 - - - 0x03487C 0D:886C: 02        .byte $02   ; 01
-- D 0 - - - 0x03487D 0D:886D: 02        .byte $02   ; 02
-- D 0 - - - 0x03487E 0D:886E: 01        .byte $01   ; 03
+tbl_886B_кнопки_dpad:
+- D 0 - - - 0x03487B 0D:886B: 01        .byte con_btn_Right   ; 00
+- D 0 - - - 0x03487C 0D:886C: 02        .byte con_btn_Left   ; 01
+- D 0 - - - 0x03487D 0D:886D: 02        .byte con_btn_Left   ; 02
+- D 0 - - - 0x03487E 0D:886E: 01        .byte con_btn_Right   ; 03
 
 
 
@@ -1652,7 +1655,9 @@ C - - - - - 0x034995 0D:8985: AC 25 01  LDY ram_option_difficulty
 C - - - - - 0x034998 0D:8988: B9 8D A1  LDA tbl_A18D,Y
 C - - - - - 0x03499B 0D:898B: 9D DA 06  STA ram_06DA_cpu_script,X ; 06DA 06DB 
 bra_898E:
-C - - - - - 0x03499E 0D:898E: AD 38 06  LDA ram_0638
+; bzk optimize, LDA будет перезаписан TXA
+; bzk bug?
+C - - - - - 0x03499E 0D:898E: AD 38 06  LDA ram_расстояние_между_персами
 C - - - - - 0x0349A1 0D:8991: 8A        TXA
 C - - - - - 0x0349A2 0D:8992: 0A        ASL
 C - - - - - 0x0349A3 0D:8993: 0A        ASL
@@ -1794,11 +1799,12 @@ C - - - - - 0x034A93 0D:8A83: C9 03     CMP #con_plr_state_получает_ур
 C - - - - - 0x034A95 0D:8A85: D0 03     BNE bra_8A8A
 C - - - - - 0x034A97 0D:8A87: 4C FB 89  JMP loc_89FB
 bra_8A8A:
-C - - - - - 0x034A9A 0D:8A8A: AD 38 06  LDA ram_0638
+C - - - - - 0x034A9A 0D:8A8A: AD 38 06  LDA ram_расстояние_между_персами
 C - - - - - 0x034A9D 0D:8A8D: C9 09     CMP #$09
-C - - - - - 0x034A9F 0D:8A8F: B0 03     BCS bra_8A94
+C - - - - - 0x034A9F 0D:8A8F: B0 03     BCS bra_8A94_слишком_далеко
+; if персы достаточно близко друг к другу
 C - - - - - 0x034AA1 0D:8A91: 4C FB 89  JMP loc_89FB
-bra_8A94:
+bra_8A94_слишком_далеко:
 C - - - - - 0x034AA4 0D:8A94: A9 00     LDA #$00
 C - - - - - 0x034AA6 0D:8A96: 9D C6 06  STA ram_06C6_cpu_btn,X ; 06C6 06C7 
 C - - - - - 0x034AA9 0D:8A99: 20 7B EC  JSR sub_0x03EC8B
@@ -4721,11 +4727,12 @@ C - - - - - 0x03596F 0D:995F: C9 08     CMP #$08
 C - - - - - 0x035971 0D:9961: D0 12     BNE bra_9975
 C - - - - - 0x035973 0D:9963: 20 FE ED  JSR sub_0x03EE0E
 C - - - - - 0x035976 0D:9966: 90 B0     BCC bra_9918
-C - - - - - 0x035978 0D:9968: AD 38 06  LDA ram_0638
+C - - - - - 0x035978 0D:9968: AD 38 06  LDA ram_расстояние_между_персами
 C - - - - - 0x03597B 0D:996B: C9 38     CMP #$38
-C - - - - - 0x03597D 0D:996D: B0 03     BCS bra_9972
+C - - - - - 0x03597D 0D:996D: B0 03     BCS bra_9972_слишком_далеко
+; if персы достаточно близко друг к другу
 C - - - - - 0x03597F 0D:996F: 4C D6 98  JMP loc_98D6
-bra_9972:
+bra_9972_слишком_далеко:
 C - - - - - 0x035982 0D:9972: 4C A7 99  JMP loc_99A7
 bra_9975:
 C - - - - - 0x035985 0D:9975: BC DE 06  LDY ram_06DE_cpu_индекс_соперника,X ; 06DE 06DF 
@@ -5234,9 +5241,10 @@ C - - - - - 0x035C54 0D:9C44: BC DE 06  LDY ram_06DE_cpu_индекс_сопер
 C - - - - - 0x035C57 0D:9C47: B9 40 05  LDA ram_obj_state_lo,Y ; 0540 
 C - - - - - 0x035C5A 0D:9C4A: C9 02     CMP #$02
 C - - - - - 0x035C5C 0D:9C4C: F0 22     BEQ bra_9C70
-C - - - - - 0x035C5E 0D:9C4E: AD 38 06  LDA ram_0638
+C - - - - - 0x035C5E 0D:9C4E: AD 38 06  LDA ram_расстояние_между_персами
 C - - - - - 0x035C61 0D:9C51: C9 2C     CMP #$2C
-C - - - - - 0x035C63 0D:9C53: 90 1B     BCC bra_9C70
+C - - - - - 0x035C63 0D:9C53: 90 1B     BCC bra_9C70_слишком_близко
+; if персы достаточно далеко друг от друга
 - - - - - - 0x035C65 0D:9C55: 20 7B EC  JSR sub_0x03EC8B
 - - - - - - 0x035C68 0D:9C58: 09 08     ORA #con_btn_Up
 - - - - - - 0x035C6A 0D:9C5A: 95 8E     STA ram_btn_press,X
@@ -5255,6 +5263,7 @@ bra_9C6B:
 bra_9C6F_RTS:
 C - - - - - 0x035C7F 0D:9C6F: 60        RTS
 bra_9C70:
+bra_9C70_слишком_близко:
 C - - - - - 0x035C80 0D:9C70: A9 01     LDA #con_шаблон_ai_01
 C - - - - - 0x035C82 0D:9C72: 85 17     STA ram_0017
 C - - - - - 0x035C84 0D:9C74: 60        RTS
@@ -5267,12 +5276,12 @@ C - - - - - 0x035C84 0D:9C74: 60        RTS
 
 loc_BFA4:
 ofs_019_9C75_01_don_vs_raph:
-ofs_019_9C75_08:
 ofs_020_9C75_01_mike_vs_raph:
-ofs_020_9C75_08:
 ofs_021_9C75_01_raph_vs_raph:
-ofs_021_9C75_08:
 ofs_022_9C75_01_leo_vs_raph:
+ofs_019_9C75_08:
+ofs_020_9C75_08:
+ofs_021_9C75_08:
 ofs_022_9C75_08:
 C D 1 - - - 0x037FB4 0D:BFA4: AD 25 01  LDA ram_option_difficulty
 C - - - - - 0x037FB7 0D:BFA7: C9 03     CMP #$03
@@ -5287,9 +5296,10 @@ C - - - - - 0x035C92 0D:9C82: 20 FE ED  JSR sub_0x03EE0E
 C - - - - - 0x035C95 0D:9C85: B0 11     BCS bra_9C98
 C - - - - - 0x035C97 0D:9C87: BD 50 05  LDA ram_obj_id,X ; 0551 
 C - - - - - 0x035C9A 0D:9C8A: A8        TAY
-C - - - - - 0x035C9B 0D:9C8B: B9 AB 9C  LDA tbl_9CAB,Y
-C - - - - - 0x035C9E 0D:9C8E: CD 38 06  CMP ram_0638
+C - - - - - 0x035C9B 0D:9C8B: B9 AB 9C  LDA tbl_9CAB_расстояние_между_персами,Y
+C - - - - - 0x035C9E 0D:9C8E: CD 38 06  CMP ram_расстояние_между_персами
 C - - - - - 0x035CA1 0D:9C91: 90 17     BCC bra_9CAA_RTS
+; if персы достаточно близко друг к другу
 - - - - - - 0x035CA3 0D:9C93: A9 16     LDA #con_шаблон_ai_16
 - - - - - - 0x035CA5 0D:9C95: 85 17     STA ram_0017
 - - - - - - 0x035CA7 0D:9C97: 60        RTS
@@ -5307,7 +5317,7 @@ C - - - - - 0x035CBA 0D:9CAA: 60        RTS
 
 
 
-tbl_9CAB:
+tbl_9CAB_расстояние_между_персами:
 - - - - - - 0x035CBB 0D:9CAB: 30        .byte $30   ; 00 con_fighter_leo
 - - - - - - 0x035CBC 0D:9CAC: 30        .byte $30   ; 01 con_fighter_raph
 - - - - - - 0x035CBD 0D:9CAD: 40        .byte $40   ; 02 con_fighter_mike
@@ -5578,11 +5588,12 @@ ofs_018_9DEF_07:
 - - - - - - 0x035E09 0D:9DF9: C9 03     CMP #con_plr_state_получает_урон
 - - - - - - 0x035E0B 0D:9DFB: D0 2E     BNE bra_9E2B_RTS
 bra_9DFD:
-- - - - - - 0x035E0D 0D:9DFD: AD 38 06  LDA ram_0638
+- - - - - - 0x035E0D 0D:9DFD: AD 38 06  LDA ram_расстояние_между_персами
 - - - - - - 0x035E10 0D:9E00: C9 40     CMP #$40
 - - - - - - 0x035E12 0D:9E02: B0 27     BCS bra_9E2B_RTS
 - - - - - - 0x035E14 0D:9E04: C9 38     CMP #$38
 - - - - - - 0x035E16 0D:9E06: 90 05     BCC bra_9E0D
+; if расстояние между персами 38-3F
 bra_9E08:
 - - - - - - 0x035E18 0D:9E08: A9 01     LDA #con_шаблон_ai_01
 - - - - - - 0x035E1A 0D:9E0A: 85 17     STA ram_0017
@@ -5592,14 +5603,15 @@ bra_9E0D:
 - - - - - - 0x035E20 0D:9E10: B9 08 06  LDA ram_0608_plr,Y
 - - - - - - 0x035E23 0D:9E13: C9 02     CMP #$02
 - - - - - - 0x035E25 0D:9E15: F0 F1     BEQ bra_9E08
-- - - - - - 0x035E27 0D:9E17: AD 38 06  LDA ram_0638
+- - - - - - 0x035E27 0D:9E17: AD 38 06  LDA ram_расстояние_между_персами
 - - - - - - 0x035E2A 0D:9E1A: C9 20     CMP #$20
-- - - - - - 0x035E2C 0D:9E1C: 90 09     BCC bra_9E27
+- - - - - - 0x035E2C 0D:9E1C: 90 09     BCC bra_9E27_слишком_близко
+; if персы достаточно далеко друг от друга
 - - - - - - 0x035E2E 0D:9E1E: 20 7B EC  JSR sub_0x03EC8B
 - - - - - - 0x035E31 0D:9E21: 09 08     ORA #con_btn_Up
 - - - - - - 0x035E33 0D:9E23: 95 91     STA ram_btn_hold,X
 - - - - - - 0x035E35 0D:9E25: 95 8E     STA ram_btn_press,X
-bra_9E27:
+bra_9E27_слишком_близко:
 - - - - - - 0x035E37 0D:9E27: A9 06     LDA #con_шаблон_ai_06
 - - - - - - 0x035E39 0D:9E29: 85 17     STA ram_0017
 bra_9E2B_RTS:
@@ -5619,20 +5631,23 @@ ofs_018_9E36_08:
 C - - J - - 0x035E46 0D:9E36: BD 20 05  LDA ram_obj_state_hi,X ; 0521 
 C - - - - - 0x035E49 0D:9E39: C9 08     CMP #con_plr_state_делает_суперку
 C - - - - - 0x035E4B 0D:9E3B: D0 3A     BNE bra_9E77
-C - - - - - 0x035E4D 0D:9E3D: AD 38 06  LDA ram_0638
+C - - - - - 0x035E4D 0D:9E3D: AD 38 06  LDA ram_расстояние_между_персами
 C - - - - - 0x035E50 0D:9E40: C9 60     CMP #$60
-C - - - - - 0x035E52 0D:9E42: B0 09     BCS bra_9E4D
+C - - - - - 0x035E52 0D:9E42: B0 09     BCS bra_9E4D_не_в_нужном_диапазоне
 C - - - - - 0x035E54 0D:9E44: C9 40     CMP #$40
-C - - - - - 0x035E56 0D:9E46: 90 05     BCC bra_9E4D
+C - - - - - 0x035E56 0D:9E46: 90 05     BCC bra_9E4D_не_в_нужном_диапазоне
+; if расстояние между персами 40-5F
 - - - - - - 0x035E58 0D:9E48: A9 3A     LDA #con_шаблон_ai_3A
 - - - - - - 0x035E5A 0D:9E4A: 85 17     STA ram_0017
 - - - - - - 0x035E5C 0D:9E4C: 60        RTS
-bra_9E4D:
-C - - - - - 0x035E5D 0D:9E4D: AD 38 06  LDA ram_0638
+bra_9E4D_не_в_нужном_диапазоне:
+; bzk optimize, в A уже нужный байт
+C - - - - - 0x035E5D 0D:9E4D: AD 38 06  LDA ram_расстояние_между_персами
 C - - - - - 0x035E60 0D:9E50: C9 40     CMP #$40
-C - - - - - 0x035E62 0D:9E52: B0 23     BCS bra_9E77
+C - - - - - 0x035E62 0D:9E52: B0 23     BCS bra_9E77_слишком_далеко
 C - - - - - 0x035E64 0D:9E54: C9 30     CMP #$30
-C - - - - - 0x035E66 0D:9E56: B0 22     BCS bra_9E7A
+C - - - - - 0x035E66 0D:9E56: B0 22     BCS bra_9E7A_недостаточно_близко
+; if персы достаточно близко друг к другу
 C - - - - - 0x035E68 0D:9E58: BD C8 06  LDA ram_06C8_cpu_btn,X ; 06C9 
 C - - - - - 0x035E6B 0D:9E5B: 1D C6 06  ORA ram_06C6_cpu_btn,X ; 06C7 
 C - - - - - 0x035E6E 0D:9E5E: 29 04     AND #con_btn_Down
@@ -5647,8 +5662,9 @@ C - - - - - 0x035E82 0D:9E72: A9 42     LDA #con_шаблон_ai_42
 C - - - - - 0x035E84 0D:9E74: 85 17     STA ram_0017
 C - - - - - 0x035E86 0D:9E76: 60        RTS
 bra_9E77:
+bra_9E77_слишком_далеко:
 C - - - - - 0x035E87 0D:9E77: 4C A4 BF  JMP loc_BFA4
-bra_9E7A:
+bra_9E7A_недостаточно_близко:
 C - - - - - 0x035E8A 0D:9E7A: A9 1D     LDA #con_шаблон_ai_1D
 C - - - - - 0x035E8C 0D:9E7C: 85 17     STA ram_0017
 C - - - - - 0x035E8E 0D:9E7E: 60        RTS
@@ -5664,9 +5680,10 @@ ofs_018_9E7F_09:
 - - - - - - 0x035E98 0D:9E88: B9 60 04  LDA ram_obj_spd_Z_hi,Y
 - - - - - - 0x035E9B 0D:9E8B: C9 FF     CMP #$FF
 - - - - - - 0x035E9D 0D:9E8D: F0 12     BEQ bra_9EA1_RTS
-- - - - - - 0x035E9F 0D:9E8F: AD 38 06  LDA ram_0638
+- - - - - - 0x035E9F 0D:9E8F: AD 38 06  LDA ram_расстояние_между_персами
 - - - - - - 0x035EA2 0D:9E92: C9 28     CMP #$28
-- - - - - - 0x035EA4 0D:9E94: 90 0C     BCC bra_9EA2
+- - - - - - 0x035EA4 0D:9E94: 90 0C     BCC bra_9EA2_слишком_близко
+; if персы достаточно далеко друг от друга
 - - - - - - 0x035EA6 0D:9E96: 20 D8 ED  JSR sub_0x03EDE8_генератор_рандома_по_сложности_игры_2
 - - - - - - 0x035EA9 0D:9E99: C9 20     CMP #$20
 - - - - - - 0x035EAB 0D:9E9B: B0 05     BCS bra_9EA2
@@ -5675,6 +5692,7 @@ ofs_018_9E7F_09:
 bra_9EA1_RTS:
 - - - - - - 0x035EB1 0D:9EA1: 60        RTS
 bra_9EA2:
+bra_9EA2_слишком_близко:
 - - - - - - 0x035EB2 0D:9EA2: A5 28     LDA ram_random_1
 - - - - - - 0x035EB4 0D:9EA4: 30 05     BMI bra_9EAB
 - - - - - - 0x035EB6 0D:9EA6: A9 37     LDA #con_шаблон_ai_37
@@ -5706,13 +5724,14 @@ bra_9EC3:
 - - - - - - 0x035EDA 0D:9ECA: BC DE 06  LDY ram_06DE_cpu_индекс_соперника,X
 - - - - - - 0x035EDD 0D:9ECD: B9 40 05  LDA ram_obj_state_lo,Y
 - - - - - - 0x035EE0 0D:9ED0: D0 F0     BNE bra_9EC2_RTS
-- - - - - - 0x035EE2 0D:9ED2: AD 38 06  LDA ram_0638
+- - - - - - 0x035EE2 0D:9ED2: AD 38 06  LDA ram_расстояние_между_персами
 - - - - - - 0x035EE5 0D:9ED5: C9 30     CMP #$30
-- - - - - - 0x035EE7 0D:9ED7: B0 05     BCS bra_9EDE
+- - - - - - 0x035EE7 0D:9ED7: B0 05     BCS bra_9EDE_слишком_далеко
+; if персы достаточно близко друг к другу
 - - - - - - 0x035EE9 0D:9ED9: A9 06     LDA #con_шаблон_ai_06
 - - - - - - 0x035EEB 0D:9EDB: 85 17     STA ram_0017
 - - - - - - 0x035EED 0D:9EDD: 60        RTS
-bra_9EDE:
+bra_9EDE_слишком_далеко:
 - - - - - - 0x035EEE 0D:9EDE: A9 05     LDA #con_шаблон_ai_05
 - - - - - - 0x035EF0 0D:9EE0: 85 17     STA ram_0017
 - - - - - - 0x035EF2 0D:9EE2: 60        RTS
@@ -5789,9 +5808,10 @@ bra_9F46:
 - - - - - - 0x035F5C 0D:9F4C: A5 13     LDA ram_0013
 - - - - - - 0x035F5E 0D:9F4E: C9 02     CMP #$02
 - - - - - - 0x035F60 0D:9F50: 90 0B     BCC bra_9F5D_RTS
-- - - - - - 0x035F62 0D:9F52: AD 38 06  LDA ram_0638
+- - - - - - 0x035F62 0D:9F52: AD 38 06  LDA ram_расстояние_между_персами
 - - - - - - 0x035F65 0D:9F55: C9 50     CMP #$50
-- - - - - - 0x035F67 0D:9F57: B0 0A     BCS bra_9F63
+- - - - - - 0x035F67 0D:9F57: B0 0A     BCS bra_9F63_слишком_далеко
+; if персы достаточно близко друг к другу
 - - - - - - 0x035F69 0D:9F59: A9 0C     LDA #con_шаблон_ai_0C
 - - - - - - 0x035F6B 0D:9F5B: 85 17     STA ram_0017
 bra_9F5D_RTS:
@@ -5800,7 +5820,7 @@ bra_9F5E:
 - - - - - - 0x035F6E 0D:9F5E: A9 10     LDA #con_шаблон_ai_10
 - - - - - - 0x035F70 0D:9F60: 85 17     STA ram_0017
 - - - - - - 0x035F72 0D:9F62: 60        RTS
-bra_9F63:
+bra_9F63_слишком_далеко:
 - - - - - - 0x035F73 0D:9F63: A9 23     LDA #con_шаблон_ai_23
 - - - - - - 0x035F75 0D:9F65: 85 17     STA ram_0017
 - - - - - - 0x035F77 0D:9F67: 60        RTS
@@ -5812,11 +5832,12 @@ ofs_017_9F68_08:
 - - - - - - 0x035F78 0D:9F68: A5 11     LDA ram_0011
 - - - - - - 0x035F7A 0D:9F6A: C9 08     CMP #$08
 - - - - - - 0x035F7C 0D:9F6C: D0 1B     BNE bra_9F89
-- - - - - - 0x035F7E 0D:9F6E: AD 38 06  LDA ram_0638
+- - - - - - 0x035F7E 0D:9F6E: AD 38 06  LDA ram_расстояние_между_персами
 - - - - - - 0x035F81 0D:9F71: C9 40     CMP #$40
-- - - - - - 0x035F83 0D:9F73: B0 14     BCS bra_9F89
+- - - - - - 0x035F83 0D:9F73: B0 14     BCS bra_9F89_слишком_далеко
 - - - - - - 0x035F85 0D:9F75: C9 20     CMP #$20
-- - - - - - 0x035F87 0D:9F77: 90 13     BCC bra_9F8C
+- - - - - - 0x035F87 0D:9F77: 90 13     BCC bra_9F8C_слишком_близко
+; if персы на расстоянии 20-3F
 - - - - - - 0x035F89 0D:9F79: A9 40     LDA #con_btn_B
 - - - - - - 0x035F8B 0D:9F7B: 9D C6 06  STA ram_06C6_cpu_btn,X
 - - - - - - 0x035F8E 0D:9F7E: 9D C8 06  STA ram_06C8_cpu_btn,X
@@ -5825,8 +5846,9 @@ ofs_017_9F68_08:
 - - - - - - 0x035F96 0D:9F86: 85 17     STA ram_0017
 - - - - - - 0x035F98 0D:9F88: 60        RTS
 bra_9F89:
+bra_9F89_слишком_далеко:
 - - - - - - 0x035F99 0D:9F89: 4C A4 BF  JMP loc_BFA4
-bra_9F8C:
+bra_9F8C_слишком_близко:
 - - - - - - 0x035F9C 0D:9F8C: A5 28     LDA ram_random_1
 - - - - - - 0x035F9E 0D:9F8E: 30 05     BMI bra_9F95
 - - - - - - 0x035FA0 0D:9F90: A9 04     LDA #con_шаблон_ai_04
@@ -5937,13 +5959,14 @@ ofs_016_A010_07:
 bra_A026:
 - - - - - - 0x036036 0D:A026: C9 02     CMP #$02
 - - - - - - 0x036038 0D:A028: D0 19     BNE bra_A043
-- - - - - - 0x03603A 0D:A02A: AD 38 06  LDA ram_0638
+- - - - - - 0x03603A 0D:A02A: AD 38 06  LDA ram_расстояние_между_персами
 - - - - - - 0x03603D 0D:A02D: C9 38     CMP #$38
-- - - - - - 0x03603F 0D:A02F: B0 07     BCS bra_A038
+- - - - - - 0x03603F 0D:A02F: B0 07     BCS bra_A038_слишком_далеко
+; if персы достаточно близко друг к другу
 - - - - - - 0x036041 0D:A031: BD 20 05  LDA ram_obj_state_hi,X
 - - - - - - 0x036044 0D:A034: C9 07     CMP #con_plr_state_сидит
 - - - - - - 0x036046 0D:A036: D0 05     BNE bra_A03D
-bra_A038:
+bra_A038_слишком_далеко:
 - - - - - - 0x036048 0D:A038: A9 29     LDA #con_шаблон_ai_25
 - - - - - - 0x03604A 0D:A03A: 85 17     STA ram_0017
 - - - - - - 0x03604C 0D:A03C: 60        RTS
@@ -6106,18 +6129,19 @@ ofs_016_A167_06_shred_vs_shred:
 ofs_016_A167_0D:
 - - - - - - 0x036177 0D:A167: AD F8 06  LDA ram_06F8
 - - - - - - 0x03617A 0D:A16A: 30 12     BMI bra_A17E_RTS
-- - - - - - 0x03617C 0D:A16C: AD 38 06  LDA ram_0638
+- - - - - - 0x03617C 0D:A16C: AD 38 06  LDA ram_расстояние_между_персами
 - - - - - - 0x03617F 0D:A16F: C9 11     CMP #$11
-- - - - - - 0x036181 0D:A171: 90 0C     BCC bra_A17F
+- - - - - - 0x036181 0D:A171: 90 0C     BCC bra_A17F_слишком_близко
 - - - - - - 0x036183 0D:A173: C9 30     CMP #$30
-- - - - - - 0x036185 0D:A175: B0 03     BCS bra_A17A
+- - - - - - 0x036185 0D:A175: B0 03     BCS bra_A17A_слишком_далеко
+; if расстояние между персами 11-2F
 - - - - - - 0x036187 0D:A177: 4C 3D A0  JMP loc_A03D
-bra_A17A:
+bra_A17A_слишком_далеко:
 - - - - - - 0x03618A 0D:A17A: A9 18     LDA #con_шаблон_ai_18
 - - - - - - 0x03618C 0D:A17C: 85 17     STA ram_0017
 bra_A17E_RTS:
 - - - - - - 0x03618E 0D:A17E: 60        RTS
-bra_A17F:
+bra_A17F_слишком_близко:
 - - - - - - 0x03618F 0D:A17F: A5 13     LDA ram_0013
 - - - - - - 0x036191 0D:A181: D0 FB     BNE bra_A17E_RTS
 - - - - - - 0x036193 0D:A183: A9 40     LDA #con_btn_B
@@ -6144,16 +6168,17 @@ tbl_A191:
 
 
 
-tbl_A195:
+tbl_A195_расстояние_между_персами:
 - - - - - - 0x0361A5 0D:A195: 16        .byte $16   ; 00 normal
 - - - - - - 0x0361A6 0D:A196: 19        .byte $19   ; 01 turbo
 
 
 
 sub_A1A6:
-- - - - - - 0x0361B6 0D:A1A6: AD 38 06  LDA ram_0638
+- - - - - - 0x0361B6 0D:A1A6: AD 38 06  LDA ram_расстояние_между_персами
 - - - - - - 0x0361B9 0D:A1A9: C9 46     CMP #$46
 - - - - - - 0x0361BB 0D:A1AB: B0 11     BCS bra_A1BE_RTS
+; if персы достаточно близко друг к другу
 sub_A1AD_проверка_за_спиной_ли_перс:
 C - - - - - 0x0361BD 0D:A1AD: BD 40 04  LDA ram_obj_pos_X_lo,X ; 0440 0441 
 C - - - - - 0x0361C0 0D:A1B0: D9 40 04  CMP ram_obj_pos_X_lo,Y ; 0440 0441 
@@ -6174,9 +6199,10 @@ C - - - - - 0x0361D2 0D:A1C2: BC DE 06  LDY ram_06DE_cpu_индекс_сопер
 C - - - - - 0x0361D5 0D:A1C5: AD 25 01  LDA ram_option_difficulty
 C - - - - - 0x0361D8 0D:A1C8: C9 03     CMP #$03
 C - - - - - 0x0361DA 0D:A1CA: 90 25     BCC bra_A1F1_RTS
-C - - - - - 0x0361DC 0D:A1CC: AD 38 06  LDA ram_0638
+C - - - - - 0x0361DC 0D:A1CC: AD 38 06  LDA ram_расстояние_между_персами
 C - - - - - 0x0361DF 0D:A1CF: C9 07     CMP #$07
 C - - - - - 0x0361E1 0D:A1D1: B0 1E     BCS bra_A1F1_RTS
+; if персы достаточно близко друг к другу
 C - - - - - 0x0361E3 0D:A1D3: B9 10 04  LDA ram_obj_pos_Y_lo,Y ; 0410 0411 
 C - - - - - 0x0361E6 0D:A1D6: C9 B0     CMP #$B0
 C - - - - - 0x0361E8 0D:A1D8: 90 17     BCC bra_A1F1_RTS
@@ -6244,7 +6270,7 @@ bra_A22B_casey:
                                         LDA ram_obj_state_hi,X
                                         CMP #con_plr_state_делает_суперку
                                         BNE bra_A28A
-                                        LDA ram_0638
+                                        LDA ram_расстояние_между_персами
                                         CMP #$10
                                         BCC bra_A28A
                                         BCS bra_A285    ; jmp
@@ -6276,9 +6302,10 @@ bra_A240:
 - - - - - - 0x036258 0D:A248: 49 02     EOR #$02
 - - - - - - 0x03625A 0D:A24A: 19 A0 04  ORA ram_obj_spd_Y_hi,Y
 - - - - - - 0x03625D 0D:A24D: D0 52     BNE bra_A2A1
-- - - - - - 0x03625F 0D:A24F: AD 38 06  LDA ram_0638
+- - - - - - 0x03625F 0D:A24F: AD 38 06  LDA ram_расстояние_между_персами
 - - - - - - 0x036262 0D:A252: C9 18     CMP #$18
-- - - - - - 0x036264 0D:A254: 90 2C     BCC bra_A282
+- - - - - - 0x036264 0D:A254: 90 2C     BCC bra_A282_слишком_близко
+; if персы достаточно далеко друг от друга
 bra_A256:
 - - - - - - 0x036266 0D:A256: BD 12 06  LDA ram_plr_индекс_атаки,X
 - - - - - - 0x036269 0D:A259: 1D 10 06  ORA ram_plr_флаг_индекса_атаки,X
@@ -6288,9 +6315,10 @@ bra_A256:
 - - - - - - 0x036273 0D:A263: C9 32     CMP #con_0552_special_raph_сверло
 - - - - - - 0x036275 0D:A265: F0 1B     BEQ bra_A282
 bra_A267:
-- - - - - - 0x036277 0D:A267: AD 38 06  LDA ram_0638
+- - - - - - 0x036277 0D:A267: AD 38 06  LDA ram_расстояние_между_персами
 - - - - - - 0x03627A 0D:A26A: C9 1A     CMP #$1A
-- - - - - - 0x03627C 0D:A26C: B0 1C     BCS bra_A28A
+- - - - - - 0x03627C 0D:A26C: B0 1C     BCS bra_A28A_слишком_далеко
+; if персы достаточно близко друг к другу
 - - - - - - 0x03627E 0D:A26E: B9 12 06  LDA ram_plr_индекс_атаки,Y
 - - - - - - 0x036281 0D:A271: 19 10 06  ORA ram_plr_флаг_индекса_атаки,Y
 - - - - - - 0x036284 0D:A274: C9 88     CMP #con_0612_черепаха_нога_дальняя_raph + $80
@@ -6300,6 +6328,7 @@ bra_A267:
 - - - - - - 0x03628D 0D:A27D: 1D 2C 06  ORA ram_062C_plr,X
 - - - - - - 0x036290 0D:A280: F0 08     BEQ bra_A28A
 bra_A282:
+bra_A282_слишком_близко:
 loc_A282:
 - - - - - - 0x036292 0D:A282: A9 40     LDA #con_btn_B
 - - - - - - 0x036294 0D:A284: 2C        .byte $2C   ; BIT
@@ -6307,6 +6336,7 @@ bra_A285:
 C - - - - - 0x036295 0D:A285: A9 80     LDA #con_btn_A
 C - - - - - 0x036297 0D:A287: 4C 59 80  JMP loc_8059
 bra_A28A:
+bra_A28A_слишком_далеко:
 C - - - - - 0x03629A 0D:A28A: B9 54 05  LDA ram_obj_id + $04,Y ; 0554 0555 
 C - - - - - 0x03629D 0D:A28D: C9 38     CMP #con_0552_special_don_пила_подкат
 C - - - - - 0x03629F 0D:A28F: D0 10     BNE bra_A2A1
@@ -6355,9 +6385,10 @@ C - - - - - 0x0362E5 0D:A2D5: A5 8C     LDA ram_random_2
 C - - - - - 0x0362E7 0D:A2D7: 29 C0     AND #$C0
 C - - - - - 0x0362E9 0D:A2D9: F0 54     BEQ bra_A32F
 bra_A2DB:
-C - - - - - 0x0362EB 0D:A2DB: AD 38 06  LDA ram_0638
-C - - - - - 0x0362EE 0D:A2DE: D9 F2 BF  CMP tbl_BFF2,Y
-C - - - - - 0x0362F1 0D:A2E1: B0 66     BCS bra_A349
+C - - - - - 0x0362EB 0D:A2DB: AD 38 06  LDA ram_расстояние_между_персами
+C - - - - - 0x0362EE 0D:A2DE: D9 F2 BF  CMP tbl_BFF2_расстояние_между_персами,Y
+C - - - - - 0x0362F1 0D:A2E1: B0 66     BCS bra_A349_слишком_далеко
+; if персы достаточно близко друг к другу
 C - - - - - 0x0362F3 0D:A2E3: BC DE 06  LDY ram_06DE_cpu_индекс_соперника,X ; 06DE 06DF 
 C - - - - - 0x0362F6 0D:A2E6: B9 10 04  LDA ram_obj_pos_Y_lo,Y ; 0410 0411 
 C - - - - - 0x0362F9 0D:A2E9: C9 B0     CMP #$B0
@@ -6433,6 +6464,7 @@ bra_A342_shred:
 - - - - - - 0x036355 0D:A345: C9 A0     CMP #$A0
 - - - - - - 0x036357 0D:A347: B0 E6     BCS bra_A32F
 bra_A349:
+bra_A349_слишком_далеко:
 C - - - - - 0x036359 0D:A349: 4C 57 80  JMP loc_8057
 
 
@@ -6451,9 +6483,10 @@ C - - - - - 0x036369 0D:A359: C9 30     CMP #con_0552_special_shred_волна
 C - - - - - 0x03636B 0D:A35B: D0 13     BNE bra_A370
 - - - - - - 0x03636D 0D:A35D: 20 AD A1  JSR sub_A1AD_проверка_за_спиной_ли_перс
 - - - - - - 0x036370 0D:A360: D0 3F     BNE bra_A3A1_RTS
-- - - - - - 0x036372 0D:A362: AD 38 06  LDA ram_0638
+- - - - - - 0x036372 0D:A362: AD 38 06  LDA ram_расстояние_между_персами
 - - - - - - 0x036375 0D:A365: C9 64     CMP #$64
-- - - - - - 0x036377 0D:A367: B0 13     BCS bra_A37C
+- - - - - - 0x036377 0D:A367: B0 13     BCS bra_A37C_слишком_далеко
+; if персы достаточно близко друг к другу
 - - - - - - 0x036379 0D:A369: BD C6 06  LDA ram_06C6_cpu_btn,X
 - - - - - - 0x03637C 0D:A36C: 09 04     ORA #con_btn_Down
 - - - - - - 0x03637E 0D:A36E: D0 09     BNE bra_A379   ; jmp
@@ -6466,6 +6499,7 @@ C - - - - - 0x036387 0D:A377: 29 03     AND #con_btns_LR
 bra_A379:
 C - - - - - 0x036389 0D:A379: 9D C6 06  STA ram_06C6_cpu_btn,X ; 06C6 
 bra_A37C:
+bra_A37C_слишком_далеко:
 C - - - - - 0x03638C 0D:A37C: B9 44 04  LDA ram_obj_pos_X_lo + $04,Y ; 0444 0445 0448 
 C - - - - - 0x03638F 0D:A37F: 19 12 04  ORA ram_obj_pos_Y_lo + $02,Y
 C - - - - - 0x036392 0D:A382: F0 1D     BEQ bra_A3A1_RTS
@@ -6535,27 +6569,31 @@ C - - - - - 0x03640E 0D:A3FE: F0 11     BEQ bra_A411
 C - - - - - 0x036410 0D:A400: C9 07     CMP #$07
 C - - - - - 0x036412 0D:A402: F0 0D     BEQ bra_A411
 bra_A404:
+bra_A404_слишком_далеко:
 C - - - - - 0x036414 0D:A404: BD C0 06  LDA ram_cpu_шаблон_ai,X
 C - - - - - 0x036417 0D:A407: 60        RTS
 bra_A408:
 - - - - - - 0x036418 0D:A408: A9 00     LDA #$00
 - - - - - - 0x03641A 0D:A40A: DD 10 05  CMP ram_obj_flip,X
-; con_btn_Down + con_btn_Right          con_btn_Down + con_btn_Left
+; con_btn_Down + con_btn_Right (if повернут влево)
+; con_btn_Down + con_btn_Left (if повернут вправо)
 - - - - - - 0x03641D 0D:A40D: 69 05     ADC #$05
 - - - - - - 0x03641F 0D:A40F: D0 07     BNE bra_A418    ; jmp?
 bra_A411:
 - - - - - - 0x036421 0D:A411: A9 00     LDA #$00
 - - - - - - 0x036423 0D:A413: DD 10 05  CMP ram_obj_flip,X
-; con_btn_Right     con_btn_Left
+; con_btn_Right (if повернут влево)
+; con_btn_Left (if повернут вправо)
 - - - - - - 0x036426 0D:A416: 69 01     ADC #$01
 bra_A418:
 - - - - - - 0x036428 0D:A418: 20 99 A3  JSR sub_A399
 - - - - - - 0x03642B 0D:A41B: A9 01     LDA #con_шаблон_ai_01
 - - - - - - 0x03642D 0D:A41D: 60        RTS
 bra_A41E:
-C - - - - - 0x03642E 0D:A41E: AD 38 06  LDA ram_0638
+C - - - - - 0x03642E 0D:A41E: AD 38 06  LDA ram_расстояние_между_персами
 C - - - - - 0x036431 0D:A421: C9 20     CMP #$20
-C - - - - - 0x036433 0D:A423: B0 DF     BCS bra_A404
+C - - - - - 0x036433 0D:A423: B0 DF     BCS bra_A404_слишком_далеко
+; if персы достаточно близко друг к другу
 C - - - - - 0x036435 0D:A425: 20 74 A3  JSR sub_A374
 C - - - - - 0x036438 0D:A428: A9 01     LDA #con_шаблон_ai_01
 C - - - - - 0x03643A 0D:A42A: 60        RTS
@@ -6584,9 +6622,10 @@ tbl_A42B_условие_для_перехода:
 
 
 loc_A456:
-- - - - - - 0x036466 0D:A456: AD 38 06  LDA ram_0638
+- - - - - - 0x036466 0D:A456: AD 38 06  LDA ram_расстояние_между_персами
 - - - - - - 0x036469 0D:A459: C9 12     CMP #$16
-- - - - - - 0x03646B 0D:A45B: B0 15     BCS bra_A472
+- - - - - - 0x03646B 0D:A45B: B0 15     BCS bra_A472_слишком_далеко
+; if персы достаточно близко друг к другу
 - - - - - - 0x036474 0D:A464: B9 B0 04  LDA ram_obj_spd_Y_lo,Y
 - - - - - - 0x036477 0D:A467: C9 04     CMP #$04
 - - - - - - 0x036479 0D:A469: 90 07     BCC bra_A472
@@ -6594,6 +6633,7 @@ loc_A456:
 - - - - - - 0x03647D 0D:A46D: B0 03     BCS bra_A472
 - - - - - - 0x03647F 0D:A46F: 4C 82 A2  JMP loc_A282
 bra_A472:
+bra_A472_слишком_далеко:
 - - - - - - 0x036482 0D:A472: 4C A1 A2  JMP loc_A2A1
 
 
@@ -6615,19 +6655,21 @@ bra_A483_raph:
                                     .endif
 ; con_fighter_raph
 ; con_fighter___raph
-- - - - - - 0x036493 0D:A483: AD 38 06  LDA ram_0638
+- - - - - - 0x036493 0D:A483: AD 38 06  LDA ram_расстояние_между_персами
 - - - - - - 0x036496 0D:A486: C9 60     CMP #$60
-- - - - - - 0x036498 0D:A488: B0 10     BCS bra_A49A
+- - - - - - 0x036498 0D:A488: B0 10     BCS bra_A49A_слишком_далеко
+; if персы достаточно близко друг к другу
 - - - - - - 0x03649A 0D:A48A: B9 0C 06  LDA ram_plr_таймер_для_суперки,Y
 - - - - - - 0x03649D 0D:A48D: C9 08     CMP #$08
 - - - - - - 0x03649F 0D:A48F: 90 09     BCC bra_A49A
 - - - - - - 0x0364A1 0D:A491: A5 8C     LDA ram_random_2
 - - - - - - 0x0364A3 0D:A493: 29 80     AND #$80
 - - - - - - 0x0364A5 0D:A495: D0 03     BNE bra_A49A
-- - - - - - 0x0364A7 0D:A497: A9 37     LDA #$37
+- - - - - - 0x0364A7 0D:A497: A9 37     LDA #con_шаблон_ai_37
 - - - - - - 0x0364A9 0D:A499: 60        RTS
 bra_A49A:
-C - - - - - 0x0364AA 0D:A49A: A9 25     LDA #$25
+bra_A49A_слишком_далеко:
+C - - - - - 0x0364AA 0D:A49A: A9 25     LDA #con_шаблон_ai_25
 C - - - - - 0x0364AC 0D:A49C: 60        RTS
 
 
@@ -6650,9 +6692,10 @@ sub_A4B4:
 bra_A4D4:
 - - - - - - 0x0364E4 0D:A4D4: BD C0 04  LDA ram_obj_hit_state,X
 - - - - - - 0x0364E7 0D:A4D7: D0 3A     BNE bra_A513
-- - - - - - 0x0364E9 0D:A4D9: AD 38 06  LDA ram_0638
+- - - - - - 0x0364E9 0D:A4D9: AD 38 06  LDA ram_расстояние_между_персами
 - - - - - - 0x0364EC 0D:A4DC: C9 18     CMP #$18
-- - - - - - 0x0364EE 0D:A4DE: 90 0D     BCC bra_A4ED
+- - - - - - 0x0364EE 0D:A4DE: 90 0D     BCC bra_A4ED_слишком_близко
+; if персы достаточно далеко друг от друга
 - - - - - - 0x0364F0 0D:A4E0: BD 2C 06  LDA ram_062C_plr,X
 - - - - - - 0x0364F3 0D:A4E3: C9 14     CMP #$14
 - - - - - - 0x0364F5 0D:A4E5: A9 13     LDA #con_шаблон_ai_13
@@ -6660,7 +6703,7 @@ bra_A4D4:
 bra_A4E9:
 - - - - - - 0x0364F9 0D:A4E9: A9 01     LDA #con_шаблон_ai_01
 - - - - - - 0x0364FB 0D:A4EB: D0 56     BNE bra_A543    ; jmp
-bra_A4ED:
+bra_A4ED_слишком_близко:
 - - - - - - 0x0364FD 0D:A4ED: B9 20 05  LDA ram_obj_state_hi,Y
 - - - - - - 0x036500 0D:A4F0: C9 01     CMP #con_plr_state_в_прыжке
 - - - - - - 0x036502 0D:A4F2: D0 1F     BNE bra_A513
@@ -6721,14 +6764,16 @@ bra_A51A_raph:
 ; 90-96
 bra_A533:
 - - - - - - 0x036543 0D:A533: AC 26 01  LDY ram_option_speed
-- - - - - - 0x036546 0D:A536: AD 38 06  LDA ram_0638
-- - - - - - 0x036549 0D:A539: D9 95 A1  CMP tbl_A195,Y
-- - - - - - 0x03654C 0D:A53C: B0 08     BCS bra_A546
+- - - - - - 0x036546 0D:A536: AD 38 06  LDA ram_расстояние_между_персами
+- - - - - - 0x036549 0D:A539: D9 95 A1  CMP tbl_A195_расстояние_между_персами,Y
+- - - - - - 0x03654C 0D:A53C: B0 08     BCS bra_A546_слишком_далеко
+; if персы достаточно близко друг к другу
 - - - - - - 0x03654E 0D:A53E: 20 9B ED  JSR sub_0x03EDAB
 - - - - - - 0x036551 0D:A541: A9 40     LDA #con_шаблон_ai_40
 bra_A543:
 - - - - - - 0x036553 0D:A543: 9D C0 06  STA ram_cpu_шаблон_ai,X
 bra_A546:
+bra_A546_слишком_далеко:
 - - - - - - 0x036556 0D:A546: BC DE 06  LDY ram_06DE_cpu_индекс_соперника,X
 - - - - - - 0x036559 0D:A549: BD 20 05  LDA ram_obj_state_hi,X
 bra_A547_RTS:
@@ -6786,12 +6831,14 @@ bra_A56C:
                                         BCC bra_A570
                                         CMP #con_plr_state_брошен_соперником
                                         BCS bra_A570
-                                        LDA ram_0638
+                                        LDA ram_расстояние_между_персами
                                         CMP #$09
-                                        BCS bra_A570
+                                        BCS bra_A570_слишком_далеко
+; if персы достаточно близко друг к другу
                                         JSR sub_A1AD_проверка_за_спиной_ли_перс
                                         BNE bra_A573_casey_ai_бросок_2
 bra_A570:
+bra_A570_слишком_далеко:
                                         LDA ram_plr_флаг_индекса_атаки,Y
                                         BEQ bra_A572
                                         LDA ram_obj_id,Y
@@ -6823,9 +6870,10 @@ bra_A571:
                                         BEQ bra_A573_casey_ai_блок
                                         JSR sub_BDEE_проверка_нахождения_в_углу
                                         BCC bra_A573_casey_ai_бросок
-                                        LDA ram_0638
+                                        LDA ram_расстояние_между_персами
                                         CMP #$20
                                         BCS bra_A573_casey_ai_бросок
+; if персы достаточно близко друг к другу
                                         LDA ram_062C_plr,X
                                         BNE bra_A573_casey_ai_блок
                                         LDA ram_plr_индекс_атаки,Y
@@ -6911,27 +6959,28 @@ bra_A5A8_leo:
 - - - - - - 0x0365B8 0D:A5A8: BD 20 05  LDA ram_obj_state_hi,X
 - - - - - - 0x0365BB 0D:A5AB: 49 0A     EOR #con_plr_state_брошен_соперником
 - - - - - - 0x0365BD 0D:A5AD: F0 F1     BEQ bra_A5A0
-- - - - - - 0x0365BF 0D:A5AF: AD 38 06  LDA ram_0638
+- - - - - - 0x0365BF 0D:A5AF: AD 38 06  LDA ram_расстояние_между_персами
 - - - - - - 0x0365C2 0D:A5B2: C9 1C     CMP #$1C
-- - - - - - 0x0365C4 0D:A5B4: B0 22     BCS bra_A5D8
+- - - - - - 0x0365C4 0D:A5B4: B0 22     BCS bra_A5D8_слишком_далеко
 - - - - - - 0x0365C6 0D:A5B6: C9 13     CMP #$13
 - - - - - - 0x0365C8 0D:A5B8: B9 40 05  LDA ram_obj_state_lo,Y
 - - - - - - 0x0365CB 0D:A5BB: 49 03     EOR #$03
 - - - - - - 0x0365CD 0D:A5BD: D0 E1     BNE bra_A5A0
 - - - - - - 0x0365CF 0D:A5BF: 90 63     BCS bra_A573_ai_рука
+; if расстояние между персами < 13
                                         JMP loc_A65A_ai_бросок_0D
 bra_A5C4:
 - - - - - - 0x0365D4 0D:A5C4: C9 05     CMP #$05
 - - - - - - 0x0365D6 0D:A5C6: D0 11     BNE bra_A5D9_RTS
 - - - - - - 0x0365D8 0D:A5C8: B9 D0 05  LDA ram_obj_anim_cnt,Y
 - - - - - - 0x0365DB 0D:A5CB: F0 0C     BEQ bra_A5D9_RTS
-- - - - - - 0x0365DD 0D:A5CD: AD 38 06  LDA ram_0638
+- - - - - - 0x0365DD 0D:A5CD: AD 38 06  LDA ram_расстояние_между_персами
 - - - - - - 0x0365E0 0D:A5D0: C9 26     CMP #$26
 - - - - - - 0x0365E2 0D:A5D2: 90 77     BCC bra_A64B_ai_быстрое_мясо
 - - - - - - 0x0365E4 0D:A5D4: C9 2D     CMP #$2D
 - - - - - - 0x0365E6 0D:A5D6: 90 7F     BCC bra_A573_ai_нога
-; 26-2C
-bra_A5D8:
+; if расстояние между персами 26-2C
+bra_A5D8_слишком_далеко:
 - - - - - - 0x0365E8 0D:A5D8: 8A        TXA
 bra_A5D9_RTS:
 C - - - - - 0x0365E9 0D:A5D9: 60        RTS
@@ -6981,12 +7030,13 @@ bra_A619:
 - - - - - - 0x036636 0D:A626: A9 42     LDA #con_шаблон_ai_42
 - - - - - - 0x036638 0D:A628: DD E6 06  CMP ram_06E6_cpu,X
 - - - - - - 0x03663B 0D:A62B: D0 35     BNE bra_A662_RTS
-- - - - - - 0x03663D 0D:A62D: AD 38 06  LDA ram_0638
-- - - - - - 0x036640 0D:A630: D0 07     BNE bra_A639
+- - - - - - 0x03663D 0D:A62D: AD 38 06  LDA ram_расстояние_между_персами
+- - - - - - 0x036640 0D:A630: D0 07     BNE bra_A639_не_вплотную
+; if персы вплотную друг к другу
 - - - - - - 0x036642 0D:A632: B9 60 04  LDA ram_obj_spd_Z_hi,Y
 - - - - - - 0x036645 0D:A635: 30 1A     BMI bra_A651_медленное_мясо
 - - - - - - 0x036647 0D:A637: F0 18     BEQ bra_A651_медленное_мясо
-bra_A639:
+bra_A639_не_вплотную:
 - - - - - - 0x036649 0D:A639: C9 10     CMP #$10
 - - - - - - 0x03664B 0D:A63B: B0 1A     BCS bra_A657
 - - - - - - 0x03664D 0D:A63D: B9 00 06  LDA ram_0600_plr,Y
@@ -7027,11 +7077,12 @@ bra_A662_RTS:
 loc_A663:
 - - - - - - 0x036673 0D:A663: C9 07     CMP #con_plr_state_сидит
 - - - - - - 0x036675 0D:A665: D0 2D     BNE bra_A694
-- - - - - - 0x036677 0D:A667: AD 38 06  LDA ram_0638
+- - - - - - 0x036677 0D:A667: AD 38 06  LDA ram_расстояние_между_персами
 - - - - - - 0x03667A 0D:A66A: C9 11     CMP #$11
 - - - - - - 0x03667C 0D:A66C: 90 26     BCC bra_A694
 - - - - - - 0x03667E 0D:A66E: C9 1F     CMP #$1F
 - - - - - - 0x036680 0D:A670: B0 22     BCS bra_A694
+; if расстояние между персами 11-1E
 - - - - - - 0x036682 0D:A672: BD 20 05  LDA ram_obj_state_hi,X
 - - - - - - 0x036685 0D:A675: C9 07     CMP #con_plr_state_сидит
 - - - - - - 0x036687 0D:A677: D0 1B     BNE bra_A694
@@ -7077,7 +7128,7 @@ bra_A6A9:
 - - - - - - 0x0366C4 0D:A6B4: B9 91 00  LDA ram_btn_hold,Y
 - - - - - - 0x0366C7 0D:A6B7: 29 08     AND #con_btn_Up
 - - - - - - 0x0366C9 0D:A6B9: D0 2E     BNE bra_A6E9
-- - - - - - 0x0366CB 0D:A6BB: AC 38 06  LDY ram_0638
+- - - - - - 0x0366CB 0D:A6BB: AC 38 06  LDY ram_расстояние_между_персами
 - - - - - - 0x0366CE 0D:A6BE: A5 00     LDA ram_0000
 - - - - - - 0x0366D0 0D:A6C0: C9 87     CMP #con_0612_черепаха_нога_дальняя_обычная + $80
 - - - - - - 0x0366D2 0D:A6C2: F0 51     BEQ bra_A715
@@ -7085,10 +7136,12 @@ bra_A6C4:
 - - - - - - 0x0366D4 0D:A6C4: C9 80     CMP #con_0612_черепаха_рука_дальняя + $80
 - - - - - - 0x0366D6 0D:A6C6: D0 09     BNE bra_A6D1
 - - - - - - 0x0366D8 0D:A6C8: C0 1A     CPY #$1A
-- - - - - - 0x0366DA 0D:A6CA: B0 05     BCS bra_A6D1
+- - - - - - 0x0366DA 0D:A6CA: B0 05     BCS bra_A6D1_слишком_далеко
+; if персы достаточно близко друг к другу
 - - - - - - 0x0366DC 0D:A6CC: AD 52 01  LDA ram_0152
 - - - - - - 0x0366DF 0D:A6CF: F0 39     BEQ bra_A70A
 bra_A6D1:
+bra_A6D1_слишком_далеко:
 - - - - - - 0x0366E1 0D:A6D1: BD 20 05  LDA ram_obj_state_hi,X
 - - - - - - 0x0366E4 0D:A6D4: 49 03     EOR #$03
 - - - - - - 0x0366E6 0D:A6D6: 0D 52 01  ORA ram_0152
@@ -7096,9 +7149,10 @@ bra_A6D1:
 - - - - - - 0x0366EB 0D:A6DB: BD 2A 06  LDA ram_062A_plr,X
 - - - - - - 0x0366EE 0D:A6DE: C9 35     CMP #$35
 - - - - - - 0x0366F0 0D:A6E0: 90 07     BCC bra_A6E9
-- - - - - - 0x0366F2 0D:A6E2: AD 38 06  LDA ram_0638
+- - - - - - 0x0366F2 0D:A6E2: AD 38 06  LDA ram_расстояние_между_персами
 - - - - - - 0x0366F5 0D:A6E5: C9 25     CMP #$25
-- - - - - - 0x0366F7 0D:A6E7: B0 10     BCS bra_A6F9
+- - - - - - 0x0366F7 0D:A6E7: B0 10     BCS bra_A6F9_слишком_далеко
+; if персы достаточно близко друг к другу
 bra_A6E9:
 - - - - - - 0x0366F9 0D:A6E9: 8A        TXA
 - - - - - - 0x0366FA 0D:A6EA: 60        RTS
@@ -7110,17 +7164,19 @@ bra_A6EB:
 - - - - - - 0x036705 0D:A6F5: 29 08     AND #$08
 - - - - - - 0x036707 0D:A6F7: F0 F0     BEQ bra_A6E9
 bra_A6F9:
+bra_A6F9_слишком_далеко:
 - - - - - - 0x036709 0D:A6F9: 4C 5A A6  JMP loc_A65A_ai_бросок_0D
 bra_A6FC:
 - - - - - - 0x03670C 0D:A6FC: 19 10 06  ORA ram_plr_флаг_индекса_атаки,Y
 - - - - - - 0x03670F 0D:A6FF: C9 81     CMP #con_0612_черепаха_нога_ближняя + $80
 - - - - - - 0x036711 0D:A701: D0 E6     BNE bra_A6E9
-- - - - - - 0x036713 0D:A703: AD 38 06  LDA ram_0638
+- - - - - - 0x036713 0D:A703: AD 38 06  LDA ram_расстояние_между_персами
 - - - - - - 0x036716 0D:A706: C9 15     CMP #$15
-- - - - - - 0x036718 0D:A708: 90 03     BCC bra_A70D
+- - - - - - 0x036718 0D:A708: 90 03     BCC bra_A70D_слишком_близко
+; if персы достаточно далеко друг от друга
 bra_A70A:
 - - - - - - 0x03671A 0D:A70A: 4C 4B A6  JMP loc_A64B_ai_быстрое_мясо
-bra_A70D:
+bra_A70D_слишком_близко:
 - - - - - - 0x03671F 0D:A70F: 4C 5C A6  JMP loc_A573_ai_рука
 
 
@@ -7152,15 +7208,16 @@ bra_A73A:
 loc_A760:
 C D 1 - - - 0x036770 0D:A760: AD 25 01  LDA ram_option_difficulty
 C - - - - - 0x036773 0D:A763: C9 03     CMP #$03
-C - - - - - 0x036775 0D:A765: 90 31     BCC bra_A798
+C - - - - - 0x036775 0D:A765: 90 31     BCC bra_A798_слишком_далеко
 - - - - - - 0x036777 0D:A767: BC DE 06  LDY ram_06DE_cpu_индекс_соперника,X
 - - - - - - 0x03677A 0D:A76A: BD 10 05  LDA ram_obj_flip,X
 - - - - - - 0x03677D 0D:A76D: 59 10 05  EOR ram_obj_flip,Y
 - - - - - - 0x036780 0D:A770: F0 20     BEQ bra_A792
 - - - - - - 0x036782 0D:A772: AC 26 01  LDY ram_option_speed
-- - - - - - 0x036785 0D:A775: AD 38 06  LDA ram_0638
+- - - - - - 0x036785 0D:A775: AD 38 06  LDA ram_расстояние_между_персами
 - - - - - - 0x036788 0D:A778: C9 58     CMP #$58
-- - - - - - 0x03678A 0D:A77A: B0 19     BCS bra_A795
+- - - - - - 0x03678A 0D:A77A: B0 19     BCS bra_A795_слишком_далеко
+; if персы достаточно близко друг к другу
 - - - - - - 0x036796 0D:A786: BD 20 05  LDA ram_obj_state_hi,X
                                         CMP #con_plr_state_брошен_соперником
                                         BEQ bra_A78F
@@ -7173,19 +7230,20 @@ C - - - - - 0x036775 0D:A765: 90 31     BCC bra_A798
                                         CMP #$05
                                         BEQ bra_A78F
 bra_A78D:
-                                        LDA ram_0638
-- - - - - - 0x03678C 0D:A77C: D9 FE BF  CMP tbl_BFFE,Y
-- - - - - - 0x03679D 0D:A78D: B0 09     BCS bra_A798
+                                        LDA ram_расстояние_между_персами
+- - - - - - 0x03678C 0D:A77C: D9 FE BF  CMP tbl_BFFE_расстояние_между_персами,Y
+- - - - - - 0x03679D 0D:A78D: B0 09     BCS bra_A798_слишком_далеко
+; if персы достаточно близко друг к другу
 bra_A78F:
 - - - - - - 0x03679F 0D:A78F: A9 04     LDA #con_шаблон_ai_04
 - - - - - - 0x0367A1 0D:A791: 2C        .byte $2C   ; BIT
 bra_A792:
 - - - - - - 0x0367A2 0D:A792: A9 05     LDA #con_шаблон_ai_05
 - - - - - - 0x0367A4 0D:A794: 2C        .byte $2C   ; BIT
-bra_A795:
+bra_A795_слишком_далеко:
 - - - - - - 0x0367A5 0D:A795: A9 0D     LDA #con_шаблон_ai_0D
 - - - - - - 0x0367A7 0D:A797: 2C        .byte $2C   ; BIT
-bra_A798:
+bra_A798_слишком_далеко:
 C - - - - - 0x0367A8 0D:A798: A9 24     LDA #con_шаблон_ai_24
 C - - - - - 0x0367AA 0D:A79A: 85 17     STA ram_0017
 C - - - - - 0x0367AC 0D:A79C: 60        RTS
@@ -7239,7 +7297,7 @@ bra_A821:
 
 
 
-tbl_BBED:
+tbl_BBED_расстояние_между_персами:
 ; bzk optimize, одинаковые байты
 - - - - - - 0x037BFD 0D:BBED: 16        .byte $16   ; 00 normal
 - - - - - - 0x037BFE 0D:BBEE: 16        .byte $16   ; 01 turbo
@@ -7276,8 +7334,8 @@ C - - - - - 0x037C15 0D:BC05: B0 03     BCS bra_BC0A
 C - - - - - 0x037C17 0D:BC07: 4C 4F A0  JMP loc_A04F
 bra_BC0A:
 - - - - - - 0x037C1A 0D:BC0A: AC 26 01  LDY ram_option_speed
-- - - - - - 0x037C1D 0D:BC0D: AD 38 06  LDA ram_0638
-- - - - - - 0x037C20 0D:BC10: D9 ED BB  CMP tbl_BBED,Y
+- - - - - - 0x037C1D 0D:BC0D: AD 38 06  LDA ram_расстояние_между_персами
+- - - - - - 0x037C20 0D:BC10: D9 ED BB  CMP tbl_BBED_расстояние_между_персами,Y
 - - - - - - 0x037C23 0D:BC13: BC DE 06  LDY ram_06DE_cpu_индекс_соперника,X
 - - - - - - 0x037C26 0D:BC16: 90 DF     BCC bra_BBF7
 - - - - - - 0x037C28 0D:BC18: C9 1E     CMP #$1E
@@ -7381,8 +7439,9 @@ bra_BD91_shred:
 ; con_fighter_shred
 ; con_fighter___shred
 - - - - - - 0x037DA1 0D:BD91: BC DE 06  LDY ram_06DE_cpu_индекс_соперника,X
-- - - - - - 0x037DA4 0D:BD94: AD 38 06  LDA ram_0638
+- - - - - - 0x037DA4 0D:BD94: AD 38 06  LDA ram_расстояние_между_персами
 - - - - - - 0x037DA7 0D:BD97: F0 4C     BEQ bra_BDE5
+; if персы не вплотную друг к другу
 - - - - - - 0x037DA9 0D:BD99: C9 13     CMP #$13
 - - - - - - 0x037DAB 0D:BD9B: 90 22     BCC bra_BDBF
 - - - - - - 0x037DAD 0D:BD9D: C9 20     CMP #$20
@@ -7498,8 +7557,9 @@ bra_BEAA:
 - - - - - - 0x037EBD 0D:BEAD: C9 01     CMP #con_plr_state_в_прыжке
 - - - - - - 0x037EBF 0D:BEAF: D0 33     BNE bra_BEE4_RTS
 - - - - - - 0x037EC1 0D:BEB1: A9 16     LDA #$16
-- - - - - - 0x037EC3 0D:BEB3: CD 38 06  CMP ram_0638
+- - - - - - 0x037EC3 0D:BEB3: CD 38 06  CMP ram_расстояние_между_персами
 - - - - - - 0x037EC6 0D:BEB6: B0 36     BCS bra_BEEE
+; if персы достаточно близко друг к другу
 - - - - - - 0x037EC8 0D:BEB8: BD 10 05  LDA ram_obj_flip,X
 - - - - - - 0x037ECB 0D:BEBB: 79 80 04  ADC ram_obj_spd_X_hi,Y
 - - - - - - 0x037ECE 0D:BEBE: 30 2E     BMI bra_BEEE
@@ -7544,7 +7604,10 @@ bra_BEE5:
 - - - - - - 0x037EF5 0D:BEE5: B9 80 04  LDA ram_obj_spd_X_hi,Y
 - - - - - - 0x037EF8 0D:BEE8: D0 FA     BNE bra_BEE4_RTS
 - - - - - - 0x037EFA 0D:BEEA: A9 10     LDA #$10
-- - - - - - 0x037EFC 0D:BEEC: D0 F4     BNE bra_BEE2
+- - - - - - 0x037EFC 0D:BEEC: D0 F4     BNE bra_BEE2    ; jmp
+
+
+
 bra_BEEE:
 - - - - - - 0x037EFE 0D:BEEE: B9 50 05  LDA ram_obj_id,Y
                                     .if con_новые_персы = $00
@@ -7559,17 +7622,20 @@ bra_BEF5_hot:
                                     .endif
 ; con_fighter_hot
 ; con_fighter___hot
-- - - - - - 0x037F05 0D:BEF5: AD 38 06  LDA ram_0638
+- - - - - - 0x037F05 0D:BEF5: AD 38 06  LDA ram_расстояние_между_персами
 - - - - - - 0x037F08 0D:BEF8: C9 12     CMP #$12
-- - - - - - 0x037F0A 0D:BEFA: 90 08     BCC bra_BF04
+- - - - - - 0x037F0A 0D:BEFA: 90 08     BCC bra_BF04_слишком_близко
+; if персы достаточно далеко друг от друга
 - - - - - - 0x037F0C 0D:BEFC: 20 C2 EC  JSR sub_0x03ECD2
 - - - - - - 0x037F0F 0D:BEFF: B9 EE BF  LDA tbl_BFEE,Y
 - - - - - - 0x037F12 0D:BF02: D0 DE     BNE bra_BEE2    ; jmp
 bra_BF04:
+bra_BF04_слишком_близко:
 - - - - - - 0x037F14 0D:BF04: B9 60 04  LDA ram_obj_spd_Z_hi,Y
 - - - - - - 0x037F17 0D:BF07: 30 DB     BMI bra_BEE4_RTS
-- - - - - - 0x037F19 0D:BF09: AD 38 06  LDA ram_0638
+- - - - - - 0x037F19 0D:BF09: AD 38 06  LDA ram_расстояние_между_персами
 - - - - - - 0x037F1C 0D:BF0C: D0 11     BNE bra_BF1F
+; if персы вплотную друг к другу
 - - - - - - 0x037F1E 0D:BF0E: B9 80 04  LDA ram_obj_spd_X_hi,Y
 - - - - - - 0x037F21 0D:BF11: F0 0C     BEQ bra_BF1F
 - - - - - - 0x037F23 0D:BF13: BD F0 05  LDA ram_05F0_obj,X
@@ -7587,7 +7653,7 @@ bra_BF1F:
 - - - - - - 0x037F3A 0D:BF2A: B9 39 06  LDA ram_0639_plr,Y
 - - - - - - 0x037F3D 0D:BF2D: 39 00 06  AND ram_0600_plr,Y
 - - - - - - 0x037F40 0D:BF30: 49 40     EOR #$40
-- - - - - - 0x037F42 0D:BF32: 0D 38 06  ORA ram_0638
+- - - - - - 0x037F42 0D:BF32: 0D 38 06  ORA ram_расстояние_между_персами
 - - - - - - 0x037F45 0D:BF35: F0 06     BEQ bra_BF3D
 bra_BF37:
 - - - - - - 0x037F47 0D:BF37: A9 42     LDA #con_шаблон_ai_42
@@ -7645,14 +7711,15 @@ bra_BF6D_shred:
 - - - - - - 0x037F91 0D:BF81: D0 16     BNE bra_BF99_RTS
 bra_BF83:
 - - - - - - 0x037F93 0D:BF83: AC 26 01  LDY ram_option_speed
-- - - - - - 0x037F96 0D:BF86: AD 38 06  LDA ram_0638
-- - - - - - 0x037F99 0D:BF89: D9 FA BF  CMP tbl_BFFA,Y
-- - - - - - 0x037F9C 0D:BF8C: 90 13     BCC bra_BFA1
-- - - - - - 0x037F9E 0D:BF8E: D9 FC BF  CMP tbl_BFFC,Y
+- - - - - - 0x037F96 0D:BF86: AD 38 06  LDA ram_расстояние_между_персами
+- - - - - - 0x037F99 0D:BF89: D9 FA BF  CMP tbl_BFFA_расстояние_между_персами_min,Y
+- - - - - - 0x037F9C 0D:BF8C: 90 13     BCC bra_BFA1_слишком_близко
+- - - - - - 0x037F9E 0D:BF8E: D9 FC BF  CMP tbl_BFFC_расстояние_между_персами_max,Y
 - - - - - - 0x037FA1 0D:BF91: A9 24     LDA #con_шаблон_ai_24
-- - - - - - 0x037FA3 0D:BF93: 90 02     BCC bra_BF97
+- - - - - - 0x037FA3 0D:BF93: 90 02     BCC bra_BFA1_недостаточно_далеко
 - - - - - - 0x037FA5 0D:BF95: A9 25     LDA #con_шаблон_ai_25
-bra_BF97:
+; if расстояние межлу персами в нужном диапазоне
+bra_BFA1_недостаточно_далеко:
 - - - - - - 0x037FA7 0D:BF97: 85 17     STA ram_0017
 bra_BF99_RTS:
 - - - - - - 0x037FA9 0D:BF99: 60        RTS
@@ -7660,7 +7727,7 @@ bra_BF9A:
 C - - - - - 0x037FAA 0D:BF9A: A5 13     LDA ram_0013
 C - - - - - 0x037FAC 0D:BF9C: C9 02     CMP #$02
 C - - - - - 0x037FAE 0D:BF9E: 4C BD 9C  JMP loc_9CBD
-bra_BFA1:
+bra_BFA1_слишком_близко:
 - - - - - - 0x037FB1 0D:BFA1: 4C BF 9C  JMP loc_9CBF
 
 
@@ -7670,7 +7737,7 @@ tbl_BFEE:
 - - - - - - 0x037FFF 0D:BFEF: 07        .byte con_шаблон_ai_07   ; 
 - - - - - - 0x038000 0D:BFF0: 07        .byte con_шаблон_ai_07   ; 
 - - - - - - 0x038001 0D:BFF1: 17        .byte con_шаблон_ai_17   ; 
-tbl_BFF2:
+tbl_BFF2_расстояние_между_персами:
 - D 1 - - - 0x038002 0D:BFF2: 07        .byte $07   ; 
 - D 1 - - - 0x038003 0D:BFF3: 16        .byte $16   ; 
 - D 1 - - - 0x038004 0D:BFF4: 07        .byte $07   ; 
@@ -7682,17 +7749,17 @@ tbl_BFF2:
 
 
 
-tbl_BFFA:
+tbl_BFFA_расстояние_между_персами_min:
 - D 1 - - - 0x03800A 0D:BFFA: 30        .byte $30   ; 00 normal
 - D 1 - - - 0x03800B 0D:BFFB: 38        .byte $38   ; 01 turbo
 
-tbl_BFFC:
+tbl_BFFC_расстояние_между_персами_max:
 - D 1 - - - 0x03800C 0D:BFFC: 46        .byte $46   ; 00 normal
 - - - - - - 0x03800D 0D:BFFD: 50        .byte $50   ; 01 turbo
 
 
 
-tbl_BFFE:
+tbl_BFFE_расстояние_между_персами:
 - D 1 - - - 0x03800E 0D:BFFE: 2D        .byte $2D   ; 00 normal
 - - - - - - 0x03800F 0D:BFFF: 38        .byte $38   ; 01 turbo
 

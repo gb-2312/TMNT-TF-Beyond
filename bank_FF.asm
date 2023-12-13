@@ -77,8 +77,8 @@
 .export tbl_0x03E750
 .export sub_0x03DD7E
 .export sub_0x03DD96
-.export sub_0x03DDF9
-.export loc_0x03DDF9
+.export sub_0x03DDF9_запись_сидячего_состояния_персу
+.export loc_0x03DDF9_запись_сидячего_состояния_персу
 .export sub_0x03DE0C_выбор_палитры_перса_с_сохранением_X
 .export sub_0x03DE19_очистить_очки_обоих_игроков
 .export loc_0x03DE19_очистить_очки_обоих_игроков
@@ -182,7 +182,7 @@
 .export sub_0x03F724_смена_тайловых_наборов_для_анимаций
 .export loc_0x03F724_смена_тайловых_наборов_для_анимаций
 .export sub_0x03F76A
-.export sub_0x03F785
+.export sub_0x03F785_вычислить_расстояние_между_персами
 .export sub_0x03F7E3_отрисовать_портреты
 .export loc_0x03F7E3_отрисовать_портреты
 .export sub_0x03F824_подготовить_irq_handler
@@ -2415,8 +2415,8 @@ C - - - - - 0x03DDBA 0F:DDAA: 60        RTS
 
 
 
-sub_0x03DDF9:
-loc_0x03DDF9:
+sub_0x03DDF9_запись_сидячего_состояния_персу:
+loc_0x03DDF9_запись_сидячего_состояния_персу:
 C D 2 - - - 0x03DDF9 0F:DDE9: A9 07     LDA #con_plr_state_сидит
 C - - - - - 0x03DDFB 0F:DDEB: 9D 20 05  STA ram_obj_state_hi,X ; 0520 0521 
 C - - - - - 0x03DDFE 0F:DDEE: A9 01     LDA #$01
@@ -5854,9 +5854,10 @@ C - - - - - 0x03EF4F 0F:EF3F: 85 15     STA ram_0015
 C - - - - - 0x03EF51 0F:EF41: B9 EA 06  LDA ram_06EA,Y ; 06EA 06EE 
 C - - - - - 0x03EF54 0F:EF44: 85 14     STA ram_0014
 C - - - - - 0x03EF56 0F:EF46: BC DE 06  LDY ram_06DE_cpu_индекс_соперника,X ; 06DE 06DF 
-C - - - - - 0x03EF59 0F:EF49: AD 38 06  LDA ram_0638
+C - - - - - 0x03EF59 0F:EF49: AD 38 06  LDA ram_расстояние_между_персами
 C - - - - - 0x03EF5C 0F:EF4C: C5 14     CMP ram_0014
 C - - - - - 0x03EF5E 0F:EF4E: B0 D0     BCS bra_EF20
+; if персы достаточно близко друг к другу
 C - - - - - 0x03EF60 0F:EF50: C5 15     CMP ram_0015
 C - - - - - 0x03EF62 0F:EF52: B0 0A     BCS bra_EF5E
 C - - - - - 0x03EF64 0F:EF54: C5 16     CMP ram_0016
@@ -7118,23 +7119,23 @@ C - - - - - 0x03F775 0F:F765: 4C 17 F6  JMP loc_F617_restore_prg
 
 
 
-sub_F775:
-sub_0x03F785:
+sub_F775_вычислить_расстояние_между_персами:
+sub_0x03F785_вычислить_расстояние_между_персами:
 C - - - - - 0x03F785 0F:F775: A0 00     LDY #$00
 C - - - - - 0x03F787 0F:F777: A2 01     LDX #$01
 C - - - - - 0x03F789 0F:F779: 20 0C D2  JSR sub_D20C_получить_разницу_pos_X_двух_объектов
 C - - - - - 0x03F78C 0F:F77C: AC 70 05  LDY ram_0570_obj
 C - - - - - 0x03F78F 0F:F77F: 38        SEC
-C - - - - - 0x03F790 0F:F780: F9 4C AD  SBC tbl_0x026D5C,Y
+C - - - - - 0x03F790 0F:F780: F9 4C AD  SBC tbl_0x026D5C_хитбокс,Y
 C - - - - - 0x03F793 0F:F783: 90 09     BCC bra_F78E
 C - - - - - 0x03F795 0F:F785: AC 71 05  LDY ram_0570_obj + $01
 C - - - - - 0x03F798 0F:F788: 38        SEC
-C - - - - - 0x03F799 0F:F789: F9 4C AD  SBC tbl_0x026D5C,Y
+C - - - - - 0x03F799 0F:F789: F9 4C AD  SBC tbl_0x026D5C_хитбокс,Y
 C - - - - - 0x03F79C 0F:F78C: B0 02     BCS bra_F790
 bra_F78E:
 C - - - - - 0x03F79E 0F:F78E: A9 00     LDA #$00
 bra_F790:
-C - - - - - 0x03F7A0 0F:F790: 8D 38 06  STA ram_0638
+C - - - - - 0x03F7A0 0F:F790: 8D 38 06  STA ram_расстояние_между_персами
 C - - - - - 0x03F7A3 0F:F793: 60        RTS
 
 
@@ -7997,7 +7998,7 @@ C - - - - - 0x03FD4F 0F:FD3F: CE 30 06  DEC ram_0630_таймер
 C - - - - - 0x03FD52 0F:FD42: B9 36 FE  LDA tbl_FE37 - $01,Y
 C - - - - - 0x03FD55 0F:FD45: 85 86     STA ram_0086
 bra_FD47:
-C - - - - - 0x03FD57 0F:FD47: 20 75 F7  JSR sub_F775
+C - - - - - 0x03FD57 0F:FD47: 20 75 F7  JSR sub_F775_вычислить_расстояние_между_персами
 C - - - - - 0x03FD5A 0F:FD4A: 20 0B F7  JSR sub_F70B_обработчик_персов
 C - - - - - 0x03FD5D 0F:FD4D: 20 04 80  JSR sub_0x024014
 C - - - - - 0x03FD60 0F:FD50: 20 91 AD  JSR sub_0x026DA1

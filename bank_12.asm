@@ -12,7 +12,7 @@
 .export sub_0x024AF7_выбор_начальной_анимации_персу
 .export sub_0x02624F
 .export sub_0x0269A1
-.export tbl_0x026D5C
+.export tbl_0x026D5C_хитбокс
 .export sub_0x026DA1
 .export loc_0x026E1E
 .export loc_0x026E37
@@ -388,7 +388,7 @@ C - - - - - 0x0243CF 09:83BF: 4C 3C DB  JMP loc_0x03DB4C_очистить_spd_X
 sub_8221:
 loc_8221:
 C D 0 - - - 0x024231 09:8221: A4 A9     LDY ram_global_obj_index
-C - - - - - 0x024233 09:8223: AD 38 06  LDA ram_0638
+C - - - - - 0x024233 09:8223: AD 38 06  LDA ram_расстояние_между_персами
 C - - - - - 0x024236 09:8226: 85 13     STA ram_0013
 C - - - - - 0x024238 09:8228: A0 02     LDY #$02
 C - - - - - 0x02423A 09:822A: BD 20 05  LDA ram_obj_state_hi,X ; 0520 0521 
@@ -413,7 +413,6 @@ C - - - - - 0x024254 09:8244: D0 12     BNE bra_8258
                                         BEQ bra_8246_hot
                                         CMP #con_fighter___hot
                                         BNE bra_8258
-                                        
                                     .endif
 bra_8246_hot:
 ; con_fighter_hot
@@ -472,10 +471,10 @@ C - - - - - 0x0242A5 09:8295: B5 91     LDA ram_btn_hold,X
 C - - - - - 0x0242A7 09:8297: 29 03     AND #con_btns_LR
 C - - - - - 0x0242A9 09:8299: F0 44     BEQ bra_82DF
 C - - - - - 0x0242AB 09:829B: AC 70 05  LDY ram_0570_obj
-C - - - - - 0x0242AE 09:829E: B9 4C AD  LDA tbl_AD4C,Y
+C - - - - - 0x0242AE 09:829E: B9 4C AD  LDA tbl_AD4C_хитбокс,Y
 C - - - - - 0x0242B1 09:82A1: AC 71 05  LDY ram_0570_obj + $01
 C - - - - - 0x0242B4 09:82A4: 18        CLC
-C - - - - - 0x0242B5 09:82A5: 79 4C AD  ADC tbl_AD4C,Y
+C - - - - - 0x0242B5 09:82A5: 79 4C AD  ADC tbl_AD4C_хитбокс,Y
 C - - - - - 0x0242B8 09:82A8: 85 01     STA ram_0001
 C - - - - - 0x0242BA 09:82AA: BD 10 05  LDA ram_obj_flip,X ; 0510 0511 
 C - - - - - 0x0242BD 09:82AD: 48        PHA
@@ -495,7 +494,7 @@ C - - - - - 0x0242E3 09:82D3: 29 A0     AND #$A0
 C - - - - - 0x0242E5 09:82D5: D0 08     BNE bra_82DF
 C - - - - - 0x0242E7 09:82D7: B9 F0 05  LDA ram_05F0_obj,Y ; 05F0 05F1 
 C - - - - - 0x0242EA 09:82DA: D0 03     BNE bra_82DF
-                                        LDA ram_0013
+                                        LDA ram_0013    ; расстояние между персами
                                         LDY ram_obj_id,X ; 0550 0551 
                                         CMP tbl_0x03DF2C_рейндж_броска,Y
                                         BCC bra_82BE
@@ -794,7 +793,7 @@ C - - - - - 0x02449A 09:848A: 9D 40 05  STA ram_obj_state_lo,X ; 0540 0541
 C - - - - - 0x02449D 09:848D: 20 38 DF  JSR sub_0x03DF48
 C - - - - - 0x0244A0 09:8490: 4C 67 D0  JMP loc_0x03DB48_очистить_spd_X_и_spd_Z
 bra_8493:
-C - - - - - 0x0244A3 09:8493: 4C E9 DD  JMP loc_0x03DDF9
+C - - - - - 0x0244A3 09:8493: 4C E9 DD  JMP loc_0x03DDF9_запись_сидячего_состояния_персу
 
 
 
@@ -7460,8 +7459,10 @@ bra_A8A9_RTS:
 
 
 sub_0x0269A1:
+; X = 00 01
 C - - - - - 0x0269A1 09:A991: 86 0B     STX ram_000B
 C - - - - - 0x0269A3 09:A993: 20 9D A9  JSR sub_A99D
+; bzk optimize, 2 CLC подряд
 C - - - - - 0x0269A6 09:A996: 18        CLC
 C - - - - - 0x0269A7 09:A997: 18        CLC
 C - - - - - 0x0269A8 09:A998: A5 0B     LDA ram_000B
@@ -7471,7 +7472,7 @@ sub_A99D:
 C - - - - - 0x0269AD 09:A99D: 86 A8     STX ram_local_obj_index
 C - - - - - 0x0269AF 09:A99F: 8A        TXA
 C - - - - - 0x0269B0 09:A9A0: 29 01     AND #$01
-C - - - - - 0x0269B2 09:A9A2: 85 AC     STA ram_00AC
+C - - - - - 0x0269B2 09:A9A2: 85 AC     STA ram_00AC    ; индекс игрока
 C - - - - - 0x0269B4 09:A9A4: AA        TAX
 C - - - - - 0x0269B5 09:A9A5: C5 A8     CMP ram_local_obj_index
 C - - - - - 0x0269B7 09:A9A7: D0 07     BNE bra_A9B0
@@ -7483,7 +7484,7 @@ C - - - - - 0x0269C0 09:A9B0: A6 A8     LDX ram_local_obj_index
 C - - - - - 0x0269C2 09:A9B2: BD 50 05  LDA ram_obj_id,X ; 0558 0559 
 C - - - - - 0x0269C5 09:A9B5: F0 D9     BEQ bra_A8A9_RTS
 bra_A9B7:
-C - - - - - 0x0269C7 09:A9B7: A6 AC     LDX ram_00AC
+C - - - - - 0x0269C7 09:A9B7: A6 AC     LDX ram_00AC    ; индекс игрока
 C - - - - - 0x0269C9 09:A9B9: BD F0 05  LDA ram_05F0_obj,X ; 05F0 05F1 
 C - - - - - 0x0269CC 09:A9BC: D0 D2     BNE bra_A8A9_RTS
 C - - - - - 0x0269CE 09:A9BE: BD 80 05  LDA ram_0580_obj,X ; 0580 0581 
@@ -7501,7 +7502,7 @@ C - - - - - 0x0269E8 09:A9D8: BD 10 04  LDA ram_obj_pos_Y_lo,X ; 0410 0411 0418 
 C - - - - - 0x0269EB 09:A9DB: 38        SEC
 C - - - - - 0x0269EC 09:A9DC: F9 16 9E  SBC tbl_9E16,Y
 C - - - - - 0x0269EF 09:A9DF: 85 01     STA ram_0001
-C - - - - - 0x0269F1 09:A9E1: B9 4C AD  LDA tbl_AD4C,Y
+C - - - - - 0x0269F1 09:A9E1: B9 4C AD  LDA tbl_AD4C_хитбокс,Y
 C - - - - - 0x0269F4 09:A9E4: 85 05     STA ram_0005
 C - - - - - 0x0269F6 09:A9E6: B9 16 9E  LDA tbl_9E16,Y
 C - - - - - 0x0269F9 09:A9E9: 85 06     STA ram_0006
@@ -7511,7 +7512,7 @@ C - - - - - 0x0269FE 09:A9EE: 29 01     AND #$01
 C - - - - - 0x026A00 09:A9F0: 09 02     ORA #$02
 C - - - - - 0x026A02 09:A9F2: 20 7C BD  JSR sub_BD7C
 bra_A9F5_loop:
-C - - - - - 0x026A05 09:A9F5: A6 AC     LDX ram_00AC
+C - - - - - 0x026A05 09:A9F5: A6 AC     LDX ram_00AC    ; индекс игрока
 C - - - - - 0x026A07 09:A9F7: BD 80 05  LDA ram_0580_obj,X ; 0580 0581 
 C - - - - - 0x026A0A 09:A9FA: 30 94     BMI bra_A8A9_RTS
 C - - - - - 0x026A0C 09:A9FC: A4 A9     LDY ram_global_obj_index
@@ -7521,7 +7522,7 @@ C - - - - - 0x026A11 09:AA01: F0 58     BEQ bra_AA5B
 C - - - - - 0x026A13 09:AA03: B9 80 05  LDA ram_0580_obj,Y ; 0582 0583 0584 0585 0586 
 C - - - - - 0x026A16 09:AA06: 30 53     BMI bra_AA5B
 C - - - - - 0x026A18 09:AA08: B9 20 05  LDA ram_obj_state_hi,Y ; 0522 0523 0524 0525 0526 
-C - - - - - 0x026A1B 09:AA0B: C5 AC     CMP ram_00AC
+C - - - - - 0x026A1B 09:AA0B: C5 AC     CMP ram_00AC    ; индекс игрока
 C - - - - - 0x026A1D 09:AA0D: F0 4C     BEQ bra_AA5B
 C - - - - - 0x026A1F 09:AA0F: 85 09     STA ram_0009
 C - - - - - 0x026A21 09:AA11: B9 B0 05  LDA ram_05B0_obj_damage,Y ; 05B2 05B3 05B4 05B5 05B6 
@@ -7530,7 +7531,7 @@ C - - - - - 0x026A26 09:AA16: B9 30 04  LDA ram_obj_pos_X_hi,Y ; 0432 0433 0434 
 C - - - - - 0x026A29 09:AA19: D0 40     BNE bra_AA5B
 C - - - - - 0x026A2B 09:AA1B: BE 70 05  LDX ram_0570_obj,Y ; 0572 0573 0574 0575 0576 
 C - - - - - 0x026A2E 09:AA1E: F0 3B     BEQ bra_AA5B
-C - - - - - 0x026A30 09:AA20: BD 4C AD  LDA tbl_AD4C,X
+C - - - - - 0x026A30 09:AA20: BD 4C AD  LDA tbl_AD4C_хитбокс,X
 C - - - - - 0x026A33 09:AA23: 18        CLC
 C - - - - - 0x026A34 09:AA24: 65 05     ADC ram_0005
 C - - - - - 0x026A36 09:AA26: 85 02     STA ram_0002
@@ -8028,9 +8029,8 @@ tbl_AD45:
 
 
 
-tbl_AD4C:
-tbl_0x026D5C:
-; размер хитбоксов?
+tbl_AD4C_хитбокс:
+tbl_0x026D5C_хитбокс:
 - D 1 - - - 0x026D5C 09:AD4C: 00        .byte $00   ; 
 - D 1 - - - 0x026D5D 09:AD4D: 0C        .byte $0C   ; 
 - D 1 - - - 0x026D5E 09:AD4E: 05        .byte $05   ; 
@@ -8116,7 +8116,7 @@ C - - - - - 0x026DBF 09:ADAF: F9 16 9E  SBC tbl_9E16,Y
 C - - - - - 0x026DC2 09:ADB2: 95 02     STA ram_0002,X ; 0002 0003 
 C - - - - - 0x026DC4 09:ADB4: 18        CLC
 C - - - - - 0x026DC5 09:ADB5: A5 04     LDA ram_0004
-C - - - - - 0x026DC7 09:ADB7: 79 4C AD  ADC tbl_AD4C,Y
+C - - - - - 0x026DC7 09:ADB7: 79 4C AD  ADC tbl_AD4C_хитбокс,Y
 C - - - - - 0x026DCA 09:ADBA: 85 04     STA ram_0004
 C - - - - - 0x026DCC 09:ADBC: 18        CLC
 C - - - - - 0x026DCD 09:ADBD: A5 05     LDA ram_0005
@@ -8139,11 +8139,12 @@ C - - - - - 0x026DEC 09:ADDC: 20 FC D1  JSR sub_0x03D20C_EOR
 bra_ADDF:
 C - - - - - 0x026DEF 09:ADDF: C5 05     CMP ram_0005
 C - - - - - 0x026DF1 09:ADE1: B0 43     BCS bra_AE26_RTS
+; бряк срабатывает когда один перс касается другого во время движения
 C - - - - - 0x026DF3 09:ADE3: A9 B0     LDA #$B0
 C - - - - - 0x026DF5 09:ADE5: DD 10 04  CMP ram_obj_pos_Y_lo,X ; 0410 
 C - - - - - 0x026DF8 09:ADE8: D0 06     BNE bra_ADF0
 ; bzk optimize?
-C - - - - - 0x026DFA 09:ADEA: E8        INX
+C - - - - - 0x026DFA 09:ADEA: E8        INX ; 01
 C - - - - - 0x026DFB 09:ADEB: DD 10 04  CMP ram_obj_pos_Y_lo,X ; 0411 
 C - - - - - 0x026DFE 09:ADEE: F0 03     BEQ bra_ADF3
 bra_ADF0:
@@ -9771,7 +9772,7 @@ C - - - - - 0x0275A1 09:B591: 4C 67 D0  JMP loc_0x03DB48_очистить_spd_X_
 ofs_суперка_raph_B594_05:
 C - - J - - 0x0275A4 09:B594: DE 60 05  DEC ram_obj_timer,X ; 0560 0561 
 C - - - - - 0x0275A7 09:B597: 10 3B     BPL bra_B5D4_RTS
-C - - - - - 0x0275A9 09:B599: 4C E9 DD  JMP loc_0x03DDF9
+C - - - - - 0x0275A9 09:B599: 4C E9 DD  JMP loc_0x03DDF9_запись_сидячего_состояния_персу
 
 
 
@@ -10228,7 +10229,7 @@ C - - - - - 0x0278DC 09:B8CC: D0 03     BNE bra_B8D1
 bra_B8CE:
 C - - - - - 0x0278DE 09:B8CE: 4C 6D 84  JMP loc_846D
 bra_B8D1:
-C - - - - - 0x0278E1 09:B8D1: 20 E9 DD  JSR sub_0x03DDF9
+C - - - - - 0x0278E1 09:B8D1: 20 E9 DD  JSR sub_0x03DDF9_запись_сидячего_состояния_персу
 C - - - - - 0x0278E4 09:B8D4: A9 01     LDA #$01
 C - - - - - 0x0278E6 09:B8D6: 9D 60 05  STA ram_obj_timer,X ; 0560 0561 
 C - - - - - 0x0278E9 09:B8D9: 60        RTS
@@ -10817,7 +10818,7 @@ bra_BBC2_в_процессе_смерти:
 bra_BBCD:
 C - - - - - 0x027BDD 09:BBCD: E6 2A     INC ram_002A
 C - - - - - 0x027BDF 09:BBCF: 20 96 EA  JSR sub_0x03EAA6_обновить_и_отрисовать_время_боя
-C - - - - - 0x027BE2 09:BBD2: 20 75 F7  JSR sub_0x03F785
+C - - - - - 0x027BE2 09:BBD2: 20 75 F7  JSR sub_0x03F785_вычислить_расстояние_между_персами
 C - - - - - 0x027BE5 09:BBD5: 20 A0 EF  JSR sub_0x03EFB0
 C - - - - - 0x027BEB 09:BBDB: A2 00     LDX #$00
 C - - - - - 0x027BED 09:BBDD: 86 AD     STX ram_00AD
@@ -10921,7 +10922,7 @@ C - - - - - 0x027CA2 09:BC92: B9 30 04  LDA ram_obj_pos_X_hi,Y ; 0432 0434
 C - - - - - 0x027CA5 09:BC95: D0 1E     BNE bra_BCB5
 C - - - - - 0x027CA7 09:BC97: BE 70 05  LDX ram_0570_obj,Y ; 0572 0574 
 C - - - - - 0x027CAA 09:BC9A: F0 19     BEQ bra_BCB5
-C - - - - - 0x027CAC 09:BC9C: BD 4C AD  LDA tbl_AD4C,X
+C - - - - - 0x027CAC 09:BC9C: BD 4C AD  LDA tbl_AD4C_хитбокс,X
 C - - - - - 0x027CAF 09:BC9F: 18        CLC
 C - - - - - 0x027CB0 09:BCA0: 69 0C     ADC #$0C
 C - - - - - 0x027CB2 09:BCA2: 85 02     STA ram_0002
@@ -11037,7 +11038,7 @@ C - - - - - 0x027D5E 09:BD4E: 60        RTS
 sub_BD4F:
 C - - - - - 0x027D5F 09:BD4F: AC 70 05  LDY ram_0570_obj
 C - - - - - 0x027D62 09:BD52: 18        CLC
-C - - - - - 0x027D63 09:BD53: B9 4C AD  LDA tbl_AD4C,Y
+C - - - - - 0x027D63 09:BD53: B9 4C AD  LDA tbl_AD4C_хитбокс,Y
 C - - - - - 0x027D66 09:BD56: 69 0C     ADC #$0C
 C - - - - - 0x027D68 09:BD58: 85 04     STA ram_0004
 C - - - - - 0x027D6A 09:BD5A: A2 00     LDX #$00
@@ -11186,9 +11187,10 @@ C - - - - - 0x027E67 09:BE57: B0 06     BCS bra_BE5F
 ; con_fighter_mike
 bra_BE5F:
                                         LDY ram_obj_id,X ; 0550 0551 
-C - - - - - 0x027E6F 09:BE5F: AD 38 06  LDA ram_0638
+C - - - - - 0x027E6F 09:BE5F: AD 38 06  LDA ram_расстояние_между_персами
 C - - - - - 0x027E72 09:BE62: D9 1C DF  CMP tbl_0x03DF2C_рейндж_броска,Y
-C - - - - - 0x027E75 09:BE65: B0 1D     BCS bra_BE84
+C - - - - - 0x027E75 09:BE65: B0 1D     BCS bra_BE84_слишком_далеко
+; if персы достаточно близко друг к другу
 C - - - - - 0x027E77 09:BE67: A4 A9     LDY ram_global_obj_index
 C - - - - - 0x027E79 09:BE69: B5 8E     LDA ram_btn_press,X ; 008E 008F 
 C - - - - - 0x027E7B 09:BE6B: 49 40     EOR #con_btn_B
@@ -11205,6 +11207,7 @@ bra_BE82:
 C - - - - - 0x027E92 09:BE82: 68        PLA
 C - - - - - 0x027E93 09:BE83: 68        PLA
 bra_BE84:
+bra_BE84_слишком_далеко:
 C - - - - - 0x027E94 09:BE84: 4C DF FE  JMP loc_0x03FEEF
 
 

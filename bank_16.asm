@@ -597,13 +597,14 @@ C - - - - - 0x02E6EE 0B:A6DE: C9 B0     CMP #$B0
 C - - - - - 0x02E6F0 0B:A6E0: 90 0C     BCC bra_A6EE
 C - - - - - 0x02E6F2 0B:A6E2: B9 80 05  LDA ram_0580_obj,Y ; 0580 0581 
 C - - - - - 0x02E6F5 0B:A6E5: D0 07     BNE bra_A6EE
-C - - - - - 0x02E6F7 0B:A6E7: AC 38 06  LDY ram_0638
+C - - - - - 0x02E6F7 0B:A6E7: AC 38 06  LDY ram_расстояние_между_персами
 C - - - - - 0x02E6FA 0B:A6EA: C0 10     CPY #$10
-C - - - - - 0x02E6FC 0B:A6EC: 90 03     BCC bra_A6F1
+C - - - - - 0x02E6FC 0B:A6EC: 90 03     BCC bra_A6F1_слишком_близко
+; if персы достаточно далеко друг от друга
 bra_A6EE:
 C - - - - - 0x02E6FE 0B:A6EE: A9 23     LDA #con_колво_персов * $05    ; для дешей рукой
 C - - - - - 0x02E700 0B:A6F0: 18        CLC
-bra_A6F1:
+bra_A6F1_слишком_близко:
 C - - - - - 0x02E701 0B:A6F1: 7D 50 05  ADC ram_obj_id,X ; 0550 0551 
 C - - - - - 0x02E704 0B:A6F4: 85 12     STA ram_0012
 C - - - - - 0x02E706 0B:A6F6: 4C 17 F6  RTS
