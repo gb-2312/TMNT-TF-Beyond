@@ -4765,8 +4765,6 @@ C - - - - - 0x03EA29 0F:EA19: A5 FF     LDA ram_for_2000
 C - - - - - 0x03EA2B 0F:EA1B: 29 FE     AND #$FE
 C - - - - - 0x03EA2D 0F:EA1D: 05 00     ORA ram_0000
 C - - - - - 0x03EA2F 0F:EA1F: 85 FF     STA ram_for_2000
-; bzk optimize, оно надо?
-C - - - - - 0x03EA31 0F:EA21: A5 95     LDA ram_0095_стадия_игры
 bra_EA23_RTS:
 C - - - - - 0x03EA33 0F:EA23: 60        RTS
 
