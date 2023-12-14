@@ -790,14 +790,16 @@ C - - - - - 0x02EA69 0B:AA59: 90 31     BEQ bra_AA8C_RTS
 C - - - - - 0x02EA6B 0B:AA5B: A4 27     LDA ram_0027
 C - - - - - 0x02EA6D 0B:AA5D: C0 01     CMP #$01
 C - - - - - 0x02EA6F 0B:AA5F: D0 2B     BNE bra_AA8C_RTS
-C - - - - - 0x02EA71 0B:AA61: 86 9C     STX ram_009C_unk
+C - - - - - 0x02EA71 0B:AA61: 86 9C     TXA
+                                        PHA
                                         JSR sub_AA1E_расчет_автобаланса_с_индексом
                                         TXA
                                         TAY
 C - - - - - 0x02EA83 0B:AA73: 49 01     EOR #$01
 C - - - - - 0x02EA85 0B:AA75: AA        TAX
                                         JSR sub_AA1E_расчет_автобаланса
-C - - - - - 0x02EA9A 0B:AA8A: A6 9C     LDX ram_009C_unk
+C - - - - - 0x02EA9A 0B:AA8A: A6 9C     PLA
+                                        TAX
 bra_AA8C_RTS:
 C - - - - - 0x02EA9F 0B:AA8F: 60        RTS
 
