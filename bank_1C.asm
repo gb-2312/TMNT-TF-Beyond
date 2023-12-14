@@ -6238,7 +6238,7 @@ C - - - - - 0x03A4F8 0E:A4E8: AD 30 06  LDA ram_0630_unk
 C - - - - - 0x03A4FB 0E:A4EB: F0 1C     BEQ bra_A509
 C - - - - - 0x03A4FD 0E:A4ED: A5 9F     LDA ram_copy_номер_боя_story
 C - - - - - 0x03A4FF 0E:A4EF: 85 9E     STA ram_номер_боя_story
-C - - - - - 0x03A501 0E:A4F1: A5 27     LDA ram_0027
+C - - - - - 0x03A501 0E:A4F1: A5 27     LDA ram_позиция_курсора_в_главном_меню
 C - - - - - 0x03A503 0E:A4F3: C5 2C     CMP ram_game_mode
 C - - - - - 0x03A505 0E:A4F5: F0 1A     BEQ bra_A511
 - - - - - - 0x03A507 0E:A4F7: 85 2C     STA ram_game_mode

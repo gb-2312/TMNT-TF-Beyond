@@ -285,7 +285,7 @@ bra_8174:
 C - - - - - 0x024184 09:8174: FE 30 05  INC ram_0530_obj_state,X ; 0530 0531 
 C - - - - - 0x024187 09:8177: A9 00     LDA #$00
 C - - - - - 0x024189 09:8179: 9D 60 05  STA ram_obj_timer,X ; 0560 0561 
-C - - - - - 0x02418C 09:817C: 85 98     STA ram_0098
+C - - - - - 0x02418C 09:817C: 85 98     STA ram_0098_flag
 C - - - - - 0x02418E 09:817E: 8D 0C 04  STA ram_obj_anim_id + $0C
 C - - - - - 0x024191 09:8181: 60        RTS
 
@@ -1649,7 +1649,7 @@ C - - - - - 0x024A6D 09:8A5D: 4C D1 89  JMP loc_89D1
 bra_8A60:
 C - - - - - 0x024A70 09:8A60: A9 40     LDA #$40
 C - - - - - 0x024A72 09:8A62: 9D 60 05  STA ram_obj_timer,X ; 0560 0561 
-C - - - - - 0x024A75 09:8A65: 85 98     STA ram_0098
+C - - - - - 0x024A75 09:8A65: 85 98     STA ram_0098_flag
 C - - - - - 0x024A77 09:8A67: FE 20 05  INC ram_obj_state_hi,X ; 0520 0521 
 C - - - - - 0x024A7A 09:8A6A: A4 A9     LDY ram_global_obj_index
 C - - - - - 0x024A7C 09:8A6C: B9 30 05  LDA ram_0530_obj_state,Y ; 0530 0531 

@@ -787,7 +787,7 @@ sub_AA50_автобаланс_сил_в_vs_player:
 C - - - - - 0x02EA61 0B:AA51: AD 2B 01  LDA ram_option_misc
 C - - - - - 0x02EA64 0B:AA54: 29 08     AND #$08
 C - - - - - 0x02EA69 0B:AA59: 90 31     BEQ bra_AA8C_RTS
-C - - - - - 0x02EA6B 0B:AA5B: A4 27     LDA ram_0027
+C - - - - - 0x02EA6B 0B:AA5B: A4 27     LDA ram_позиция_курсора_в_главном_меню
 C - - - - - 0x02EA6D 0B:AA5D: C0 01     CMP #$01
 C - - - - - 0x02EA6F 0B:AA5F: D0 2B     BNE bra_AA8C_RTS
 C - - - - - 0x02EA71 0B:AA61: 86 9C     TXA
@@ -2491,7 +2491,7 @@ C - - - - - 0x02FEE6 0B:BED6: 85 A2     STA ram_plr_id
 C - - - - - 0x02FEE8 0B:BED8: A0 01     LDY #con_fighter_raph
 C - - - - - 0x02FEEA 0B:BEDA: 84 A3     STY ram_plr_id + $01
                                         LDY #$01
-C - - - - - 0x02FEEC 0B:BEDC: 84 98     STY ram_0098
+C - - - - - 0x02FEEC 0B:BEDC: 84 98     STY ram_0098_flag
 C - - - - - 0x02FEEE 0B:BEDE: A4 2C     LDY ram_game_mode
 ; con_gm_story
 ; con_gm_vs_player
@@ -2516,7 +2516,7 @@ C - - - - - 0x02FF08 0B:BEF8: A9 FF     LDA #$FF
 C - - - - - 0x02FF0A 0B:BEFA: 8D 5C 01  STA ram_tournament_индекс_игрока + $07
 bra_BEFD:
 C - - - - - 0x02FF0D 0B:BEFD: A2 80     LDX #$80
-C - - - - - 0x02FF0F 0B:BEFF: A5 26     LDA ram_0026
+C - - - - - 0x02FF0F 0B:BEFF: A5 26     LDA ram_0026_flag
 C - - - - - 0x02FF11 0B:BF01: F0 03     BEQ bra_BF06
 C - - - - - 0x02FF13 0B:BF03: 8E 55 01  STX ram_tournament_индекс_игрока
 bra_BF06:
