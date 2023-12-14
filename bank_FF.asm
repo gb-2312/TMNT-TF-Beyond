@@ -6756,7 +6756,10 @@ C - - - - - 0x03F517 0F:F507: F0 EE     JMP loc_F5AE_подготовить_но
 ofs_000_F509_05_konami:
 C - - J - - 0x03F519 0F:F509: A5 90     LDA ram_sum_btn_press
 C - - - - - 0x03F51B 0F:F50B: 29 30     AND #con_btns_SS
-C - - - - - 0x03F51D 0F:F50D: D0 55     BNE bra_F564
+C - - - - - 0x03F51D 0F:F50D: D0 55     BEQ bra_F50F
+; if досрочный пропуск лого konami
+C - - - - - 0x03F57C 0F:F56C: 4C 3E E1  JMP loc_FE58_отрисовка_экрана_главное_меню
+bra_F50F:
 C - - - - - 0x03F51F 0F:F50F: A6 21     LDX ram_script_draw_lo
 C - - - - - 0x03F521 0F:F511: D0 2B     BNE bra_F53E
 ; 00
@@ -6805,8 +6808,6 @@ C - - - - - 0x03F56B 0F:F55B: 29 FC     AND #$FC
 C - - - - - 0x03F56D 0F:F55D: 85 FF     STA ram_for_2000
 C - - - - - 0x03F56F 0F:F55F: A9 0A     LDA #con_script_draw_opening
 C - - - - - 0x03F571 0F:F561: 4C AE F5  JMP loc_F5AE_подготовить_новый_скрипт
-bra_F564:
-C - - - - - 0x03F57C 0F:F56C: 4C 3E E1  JMP loc_FE58_отрисовка_экрана_главное_меню
 
 
 
