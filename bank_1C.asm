@@ -2979,7 +2979,7 @@ C - - - - - 0x039058 0E:9048: E8        INX
 C - - - - - 0x039059 0E:9049: E0 04     CPX #$04
 C - - - - - 0x03905B 0E:904B: 90 EF     BCC bra_903C_loop
 C - - - - - 0x03905D 0E:904D: A9 02     LDA #con_script_draw_очистка_1
-C - - - - - 0x03905F 0E:904F: 20 AE F5  JSR sub_0x03F5BE_подготовить_скрипт
+C - - - - - 0x03905F 0E:904F: 20 AE F5  JSR sub_0x03F5BE_подготовить_новый_скрипт
 C - - - - - 0x039062 0E:9052: 20 C2 F6  JSR sub_0x03F6D2_выключить_музыку_и_звуки
 C - - - - - 0x039065 0E:9055: 4C 2E E1  JMP loc_0x03E13E_подготовить_затемнение_из_цветного_в_черный
 
@@ -3574,7 +3574,7 @@ bra_93B2:
 loc_93B2:
 ofs_010_93B2_11:
 C D 0 - - - 0x0393C2 0E:93B2: A9 00     LDA #con_script_draw_главное_меню
-C - - - - - 0x0393C4 0E:93B4: 20 AE F5  JSR sub_0x03F5BE_подготовить_скрипт
+C - - - - - 0x0393C4 0E:93B4: 20 AE F5  JSR sub_0x03F5BE_подготовить_новый_скрипт
 C - - - - - 0x0393C7 0E:93B7: 4C 3E E1  JMP loc_0x03E14E_подготовить_затемнение_из_белого_в_цветной
 
 
@@ -4032,7 +4032,7 @@ C - - - - - 0x0396E4 0E:96D4: AD 50 05  LDA ram_obj_id,X
 C - - - - - 0x0396E7 0E:96D7: 20 2A E3  JSR sub_0x03DE0C_выбор_палитры_перса_с_сохранением_X
 C - - - - - 0x0396EC 0E:96DC: BD 13 97  LDA tbl_9713_анимация,X
 C - - - - - 0x0396EF 0E:96DF: 9D 00 04  STA ram_obj_anim_id,X ; 0400 0401 
-C - - - - - 0x0396F2 0E:96E2: A9 B0     LDA #$B0
+C - - - - - 0x0396F2 0E:96E2: A9 B0     LDA #con_координата_пола
 C - - - - - 0x0396F4 0E:96E4: 9D 10 04  STA ram_obj_pos_Y_lo,X ; 0410 0411 
 C - - - - - 0x0396F7 0E:96E7: BD 15 97  LDA tbl_9715,X
 C - - - - - 0x0396FA 0E:96EA: 9D 40 04  STA ram_obj_pos_X_lo,X ; 0440 0441 
@@ -5316,7 +5316,7 @@ C - - - - - 0x03A0DA 0E:A0CA: 60        RTS
 bra_A0CB:
 C - - - - - 0x03A0DB 0E:A0CB: 20 C2 F6  JSR sub_0x03F6D2_выключить_музыку_и_звуки
 C - - - - - 0x03A0DE 0E:A0CE: A9 05     LDA #con_script_draw_konami
-C - - - - - 0x03A0E0 0E:A0D0: 4C AE F5  JMP loc_0x03F5BE_подготовить_скрипт
+C - - - - - 0x03A0E0 0E:A0D0: 4C AE F5  JMP loc_0x03F5BE_подготовить_новый_скрипт
 
 
 
@@ -6236,7 +6236,7 @@ bra_A4E6:
 C - - - - - 0x03A4F6 0E:A4E6: A0 02     LDY #$02
 C - - - - - 0x03A4F8 0E:A4E8: AD 30 06  LDA ram_0630_unk
 C - - - - - 0x03A4FB 0E:A4EB: F0 1C     BEQ bra_A509
-C - - - - - 0x03A4FD 0E:A4ED: A5 9F     LDA ram_009F
+C - - - - - 0x03A4FD 0E:A4ED: A5 9F     LDA ram_copy_номер_боя_story
 C - - - - - 0x03A4FF 0E:A4EF: 85 9E     STA ram_номер_боя_story
 C - - - - - 0x03A501 0E:A4F1: A5 27     LDA ram_0027
 C - - - - - 0x03A503 0E:A4F3: C5 2C     CMP ram_game_mode

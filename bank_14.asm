@@ -7668,7 +7668,7 @@ C - - - - - 0x02BDBC 0A:BDAC: 0A        ASL ; 00
 C - - - - - 0x02BDBD 0A:BDAD: 8D B1 04  STA ram_04B1_состояние_стены
 C - - - - - 0x02BDC0 0A:BDB0: A9 01     LDA #$01
 C - - - - - 0x02BDC2 0A:BDB2: 8D 31 05  STA ram_0531_script_стена_bonus_game
-C - - - - - 0x02BDC5 0A:BDB5: A9 B0     LDA #$B0
+C - - - - - 0x02BDC5 0A:BDB5: A9 B0     LDA #con_координата_пола
 C - - - - - 0x02BDC7 0A:BDB7: 8D 11 04  STA ram_obj_pos_Y_lo + $01
 C - - - - - 0x02BDCA 0A:BDBA: A9 09     LDA #$09
 C - - - - - 0x02BDCC 0A:BDBC: 8D 71 05  STA ram_0570_obj + $01

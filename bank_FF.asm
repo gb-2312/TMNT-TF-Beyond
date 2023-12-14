@@ -68,10 +68,10 @@
 .export sub_0x03DC79
 .export sub_0x03DCA2_добавить_к_spd_Z_в_зависимости_от_опции_скорости
 .export sub_0x03DCC1_добавить_A_Y_к_spdX
-.export sub_0x03DCE6
-.export sub_0x03DCFD
+.export sub_0x03DCE6_запись_spd_Z
+.export sub_0x03DCFD_ограничить_pos_Y_во_время_падения
 .export sub_0x03DD0A
-.export sub_0x03DD14
+.export sub_0x03DD14_повернуть_прилетающего_сплинтера_в_нужную_сторону_по_горизонтали
 .export sub_0x03DD75_повернуть_объект_в_противоположную_сторону_по_горизонтали
 .export loc_0x03DD75_повернуть_объект_в_противоположную_сторону_по_горизонтали
 .export tbl_0x03E750
@@ -166,8 +166,8 @@
 .export loc_0x03F052_отрисовать_пустой_экран
 .export sub_0x03F054_отрисовать_экран
 .export sub_0x03F214_генератор_рандома
-.export sub_0x03F5BE_подготовить_скрипт
-.export loc_0x03F5BE_подготовить_скрипт
+.export sub_0x03F5BE_подготовить_новый_скрипт
+.export loc_0x03F5BE_подготовить_новый_скрипт
 .export loc_0x03F5F7_swap_prg_16
 .export loc_0x03F627_restore_prg
 .export sub_0x03F69B_выключить_звуки_и_записать_новый
@@ -1826,7 +1826,7 @@ C - - - - - 0x03D770 0F:D760: 84 00     STY ram_0000
 C - - - - - 0x03D772 0F:D762: BC 10 04  LDY ram_obj_pos_Y_lo,X ; 0410 0411 0412 0413 0414 0415 0416 0417 0419 041A 041B 041C 041D 041E 041F 
 C - - - - - 0x03D775 0F:D765: E0 02     CPX #$02
 C - - - - - 0x03D777 0F:D767: B0 09     BCS bra_D772
-C - - - - - 0x03D779 0F:D769: C0 B0     CPY #$B0
+C - - - - - 0x03D779 0F:D769: C0 B0     CPY #con_координата_пола
 C - - - - - 0x03D77B 0F:D76B: 90 05     BCC bra_D772
 C - - - - - 0x03D77D 0F:D76D: 98        TYA
 C - - - - - 0x03D77E 0F:D76E: 18        CLC
@@ -2282,18 +2282,18 @@ C - - - - - 0x03DC78 0F:DC68: 60        RTS
 sub_0x03DC79:
 C - - - - - 0x03DC79 0F:DC69: BD 60 04  LDA ram_obj_spd_Z_hi,X ; 0460 0461 0463 0465 0466 0467 0469 046B 
 C - - - - - 0x03DC7C 0F:DC6C: 30 07     BMI bra_DC75
-C - - - - - 0x03DC7E 0F:DC6E: A9 AF     LDA #$AF
+C - - - - - 0x03DC7E 0F:DC6E: A9 AF     LDA #con_координата_пола - $01
 C - - - - - 0x03DC80 0F:DC70: DD 10 04  CMP ram_obj_pos_Y_lo,X ; 0410 0411 0413 0415 0416 0417 0419 041B 
 C - - - - - 0x03DC83 0F:DC73: 90 0F     BCC bra_DC84
 bra_DC75:
 C - - - - - 0x03DC85 0F:DC75: 20 92 DC  JSR sub_DC92_добавить_к_spd_Z_в_зависимости_от_опции_скорости
 C - - - - - 0x03DC88 0F:DC78: BD 60 04  LDA ram_obj_spd_Z_hi,X ; 0460 0461 0463 0465 0466 0467 0469 046B 
 C - - - - - 0x03DC8B 0F:DC7B: 30 13     BMI bra_DC90
-C - - - - - 0x03DC8D 0F:DC7D: A9 AF     LDA #$AF
+C - - - - - 0x03DC8D 0F:DC7D: A9 AF     LDA #con_координата_пола - $01
 C - - - - - 0x03DC8F 0F:DC7F: DD 10 04  CMP ram_obj_pos_Y_lo,X ; 0410 0411 0413 0415 0416 0417 0419 041B 
 C - - - - - 0x03DC92 0F:DC82: B0 0C     BCS bra_DC90
 bra_DC84:
-C - - - - - 0x03DC94 0F:DC84: A9 B0     LDA #$B0
+C - - - - - 0x03DC94 0F:DC84: A9 B0     LDA #con_координата_пола
 C - - - - - 0x03DC96 0F:DC86: 9D 10 04  STA ram_obj_pos_Y_lo,X ; 0410 0411 0413 0415 0416 0417 0419 041B 
 C - - - - - 0x03DC99 0F:DC89: A9 00     LDA #< $0000
 C - - - - - 0x03DC9B 0F:DC8B: 20 D3 DC  STA ram_obj_spd_Z_lo,X ; 0460 0461 0463 0465 0466 0467 0469 046B 
@@ -2333,8 +2333,9 @@ C - - - - - 0x03DCCF 0F:DCBF: 60        RTS
 
 
 
-sub_0x03DCE6:
+sub_0x03DCE6_запись_spd_Z:
 ; bzk optimize, добавить все значения как lo и hi
+; bzk optimize, подготовить правильный Y на вход без AND F0 (если необрезанный Y больше нигде нужен)
 ; bzk optimize, переместить в банк 12
 C - - - - - 0x03DCE6 0F:DCD6: 9D 60 04  STA ram_obj_spd_Z_hi,X ; 0481 
 C - - - - - 0x03DCE9 0F:DCD9: 98        TYA
@@ -2344,11 +2345,12 @@ C - - - - - 0x03DCEF 0F:DCDF: 60        RTS
 
 
 
-sub_0x03DCFD:
+sub_0x03DCFD_ограничить_pos_Y_во_время_падения:
 ; bzk optimize, переместить в банк 12
-C - - - - - 0x03DCFD 0F:DCED: A9 B0     LDA #$B0
+C - - - - - 0x03DCFD 0F:DCED: A9 B0     LDA #con_координата_пола
 C - - - - - 0x03DCFF 0F:DCEF: DD 10 04  CMP ram_obj_pos_Y_lo,X ; 0410 0411 
 C - - - - - 0x03DD02 0F:DCF2: B0 03     BCS bra_DCF7_RTS
+; if игрок касается пола
 C - - - - - 0x03DD04 0F:DCF4: 9D 10 04  STA ram_obj_pos_Y_lo,X ; 0410 0411 
 bra_DCF7_RTS:
 C - - - - - 0x03DD07 0F:DCF7: 60        RTS
@@ -2365,7 +2367,7 @@ C - - - - - 0x03DD13 0F:DD03: 60        RTS
 
 
 
-sub_0x03DD14:
+sub_0x03DD14_повернуть_прилетающего_сплинтера_в_нужную_сторону_по_горизонтали:
 ; bzk optimize, переместить в банк 12
 C - - - - - 0x03DD14 0F:DD04: BD 40 04  LDA ram_obj_pos_X_lo,X ; 0447 
 C - - - - - 0x03DD17 0F:DD07: 4A        LSR
@@ -2391,6 +2393,7 @@ C - - - - - 0x03DD7D 0F:DD6D: 60        RTS
 
 
 sub_0x03DD96:
+; bzk optimize, переместить в банк 12
 C - - - - - 0x03DD96 0F:DD86: BD 80 04  LDA ram_obj_spd_X_hi,X ; 0480 0481 0482 
 ; bzk bug? почему ссылка на 057F?
 C - - - - - 0x03DD99 0F:DD89: 59 80 04  EOR ram_obj_spd_X_hi,Y ; 0480 0481 057F 
@@ -2417,6 +2420,7 @@ C - - - - - 0x03DDBA 0F:DDAA: 60        RTS
 
 sub_0x03DDF9_запись_сидячего_состояния_персу:
 loc_0x03DDF9_запись_сидячего_состояния_персу:
+; bzk optimize, переместить в банк 12
 C D 2 - - - 0x03DDF9 0F:DDE9: A9 07     LDA #con_plr_state_сидит
 C - - - - - 0x03DDFB 0F:DDEB: 9D 20 05  STA ram_obj_state_hi,X ; 0520 0521 
 C - - - - - 0x03DDFE 0F:DDEE: A9 01     LDA #$01
@@ -3681,7 +3685,7 @@ C - - - - - 0x03E433 0F:E423: 9D 50 05  STA ram_obj_id,X ; 0550 0551
                                         STA ram_флаг_черепахи,X
 C - - - - - 0x03E436 0F:E426: BD 69 E4  LDA tbl_E469_default_pos_X_перса,X
 C - - - - - 0x03E439 0F:E429: 9D 40 04  STA ram_obj_pos_X_lo,X ; 0440 0441 
-C - - - - - 0x03E43C 0F:E42C: A9 B0     LDA #$B0
+C - - - - - 0x03E43C 0F:E42C: A9 B0     LDA #con_координата_пола
 C - - - - - 0x03E43E 0F:E42E: 9D 10 04  STA ram_obj_pos_Y_lo,X ; 0410 0411 
                                         LDA tbl_E46B_default_flip_перса,X
                                         STA ram_obj_flip,X ; 0510 0511 
@@ -4318,7 +4322,7 @@ C - - - - - 0x03E77F 0F:E76F: 60        RTS
 ofs_001_E770_13_переход_из_vs_cpu_в_vs_player___подготовка:
 - - - - - - 0x03E780 0F:E770: 20 65 E1  JSR sub_E165
 - - - - - - 0x03E783 0F:E773: A5 9E     LDA ram_номер_боя_story
-- - - - - - 0x03E785 0F:E775: 85 9F     STA ram_009F
+- - - - - - 0x03E785 0F:E775: 85 9F     STA ram_copy_номер_боя_story
 - - - - - - 0x03E787 0F:E777: A9 60     LDA #$60
 - - - - - - 0x03E789 0F:E779: 8D 60 05  STA ram_obj_timer
                                        ;LDA #con_0095_переход_из_vs_cpu_в_vs_player_2
@@ -4342,7 +4346,7 @@ ofs_001_E78B_14_переход_из_vs_cpu_в_vs_player___обработка:
 ofs_001_E799_15:
 C - - J - - 0x03E7A9 0F:E799: 20 3C F0  JSR sub_F03C_выключить_irq___удалить_все_объекты___отрисовать_пустой_экран
 C - - - - - 0x03E7AC 0F:E79C: A9 0B     LDA #con_script_draw_ending
-C - - - - - 0x03E7AE 0F:E79E: 4C AE F5  JMP loc_F5AE_подготовить_скрипт
+C - - - - - 0x03E7AE 0F:E79E: 4C AE F5  JMP loc_F5AE_подготовить_новый_скрипт
 
 
 
@@ -4391,7 +4395,7 @@ C - - - - - 0x03E7FD 0F:E7ED: 85 A6     STA ram_screen_pos_X
 C - - - - - 0x03E7FF 0F:E7EF: 85 98     STA ram_0098
 C - - - - - 0x03E801 0F:E7F1: A9 18     LDA #$18
 C - - - - - 0x03E803 0F:E7F3: 8D 40 04  STA ram_obj_pos_X_lo
-C - - - - - 0x03E806 0F:E7F6: A9 B0     LDA #$B0
+C - - - - - 0x03E806 0F:E7F6: A9 B0     LDA #con_координата_пола
 C - - - - - 0x03E808 0F:E7F8: 8D 10 04  STA ram_obj_pos_Y_lo
 C - - - - - 0x03E80B 0F:E7FB: A9 09     LDA #con_0048_09
 C - - - - - 0x03E80D 0F:E7FD: 20 14 F8  JSR sub_F814_подготовить_irq_handler
@@ -4429,7 +4433,7 @@ C - - - - - 0x03E84C 0F:E83C: AD 72 06  LDA ram_время_десятки
 C - - - - - 0x03E84F 0F:E83F: 0D 73 06  ORA ram_время_единицы
 C - - - - - 0x03E852 0F:E842: D0 3C     BNE bra_E880_RTS
 C - - - - - 0x03E854 0F:E844: AD 10 04  LDA ram_obj_pos_Y_lo
-C - - - - - 0x03E857 0F:E847: C9 AF     CMP #$AF
+C - - - - - 0x03E857 0F:E847: C9 AF     CMP #con_координата_пола - $01
 C - - - - - 0x03E859 0F:E849: 90 35     BCC bra_E880_RTS
                                        ;LDA #con_0095_bonus_game_lose
 C - - - - - 0x03E85B 0F:E84B: E6 95     INC ram_0095_стадия_игры    ; 19 -> 1A
@@ -4867,6 +4871,7 @@ C D 3 - - - 0x03EA45 0F:EA35: A5 95     LDA ram_0095_стадия_игры
 C - - - - - 0x03EA47 0F:EA37: C9 10     CMP #$10
 C - - - - - 0x03EA49 0F:EA39: B0 39     BCS bra_EA74_RTS
 sub_0x03EA4B:
+; что-то с hp
 C - - - - - 0x03EA4B 0F:EA3B: 86 00     STX ram_0000
 C - - - - - 0x03EA4D 0F:EA3D: BD 66 EB  LDA tbl_EB66_ppu_lo,X
 C - - - - - 0x03EA50 0F:EA40: 85 01     STA ram_0001
@@ -6234,7 +6239,7 @@ C - - - - - 0x03F204 0F:F1F4: 20 C2 F6  JSR sub_F6C2_выключить_музы
                                         LDY #$00    ; disable irq
                                         STY ram_irq_flag
                                         LDA #con_script_draw_копирайты
-C - - - - - 0x03F207 0F:F1F7: 20 E1 F4  JSR sub_F5AE_подготовить_скрипт
+C - - - - - 0x03F207 0F:F1F7: 20 E1 F4  JSR sub_F5AE_подготовить_новый_скрипт
                                         JSR sub_F6C2_выключить_музыку_и_звуки
 C - - - - - 0x03F20A 0F:F1FA: 20 C6 F2  JSR sub_F2C6_nmi_on
 C - - - - - 0x03F20D 0F:F1FD: 58        CLI
@@ -6519,24 +6524,33 @@ C - - - - - 0x03F3DD 0F:F3CD: 20 09 D0  JSR sub_D009_очистить_опера
 C - - - - - 0x03F3E0 0F:F3D0: 20 00 F0  JSR sub_F000_отрисовать_главное_меню
 C - - - - - 0x03F3E3 0F:F3D3: 20 48 E1  JSR sub_E148_подготовить_затемнение_из_белого_в_цветной
 C - - - - - 0x03F3E6 0F:F3D6: 4C 38 F5  JMP loc_F538
+
+
+
 bra_F3D9:
 C - - - - - 0x03F3E9 0F:F3D9: A9 00     LDA #$00    ; con_gm_story
 C - - - - - 0x03F3EB 0F:F3DB: 85 27     STA ram_0027
 C - - - - - 0x03F3ED 0F:F3DD: 85 2C     STA ram_game_mode
                                         LDA #con_script_draw_vs_экран
-C - - - - - 0x03F3EF 0F:F3DF: 20 A7 F5  JSR sub_F5AE_подготовить_скрипт
+C - - - - - 0x03F3EF 0F:F3DF: 20 A7 F5  JSR sub_F5AE_подготовить_новый_скрипт
 C - - - - - 0x03F3F2 0F:F3E2: 4C 2E E1  JMP loc_E12E_подготовить_затемнение_из_цветного_в_черный
+
+
+
 bra_F3E5:
 C - - - - - 0x03F3F5 0F:F3E5: CA        DEX
 C - - - - - 0x03F3F6 0F:F3E6: D0 07     BNE bra_F3EF
+; X = 01
 C - - - - - 0x03F3F8 0F:F3E8: E6 21     INC ram_script_draw_lo
 C - - - - - 0x03F3FA 0F:F3EA: A9 24     LDA #con_075C_24
 C - - - - - 0x03F3FC 0F:F3EC: 4C 8B F6  JMP loc_F68B_выключить_звуки_и_записать_новый
 bra_F3EF:
 C - - - - - 0x03F3FF 0F:F3EF: CA        DEX
 C - - - - - 0x03F400 0F:F3F0: D0 6C     BNE bra_F45E
-C - - - - - 0x03F402 0F:F3F2: 20 B3 F5  JSR sub_F5B3
+; X = 02
+C - - - - - 0x03F402 0F:F3F2: 20 B3 F5  JSR sub_F5B3_проверить_и_уменьшить_16битный_таймер_экрана
 C - - - - - 0x03F405 0F:F3F5: F0 E2     BEQ bra_F3D9
+; if таймер закончился
 C - - - - - 0x03F407 0F:F3F7: 20 45 F4  JSR sub_F445
 C - - - - - 0x03F40A 0F:F3FA: A5 90     LDA ram_sum_btn_press
 C - - - - - 0x03F40C 0F:F3FC: 29 0C     AND #con_btns_UD
@@ -6565,7 +6579,7 @@ bra_F421:
 C - - - - - 0x03F431 0F:F421: 85 27     STA ram_0027
 C - - - - - 0x03F433 0F:F423: A9 25     LDA #con_075C_25
 C - - - - - 0x03F435 0F:F425: 20 90 F6  JSR sub_F690_записать_звук_сохранив_X_Y
-C - - - - - 0x03F438 0F:F428: 20 C4 F5  JSR sub_F5C4
+C - - - - - 0x03F438 0F:F428: 20 C4 F5  JSR sub_F5C4_записать_таймер_экрана_0100
 bra_F42B:
 C - - - - - 0x03F43B 0F:F42B: A5 90     LDA ram_sum_btn_press
 C - - - - - 0x03F43D 0F:F42D: 29 10     AND #con_btn_Start
@@ -6577,7 +6591,7 @@ C - - - - - 0x03F441 0F:F431: A9 29     LDA #$29    ; con_075C_29
 C - - - - - 0x03F443 0F:F433: 85 98     STA ram_0098
 C - - - - - 0x03F445 0F:F435: 20 90 F6  JSR sub_F690_записать_звук_сохранив_X_Y
 C - - - - - 0x03F448 0F:F438: A9 80     LDA #$80
-C - - - - - 0x03F44A 0F:F43A: 85 9C     STA ram_009C
+C - - - - - 0x03F44A 0F:F43A: 85 9C     STA ram_009C_таймер_экрана_lo
 C - - - - - 0x03F44C 0F:F43C: 0A        LDA #$00
 C - - - - - 0x03F44D 0F:F43D: 8D 11 01  STA ram_0111
 C - - - - - 0x03F450 0F:F440: 8D 12 01  STA ram_0112
@@ -6599,7 +6613,8 @@ C - - - - - 0x03F46D 0F:F45D: 60        RTS
 bra_F45E:
 C - - - - - 0x03F46E 0F:F45E: CA        DEX
 C - - - - - 0x03F46F 0F:F45F: D0 1C     BNE bra_F47D
-C - - - - - 0x03F471 0F:F461: A5 9C     LDA ram_009C
+; X = 03
+C - - - - - 0x03F471 0F:F461: A5 9C     LDA ram_009C_таймер_экрана_lo
 C - - - - - 0x03F473 0F:F463: 29 08     AND #$08
 C - - - - - 0x03F475 0F:F465: 0A        ASL
 C - - - - - 0x03F476 0F:F466: 0A        ASL
@@ -6614,7 +6629,7 @@ C - - - - - 0x03F479 0F:F469: 65 27     ADC ram_0027
 ; con_print_option
 ; возможен индекс +80
 C - - - - - 0x03F47B 0F:F46B: 20 E5 F6  JSR sub_F6E5_написать_текст_на_экране
-C - - - - - 0x03F47E 0F:F46E: C6 9C     DEC ram_009C
+C - - - - - 0x03F47E 0F:F46E: C6 9C     DEC ram_009C_таймер_экрана_lo
 C - - - - - 0x03F480 0F:F470: D0 EB     BNE bra_F45D_RTS
 C - - - - - 0x03F482 0F:F472: E6 21     INC ram_script_draw_lo
 C - - - - - 0x03F484 0F:F474: A9 00     LDA #$00
@@ -6624,12 +6639,14 @@ C - - - - - 0x03F48A 0F:F47A: 4C 2E E1  JMP loc_E12E_подготовить_за
 bra_F47D:
 C - - - - - 0x03F48D 0F:F47D: CA        DEX
 C - - - - - 0x03F48E 0F:F47E: D0 09     BNE bra_F489
+; X = 04
 C - - - - - 0x03F490 0F:F480: E6 21     INC ram_script_draw_lo
 C - - - - - 0x03F492 0F:F482: A5 FE     LDA ram_for_2001
 C - - - - - 0x03F494 0F:F484: 29 E7     AND #$E7
 C - - - - - 0x03F496 0F:F486: 85 FE     STA ram_for_2001
 C - - - - - 0x03F498 0F:F488: 60        RTS
 bra_F489:
+; X = 05
 C - - - - - 0x03F499 0F:F489: A5 FE     LDA ram_for_2001
 C - - - - - 0x03F49B 0F:F48B: 09 18     ORA #$18
 C - - - - - 0x03F49D 0F:F48D: 85 FE     STA ram_for_2001
@@ -6657,7 +6674,7 @@ bra_F49F:
 ; con_gm_vs_cpu
 ; con_gm_vs_team
 C - - - - - 0x03F4AF 0F:F49F: A9 02     LDA #con_script_draw_очистка_1
-C - - - - - 0x03F4B1 0F:F4A1: 4C AE F5  JMP loc_F5AE_подготовить_скрипт
+C - - - - - 0x03F4B1 0F:F4A1: 4C AE F5  JMP loc_F5AE_подготовить_новый_скрипт
 
 
 
@@ -6677,16 +6694,17 @@ C - - - - - 0x03F4BE 0F:F4AE: D0 09     BNE bra_F4B9
 C - - - - - 0x03F4C0 0F:F4B0: E6 21     INC ram_script_draw_lo
 C - - - - - 0x03F4C2 0F:F4B2: A0 04     LDY #$04
 C - - - - - 0x03F4C4 0F:F4B4: 84 26     STY ram_0026
-C - - - - - 0x03F4C6 0F:F4B6: 4C C6 F5  JMP loc_F5C6
+C - - - - - 0x03F4C6 0F:F4B6: 4C C6 F5  JMP loc_F5C6_записать_таймер_экрана_0400
 bra_F4B9:
 C - - - - - 0x03F4C9 0F:F4B9: A5 90     LDA ram_sum_btn_press
 C - - - - - 0x03F4CB 0F:F4BB: 29 30     AND #con_btns_SS
 C - - - - - 0x03F4CD 0F:F4BD: D0 10     BNE bra_F4CF
 C - - - - - 0x03F4CF 0F:F4BF: 20 79 D2  JSR sub_D279
-C - - - - - 0x03F4D2 0F:F4C2: 20 B3 F5  JSR sub_F5B3
+C - - - - - 0x03F4D2 0F:F4C2: 20 B3 F5  JSR sub_F5B3_проверить_и_уменьшить_16битный_таймер_экрана
 C - - - - - 0x03F4D5 0F:F4C5: D0 96     BNE bra_F45D_RTS
+; if таймер закончился
 C - - - - - 0x03F4D7 0F:F4C7: A9 0C     LDA #con_script_draw_topscore
-C - - - - - 0x03F4D9 0F:F4C9: 20 DB F4  JSR sub_F5AE_подготовить_скрипт
+C - - - - - 0x03F4D9 0F:F4C9: 20 DB F4  JSR sub_F5AE_подготовить_новый_скрипт
                                         JSR sub_F6C2_выключить_музыку_и_звуки
 C - - - - - 0x03F4DC 0F:F4CC: 4C 2E E1  JMP loc_E12E_подготовить_затемнение_из_цветного_в_черный
 bra_F4CF:
@@ -6707,7 +6725,7 @@ C - - - - - 0x03F4FE 0F:F4EE: E6 98     INC ram_0098
 C - - - - - 0x03F500 0F:F4F0: A9 00     LDA #$00
 C - - - - - 0x03F502 0F:F4F2: 85 26     STA ram_0026
                                         LDA #con_script_draw_очистка_2
-C - - - - - 0x03F504 0F:F4F4: 20 08 D0  JMP loc_F5AE_подготовить_скрипт
+C - - - - - 0x03F504 0F:F4F4: 20 08 D0  JMP loc_F5AE_подготовить_новый_скрипт
 
 
 
@@ -6719,7 +6737,7 @@ C - - - - - 0x03F511 0F:F501: A9 00     LDA #$00
 C - - - - - 0x03F513 0F:F503: 85 A0     STA ram_strength
 C - - - - - 0x03F515 0F:F505: 85 A1     STA ram_strength + $01
                                         LDA #con_script_draw_04
-C - - - - - 0x03F517 0F:F507: F0 EE     JMP loc_F5AE_подготовить_скрипт
+C - - - - - 0x03F517 0F:F507: F0 EE     JMP loc_F5AE_подготовить_новый_скрипт
 
 
 
@@ -6729,6 +6747,7 @@ C - - - - - 0x03F51B 0F:F50B: 29 30     AND #con_btns_SS
 C - - - - - 0x03F51D 0F:F50D: D0 55     BNE bra_F564
 C - - - - - 0x03F51F 0F:F50F: A6 21     LDX ram_script_draw_lo
 C - - - - - 0x03F521 0F:F511: D0 2B     BNE bra_F53E
+; 00
 C - - - - - 0x03F523 0F:F513: 20 88 FB  JSR sub_FB88_disable_irq
 C - - - - - 0x03F526 0F:F516: 20 09 D0  JSR sub_D009_очистить_оперативку_1
 C - - - - - 0x03F529 0F:F519: 20 42 F0  JSR sub_F042_отрисовать_пустой_экран
@@ -6746,12 +6765,13 @@ C - - - - - 0x03F544 0F:F534: 09 02     ORA #$02
 C - - - - - 0x03F546 0F:F536: 85 FF     STA ram_for_2000
 bra_F538:
 loc_F538:
-C D 3 - - - 0x03F548 0F:F538: 20 C4 F5  JSR sub_F5C4
+C D 3 - - - 0x03F548 0F:F538: 20 C4 F5  JSR sub_F5C4_записать_таймер_экрана_0100
 C - - - - - 0x03F54B 0F:F53B: E6 21     INC ram_script_draw_lo
 C - - - - - 0x03F54D 0F:F53D: 60        RTS
 bra_F53E:
 C - - - - - 0x03F54E 0F:F53E: CA        DEX
 C - - - - - 0x03F54F 0F:F53F: D0 0C     BNE bra_F54D
+; 01
 C - - - - - 0x03F551 0F:F541: A5 FC     LDA ram_scroll_Y
 C - - - - - 0x03F553 0F:F543: 18        CLC
 C - - - - - 0x03F554 0F:F544: 69 02     ADC #$02
@@ -6761,8 +6781,10 @@ C - - - - - 0x03F55A 0F:F54A: B0 EC     BCS bra_F538
 bra_F54C_RTS:
 C - - - - - 0x03F55C 0F:F54C: 60        RTS
 bra_F54D:
-C - - - - - 0x03F55D 0F:F54D: 20 B3 F5  JSR sub_F5B3
+; 02
+C - - - - - 0x03F55D 0F:F54D: 20 B3 F5  JSR sub_F5B3_проверить_и_уменьшить_16битный_таймер_экрана
 C - - - - - 0x03F560 0F:F550: D0 FA     BNE bra_F54C_RTS
+; if таймер закончился
 C - - - - - 0x03F562 0F:F552: A9 00     LDA #$00
 C - - - - - 0x03F564 0F:F554: 85 94     STA ram_0094_скрипт
 C - - - - - 0x03F566 0F:F556: 20 8C FC  JSR sub_FC8C_set_mirroring_V
@@ -6770,7 +6792,7 @@ C - - - - - 0x03F569 0F:F559: A5 FF     LDA ram_for_2000
 C - - - - - 0x03F56B 0F:F55B: 29 FC     AND #$FC
 C - - - - - 0x03F56D 0F:F55D: 85 FF     STA ram_for_2000
 C - - - - - 0x03F56F 0F:F55F: A9 0A     LDA #con_script_draw_opening
-C - - - - - 0x03F571 0F:F561: 4C AE F5  JMP loc_F5AE_подготовить_скрипт
+C - - - - - 0x03F571 0F:F561: 4C AE F5  JMP loc_F5AE_подготовить_новый_скрипт
 bra_F564:
 C - - - - - 0x03F57C 0F:F56C: 4C 3E E1  JMP loc_FE58_отрисовка_экрана_главное_меню
 
@@ -6793,10 +6815,11 @@ C - - - - - 0x03F59A 0F:F58A: A9 7E     LDA #con_chr_bank_bg + $7E
 C - - - - - 0x03F59C 0F:F58C: 85 33     STA ram_chr_bank_bg + $01
 C - - - - - 0x03F59E 0F:F58E: D0 A8     BNE bra_F538    ; jmp
 bra_F590:
-C - - - - - 0x03F5A0 0F:F590: 20 B3 F5  JSR sub_F5B3
+C - - - - - 0x03F5A0 0F:F590: 20 B3 F5  JSR sub_F5B3_проверить_и_уменьшить_16битный_таймер_экрана
 C - - - - - 0x03F5A3 0F:F593: D0 B7     BNE bra_F54C_RTS
+; if таймер закончился
 C - - - - - 0x03F5A5 0F:F595: A9 05     LDA #con_script_draw_konami
-C - - - - - 0x03F5A7 0F:F597: 4C AE F5  JMP loc_F5AE_подготовить_скрипт
+C - - - - - 0x03F5A7 0F:F597: 4C AE F5  JMP loc_F5AE_подготовить_новый_скрипт
 
 
 
@@ -6808,10 +6831,10 @@ C - - - - - 0x03F5B1 0F:F5A1: 4C 88 FB  JMP loc_FB88_disable_irq
 
 
 
-loc_F5AE_подготовить_скрипт:
-sub_F5AE_подготовить_скрипт:
-sub_0x03F5BE_подготовить_скрипт:
-loc_0x03F5BE_подготовить_скрипт:
+loc_F5AE_подготовить_новый_скрипт:
+sub_F5AE_подготовить_новый_скрипт:
+sub_0x03F5BE_подготовить_новый_скрипт:
+loc_0x03F5BE_подготовить_новый_скрипт:
 C D 3 - - - 0x03F5BE 0F:F5AE: 85 20     STA ram_script_draw_hi
 C - - - - - 0x03F5C0 0F:F5B0: 4C A9 F5  LDA #$00
                                         STA ram_script_draw_lo
@@ -6819,27 +6842,33 @@ C - - - - - 0x03F5C0 0F:F5B0: 4C A9 F5  LDA #$00
 
 
 
-sub_F5B3:
-C - - - - - 0x03F5C3 0F:F5B3: A5 9C     LDA ram_009C
-C - - - - - 0x03F5C5 0F:F5B5: 05 9F     ORA ram_009F
+sub_F5B3_проверить_и_уменьшить_16битный_таймер_экрана:
+; на выходе A
+    ; 00 = таймер закончился
+    ; 01 = таймер еще не закончился
+C - - - - - 0x03F5C3 0F:F5B3: A5 9C     LDA ram_009C_таймер_экрана_lo
+C - - - - - 0x03F5C5 0F:F5B5: 05 9F     ORA ram_009F_таймер_экрана_hi
 C - - - - - 0x03F5C7 0F:F5B7: F0 0A     BEQ bra_F5C3_RTS
-C - - - - - 0x03F5C9 0F:F5B9: A5 9C     LDA ram_009C
+; можно было бы оптимизировать как DEC lo + BNE + DEC hi,
+; но оригинальный формат гарантирует 00 для hi в случае если таймер закончился,
+; тогда не нужно постоянно записывать hi если требуется таймер < 0100
+C - - - - - 0x03F5C9 0F:F5B9: A5 9C     LDA ram_009C_таймер_экрана_lo
 C - - - - - 0x03F5CB 0F:F5BB: D0 02     BNE bra_F5BF
-C - - - - - 0x03F5CD 0F:F5BD: C6 9F     DEC ram_009F
+C - - - - - 0x03F5CD 0F:F5BD: C6 9F     DEC ram_009F_таймер_экрана_hi
 bra_F5BF:
-C - - - - - 0x03F5CF 0F:F5BF: C6 9C     DEC ram_009C
+C - - - - - 0x03F5CF 0F:F5BF: C6 9C     DEC ram_009C_таймер_экрана_lo
 C - - - - - 0x03F5D1 0F:F5C1: A9 01     LDA #$01
-bra_F5C3_RTS:
+bra_F5C3_RTS:   ; A = 00
 C - - - - - 0x03F5D3 0F:F5C3: 60        RTS
 
 
 
-sub_F5C4:
+sub_F5C4_записать_таймер_экрана_0100:
 C - - - - - 0x03F5D4 0F:F5C4: A0 01     LDY #$01
-loc_F5C6:   ; Y = 04
+loc_F5C6_записать_таймер_экрана_0400:   ; Y = 04
 C D 3 - - - 0x03F5D6 0F:F5C6: A9 00     LDA #$00
-C - - - - - 0x03F5D8 0F:F5C8: 85 9C     STA ram_009C
-C - - - - - 0x03F5DA 0F:F5CA: 84 9F     STY ram_009F
+C - - - - - 0x03F5D8 0F:F5C8: 85 9C     STA ram_009C_таймер_экрана_lo
+C - - - - - 0x03F5DA 0F:F5CA: 84 9F     STY ram_009F_таймер_экрана_hi
 C D 3 - - - 0x03F5DC 0F:F5CC: 60        RTS
 
 
@@ -8031,7 +8060,7 @@ C - - - - - 0x03FD88 0F:FD78: BD 40 04  LDA ram_obj_pos_X_lo,X ; 0440 0441
 C - - - - - 0x03FD8B 0F:FD7B: B0 1C     BCS bra_FD99
 C - - - - - 0x03FD8D 0F:FD7D: A9 E8     LDA #$E8
 C - - - - - 0x03FD8F 0F:FD7F: BC 10 04  LDY ram_obj_pos_Y_lo,X ; 0410 0411 
-C - - - - - 0x03FD92 0F:FD82: C0 B0     CPY #$B0
+C - - - - - 0x03FD92 0F:FD82: C0 B0     CPY #con_координата_пола
 C - - - - - 0x03FD94 0F:FD84: B0 02     BCS bra_FD88
 C - - - - - 0x03FD96 0F:FD86: A9 E7     LDA #$E7
 bra_FD88:
@@ -8046,7 +8075,7 @@ C - - - - - 0x03FDA5 0F:FD95: 10 1D     BPL bra_FDB4
 bra_FD99:
 C - - - - - 0x03FDA9 0F:FD99: A9 18     LDA #$18
 C - - - - - 0x03FDAB 0F:FD9B: BC 10 04  LDY ram_obj_pos_Y_lo,X ; 0410 0411 
-C - - - - - 0x03FDAE 0F:FD9E: C0 B0     CPY #$B0
+C - - - - - 0x03FDAE 0F:FD9E: C0 B0     CPY #con_координата_пола
 C - - - - - 0x03FDB0 0F:FDA0: B0 02     BCS bra_FDA4
 C - - - - - 0x03FDB2 0F:FDA2: A9 19     LDA #$19
 bra_FDA4:
@@ -8071,7 +8100,7 @@ C - - - - - 0x03FDD9 0F:FDC9: BD 60 04  LDA ram_obj_spd_Z_hi,X ; 0460 0461
 C - - - - - 0x03FDDC 0F:FDCC: 30 0F     BMI bra_FDDD
 C - - - - - 0x03FDDE 0F:FDCE: 1D 60 04  ORA ram_obj_spd_Z_hi,X ; 0460 0461 
 C - - - - - 0x03FDE1 0F:FDD1: F0 0A     BEQ bra_FDDD
-C - - - - - 0x03FDE3 0F:FDD3: A9 B1     LDA #$B1
+C - - - - - 0x03FDE3 0F:FDD3: A9 B1     LDA #con_координата_пола + $01
 C - - - - - 0x03FDE5 0F:FDD5: DD 10 04  CMP ram_obj_pos_Y_lo,X ; 0410 0411 
 C - - - - - 0x03FDE8 0F:FDD8: B0 03     BCS bra_FDDD
 C - - - - - 0x03FDEA 0F:FDDA: 9D 10 04  STA ram_obj_pos_Y_lo,X ; 0410 0411 
@@ -8177,7 +8206,7 @@ tbl_FE37:
 loc_FE58_отрисовка_экрана_главное_меню:
 loc_0x03FE68_отрисовка_экрана_главное_меню:
 C - - - - - 0x03FE6E 0F:FE5E: A9 00     LDA #con_script_draw_главное_меню
-C - - - - - 0x03FE70 0F:FE60: 20 AE F5  JSR sub_F5AE_подготовить_скрипт
+C - - - - - 0x03FE70 0F:FE60: 20 AE F5  JSR sub_F5AE_подготовить_новый_скрипт
 C - - - - - 0x03F579 0F:F569: 20 C2 F6  JSR sub_F6C2_выключить_музыку_и_звуки
 C - - - - - 0x03FE73 0F:FE63: 4C 3E E1  JMP loc_E13E_подготовить_затемнение_из_белого_в_цветной
 
@@ -8213,7 +8242,7 @@ loc_0x03FEAF:
 C D 3 - - - 0x03FEAF 0F:FE9F: 30 0B     BMI bra_FEAC
 C - - - - - 0x03FEB1 0F:FEA1: D0 0B     BNE bra_FEAE
 C - - - - - 0x03FEB3 0F:FEA3: B9 10 04  LDA ram_obj_pos_Y_lo,Y ; 0410 0411 
-C - - - - - 0x03FEB6 0F:FEA6: C9 B0     CMP #$B0
+C - - - - - 0x03FEB6 0F:FEA6: C9 B0     CMP #con_координата_пола
 C - - - - - 0x03FEB8 0F:FEA8: A9 02     LDA #$02
 C - - - - - 0x03FEBA 0F:FEAA: B0 0A     BCS bra_FEB6
 bra_FEAC:

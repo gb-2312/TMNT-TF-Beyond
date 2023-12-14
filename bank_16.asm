@@ -593,7 +593,7 @@ sub_0x02E6E6:
 C D 1 - - - 0x02E6E6 0B:A6D6: 20 91 A5  JSR sub_A591
 C - - - - - 0x02E6E9 0B:A6D9: D0 13     BNE bra_A6EE
 C - - - - - 0x02E6EB 0B:A6DB: B9 10 04  LDA ram_obj_pos_Y_lo,Y ; 0410 0411 
-C - - - - - 0x02E6EE 0B:A6DE: C9 B0     CMP #$B0
+C - - - - - 0x02E6EE 0B:A6DE: C9 B0     CMP #con_координата_пола
 C - - - - - 0x02E6F0 0B:A6E0: 90 0C     BCC bra_A6EE
 C - - - - - 0x02E6F2 0B:A6E2: B9 80 05  LDA ram_0580_obj,Y ; 0580 0581 
 C - - - - - 0x02E6F5 0B:A6E5: D0 07     BNE bra_A6EE
@@ -790,14 +790,14 @@ C - - - - - 0x02EA69 0B:AA59: 90 31     BEQ bra_AA8C_RTS
 C - - - - - 0x02EA6B 0B:AA5B: A4 27     LDA ram_0027
 C - - - - - 0x02EA6D 0B:AA5D: C0 01     CMP #$01
 C - - - - - 0x02EA6F 0B:AA5F: D0 2B     BNE bra_AA8C_RTS
-C - - - - - 0x02EA71 0B:AA61: 86 9C     STX ram_009C
+C - - - - - 0x02EA71 0B:AA61: 86 9C     STX ram_009C_unk
                                         JSR sub_AA1E_расчет_автобаланса_с_индексом
                                         TXA
                                         TAY
 C - - - - - 0x02EA83 0B:AA73: 49 01     EOR #$01
 C - - - - - 0x02EA85 0B:AA75: AA        TAX
                                         JSR sub_AA1E_расчет_автобаланса
-C - - - - - 0x02EA9A 0B:AA8A: A6 9C     LDX ram_009C
+C - - - - - 0x02EA9A 0B:AA8A: A6 9C     LDX ram_009C_unk
 bra_AA8C_RTS:
 C - - - - - 0x02EA9F 0B:AA8F: 60        RTS
 
@@ -2030,7 +2030,7 @@ C - - - - - 0x02F828 0B:B818: 20 4F DF  JSR sub_0x03DF5F
 C - - - - - 0x02F82B 0B:B81B: BD 60 04  LDA ram_obj_spd_Z_hi,X ; 0460 0461 
 C - - - - - 0x02F82E 0B:B81E: 30 D9     BMI bra_B7F9
 C - - - - - 0x02F830 0B:B820: BD 10 04  LDA ram_obj_pos_Y_lo,X ; 0410 0411 
-C - - - - - 0x02F833 0B:B823: C9 B0     CMP #$B0
+C - - - - - 0x02F833 0B:B823: C9 B0     CMP #con_координата_пола
 C - - - - - 0x02F835 0B:B825: 90 D2     BCC bra_B7F9
 C - - - - - 0x02F837 0B:B827: 20 67 D0  JSR sub_0x03DB48_очистить_spd_X_и_spd_Z
 C - - - - - 0x02F83A 0B:B82A: A9 10     LDA #$10
@@ -3319,7 +3319,7 @@ C - - - - - 0x02690B 09:A8FB: 29 01     AND #$01
 C - - - - - 0x02690D 09:A8FD: A8        TAY
 C - - - - - 0x02690E 09:A8FE: B9 1B A9  LDA tbl_A91B,Y
 C - - - - - 0x026911 09:A901: 9D 40 04  STA ram_obj_pos_X_lo,X ; 0447 
-C - - - - - 0x026914 09:A904: 20 04 DD  JSR sub_0x03DD14
+C - - - - - 0x026914 09:A904: 20 04 DD  JSR sub_0x03DD14_повернуть_прилетающего_сплинтера_в_нужную_сторону_по_горизонтали
 C - - - - - 0x026917 09:A907: A9 C0     LDA #$C0
 C - - - - - 0x026919 09:A909: 9D 80 05  STA ram_0580_obj,X ; 0587 
 C - - - - - 0x02691C 09:A90C: 20 7D D1  JSR sub_0x03D18D

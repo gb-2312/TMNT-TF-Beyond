@@ -1334,7 +1334,7 @@ C - - - - - 0x034789 0D:8779: 4C 0E 8A  JMP loc_8A0E
 
 ofs_033_877C_12:
 - - - - - - 0x03478C 0D:877C: BD 10 04  LDA ram_obj_pos_Y_lo,X
-- - - - - - 0x03478F 0D:877F: C9 B0     CMP #$B0
+- - - - - - 0x03478F 0D:877F: C9 B0     CMP #con_координата_пола
 - - - - - - 0x034791 0D:8781: D0 10     BNE bra_8793
 - - - - - - 0x034793 0D:8783: A9 00     LDA #$00
 - - - - - - 0x034795 0D:8785: 9D C8 06  STA ram_06C8_cpu_btn,X
@@ -1373,7 +1373,7 @@ C - - - - - 0x0347C5 0D:87B5: BD C6 06  LDA ram_06C6_cpu_btn,X ; 06C6 06C7
 C - - - - - 0x0347C8 0D:87B8: 29 CB     AND #con_btns_AB + con_btns_LR + con_btn_Up
 C - - - - - 0x0347CA 0D:87BA: 9D C6 06  STA ram_06C6_cpu_btn,X ; 06C6 06C7 
 C - - - - - 0x0347CD 0D:87BD: BD 10 04  LDA ram_obj_pos_Y_lo,X ; 0410 0411 
-C - - - - - 0x0347D0 0D:87C0: C9 B0     CMP #$B0
+C - - - - - 0x0347D0 0D:87C0: C9 B0     CMP #con_координата_пола
 C - - - - - 0x0347D2 0D:87C2: D0 26     BNE bra_87EA
 C - - - - - 0x0347D4 0D:87C4: BD 20 05  LDA ram_obj_state_hi,X ; 0520 0521 
 C - - - - - 0x0347D7 0D:87C7: C9 01     CMP #con_plr_state_в_прыжке
@@ -1384,7 +1384,7 @@ C - - - - - 0x0347DB 0D:87CB: 4C 0E 8A  JMP loc_8A0E
 
 ofs_033_87CE_0E:
 - - - - - - 0x0347DE 0D:87CE: BD 10 04  LDA ram_obj_pos_Y_lo,X
-- - - - - - 0x0347E1 0D:87D1: C9 B0     CMP #$B0
+- - - - - - 0x0347E1 0D:87D1: C9 B0     CMP #con_координата_пола
 - - - - - - 0x0347E3 0D:87D3: D0 12     BNE bra_87E7
 - - - - - - 0x0347E5 0D:87D5: AD 38 06  LDA ram_расстояние_между_персами
 - - - - - - 0x0347E8 0D:87D8: F0 10     BEQ bra_87EA_вплотную
@@ -1855,7 +1855,7 @@ C - - - - - 0x034AEF 0D:8ADF: 29 C3     AND #con_btns_AB + con_btns_LR
 C - - - - - 0x034AF1 0D:8AE1: 9D C6 06  STA ram_06C6_cpu_btn,X ; 06C6 06C7 
 C - - - - - 0x034AF4 0D:8AE4: 9D C8 06  STA ram_06C8_cpu_btn,X ; 06C8 06C9 
 C - - - - - 0x034AF7 0D:8AE7: BD 10 04  LDA ram_obj_pos_Y_lo,X ; 0410 0411 
-C - - - - - 0x034AFA 0D:8AEA: C9 B0     CMP #$B0
+C - - - - - 0x034AFA 0D:8AEA: C9 B0     CMP #con_координата_пола
 C - - - - - 0x034AFC 0D:8AEC: D0 EB     BNE bra_8AD9
 C - - - - - 0x034AFE 0D:8AEE: BD 20 05  LDA ram_obj_state_hi,X ; 0520 0521 
 ; bzk optimize, BEQ
@@ -6221,7 +6221,7 @@ C - - - - - 0x0361DF 0D:A1CF: C9 07     CMP #$07
 C - - - - - 0x0361E1 0D:A1D1: B0 1E     BCS bra_A1F1_RTS
 ; if персы достаточно близко друг к другу
 C - - - - - 0x0361E3 0D:A1D3: B9 10 04  LDA ram_obj_pos_Y_lo,Y ; 0410 0411 
-C - - - - - 0x0361E6 0D:A1D6: C9 B0     CMP #$B0
+C - - - - - 0x0361E6 0D:A1D6: C9 B0     CMP #con_координата_пола
 C - - - - - 0x0361E8 0D:A1D8: 90 17     BCC bra_A1F1_RTS
 C - - - - - 0x0361EA 0D:A1DA: BD 20 05  LDA ram_obj_state_hi,X ; 0520 0521 
 C - - - - - 0x0361ED 0D:A1DD: 19 62 05  ORA ram_0562,Y ; 0562 0563 
@@ -6358,7 +6358,7 @@ C - - - - - 0x03629A 0D:A28A: B9 54 05  LDA ram_obj_id + $04,Y ; 0554 0555
 C - - - - - 0x03629D 0D:A28D: C9 38     CMP #con_0552_special_don_пила_подкат
 C - - - - - 0x03629F 0D:A28F: D0 10     BNE bra_A2A1
 C - - - - - 0x0362A1 0D:A291: BD 10 04  LDA ram_obj_pos_Y_lo,X ; 0410 
-C - - - - - 0x0362A4 0D:A294: C9 AF     CMP #$AF
+C - - - - - 0x0362A4 0D:A294: C9 AF     CMP #con_координата_пола - $01
 C - - - - - 0x0362A6 0D:A296: B0 09     BCS bra_A2A1
 C - - - - - 0x0362A8 0D:A298: C9 70     CMP #$70
 C - - - - - 0x0362AA 0D:A29A: 90 05     BCC bra_A2A1
@@ -6408,7 +6408,7 @@ C - - - - - 0x0362F1 0D:A2E1: B0 66     BCS bra_A349_слишком_далеко
 ; if персы достаточно близко друг к другу
 C - - - - - 0x0362F3 0D:A2E3: BC DE 06  LDY ram_06DE_cpu_индекс_соперника,X ; 06DE 06DF 
 C - - - - - 0x0362F6 0D:A2E6: B9 10 04  LDA ram_obj_pos_Y_lo,Y ; 0410 0411 
-C - - - - - 0x0362F9 0D:A2E9: C9 B0     CMP #$B0
+C - - - - - 0x0362F9 0D:A2E9: C9 B0     CMP #con_координата_пола
 C - - - - - 0x0362FB 0D:A2EB: 90 5C     BCC bra_A349
 C - - - - - 0x0362FD 0D:A2ED: B9 62 05  LDA ram_0562,Y ; 0562 0563 
 C - - - - - 0x036300 0D:A2F0: 19 64 05  ORA ram_0564,Y ; 0564 0565 
@@ -7007,7 +7007,7 @@ bra_A5DA:
 - - - - - - 0x0365EE 0D:A5DE: 4C 63 A6  JMP loc_A663
 bra_A5E1:
 - - - - - - 0x0365F1 0D:A5E1: B9 10 04  LDA ram_obj_pos_Y_lo,Y
-- - - - - - 0x0365F4 0D:A5E4: C9 B0     CMP #$B0
+- - - - - - 0x0365F4 0D:A5E4: C9 B0     CMP #con_координата_пола
 - - - - - - 0x0365F6 0D:A5E6: D0 11     BNE bra_A5F9
 - - - - - - 0x0365F8 0D:A5E8: B9 0C 06  LDA ram_plr_таймер_для_суперки,Y
 - - - - - - 0x0365FB 0D:A5EB: F0 0C     BEQ bra_A5F9
