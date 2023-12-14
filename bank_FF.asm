@@ -4110,7 +4110,8 @@ C - - - - - 0x03E684 0F:E674: 0A        ASL
 C - - - - - 0x03E685 0F:E675: 0A        ASL
 C - - - - - 0x03E686 0F:E676: 8D 3F 06  STA ram_кто_выиграл_бой
 C - - - - - 0x03E689 0F:E679: A9 0F     LDA #con_0095_tournament_окончен
-C - - - - - 0x03E68B 0F:E67B: D0 0F     BNE bra_E68C    ; jmp
+C - - - - - 0x03E68B 0F:E67B: D0 0F     STA ram_0095_стадия_игры
+                                        RTS
 
 
 
@@ -4128,7 +4129,6 @@ bra_E68A:
 sub_E68A:
 loc_0x03E69A:
 C D 3 - - - 0x03E69A 0F:E68A: A9 0D     LDA #con_0095_старт_gameover_continue
-bra_E68C:
 C - - - - - 0x03E69C 0F:E68C: 85 95     STA ram_0095_стадия_игры
 bra_E68E_RTS:
 C - - - - - 0x03E69E 0F:E68E: 60        RTS
