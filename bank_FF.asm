@@ -6534,7 +6534,9 @@ C - - - - - 0x03F3DA 0F:F3CA: 8E 12 01  STA ram_0112
 C - - - - - 0x03F3DD 0F:F3CD: 20 09 D0  JSR sub_D009_очистить_оперативку_1
 C - - - - - 0x03F3E0 0F:F3D0: 20 00 F0  JSR sub_F000_отрисовать_главное_меню
 C - - - - - 0x03F3E3 0F:F3D3: 20 48 E1  JSR sub_E148_подготовить_затемнение_из_белого_в_цветной
-C - - - - - 0x03F3E6 0F:F3D6: 4C 38 F5  JMP loc_F538
+C - - - - - 0x03F3E6 0F:F3D6: 4C 38 F5  JSR sub_F5C4_записать_таймер_экрана_0100
+                                        INC ram_script_draw_lo  ; 00 -> 01
+                                        RTS
 
 
 
@@ -6779,7 +6781,6 @@ C - - - - - 0x03F542 0F:F532: A5 FF     LDA ram_for_2000
 C - - - - - 0x03F544 0F:F534: 09 02     ORA #$02
 C - - - - - 0x03F546 0F:F536: 85 FF     STA ram_for_2000
 bra_F538:
-loc_F538:
 C D 3 - - - 0x03F548 0F:F538: 20 C4 F5  JSR sub_F5C4_записать_таймер_экрана_0100
 C - - - - - 0x03F54B 0F:F53B: E6 21     INC ram_script_draw_lo
 C - - - - - 0x03F54D 0F:F53D: 60        RTS
