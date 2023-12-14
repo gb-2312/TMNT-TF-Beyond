@@ -4695,11 +4695,6 @@ tbl_E993:
 
 
 
-bra_E9A0_RTS:
-C - - - - - 0x03E9B0 0F:E9A0: 60        RTS
-
-
-
 loc_E9A1:
 C D 3 - - - 0x03E9B1 0F:E9A1: A0 00     LDY #$00
 C - - - - - 0x03E9B3 0F:E9A3: 8C 3C 06  STY ram_063C
@@ -4707,13 +4702,13 @@ C - - - - - 0x03E9B6 0F:E9A6: 8C 3D 06  STY ram_063D
 C - - - - - 0x03E9B9 0F:E9A9: A2 01     LDX #$01
 C - - - - - 0x03E9BB 0F:E9AB: A5 95     LDA ram_0095_стадия_игры
 C - - - - - 0x03E9BD 0F:E9AD: C9 01     CMP #con_0095_очистка_2
-C - - - - - 0x03E9BF 0F:E9AF: F0 EF     BEQ bra_E9A0_RTS
+C - - - - - 0x03E9BF 0F:E9AF: F0 EF     BEQ bra_EA23_RTS
 C - - - - - 0x03E9C1 0F:E9B1: C9 1A     CMP #$1A
-C - - - - - 0x03E9C3 0F:E9B3: B0 EB     BCS bra_E9A0_RTS
+C - - - - - 0x03E9C3 0F:E9B3: B0 EB     BCS bra_EA23_RTS
 C - - - - - 0x03E9C5 0F:E9B5: C9 08     CMP #$08
 C - - - - - 0x03E9C7 0F:E9B7: 90 06     BCC bra_E9BF
 C - - - - - 0x03E9C9 0F:E9B9: C9 17     CMP #$17
-C - - - - - 0x03E9CB 0F:E9BB: 90 E3     BCC bra_E9A0_RTS
+C - - - - - 0x03E9CB 0F:E9BB: 90 E3     BCC bra_EA23_RTS
 C - - - - - 0x03E9CD 0F:E9BD: CA        DEX ; 00
 C - - - - - 0x03E9CE 0F:E9BE: C8        INY ; 01
 bra_E9BF:
@@ -4772,6 +4767,7 @@ C - - - - - 0x03EA2D 0F:EA1D: 05 00     ORA ram_0000
 C - - - - - 0x03EA2F 0F:EA1F: 85 FF     STA ram_for_2000
 ; bzk optimize, оно надо?
 C - - - - - 0x03EA31 0F:EA21: A5 95     LDA ram_0095_стадия_игры
+bra_EA23_RTS:
 C - - - - - 0x03EA33 0F:EA23: 60        RTS
 
 
