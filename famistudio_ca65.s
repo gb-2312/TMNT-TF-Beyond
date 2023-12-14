@@ -24,6 +24,7 @@
 
 ;======================================================================================================================
 ; INTERFACE
+; bzk список подпрограмм, для подробностей искать (public) вместе со скобками
 ;
 ; The interface is pretty much the same as FamiTone2, with a slightly different naming convention. The subroutines you
 ; can call from your game are: 
@@ -82,9 +83,9 @@
 ; like the example below.
 ;======================================================================================================================
 
-.define FAMISTUDIO_CA65_ZP_SEGMENT   ZP
-.define FAMISTUDIO_CA65_RAM_SEGMENT  RAM
-.define FAMISTUDIO_CA65_CODE_SEGMENT PRG
+.define FAMISTUDIO_CA65_ZP_SEGMENT   ZP_FS
+.define FAMISTUDIO_CA65_RAM_SEGMENT  RAM_FS
+.define FAMISTUDIO_CA65_CODE_SEGMENT BANK_0E_FS
 
 ;======================================================================================================================
 ; 2) AUDIO EXPANSION CONFIGURATION
@@ -946,6 +947,9 @@ famistudio_ptr1_hi = famistudio_ptr1+1
 .endif
 
 .segment .string(FAMISTUDIO_CA65_CODE_SEGMENT)
+
+.org $8000
+    .byte con_bank_id + $0E   ; 
 
 FAMISTUDIO_APU_PL1_VOL    = $4000
 FAMISTUDIO_APU_PL1_SWEEP  = $4001
