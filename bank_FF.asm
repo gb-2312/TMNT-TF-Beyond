@@ -1210,16 +1210,11 @@ C - - - - - 0x03D30A 0F:D2FA: 4C A1 E9  JMP loc_E9A1
 
 
 
-bra_D303_RTS:
-C - - - - - 0x03D313 0F:D303: 60        RTS
-
-
-
 sub_D304_попытка_поставить_паузу:
 C - - - - - 0x03D314 0F:D304: A5 26     LDA ram_0026_flag
 C - - - - - 0x03D316 0F:D306: 05 98     ORA ram_0098_flag
 C - - - - - 0x03D318 0F:D308: 05 24     ORA ram_таймер_выкл_рендеринга
-C - - - - - 0x03D31A 0F:D30A: D0 F7     BNE bra_D303_RTS
+C - - - - - 0x03D31A 0F:D30A: D0 F7     BNE bra_D332_RTS
 C - - - - - 0x03D31C 0F:D30C: A4 8E     LDY ram_btn_press
 C - - - - - 0x03D31E 0F:D30E: A5 2C     LDA ram_game_mode
 ; con_gm_story
