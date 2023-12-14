@@ -10717,9 +10717,9 @@ C - - - - - 0x027B52 09:BB42: AC 60 05  LDY ram_obj_timer
 C - - - - - 0x027B55 09:BB45: C0 40     CPY #$40
 C - - - - - 0x027B57 09:BB47: 90 3A     BCC bra_BB83
 C - - - - - 0x027B59 09:BB49: 18        CLC
-C - - - - - 0x027B5A 09:BB4A: AD 40 06  LDA ram_0640
+C - - - - - 0x027B5A 09:BB4A: AD 40 06  LDA ram_номер_раунда_боя
 C - - - - - 0x027B5D 09:BB4D: 69 06     ADC #$06
-C - - - - - 0x027B5F 09:BB4F: D0 32     BNE bra_BB83    ; jmp?
+C - - - - - 0x027B5F 09:BB4F: D0 32     BNE bra_BB83    ; jmp
 
 
 

@@ -76,9 +76,10 @@ ofs_041_8106_01_отрисовать_экран_player_select:
 C - - J - - 0x02C116 0B:8106: EE 3E 06  INC ram_063E
 C - - - - - 0x02C119 0B:8109: A4 2C     LDY ram_game_mode
                                         BNE bra_812C
-                                        LDA ram_все_персы_в_story
+; Y = 00
+                                        LDA ram_флаг_всех_персов_в_story
                                         BEQ bra_812C
-                                        INY
+                                        INY ; 01
 ; con_gm_story
 ; con_gm_vs_player
 ; con_gm_vs_cpu
@@ -236,7 +237,7 @@ C - - - - - 0x02C1F4 0B:81E4: 18        CLC
 C - - - - - 0x02C1F5 0B:81E5: 75 A2     ADC ram_plr_id,X
                                         PHA
 C - - - - - 0x02EA9C 0B:AA8C: AC E0 04  LDY ram_04E0_obj
-                                        LDA ram_все_персы_в_story
+                                        LDA ram_флаг_всех_персов_в_story
                                         BEQ bra_81F4
                                         LDY #$01
 bra_81F4:
@@ -1306,7 +1307,7 @@ C - - - - - 0x02EFA6 0B:AF96: A4 2C     LDY ram_game_mode
 ; con_gm_vs_cpu
 C - - - - - 0x02EFA8 0B:AF98: C0 01     CPY #$01
 C - - - - - 0x02EFAA 0B:AF9A: D0 17     BNE bra_AFB3_RTS    ; if con_gm_vs_player
-- - - - - - 0x02EFAC 0B:AF9C: AA        LDX ram_063F
+- - - - - - 0x02EFAC 0B:AF9C: AA        LDX ram_кто_выиграл_бой
 - - - - - - 0x02EFAD 0B:AF9D: BD 29 01  LDA ram_plr_колво_побед_в_матчах,X
 - - - - - - 0x02EFB0 0B:AFA0: 29 0F     AND #$0F
 - - - - - - 0x02EFB2 0B:AFA2: 49 09     EOR #$09

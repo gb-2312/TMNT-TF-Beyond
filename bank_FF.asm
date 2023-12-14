@@ -1334,11 +1334,11 @@ C - - - - - 0x03D3C2 0F:D3B2: F0 E8     BEQ bra_D39C    ; jmp
 
 
 loc_D3B4_80_затемнение_из_цветного_в_черный:
-C D 2 - - - 0x03D3C4 0F:D3B4: AD 02 06  LDA ram_015E
+C D 2 - - - 0x03D3C4 0F:D3B4: AD 02 06  LDA ram_015E_счетчик_яркости_1
 C - - - - - 0x03D3C7 0F:D3B7: D0 08     BNE bra_D3C1
-C - - - - - 0x03D3C9 0F:D3B9: EE 02 06  INC ram_015E
+C - - - - - 0x03D3C9 0F:D3B9: EE 02 06  INC ram_015E_счетчик_яркости_1
 C - - - - - 0x03D3CC 0F:D3BC: A9 08     LDA #$08
-C - - - - - 0x03D3CE 0F:D3BE: 8D 03 06  STA ram_015F
+C - - - - - 0x03D3CE 0F:D3BE: 8D 03 06  STA ram_015F_счетчик_яркости_2
 bra_D3C1:
 C - - - - - 0x03D3D1 0F:D3C1: A9 08     LDA #$08
 C - - - - - 0x03D3D3 0F:D3C3: 20 5C D4  JSR sub_D45C    ; возможен PLA PLA
@@ -1383,7 +1383,7 @@ C - - - - - 0x03D408 0F:D3F8: 60        RTS
 
 
 loc_D3F9_01_осветление_из_черного_в_цветной:
-C D 2 - - - 0x03D409 0F:D3F9: AD 02 06  LDA ram_015E
+C D 2 - - - 0x03D409 0F:D3F9: AD 02 06  LDA ram_015E_счетчик_яркости_1
 C - - - - - 0x03D40C 0F:D3FC: D0 1C     BNE bra_D41A
 C - - - - - 0x03D40E 0F:D3FE: A2 1F     LDX #$1F
 bra_D400_loop:
@@ -1394,24 +1394,24 @@ C - - - - - 0x03D418 0F:D408: 9D 4D 06  STA ram_pal_buffer,X
 C - - - - - 0x03D41B 0F:D40B: CA        DEX
 C - - - - - 0x03D41C 0F:D40C: 10 F2     BPL bra_D400_loop
 sub_D40E:
-C - - - - - 0x03D41E 0F:D40E: EE 02 06  INC ram_015E
+C - - - - - 0x03D41E 0F:D40E: EE 02 06  INC ram_015E_счетчик_яркости_1
 C - - - - - 0x03D421 0F:D411: 20 64 D4  JSR sub_D464_запись_FF_в_066D
 C - - - - - 0x03D424 0F:D414: A9 08     LDA #$08
-C - - - - - 0x03D426 0F:D416: 8D 03 06  STA ram_015F
+C - - - - - 0x03D426 0F:D416: 8D 03 06  STA ram_015F_счетчик_яркости_2
 bra_D419_RTS:
 C - - - - - 0x03D429 0F:D419: 60        RTS
 bra_D41A:
-C - - - - - 0x03D42A 0F:D41A: CE 03 06  DEC ram_015F
+C - - - - - 0x03D42A 0F:D41A: CE 03 06  DEC ram_015F_счетчик_яркости_2
 C - - - - - 0x03D42D 0F:D41D: 10 FA     BPL bra_D419_RTS
-C - - - - - 0x03D42F 0F:D41F: AC 02 06  LDY ram_015E
-C - - - - - 0x03D432 0F:D422: B9 55 D4  LDA tbl_D456 - $01,Y
-C - - - - - 0x03D435 0F:D425: 85 00     STA ram_0000
+C - - - - - 0x03D42F 0F:D41F: AC 02 06  LDY ram_015E_счетчик_яркости_1
+C - - - - - 0x03D432 0F:D422: B9 55 D4  LDA tbl_D456_ограничение_яркости - $01,Y
+C - - - - - 0x03D435 0F:D425: 85 00     STA ram_0000    ; ограничение яркости
 C - - - - - 0x03D437 0F:D427: A2 1F     LDX #$1F
 bra_D429_loop:
 C - - - - - 0x03D439 0F:D429: BD 04 06  LDA ram_0160,X
 C - - - - - 0x03D43C 0F:D42C: A8        TAY
 C - - - - - 0x03D43D 0F:D42D: 29 F0     AND #$F0
-C - - - - - 0x03D43F 0F:D42F: C5 00     CMP ram_0000
+C - - - - - 0x03D43F 0F:D42F: C5 00     CMP ram_0000    ; ограничение яркости
 C - - - - - 0x03D441 0F:D431: D0 05     BNE bra_D438
 C - - - - - 0x03D443 0F:D433: 98        TYA
 C - - - - - 0x03D444 0F:D434: 29 0F     AND #$0F
@@ -1428,7 +1428,7 @@ bra_D445:
 C - - - - - 0x03D455 0F:D445: CA        DEX
 C - - - - - 0x03D456 0F:D446: 10 E1     BPL bra_D429_loop
 C - - - - - 0x03D458 0F:D448: 20 0E D4  JSR sub_D40E
-C - - - - - 0x03D45B 0F:D44B: AD 02 06  LDA ram_015E
+C - - - - - 0x03D45B 0F:D44B: AD 02 06  LDA ram_015E_счетчик_яркости_1
 C - - - - - 0x03D45E 0F:D44E: C9 05     CMP #$05
 C - - - - - 0x03D460 0F:D450: B0 01     BCS bra_D453
 C - - - - - 0x03D462 0F:D452: 60        RTS
@@ -1437,7 +1437,7 @@ C - - - - - 0x03D463 0F:D453: 4C EC D3  JMP loc_D3F6_очистить_0600_063B_
 
 
 
-tbl_D456:
+tbl_D456_ограничение_яркости:
 - D 2 - - - 0x03D466 0F:D456: 30        .byte $30   ; 01
 - D 2 - - - 0x03D467 0F:D457: 20        .byte $20   ; 02
 - D 2 - - - 0x03D468 0F:D458: 10        .byte $10   ; 03
@@ -1446,9 +1446,9 @@ tbl_D456:
 
 
 sub_D45C:
-C - - - - - 0x03D46C 0F:D45C: CE 03 06  DEC ram_015F
+C - - - - - 0x03D46C 0F:D45C: CE 03 06  DEC ram_015F_счетчик_яркости_2
 C - - - - - 0x03D46F 0F:D45F: 10 09     BPL bra_D46A
-C - - - - - 0x03D471 0F:D461: 8D 03 06  STA ram_015F
+C - - - - - 0x03D471 0F:D461: 8D 03 06  STA ram_015F_счетчик_яркости_2
 bra_D464_запись_FF_в_066D:
 sub_D464_запись_FF_в_066D:
 loc_D464_запись_FF_в_066D:
@@ -1477,11 +1477,11 @@ C - - - - - 0x03D487 0F:D477: 30 EB     BMI bra_D464_запись_FF_в_066D    
 
 
 loc_D479_40_затемнение_из_белого_в_цветной:
-C D 2 - - - 0x03D489 0F:D479: AD 02 06  LDA ram_015E
+C D 2 - - - 0x03D489 0F:D479: AD 02 06  LDA ram_015E_счетчик_яркости_1
 C - - - - - 0x03D48C 0F:D47C: D0 09     BNE bra_D487
-C - - - - - 0x03D48E 0F:D47E: EE 02 06  INC ram_015E
+C - - - - - 0x03D48E 0F:D47E: EE 02 06  INC ram_015E_счетчик_яркости_1
 C - - - - - 0x03D491 0F:D481: A9 06     LDA #$06
-C - - - - - 0x03D493 0F:D483: 8D 03 06  STA ram_015F
+C - - - - - 0x03D493 0F:D483: 8D 03 06  STA ram_015F_счетчик_яркости_2
 C - - - - - 0x03D496 0F:D486: 60        RTS
 bra_D487:
 C - - - - - 0x03D497 0F:D487: A9 0C     LDA #$0C
@@ -1516,8 +1516,8 @@ C - - - - - 0x03D4C4 0F:D4B4: 10 DE     BPL bra_D494_loop
 C - - - - - 0x03D4C6 0F:D4B6: C6 00     DEC ram_0000
 C - - - - - 0x03D4C8 0F:D4B8: 10 D6     BPL bra_D490_loop
 C - - - - - 0x03D4CA 0F:D4BA: 20 64 D4  JSR sub_D464_запись_FF_в_066D
-C - - - - - 0x03D4CD 0F:D4BD: EE 02 06  INC ram_015E
-C - - - - - 0x03D4D0 0F:D4C0: AD 02 06  LDA ram_015E
+C - - - - - 0x03D4CD 0F:D4BD: EE 02 06  INC ram_015E_счетчик_яркости_1
+C - - - - - 0x03D4D0 0F:D4C0: AD 02 06  LDA ram_015E_счетчик_яркости_1
 C - - - - - 0x03D4D3 0F:D4C3: C9 05     CMP #$05
 C - - - - - 0x03D4D5 0F:D4C5: 90 03     BCC bra_D4CA_RTS
 C - - - - - 0x03D4D7 0F:D4C7: 4C EC D3  JMP loc_D3F6_очистить_0600_063B_и_флаг_яркости
@@ -1527,11 +1527,11 @@ C - - - - - 0x03D4DA 0F:D4CA: 60        RTS
 
 
 loc_D4CB_20_осветление_из_цветного_в_белый:
-C D 2 - - - 0x03D4DB 0F:D4CB: AC 02 06  LDY ram_015E
+C D 2 - - - 0x03D4DB 0F:D4CB: AC 02 06  LDY ram_015E_счетчик_яркости_1
 C - - - - - 0x03D4DE 0F:D4CE: D0 1B     BNE bra_D4EB
-C - - - - - 0x03D4E0 0F:D4D0: EE 02 06  INC ram_015E
+C - - - - - 0x03D4E0 0F:D4D0: EE 02 06  INC ram_015E_счетчик_яркости_1
 C - - - - - 0x03D4E3 0F:D4D3: A9 08     LDA #$08
-C - - - - - 0x03D4E5 0F:D4D5: 8D 03 06  STA ram_015F
+C - - - - - 0x03D4E5 0F:D4D5: 8D 03 06  STA ram_015F_счетчик_яркости_2
 C - - - - - 0x03D4E8 0F:D4D8: A2 1F     LDX #$1F
 bra_D4DA_loop:
 C - - - - - 0x03D4EA 0F:D4DA: BD 4D 06  LDA ram_pal_buffer,X
@@ -1557,7 +1557,7 @@ bra_D500:
 C - - - - - 0x03D510 0F:D500: 9D 4D 06  STA ram_pal_buffer,X
 C - - - - - 0x03D513 0F:D503: CA        DEX
 C - - - - - 0x03D514 0F:D504: 10 EF     BPL bra_D4F5_loop
-C - - - - - 0x03D516 0F:D506: EE 02 06  INC ram_015E
+C - - - - - 0x03D516 0F:D506: EE 02 06  INC ram_015E_счетчик_яркости_1
 C - - - - - 0x03D519 0F:D509: 4C 64 D4  JMP loc_D464_запись_FF_в_066D
 bra_D50C:
 C - - - - - 0x03D51C 0F:D50C: A2 1F     LDX #$1F
@@ -1574,8 +1574,8 @@ C - - - - - 0x03D52D 0F:D51D: 9D 4D 06  STA ram_pal_buffer,X
 bra_D520:
 C - - - - - 0x03D530 0F:D520: CA        DEX
 C - - - - - 0x03D531 0F:D521: 10 EB     BPL bra_D50E_loop
-C - - - - - 0x03D533 0F:D523: EE 02 06  INC ram_015E
-C - - - - - 0x03D536 0F:D526: AD 02 06  LDA ram_015E
+C - - - - - 0x03D533 0F:D523: EE 02 06  INC ram_015E_счетчик_яркости_1
+C - - - - - 0x03D536 0F:D526: AD 02 06  LDA ram_015E_счетчик_яркости_1
 C - - - - - 0x03D539 0F:D529: C9 06     CMP #$06
 C - - - - - 0x03D53B 0F:D52B: 90 03     BCC bra_D530
 C - - - - - 0x03D53D 0F:D52D: 20 EC D3  JSR sub_D3F6_очистить_0600_063B_и_флаг_яркости
@@ -3119,8 +3119,8 @@ C - - - - - 0x03E140 0F:E130: 85 30     STA ram_метод_изменения_я
 loc_E133:
 C D 3 - - - 0x03E143 0F:E133: A9 00     LDA #$00
 C - - - - - 0x03E145 0F:E135: 8D 6D 06  STA ram_066D
-C - - - - - 0x03E148 0F:E138: 8D 02 06  STA ram_015E
-C - - - - - 0x03E14B 0F:E13B: 85 A4     STA ram_00A4
+C - - - - - 0x03E148 0F:E138: 8D 02 06  STA ram_015E_счетчик_яркости_1
+C - - - - - 0x03E14B 0F:E13B: 85 A4     STA ram_00A4_кнопки
 C - - - - - 0x03E14D 0F:E13D: 60        RTS
 
 
@@ -3358,7 +3358,7 @@ C - - - - - 0x03E266 0F:E256: E6 95     INC ram_0095_стадия_игры    ; 
 C - - - - - 0x03E268 0F:E258: A9 00     LDA #$00
 C - - - - - 0x03E26A 0F:E25A: 8D 49 06  STA ram_plr_колво_побед_в_раундах
 C - - - - - 0x03E26D 0F:E25D: 8D 4A 06  STA ram_plr_колво_побед_в_раундах + $01
-C - - - - - 0x03E270 0F:E260: 8D 40 06  STA ram_0640
+C - - - - - 0x03E270 0F:E260: 8D 40 06  STA ram_номер_раунда_боя
 C - - - - - 0x03E273 0F:E263: A5 2C     LDA ram_game_mode
 ; con_gm_story
 ; con_gm_vs_player
@@ -3740,7 +3740,7 @@ tbl_E46B_default_flip_перса:
 
 ofs_001_E46D_06_подготовка_к_бою:
 C - - J - - 0x03E47D 0F:E46D: A4 9E     LDY ram_номер_боя_story
-C - - - - - 0x03E47F 0F:E46F: B9 AB FC  LDA tbl_FCAB,Y
+C - - - - - 0x03E47F 0F:E46F: B9 AB FC  LDA tbl_FCAB_саундтрек,Y
 C - - - - - 0x03E482 0F:E472: 20 8B F6  JSR sub_F68B_выключить_звуки_и_записать_новый
                                        ;LDA #con_0095_раунд_идет
 C - - - - - 0x03E485 0F:E475: E6 95     INC ram_0095_стадия_игры    ; 06 -> 07
@@ -3935,7 +3935,7 @@ bra_E579:
 ; con_gm_vs_team
 ; con_gm_tournament
 C - - - - - 0x03E589 0F:E579: 20 2E E1  JSR sub_E12E_подготовить_затемнение_из_цветного_в_черный
-C - - - - - 0x03E58C 0F:E57C: EE 40 06  INC ram_0640
+C - - - - - 0x03E58C 0F:E57C: EE 40 06  INC ram_номер_раунда_боя
 C - - - - - 0x03E58F 0F:E57F: AD 49 06  LDA ram_plr_колво_побед_в_раундах
 C - - - - - 0x03E592 0F:E582: 0D 4A 06  ORA ram_plr_колво_побед_в_раундах + $01
 C - - - - - 0x03E595 0F:E585: C9 02     CMP #$02
@@ -3960,7 +3960,7 @@ bra_E596:
 ; con_gm_tournament
 C - - - - - 0x03E5A6 0F:E596: E0 03     CPX #$03
 C - - - - - 0x03E5A8 0F:E598: B0 2A     BCS bra_E5C4
-C - - - - - 0x03E5AA 0F:E59A: AD 40 06  LDA ram_0640
+C - - - - - 0x03E5AA 0F:E59A: AD 40 06  LDA ram_номер_раунда_боя
 C - - - - - 0x03E5AD 0F:E59D: C9 03     CMP #$03
 C - - - - - 0x03E5AF 0F:E59F: 90 23     BCC bra_E5C4
 C - - - - - 0x03E5B1 0F:E5A1: D0 08     BNE bra_E5AB
@@ -3973,8 +3973,8 @@ C - - - - - 0x03E5BD 0F:E5AD: AD 49 06  LDA ram_plr_колво_побед_в_р�
 C - - - - - 0x03E5C0 0F:E5B0: CD 4A 06  CMP ram_plr_колво_побед_в_раундах + $01
 C - - - - - 0x03E5C3 0F:E5B3: F0 05     BEQ bra_E5BA
 - - - - - - 0x03E5C5 0F:E5B5: B0 29     BCS bra_E5E0
-- - - - - - 0x03E5C7 0F:E5B7: C8        INY
-- - - - - - 0x03E5C8 0F:E5B8: 90 26     BCC bra_E5E0
+- - - - - - 0x03E5C7 0F:E5B7: C8        INY ; 01
+- - - - - - 0x03E5C8 0F:E5B8: 90 26     BCC bra_E5E0    ; jmp
 bra_E5BA:
 C - - - - - 0x03E5CA 0F:E5BA: A9 80     LDA #$80
 C - - - - - 0x03E5CC 0F:E5BC: A4 2C     LDY ram_game_mode
@@ -4002,7 +4002,7 @@ C - - J - - 0x03E5E5 0F:E5D5: A0 00     LDY #$00
 C - - - - - 0x03E5E7 0F:E5D7: AD 49 06  LDA ram_plr_колво_побед_в_раундах
 C - - - - - 0x03E5EA 0F:E5DA: CD 4A 06  CMP ram_plr_колво_побед_в_раундах + $01
 C - - - - - 0x03E5ED 0F:E5DD: B0 01     BCS bra_E5E0
-C - - - - - 0x03E5EF 0F:E5DF: C8        INY
+C - - - - - 0x03E5EF 0F:E5DF: C8        INY ; 01
 bra_E5E0:
 C - - - - - 0x03E5F0 0F:E5E0: 84 08     STY ram_0008
 C - - - - - 0x03E5F2 0F:E5E2: A6 2C     LDX ram_game_mode
@@ -4040,11 +4040,11 @@ bra_E60C:
 loc_0x03E61C:
 C - - - - - 0x03E61C 0F:E60C: A5 08     LDA ram_0008
 bra_E60E:
-C - - - - - 0x03E61E 0F:E60E: 20 B8 F8  STA ram_063F
-                                        BMI bra_E611
+C - - - - - 0x03E61E 0F:E60E: 20 B8 F8  STA ram_кто_выиграл_бой
+                                        BMI bra_E611_ничья
                                         JSR sub_F600_swap_prg_16_no_return
                                         JSR sub_0x02EFA0
-bra_E611:
+bra_E611_ничья:
 C - - - - - 0x03E621 0F:E611: A9 11     LDA #con_0095_старт_rematch_end
 C - - - - - 0x03E623 0F:E613: 85 95     STA ram_0095_стадия_игры
 C - - - - - 0x03E625 0F:E615: A9 00     LDA #$00
@@ -4108,7 +4108,7 @@ C - - - - - 0x03E681 0F:E671: 0A        ASL
 C - - - - - 0x03E682 0F:E672: 65 08     ADC ram_0008
 C - - - - - 0x03E684 0F:E674: 0A        ASL
 C - - - - - 0x03E685 0F:E675: 0A        ASL
-C - - - - - 0x03E686 0F:E676: 8D 3F 06  STA ram_063F
+C - - - - - 0x03E686 0F:E676: 8D 3F 06  STA ram_кто_выиграл_бой
 C - - - - - 0x03E689 0F:E679: A9 0F     LDA #con_0095_tournament_окончен
 C - - - - - 0x03E68B 0F:E67B: D0 0F     BNE bra_E68C    ; jmp
 
@@ -4985,7 +4985,7 @@ C - - - - - 0x03EB09 0F:EAF9: A5 95     LDA ram_0095_стадия_игры
 C - - - - - 0x03EB0B 0F:EAFB: C9 10     CMP #$10
 C - - - - - 0x03EB0D 0F:EAFD: B0 08     BCS bra_EB07
 C - - - - - 0x03EB0F 0F:EAFF: A4 9E     LDY ram_номер_боя_story
-C - - - - - 0x03EB11 0F:EB01: B9 BA FC  LDA tbl_FCBA,Y
+C - - - - - 0x03EB11 0F:EB01: B9 BA FC  LDA tbl_FCBA_звук_no_time,Y
 C - - - - - 0x03EB14 0F:EB04: 20 90 F6  JSR sub_F690_записать_звук_сохранив_X_Y
 bra_EB07:
 loc_EB07:
@@ -6194,7 +6194,7 @@ C - - - - - 0x03F1D3 0F:F1C3: 88        DEY
 C - - - - - 0x03F1D4 0F:F1C4: 10 F5     BPL bra_F1BB_loop
 C - - - - - 0x03F1D6 0F:F1C6: 30 2C     BMI bra_F1F4_soft_reset    ; jmp
 bra_F1C8_hard_reset:
-; выставить значения по умолчанию
+; выставить значения опций по умолчанию
 C - - - - - 0x03F1D8 0F:F1C8: A0 07     LDY #$07
 bra_F1CA_loop:
 C - - - - - 0x03F1DA 0F:F1CA: B9 BB F9  LDA tbl_F9BB_опции_по_умолчанию,Y
@@ -6484,8 +6484,8 @@ C - - - - - 0x03F396 0F:F386: 20 32 D0  JSR sub_D032_поинтеры_после
 - D 3 - I - 0x03F3B1 0F:F3A1: CA F7     .word ofs_000_F7CA_0C_topscore
 bra_F3A3_обработать_яркость:
 C - - - - - 0x03F3B3 0F:F3A3: A5 90     LDA ram_sum_btn_press
-C - - - - - 0x03F3B5 0F:F3A5: 05 A4     ORA ram_00A4
-C - - - - - 0x03F3B7 0F:F3A7: 85 A4     STA ram_00A4
+C - - - - - 0x03F3B5 0F:F3A5: 05 A4     ORA ram_00A4_кнопки
+C - - - - - 0x03F3B7 0F:F3A7: 85 A4     STA ram_00A4_кнопки
 C - - - - - 0x03F3B9 0F:F3A9: A5 30     LDA ram_метод_изменения_яркости
 C - - - - - 0x03F3BB 0F:F3AB: 30 09     BMI bra_F3B6_80
 C - - - - - 0x03F3BD 0F:F3AD: 0A        ASL
@@ -6587,7 +6587,7 @@ C - - - - - 0x03F43D 0F:F42D: 29 10     AND #con_btn_Start
 C - - - - - 0x03F43F 0F:F42F: F0 2C     BEQ bra_F45D_RTS
                                         LDA ram_btn_hold
                                         AND #con_btn_Select
-                                        STA ram_все_персы_в_story
+                                        STA ram_флаг_всех_персов_в_story
 C - - - - - 0x03F441 0F:F431: A9 29     LDA #$29    ; con_075C_29
 C - - - - - 0x03F443 0F:F433: 85 98     STA ram_0098_flag
 C - - - - - 0x03F445 0F:F435: 20 90 F6  JSR sub_F690_записать_звук_сохранив_X_Y
@@ -7916,7 +7916,7 @@ C - - - - - 0x03FCA9 0F:FC99: 60        RTS
 
 
 tbl_FC9A_scanline:
-; con_0048
+; смотреть con_0048
 ; номер сканлинии
 - - - - - - 0x03FCAA 0F:FC9A: 30        .byte $30   ; 00
 - D 3 - - - 0x03FCAB 0F:FC9B: 28        .byte $28   ; 01
@@ -7938,7 +7938,7 @@ tbl_FC9A_scanline:
 
 
 
-tbl_FCAB:
+tbl_FCAB_саундтрек:
 - D 3 - - - 0x03FCBB 0F:FCAB: 2E        .byte con_music_ost_sewer   ; 00 con_fighter_leo
 - D 3 - - - 0x03FCBC 0F:FCAC: 2F        .byte con_music_ost_down_town   ; 01 con_fighter_raph
 - D 3 - - - 0x03FCBD 0F:FCAD: 2E        .byte con_music_ost_sewer   ; 02 con_fighter_mike
@@ -7950,7 +7950,7 @@ tbl_FCAB:
 
 
 
-tbl_FCBA:
+tbl_FCBA_звук_no_time:
 - D 3 - - - 0x03FCCA 0F:FCBA: 33        .byte con_music_no_time_sewer   ; 00 con_fighter_leo
 - D 3 - - - 0x03FCCB 0F:FCBB: 34        .byte con_music_no_time_down_town   ; 01 con_fighter_raph
 - D 3 - - - 0x03FCCC 0F:FCBC: 33        .byte con_music_no_time_sewer   ; 02 con_fighter_mike
@@ -8327,7 +8327,7 @@ C - - - - - 0x03FF6B 0F:FF5B: AD 90 05  LDA ram_plr_hp_lo
 C - - - - - 0x03FF6E 0F:FF5E: CD 91 05  CMP ram_plr_hp_lo + $01
 loc_FF61:
 C D 3 - - - 0x03FF71 0F:FF61: D0 07     BNE bra_FF6A
-C - - - - - 0x03FF73 0F:FF63: AD 40 06  LDA ram_0640
+C - - - - - 0x03FF73 0F:FF63: AD 40 06  LDA ram_номер_раунда_боя
 C - - - - - 0x03FF76 0F:FF66: 29 01     AND #$01
 C - - - - - 0x03FF78 0F:FF68: D0 02     BNE bra_FF6C
 bra_FF6A:

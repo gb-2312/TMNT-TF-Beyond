@@ -3091,7 +3091,7 @@ tbl_9090:
 
 sub_0x0390AF_обработчик_opening:
 C - - - - - 0x0390AF 0E:909F: A5 90     LDA ram_sum_btn_press
-C - - - - - 0x0390B1 0E:90A1: 05 A4     ORA ram_00A4
+C - - - - - 0x0390B1 0E:90A1: 05 A4     ORA ram_00A4_кнопки
 C - - - - - 0x0390B3 0E:90A3: 29 30     AND #con_btns_SS
 C - - - - - 0x0390B5 0E:90A5: D0 29     BNE bra_90D0
 C - - - - - 0x0390B7 0E:90A7: A5 21     LDA ram_script_draw_lo
@@ -5180,7 +5180,7 @@ C - - - - - 0x039FCE 0E:9FBE: 60        RTS
 
 sub_0x039FCF_обработчик_экрана_topscore:
 C - - - - - 0x039FCF 0E:9FBF: A5 90     LDA ram_sum_btn_press
-C - - - - - 0x039FD1 0E:9FC1: 05 A4     ORA ram_00A4
+C - - - - - 0x039FD1 0E:9FC1: 05 A4     ORA ram_00A4_кнопки
 C - - - - - 0x039FD3 0E:9FC3: 29 30     AND #con_btns_SS
 C - - - - - 0x039FD5 0E:9FC5: D0 09     BNE bra_9FD0
 C - - - - - 0x039FD7 0E:9FC7: A5 21     LDA ram_script_draw_lo
@@ -5379,12 +5379,14 @@ C - - - - - 0x03A112 0E:A102: 85 08     STA ram_0008
 bra_A104_loop:
 C - - - - - 0x03A114 0E:A104: A9 00     LDA #$00
 C - - - - - 0x03A116 0E:A106: 85 04     STA ram_0004    ; флаг рисования разбитой рожи
-C - - - - - 0x03A118 0E:A108: AD 3F 06  LDA ram_063F
-C - - - - - 0x03A11B 0E:A10B: 30 06     BMI bra_A113
+C - - - - - 0x03A118 0E:A108: AD 3F 06  LDA ram_кто_выиграл_бой
+C - - - - - 0x03A11B 0E:A10B: 30 06     BMI bra_A113_ничья
 C - - - - - 0x03A11D 0E:A10D: C5 08     CMP ram_0008
-C - - - - - 0x03A11F 0E:A10F: F0 02     BEQ bra_A113
-C - - - - - 0x03A121 0E:A111: E6 04     INC ram_0004    ; 01 флаг рисования разбитой рожи
-bra_A113:
+C - - - - - 0x03A11F 0E:A10F: F0 02     BEQ bra_A113_этот_игрок_победил
+; if этот игрок проиграл
+C - - - - - 0x03A121 0E:A111: E6 04     INC ram_0004    ; флаг рисования разбитой рожи
+bra_A113_ничья:
+bra_A113_этот_игрок_победил:
 C - - - - - 0x03A123 0E:A113: A6 08     LDX ram_0008
 C - - - - - 0x03A125 0E:A115: B4 A2     LDY ram_plr_id,X
 C - - - - - 0x03A127 0E:A117: E8        INX
@@ -6167,12 +6169,12 @@ C - - - - - 0x03A46C 0E:A45C: 20 D3 F7  JSR sub_0x03F7E3_отрисовать_п
 C - - - - - 0x03A46F 0E:A45F: A2 06     LDX #$06    ; tip_индекс_буфера_палитры + $06
 C - - - - - 0x03A471 0E:A461: A9 64     LDA #con_AF40_pal + $64
 C - - - - - 0x03A473 0E:A463: 20 46 D3  JSR sub_0x03D356_записать_3_цвета_в_буфер
-C - - - - - 0x03A476 0E:A466: AD 3F 06  LDA ram_063F
-C - - - - - 0x03A479 0E:A469: 30 06     BMI bra_A471
+C - - - - - 0x03A476 0E:A466: AD 3F 06  LDA ram_кто_выиграл_бой
+C - - - - - 0x03A479 0E:A469: 30 06     BMI bra_A471_ничья
 C - - - - - 0x03A47B 0E:A46B: 49 01     EOR #$01
-C - - - - - 0x03A47D 0E:A46D: AA        TAX
+C - - - - - 0x03A47D 0E:A46D: AA        TAX ; индекс проигравшего
 C - - - - - 0x03A47E 0E:A46E: FE 00 04  INC ram_obj_anim_id,X ; 0401 
-bra_A471:
+bra_A471_ничья:
 C - - - - - 0x03A481 0E:A471: A2 01     LDX #$01
 bra_A473_loop:
 C - - - - - 0x03A483 0E:A473: A9 00     LDA #$00
