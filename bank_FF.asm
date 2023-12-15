@@ -128,7 +128,6 @@
 .export sub_0x03EC8B
 .export sub_0x03EC96
 .export sub_0x03EC9E
-.export sub_0x03ECF8
 .export tbl_0x03EFA1
 .export tbl_0x03EFA5
 .export sub_0x03EFB0
@@ -5309,19 +5308,6 @@ bra_ECBB:
 C - - - - - 0x03ECCB 0F:ECBB: B9 80 04  LDA ram_obj_spd_X_hi,Y ; 0480 0481 
 C - - - - - 0x03ECCE 0F:ECBE: 10 F0     BPL bra_ECB0
 C - - - - - 0x03ECD0 0F:ECC0: 30 F0     BMI bra_ECB2    ; jmp
-
-
-
-sub_0x03ECF8:
-C - - - - - 0x03ECF8 0F:ECE8: BD 80 04  LDA ram_obj_spd_X_hi,X ; 0480 0481 
-C - - - - - 0x03ECFB 0F:ECEB: 30 06     BMI bra_ECF3
-C - - - - - 0x03ECFD 0F:ECED: A9 E7     LDA #$E7
-C - - - - - 0x03ECFF 0F:ECEF: DD 40 04  CMP ram_obj_pos_X_lo,X ; 0440 0441 
-C - - - - - 0x03ED02 0F:ECF2: 60        RTS
-bra_ECF3:
-C - - - - - 0x03ED03 0F:ECF3: BD 40 04  LDA ram_obj_pos_X_lo,X ; 0440 0441 
-C - - - - - 0x03ED06 0F:ECF6: C9 19     CMP #$19
-C - - - - - 0x03ED08 0F:ECF8: 60        RTS
 
 
 

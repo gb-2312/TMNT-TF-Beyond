@@ -1462,7 +1462,7 @@ C - - - - - 0x03476B 0D:875B: 4C 97 88  JMP loc_8897
 
 
 ofs_033_875E_13:
-C - - J - - 0x03476E 0D:875E: 20 E8 EC  JSR sub_0x03ECF8
+C - - J - - 0x03476E 0D:875E: 20 E8 EC  JSR sub_ECE8
 C - - - - - 0x034771 0D:8761: 90 CE     BCC bra_8731
 C - - - - - 0x034773 0D:8763: BC DE 06  LDY ram_06DE_cpu_индекс_соперника,X ; 06DE 06DF 
 C - - - - - 0x034776 0D:8766: B9 10 06  LDA ram_plr_флаг_индекса_атаки,Y ; 0610 0611 
@@ -1896,7 +1896,7 @@ ofs_033_8A23_09:
 
 
 ofs_033_8A2A_01:
-C - - J - - 0x034A3A 0D:8A2A: 20 E8 EC  JSR sub_0x03ECF8
+C - - J - - 0x034A3A 0D:8A2A: 20 E8 EC  JSR sub_ECE8
 C - - - - - 0x034A3D 0D:8A2D: 90 CC     BCC bra_89FB
 C - - - - - 0x034A3F 0D:8A2F: 20 8E EC  JSR sub_0x03EC9E
 C - - - - - 0x034A42 0D:8A32: 90 C7     BCC bra_89FB
@@ -1914,7 +1914,7 @@ C - - - - - 0x034A50 0D:8A40: F0 B9     BEQ bra_89FB
 C - - - - - 0x034A52 0D:8A42: BD 20 05  LDA ram_obj_state_hi,X ; 0520 0521 
 C - - - - - 0x034A55 0D:8A45: C9 03     CMP #con_plr_state_получает_урон
 C - - - - - 0x034A57 0D:8A47: F0 B2     BEQ bra_89FB
-C - - - - - 0x034A59 0D:8A49: 20 E8 EC  JSR sub_0x03ECF8
+C - - - - - 0x034A59 0D:8A49: 20 E8 EC  JSR sub_ECE8
 C - - - - - 0x034A5C 0D:8A4C: 90 AD     BCC bra_89FB
 C - - - - - 0x034A5E 0D:8A4E: BD C6 06  LDA ram_06C6_cpu_btn,X ; 06C6 06C7 
 C - - - - - 0x034A61 0D:8A51: 1D C8 06  ORA ram_06C8_cpu_btn,X ; 06C8 06C9 
@@ -1971,7 +1971,7 @@ C - - J - - 0x034ABC 0D:8AAC: A5 13     LDA ram_0013
 C - - - - - 0x034ABE 0D:8AAE: D0 03     BNE bra_8AB3
 C - - - - - 0x034AC0 0D:8AB0: 4C FB 89  JMP loc_89FB
 bra_8AB3:
-C - - - - - 0x034AC3 0D:8AB3: 20 E8 EC  JSR sub_0x03ECF8
+C - - - - - 0x034AC3 0D:8AB3: 20 E8 EC  JSR sub_ECE8
 C - - - - - 0x034AC6 0D:8AB6: 90 F1     BCC bra_8AA9
 C - - - - - 0x034AC8 0D:8AB8: DE E0 06  DEC ram_06E0_cpu_timer,X ; 06E0 06E1 
 C - - - - - 0x034ACB 0D:8ABB: D0 03     BNE bra_8AC0
@@ -3124,7 +3124,7 @@ C - - - - - 0x034EF4 0D:8EE4: C9 01     CMP #$01
 C - - - - - 0x034EF6 0D:8EE6: D0 03     BNE bra_8EEB
 - - - - - - 0x034EF8 0D:8EE8: 4C 64 8F  JMP loc_8F64
 bra_8EEB:
-C - - - - - 0x034EFB 0D:8EEB: 20 E8 EC  JSR sub_0x03ECF8
+C - - - - - 0x034EFB 0D:8EEB: 20 E8 EC  JSR sub_ECE8
 C - - - - - 0x034EFE 0D:8EEE: 90 1E     BCC bra_8F0E
 C - - - - - 0x034F00 0D:8EF0: A5 11     LDA ram_0011
 C - - - - - 0x034F02 0D:8EF2: C9 07     CMP #$07
@@ -8235,6 +8235,20 @@ C - - - - - 0x03ED96 0F:ED86: 60        RTS
 bra_ED87:
 C - - - - - 0x03ED97 0F:ED87: 18        CLC
 C - - - - - 0x03ED98 0F:ED88: 60        RTS
+
+
+
+sub_ECE8:
+; перемещено из банка FF
+C - - - - - 0x03ECF8 0F:ECE8: BD 80 04  LDA ram_obj_spd_X_hi,X ; 0480 0481 
+C - - - - - 0x03ECFB 0F:ECEB: 30 06     BMI bra_ECF3
+C - - - - - 0x03ECFD 0F:ECED: A9 E7     LDA #$E7
+C - - - - - 0x03ECFF 0F:ECEF: DD 40 04  CMP ram_obj_pos_X_lo,X ; 0440 0441 
+C - - - - - 0x03ED02 0F:ECF2: 60        RTS
+bra_ECF3:
+C - - - - - 0x03ED03 0F:ECF3: BD 40 04  LDA ram_obj_pos_X_lo,X ; 0440 0441 
+C - - - - - 0x03ED06 0F:ECF6: C9 19     CMP #$19
+C - - - - - 0x03ED08 0F:ECF8: 60        RTS
 
 
 
