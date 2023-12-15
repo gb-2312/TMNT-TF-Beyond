@@ -129,7 +129,6 @@
 .export sub_0x03EC96
 .export sub_0x03EC9E
 .export sub_0x03ECF8
-.export loc_0x03ED15
 .export sub_0x03ED6A
 .export sub_0x03ED9F_запись_кнопки_hold_и_press
 .export loc_0x03ED9F_запись_кнопки_hold_и_press
@@ -5326,16 +5325,6 @@ bra_ECF3:
 C - - - - - 0x03ED03 0F:ECF3: BD 40 04  LDA ram_obj_pos_X_lo,X ; 0440 0441 
 C - - - - - 0x03ED06 0F:ECF6: C9 19     CMP #$19
 C - - - - - 0x03ED08 0F:ECF8: 60        RTS
-
-
-
-loc_0x03ED15:
-C D 3 - - - 0x03ED15 0F:ED05: BD C6 06  LDA ram_06C6_cpu_btn,X ; 06C6 06C7 
-C - - - - - 0x03ED18 0F:ED08: 1D C8 06  ORA ram_06C8_cpu_btn,X ; 06C8 06C9 
-C - - - - - 0x03ED1B 0F:ED0B: 95 91     STA ram_btn_hold,X
-C - - - - - 0x03ED1D 0F:ED0D: 9D C6 06  STA ram_06C6_cpu_btn,X ; 06C6 06C7 
-C - - - - - 0x03ED20 0F:ED10: 9D C8 06  STA ram_06C8_cpu_btn,X ; 06C8 06C9 
-C - - - - - 0x03ED23 0F:ED13: 60        RTS
 
 
 
