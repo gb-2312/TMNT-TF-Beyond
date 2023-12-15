@@ -128,7 +128,6 @@
 .export sub_0x03EC8B
 .export sub_0x03EC96
 .export sub_0x03EC9E
-.export sub_0x03ECE9_проверить_ограничение_по_X
 .export sub_0x03ECF8
 .export loc_0x03ED15
 .export sub_0x03ED6A
@@ -5314,23 +5313,6 @@ bra_ECBB:
 C - - - - - 0x03ECCB 0F:ECBB: B9 80 04  LDA ram_obj_spd_X_hi,Y ; 0480 0481 
 C - - - - - 0x03ECCE 0F:ECBE: 10 F0     BPL bra_ECB0
 C - - - - - 0x03ECD0 0F:ECC0: 30 F0     BMI bra_ECB2    ; jmp
-
-
-
-sub_0x03ECE9_проверить_ограничение_по_X:
-; проверить объект на диапазон 24-DB по оси X
-; если меньше или больше, то C = 1, иначе C = 0
-C - - - - - 0x03ECE9 0F:ECD9: BD 40 04  LDA ram_obj_pos_X_lo,X ; 0441 
-C - - - - - 0x03ECEC 0F:ECDC: C9 DC     CMP #$DC
-C - - - - - 0x03ECEE 0F:ECDE: 90 02     BCC bra_ECE2
-bra_ECE0:
-C - - - - - 0x03ECF0 0F:ECE0: 18        CLC
-C - - - - - 0x03ECF1 0F:ECE1: 60        RTS
-bra_ECE2:
-C - - - - - 0x03ECF2 0F:ECE2: C9 24     CMP #$24
-C - - - - - 0x03ECF4 0F:ECE4: 90 FA     BCC bra_ECE0
-C - - - - - 0x03ECF6 0F:ECE6: 38        SEC
-C - - - - - 0x03ECF7 0F:ECE7: 60        RTS
 
 
 

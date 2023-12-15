@@ -5395,7 +5395,7 @@ C - - - - - 0x035C46 0D:9C36: D0 37     BNE bra_9C6F_RTS
 C - - - - - 0x035C49 0D:9C39: A5 13     LDA ram_0013
 C - - - - - 0x035C4B 0D:9C3B: C9 03     CMP #$03
 C - - - - - 0x035C4D 0D:9C3D: F0 21     BEQ bra_9C60
-C - - - - - 0x035C4F 0D:9C3F: 20 D9 EC  JSR sub_0x03ECE9_проверить_ограничение_по_X
+C - - - - - 0x035C4F 0D:9C3F: 20 D9 EC  JSR sub_ECD9_проверить_ограничение_по_X
 C - - - - - 0x035C52 0D:9C42: B0 1C     BCS bra_9C60
 C - - - - - 0x035C54 0D:9C44: BC DE 06  LDY ram_06DE_cpu_индекс_соперника,X ; 06DF 
 C - - - - - 0x035C57 0D:9C47: B9 40 05  LDA ram_obj_state_lo,Y ; 0540 
@@ -5545,7 +5545,7 @@ ofs_022_9CD0_0D:
 - - - - - - 0x035CE0 0D:9CD0: A5 13     LDA ram_0013
 - - - - - - 0x035CE2 0D:9CD2: C9 02     CMP #$02
 - - - - - - 0x035CE4 0D:9CD4: B0 12     BCS bra_9CE8_RTS
-- - - - - - 0x035CE6 0D:9CD6: 20 D9 EC  JSR sub_0x03ECE9_проверить_ограничение_по_X
+- - - - - - 0x035CE6 0D:9CD6: 20 D9 EC  JSR sub_ECD9_проверить_ограничение_по_X
 - - - - - - 0x035CE9 0D:9CD9: B0 0D     BCS bra_9CE8_RTS
 - - - - - - 0x035CEB 0D:9CDB: BD 10 06  LDA ram_plr_флаг_индекса_атаки,X
 - - - - - - 0x035CEE 0D:9CDE: D0 09     BNE bra_9CE9
@@ -8159,6 +8159,24 @@ C - - - - - 0x03ED37 0F:ED27: 60        RTS
 bra_ED28_2й_игрок:
 C - - - - - 0x03ED38 0F:ED28: B9 A0 06  LDA ram_поведение_cpu_2,Y ; 06A0 06A1 06A2 06A3 06A4 06A5 06A6 06A7 06A8 06A9 06AA 06AB 06AC 06AD 06AE 06AF 06B0 06B1 06B2 
 C - - - - - 0x03ED3B 0F:ED2B: 60        RTS
+
+
+
+sub_ECD9_проверить_ограничение_по_X:
+; перемещено из банка FF
+; проверить объект на диапазон 24-DB по оси X
+; если меньше или больше, то C = 1, иначе C = 0
+C - - - - - 0x03ECE9 0F:ECD9: BD 40 04  LDA ram_obj_pos_X_lo,X ; 0441 
+C - - - - - 0x03ECEC 0F:ECDC: C9 DC     CMP #$DC
+C - - - - - 0x03ECEE 0F:ECDE: 90 02     BCC bra_ECE2
+bra_ECE0:
+C - - - - - 0x03ECF0 0F:ECE0: 18        CLC
+C - - - - - 0x03ECF1 0F:ECE1: 60        RTS
+bra_ECE2:
+C - - - - - 0x03ECF2 0F:ECE2: C9 24     CMP #$24
+C - - - - - 0x03ECF4 0F:ECE4: 90 FA     BCC bra_ECE0
+C - - - - - 0x03ECF6 0F:ECE6: 38        SEC
+C - - - - - 0x03ECF7 0F:ECE7: 60        RTS
 
 
 
