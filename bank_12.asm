@@ -7,7 +7,6 @@
 
 
 .export sub_0x024014
-.export sub_0x024018
 .export ofs_0x024635
 .export sub_0x024AF7_выбор_начальной_анимации_персу
 .export sub_0x02624F
@@ -36,7 +35,7 @@
 
 sub_0x024014:
 C - - - - - 0x024014 09:8004: 20 3B FF  JSR sub_0x03FF4B_вычисление_приоритета_игрока_в_бою
-sub_0x024018:
+sub_8008:
 loc_8008_loop:
 C D 0 - - - 0x024018 09:8008: A6 AD     LDX ram_00AD
 C - - - - - 0x02401A 09:800A: 86 A8     STX ram_local_obj_index
@@ -10817,6 +10816,11 @@ bra_BBCD:
 C - - - - - 0x027BDD 09:BBCD: E6 2A     INC ram_002A
 C - - - - - 0x027BDF 09:BBCF: 20 96 EA  JSR sub_0x03EAA6_обновить_и_отрисовать_время_боя
 C - - - - - 0x027BE2 09:BBD2: 20 75 F7  JSR sub_0x03F785_вычислить_расстояние_между_персами
+C - - - - - 0x03EFB0 0F:EFA0: A2 01     LDX #$01
+C - - - - - 0x03EFB2 0F:EFA2: 86 9D     STX ram_009D    ; индекс стены в bonus game?
+C - - - - - 0x03EFB4 0F:EFA4: CA        DEX ; 00
+C - - - - - 0x03EFB5 0F:EFA5: 86 AD     STX ram_00AD    ; индекс игрока в bonus game
+C - - - - - 0x03EFB7 0F:EFA7: 20 08 80  JSR sub_8008
 C - - - - - 0x027BE5 09:BBD5: 20 A0 EF  JSR sub_0x03EFB0
 C - - - - - 0x027BEB 09:BBDB: A2 00     LDX #$00
 C - - - - - 0x027BED 09:BBDD: 86 AD     STX ram_00AD
