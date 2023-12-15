@@ -149,7 +149,6 @@
 .export loc_0x03EE24_проверка_доступности_мяча_для_подбора
 .export sub_0x03EE3F_проверка_запущенного_мяча_соперником
 .export sub_0x03EE4E_проверка_близости_объектов_с_областью_A
-.export sub_0x03EE76_проверить_здоровье_персов
 .export tbl_0x03EFA1
 .export tbl_0x03EFA5
 .export sub_0x03EFB0
@@ -5676,40 +5675,6 @@ bra_EE5F:
 ; if разница координат больше 0100, то в хитбокс точно не попадает
 - - - - - - 0x03EE6F 0F:EE5F: 38        SEC
 - - - - - - 0x03EE70 0F:EE60: 60        RTS
-
-
-
-sub_0x03EE76_проверить_здоровье_персов:
-C - - - - - 0x03EE76 0F:EE66: BD 90 05  LDA ram_plr_hp_lo,X ; 0590 0591 
-C - - - - - 0x03EE79 0F:EE69: 19 90 05  ORA ram_plr_hp_lo,Y ; 0590 0591 
-C - - - - - 0x03EE7C 0F:EE6C: C9 40     CMP #$40
-C - - - - - 0x03EE7E 0F:EE6E: 90 1B     BCC bra_EE8B
-C - - - - - 0x03EE80 0F:EE70: 38        SEC
-C - - - - - 0x03EE81 0F:EE71: BD 90 05  LDA ram_plr_hp_lo,X ; 0590 0591 
-C - - - - - 0x03EE84 0F:EE74: F9 90 05  SBC ram_plr_hp_lo,Y ; 0590 0591 
-C - - - - - 0x03EE87 0F:EE77: 90 04     BCC bra_EE7D
-C - - - - - 0x03EE89 0F:EE79: C9 30     CMP #$30
-C - - - - - 0x03EE8B 0F:EE7B: B0 16     BCS bra_EE93
-bra_EE7D:
-C - - - - - 0x03EE8D 0F:EE7D: 38        SEC
-C - - - - - 0x03EE8E 0F:EE7E: B9 90 05  LDA ram_plr_hp_lo,Y ; 0590 0591 
-C - - - - - 0x03EE91 0F:EE81: FD 90 05  SBC ram_plr_hp_lo,X ; 0590 0591 
-C - - - - - 0x03EE94 0F:EE84: C9 30     CMP #$30
-C - - - - - 0x03EE96 0F:EE86: B0 07     BCS bra_EE8F
-C - - - - - 0x03EE98 0F:EE88: A9 00     LDA #$00
-C - - - - - 0x03EE9A 0F:EE8A: 60        RTS
-bra_EE8B:
-C - - - - - 0x03EE9B 0F:EE8B: 38        SEC
-C - - - - - 0x03EE9C 0F:EE8C: A9 00     LDA #$00
-C - - - - - 0x03EE9E 0F:EE8E: 60        RTS
-bra_EE8F:
-C - - - - - 0x03EE9F 0F:EE8F: 18        CLC
-C - - - - - 0x03EEA0 0F:EE90: A9 FF     LDA #$FF
-C - - - - - 0x03EEA2 0F:EE92: 60        RTS
-bra_EE93:
-C - - - - - 0x03EEA3 0F:EE93: 18        CLC
-C - - - - - 0x03EEA4 0F:EE94: A9 01     LDA #$01
-C - - - - - 0x03EEA6 0F:EE96: 60        RTS
 
 
 
