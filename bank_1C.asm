@@ -730,7 +730,7 @@ tbl_81D1_ppu:
 
 sub_0x0382CB_отрисовать_турнирную_сетку:
 C - - - - - 0x0382CB 0E:82BB: 20 BE DA  JSR sub_0x03DACE_удалить_все_объекты
-C - - - - - 0x0382CE 0E:82BE: 20 6E DD  JSR sub_0x03DD7E
+C - - - - - 0x0382CE 0E:82BE: 20 6E DD  JSR sub_0x03DD7E_очистить_скролл
 C - - - - - 0x0382D1 0E:82C1: A9 07     LDA #con_0048_07
 C - - - - - 0x0382D3 0E:82C3: 20 14 F8  JSR sub_0x03F824_подготовить_irq_handler
 C - - - - - 0x0382D6 0E:82C6: 20 6D D4  JSR sub_0x03D47D_запись_черной_палитры_в_буфер

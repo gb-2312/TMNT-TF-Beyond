@@ -25,7 +25,6 @@
 .export sub_0x03D20C_EOR
 .export sub_0x03D212_ASLx4
 .export sub_0x03D217_LSRx4
-.export loc_0x03D217_LSRx4
 .export sub_0x03D21C_получить_разницу_pos_X_двух_объектов
 .export sub_0x03D228_вычислить_поворот_игрока_относительно_другого
 .export loc_0x03D228_вычислить_поворот_игрока_относительно_другого
@@ -75,7 +74,7 @@
 .export sub_0x03DD75_повернуть_объект_в_противоположную_сторону_по_горизонтали
 .export loc_0x03DD75_повернуть_объект_в_противоположную_сторону_по_горизонтали
 .export tbl_0x03E750
-.export sub_0x03DD7E
+.export sub_0x03DD7E_очистить_скролл
 .export sub_0x03DD96
 .export sub_0x03DDF9_запись_сидячего_состояния_персу
 .export loc_0x03DDF9_запись_сидячего_состояния_персу
@@ -957,8 +956,8 @@ C - - - - - 0x03D216 0F:D206: 60        RTS
 
 
 sub_D207_LSRx4:
+loc_D207_LSRx4:
 sub_0x03D217_LSRx4:
-loc_0x03D217_LSRx4:
 C D 2 - - - 0x03D217 0F:D207: 4A        LSR
 C - - - - - 0x03D218 0F:D208: 4A        LSR
 C - - - - - 0x03D219 0F:D209: 4A        LSR
@@ -2150,6 +2149,7 @@ C - - - - - 0x03DB94 0F:DB84: 60        RTS
 
 
 sub_0x03DBC5_скопировать_данные_объекта_X_в_Y:
+; bzk optimize, переместить в банк 12
 C - - - - - 0x03DBC5 0F:DBB5: BD 50 04  LDA ram_obj_spd_X_fr,X ; 0450 0451 0452 0453 0454 0455 0456 
 C - - - - - 0x03DBC8 0F:DBB8: 99 50 04  STA ram_obj_spd_X_fr,Y ; 045A 045B 045C 045D 
 C - - - - - 0x03DBCB 0F:DBBB: BD 40 04  LDA ram_obj_pos_X_lo,X ; 0440 0441 0442 0443 0444 0445 0446 
@@ -2287,7 +2287,7 @@ C - - - - - 0x03DCAD 0F:DC9D: D0 B9     BNE bra_DC58    ; jmp
 sub_0x03DCC1_добавить_A_Y_к_spdX:
 ; A = spd_X_lo
 ; Y = spd_X_hi
-; bzk optimize, переместить в банк 12
+; bzk optimize, переместить в банк 16
 C - - - - - 0x03DCC1 0F:DCB1: 18        CLC
 C - - - - - 0x03DCC2 0F:DCB2: 7D 90 04  ADC ram_obj_spd_X_lo,X ; 0496 
 C - - - - - 0x03DCC5 0F:DCB5: 9D 90 04  STA ram_obj_spd_X_lo,X ; 0496 
@@ -4252,7 +4252,7 @@ ofs_001_E742_0D:
 C - - J - - 0x03E752 0F:E742: 20 3C F0  JSR sub_F03C_выключить_irq___удалить_все_объекты___отрисовать_пустой_экран
                                        ;LDA #con_0095_экран_gameover_continue
 C - - - - - 0x03E755 0F:E745: E6 95     INC ram_0095_стадия_игры    ; 0D -> 0E
-sub_0x03DD7E:
+sub_0x03DD7E_очистить_скролл:
 C D 2 - - - 0x03DD7E 0F:DD6E: A5 FF     LDA ram_for_2000
 C - - - - - 0x03DD80 0F:DD70: 29 FC     AND #$FC
 C - - - - - 0x03DD82 0F:DD72: 85 FF     STA ram_for_2000
@@ -4779,7 +4779,7 @@ C - - - - - 0x027F50 09:BF40: 4A        LSR
 C - - - - - 0x027F51 09:BF41: 88        DEY
 C - - - - - 0x027F52 09:BF42: F0 03     BEQ bra_BF47
 bra_BF44:
-C - - - - - 0x027F54 09:BF44: 4C 07 D2  JMP loc_0x03D217_LSRx4
+C - - - - - 0x027F54 09:BF44: 4C 07 D2  JMP loc_D207_LSRx4
 bra_BF47:
 C - - - - - 0x027F57 09:BF47: 4A        LSR
 C - - - - - 0x027F58 09:BF48: 4A        LSR
