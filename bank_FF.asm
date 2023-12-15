@@ -154,7 +154,6 @@
 .export sub_0x03EEB9_вычислить_разницу_pos_Y_персов
 .export sub_0x03EEC9
 .export sub_0x03EF36
-.export loc_0x03EF88
 .export tbl_0x03EFA1
 .export tbl_0x03EFA5
 .export sub_0x03EFB0
@@ -5870,25 +5869,6 @@ C - - - - - 0x03EF6D 0F:EF5D: 60        RTS
 bra_EF5E:
 C - - - - - 0x03EF6E 0F:EF5E: A9 02     LDA #$02
 C - - - - - 0x03EF70 0F:EF60: 60        RTS
-
-
-
-loc_0x03EF88:
-C D 3 - - - 0x03EF88 0F:EF78: 10 14     BPL bra_EF8E
-C - - - - - 0x03EF8A 0F:EF7A: BD 40 04  LDA ram_obj_pos_X_lo,X ; 0440 0441 0442 
-; bzk bug? почему ссылка на 053F?
-C - - - - - 0x03EF8D 0F:EF7D: D9 40 04  CMP ram_obj_pos_X_lo,Y ; 0440 0441 053F 
-C - - - - - 0x03EF90 0F:EF80: B5 91     LDA ram_btn_hold,X
-C - - - - - 0x03EF92 0F:EF82: 29 01     AND #con_btn_Right
-C - - - - - 0x03EF94 0F:EF84: F0 06     BEQ bra_EF8C
-C - - - - - 0x03EF96 0F:EF86: B0 06     BCS bra_EF8E
-bra_EF88:
-C - - - - - 0x03EF98 0F:EF88: 18        CLC
-C - - - - - 0x03EF99 0F:EF89: 4C 0E AE  JMP loc_0x026E1E
-bra_EF8C:
-C - - - - - 0x03EF9C 0F:EF8C: B0 FA     BCS bra_EF88
-bra_EF8E:
-C - - - - - 0x03EF9E 0F:EF8E: 4C 27 AE  JMP loc_0x026E37
 
 
 

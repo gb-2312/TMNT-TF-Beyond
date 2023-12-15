@@ -13,8 +13,6 @@
 .export sub_0x0269A1
 .export tbl_0x026D5C_хитбокс
 .export sub_0x026DA1
-.export loc_0x026E1E
-.export loc_0x026E37
 .export sub_0x027006_отрисовать_инфу_в_статусбаре
 .export loc_0x027026_отрисовать_1p_2p_в_статусбаре_и_очки
 .export loc_0x027033_отрисовать_очки_в_статусбаре
@@ -8159,11 +8157,25 @@ C - - - - - 0x026E10 09:AE00: BD 90 04  LDA ram_obj_spd_X_lo,X ; 0490 0491 0492
 C - - - - - 0x026E13 09:AE03: 1D 80 04  ORA ram_obj_spd_X_hi,X ; 0480 0481 0482 
 C - - - - - 0x026E16 09:AE06: F0 3F     BEQ bra_AE47
 C - - - - - 0x026E18 09:AE08: 20 86 DD  JSR sub_0x03DD96
-C - - - - - 0x026E1B 09:AE0B: 4C 78 EF  JMP loc_0x03EF88
+C D 3 - - - 0x03EF88 0F:EF78: 10 14     BPL bra_EF8E
+C - - - - - 0x03EF8A 0F:EF7A: BD 40 04  LDA ram_obj_pos_X_lo,X ; 0440 0441 0442 
+; bzk bug? почему ссылка на 053F?
+C - - - - - 0x03EF8D 0F:EF7D: D9 40 04  CMP ram_obj_pos_X_lo,Y ; 0440 0441 053F 
+C - - - - - 0x03EF90 0F:EF80: B5 91     LDA ram_btn_hold,X
+C - - - - - 0x03EF92 0F:EF82: 29 01     AND #con_btn_Right
+C - - - - - 0x03EF94 0F:EF84: F0 06     BEQ bra_EF8C
+C - - - - - 0x03EF96 0F:EF86: B0 06     BCS bra_EF8E
+bra_EF88:
+C - - - - - 0x03EF98 0F:EF88: 18        CLC
+C - - - - - 0x03EF99 0F:EF89: 4C 0E AE  JMP loc_AE0E
+bra_EF8C:
+C - - - - - 0x03EF9C 0F:EF8C: B0 FA     BCS bra_EF88
+bra_EF8E:
+C - - - - - 0x03EF9E 0F:EF8E: 4C 27 AE  JMP loc_AE27
 
 
 
-loc_0x026E1E:
+loc_AE0E:
 C D 1 - - - 0x026E1E 09:AE0E: BD 90 04  LDA ram_obj_spd_X_lo,X ; 0490 0491 0492 
 C - - - - - 0x026E21 09:AE11: 79 90 04  ADC ram_obj_spd_X_lo,Y ; 0490 0491 058F 
 C - - - - - 0x026E24 09:AE14: 99 90 04  STA ram_obj_spd_X_lo,Y ; 0490 0491 058F 
@@ -8177,7 +8189,7 @@ C - - - - - 0x026E36 09:AE26: 60        RTS
 
 
 
-loc_0x026E37:
+loc_AE27:
 C D 1 - - - 0x026E37 09:AE27: 90 0D     BCC bra_AE36
 bra_AE29_loop:
 C - - - - - 0x026E39 09:AE29: BD 40 04  LDA ram_obj_pos_X_lo,X ; 0440 0441 0442 
