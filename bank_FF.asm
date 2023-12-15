@@ -129,7 +129,6 @@
 .export sub_0x03EC96
 .export sub_0x03EC9E
 .export sub_0x03ECF8
-.export sub_0x03ED6A
 .export tbl_0x03EFA1
 .export tbl_0x03EFA5
 .export sub_0x03EFB0
@@ -5323,36 +5322,6 @@ bra_ECF3:
 C - - - - - 0x03ED03 0F:ECF3: BD 40 04  LDA ram_obj_pos_X_lo,X ; 0440 0441 
 C - - - - - 0x03ED06 0F:ECF6: C9 19     CMP #$19
 C - - - - - 0x03ED08 0F:ECF8: 60        RTS
-
-
-
-sub_0x03ED6A:
-C - - - - - 0x03ED6A 0F:ED5A: BC DE 06  LDY ram_06DE_cpu_индекс_соперника,X ; 06DE 06DF 
-C - - - - - 0x03ED6D 0F:ED5D: A5 11     LDA ram_0011
-C - - - - - 0x03ED6F 0F:ED5F: C9 08     CMP #$08
-C - - - - - 0x03ED71 0F:ED61: D0 24     BNE bra_ED87
-C - - - - - 0x03ED73 0F:ED63: B9 80 04  LDA ram_obj_spd_X_hi,Y ; 0480 0481 
-C - - - - - 0x03ED76 0F:ED66: 19 90 04  ORA ram_obj_spd_X_lo,Y ; 0490 0491 
-C - - - - - 0x03ED79 0F:ED69: F0 0C     BEQ bra_ED77
-; bzk bug? должно быть просто LDA ram_дистанция_до_соперника_X_hi ?
-C - - - - - 0x03ED7B 0F:ED6B: B9 D6 06  LDA ram_дистанция_до_соперника_X_hi,Y ; 06D6 06D7 
-C - - - - - 0x03ED7E 0F:ED6E: 59 80 04  EOR ram_obj_spd_X_hi,Y ; 0480 0481 
-C - - - - - 0x03ED81 0F:ED71: 29 80     AND #$80
-C - - - - - 0x03ED83 0F:ED73: D0 10     BNE bra_ED85
-C - - - - - 0x03ED85 0F:ED75: F0 10     BEQ bra_ED87    ; jmp
-bra_ED77:
-C - - - - - 0x03ED87 0F:ED77: BC DE 06  LDY ram_06DE_cpu_индекс_соперника,X ; 06DE 06DF 
-C - - - - - 0x03ED8A 0F:ED7A: AD D6 06  LDA ram_дистанция_до_соперника_X_hi
-C - - - - - 0x03ED8D 0F:ED7D: 4A        LSR
-C - - - - - 0x03ED8E 0F:ED7E: 59 10 05  EOR ram_obj_flip,Y ; 0510 0511 
-C - - - - - 0x03ED91 0F:ED81: 29 40     AND #$40
-C - - - - - 0x03ED93 0F:ED83: F0 02     BEQ bra_ED87
-bra_ED85:
-C - - - - - 0x03ED95 0F:ED85: 38        SEC
-C - - - - - 0x03ED96 0F:ED86: 60        RTS
-bra_ED87:
-C - - - - - 0x03ED97 0F:ED87: 18        CLC
-C - - - - - 0x03ED98 0F:ED88: 60        RTS
 
 
 

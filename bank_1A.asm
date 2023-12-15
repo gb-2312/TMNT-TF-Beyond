@@ -2948,7 +2948,7 @@ C - - - - - 0x034E2A 0D:8E1A: B0 03     BCS bra_8E1F
 bra_8E1F:
 C - - - - - 0x034E2F 0D:8E1F: 20 8E EC  JSR sub_0x03EC9E
 C - - - - - 0x034E32 0D:8E22: B0 05     BCS bra_8E29
-C - - - - - 0x034E34 0D:8E24: 20 5A ED  JSR sub_0x03ED6A
+C - - - - - 0x034E34 0D:8E24: 20 5A ED  JSR sub_ED5A
 C - - - - - 0x034E37 0D:8E27: 90 2F     BCC bra_8E58
 bra_8E29:
 C - - - - - 0x034E39 0D:8E29: A5 11     LDA ram_0011
@@ -3037,7 +3037,7 @@ bra_8E9D:
 
 
 bra_8EA2:
-C - - - - - 0x034EB2 0D:8EA2: 20 5A ED  JSR sub_0x03ED6A
+C - - - - - 0x034EB2 0D:8EA2: 20 5A ED  JSR sub_ED5A
 C - - - - - 0x034EB5 0D:8EA5: B0 F6     BCS bra_8E9D
 C - - - - - 0x034EB7 0D:8EA7: A9 84     LDA #con_btn_A + con_btn_Down
 C - - - - - 0x034EB9 0D:8EA9: 4C 8F ED  JMP loc_ED8F_запись_кнопки_hold_и_press
@@ -3107,7 +3107,7 @@ C - - - - - 0x034ED3 0D:8EC3: 60        RTS
 ofs_029_8EC4_01:
 C - - J - - 0x034ED4 0D:8EC4: 20 2C ED  JSR sub_ED2C_генератор_рандома_с_учетом_запущенного_мяча
 C - - - - - 0x034ED7 0D:8EC7: 90 F5     BCC bra_8EBE
-C - - - - - 0x034ED9 0D:8EC9: 20 5A ED  JSR sub_0x03ED6A
+C - - - - - 0x034ED9 0D:8EC9: 20 5A ED  JSR sub_ED5A
 C - - - - - 0x034EDC 0D:8ECC: 90 03     BCC bra_8ED1
 C - - - - - 0x034EDE 0D:8ECE: 4C 58 8E  JMP loc_8E58
 bra_8ED1:
@@ -3243,7 +3243,7 @@ bra_8FCE:
 - - - - - - 0x034FE2 0D:8FD2: D0 03     BNE bra_8FD7
 - - - - - - 0x034FE4 0D:8FD4: 4C 6D 90  JMP loc_906D
 bra_8FD7:
-C - - - - - 0x034FE7 0D:8FD7: 20 5A ED  JSR sub_0x03ED6A
+C - - - - - 0x034FE7 0D:8FD7: 20 5A ED  JSR sub_ED5A
 C - - - - - 0x034FEA 0D:8FDA: 90 03     BCC bra_8FDF
 - - - - - - 0x034FEC 0D:8FDC: 4C 08 8E  JMP loc_8E08
 bra_8FDF:
@@ -3434,7 +3434,7 @@ C - - - - - 0x0350CE 0D:90BE: 20 32 D0  JSR sub_0x03D042_поинтеры_пос
 ofs_028_90C9_00:
 C - - J - - 0x0350D9 0D:90C9: 20 2C ED  JSR sub_ED2C_генератор_рандома_с_учетом_запущенного_мяча
 C - - - - - 0x0350DC 0D:90CC: 90 60     BCC bra_912E
-C - - - - - 0x0350DE 0D:90CE: 20 5A ED  JSR sub_0x03ED6A
+C - - - - - 0x0350DE 0D:90CE: 20 5A ED  JSR sub_ED5A
 C - - - - - 0x0350E1 0D:90D1: 90 07     BCC bra_90DA
 C - - - - - 0x0350E3 0D:90D3: 20 CD EC  JSR sub_ECCD_генератор_рандома_для_Y_2
 C - - - - - 0x0350E6 0D:90D6: B9 90 92  LDA tbl_9290_шаблоны_raph,Y
@@ -3768,7 +3768,7 @@ C - - - - - 0x0352B6 0D:92A6: 20 32 D0  JSR sub_0x03D042_поинтеры_пос
 ofs_027_92B1_00:
 C - - J - - 0x0352C1 0D:92B1: 20 2C ED  JSR sub_ED2C_генератор_рандома_с_учетом_запущенного_мяча
 C - - - - - 0x0352C4 0D:92B4: 90 2D     BCC bra_92E3
-C - - - - - 0x0352C6 0D:92B6: 20 5A ED  JSR sub_0x03ED6A
+C - - - - - 0x0352C6 0D:92B6: 20 5A ED  JSR sub_ED5A
 C - - - - - 0x0352C9 0D:92B9: 90 2E     BCC bra_92E9
 C - - - - - 0x0352CB 0D:92BB: C9 08     CMP #$08
 C - - - - - 0x0352CD 0D:92BD: F0 3F     BEQ bra_92FE
@@ -3991,7 +3991,7 @@ bra_93DE:
 - - - - - - 0x0353EE 0D:93DE: A5 11     LDA ram_0011
 - - - - - - 0x0353F0 0D:93E0: C9 01     CMP #$01
 - - - - - - 0x0353F2 0D:93E2: F0 30     BEQ bra_9414
-- - - - - - 0x0353F4 0D:93E4: 20 5A ED  JSR sub_0x03ED6A
+- - - - - - 0x0353F4 0D:93E4: 20 5A ED  JSR sub_ED5A
 - - - - - - 0x0353F7 0D:93E7: 90 1E     BCC bra_9407
 - - - - - - 0x0353F9 0D:93E9: BC DE 06  LDY ram_06DE_cpu_индекс_соперника,X
 - - - - - - 0x0353FC 0D:93EC: B9 40 05  LDA ram_obj_state_lo,Y
@@ -4074,7 +4074,7 @@ C - - - - - 0x035464 0D:9454: D0 03     BNE bra_9459
 bra_9456:
 C - - - - - 0x035466 0D:9456: 4C 75 95  JMP loc_9575
 bra_9459:
-C - - - - - 0x035469 0D:9459: 20 5A ED  JSR sub_0x03ED6A
+C - - - - - 0x035469 0D:9459: 20 5A ED  JSR sub_ED5A
 C - - - - - 0x03546C 0D:945C: B0 A9     BCS bra_9407
 C - - - - - 0x03546E 0D:945E: 20 2C ED  JSR sub_ED2C_генератор_рандома_с_учетом_запущенного_мяча
 C - - - - - 0x035471 0D:9461: 90 D8     BCC bra_943B
@@ -4305,7 +4305,7 @@ C - - - - - 0x0355D1 0D:95C1: F0 33     BEQ bra_95F6
 C - - - - - 0x0355D3 0D:95C3: A5 11     LDA ram_0011
 C - - - - - 0x0355D5 0D:95C5: C9 08     CMP #$08
 C - - - - - 0x0355D7 0D:95C7: D0 2D     BNE bra_95F6
-- - - - - - 0x0355D9 0D:95C9: 20 5A ED  JSR sub_0x03ED6A
+- - - - - - 0x0355D9 0D:95C9: 20 5A ED  JSR sub_ED5A
 - - - - - - 0x0355DC 0D:95CC: B0 03     BCS bra_95D1
 - - - - - - 0x0355DE 0D:95CE: 4C 5E 96  JMP loc_965E
 loc_95D1:
@@ -4407,7 +4407,7 @@ C - - - - - 0x035694 0D:9684: D0 D8     BNE bra_965E
 C - - - - - 0x035696 0D:9686: A5 11     LDA ram_0011
 C - - - - - 0x035698 0D:9688: C9 08     CMP #$08
 C - - - - - 0x03569A 0D:968A: D0 08     BNE bra_9694
-C - - - - - 0x03569C 0D:968C: 20 5A ED  JSR sub_0x03ED6A
+C - - - - - 0x03569C 0D:968C: 20 5A ED  JSR sub_ED5A
 C - - - - - 0x03569F 0D:968F: B0 CD     BCS bra_965E
 C - - - - - 0x0356A1 0D:9691: 4C D1 95  JMP loc_95D1
 bra_9694:
@@ -4452,7 +4452,7 @@ C - - - - - 0x0356E6 0D:96D6: A9 3A     LDA #con_шаблон_ai_3A
 C - - - - - 0x0356E8 0D:96D8: 60        RTS
 bra_96D9:
 loc_96D9:
-C D 0 - - - 0x0356E9 0D:96D9: 20 5A ED  JSR sub_0x03ED6A
+C D 0 - - - 0x0356E9 0D:96D9: 20 5A ED  JSR sub_ED5A
 ; bzk optimize, максимальный операнд
 C - - - - - 0x0356EC 0D:96DC: B0 80     BCS bra_965E
 C - - - - - 0x0356EE 0D:96DE: 20 D8 ED  JSR sub_EDD8_генератор_рандома_по_сложности_игры_2
@@ -4569,7 +4569,7 @@ C - - J - - 0x0357B6 0D:97A6: 20 2C ED  JSR sub_ED2C_генератор_ранд
 C - - - - - 0x0357B9 0D:97A9: 90 BE     BCC bra_9769
 C - - - - - 0x0357BB 0D:97AB: 20 FE ED  JSR sub_EDFE_проверка_наличия_мяча_у_игрока_X
 C - - - - - 0x0357BE 0D:97AE: 90 9D     BCC bra_974D
-C - - - - - 0x0357C0 0D:97B0: 20 5A ED  JSR sub_0x03ED6A
+C - - - - - 0x0357C0 0D:97B0: 20 5A ED  JSR sub_ED5A
 C - - - - - 0x0357C3 0D:97B3: 90 14     BCC bra_97C9
 C - - - - - 0x0357C5 0D:97B5: BC DE 06  LDY ram_06DE_cpu_индекс_соперника,X ; 06DF 
 C - - - - - 0x0357C8 0D:97B8: A5 11     LDA ram_0011
@@ -5005,7 +5005,7 @@ C - - J - - 0x035A06 0D:99F6: 20 2C ED  JSR sub_ED2C_генератор_ранд
 C - - - - - 0x035A09 0D:99F9: B0 03     BCS bra_99FE
 - - - - - - 0x035A0B 0D:99FB: 4C 82 9A  JMP loc_9A82
 bra_99FE:
-C - - - - - 0x035A0E 0D:99FE: 20 5A ED  JSR sub_0x03ED6A
+C - - - - - 0x035A0E 0D:99FE: 20 5A ED  JSR sub_ED5A
 C - - - - - 0x035A11 0D:9A01: B0 63     BCS bra_9A66
 C - - - - - 0x035A13 0D:9A03: A5 11     LDA ram_0011
 C - - - - - 0x035A15 0D:9A05: C9 08     CMP #$08
@@ -5110,7 +5110,7 @@ C - - - - - 0x035A97 0D:9A87: 60        RTS
 ofs_023_9A88_01:
 C - - J - - 0x035A98 0D:9A88: 20 2C ED  JSR sub_ED2C_генератор_рандома_с_учетом_запущенного_мяча
 C - - - - - 0x035A9B 0D:9A8B: 90 F5     BCC bra_9A82
-C - - - - - 0x035A9D 0D:9A8D: 20 5A ED  JSR sub_0x03ED6A
+C - - - - - 0x035A9D 0D:9A8D: 20 5A ED  JSR sub_ED5A
 C - - - - - 0x035AA0 0D:9A90: B0 D4     BCS bra_9A66
 C - - - - - 0x035AA2 0D:9A92: A5 11     LDA ram_0011
 C - - - - - 0x035AA4 0D:9A94: C9 08     CMP #$08
@@ -8204,6 +8204,37 @@ C D 3 - - - 0x03ED9F 0F:ED8F: 95 91     STA ram_btn_hold,X
 C - - - - - 0x03EDA1 0F:ED91: 95 8E     STA ram_btn_press,X
 C - - - - - 0x03EDA3 0F:ED93: A9 00     LDA #$00    ; con_шаблон_ai_00 ???
 C - - - - - 0x03EDA5 0F:ED95: 60        RTS
+
+
+
+sub_ED5A:
+; перемещено из банка FF
+C - - - - - 0x03ED6A 0F:ED5A: BC DE 06  LDY ram_06DE_cpu_индекс_соперника,X ; 06DE 06DF 
+C - - - - - 0x03ED6D 0F:ED5D: A5 11     LDA ram_0011
+C - - - - - 0x03ED6F 0F:ED5F: C9 08     CMP #$08
+C - - - - - 0x03ED71 0F:ED61: D0 24     BNE bra_ED87
+C - - - - - 0x03ED73 0F:ED63: B9 80 04  LDA ram_obj_spd_X_hi,Y ; 0480 0481 
+C - - - - - 0x03ED76 0F:ED66: 19 90 04  ORA ram_obj_spd_X_lo,Y ; 0490 0491 
+C - - - - - 0x03ED79 0F:ED69: F0 0C     BEQ bra_ED77
+; bzk bug? должно быть просто LDA ram_дистанция_до_соперника_X_hi ?
+C - - - - - 0x03ED7B 0F:ED6B: B9 D6 06  LDA ram_дистанция_до_соперника_X_hi,Y ; 06D6 06D7 
+C - - - - - 0x03ED7E 0F:ED6E: 59 80 04  EOR ram_obj_spd_X_hi,Y ; 0480 0481 
+C - - - - - 0x03ED81 0F:ED71: 29 80     AND #$80
+C - - - - - 0x03ED83 0F:ED73: D0 10     BNE bra_ED85
+C - - - - - 0x03ED85 0F:ED75: F0 10     BEQ bra_ED87    ; jmp
+bra_ED77:
+C - - - - - 0x03ED87 0F:ED77: BC DE 06  LDY ram_06DE_cpu_индекс_соперника,X ; 06DE 06DF 
+C - - - - - 0x03ED8A 0F:ED7A: AD D6 06  LDA ram_дистанция_до_соперника_X_hi
+C - - - - - 0x03ED8D 0F:ED7D: 4A        LSR
+C - - - - - 0x03ED8E 0F:ED7E: 59 10 05  EOR ram_obj_flip,Y ; 0510 0511 
+C - - - - - 0x03ED91 0F:ED81: 29 40     AND #$40
+C - - - - - 0x03ED93 0F:ED83: F0 02     BEQ bra_ED87
+bra_ED85:
+C - - - - - 0x03ED95 0F:ED85: 38        SEC
+C - - - - - 0x03ED96 0F:ED86: 60        RTS
+bra_ED87:
+C - - - - - 0x03ED97 0F:ED87: 18        CLC
+C - - - - - 0x03ED98 0F:ED88: 60        RTS
 
 
 
