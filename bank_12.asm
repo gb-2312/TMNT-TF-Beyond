@@ -8077,6 +8077,7 @@ C - - - - - 0x026D8E 09:AD7E: BD B0 04  LDA ram_obj_spd_Y_lo,X ; 04B4 04B5
 C - - - - - 0x026D91 09:AD81: 20 7D D1  JSR sub_0x03D18D
 C - - - - - 0x026D94 09:AD84: A5 02     LDA ram_0002
 C - - - - - 0x026D96 09:AD86: 8D 26 01  STA ram_option_speed
+bra_AD89_RTS:
 C - - - - - 0x026D99 09:AD89: 60        RTS
 
 
@@ -8084,7 +8085,6 @@ C - - - - - 0x026D99 09:AD89: 60        RTS
 sub_AD8A:
 C - - - - - 0x026D9A 09:AD8A: BC D0 04  LDY ram_04D0_obj,X ; 04D0 04D1 
 C - - - - - 0x026D9D 09:AD8D: B9 D1 B5  LDA tbl_B5D2 - $01,Y
-bra_AD90_RTS:
 C - - - - - 0x026DA0 09:AD90: 60        RTS
 
 
@@ -8094,9 +8094,9 @@ C - - - - - 0x026DA1 09:AD91: A2 01     LDX #$01
 bra_AD93_loop:
 C - - - - - 0x026DA3 09:AD93: BD 20 05  LDA ram_obj_state_hi,X ; 0520 0521 
 C - - - - - 0x026DA6 09:AD96: C9 09     CMP #con_plr_state_бросает_соперника
-C - - - - - 0x026DA8 09:AD98: F0 F6     BEQ bra_AD90_RTS
+C - - - - - 0x026DA8 09:AD98: F0 F6     BEQ bra_AD89_RTS
 C - - - - - 0x026DAA 09:AD9A: C9 0B     CMP #con_plr_state_попался_в_мясо
-C - - - - - 0x026DAC 09:AD9C: F0 F2     BEQ bra_AD90_RTS
+C - - - - - 0x026DAC 09:AD9C: F0 F2     BEQ bra_AD89_RTS
 C - - - - - 0x026DAE 09:AD9E: CA        DEX
 C - - - - - 0x026DAF 09:AD9F: 10 F2     BPL bra_AD93_loop
 C - - - - - 0x026DB1 09:ADA1: A2 00     LDX #$00
