@@ -131,8 +131,6 @@
 .export sub_0x03ECE9_проверить_ограничение_по_X
 .export sub_0x03ECF8
 .export loc_0x03ED15
-.export sub_0x03ED24_запись_поведения_cpu
-.export sub_0x03ED30_чтение_поведения_cpu
 .export sub_0x03ED6A
 .export sub_0x03ED9F_запись_кнопки_hold_и_press
 .export loc_0x03ED9F_запись_кнопки_hold_и_press
@@ -5356,30 +5354,6 @@ C - - - - - 0x03ED1B 0F:ED0B: 95 91     STA ram_btn_hold,X
 C - - - - - 0x03ED1D 0F:ED0D: 9D C6 06  STA ram_06C6_cpu_btn,X ; 06C6 06C7 
 C - - - - - 0x03ED20 0F:ED10: 9D C8 06  STA ram_06C8_cpu_btn,X ; 06C8 06C9 
 C - - - - - 0x03ED23 0F:ED13: 60        RTS
-
-
-
-sub_0x03ED24_запись_поведения_cpu:
-C - - - - - 0x03ED24 0F:ED14: E0 00     CPX #$00
-C - - - - - 0x03ED26 0F:ED16: D0 04     BNE bra_ED1C_2й_игрок
-; if 1й игрок
-C - - - - - 0x03ED28 0F:ED18: 99 80 06  STA ram_поведение_cpu_1,Y
-C - - - - - 0x03ED2B 0F:ED1B: 60        RTS
-bra_ED1C_2й_игрок:
-C - - - - - 0x03ED2C 0F:ED1C: 99 A0 06  STA ram_поведение_cpu_2,Y
-C - - - - - 0x03ED2F 0F:ED1F: 60        RTS
-
-
-
-sub_0x03ED30_чтение_поведения_cpu:
-C - - - - - 0x03ED30 0F:ED20: E0 00     CPX #$00
-C - - - - - 0x03ED32 0F:ED22: D0 04     BNE bra_ED28_2й_игрок
-; if 1й игрок
-C - - - - - 0x03ED34 0F:ED24: B9 80 06  LDA ram_поведение_cpu_1,Y ; 0680 0681 0682 0683 0684 0685 0686 0687 0688 0689 068A 068B 068C 068D 068E 068F 0690 
-C - - - - - 0x03ED37 0F:ED27: 60        RTS
-bra_ED28_2й_игрок:
-C - - - - - 0x03ED38 0F:ED28: B9 A0 06  LDA ram_поведение_cpu_2,Y ; 06A0 06A1 06A2 06A3 06A4 06A5 06A6 06A7 06A8 06A9 06AA 06AB 06AC 06AD 06AE 06AF 06B0 06B1 06B2 
-C - - - - - 0x03ED3B 0F:ED2B: 60        RTS
 
 
 
