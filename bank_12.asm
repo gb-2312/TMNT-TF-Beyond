@@ -8082,13 +8082,6 @@ C - - - - - 0x026D99 09:AD89: 60        RTS
 
 
 
-sub_AD8A:
-C - - - - - 0x026D9A 09:AD8A: BC D0 04  LDY ram_04D0_obj,X ; 04D0 04D1 
-C - - - - - 0x026D9D 09:AD8D: B9 D1 B5  LDA tbl_B5D2 - $01,Y
-C - - - - - 0x026DA0 09:AD90: 60        RTS
-
-
-
 sub_0x026DA1:
 C - - - - - 0x026DA1 09:AD91: A2 01     LDX #$01
 bra_AD93_loop:
@@ -9817,7 +9810,8 @@ C - - - - - 0x0275D4 09:B5C4: 9D E0 04  STA ram_04E0_obj,X ; 04E0 04E1
 C - - - - - 0x0275D7 09:B5C7: A9 54     LDA #con_dpcm_warcry_turtle_2
 C - - - - - 0x0275D9 09:B5C9: 20 94 F6  JSR sub_0x03F6A4_записать_звук
 sub_B5CC:
-C - - - - - 0x0275DC 09:B5CC: 20 8A AD  JSR sub_AD8A
+C - - - - - 0x026D9A 09:AD8A: BC D0 04  LDY ram_04D0_obj,X ; 04D0 04D1 
+C - - - - - 0x026D9D 09:AD8D: B9 D1 B5  LDA tbl_B5D2 - $01,Y
 C - - - - - 0x0275DF 09:B5CF: 4C AA B8  JMP loc_B8AA
 
 
