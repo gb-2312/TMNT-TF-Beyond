@@ -37,9 +37,9 @@ sub_8036:
 C - - - - - 0x034046 0D:8036: 20 04 F2  JSR sub_0x03F214_генератор_рандома
 C - - - - - 0x034049 0D:8039: 20 5B EC  JSR sub_EC5B
 C - - - - - 0x03404C 0D:803C: BC DE 06  LDY ram_06DE_cpu_индекс_соперника,X ; 06DE 06DF 
-C - - - - - 0x03404F 0D:803F: 20 26 EF  JSR sub_0x03EF36
+C - - - - - 0x03404F 0D:803F: 20 26 EF  JSR sub_EF26
 C - - - - - 0x034052 0D:8042: 85 13     STA ram_0013
-C - - - - - 0x034054 0D:8044: 20 B9 EE  JSR sub_0x03EEC9
+C - - - - - 0x034054 0D:8044: 20 B9 EE  JSR sub_EEB9
 C - - - - - 0x034057 0D:8047: 85 12     STA ram_0012
 C - - - - - 0x034059 0D:8049: BC DE 06  LDY ram_06DE_cpu_индекс_соперника,X ; 06DE 06DF 
 C - - - - - 0x03405C 0D:804C: 20 66 EE  JSR sub_0x03EE76_проверить_здоровье_персов
@@ -51,6 +51,7 @@ C - - - - - 0x034066 0D:8056: 60        RTS
 
 
 sub_EC5B:
+; перемещено из банка FF
 C - - - - - 0x03EC6B 0F:EC5B: BC DE 06  LDY ram_06DE_cpu_индекс_соперника,X ; 06DE 06DF 
 C - - - - - 0x03EC6E 0F:EC5E: B9 54 05  LDA ram_obj_id + $04,Y ; 0554 0555 
 C - - - - - 0x03EC71 0F:EC61: C9 30     CMP #con_0552_special_shred_волна
@@ -65,9 +66,128 @@ C - - - - - 0x03EC7F 0F:EC6F: 98        TYA
 C - - - - - 0x03EC80 0F:EC70: 18        CLC
 C - - - - - 0x03EC81 0F:EC71: 69 04     ADC #$04
 C - - - - - 0x03EC83 0F:EC73: A8        TAY
-C - - - - - 0x03EC84 0F:EC74: 20 26 EF  JSR sub_0x03EF36
+C - - - - - 0x03EC84 0F:EC74: 20 26 EF  JSR sub_EF26
 C - - - - - 0x03EC87 0F:EC77: 8D F8 06  STA ram_06F8
 C - - - - - 0x03EC8A 0F:EC7A: 60        RTS
+
+
+
+sub_EEB9:
+; перемещено из банка FF
+; бряк срабатывает ежекадрово для каждого cpu игрока во время боя,
+; включая начало боя и победную анимацию
+C - - - - - 0x03EEC9 0F:EEB9: A0 06     LDY #$06
+C - - - - - 0x03EECB 0F:EEBB: B9 00 04  LDA ram_obj_anim_id,Y ; 0406 
+C - - - - - 0x03EECE 0F:EEBE: F0 60     BEQ bra_EF20
+C - - - - - 0x03EED0 0F:EEC0: 20 97 EE  JSR sub_EE97_вычислить_разницу_pos_X_объектов
+C - - - - - 0x03EED3 0F:EEC3: BC DE 06  LDY ram_06DE_cpu_индекс_соперника,X ; 06DE 06DF 
+C - - - - - 0x03EED6 0F:EEC6: A5 0E     LDA ram_000E    ; разница координат lo
+C - - - - - 0x03EED8 0F:EEC8: 8D D9 06  STA ram_06D9
+C - - - - - 0x03EEDB 0F:EECB: A5 0F     LDA ram_000F    ; разница координат hi
+C - - - - - 0x03EEDD 0F:EECD: 8D D8 06  STA ram_06D8
+C - - - - - 0x03EEE0 0F:EED0: AD D6 06  LDA ram_дистанция_до_соперника_X_hi
+C - - - - - 0x03EEE3 0F:EED3: 45 0F     EOR ram_000F    ; разница координат hi
+C - - - - - 0x03EEE5 0F:EED5: 30 4C     BMI bra_EF23
+C - - - - - 0x03EEE7 0F:EED7: A5 0F     LDA ram_000F    ; разница координат hi
+C - - - - - 0x03EEE9 0F:EED9: 10 13     BPL bra_EEEE
+C - - - - - 0x03EEEB 0F:EEDB: 49 FF     EOR #$FF
+C - - - - - 0x03EEED 0F:EEDD: 85 0F     STA ram_000F
+C - - - - - 0x03EEEF 0F:EEDF: A5 0E     LDA ram_000E    ; разница координат lo
+C - - - - - 0x03EEF1 0F:EEE1: 49 FF     EOR #$FF
+C - - - - - 0x03EEF3 0F:EEE3: 18        CLC
+C - - - - - 0x03EEF4 0F:EEE4: 69 01     ADC #< $0001
+C - - - - - 0x03EEF6 0F:EEE6: 85 0E     STA ram_000E    ; разница координат lo
+C - - - - - 0x03EEF8 0F:EEE8: A5 0F     LDA ram_000F    ; разница координат hi
+C - - - - - 0x03EEFA 0F:EEEA: 69 00     ADC #> $0001
+C - - - - - 0x03EEFC 0F:EEEC: 85 0F     STA ram_000F    ; разница координат hi
+bra_EEEE:
+C - - - - - 0x03EEFE 0F:EEEE: AD D6 06  LDA ram_дистанция_до_соперника_X_hi
+C - - - - - 0x03EF01 0F:EEF1: 10 14     BPL bra_EF07
+C - - - - - 0x03EF03 0F:EEF3: 49 FF     EOR #$FF
+C - - - - - 0x03EF05 0F:EEF5: 85 05     STA ram_0005
+C - - - - - 0x03EF07 0F:EEF7: AD D7 06  LDA ram_дистанция_до_соперника_X_lo
+C - - - - - 0x03EF0A 0F:EEFA: 49 FF     EOR #$FF
+C - - - - - 0x03EF0C 0F:EEFC: 18        CLC
+C - - - - - 0x03EF0D 0F:EEFD: 69 01     ADC #< $0001
+C - - - - - 0x03EF0F 0F:EEFF: 85 04     STA ram_0004
+C - - - - - 0x03EF11 0F:EF01: A5 05     LDA ram_0005
+C - - - - - 0x03EF13 0F:EF03: 69 00     ADC #> $0001
+C - - - - - 0x03EF15 0F:EF05: 85 05     STA ram_0005
+bra_EF07:
+C - - - - - 0x03EF17 0F:EF07: A5 04     LDA ram_0004
+C - - - - - 0x03EF19 0F:EF09: 6A        ROR
+C - - - - - 0x03EF1A 0F:EF0A: 85 04     STA ram_0004
+C - - - - - 0x03EF1C 0F:EF0C: C5 0E     CMP ram_000E
+C - - - - - 0x03EF1E 0F:EF0E: 90 10     BCC bra_EF20
+C - - - - - 0x03EF20 0F:EF10: A5 05     LDA ram_0005
+C - - - - - 0x03EF22 0F:EF12: 4A        LSR
+C - - - - - 0x03EF23 0F:EF13: 85 05     STA ram_0005
+C - - - - - 0x03EF25 0F:EF15: A5 04     LDA ram_0004
+C - - - - - 0x03EF27 0F:EF17: 6A        ROR
+C - - - - - 0x03EF28 0F:EF18: 85 04     STA ram_0004
+C - - - - - 0x03EF2A 0F:EF1A: C5 0E     CMP ram_000E
+C - - - - - 0x03EF2C 0F:EF1C: 90 40     BCC bra_EF5E
+C - - - - - 0x03EF2E 0F:EF1E: B0 3B     BCS bra_EF5B    ; jmp
+bra_EF20:
+C - - - - - 0x03EF30 0F:EF20: A9 03     LDA #$03
+C - - - - - 0x03EF32 0F:EF22: 60        RTS
+bra_EF23:
+C - - - - - 0x03EF33 0F:EF23: A9 00     LDA #$00
+C - - - - - 0x03EF35 0F:EF25: 60        RTS
+
+
+
+sub_EF26:
+; перемещено из банка FF
+; на выходе A
+    ; 00 = 
+    ; 01 = 
+    ; 02 = 
+C - - - - - 0x03EF36 0F:EF26: 20 97 EE  JSR sub_EE97_вычислить_разницу_pos_X_объектов
+C D 3 - - - 0x03EF39 0F:EF29: A5 0E     LDA ram_000E    ; разница координат lo
+C - - - - - 0x03EF3B 0F:EF2B: 8D D7 06  STA ram_дистанция_до_соперника_X_lo
+C - - - - - 0x03EF3E 0F:EF2E: A5 0F     LDA ram_000F    ; разница координат hi
+C - - - - - 0x03EF40 0F:EF30: 8D D6 06  STA ram_дистанция_до_соперника_X_hi
+C - - - - - 0x03EF43 0F:EF33: 8A        TXA
+C - - - - - 0x03EF44 0F:EF34: 0A        ASL
+C - - - - - 0x03EF45 0F:EF35: 0A        ASL
+C - - - - - 0x03EF46 0F:EF36: A8        TAY
+C - - - - - 0x03EF47 0F:EF37: B9 E8 06  LDA ram_06E8,Y ; 06E8 06EC 
+C - - - - - 0x03EF4A 0F:EF3A: 85 16     STA ram_0016
+C - - - - - 0x03EF4C 0F:EF3C: B9 E9 06  LDA ram_06E9,Y ; 06E9 06ED 
+C - - - - - 0x03EF4F 0F:EF3F: 85 15     STA ram_0015
+C - - - - - 0x03EF51 0F:EF41: B9 EA 06  LDA ram_06EA,Y ; 06EA 06EE 
+C - - - - - 0x03EF54 0F:EF44: 85 14     STA ram_0014
+C - - - - - 0x03EF56 0F:EF46: BC DE 06  LDY ram_06DE_cpu_индекс_соперника,X ; 06DE 06DF 
+C - - - - - 0x03EF59 0F:EF49: AD 38 06  LDA ram_расстояние_между_персами
+C - - - - - 0x03EF5C 0F:EF4C: C5 14     CMP ram_0014
+C - - - - - 0x03EF5E 0F:EF4E: B0 D0     BCS bra_EF20
+; if персы достаточно близко друг к другу
+C - - - - - 0x03EF60 0F:EF50: C5 15     CMP ram_0015
+C - - - - - 0x03EF62 0F:EF52: B0 0A     BCS bra_EF5E
+C - - - - - 0x03EF64 0F:EF54: C5 16     CMP ram_0016
+C - - - - - 0x03EF66 0F:EF56: B0 03     BCS bra_EF5B
+C - - - - - 0x03EF68 0F:EF58: A9 00     LDA #$00
+C - - - - - 0x03EF6A 0F:EF5A: 60        RTS
+bra_EF5B:
+C - - - - - 0x03EF6B 0F:EF5B: A9 01     LDA #$01
+C - - - - - 0x03EF6D 0F:EF5D: 60        RTS
+bra_EF5E:
+C - - - - - 0x03EF6E 0F:EF5E: A9 02     LDA #$02
+C - - - - - 0x03EF70 0F:EF60: 60        RTS
+
+
+
+sub_EE97_вычислить_разницу_pos_X_объектов:
+; перемещено из банка FF
+C - - - - - 0x03EEA7 0F:EE97: B9 40 04  LDA ram_obj_pos_X_lo,Y ; 0440 0441 0444 0445 0446 
+C - - - - - 0x03EEAA 0F:EE9A: 38        SEC
+C - - - - - 0x03EEAB 0F:EE9B: FD 40 04  SBC ram_obj_pos_X_lo,X ; 0440 0441 
+C - - - - - 0x03EEAE 0F:EE9E: 85 0E     STA ram_000E
+C - - - - - 0x03EEB0 0F:EEA0: B9 30 04  LDA ram_obj_pos_X_hi,Y ; 0430 0431 0434 0435 0436 
+C - - - - - 0x03EEB3 0F:EEA3: FD 30 04  SBC ram_obj_pos_X_hi,X ; 0430 0431 
+C - - - - - 0x03EEB6 0F:EEA6: 85 0F     STA ram_000F
+C - - - - - 0x03EEB8 0F:EEA8: 60        RTS
 
 
 
