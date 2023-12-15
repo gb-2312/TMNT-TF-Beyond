@@ -1040,7 +1040,7 @@ C - - - - - 0x034435 0D:8425: 60        RTS
 
 
 sub_8481:
-C - - - - - 0x034491 0D:8481: 20 86 EC  JSR sub_0x03EC96
+C - - - - - 0x034491 0D:8481: 20 86 EC  JSR sub_EC86
 C - - - - - 0x034494 0D:8484: 85 17     STA ram_0017
 C - - - - - 0x034496 0D:8486: BD C6 06  LDA ram_06C6_cpu_btn,X ; 06C6 06C7 
 C - - - - - 0x034499 0D:8489: 1D C8 06  ORA ram_06C8_cpu_btn,X ; 06C8 06C9 
@@ -1135,7 +1135,7 @@ C - - - - - 0x03453E 0D:852E: C9 02     CMP #$02
 C - - - - - 0x034540 0D:8530: D0 03     BNE bra_8535
 C - - - - - 0x034542 0D:8532: 4C FB 89  JMP loc_89FB
 bra_8535:
-C - - - - - 0x034545 0D:8535: 20 86 EC  JSR sub_0x03EC96
+C - - - - - 0x034545 0D:8535: 20 86 EC  JSR sub_EC86
 C - - - - - 0x034548 0D:8538: 09 04     ORA #con_btn_Down
 C - - - - - 0x03454A 0D:853A: 9D C8 06  STA ram_06C8_cpu_btn,X ; 06C9 
 C - - - - - 0x03454D 0D:853D: 9D C6 06  STA ram_06C6_cpu_btn,X ; 06C7 
@@ -1194,7 +1194,7 @@ bra_859E:
 bra_85A1:
 - - - - - - 0x0345B1 0D:85A1: 4C FB 89  JMP loc_89FB
 bra_85A4:
-- - - - - - 0x0345B4 0D:85A4: 20 86 EC  JSR sub_0x03EC96
+- - - - - - 0x0345B4 0D:85A4: 20 86 EC  JSR sub_EC86
 - - - - - - 0x0345B7 0D:85A7: 09 08     ORA #con_btn_Up
 - - - - - - 0x0345B9 0D:85A9: 9D C6 06  STA ram_06C6_cpu_btn,X
 - - - - - - 0x0345BC 0D:85AC: 9D C8 06  STA ram_06C8_cpu_btn,X
@@ -1368,7 +1368,7 @@ ofs_032_86B2_03:
 - - - - - - 0x0346CE 0D:86BE: B0 03     BCS bra_86C3
 - - - - - - 0x0346D0 0D:86C0: 4C FB 89  JMP loc_89FB
 bra_86C3:
-- - - - - - 0x0346D3 0D:86C3: 20 7B EC  JSR sub_0x03EC8B
+- - - - - - 0x0346D3 0D:86C3: 20 7B EC  JSR sub_EC7B
 - - - - - - 0x0346D6 0D:86C6: 09 08     ORA #con_btn_Up
 - - - - - - 0x0346D8 0D:86C8: 95 91     STA ram_btn_hold,X
 - - - - - - 0x0346DA 0D:86CA: 60        RTS
@@ -1920,7 +1920,7 @@ C - - - - - 0x034A5E 0D:8A4E: BD C6 06  LDA ram_06C6_cpu_btn,X ; 06C6 06C7
 C - - - - - 0x034A61 0D:8A51: 1D C8 06  ORA ram_06C8_cpu_btn,X ; 06C8 06C9 
 C - - - - - 0x034A64 0D:8A54: 29 03     AND #con_btns_LR
 C - - - - - 0x034A66 0D:8A56: D0 06     BNE bra_8A5E
-C - - - - - 0x034A68 0D:8A58: 20 7B EC  JSR sub_0x03EC8B
+C - - - - - 0x034A68 0D:8A58: 20 7B EC  JSR sub_EC7B
 C - - - - - 0x034A6B 0D:8A5B: 9D C6 06  STA ram_06C6_cpu_btn,X ; 06C7 
 bra_8A5E:
 C - - - - - 0x034A6E 0D:8A5E: A5 13     LDA ram_0013
@@ -1954,7 +1954,7 @@ C - - - - - 0x034AA1 0D:8A91: 4C FB 89  JMP loc_89FB
 bra_8A94_слишком_далеко:
 C - - - - - 0x034AA4 0D:8A94: A9 00     LDA #$00
 C - - - - - 0x034AA6 0D:8A96: 9D C6 06  STA ram_06C6_cpu_btn,X ; 06C6 06C7 
-C - - - - - 0x034AA9 0D:8A99: 20 7B EC  JSR sub_0x03EC8B
+C - - - - - 0x034AA9 0D:8A99: 20 7B EC  JSR sub_EC7B
 C - - - - - 0x034AAC 0D:8A9C: 9D C8 06  STA ram_06C8_cpu_btn,X ; 06C8 06C9 
 C - - - - - 0x034AAF 0D:8A9F: A5 13     LDA ram_0013
 C - - - - - 0x034AB1 0D:8AA1: F0 03     BEQ bra_8AA6
@@ -4786,7 +4786,7 @@ C D 0 - - - 0x0358E6 0D:98D6: 20 96 ED  JSR sub_ED96_очистка_адресо
 ; bzk optimize, на выходе из 0x03EC96 получаем A, но он тут же перезапишется.
 ; и нахрена оно тогда надо было?
 ; bzk bug?
-C - - - - - 0x0358E9 0D:98D9: 20 86 EC  JSR sub_0x03EC96
+C - - - - - 0x0358E9 0D:98D9: 20 86 EC  JSR sub_EC86
 C - - - - - 0x0358EC 0D:98DC: A5 11     LDA ram_0011
 C - - - - - 0x0358EE 0D:98DE: C9 07     CMP #$07
 C - - - - - 0x0358F0 0D:98E0: F0 03     BEQ bra_98E5
@@ -5410,7 +5410,7 @@ C - - - - - 0x035C5E 0D:9C4E: AD 38 06  LDA ram_расстояние_между_
 C - - - - - 0x035C61 0D:9C51: C9 2C     CMP #$2C
 C - - - - - 0x035C63 0D:9C53: 90 1B     BCC bra_9C70_слишком_близко
 ; if персы достаточно далеко друг от друга
-- - - - - - 0x035C65 0D:9C55: 20 7B EC  JSR sub_0x03EC8B
+- - - - - - 0x035C65 0D:9C55: 20 7B EC  JSR sub_EC7B
 - - - - - - 0x035C68 0D:9C58: 09 08     ORA #con_btn_Up
 - - - - - - 0x035C6A 0D:9C5A: 95 8E     STA ram_btn_press,X
 - - - - - - 0x035C6C 0D:9C5C: 95 91     STA ram_btn_hold,X
@@ -5772,7 +5772,7 @@ bra_9E0D:
 - - - - - - 0x035E2A 0D:9E1A: C9 20     CMP #$20
 - - - - - - 0x035E2C 0D:9E1C: 90 09     BCC bra_9E27_слишком_близко
 ; if персы достаточно далеко друг от друга
-- - - - - - 0x035E2E 0D:9E1E: 20 7B EC  JSR sub_0x03EC8B
+- - - - - - 0x035E2E 0D:9E1E: 20 7B EC  JSR sub_EC7B
 - - - - - - 0x035E31 0D:9E21: 09 08     ORA #con_btn_Up
 - - - - - - 0x035E33 0D:9E23: 95 91     STA ram_btn_hold,X
 - - - - - - 0x035E35 0D:9E25: 95 8E     STA ram_btn_press,X
@@ -5815,7 +5815,7 @@ C - - - - - 0x035E68 0D:9E58: BD C8 06  LDA ram_06C8_cpu_btn,X ; 06C9
 C - - - - - 0x035E6B 0D:9E5B: 1D C6 06  ORA ram_06C6_cpu_btn,X ; 06C7 
 C - - - - - 0x035E6E 0D:9E5E: 29 04     AND #con_btn_Down
 C - - - - - 0x035E70 0D:9E60: 85 17     STA ram_0017
-C - - - - - 0x035E72 0D:9E62: 20 86 EC  JSR sub_0x03EC96
+C - - - - - 0x035E72 0D:9E62: 20 86 EC  JSR sub_EC86
 C - - - - - 0x035E75 0D:9E65: 05 17     ORA ram_0017
 C - - - - - 0x035E77 0D:9E67: 09 40     ORA #con_btn_B
 C - - - - - 0x035E79 0D:9E69: 9D C6 06  STA ram_06C6_cpu_btn,X ; 06C7 
@@ -8281,6 +8281,27 @@ bra_ECBB:
 C - - - - - 0x03ECCB 0F:ECBB: B9 80 04  LDA ram_obj_spd_X_hi,Y ; 0480 0481 
 C - - - - - 0x03ECCE 0F:ECBE: 10 F0     BPL bra_ECB0
 C - - - - - 0x03ECD0 0F:ECC0: 30 F0     BMI bra_ECB2    ; jmp
+
+
+
+sub_EC7B:
+; перемещено из банка FF
+C - - - - - 0x03EC8B 0F:EC7B: AD D6 06  LDA ram_дистанция_до_соперника_X_hi
+C - - - - - 0x03EC8E 0F:EC7E: 10 03     BPL bra_EC83
+C - - - - - 0x03EC90 0F:EC80: A9 02     LDA #con_btn_Left
+C - - - - - 0x03EC92 0F:EC82: 60        RTS
+bra_EC83:
+C - - - - - 0x03EC93 0F:EC83: A9 01     LDA #con_btn_Right
+C - - - - - 0x03EC95 0F:EC85: 60        RTS
+
+
+
+sub_EC86:
+; перемещено из банка FF
+C - - - - - 0x03EC96 0F:EC86: AD D6 06  LDA ram_дистанция_до_соперника_X_hi
+C - - - - - 0x03EC99 0F:EC89: 30 F8     BMI bra_EC83
+C - - - - - 0x03EC9B 0F:EC8B: A9 02     LDA #con_btn_Left
+C - - - - - 0x03EC9D 0F:EC8D: 60        RTS
 
 
 

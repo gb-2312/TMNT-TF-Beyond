@@ -125,8 +125,6 @@
 .export sub_0x03EAA6_обновить_и_отрисовать_время_боя
 .export sub_0x03EB17_отрисовать_время_боя
 .export loc_0x03EB4F
-.export sub_0x03EC8B
-.export sub_0x03EC96
 .export tbl_0x03EFA1
 .export tbl_0x03EFA5
 .export sub_0x03EFB0
@@ -5257,25 +5255,6 @@ tbl_EC53_ppu:
 ; 04
 - D 3 - - - 0x03EC67 0F:EC57: 25 84     .dbyt $2584 ; 00 перс слева
 - D 3 - - - 0x03EC69 0F:EC59: 25 F7     .dbyt $25F7 ; 01 перс справа
-
-
-
-sub_0x03EC8B:
-C - - - - - 0x03EC8B 0F:EC7B: AD D6 06  LDA ram_дистанция_до_соперника_X_hi
-C - - - - - 0x03EC8E 0F:EC7E: 10 03     BPL bra_EC83
-C - - - - - 0x03EC90 0F:EC80: A9 02     LDA #con_btn_Left
-C - - - - - 0x03EC92 0F:EC82: 60        RTS
-bra_EC83:
-C - - - - - 0x03EC93 0F:EC83: A9 01     LDA #con_btn_Right
-C - - - - - 0x03EC95 0F:EC85: 60        RTS
-
-
-
-sub_0x03EC96:
-C - - - - - 0x03EC96 0F:EC86: AD D6 06  LDA ram_дистанция_до_соперника_X_hi
-C - - - - - 0x03EC99 0F:EC89: 30 F8     BMI bra_EC83
-C - - - - - 0x03EC9B 0F:EC8B: A9 02     LDA #con_btn_Left
-C - - - - - 0x03EC9D 0F:EC8D: 60        RTS
 
 
 
