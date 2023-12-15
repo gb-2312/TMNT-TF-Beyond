@@ -127,7 +127,6 @@
 .export loc_0x03EB4F
 .export sub_0x03EC8B
 .export sub_0x03EC96
-.export sub_0x03EC9E
 .export tbl_0x03EFA1
 .export tbl_0x03EFA5
 .export sub_0x03EFB0
@@ -5277,37 +5276,6 @@ C - - - - - 0x03EC96 0F:EC86: AD D6 06  LDA ram_дистанция_до_сопе
 C - - - - - 0x03EC99 0F:EC89: 30 F8     BMI bra_EC83
 C - - - - - 0x03EC9B 0F:EC8B: A9 02     LDA #con_btn_Left
 C - - - - - 0x03EC9D 0F:EC8D: 60        RTS
-
-
-
-sub_0x03EC9E:
-C - - - - - 0x03EC9E 0F:EC8E: BC DE 06  LDY ram_06DE_cpu_индекс_соперника,X ; 06DE 06DF 
-C - - - - - 0x03ECA1 0F:EC91: BD 80 04  LDA ram_obj_spd_X_hi,X ; 0480 0481 
-C - - - - - 0x03ECA4 0F:EC94: 1D 90 04  ORA ram_obj_spd_X_lo,X ; 0490 0491 
-C - - - - - 0x03ECA7 0F:EC97: 19 80 04  ORA ram_obj_spd_X_hi,Y ; 0480 0481 
-C - - - - - 0x03ECAA 0F:EC9A: 19 90 04  ORA ram_obj_spd_X_lo,Y ; 0490 0491 
-C - - - - - 0x03ECAD 0F:EC9D: F0 13     BEQ bra_ECB2
-C - - - - - 0x03ECAF 0F:EC9F: AD D6 06  LDA ram_дистанция_до_соперника_X_hi
-C - - - - - 0x03ECB2 0F:ECA2: 30 10     BMI bra_ECB4
-C - - - - - 0x03ECB4 0F:ECA4: BD 80 04  LDA ram_obj_spd_X_hi,X ; 0480 0481 
-C - - - - - 0x03ECB7 0F:ECA7: 30 09     BMI bra_ECB2
-C - - - - - 0x03ECB9 0F:ECA9: B9 80 04  LDA ram_obj_spd_X_hi,Y ; 0480 0481 
-C - - - - - 0x03ECBC 0F:ECAC: F0 02     BEQ bra_ECB0
-C - - - - - 0x03ECBE 0F:ECAE: 10 02     BPL bra_ECB2
-bra_ECB0:
-C - - - - - 0x03ECC0 0F:ECB0: 18        CLC
-C - - - - - 0x03ECC1 0F:ECB1: 60        RTS
-bra_ECB2:
-C - - - - - 0x03ECC2 0F:ECB2: 38        SEC
-C - - - - - 0x03ECC3 0F:ECB3: 60        RTS
-bra_ECB4:
-C - - - - - 0x03ECC4 0F:ECB4: BD 80 04  LDA ram_obj_spd_X_hi,X ; 0480 0481 
-C - - - - - 0x03ECC7 0F:ECB7: F0 02     BEQ bra_ECBB
-C - - - - - 0x03ECC9 0F:ECB9: 10 F7     BPL bra_ECB2
-bra_ECBB:
-C - - - - - 0x03ECCB 0F:ECBB: B9 80 04  LDA ram_obj_spd_X_hi,Y ; 0480 0481 
-C - - - - - 0x03ECCE 0F:ECBE: 10 F0     BPL bra_ECB0
-C - - - - - 0x03ECD0 0F:ECC0: 30 F0     BMI bra_ECB2    ; jmp
 
 
 
