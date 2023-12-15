@@ -35,7 +35,7 @@ C - - - - - 0x034027 0D:8017: 60        RTS
 
 sub_8036:
 C - - - - - 0x034046 0D:8036: 20 04 F2  JSR sub_0x03F214_генератор_рандома
-C - - - - - 0x034049 0D:8039: 20 5B EC  JSR sub_0x03EC6B
+C - - - - - 0x034049 0D:8039: 20 5B EC  JSR sub_EC5B
 C - - - - - 0x03404C 0D:803C: BC DE 06  LDY ram_06DE_cpu_индекс_соперника,X ; 06DE 06DF 
 C - - - - - 0x03404F 0D:803F: 20 26 EF  JSR sub_0x03EF36
 C - - - - - 0x034052 0D:8042: 85 13     STA ram_0013
@@ -47,6 +47,27 @@ C - - - - - 0x03405F 0D:804F: 85 10     STA ram_0010
 C - - - - - 0x034061 0D:8051: B9 20 05  LDA ram_obj_state_hi,Y ; 0520 0521 
 C - - - - - 0x034064 0D:8054: 85 11     STA ram_0011
 C - - - - - 0x034066 0D:8056: 60        RTS
+
+
+
+sub_EC5B:
+C - - - - - 0x03EC6B 0F:EC5B: BC DE 06  LDY ram_06DE_cpu_индекс_соперника,X ; 06DE 06DF 
+C - - - - - 0x03EC6E 0F:EC5E: B9 54 05  LDA ram_obj_id + $04,Y ; 0554 0555 
+C - - - - - 0x03EC71 0F:EC61: C9 30     CMP #con_0552_special_shred_волна
+C - - - - - 0x03EC73 0F:EC63: F0 0A     BEQ bra_EC6F
+C - - - - - 0x03EC75 0F:EC65: C9 39     CMP #con_0552_special_casey_песок
+C - - - - - 0x03EC77 0F:EC67: F0 06     BEQ bra_EC6F
+C - - - - - 0x03EC79 0F:EC69: A9 FF     LDA #$FF
+C - - - - - 0x03EC7B 0F:EC6B: 8D F8 06  STA ram_06F8
+C - - - - - 0x03EC7E 0F:EC6E: 60        RTS
+bra_EC6F:
+C - - - - - 0x03EC7F 0F:EC6F: 98        TYA
+C - - - - - 0x03EC80 0F:EC70: 18        CLC
+C - - - - - 0x03EC81 0F:EC71: 69 04     ADC #$04
+C - - - - - 0x03EC83 0F:EC73: A8        TAY
+C - - - - - 0x03EC84 0F:EC74: 20 26 EF  JSR sub_0x03EF36
+C - - - - - 0x03EC87 0F:EC77: 8D F8 06  STA ram_06F8
+C - - - - - 0x03EC8A 0F:EC7A: 60        RTS
 
 
 

@@ -125,7 +125,6 @@
 .export sub_0x03EAA6_обновить_и_отрисовать_время_боя
 .export sub_0x03EB17_отрисовать_время_боя
 .export loc_0x03EB4F
-.export sub_0x03EC6B
 .export sub_0x03EC8B
 .export sub_0x03EC96
 .export sub_0x03EC9E
@@ -5287,27 +5286,6 @@ tbl_EC53_ppu:
 
 
 
-sub_0x03EC6B:
-C - - - - - 0x03EC6B 0F:EC5B: BC DE 06  LDY ram_06DE_cpu_индекс_соперника,X ; 06DE 06DF 
-C - - - - - 0x03EC6E 0F:EC5E: B9 54 05  LDA ram_obj_id + $04,Y ; 0554 0555 
-C - - - - - 0x03EC71 0F:EC61: C9 30     CMP #con_0552_special_shred_волна
-C - - - - - 0x03EC73 0F:EC63: F0 0A     BEQ bra_EC6F
-C - - - - - 0x03EC75 0F:EC65: C9 39     CMP #con_0552_special_casey_песок
-C - - - - - 0x03EC77 0F:EC67: F0 06     BEQ bra_EC6F
-C - - - - - 0x03EC79 0F:EC69: A9 FF     LDA #$FF
-C - - - - - 0x03EC7B 0F:EC6B: 8D F8 06  STA ram_06F8
-C - - - - - 0x03EC7E 0F:EC6E: 60        RTS
-bra_EC6F:
-C - - - - - 0x03EC7F 0F:EC6F: 98        TYA
-C - - - - - 0x03EC80 0F:EC70: 18        CLC
-C - - - - - 0x03EC81 0F:EC71: 69 04     ADC #$04
-C - - - - - 0x03EC83 0F:EC73: A8        TAY
-C - - - - - 0x03EC84 0F:EC74: 20 26 EF  JSR sub_EF26
-C - - - - - 0x03EC87 0F:EC77: 8D F8 06  STA ram_06F8
-C - - - - - 0x03EC8A 0F:EC7A: 60        RTS
-
-
-
 sub_0x03EC8B:
 C - - - - - 0x03EC8B 0F:EC7B: AD D6 06  LDA ram_дистанция_до_соперника_X_hi
 C - - - - - 0x03EC8E 0F:EC7E: 10 03     BPL bra_EC83
@@ -5835,7 +5813,6 @@ C - - - - - 0x03EF35 0F:EF25: 60        RTS
 
 
 
-sub_EF26:
 sub_0x03EF36:
 ; на выходе A
     ; 00 = 
