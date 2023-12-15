@@ -130,8 +130,6 @@
 .export sub_0x03EC9E
 .export sub_0x03ECF8
 .export sub_0x03ED6A
-.export sub_0x03ED9F_запись_кнопки_hold_и_press
-.export loc_0x03ED9F_запись_кнопки_hold_и_press
 .export tbl_0x03EFA1
 .export tbl_0x03EFA5
 .export sub_0x03EFB0
@@ -5355,26 +5353,6 @@ C - - - - - 0x03ED96 0F:ED86: 60        RTS
 bra_ED87:
 C - - - - - 0x03ED97 0F:ED87: 18        CLC
 C - - - - - 0x03ED98 0F:ED88: 60        RTS
-
-
-
-sub_0x03ED9F_запись_кнопки_hold_и_press:
-                                        STA ram_btn_hold,X
-                                        STA ram_btn_press,X
-                                        RTS
-
-
-
-loc_0x03ED9F_запись_кнопки_hold_и_press:
-; bzk optimize, предположительно A = 00 на выходе нужен только для 0x034179,
-; который в теории может быть записан в 0x03418A, однако ни одна из демок
-; не показала записи 00 в шаблон, так как проверки не были пройдены.
-; для случая с sub единственное где использовался 00 это 0x03573F,
-; теперь там записан LDA 00, а sub сделан отдельным кодом
-C D 3 - - - 0x03ED9F 0F:ED8F: 95 91     STA ram_btn_hold,X
-C - - - - - 0x03EDA1 0F:ED91: 95 8E     STA ram_btn_press,X
-C - - - - - 0x03EDA3 0F:ED93: A9 00     LDA #$00    ; con_шаблон_ai_00 ???
-C - - - - - 0x03EDA5 0F:ED95: 60        RTS
 
 
 

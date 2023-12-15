@@ -1198,7 +1198,7 @@ bra_85A4:
 - - - - - - 0x0345B7 0D:85A7: 09 08     ORA #con_btn_Up
 - - - - - - 0x0345B9 0D:85A9: 9D C6 06  STA ram_06C6_cpu_btn,X
 - - - - - - 0x0345BC 0D:85AC: 9D C8 06  STA ram_06C8_cpu_btn,X
-- - - - - - 0x0345BF 0D:85AF: 20 8F ED  JSR sub_0x03ED9F_запись_кнопки_hold_и_press
+- - - - - - 0x0345BF 0D:85AF: 20 8F ED  JSR sub_ED8F_запись_кнопки_hold_и_press
 - - - - - - 0x0345C2 0D:85B2: 4C FB 89  JMP loc_89FB
 
 
@@ -3032,7 +3032,7 @@ bra_8E9A:
 
 bra_8E9D:
 - - - - - - 0x034EAD 0D:8E9D: A9 40     LDA #con_btn_B
-- - - - - - 0x034EAF 0D:8E9F: 4C 8F ED  JMP loc_0x03ED9F_запись_кнопки_hold_и_press
+- - - - - - 0x034EAF 0D:8E9F: 4C 8F ED  JMP loc_ED8F_запись_кнопки_hold_и_press
 
 
 
@@ -3040,7 +3040,7 @@ bra_8EA2:
 C - - - - - 0x034EB2 0D:8EA2: 20 5A ED  JSR sub_0x03ED6A
 C - - - - - 0x034EB5 0D:8EA5: B0 F6     BCS bra_8E9D
 C - - - - - 0x034EB7 0D:8EA7: A9 84     LDA #con_btn_A + con_btn_Down
-C - - - - - 0x034EB9 0D:8EA9: 4C 8F ED  JMP loc_0x03ED9F_запись_кнопки_hold_и_press
+C - - - - - 0x034EB9 0D:8EA9: 4C 8F ED  JMP loc_ED8F_запись_кнопки_hold_и_press
 
 
 
@@ -4321,7 +4321,7 @@ bra_95E1:
 - - - - - - 0x0355F1 0D:95E1: A9 04     LDA #con_btn_Down
 - - - - - - 0x0355F3 0D:95E3: 9D C6 06  STA ram_06C6_cpu_btn,X
 - - - - - - 0x0355F6 0D:95E6: 9D C8 06  STA ram_06C8_cpu_btn,X
-- - - - - - 0x0355F9 0D:95E9: 20 8F ED  JSR sub_0x03ED9F_запись_кнопки_hold_и_press
+- - - - - - 0x0355F9 0D:95E9: 20 8F ED  JSR sub_ED8F_запись_кнопки_hold_и_press
 - - - - - - 0x0355FC 0D:95EC: 20 96 ED  JSR sub_ED96_очистка_адресов_cpu_при_необходимости
 - - - - - - 0x0355FF 0D:95EF: 20 C2 EC  JSR sub_ECC2_генератор_рандома_для_Y_1
 - - - - - - 0x035602 0D:95F2: B9 58 98  LDA tbl_9858_шаблоны_casey,Y
@@ -4348,7 +4348,7 @@ C - - - - - 0x03562C 0D:961C: A9 30     LDA #$30
 C - - - - - 0x03562E 0D:961E: 20 3E EE  JSR sub_EE3E_проверка_близости_объектов_с_областью_A
 C - - - - - 0x035631 0D:9621: 90 05     BCC bra_9628    ; if достаточно близко
 C - - - - - 0x035633 0D:9623: A9 80     LDA #con_btn_A
-C - - - - - 0x035635 0D:9625: 4C 8F ED  JMP loc_0x03ED9F_запись_кнопки_hold_и_press
+C - - - - - 0x035635 0D:9625: 4C 8F ED  JMP loc_ED8F_запись_кнопки_hold_и_press
 bra_9628:
 C - - - - - 0x035638 0D:9628: 20 D8 ED  JSR sub_EDD8_генератор_рандома_по_сложности_игры_2
 C - - - - - 0x03563B 0D:962B: C9 80     CMP #$80
@@ -4372,7 +4372,7 @@ bra_9647:
 - - - - - - 0x03565C 0D:964C: 60        RTS
 bra_9653:
 C - - - - - 0x035663 0D:9653: A9 40     LDA #con_btn_B
-C - - - - - 0x035665 0D:9655: 20 8F ED  JSR sub_0x03ED9F_запись_кнопки_hold_и_press
+C - - - - - 0x035665 0D:9655: 20 8F ED  JSR sub_ED8F_запись_кнопки_hold_и_press
 C - - - - - 0x035668 0D:9658: 20 96 ED  JSR sub_ED96_очистка_адресов_cpu_при_необходимости
 C - - - - - 0x03566B 0D:965B: A9 10     LDA #con_шаблон_ai_10
 C - - - - - 0x03566D 0D:965D: 60        RTS
@@ -4432,7 +4432,7 @@ C - - - - - 0x0356C7 0D:96B7: 20 3E EE  JSR sub_EE3E_проверка_близо
 C - - - - - 0x0356CA 0D:96BA: 90 1D     BCC bra_96D9    ; if достаточно близко
 ; if далеко
 C - - - - - 0x0356CC 0D:96BC: A9 80     LDA #con_btn_A
-C - - - - - 0x0356CE 0D:96BE: 4C 8F ED  JMP loc_0x03ED9F_запись_кнопки_hold_и_press
+C - - - - - 0x0356CE 0D:96BE: 4C 8F ED  JMP loc_ED8F_запись_кнопки_hold_и_press
 bra_96C1:
 C - - - - - 0x0356D1 0D:96C1: A5 28     LDA ram_random_1
 C - - - - - 0x0356D3 0D:96C3: 30 11     BMI bra_96D6
@@ -4476,7 +4476,7 @@ C - - - - - 0x035713 0D:9703: B0 0E     BCS bra_9713    ; if далеко
 C - - - - - 0x035715 0D:9705: A9 80     LDA #con_btn_A
 C - - - - - 0x035717 0D:9707: 9D C6 06  STA ram_06C6_cpu_btn,X ; 06C7 
 C - - - - - 0x03571A 0D:970A: 9D C8 06  STA ram_06C8_cpu_btn,X ; 06C9 
-C - - - - - 0x03571D 0D:970D: 20 8F ED  JSR sub_0x03ED9F_запись_кнопки_hold_и_press
+C - - - - - 0x03571D 0D:970D: 20 8F ED  JSR sub_ED8F_запись_кнопки_hold_и_press
 C - - - - - 0x035720 0D:9710: A9 11     LDA #con_шаблон_ai_11
 C - - - - - 0x035722 0D:9712: 60        RTS
 bra_9713:
@@ -4494,7 +4494,7 @@ C - - - - - 0x035737 0D:9727: A9 1D     LDA #con_шаблон_ai_1D
 C - - - - - 0x035739 0D:9729: 60        RTS
 bra_972A:
 C - - - - - 0x03573A 0D:972A: A9 48     LDA #con_btn_B + con_btn_Up
-C - - - - - 0x03573C 0D:972C: 20 8F ED  JSR sub_0x03ED9F_запись_кнопки_hold_и_press
+C - - - - - 0x03573C 0D:972C: 20 8F ED  JSR sub_ED8F_запись_кнопки_hold_и_press
                                         LDA #$00
 C - - - - - 0x03573F 0D:972F: 9D C8 06  STA ram_06C8_cpu_btn,X ; 06C9 
 C - - - - - 0x035742 0D:9732: 60        RTS
@@ -5820,7 +5820,7 @@ C - - - - - 0x035E75 0D:9E65: 05 17     ORA ram_0017
 C - - - - - 0x035E77 0D:9E67: 09 40     ORA #con_btn_B
 C - - - - - 0x035E79 0D:9E69: 9D C6 06  STA ram_06C6_cpu_btn,X ; 06C7 
 C - - - - - 0x035E7C 0D:9E6C: 9D C8 06  STA ram_06C8_cpu_btn,X ; 06C9 
-C - - - - - 0x035E7F 0D:9E6F: 20 8F ED  JSR sub_0x03ED9F_запись_кнопки_hold_и_press
+C - - - - - 0x035E7F 0D:9E6F: 20 8F ED  JSR sub_ED8F_запись_кнопки_hold_и_press
 C - - - - - 0x035E82 0D:9E72: A9 42     LDA #con_шаблон_ai_42
 C - - - - - 0x035E84 0D:9E74: 85 17     STA ram_0017
 C - - - - - 0x035E86 0D:9E76: 60        RTS
@@ -6004,7 +6004,7 @@ ofs_017_9F68_08:
 - - - - - - 0x035F89 0D:9F79: A9 40     LDA #con_btn_B
 - - - - - - 0x035F8B 0D:9F7B: 9D C6 06  STA ram_06C6_cpu_btn,X
 - - - - - - 0x035F8E 0D:9F7E: 9D C8 06  STA ram_06C8_cpu_btn,X
-- - - - - - 0x035F91 0D:9F81: 20 8F ED  JSR sub_0x03ED9F_запись_кнопки_hold_и_press
+- - - - - - 0x035F91 0D:9F81: 20 8F ED  JSR sub_ED8F_запись_кнопки_hold_и_press
 - - - - - - 0x035F94 0D:9F84: A9 42     LDA #con_шаблон_ai_42
 - - - - - - 0x035F96 0D:9F86: 85 17     STA ram_0017
 - - - - - - 0x035F98 0D:9F88: 60        RTS
@@ -6163,13 +6163,13 @@ C - - - - - 0x036061 0D:A051: 90 1C     BCC bra_A06F
 - - - - - - 0x036069 0D:A059: D0 0A     BNE bra_A065
 loc_A05B:
 - - - - - - 0x03606B 0D:A05B: A9 80     LDA #con_btn_A
-- - - - - - 0x03606D 0D:A05D: 20 8F ED  JSR sub_0x03ED9F_запись_кнопки_hold_и_press
+- - - - - - 0x03606D 0D:A05D: 20 8F ED  JSR sub_ED8F_запись_кнопки_hold_и_press
 - - - - - - 0x036070 0D:A060: A9 17     LDA #con_шаблон_ai_17
 - - - - - - 0x036072 0D:A062: 85 17     STA ram_0017
 - - - - - - 0x036074 0D:A064: 60        RTS
 bra_A065:
 - - - - - - 0x036075 0D:A065: A9 40     LDA #con_btn_B
-- - - - - - 0x036077 0D:A067: 20 8F ED  JSR sub_0x03ED9F_запись_кнопки_hold_и_press
+- - - - - - 0x036077 0D:A067: 20 8F ED  JSR sub_ED8F_запись_кнопки_hold_и_press
 loc_A06A:
 - - - - - - 0x03607A 0D:A06A: A9 42     LDA #con_шаблон_ai_42
 - - - - - - 0x03607C 0D:A06C: 85 17     STA ram_0017
@@ -6308,7 +6308,7 @@ bra_A17F_слишком_близко:
 - - - - - - 0x03618F 0D:A17F: A5 13     LDA ram_0013
 - - - - - - 0x036191 0D:A181: D0 FB     BNE bra_A17E_RTS
 - - - - - - 0x036193 0D:A183: A9 40     LDA #con_btn_B
-- - - - - - 0x036195 0D:A185: 20 8F ED  JSR sub_0x03ED9F_запись_кнопки_hold_и_press
+- - - - - - 0x036195 0D:A185: 20 8F ED  JSR sub_ED8F_запись_кнопки_hold_и_press
 - - - - - - 0x036198 0D:A188: A9 24     LDA #con_шаблон_ai_24
 - - - - - - 0x03619A 0D:A18A: 85 17     STA ram_0017
 - - - - - - 0x03619C 0D:A18C: 60        RTS
@@ -8182,6 +8182,28 @@ C - - - - - 0x03ECF2 0F:ECE2: C9 24     CMP #$24
 C - - - - - 0x03ECF4 0F:ECE4: 90 FA     BCC bra_ECE0
 C - - - - - 0x03ECF6 0F:ECE6: 38        SEC
 C - - - - - 0x03ECF7 0F:ECE7: 60        RTS
+
+
+
+sub_ED8F_запись_кнопки_hold_и_press:
+; перемещено из банка FF
+                                        STA ram_btn_hold,X
+                                        STA ram_btn_press,X
+                                        RTS
+
+
+
+loc_ED8F_запись_кнопки_hold_и_press:
+; перемещено из банка FF
+; bzk optimize, предположительно A = 00 на выходе нужен только для 0x034179,
+; который в теории может быть записан в 0x03418A, однако ни одна из демок
+; не показала записи 00 в шаблон, так как проверки не были пройдены.
+; для случая с sub единственное где использовался 00 это 0x03573F,
+; теперь там записан LDA 00, а sub сделан отдельным кодом
+C D 3 - - - 0x03ED9F 0F:ED8F: 95 91     STA ram_btn_hold,X
+C - - - - - 0x03EDA1 0F:ED91: 95 8E     STA ram_btn_press,X
+C - - - - - 0x03EDA3 0F:ED93: A9 00     LDA #$00    ; con_шаблон_ai_00 ???
+C - - - - - 0x03EDA5 0F:ED95: 60        RTS
 
 
 
