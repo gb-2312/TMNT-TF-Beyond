@@ -12,7 +12,7 @@
 .export ofs_0x02E7CA
 .export ofs_0x02E86E
 .export sub_0x02EA10_автобаланс_сил_в_vs_team
-.export loc_0x02EB10
+.export loc_0x02EB10_корректировка_урона_от_броска_с_учетом_прочности_перса_на_броски
 .export sub_0x02EE60_выбрать_палитру_уровня
 .export sub_0x02EF50_записать_3_цвета_в_буфер
 .export sub_0x02EFA0
@@ -860,7 +860,7 @@ tbl_AA90_автобаланс:
 
 
 
-loc_0x02EB10:
+loc_0x02EB10_корректировка_урона_от_броска_с_учетом_прочности_перса_на_броски:
 C D 1 - - - 0x02EB10 0B:AB00: A9 00     LDA #$00
 C - - - - - 0x02EB12 0B:AB02: 85 1C     STA ram_001C
 C - - - - - 0x02EB14 0B:AB04: 8A        TXA
@@ -930,7 +930,7 @@ C - - - - - 0x02EB57 0B:AB47: 18        CLC
 C - - - - - 0x02EB58 0B:AB48: 65 1C     ADC ram_001C
 C - - - - - 0x02EB5A 0B:AB4A: 65 1C     ADC ram_001C
 C - - - - - 0x02EB5C 0B:AB4C: 38        SEC
-C - - - - - 0x02EB5D 0B:AB4D: F9 B6 DD  SBC tbl_DDB6,Y
+C - - - - - 0x02EB5D 0B:AB4D: F9 B6 DD  SBC tbl_DDB6_прочность_персов_на_броски,Y
 C - - - - - 0x02EB60 0B:AB50: 48        PHA
 C - - - - - 0x02EB61 0B:AB51: A9 DE     LDA #> (ofs_0x03DE76 - $01)
 C - - - - - 0x02EB63 0B:AB53: 48        PHA
@@ -940,7 +940,7 @@ C - - - - - 0x02EB67 0B:AB57: 4C 17 F6  JMP loc_0x03F627_restore_prg
 
 
 
-tbl_DDB6:
+tbl_DDB6_прочность_персов_на_броски:
 ; перемещено из банка FF
                                     .if con_новые_персы = $00
 ;                                              +----------------------------------- 00 con_fighter_leo

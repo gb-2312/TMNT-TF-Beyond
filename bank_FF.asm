@@ -83,7 +83,7 @@
 .export loc_0x03DE19_очистить_очки_обоих_игроков
 .export sub_0x03DE30_удалить_объекты_перса
 .export loc_0x03DE30_удалить_объекты_перса
-.export sub_0x03DE4C
+.export sub_0x03DE4C_корректировка_урона_с_учетом_прочности_перса
 .export ofs_0x03DE76
 .export sub_0x03DE87
 .export loc_0x03DE8E
@@ -2464,7 +2464,7 @@ C - - - - - 0x03DE4B 0F:DE3B: 60        RTS
 
 
 
-sub_0x03DE4C:
+sub_0x03DE4C_корректировка_урона_с_учетом_прочности_перса:
 C - - - - - 0x03DE4C 0F:DE3C: A0 00     LDY #$00
 C - - - - - 0x03DE4E 0F:DE3E: 84 19     STY ram_0019
 ; * 10
@@ -2483,11 +2483,11 @@ C - - - - - 0x03DE61 0F:DE51: BC 50 05  LDY ram_obj_id,X ; 0550 0551
 C - - - - - 0x03DE64 0F:DE54: 18        CLC
 C - - - - - 0x03DE65 0F:DE55: 79 34 F1  ADC tbl_F134_прочность_персов,Y
 C - - - - - 0x03DE68 0F:DE58: BC 20 05  LDY ram_obj_state_hi,X ; 0520 0521 
-C - - - - - 0x03DE6B 0F:DE5B: C0 0A     CPY #$0A
+C - - - - - 0x03DE6B 0F:DE5B: C0 0A     CPY #con_plr_state_брошен_соперником
 C - - - - - 0x03DE6D 0F:DE5D: D0 08     BNE bra_DE67
 C - - - - - 0x03DE6F 0F:DE5F: 48        PHA ; делитель lo
 C - - - - - 0x03DE70 0F:DE60: 20 E7 F5  JSR sub_F5E7_swap_prg_16
-C - - - - - 0x03DE73 0F:DE63: 4C 00 AB  JMP loc_0x02EB10
+C - - - - - 0x03DE73 0F:DE63: 4C 00 AB  JMP loc_0x02EB10_корректировка_урона_от_броска_с_учетом_прочности_перса_на_броски
 
 
 

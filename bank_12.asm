@@ -1306,7 +1306,7 @@ C - - - - - 0x02480A 09:87FA: D0 63     BNE bra_885F
 C - - - - - 0x02480C 09:87FC: A9 02     LDA #$02
 C - - - - - 0x02480E 09:87FE: 85 AA     STA ram_таймер_задержки_фпс
 C - - - - - 0x024810 09:8800: A9 04     LDA #$04
-C - - - - - 0x024812 09:8802: 20 3C DE  JSR sub_0x03DE4C
+C - - - - - 0x024812 09:8802: 20 3C DE  JSR sub_0x03DE4C_корректировка_урона_с_учетом_прочности_перса
 C - - - - - 0x024815 09:8805: 20 77 DE  JSR sub_0x03DE87    ; возможен PLA PLA
 C - - - - - 0x024818 09:8808: A9 1E     LDA #con_075C_1E
 C - - - - - 0x02481A 09:880A: 20 94 F6  JSR sub_0x03F6A4_записать_звук
@@ -2678,7 +2678,7 @@ C - - - - - 0x024F17 09:8F07: DE 60 05  DEC ram_obj_timer,X ; 0561
 C - - - - - 0x024F1A 09:8F0A: D0 10     BNE bra_8F1C
 C - - - - - 0x024F1C 09:8F0C: 20 DA 8E  JSR sub_8EDA
 C - - - - - 0x024F1F 09:8F0F: A9 04     LDA #$04
-C - - - - - 0x024F21 09:8F11: 20 3C DE  JSR sub_0x03DE4C
+C - - - - - 0x024F21 09:8F11: 20 3C DE  JSR sub_0x03DE4C_корректировка_урона_с_учетом_прочности_перса
 C - - - - - 0x024F24 09:8F14: 20 77 DE  JSR sub_0x03DE87    ; возможен PLA PLA
 C - - - - - 0x024F27 09:8F17: A9 0C     LDA #con_075C_0C
 C - - - - - 0x024F29 09:8F19: 20 94 F6  JSR sub_0x03F6A4_записать_звук
@@ -2995,7 +2995,7 @@ C - - - - - 0x0250FD 09:90ED: A9 17     LDA #con_sfx_закусь_рафа
 C - - - - - 0x0250FF 09:90EF: 20 94 F6  JSR sub_0x03F6A4_записать_звук
 C - - - - - 0x025102 09:90F2: A9 07     LDA #$07
 C - - - - - 0x025104 09:90F4: A6 A9     LDX ram_global_obj_index
-C - - - - - 0x025106 09:90F6: 20 3C DE  JSR sub_0x03DE4C
+C - - - - - 0x025106 09:90F6: 20 3C DE  JSR sub_0x03DE4C_корректировка_урона_с_учетом_прочности_перса
 C - - - - - 0x025109 09:90F9: 20 A2 DE  JSR sub_0x03DEB2
 C - - - - - 0x02510C 09:90FC: 90 52     BCC bra_9150
 C - - - - - 0x02510E 09:90FE: A6 A8     LDX ram_local_obj_index
@@ -3208,7 +3208,7 @@ C - - - - - 0x0252C7 09:92B7: B9 50 05  LDA ram_obj_id,Y ; 0550 0551
 C - - - - - 0x0252CA 09:92BA: A8        TAY
 C - - - - - 0x0252CB 09:92BB: 20 DD B7  LDA tbl_973E_урон_от_бросков,Y
                                         DEC ram_obj_hit_state,X ; 04C0 04C1 
-C - - - - - 0x0252CE 09:92BE: 20 3C DE  JSR sub_0x03DE4C
+C - - - - - 0x0252CE 09:92BE: 20 3C DE  JSR sub_0x03DE4C_корректировка_урона_с_учетом_прочности_перса
 C - - - - - 0x0252D1 09:92C1: 20 BA DE  JSR sub_0x03DECA
 C - - - - - 0x0252D4 09:92C4: A0 FD     LDY #$FD
 C - - - - - 0x0252D6 09:92C6: A9 0A     LDA #$0A
@@ -7678,7 +7678,7 @@ C - - - - - 0x026B42 09:AB32: 99 E0 04  STA ram_04E0_obj,Y ; 04E2 04E3
 C - - - - - 0x026B45 09:AB35: 20 94 F6  JSR sub_0x03F6A4_записать_звук
 C - - - - - 0x026B48 09:AB38: 20 E3 AC  JSR sub_ACE3
 C - - - - - 0x026B4B 09:AB3B: A5 08     LDA ram_0008
-C - - - - - 0x026B4D 09:AB3D: 4C FD B9  JMP loc_B9FD
+C - - - - - 0x026B4D 09:AB3D: 4C FD B9  JMP loc_B9FD_урон_от_нормалов_в_блок
 bra_AB40_RTS:
 C - - - - - 0x026B50 09:AB40: 60        RTS
 bra_AB41:
@@ -7840,7 +7840,7 @@ C - - - - - 0x026C53 09:AC43: 85 08     STA ram_0008
 C - - - - - 0x026C55 09:AC45: 85 18     STA ram_0018
 C - - - - - 0x026C57 09:AC47: 4C 4D AC  JMP loc_AC4D
 bra_AC4A:
-C - - - - - 0x026C5A 09:AC4A: 20 3C DE  JSR sub_0x03DE4C
+C - - - - - 0x026C5A 09:AC4A: 20 3C DE  JSR sub_0x03DE4C_корректировка_урона_с_учетом_прочности_перса
 loc_AC4D:
 ; Y = 02-06
 C D 1 - - - 0x026C5D 09:AC4D: 18        CLC
@@ -8641,15 +8641,7 @@ C D 1 - - - 0x027079 09:B069: 86 17     STX ram_0017
 C - - - - - 0x02707B 09:B06B: 84 16     STY ram_0016
 C - - - - - 0x02707D 09:B06D: BC 50 05  LDY ram_obj_id,X ; 0550 0551 
 C - - - - - 0x027080 09:B070: B9 11 B1  LDA tbl_B111_очки_за_переброс,Y
-C - - - - - 0x027083 09:B073: 48        PHA
-C - - - - - 0x027084 09:B074: 29 0F     AND #$0F
-C - - - - - 0x027086 09:B076: 85 14     STA ram_0014
-C - - - - - 0x027088 09:B078: 68        PLA
-C - - - - - 0x027089 09:B079: 20 07 D2  JSR sub_0x03D217_LSRx4
-C - - - - - 0x02708C 09:B07C: 85 13     STA ram_0013
-C - - - - - 0x02708E 09:B07E: A9 00     LDA #$00
-C - - - - - 0x027090 09:B080: 85 12     STA ram_0012
-C - - - - - 0x027092 09:B082: 85 11     STA ram_0011
+                                        JSR sub_B0C9
 C - - - - - 0x027094 09:B084: 8A        TXA
 C - - - - - 0x027095 09:B085: 4C B3 B0  JMP loc_B0B3
 
@@ -8670,15 +8662,7 @@ C - - - - - 0x0270A9 09:B099: 29 7F     AND #$7F
 C - - - - - 0x0270AB 09:B09B: AA        TAX
 C - - - - - 0x0270AC 09:B09C: BD D7 B0  LDA tbl_B0D7_очки_за_удар,X
 bra_B09F:
-C - - - - - 0x0270AF 09:B09F: 48        PHA
-C - - - - - 0x0270B0 09:B0A0: 29 0F     AND #$0F
-C - - - - - 0x0270B2 09:B0A2: 85 14     STA ram_0014
-C - - - - - 0x0270B4 09:B0A4: 68        PLA
-C - - - - - 0x0270B5 09:B0A5: 20 07 D2  JSR sub_0x03D217_LSRx4
-C - - - - - 0x0270B8 09:B0A8: 85 13     STA ram_0013
-C - - - - - 0x0270BA 09:B0AA: A9 00     LDA #$00
-C - - - - - 0x0270BC 09:B0AC: 85 12     STA ram_0012
-C - - - - - 0x0270BE 09:B0AE: 85 11     STA ram_0011
+                                        JSR sub_B0C9
 C - - - - - 0x0270C0 09:B0B0: B9 20 05  LDA ram_obj_state_hi,Y ; 0522 0523 0524 0525 0526 
 loc_B0B3:
 sub_0x0270C3:
@@ -8704,6 +8688,17 @@ C - - - - - 0x0270DF 09:B0CF: A6 17     LDX ram_0017
 C - - - - - 0x0270E1 09:B0D1: A4 16     LDY ram_0016
 C - - - - - 0x0270E3 09:B0D3: EE 35 06  INC ram_0635
 C - - - - - 0x0270E6 09:B0D6: 60        RTS
+sub_B0C9:
+C - - - - - 0x0270AF 09:B09F: 48        PHA
+C - - - - - 0x0270B0 09:B0A0: 29 0F     AND #$0F
+C - - - - - 0x0270B2 09:B0A2: 85 14     STA ram_0014
+C - - - - - 0x0270B4 09:B0A4: 68        PLA
+C - - - - - 0x0270B5 09:B0A5: 20 07 D2  JSR sub_0x03D217_LSRx4
+C - - - - - 0x0270B8 09:B0A8: 85 13     STA ram_0013
+C - - - - - 0x0270BA 09:B0AA: A9 00     LDA #$00
+C - - - - - 0x0270BC 09:B0AC: 85 12     STA ram_0012
+C - - - - - 0x0270BE 09:B0AE: 85 11     STA ram_0011
+                                        RTS
 
 
 
@@ -10405,12 +10400,12 @@ bra_B9FB_RTS:
 
 
 
-loc_B9FD:
-C D 1 - - - 0x027A0D 09:B9FD: 20 3C DE  JSR sub_0x03DE4C
+loc_B9FD_урон_от_нормалов_в_блок:
+C D 1 - - - 0x027A0D 09:B9FD: 20 3C DE  JSR sub_0x03DE4C_корректировка_урона_с_учетом_прочности_перса
 C - - - - - 0x027A10 09:BA00: 38        SEC
 C - - - - - 0x027A11 09:BA01: F5 A0     SBC ram_strength,X
 C - - - - - 0x027A13 09:BA03: BC 50 05  LDY ram_obj_id,X ; 0550 0551 
-C - - - - - 0x027A16 09:BA06: F9 16 BA  SBC tbl_BA16,Y
+C - - - - - 0x027A16 09:BA06: F9 16 BA  SBC tbl_BA16_уменьшение_урона_в_блок_персу,Y
 C - - - - - 0x027A19 09:BA09: 30 06     BMI bra_BA11
 C - - - - - 0x027A1B 09:BA0B: 4A        LSR
 C - - - - - 0x027A1C 09:BA0C: 4A        LSR
@@ -10422,7 +10417,7 @@ C - - - - - 0x027A23 09:BA13: 4C F8 AB  JMP loc_ABF8
 
 
 
-tbl_BA16:
+tbl_BA16_уменьшение_урона_в_блок_персу:
 - D 1 - - - 0x027A26 09:BA16: 01        .byte $01   ; 00 con_fighter_leo
 - D 1 - - - 0x027A27 09:BA17: 01        .byte $01   ; 01 con_fighter_raph
 - D 1 - - - 0x027A28 09:BA18: 01        .byte $01   ; 02 con_fighter_mike
