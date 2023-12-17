@@ -101,7 +101,7 @@ ofs_015_805E_02_обработка_страницы_опций_1:
 
 ofs_085_8060_00_difficulty:
                                         JSR sub_817C_попытка_сделать_255_контов
-                                        LDA ram_btn_press
+                                        LDA ram_sum_btn_press
                                         AND #con_btns_AB + con_btns_LR
                                         BEQ bra_8093_RTS
                                         AND #con_btn_Right + con_btn_A
@@ -142,7 +142,7 @@ ofs_085_8060_01_skin:
                                         LDA ram_option_misc
                                         AND #$03
                                         TAX
-                                        LDA ram_btn_press
+                                        LDA ram_sum_btn_press
                                         AND #con_btns_AB + con_btns_LR
                                         BEQ bra_80A3_RTS
                                         AND #con_btn_Right + con_btn_A
@@ -186,7 +186,7 @@ tbl_80AF_skin:
 
 
 ofs_085_8060_02_speed:
-                                        LDA ram_btn_press
+                                        LDA ram_sum_btn_press
                                         AND #con_btns_AB + con_btns_LR
                                         BEQ bra_80B3_RTS
 bra_80B0_change_option:
@@ -214,7 +214,7 @@ tbl_80BF_speed:
 
 
 ofs_085_8060_03_timer:
-                                        LDA ram_btn_press
+                                        LDA ram_sum_btn_press
                                         AND #con_btns_AB + con_btns_LR
                                         BEQ bra_80C3_RTS
                                         AND #con_btn_Right + con_btn_A
@@ -252,7 +252,7 @@ tbl_80CF_timer:
 
 
 ofs_085_8060_04_health:
-                                        LDA ram_btn_press
+                                        LDA ram_sum_btn_press
                                         AND #con_btns_AB + con_btns_LR
                                         BEQ bra_80D3_RTS
                                         AND #con_btn_Right + con_btn_A
@@ -291,7 +291,7 @@ tbl_80DF_health:
 
 ofs_085_8060_05_exit:                 
 ofs_086_8060_05_exit:
-                                        LDA ram_btn_press
+                                        LDA ram_sum_btn_press
                                         AND #con_btns_AB
                                         BEQ bra_8060_RTS
                                         JMP loc_8071_выход_из_экрана_с_опциями
@@ -316,7 +316,7 @@ ofs_015_805F_03_обработка_страницы_опций_2:
 
 
 ofs_086_8060_00_balancing:
-                                        LDA ram_btn_press
+                                        LDA ram_sum_btn_press
                                         AND #con_btns_AB + con_btns_LR
                                         BEQ bra_8193_RTS
 bra_8190_change_option:
@@ -351,7 +351,7 @@ tbl_819F_balancing:
 
 
 ofs_086_8060_01_shred_ctrl:
-                                        LDA ram_btn_press
+                                        LDA ram_sum_btn_press
                                         AND #con_btns_AB + con_btns_LR
                                         BEQ bra_81A3_RTS
 bra_81A0_change_option:
@@ -387,18 +387,18 @@ tbl_81AF_shred_ctrl:
 
 
 ofs_086_8060_02_bgm:
-                                        LDA ram_btn_press
+                                        LDA ram_sum_btn_press
                                         AND #con_btns_AB
                                         BEQ bra_81B4
                                         JSR sub_0x03F6D2_выключить_музыку_и_звуки
-                                        LDA ram_btn_press
+                                        LDA ram_sum_btn_press
                                         AND #con_btn_B
                                         BEQ bra_81B3_RTS
                                         LDY ram_04C0_bgm
                                         LDA tbl_829E_sound,Y
                                         JMP loc_0x03F6A0_записать_звук_сохранив_X_Y
 bra_81B4:
-                                        LDA ram_btn_press
+                                        LDA ram_sum_btn_press
                                         AND #con_btns_LR
                                         BEQ bra_81B3_RTS
                                         AND #con_btn_Right
@@ -473,7 +473,7 @@ tbl_81BF_bgm:
 
 
 ofs_086_8060_03_team_keeps:
-                                        LDA ram_btn_press
+                                        LDA ram_sum_btn_press
                                         AND #con_btns_AB + con_btns_LR
                                         BEQ bra_81C3_RTS
                                         AND #con_btn_Right + con_btn_A
@@ -563,7 +563,7 @@ sub_8061_попытка_переключить_на_страницу_с_опци
                                         .byte $2C   ; BIT
 sub_8061_попытка_переключить_на_страницу_с_опциями_2:
                                         LDX #$03
-                                        LDA ram_btn_press
+                                        LDA ram_sum_btn_press
                                         AND #con_btn_Select
                                         BEQ bra_8064_RTS
                                         TXA
