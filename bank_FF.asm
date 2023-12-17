@@ -84,7 +84,6 @@
 .export sub_0x03DE30_удалить_объекты_перса
 .export loc_0x03DE30_удалить_объекты_перса
 .export sub_0x03DE4C_корректировка_урона_с_учетом_прочности_перса
-.export ofs_0x03DE76
 .export sub_0x03DE87
 .export loc_0x03DE8E
 .export sub_0x03DEB2
@@ -2485,14 +2484,9 @@ C - - - - - 0x03DE65 0F:DE55: 79 34 F1  ADC tbl_F134_прочность_перс
 C - - - - - 0x03DE68 0F:DE58: BC 20 05  LDY ram_obj_state_hi,X ; 0520 0521 
 C - - - - - 0x03DE6B 0F:DE5B: C0 0A     CPY #con_plr_state_брошен_соперником
 C - - - - - 0x03DE6D 0F:DE5D: D0 08     BNE bra_DE67
-C - - - - - 0x03DE6F 0F:DE5F: 48        PHA ; делитель lo
-C - - - - - 0x03DE70 0F:DE60: 20 E7 F5  JSR sub_F5E7_swap_prg_16
-C - - - - - 0x03DE73 0F:DE63: 4C 00 AB  JMP loc_0x02EB10_корректировка_урона_от_броска_с_учетом_прочности_перса_на_броски
-
-
-
-ofs_0x03DE76:
-C - - - - - 0x03DE76 0F:DE66: 68        PLA
+C - - - - - 0x03DE6F 0F:DE5F: 48        LDY ram_obj_id,X ; 0550 0551 
+C - - - - - 0x03DE70 0F:DE60: 20 E7 F5  CLC
+C - - - - - 0x03DE73 0F:DE63: 4C 00 AB  ADC tbl_F13B_дополнительная_прочность_персов_на_броски,Y
 bra_DE67:
 C - - - - - 0x03DE79 0F:DE69: 20 00 D9  JSR sub_D900_деление_16бит_на_16бит
 C - - - - - 0x03DE7C 0F:DE6C: A5 18     LDA ram_0018    ; частное lo
@@ -2500,6 +2494,47 @@ C - - - - - 0x03DE7E 0F:DE6E: D0 02     BNE bra_DE72_RTS
 C - - - - - 0x03DE80 0F:DE70: A9 03     LDA #$03
 bra_DE72_RTS:
 C - - - - - 0x03DE82 0F:DE72: 60        RTS
+
+
+
+tbl_F134_прочность_персов:
+; базовая strength персов, суммируется с ram_strength
+- D 3 - - - 0x03F144 0F:F134: 14        .byte $14   ; 00 con_fighter_leo
+- D 3 - - - 0x03F145 0F:F135: 13        .byte $13   ; 01 con_fighter_raph
+- D 3 - - - 0x03F146 0F:F136: 12        .byte $12   ; 02 con_fighter_mike
+- D 3 - - - 0x03F147 0F:F137: 13        .byte $13   ; 03 con_fighter_don
+- D 3 - - - 0x03F148 0F:F138: 0F        .byte $0F   ; 04 con_fighter_casey
+- D 3 - - - 0x03F149 0F:F139: 1F        .byte $1F   ; 05 con_fighter_hot
+- D 3 - - - 0x03F14A 0F:F13A: 1A        .byte $1A   ; 06 con_fighter_shred
+                                    .if con_новые_персы <> $00
+                                        .byte $14   ; 07 con_fighter___leo
+                                        .byte $13   ; 08 con_fighter___raph
+                                        .byte $12   ; 09 con_fighter___mike
+                                        .byte $13   ; 0A con_fighter___don
+                                        .byte $0F   ; 0B con_fighter___casey
+                                        .byte $1F   ; 0C con_fighter___hot
+                                        .byte $1A   ; 0D con_fighter___shred
+                                    .endif
+
+
+
+tbl_F13B_дополнительная_прочность_персов_на_броски:
+                                        .byte $03   ; 00 con_fighter_leo
+                                        .byte $03   ; 01 con_fighter_raph
+                                        .byte $03   ; 02 con_fighter_mike
+                                        .byte $03   ; 03 con_fighter_don
+                                        .byte $02   ; 04 con_fighter_casey
+                                        .byte $FF   ; 05 con_fighter_hot
+                                        .byte $01   ; 06 con_fighter_shred
+                                    .if con_новые_персы <> $00
+                                        .byte $03   ; 07 con_fighter___leo
+                                        .byte $03   ; 08 con_fighter___raph
+                                        .byte $03   ; 09 con_fighter___mike
+                                        .byte $03   ; 0A con_fighter___don
+                                        .byte $02   ; 0B con_fighter___casey
+                                        .byte $FF   ; 0C con_fighter___hot
+                                        .byte $01   ; 0D con_fighter___shred
+                                    .endif
 
 
 
@@ -5471,27 +5506,6 @@ bra_F078_not_overflow:
                                         BNE bra_F077_loop
                                         JSR sub_F2B5_восстановить_2000
 C - - - - - 0x03F060 0F:F050: 4C 17 F6  JMP loc_F617_restore_prg
-
-
-
-tbl_F134_прочность_персов:
-; базовая strength персов, суммируется с ram_strength
-- D 3 - - - 0x03F144 0F:F134: 14        .byte $14   ; 00 con_fighter_leo
-- D 3 - - - 0x03F145 0F:F135: 13        .byte $13   ; 01 con_fighter_raph
-- D 3 - - - 0x03F146 0F:F136: 12        .byte $12   ; 02 con_fighter_mike
-- D 3 - - - 0x03F147 0F:F137: 13        .byte $13   ; 03 con_fighter_don
-- D 3 - - - 0x03F148 0F:F138: 0F        .byte $0F   ; 04 con_fighter_casey
-- D 3 - - - 0x03F149 0F:F139: 1F        .byte $1F   ; 05 con_fighter_hot
-- D 3 - - - 0x03F14A 0F:F13A: 1A        .byte $1A   ; 06 con_fighter_shred
-                                    .if con_новые_персы <> $00
-                                        .byte $14   ; 07 con_fighter___leo
-                                        .byte $13   ; 08 con_fighter___raph
-                                        .byte $12   ; 09 con_fighter___mike
-                                        .byte $13   ; 0A con_fighter___don
-                                        .byte $0F   ; 0B con_fighter___casey
-                                        .byte $1F   ; 0C con_fighter___hot
-                                        .byte $1A   ; 0D con_fighter___shred
-                                    .endif
 
 
 
