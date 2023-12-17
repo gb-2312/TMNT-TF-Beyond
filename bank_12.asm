@@ -17,7 +17,7 @@
 .export loc_0x027026_отрисовать_1p_2p_в_статусбаре_и_очки
 .export loc_0x027033_отрисовать_очки_в_статусбаре
 .export loc_0x02706E_ничего_не_рисовать_в_статусбаре
-.export sub_0x0270C3
+.export sub_0x0270C3_добавить_очки_игроку
 .export sub_0x027152
 .export ofs_0x0278CB_суперка_casey_песок_финальная_стадия
 .export sub_0x027AF8
@@ -8641,9 +8641,9 @@ C D 1 - - - 0x027079 09:B069: 86 17     STX ram_0017
 C - - - - - 0x02707B 09:B06B: 84 16     STY ram_0016
 C - - - - - 0x02707D 09:B06D: BC 50 05  LDY ram_obj_id,X ; 0550 0551 
 C - - - - - 0x027080 09:B070: B9 11 B1  LDA tbl_B111_очки_за_переброс,Y
-                                        JSR sub_B0C9
+                                        JSR sub_B0C9_подготовить_адреса_с_очками
 C - - - - - 0x027094 09:B084: 8A        TXA
-C - - - - - 0x027095 09:B085: 4C B3 B0  JMP loc_B0B3
+C - - - - - 0x027095 09:B085: 4C B3 B0  JMP loc_B0B3_добавить_очки_игроку
 
 
 
@@ -8662,10 +8662,10 @@ C - - - - - 0x0270A9 09:B099: 29 7F     AND #$7F
 C - - - - - 0x0270AB 09:B09B: AA        TAX
 C - - - - - 0x0270AC 09:B09C: BD D7 B0  LDA tbl_B0D7_очки_за_удар,X
 bra_B09F:
-                                        JSR sub_B0C9
+                                        JSR sub_B0C9_подготовить_адреса_с_очками
 C - - - - - 0x0270C0 09:B0B0: B9 20 05  LDA ram_obj_state_hi,Y ; 0522 0523 0524 0525 0526 
-loc_B0B3:
-sub_0x0270C3:
+loc_B0B3_добавить_очки_игроку:
+sub_0x0270C3_добавить_очки_игроку:
 C D 1 - - - 0x0270C3 09:B0B3: 0A        ASL
 C - - - - - 0x0270C4 09:B0B4: 0A        ASL
 C - - - - - 0x0270C5 09:B0B5: 09 03     ORA #$03
@@ -8686,18 +8686,21 @@ C - - - - - 0x0270DC 09:B0CC: CA        DEX
 C - - - - - 0x0270DD 09:B0CD: 10 EB     BPL bra_B0BA_loop
 C - - - - - 0x0270DF 09:B0CF: A6 17     LDX ram_0017
 C - - - - - 0x0270E1 09:B0D1: A4 16     LDY ram_0016
-C - - - - - 0x0270E3 09:B0D3: EE 35 06  INC ram_0635
+C - - - - - 0x0270E3 09:B0D3: EE 35 06  INC ram_0635_флаг_обновления_очков
 C - - - - - 0x0270E6 09:B0D6: 60        RTS
-sub_B0C9:
+
+
+
+sub_B0C9_подготовить_адреса_с_очками:
 C - - - - - 0x0270AF 09:B09F: 48        PHA
 C - - - - - 0x0270B0 09:B0A0: 29 0F     AND #$0F
-C - - - - - 0x0270B2 09:B0A2: 85 14     STA ram_0014
+C - - - - - 0x0270B2 09:B0A2: 85 14     STA ram_0014    ; тысячи
 C - - - - - 0x0270B4 09:B0A4: 68        PLA
 C - - - - - 0x0270B5 09:B0A5: 20 07 D2  JSR sub_0x03D217_LSRx4
-C - - - - - 0x0270B8 09:B0A8: 85 13     STA ram_0013
+C - - - - - 0x0270B8 09:B0A8: 85 13     STA ram_0013    ; сотни
 C - - - - - 0x0270BA 09:B0AA: A9 00     LDA #$00
-C - - - - - 0x0270BC 09:B0AC: 85 12     STA ram_0012
-C - - - - - 0x0270BE 09:B0AE: 85 11     STA ram_0011
+C - - - - - 0x0270BC 09:B0AC: 85 12     STA ram_0012    ; десятки
+C - - - - - 0x0270BE 09:B0AE: 85 11     STA ram_0011    ; единицы
                                         RTS
 
 
@@ -10859,12 +10862,12 @@ C - - - - - 0x027C22 09:BC12: 20 4C DB  JSR sub_0x03DB5C_добавить_spd_Z_
 C - - - - - 0x027C25 09:BC15: 20 3F A2  JSR sub_A23F
 C - - - - - 0x027C28 09:BC18: 20 4F BD  JSR sub_BD4F
 C - - - - - 0x027C2B 09:BC1B: 20 64 BC  JSR sub_BC64
-C - - - - - 0x027C2E 09:BC1E: AD 35 06  LDA ram_0635
-C - - - - - 0x027C31 09:BC21: F0 08     BEQ bra_BC2B
+C - - - - - 0x027C2E 09:BC1E: AD 35 06  LDA ram_0635_флаг_обновления_очков
+C - - - - - 0x027C31 09:BC21: F0 08     BEQ bra_BC2B_очки_не_менялись
 C - - - - - 0x027C33 09:BC23: A9 00     LDA #$00
-C - - - - - 0x027C35 09:BC25: 8D 35 06  STA ram_0635
+C - - - - - 0x027C35 09:BC25: 8D 35 06  STA ram_0635_флаг_обновления_очков
 C - - - - - 0x027C38 09:BC28: 20 F6 AF  JSR sub_AFF6_отрисовать_инфу_в_статусбаре
-bra_BC2B:
+bra_BC2B_очки_не_менялись:
 C - - - - - 0x027C3B 09:BC2B: 20 42 B1  JSR sub_B142
 loc_BC2E:
 C D 1 - - - 0x027C3E 09:BC2E: 20 E8 BA  JSR sub_BAE8

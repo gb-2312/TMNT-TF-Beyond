@@ -6538,7 +6538,7 @@ C - - - - - 0x03F767 0F:F757: 4C 17 F6  JMP loc_F617_restore_prg
 sub_0x03F76A:
 C - - - - - 0x03F76B 0F:F75B: 20 DF F5  JSR sub_F5DF_swap_prg_12
 C - - - - - 0x03F76E 0F:F75E: 68        LDA ram_0671
-C - - - - - 0x03F76F 0F:F75F: 20 B3 B0  JSR sub_0x0270C3
+C - - - - - 0x03F76F 0F:F75F: 20 B3 B0  JSR sub_0x0270C3_добавить_очки_игроку
 C - - - - - 0x03F772 0F:F762: 20 F6 AF  JSR sub_0x027006_отрисовать_инфу_в_статусбаре
 C - - - - - 0x03F775 0F:F765: 4C 17 F6  JMP loc_F617_restore_prg
 
@@ -7511,12 +7511,12 @@ C - - - - - 0x03FF33 0F:FF23: 30 F9     BMI bra_FDEC
 bra_FF25:
 C - - - - - 0x03FF35 0F:FF25: 4C 57 FD  JMP loc_FD57_loop
 bra_FDEC:
-C D 3 - - - 0x03FDFC 0F:FDEC: AD 35 06  LDA ram_0635
-C - - - - - 0x03FDFF 0F:FDEF: F0 08     BEQ bra_FDF9
+C D 3 - - - 0x03FDFC 0F:FDEC: AD 35 06  LDA ram_0635_флаг_обновления_очков
+C - - - - - 0x03FDFF 0F:FDEF: F0 08     BEQ bra_FDF9_очки_не_менялись
 C - - - - - 0x03FE01 0F:FDF1: A9 00     LDA #$00
-C - - - - - 0x03FE03 0F:FDF3: 8D 35 06  STA ram_0635
+C - - - - - 0x03FE03 0F:FDF3: 8D 35 06  STA ram_0635_флаг_обновления_очков
 C - - - - - 0x03FE06 0F:FDF6: 20 F6 AF  JSR sub_0x027006_отрисовать_инфу_в_статусбаре
-bra_FDF9:
+bra_FDF9_очки_не_менялись:
 C - - - - - 0x03FE09 0F:FDF9: 20 42 B1  JSR sub_0x027152
                                         JSR sub_F5E7_swap_prg_16
 C - - - - - 0x03FE0C 0F:FDFC: 20 4F 9E  JSR sub_0x025E5F_обработка_состояния_мяча

@@ -4708,7 +4708,7 @@ C - - - - - 0x039B6B 0E:9B5B: 20 01 A6  JSR sub_A601_попытка_подгот
 sub_9B5E_задержка_6_кадров:
 ; пауза между каждой напечатанной буквой
 C - - - - - 0x039B6E 0E:9B5E: A9 06     LDA #$06
-C - - - - - 0x039B70 0E:9B60: 8D 37 06  STA ram_0636_plr + $01
+C - - - - - 0x039B70 0E:9B60: 8D 37 06  STA ram_0637_задержка_текста
 bra_9B63_RTS:
 C - - - - - 0x039B73 0E:9B63: 60        RTS
 
@@ -4717,9 +4717,9 @@ C - - - - - 0x039B73 0E:9B63: 60        RTS
 sub_9B64:
 loc_9B64:
 C D 0 - - - 0x039B74 0E:9B64: A9 84     LDA #$84
-C - - - - - 0x039B76 0E:9B66: 8D 36 06  STA ram_0636_plr
+C - - - - - 0x039B76 0E:9B66: 8D 36 06  STA ram_0636_ppu_lo
 C - - - - - 0x039B79 0E:9B69: A9 22     LDA #$22
-C - - - - - 0x039B7B 0E:9B6B: 8D 35 06  STA ram_0635
+C - - - - - 0x039B7B 0E:9B6B: 8D 35 06  STA ram_0635_ppu_hi
 C - - - - - 0x039B7E 0E:9B6E: 60        RTS
 
 
@@ -4731,7 +4731,7 @@ con_9B6F_BD_новая_строка                = $BD ; новая строк
 con_9B6F_BE_проверка_сложности          = $BE ; проверка на сложность easy
 con_9B6F_BF_сменить_музыку              = $BF ; затухание громкости
 con_9B6F_FF_закончить                   = $FF ; закончить вывод текста
-C - - J - - 0x039B7F 0E:9B6F: CE 37 06  DEC ram_0636_plr + $01
+C - - J - - 0x039B7F 0E:9B6F: CE 37 06  DEC ram_0637_задержка_текста
 C - - - - - 0x039B82 0E:9B72: D0 EF     BNE bra_9B63_RTS
 C - - - - - 0x039B84 0E:9B74: 20 5E 9B  JSR sub_9B5E_задержка_6_кадров
 C - - - - - 0x039B87 0E:9B77: AD 33 06  LDA ram_0633
@@ -4754,10 +4754,10 @@ C - - - - - 0x039BAA 0E:9B9A: C9 FF     CMP #con_9B6F_FF_закончить
 C - - - - - 0x039BAC 0E:9B9C: F0 69     BEQ bra_9C07_FF
 C - - - - - 0x039BAE 0E:9B9E: 48        PHA
 C - - - - - 0x039BAF 0E:9B9F: 18        CLC
-C - - - - - 0x039BB0 0E:9BA0: AD 36 06  LDA ram_0636_plr
+C - - - - - 0x039BB0 0E:9BA0: AD 36 06  LDA ram_0636_ppu_lo
 C - - - - - 0x039BB3 0E:9BA3: 6D 39 06  ADC ram_0639_plr
 C - - - - - 0x039BB6 0E:9BA6: A8        TAY
-C - - - - - 0x039BB7 0E:9BA7: AD 35 06  LDA ram_0635
+C - - - - - 0x039BB7 0E:9BA7: AD 35 06  LDA ram_0635_ppu_hi
 C - - - - - 0x039BBA 0E:9BAA: 69 00     ADC #$00
 C - - - - - 0x039BBC 0E:9BAC: 20 6B D2  JSR sub_0x03D27B_записать_адрес_2006_Y_и_A_в_буфер
 C - - - - - 0x039BBF 0E:9BAF: 68        PLA
@@ -4773,19 +4773,19 @@ bra_9BBD_BD:
 ; новая строка
 C - - - - - 0x039BCD 0E:9BBD: A9 20     LDA #$20
 C - - - - - 0x039BCF 0E:9BBF: 18        CLC
-C - - - - - 0x039BD0 0E:9BC0: 6D 36 06  ADC ram_0636_plr
-C - - - - - 0x039BD3 0E:9BC3: 8D 36 06  STA ram_0636_plr
+C - - - - - 0x039BD0 0E:9BC0: 6D 36 06  ADC ram_0636_ppu_lo
+C - - - - - 0x039BD3 0E:9BC3: 8D 36 06  STA ram_0636_ppu_lo
 C - - - - - 0x039BD6 0E:9BC6: A9 00     LDA #$00
 C - - - - - 0x039BD8 0E:9BC8: 8D 39 06  STA ram_0639_plr
-C - - - - - 0x039BDB 0E:9BCB: 6D 35 06  ADC ram_0635
-C - - - - - 0x039BDE 0E:9BCE: 8D 35 06  STA ram_0635
+C - - - - - 0x039BDB 0E:9BCB: 6D 35 06  ADC ram_0635_ppu_hi
+C - - - - - 0x039BDE 0E:9BCE: 8D 35 06  STA ram_0635_ppu_hi
 C - - - - - 0x039BE1 0E:9BD1: 10 E6     BPL bra_9BB9    ; jmp
 bra_9BD3_BB:
 ; записать задержку
 C - - - - - 0x039BE3 0E:9BD3: EE 32 06  INC ram_0632_unk
 C - - - - - 0x039BE6 0E:9BD6: AC 32 06  LDY ram_0632_unk
 C - - - - - 0x039BE9 0E:9BD9: B1 00     LDA (ram_0000),Y
-C - - - - - 0x039BEB 0E:9BDB: 8D 37 06  STA ram_0636_plr + $01
+C - - - - - 0x039BEB 0E:9BDB: 8D 37 06  STA ram_0637_задержка_текста
 C - - - - - 0x039BEE 0E:9BDE: EE 32 06  INC ram_0632_unk
 C - - - - - 0x039BF1 0E:9BE1: 60        RTS
 bra_9BE2_BC:
