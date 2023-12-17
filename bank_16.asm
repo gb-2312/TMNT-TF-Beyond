@@ -817,12 +817,12 @@ tbl_AA90_автобаланс:
 ;                                              |    |    |    |    |    |    |
 ;                                              |    |    |    |    |    |    |
 - D 1 - - - 0x02EAA0 0B:AA90: 00        .byte $00, $00, $01, $00, $01, $FE, $FC   ; 00 con_fighter_leo
-- D 1 - - - 0x02EAA8 0B:AA98: 00        .byte $00, $00, $01, $00, $01, $FE, $FD   ; 01 con_fighter_raph
-- D 1 - - - 0x02EAB0 0B:AAA0: 00        .byte $00, $00, $00, $00, $00, $FD, $FC   ; 02 con_fighter_mike
-- D 1 - - - 0x02EAB8 0B:AAA8: 00        .byte $00, $00, $01, $00, $01, $FE, $FC   ; 03 con_fighter_don
-- D 1 - - - 0x02EAC0 0B:AAB0: 00        .byte $00, $00, $01, $00, $01, $FE, $FD   ; 04 con_fighter_casey
-- D 1 - - - 0x02EAC8 0B:AAB8: 01        .byte $01, $01, $02, $02, $01, $FE, $FE   ; 05 con_fighter_hot
-- D 1 - - - 0x02EAD0 0B:AAC0: 02        .byte $02, $02, $04, $03, $04, $00, $FE   ; 06 con_fighter_shred
+- D 1 - - - 0x02EAA8 0B:AA98: 00        .byte $01, $00, $01, $01, $02, $FE, $FD   ; 01 con_fighter_raph
+- D 1 - - - 0x02EAB0 0B:AAA0: 00        .byte $00, $00, $00, $00, $00, $FC, $FC   ; 02 con_fighter_mike
+- D 1 - - - 0x02EAB8 0B:AAA8: 00        .byte $00, $00, $01, $00, $01, $FD, $FC   ; 03 con_fighter_don
+- D 1 - - - 0x02EAC0 0B:AAB0: 00        .byte $00, $00, $01, $00, $01, $FF, $FD   ; 04 con_fighter_casey
+- D 1 - - - 0x02EAC8 0B:AAB8: 01        .byte $01, $01, $02, $02, $02, $FE, $FE   ; 05 con_fighter_hot
+- D 1 - - - 0x02EAD0 0B:AAC0: 02        .byte $02, $02, $04, $03, $04, $01, $FE   ; 06 con_fighter_shred
                                     .else
 ;                                              +---------------------------------------------------------------------- 00 con_fighter_leo
 ;                                              |    +----------------------------------------------------------------- 01 con_fighter_raph
@@ -842,19 +842,19 @@ tbl_AA90_автобаланс:
 ;                                              |    |    |    |    |    |    |    |    |    |    |    |    |    |
 ;                                              |    |    |    |    |    |    |    |    |    |    |    |    |    |
                                         .byte $00, $00, $01, $00, $01, $FE, $FC, $00, $00, $01, $00, $01, $FE, $FC   ; 00 con_fighter_leo
-                                        .byte $00, $00, $01, $00, $01, $FE, $FD, $00, $00, $01, $00, $01, $FE, $FD   ; 01 con_fighter_raph
-                                        .byte $00, $00, $00, $00, $00, $FD, $FC, $00, $00, $00, $00, $00, $FD, $FC   ; 02 con_fighter_mike
-                                        .byte $00, $00, $01, $00, $01, $FE, $FC, $00, $00, $01, $00, $01, $FE, $FC   ; 03 con_fighter_don
-                                        .byte $00, $00, $01, $00, $01, $FE, $FD, $00, $00, $01, $00, $01, $FE, $FD   ; 04 con_fighter_casey
-                                        .byte $01, $01, $02, $02, $01, $FE, $FE, $01, $01, $02, $02, $01, $FE, $FE   ; 05 con_fighter_hot
-                                        .byte $02, $02, $04, $03, $04, $00, $FE, $02, $02, $04, $03, $04, $00, $FE   ; 06 con_fighter_shred
+                                        .byte $01, $00, $01, $01, $02, $FE, $FD, $01, $00, $01, $01, $02, $FE, $FD   ; 01 con_fighter_raph
+                                        .byte $00, $00, $00, $00, $00, $FC, $FC, $00, $00, $00, $00, $00, $FC, $FC   ; 02 con_fighter_mike
+                                        .byte $00, $00, $01, $00, $01, $FD, $FC, $00, $00, $01, $00, $01, $FD, $FC   ; 03 con_fighter_don
+                                        .byte $00, $00, $01, $00, $01, $FF, $FD, $00, $00, $01, $00, $01, $FF, $FD   ; 04 con_fighter_casey
+                                        .byte $01, $01, $02, $02, $02, $FE, $FE, $01, $01, $02, $02, $02, $FE, $FE   ; 05 con_fighter_hot
+                                        .byte $02, $02, $04, $03, $04, $01, $FE, $02, $02, $04, $03, $04, $01, $FE   ; 06 con_fighter_shred
                                         .byte $00, $00, $01, $00, $01, $FE, $FC, $00, $00, $01, $00, $01, $FE, $FC   ; 07 con_fighter___leo
-                                        .byte $00, $00, $01, $00, $01, $FE, $FD, $00, $00, $01, $00, $01, $FE, $FD   ; 08 con_fighter___raph
-                                        .byte $00, $00, $00, $00, $00, $FD, $FC, $00, $00, $00, $00, $00, $FD, $FC   ; 09 con_fighter___mike
-                                        .byte $00, $00, $01, $00, $01, $FE, $FC, $00, $00, $01, $00, $01, $FE, $FC   ; 0A con_fighter___don
-                                        .byte $00, $00, $01, $00, $01, $FE, $FD, $00, $00, $01, $00, $01, $FE, $FD   ; 0B con_fighter___casey
-                                        .byte $01, $01, $02, $02, $01, $FE, $FE, $01, $01, $02, $02, $01, $FE, $FE   ; 0C con_fighter___hot
-                                        .byte $02, $02, $04, $03, $04, $00, $FE, $02, $02, $04, $03, $04, $00, $FE   ; 0D con_fighter___shred
+                                        .byte $01, $00, $01, $01, $02, $FE, $FD, $01, $00, $01, $01, $02, $FE, $FD   ; 08 con_fighter___raph
+                                        .byte $00, $00, $00, $00, $00, $FC, $FC, $00, $00, $00, $00, $00, $FC, $FC   ; 09 con_fighter___mike
+                                        .byte $00, $00, $01, $00, $01, $FD, $FC, $00, $00, $01, $00, $01, $FD, $FC   ; 0A con_fighter___don
+                                        .byte $00, $00, $01, $00, $01, $FF, $FD, $00, $00, $01, $00, $01, $FF, $FD   ; 0B con_fighter___casey
+                                        .byte $01, $01, $02, $02, $02, $FE, $FE, $01, $01, $02, $02, $02, $FE, $FE   ; 0C con_fighter___hot
+                                        .byte $02, $02, $04, $03, $04, $01, $FE, $02, $02, $04, $03, $04, $01, $FE   ; 0D con_fighter___shred
                                     .endif
 
 

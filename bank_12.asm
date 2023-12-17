@@ -4602,21 +4602,21 @@ tbl_9737:
 
 tbl_973E_урон_от_бросков:
 ; первый и второй бросок для каждого перса
-- D 0 - - - 0x02574E 09:973E: 2B        .byte $2B, $2B  ; 00 con_fighter_leo
+- D 0 - - - 0x02574E 09:973E: 2B        .byte $2A, $2A  ; 00 con_fighter_leo
 - D 0 - - - 0x02574F 09:973F: 08        .byte $08, $08  ; 01 con_fighter_raph
 - D 0 - - - 0x025750 09:9740: 22        .byte $22, $22  ; 02 con_fighter_mike
-- D 0 - - - 0x025751 09:9741: 2B        .byte $2B, $2B  ; 03 con_fighter_don
-- D 0 - - - 0x025752 09:9742: 38        .byte $38, $38  ; 04 con_fighter_casey
-- D 0 - - - 0x025753 09:9743: 40        .byte $40, $2B  ; 05 con_fighter_hot
-- D 0 - - - 0x025754 09:9744: 40        .byte $40, $40  ; 06 con_fighter_shred
+- D 0 - - - 0x025751 09:9741: 2B        .byte $2A, $2A  ; 03 con_fighter_don
+- D 0 - - - 0x025752 09:9742: 38        .byte $36, $36  ; 04 con_fighter_casey
+- D 0 - - - 0x025753 09:9743: 40        .byte $3F, $3F  ; 05 con_fighter_hot
+- D 0 - - - 0x025754 09:9744: 40        .byte $3F, $3F  ; 06 con_fighter_shred
                                     .if con_новые_персы <> $00
-                                        .byte $2B, $2B   ; 07 con_fighter___leo
+                                        .byte $2A, $2A   ; 07 con_fighter___leo
                                         .byte $08, $08   ; 08 con_fighter___raph
                                         .byte $22, $22   ; 09 con_fighter___mike
-                                        .byte $2B, $2B   ; 0A con_fighter___don
-                                        .byte $38, $38   ; 0B con_fighter___casey
-                                        .byte $40, $2B   ; 0C con_fighter___hot
-                                        .byte $40, $40   ; 0D con_fighter___shred
+                                        .byte $2A, $2A   ; 0A con_fighter___don
+                                        .byte $36, $36   ; 0B con_fighter___casey
+                                        .byte $3F, $3F   ; 0C con_fighter___hot
+                                        .byte $3F, $3F   ; 0D con_fighter___shred
                                     .endif
 
 

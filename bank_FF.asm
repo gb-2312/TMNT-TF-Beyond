@@ -2523,7 +2523,7 @@ tbl_F13B_дополнительная_прочность_персов_на_бр�
                                         .byte $03   ; 01 con_fighter_raph
                                         .byte $03   ; 02 con_fighter_mike
                                         .byte $03   ; 03 con_fighter_don
-                                        .byte $02   ; 04 con_fighter_casey
+                                        .byte $01   ; 04 con_fighter_casey
                                         .byte $FF   ; 05 con_fighter_hot
                                         .byte $01   ; 06 con_fighter_shred
                                     .if con_новые_персы <> $00
@@ -2531,7 +2531,7 @@ tbl_F13B_дополнительная_прочность_персов_на_бр�
                                         .byte $03   ; 08 con_fighter___raph
                                         .byte $03   ; 09 con_fighter___mike
                                         .byte $03   ; 0A con_fighter___don
-                                        .byte $02   ; 0B con_fighter___casey
+                                        .byte $01   ; 0B con_fighter___casey
                                         .byte $FF   ; 0C con_fighter___hot
                                         .byte $01   ; 0D con_fighter___shred
                                     .endif
@@ -6118,6 +6118,14 @@ C - - - - - 0x03F50E 0F:F4FE: 20 0D D0  JSR sub_D00D_очистить_опера
 C - - - - - 0x03F511 0F:F501: A9 00     LDA #$00
 C - - - - - 0x03F513 0F:F503: 85 A0     STA ram_strength
 C - - - - - 0x03F515 0F:F505: 85 A1     STA ram_strength + $01
+                                        LDA ram_game_mode
+                                        EOR #$01
+                                        BNE bra_F506
+                                        LDA ram_option_misc
+                                        AND #$08
+                                        BEQ bra_F506
+                                        INC ram_strength  ; 01
+bra_F506:
                                         LDA #con_script_draw_04
 C - - - - - 0x03F517 0F:F507: F0 EE     JMP loc_F5AE_подготовить_новый_скрипт
 
