@@ -6468,9 +6468,105 @@ C - - - - - 0x03F70F 0F:F6FF: 4C 17 F6  JMP loc_F617_restore_prg
 
 
 sub_F702_запись_буферов_в_ppu:
-C - - - - - 0x03F712 0F:F702: 20 EB F5  JSR sub_F5EB_swap_prg_18
-C - - - - - 0x03F715 0F:F705: 20 00 90  JSR sub_0x031010_запись_буферов_в_ppu
-C - - - - - 0x03F718 0F:F708: 4C 17 F6  JMP loc_F617_restore_prg
+; перемещено из банка 18
+                                        BIT $2002
+C D 0 - - - 0x030016 0C:8006: A0 00     LDY #$00
+loc_8008_main_loop:
+C - - - - - 0x030018 0C:8008: BE 00 03  LDX ram_ppu_buffer,Y
+C - - - - - 0x03001B 0C:800B: F0 28     BEQ bra_8035_00
+C - - - - - 0x03001D 0C:800D: A5 FF     LDA ram_for_2000
+C - - - - - 0x03001F 0C:800F: 29 18     AND #$18
+C - - - - - 0x030021 0C:8011: 1D 00 80  ORA tbl_8001 - $01,X
+C - - - - - 0x030024 0C:8014: 8D 00 20  STA $2000
+                                        LDA tbl_8009_lo - $01,X
+                                        STA ram_0002
+                                        LDA tbl_800A_hi - $01,X
+                                        STA ram_0003
+C - - - - - 0x03002B 0C:801B: B9 01 03  LDA ram_ppu_buffer + $02,Y
+C - - - - - 0x03002E 0C:801E: 8D 06 20  STA $2006
+C - - - - - 0x030031 0C:8021: B9 00 03  LDA ram_ppu_buffer + $01,Y
+C - - - - - 0x030034 0C:8024: 8D 06 20  STA $2006
+C - - - - - 0x030037 0C:8027: C8        INY
+C - - - - - 0x030038 0C:8028: C8        INY
+                                        INY
+                                        JMP (ram_0002)
+bra_8035_00:
+; выключить буфер и обнулить индекс
+C - - - - - 0x030045 0C:8035: A9 00     LDA #$00
+C - - - - - 0x030047 0C:8037: 8D 00 03  STA ram_ppu_buffer
+C - - - - - 0x03004A 0C:803A: 85 25     STA ram_index_ppu_buffer
+C - - - - - 0x03004C 0C:803C: 60        RTS
+
+
+
+tbl_8001:
+- D 0 - - - 0x030011 0C:8001: 00        .byte $00   ; 01 +01
+- D 0 - - - 0x030012 0C:8002: 04        .byte $04   ; 02 +32
+- D 0 - - - 0x030013 0C:8003: 00        .byte $00   ; 03 +01
+- D 0 - - - 0x030014 0C:8004: 00        .byte $00   ; 04 +01
+- D 0 - - - 0x030015 0C:8005: 04        .byte $04   ; 05 +32
+
+
+
+tbl_8009_lo:
+    .byte < ofs_067_800A_buf_mode_01
+    .byte < ofs_067_800A_buf_mode_02
+    .byte < ofs_067_800A_buf_mode_03
+    .byte < ofs_067_800A_buf_mode_04
+    .byte < ofs_067_800A_buf_mode_05
+
+tbl_800A_hi:
+    .byte > ofs_067_800A_buf_mode_01
+    .byte > ofs_067_800A_buf_mode_02
+    .byte > ofs_067_800A_buf_mode_03
+    .byte > ofs_067_800A_buf_mode_04
+    .byte > ofs_067_800A_buf_mode_05
+
+
+
+bra_803E_loop:
+                                        STA $2007
+ofs_067_800A_buf_mode_01:
+; записать список байтов, FF = end token, +01
+ofs_067_800A_buf_mode_02:
+; записать список байтов, FF = end token, +32
+                                        LDA ram_ppu_buffer,Y
+                                        INY
+                                        CMP #$FF
+                                        BNE bra_803E_loop
+                                        JMP loc_8008_main_loop
+
+
+
+ofs_067_800A_buf_mode_03:
+; счетчик + запись байта N раз, +01
+ofs_067_800A_buf_mode_05:
+; счетчик + запись байта N раз, +32
+                                        LDX ram_ppu_buffer,Y
+                                        INY
+                                        LDA ram_ppu_buffer,Y
+                                        INY
+bra_805B_loop:
+                                        STA $2007
+                                        DEX
+                                        BNE bra_805B_loop
+                                        JMP loc_8008_main_loop
+
+
+
+ofs_067_800A_buf_mode_04:
+; счетчик + запись байта N раз с постоянным его увеличением, +01
+                                        LDX ram_ppu_buffer,Y
+                                        INY
+                                        LDA ram_ppu_buffer,Y
+                                        INY
+                                        CLC
+bra_806C_loop:
+                                        STA $2007
+                                        ADC #$01
+                                        DEX
+                                        BNE bra_806C_loop
+                                        JMP loc_8008_main_loop
 
 
 

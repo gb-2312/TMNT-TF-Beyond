@@ -2214,8 +2214,19 @@ C D 1 - - - 0x02FE22 0B:BE12: A5 2C     LDA ram_game_mode
 ; con_gm_vs_cpu
 ; con_gm_vs_team
 C - - - - - 0x02FE24 0B:BE14: C9 03     CMP #$03
-C - - - - - 0x02FE26 0B:BE16: D0 39     BNE bra_BE51_другие_режимы_игры
+C - - - - - 0x02FE26 0B:BE16: D0 39     BEQ bra_BE17_vs_team
+; con_gm_story
+; con_gm_vs_player
+; con_gm_vs_cpu
+                                        JMP loc_826F
+bra_BE17_vs_team:
 ; if con_gm_vs_team
+                                        JSR sub_BE18_обработчик_выбора_перса_vs_team
+                                        JMP loc_9000_запись_в_буфер_имен_vs_team
+
+
+
+sub_BE18_обработчик_выбора_перса_vs_team:
                                         LDA ram_tournament_индекс_игрока,X
                                         AND #$80
                                         STA ram_0000 ; сохраняем man или cpu для использования дальше
@@ -2254,7 +2265,6 @@ C - - - - - 0x02FE59 0B:BE49: DE 44 01  DEC ram_0144_plr_выбор_перса_v
 C - - - - - 0x02FE5C 0B:BE4C: B5 A2     LDA ram_plr_id,X ; 00A2 00A3 
                                         ORA ram_0000 ; суммируем с man или cpu
 C - - - - - 0x02FE5E 0B:BE4E: 99 30 01  STA ram_0130,Y ; 0130 0131 0132 0133 0134 0135 0136 0138 0139 013A 013B 013C 013D 013E 
-bra_BE51_другие_режимы_игры:
 C - - - - - 0x02FE61 0B:BE51: 4C 6F 82  JMP loc_826F
 bra_BE54_отмена_выбранного_перса:
 C - - - - - 0x02FE64 0B:BE54: BD 40 01  LDA ram_plr_колво_персов_в_цепочке_vs_team,X ; 0140 0141 
@@ -2295,6 +2305,125 @@ bra_BE88_RTS:
 bra_BE89_RTS:
                                     .endif
 - - - - - - 0x02FE98 0B:BE88: 60        RTS
+
+
+
+loc_9000_запись_в_буфер_имен_vs_team:
+; перемещено из банка 18
+; bzk optimize, переписать код, избавившись от промежуточного буфера 0146,X
+C - - - - - 0x031016 0C:9006: A2 01     LDX #$01
+bra_9008_loop:
+C - - - - - 0x031018 0C:9008: BD 44 01  LDA ram_0144_plr_выбор_перса_vs_team,X ; 0144 0145 
+C - - - - - 0x03101B 0C:900B: 30 06     BMI bra_9013_запись_перса_в_буфер
+C - - - - - 0x03101D 0C:900D: CA        DEX
+C - - - - - 0x03101E 0C:900E: 10 F8     BPL bra_9008_loop
+C - - - - - 0x031020 0C:9010: 4C 06 80  RTS
+bra_9013_запись_перса_в_буфер:
+                                        LDA ram_tournament_индекс_игрока,X
+                                        LSR
+                                        LSR
+                                        LSR
+                                        STA ram_0000
+C - - - - - 0x031023 0C:9013: A9 01     LDA #con_buf_mode_01
+C - - - - - 0x031025 0C:9015: 8D 46 01  STA ram_0146
+C - - - - - 0x031028 0C:9018: BD 40 01  LDA ram_plr_колво_персов_в_цепочке_vs_team,X ; 0140 0141 
+C - - - - - 0x03102B 0C:901B: 0A        ASL
+C - - - - - 0x03102C 0C:901C: 0A        ASL
+C - - - - - 0x03102D 0C:901D: 7D FB 8F  ADC tbl_8FFB_ppu_lo,X
+C - - - - - 0x031030 0C:9020: 8D 47 01  STA ram_0147
+C - - - - - 0x031033 0C:9023: BD FD 8F  LDA tbl_8FFD_ppu_hi,X
+C - - - - - 0x031036 0C:9026: 8D 48 01  STA ram_0148
+C - - - - - 0x031039 0C:9029: FE 44 01  INC ram_0144_plr_выбор_перса_vs_team,X ; 0144 0145 
+C - - - - - 0x03103C 0C:902C: F0 13     BEQ bra_9041_FF
+C - - - - - 0x03103E 0C:902E: FE 44 01  INC ram_0144_plr_выбор_перса_vs_team,X ; 0144 0145 
+C - - - - - 0x031041 0C:9031: D0 07     BNE bra_903A_FD_рандомный_перс
+; FE для текста "???"
+C - - - - - 0x031043 0C:9033: DE 40 01  DEC ram_plr_колво_персов_в_цепочке_vs_team,X ; 0140 0141 
+; con_колво_персов
+                                    .if con_новые_персы = $00
+C - - - - - 0x031046 0C:9036: A2 24     LDX #$24
+                                    .else
+                                        LDX #$24 + $1C
+                                    .endif
+C - - - - - 0x031048 0C:9038: D0 17     BNE bra_9051    ; jmp
+bra_903A_FD_рандомный_перс:
+- - - - - - 0x03104A 0C:903A: FE 44 01  INC ram_0144_plr_выбор_перса_vs_team,X
+; con_колво_персов
+                                    .if con_новые_персы = $00
+- - - - - - 0x03104D 0C:903D: A2 20     LDX #$20
+                                    .else
+                                        LDX #$20 + $1C
+                                    .endif
+- - - - - - 0x03104F 0C:903F: D0 10     BNE bra_9051   ; jmp
+bra_9041_FF:
+C - - - - - 0x031051 0C:9041: 8A        TXA
+C - - - - - 0x031052 0C:9042: 0A        ASL
+C - - - - - 0x031053 0C:9043: 0A        ASL
+C - - - - - 0x031054 0C:9044: 0A        ASL
+C - - - - - 0x031055 0C:9045: 7D 40 01  ADC ram_plr_колво_персов_в_цепочке_vs_team,X ; 0140 0141 
+C - - - - - 0x031058 0C:9048: A8        TAY
+C - - - - - 0x031059 0C:9049: B9 2F 01  LDA ram_0130 - $01,Y ; 0130 0131 0132 0133 0134 0135 0136 0138 0139 013A 013B 013C 013D 013E 
+C - - - - - 0x03105C 0C:904C: 0A        ASL
+C - - - - - 0x03105D 0C:904D: 0A        ASL
+C - - - - - 0x03105E 0C:904E: 69 04     ADC #$04
+C - - - - - 0x031060 0C:9050: AA        TAX
+bra_9051:
+C - - - - - 0x031061 0C:9051: A0 04     LDY #$04
+bra_9053_loop:
+C - - - - - 0x031063 0C:9053: BD D0 8F  LDA tbl_8FD1_имена_из_3х_букв - $01,X
+                                        CMP #$FF
+                                        BEQ bra_9054_end_token
+; C = 0
+                                        ADC ram_0000
+bra_9054_end_token:
+C - - - - - 0x031066 0C:9056: 99 48 01  STA ram_0149 - $01,Y ; 0149 014A 014B 014C 
+C - - - - - 0x031069 0C:9059: CA        DEX
+C - - - - - 0x03106A 0C:905A: 88        DEY
+C - - - - - 0x03106B 0C:905B: D0 F6     BNE bra_9053_loop
+; Y = 00
+C - - - - - 0x03106D 0C:905D: A6 25     LDX ram_index_ppu_buffer
+bra_905F_loop:
+C - - - - - 0x03106F 0C:905F: B9 46 01  LDA ram_0146,Y ; 0146 0147 0148 0149 014A 014B 014C 014D 
+C - - - - - 0x031072 0C:9062: 9D FF 02  STA ram_ppu_buffer,X
+C - - - - - 0x031075 0C:9065: F0 A9     BEQ bra_9070    ; if найден end token
+C - - - - - 0x031077 0C:9067: E8        INX
+C - - - - - 0x031078 0C:9068: C8        INY
+C - - - - - 0x031079 0C:9069: D0 F4     BNE bra_905F_loop    ; jmp
+bra_9070:
+                                        STX ram_index_ppu_buffer
+                                        RTS
+
+
+
+tbl_8FD1_имена_из_3х_букв:
+- D 0 - - - 0x030FE1 0C:8FD1: C6        .byte $B8, $B4, $BB, $FF   ; 00 LEO
+- D 0 - - - 0x030FE5 0C:8FD5: CC        .byte $BD, $B1, $BC, $FF   ; 01 RAP
+- D 0 - - - 0x030FE9 0C:8FD9: C7        .byte $B9, $B6, $B7, $FF   ; 02 MIK
+- D 0 - - - 0x030FED 0C:8FDD: BE        .byte $B3, $BB, $BA, $FF   ; 03 DON
+- D 0 - - - 0x030FF1 0C:8FE1: BD        .byte $B2, $B1, $BE, $FF   ; 04 CAS
+- D 0 - - - 0x030FF5 0C:8FE5: C2        .byte $B5, $BB, $BF, $FF   ; 05 HOT
+- D 0 - - - 0x030FF9 0C:8FE9: CD        .byte $BE, $B5, $BD, $FF   ; 06 SHR
+                                    .if con_новые_персы <> $00
+                                        .byte $B8, $B4, $BB, $FF   ; 07 LEO
+                                        .byte $BD, $B1, $BC, $FF   ; 08 RAP
+                                        .byte $B9, $B6, $B7, $FF   ; 09 MIK
+                                        .byte $B3, $BB, $BA, $FF   ; 0A DON
+                                        .byte $B2, $B1, $BE, $FF   ; 0B CAS
+                                        .byte $B5, $BB, $BF, $FF   ; 0C HOT
+                                        .byte $BE, $B5, $BD, $FF   ; 0D SHR
+                                    .endif
+- - - - - - 0x030FFD 0C:8FED: CC        .byte $BD, $BA, $B3, $FF   ; 07 (0E) RND
+- D 0 - - - 0x031001 0C:8FF1: A9        .byte $B0, $B0, $B0, $FF   ; 08 (0F) ???
+
+
+
+tbl_8FFB_ppu_lo:
+- D 0 - - - 0x03100B 0C:8FFB: 9E        .byte < $209E   ; 00
+- D 0 - - - 0x03100C 0C:8FFC: 3E        .byte < $233E   ; 01
+
+tbl_8FFD_ppu_hi:
+- D 0 - - - 0x03100D 0C:8FFD: 20        .byte > $209E   ; 00
+- D 0 - - - 0x03100E 0C:8FFE: 23        .byte > $233E   ; 01
 
 
 
