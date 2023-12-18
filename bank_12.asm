@@ -4932,10 +4932,10 @@ C - - - - - 0x025B51 09:9B41: 29 C0     AND #con_btns_AB
 C - - - - - 0x025B53 09:9B43: 1D 31 06  ORA ram_plr_btn_суперка,X ; 0631 0632 
 C - - - - - 0x025B56 09:9B46: 9D 31 06  STA ram_plr_btn_суперка,X ; 0631 0632 
 C - - - - - 0x025B59 09:9B49: 29 C0     AND #con_btns_AB
-C - - - - - 0x025B5B 09:9B4B: F0 60     BEQ bra_9BAD_RTS
+C - - - - - 0x025B5B 09:9B4B: F0 60     BEQ bra_FE9B_RTS
 C - - - - - 0x025B5D 09:9B4D: BD 31 06  LDA ram_plr_btn_суперка,X ; 0631 0632 
 C - - - - - 0x025B60 09:9B50: 25 08     AND ram_0008    ; right/left
-C - - - - - 0x025B62 09:9B52: F0 59     BEQ bra_9BAD_RTS
+C - - - - - 0x025B62 09:9B52: F0 59     BEQ bra_FE9B_RTS
 C - - - - - 0x025B64 09:9B54: 4C 7C 9A  JMP loc_9A7C
 bra_9B57:
 loc_9B57:
@@ -4978,7 +4978,39 @@ C - - - - - 0x025B8C 09:9B7C: D0 30     BNE bra_9BAE    ; jmp
 ofs_053_9B7E_04_casey:
 ofs_053_9B7E_0B:
 C - - J - - 0x025B8E 09:9B7E: 20 84 9B  JSR sub_9B84
-C - - - - - 0x025B91 09:9B81: 4C B9 9C  JMP loc_9CB9
+C D 0 - - - 0x025CC9 09:9CB9: 20 00 9D  JSR sub_9D00
+C - - - - - 0x025CCC 09:9CBC: BC 0A 06  LDY ram_060A_plr,X ; 060A 060B 
+C - - - - - 0x025CCF 09:9CBF: F0 16     BEQ bra_9CD7_RTS
+C - - - - - 0x025CD1 09:9CC1: 88        DEY
+C - - - - - 0x025CD2 09:9CC2: D0 14     BNE bra_9CD8
+C - - - - - 0x025CD4 09:9CC4: A5 09     LDA ram_0009    ; dpad btns
+C - - - - - 0x025CD6 09:9CC6: 29 04     AND #con_btn_Down
+C - - - - - 0x025CD8 09:9CC8: F0 0D     BEQ bra_9CD7_RTS
+C - - - - - 0x025CDA 09:9CCA: FE 0A 06  INC ram_060A_plr,X ; 060A 060B 
+C - - - - - 0x025CDD 09:9CCD: A9 00     LDA #$00
+C - - - - - 0x025CDF 09:9CCF: 9D 33 06  STA ram_0633,X ; 0633 0634 
+C - - - - - 0x025CE2 09:9CD2: A9 14     LDA #$14
+C - - - - - 0x025CE4 09:9CD4: 9D 0E 06  STA ram_060E_plr,X ; 060E 060F 
+bra_9CD7_RTS:
+C - - - - - 0x025CE7 09:9CD7: 60        RTS
+bra_9CD8:
+C - - - - - 0x025CE8 09:9CD8: 20 AD 9A  JSR sub_9AAD_реверснуть_кнопку_в_0008
+C - - - - - 0x025CEB 09:9CDB: A5 08     LDA ram_0008    ; right/left
+C - - - - - 0x025CED 09:9CDD: 25 09     AND ram_0009    ; dpad btns
+C - - - - - 0x025CEF 09:9CDF: 85 00     STA ram_0000
+C - - - - - 0x025CF1 09:9CE1: B5 8E     LDA ram_btn_press,X
+C - - - - - 0x025CF3 09:9CE3: 29 40     AND #con_btn_B
+C - - - - - 0x025CF5 09:9CE5: 05 00     ORA ram_0000
+C - - - - - 0x025CF7 09:9CE7: 1D 33 06  ORA ram_0633,X ; 0633 0634 
+C - - - - - 0x025CFA 09:9CEA: 9D 33 06  STA ram_0633,X ; 0633 0634 
+C - - - - - 0x025CFD 09:9CED: BD 10 04  LDA ram_obj_pos_Y_lo,X ; 0410 0411 
+C - - - - - 0x025D00 09:9CF0: C9 AC     CMP #$AC
+C - - - - - 0x025D02 09:9CF2: 90 E3     BCC bra_9CD7_RTS
+C - - - - - 0x025D04 09:9CF4: A5 08     LDA ram_0008    ; right/left
+C - - - - - 0x025D06 09:9CF6: 09 40     ORA #con_btn_B
+C - - - - - 0x025D08 09:9CF8: DD 33 06  CMP ram_0633,X ; 0633 0634 
+C - - - - - 0x025D0B 09:9CFB: D0 DA     BNE bra_9CD7_RTS
+C - - - - - 0x025D0D 09:9CFD: 4C 89 9A  JMP loc_9A89
 
 
 
@@ -5163,44 +5195,6 @@ C - - - - - 0x025CC6 09:9CB6: 4C 89 9A  JMP loc_9A89
 
 
 
-loc_9CB9:
-; bzk optimize, переместить код выше
-C D 0 - - - 0x025CC9 09:9CB9: 20 00 9D  JSR sub_9D00
-C - - - - - 0x025CCC 09:9CBC: BC 0A 06  LDY ram_060A_plr,X ; 060A 060B 
-C - - - - - 0x025CCF 09:9CBF: F0 16     BEQ bra_9CD7_RTS
-C - - - - - 0x025CD1 09:9CC1: 88        DEY
-C - - - - - 0x025CD2 09:9CC2: D0 14     BNE bra_9CD8
-C - - - - - 0x025CD4 09:9CC4: A5 09     LDA ram_0009    ; dpad btns
-C - - - - - 0x025CD6 09:9CC6: 29 04     AND #con_btn_Down
-C - - - - - 0x025CD8 09:9CC8: F0 0D     BEQ bra_9CD7_RTS
-C - - - - - 0x025CDA 09:9CCA: FE 0A 06  INC ram_060A_plr,X ; 060A 060B 
-C - - - - - 0x025CDD 09:9CCD: A9 00     LDA #$00
-C - - - - - 0x025CDF 09:9CCF: 9D 33 06  STA ram_0633,X ; 0633 0634 
-C - - - - - 0x025CE2 09:9CD2: A9 14     LDA #$14
-C - - - - - 0x025CE4 09:9CD4: 9D 0E 06  STA ram_060E_plr,X ; 060E 060F 
-bra_9CD7_RTS:
-C - - - - - 0x025CE7 09:9CD7: 60        RTS
-bra_9CD8:
-C - - - - - 0x025CE8 09:9CD8: 20 AD 9A  JSR sub_9AAD_реверснуть_кнопку_в_0008
-C - - - - - 0x025CEB 09:9CDB: A5 08     LDA ram_0008    ; right/left
-C - - - - - 0x025CED 09:9CDD: 25 09     AND ram_0009    ; dpad btns
-C - - - - - 0x025CEF 09:9CDF: 85 00     STA ram_0000
-C - - - - - 0x025CF1 09:9CE1: B5 8E     LDA ram_btn_press,X
-C - - - - - 0x025CF3 09:9CE3: 29 40     AND #con_btn_B
-C - - - - - 0x025CF5 09:9CE5: 05 00     ORA ram_0000
-C - - - - - 0x025CF7 09:9CE7: 1D 33 06  ORA ram_0633,X ; 0633 0634 
-C - - - - - 0x025CFA 09:9CEA: 9D 33 06  STA ram_0633,X ; 0633 0634 
-C - - - - - 0x025CFD 09:9CED: BD 10 04  LDA ram_obj_pos_Y_lo,X ; 0410 0411 
-C - - - - - 0x025D00 09:9CF0: C9 AC     CMP #$AC
-C - - - - - 0x025D02 09:9CF2: 90 E3     BCC bra_9CD7_RTS
-C - - - - - 0x025D04 09:9CF4: A5 08     LDA ram_0008    ; right/left
-C - - - - - 0x025D06 09:9CF6: 09 40     ORA #con_btn_B
-C - - - - - 0x025D08 09:9CF8: DD 33 06  CMP ram_0633,X ; 0633 0634 
-C - - - - - 0x025D0B 09:9CFB: D0 DA     BNE bra_9CD7_RTS
-C - - - - - 0x025D0D 09:9CFD: 4C 89 9A  JMP loc_9A89
-
-
-
 sub_9D00:
 C - - - - - 0x025D10 09:9D00: A5 08     LDA ram_0008    ; right/left
 C - - - - - 0x025D12 09:9D02: 25 09     AND ram_0009    ; dpad btns
@@ -5211,10 +5205,10 @@ C - - - - - 0x025D1B 09:9D0B: A9 14     LDA #$14
 C - - - - - 0x025D1D 09:9D0D: 9D 0E 06  STA ram_060E_plr,X ; 060E 060F 
 bra_9D10:
 C - - - - - 0x025D20 09:9D10: BD 0E 06  LDA ram_060E_plr,X ; 060E 060F 
-C - - - - - 0x025D23 09:9D13: F0 C2     BEQ bra_9CD7_RTS
+C - - - - - 0x025D23 09:9D13: F0 C2     BEQ bra_9D35_RTS
 C - - - - - 0x025D25 09:9D15: DE 0E 06  DEC ram_060E_plr,X ; 060E 060F 
 C - - - - - 0x025D28 09:9D18: F0 02     BEQ bra_9D1C
-C - - - - - 0x025D2A 09:9D1A: 10 BB     BPL bra_9CD7_RTS
+C - - - - - 0x025D2A 09:9D1A: 10 BB     BPL bra_9D35_RTS
 bra_9D1C:
 C - - - - - 0x025D2C 09:9D1C: 4C A4 9C  JMP loc_9CA4
 
