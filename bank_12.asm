@@ -5232,7 +5232,10 @@ C - - - - - 0x025D3F 09:9D2F: 88        DEY
 C - - - - - 0x025D40 09:9D30: D0 04     BNE bra_9D36
 ; if перс только что взял мяч, и еще рано давать ему возможность запускать его
 ; требуется подождать 1 кадр
-C - - - - - 0x025D42 09:9D32: 4C BD 9D  JMP loc_9DBD
+C D 0 - - - 0x025DCD 09:9DBD: A9 00     LDA #$00
+C - - - - - 0x025DCF 09:9DBF: 9D 4B 06  STA ram_064B_plr,X ; 064B 064C 
+C - - - - - 0x025DD2 09:9DC2: FE 04 06  INC ram_0604_plr,X ; 0604 0605 
+C - - - - - 0x025DD5 09:9DC5: D0 19     JMP loc_9DE0
 bra_9D35_RTS:
 C - - - - - 0x025D45 09:9D35: 60        RTS
 bra_9D36:
@@ -5323,14 +5326,6 @@ C - - - - - 0x025DCC 09:9DBC: 60        RTS
 
 
 
-loc_9DBD:
-C D 0 - - - 0x025DCD 09:9DBD: A9 00     LDA #$00
-C - - - - - 0x025DCF 09:9DBF: 9D 4B 06  STA ram_064B_plr,X ; 064B 064C 
-C - - - - - 0x025DD2 09:9DC2: FE 04 06  INC ram_0604_plr,X ; 0604 0605 
-C - - - - - 0x025DD5 09:9DC5: D0 19     BNE bra_9DE0    ; jmp
-
-
-
 sub_9DC7:
 C - - - - - 0x025DD7 09:9DC7: A5 09     LDA ram_0009    ; dpad btns
 C - - - - - 0x025DD9 09:9DC9: C9 04     CMP #con_btn_Down
@@ -5346,7 +5341,7 @@ C - - - - - 0x025DEA 09:9DDA: 60        RTS
 bra_9DDB:
 C - - - - - 0x025DEB 09:9DDB: A9 01     LDA #$01
 C - - - - - 0x025DED 09:9DDD: 9D 04 06  STA ram_0604_plr,X ; 0604 0605 
-bra_9DE0:
+loc_9DE0:
 C - - - - - 0x025DF0 09:9DE0: A9 0C     LDA #$0C
 C - - - - - 0x025DF2 09:9DE2: 9D 06 06  STA ram_plr_таймер_для_запуска_мяча,X ; 0606 0607 
 C - - - - - 0x025DF5 09:9DE5: 60        RTS
