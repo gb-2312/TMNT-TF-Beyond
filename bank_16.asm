@@ -299,16 +299,6 @@ C - - - - - 0x02C27E 0B:826E: 60        RTS
 
 
 
-loc_826F:
-C D 0 - - - 0x02C27F 0B:826F: FE 30 05  INC ram_0530_obj_state,X ; 0530 0531 
-C - - - - - 0x02C282 0B:8272: A9 3C     LDA #$3C
-C - - - - - 0x02C284 0B:8274: 9D A0 04  STA ram_obj_spd_Y_hi,X ; 04A0 04A1 
-C - - - - - 0x02C287 0B:8277: B4 A2     LDY ram_plr_id,X
-C - - - - - 0x02C289 0B:8279: B9 5E E1  LDA tbl_0x03E16E_звук_выбора_перса,Y
-C - - - - - 0x02C28C 0B:827C: 4C 90 F6  JMP loc_0x03F6A0_записать_звук_сохранив_X_Y
-
-
-
 sub_827F:
 ; con_новые_персы ?
 C - - - - - 0x02C28F 0B:827F: E0 01     CPX #$01
@@ -2265,7 +2255,13 @@ C - - - - - 0x02FE59 0B:BE49: DE 44 01  DEC ram_0144_plr_выбор_перса_v
 C - - - - - 0x02FE5C 0B:BE4C: B5 A2     LDA ram_plr_id,X ; 00A2 00A3 
                                         ORA ram_0000 ; суммируем с man или cpu
 C - - - - - 0x02FE5E 0B:BE4E: 99 30 01  STA ram_0130,Y ; 0130 0131 0132 0133 0134 0135 0136 0138 0139 013A 013B 013C 013D 013E 
-C - - - - - 0x02FE61 0B:BE51: 4C 6F 82  JMP loc_826F
+loc_826F:
+C D 0 - - - 0x02C27F 0B:826F: FE 30 05  INC ram_0530_obj_state,X ; 0530 0531 
+C - - - - - 0x02C282 0B:8272: A9 3C     LDA #$3C
+C - - - - - 0x02C284 0B:8274: 9D A0 04  STA ram_obj_spd_Y_hi,X ; 04A0 04A1 
+C - - - - - 0x02C287 0B:8277: B4 A2     LDY ram_plr_id,X
+C - - - - - 0x02C289 0B:8279: B9 5E E1  LDA tbl_0x03E16E_звук_выбора_перса,Y
+C - - - - - 0x02C28C 0B:827C: 4C 90 F6  JMP loc_0x03F6A0_записать_звук_сохранив_X_Y
 bra_BE54_отмена_выбранного_перса:
 C - - - - - 0x02FE64 0B:BE54: BD 40 01  LDA ram_plr_колво_персов_в_цепочке_vs_team,X ; 0140 0141 
 C - - - - - 0x02FE67 0B:BE57: F0 0A     BEQ bra_BE63_RTS
