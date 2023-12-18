@@ -8311,7 +8311,8 @@ C - - - - - 0x0274F4 09:B4E4: BC D0 05  LDY ram_obj_anim_cnt,X ; 05D0 05D1
 C - - - - - 0x0274F7 09:B4E7: D0 02     BNE bra_B4EB
 C - - - - - 0x0274F9 09:B4E9: A9 C4     LDA #$C4
 bra_B4EB:
-C - - - - - 0x0274FB 09:B4EB: 4C 0D B9  JMP loc_B90D
+C - - - - - 0x0274FB 09:B4EB: 4C 0D B9  STA ram_obj_anim_id,X ; 0400 0401 
+                                        RTS
 bra_B4EE:
 C - - - - - 0x0274FE 09:B4EE: FE 40 05  INC ram_obj_state_lo,X ; 0540 0541 
 C - - - - - 0x027501 09:B4F1: A9 63     LDA #$63
@@ -8876,7 +8877,6 @@ C - - - - - 0x027915 09:B905: BC D0 05  LDY ram_obj_anim_cnt,X ; 05D0 05D1
 C - - - - - 0x027918 09:B908: B9 5D BA  LDA tbl_BA5D,Y
 C - - - - - 0x02791B 09:B90B: F0 03     BEQ bra_B910
 bra_B90D:
-loc_B90D:
 C D 1 - - - 0x02791D 09:B90D: 4C 94 DF  STA ram_obj_anim_id,X ; 0400 0401 
                                         RTS
 bra_B910:
