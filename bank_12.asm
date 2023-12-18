@@ -4855,7 +4855,6 @@ C - - - - - 0x025AD8 09:9AC8: 60        RTS
 
 
 bra_9AC9:
-loc_9AC9:
 C D 0 - - - 0x025AD9 09:9AC9: FE 0C 06  INC ram_plr_таймер_для_суперки,X ; 060C 060D 
 C - - - - - 0x025ADC 09:9ACC: 60        RTS
 
@@ -5027,7 +5026,8 @@ C - - - - - 0x025BA2 09:9B92: F0 0A     BEQ bra_9B9E
 C - - - - - 0x025BA4 09:9B94: BD 0C 06  LDA ram_plr_таймер_для_суперки,X ; 060C 060D 
 C - - - - - 0x025BA7 09:9B97: C5 00     CMP ram_0000
 C - - - - - 0x025BA9 09:9B99: B0 12     BCS bra_9BAD_RTS
-C - - - - - 0x025BAB 09:9B9B: 4C C9 9A  JMP loc_9AC9
+C - - - - - 0x025BAB 09:9B9B: 4C C9 9A  INC ram_plr_таймер_для_суперки,X ; 060C 060D 
+                                        RTS
 bra_9B9E:
 C - - - - - 0x025BAE 09:9B9E: BD 0C 06  LDA ram_plr_таймер_для_суперки,X ; 060C 060D 
 C - - - - - 0x025BB1 09:9BA1: C5 00     CMP ram_0000
