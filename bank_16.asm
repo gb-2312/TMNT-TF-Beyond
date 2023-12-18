@@ -2321,14 +2321,14 @@ bra_9013_запись_перса_в_буфер:
                                         LSR
                                         STA ram_0000
 C - - - - - 0x031023 0C:9013: A9 01     LDA #con_buf_mode_01
-C - - - - - 0x031025 0C:9015: 8D 46 01  STA ram_0146
+C - - - - - 0x031025 0C:9015: 8D 46 01  STA ram_0146_ppu_buffer
 C - - - - - 0x031028 0C:9018: BD 40 01  LDA ram_plr_колво_персов_в_цепочке_vs_team,X ; 0140 0141 
 C - - - - - 0x03102B 0C:901B: 0A        ASL
 C - - - - - 0x03102C 0C:901C: 0A        ASL
 C - - - - - 0x03102D 0C:901D: 7D FB 8F  ADC tbl_8FFB_ppu_lo,X
-C - - - - - 0x031030 0C:9020: 8D 47 01  STA ram_0147
+C - - - - - 0x031030 0C:9020: 8D 47 01  STA ram_0146_ppu_buffer + $01
 C - - - - - 0x031033 0C:9023: BD FD 8F  LDA tbl_8FFD_ppu_hi,X
-C - - - - - 0x031036 0C:9026: 8D 48 01  STA ram_0148
+C - - - - - 0x031036 0C:9026: 8D 48 01  STA ram_0146_ppu_buffer + $02
 C - - - - - 0x031039 0C:9029: FE 44 01  INC ram_0144_plr_выбор_перса_vs_team,X ; 0144 0145 
 C - - - - - 0x03103C 0C:902C: F0 13     BEQ bra_9041_FF
 C - - - - - 0x03103E 0C:902E: FE 44 01  INC ram_0144_plr_выбор_перса_vs_team,X ; 0144 0145 
@@ -2372,14 +2372,14 @@ C - - - - - 0x031063 0C:9053: BD D0 8F  LDA tbl_8FD1_имена_из_3х_бук�
 ; C = 0
                                         ADC ram_0000
 bra_9054_end_token:
-C - - - - - 0x031066 0C:9056: 99 48 01  STA ram_0149 - $01,Y ; 0149 014A 014B 014C 
+C - - - - - 0x031066 0C:9056: 99 48 01  STA ram_0146_ppu_buffer + $02,Y ; 0149 014A 014B 014C 
 C - - - - - 0x031069 0C:9059: CA        DEX
 C - - - - - 0x03106A 0C:905A: 88        DEY
 C - - - - - 0x03106B 0C:905B: D0 F6     BNE bra_9053_loop
 ; Y = 00
 C - - - - - 0x03106D 0C:905D: A6 25     LDX ram_index_ppu_buffer
 bra_905F_loop:
-C - - - - - 0x03106F 0C:905F: B9 46 01  LDA ram_0146,Y ; 0146 0147 0148 0149 014A 014B 014C 014D 
+C - - - - - 0x03106F 0C:905F: B9 46 01  LDA ram_0146_ppu_buffer,Y ; 0146 0147 0148 0149 014A 014B 014C 014D 
 C - - - - - 0x031072 0C:9062: 9D FF 02  STA ram_ppu_buffer,X
 C - - - - - 0x031075 0C:9065: F0 A9     BEQ bra_9070    ; if найден end token
 C - - - - - 0x031077 0C:9067: E8        INX
