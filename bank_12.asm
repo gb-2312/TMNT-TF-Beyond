@@ -5939,13 +5939,6 @@ C - - - - - 0x0264BC 09:A4AC: 4C DE A4  JMP loc_A4DE
 
 
 
-bra_A4AF:
-loc_A4AF:
-C D 1 - - - 0x0264BF 09:A4AF: 20 D4 DE  JSR sub_0x03DEE4
-C - - - - - 0x0264C2 09:A4B2: 4C DE A4  JMP loc_A4DE
-
-
-
 ofs_075_A4B5_01:
 C - - J - - 0x0264C5 09:A4B5: BD 08 04  LDA ram_obj_anim_id + $0C - $04,X ; 040C 040D 
 C - - - - - 0x0264C8 09:A4B8: D0 05     BNE bra_A4BF
@@ -5969,7 +5962,10 @@ C - - J - - 0x0264E7 09:A4D7: B9 00 04  LDA ram_obj_anim_id,Y
 ; A = B1 B2 B3 B4
 C - - - - - 0x0264EA 09:A4DA: 69 0E     ADC #$0E
 ; A = BF C0 C1 C2
-C - - - - - 0x0264EC 09:A4DC: D0 D1     BNE bra_A4AF    ; jmp
+bra_A4AF:
+loc_A4AF:
+C D 1 - - - 0x0264BF 09:A4AF: 20 D4 DE  JSR sub_0x03DEE4
+C - - - - - 0x0264C2 09:A4B2: 4C DE A4  JMP loc_A4DE
 
 
 
