@@ -7353,7 +7353,7 @@ C - - - - - 0x026DDA 09:ADCA: A2 00     LDX #$00
 C - - - - - 0x026DDC 09:ADCC: A0 01     LDY #$01
 C - - - - - 0x026DDE 09:ADCE: 20 0C D2  JSR sub_0x03D21C_получить_разницу_pos_X_двух_объектов
 C - - - - - 0x026DE1 09:ADD1: C5 04     CMP ram_0004
-C - - - - - 0x026DE3 09:ADD3: B0 51     BCS bra_AE26_RTS
+C - - - - - 0x026DE3 09:ADD3: B0 51     BCS bra_AD89_RTS
 C - - - - - 0x026DE5 09:ADD5: A5 02     LDA ram_0002
 C - - - - - 0x026DE7 09:ADD7: 38        SEC
 C - - - - - 0x026DE8 09:ADD8: E5 03     SBC ram_0003
@@ -7361,7 +7361,7 @@ C - - - - - 0x026DEA 09:ADDA: B0 03     BCS bra_ADDF
 C - - - - - 0x026DEC 09:ADDC: 20 FC D1  JSR sub_0x03D20C_EOR
 bra_ADDF:
 C - - - - - 0x026DEF 09:ADDF: C5 05     CMP ram_0005
-C - - - - - 0x026DF1 09:ADE1: B0 43     BCS bra_AE26_RTS
+C - - - - - 0x026DF1 09:ADE1: B0 43     BCS bra_AD89_RTS
 ; бряк срабатывает когда один перс касается другого во время движения
 C - - - - - 0x026DF3 09:ADE3: A9 B0     LDA #con_координата_пола
 C - - - - - 0x026DF5 09:ADE5: DD 10 04  CMP ram_obj_pos_Y_lo,X ; 0410 
@@ -7412,7 +7412,6 @@ C - - - - - 0x026E2A 09:AE1A: BD 80 04  LDA ram_obj_spd_X_hi,X ; 0480 0481 0482
 C - - - - - 0x026E2D 09:AE1D: 79 80 04  ADC ram_obj_spd_X_hi,Y ; 0480 0481 057F 
 C - - - - - 0x026E30 09:AE20: 99 80 04  STA ram_obj_spd_X_hi,Y ; 0480 0481 057F 
 C - - - - - 0x026E33 09:AE23: 9D 80 04  STA ram_obj_spd_X_hi,X ; 0480 0481 0482 
-bra_AE26_RTS:
 C - - - - - 0x026E36 09:AE26: 60        RTS
 
 
