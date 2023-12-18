@@ -2207,13 +2207,14 @@ C - - - - - 0x02FDE8 0B:BDD8: 8D 56 01  STA ram_tournament_индекс_игро
 
 
 loc_BE12:
+; Y = ram_btn_press
 C D 1 - - - 0x02FE22 0B:BE12: A5 2C     LDA ram_game_mode
 ; con_gm_story
 ; con_gm_vs_player
 ; con_gm_vs_cpu
 ; con_gm_vs_team
 C - - - - - 0x02FE24 0B:BE14: C9 03     CMP #$03
-C - - - - - 0x02FE26 0B:BE16: D0 39     BNE bra_BE51
+C - - - - - 0x02FE26 0B:BE16: D0 39     BNE bra_BE51_другие_режимы_игры
 ; if con_gm_vs_team
                                         LDA ram_tournament_индекс_игрока,X
                                         AND #$80
@@ -2221,11 +2222,12 @@ C - - - - - 0x02FE26 0B:BE16: D0 39     BNE bra_BE51
 C - - - - - 0x02FE28 0B:BE18: 98        TYA
 C - - - - - 0x02FE29 0B:BE19: 29 10     AND #con_btn_Start
 C - - - - - 0x02FE2B 0B:BE1B: F0 03     BEQ bra_BE20
+                                       ;LDA #$FF
 - - - - - - 0x02FE2D 0B:BE1D: DE 42 01  DEC ram_plr_колво_побед_в_vs_team,X
 bra_BE20:
 C - - - - - 0x02FE30 0B:BE20: 98        TYA
 C - - - - - 0x02FE31 0B:BE21: 29 40     AND #con_btn_B
-C - - - - - 0x02FE33 0B:BE23: D0 2F     BNE bra_BE54
+C - - - - - 0x02FE33 0B:BE23: D0 2F     BNE bra_BE54_отмена_выбранного_перса
 C - - - - - 0x02FE35 0B:BE25: BD 40 01  LDA ram_plr_колво_персов_в_цепочке_vs_team,X ; 0140 0141 
 C - - - - - 0x02FE38 0B:BE28: C9 07     CMP #$07
 C - - - - - 0x02FE3A 0B:BE2A: 90 03     BCC bra_BE2F
@@ -2246,28 +2248,29 @@ bra_BE43:
 C - - - - - 0x02FE53 0B:BE43: B5 91     LDA ram_btn_hold,X
 bra_BE45:
 C - - - - - 0x02FE55 0B:BE45: 29 40     AND #con_btn_B
-C - - - - - 0x02FE57 0B:BE47: D0 1B     BNE bra_BE64
-C - - - - - 0x02FE59 0B:BE49: DE 44 01  DEC ram_0144,X ; 0144 0145 
+C - - - - - 0x02FE57 0B:BE47: D0 1B     BNE bra_BE64_выбор_рандомного_перса
+                                       ;LDA #$FF    ; запись выбранного перса
+C - - - - - 0x02FE59 0B:BE49: DE 44 01  DEC ram_0144_plr_выбор_перса_vs_team,X ; 0144 0145 
 C - - - - - 0x02FE5C 0B:BE4C: B5 A2     LDA ram_plr_id,X ; 00A2 00A3 
                                         ORA ram_0000 ; суммируем с man или cpu
 C - - - - - 0x02FE5E 0B:BE4E: 99 30 01  STA ram_0130,Y ; 0130 0131 0132 0133 0134 0135 0136 0138 0139 013A 013B 013C 013D 013E 
-bra_BE51:
+bra_BE51_другие_режимы_игры:
 C - - - - - 0x02FE61 0B:BE51: 4C 6F 82  JMP loc_826F
-bra_BE54:
+bra_BE54_отмена_выбранного_перса:
 C - - - - - 0x02FE64 0B:BE54: BD 40 01  LDA ram_plr_колво_персов_в_цепочке_vs_team,X ; 0140 0141 
 C - - - - - 0x02FE67 0B:BE57: F0 0A     BEQ bra_BE63_RTS
-C - - - - - 0x02FE69 0B:BE59: A9 FE     LDA #$FE
-C - - - - - 0x02FE6B 0B:BE5B: 9D 44 01  STA ram_0144,X ; 0144 0145 
+C - - - - - 0x02FE69 0B:BE59: A9 FE     LDA #$FE    ; отмена выбранного перса
+C - - - - - 0x02FE6B 0B:BE5B: 9D 44 01  STA ram_0144_plr_выбор_перса_vs_team,X ; 0144 0145 
 C - - - - - 0x02FE6E 0B:BE5E: A9 0A     LDA #con_075C_0A
 C - - - - - 0x02FE70 0B:BE60: 4C 90 F6  JMP loc_0x03F6A0_записать_звук_сохранив_X_Y
 bra_BE63_RTS:
 C - - - - - 0x02FE73 0B:BE63: 60        RTS
-bra_BE64:
+bra_BE64_выбор_рандомного_перса:
 - - - - - - 0x02FE74 0B:BE64: 20 7C BE  JSR sub_BE7C_случайный_выбор_перса
                                         ORA ram_0000 ; суммируем с man или cpu
 - - - - - - 0x02FE77 0B:BE67: 99 30 01  STA ram_0130,Y
-- - - - - - 0x02FE7A 0B:BE6A: A9 FD     LDA #$FD
-- - - - - - 0x02FE7C 0B:BE6C: 9D 44 01  STA ram_0144,X
+- - - - - - 0x02FE7A 0B:BE6A: A9 FD     LDA #$FD    ; выбор рандомного перса
+- - - - - - 0x02FE7C 0B:BE6C: 9D 44 01  STA ram_0144_plr_выбор_перса_vs_team,X
 - - - - - - 0x02FE7F 0B:BE6F: A9 2C     LDA #$2C
 - - - - - - 0x02FE81 0B:BE71: 9D A0 04  STA ram_obj_spd_Y_hi,X
 - - - - - - 0x02FE84 0B:BE74: FE 30 05  INC ram_0530_obj_state,X
@@ -2402,15 +2405,19 @@ C - - - - - 0x02FF5E 0B:BF4E: C9 03     CMP #$03
 C - - - - - 0x02FF60 0B:BF50: D0 13     BNE bra_BF65
 ; con_gm_vs_team
 C - - - - - 0x02FF62 0B:BF52: BD 42 01  LDA ram_plr_колво_побед_в_vs_team,X ; 0142 0143 
-C - - - - - 0x02FF65 0B:BF55: D0 0B     BNE bra_BF62
+C - - - - - 0x02FF65 0B:BF55: D0 0B     BNE bra_BF62_FF
 C - - - - - 0x02FF67 0B:BF57: BD 40 01  LDA ram_plr_колво_персов_в_цепочке_vs_team,X ; 0140 0141 
 C - - - - - 0x02FF6A 0B:BF5A: C9 07     CMP #$07
 C - - - - - 0x02FF6C 0B:BF5C: B0 07     BCS bra_BF65
+                                       ;LDA #$00
 C - - - - - 0x02FF6E 0B:BF5E: DE 30 05  DEC ram_0530_obj_state,X ; 0530 0531 
 C - - - - - 0x02FF71 0B:BF61: 60        RTS
-bra_BF62:
+bra_BF62_FF:
+; if была нажата start в vs team
+                                       ;LDA #$00
 - - - - - - 0x02FF72 0B:BF62: FE 42 01  INC ram_plr_колво_побед_в_vs_team,X
 bra_BF65:
+                                       ;LDA #$02
 C - - - - - 0x02FF75 0B:BF65: FE 30 05  INC ram_0530_obj_state,X ; 0530 0531 
 C - - - - - 0x02FF78 0B:BF68: 60        RTS
 
