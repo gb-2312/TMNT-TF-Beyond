@@ -1928,7 +1928,20 @@ bra_8BE9_FE:
 C - - - - - 0x024BF9 09:8BE9: C8        INY
 C - - - - - 0x024BFA 09:8BEA: B1 00     LDA (ram_0000),Y
 C - - - - - 0x024BFC 09:8BEC: 20 94 F6  JSR sub_0x03F6A4_записать_звук
-C - - - - - 0x024BFF 09:8BEF: 4C 9C B7  JMP loc_B79C
+C D 1 - - - 0x0277AC 09:B79C: BD 20 05  LDA ram_obj_state_hi,X ; 0520 0521 
+C - - - - - 0x0277AF 09:B79F: C9 07     CMP #con_plr_state_сидит     
+C - - - - - 0x0277B1 09:B7A1: BD 00 06  LDA ram_0600_plr,X ; 0600 0601 
+C - - - - - 0x0277B4 09:B7A4: 90 0B     BCC bra_B7B1
+C - - - - - 0x0277B6 09:B7A6: FE 00 06  INC ram_0600_plr,X ; 0600 0601 
+C D 1 - - - 0x0277B9 09:B7A9: C9 0E     CMP #$0E
+C - - - - - 0x0277BB 09:B7AB: F0 04     BEQ bra_B7B1
+C - - - - - 0x0277BD 09:B7AD: C9 8E     CMP #$8E
+C - - - - - 0x0277BF 09:B7AF: D0 05     BNE bra_B7B6
+bra_B7B1:
+C - - - - - 0x0277C1 09:B7B1: 29 F0     AND #$F0
+C - - - - - 0x0277C3 09:B7B3: 9D 00 06  STA ram_0600_plr,X ; 0600 0601 
+bra_B7B6:
+C - - - - - 0x0277C6 09:B7B6: 4C 07 8C  JMP loc_8C07
 bra_8BF2_FF:
 ; индекс удара
 C - - - - - 0x024C02 09:8BF2: C8        INY
@@ -10062,24 +10075,6 @@ C - - - - - 0x027791 09:B781: AC 26 01  LDY ram_option_speed
 C - - - - - 0x027794 09:B784: B9 74 87  LDA tbl_8774,Y
 C - - - - - 0x027797 09:B787: 9D 60 05  STA ram_obj_timer,X ; 0560 0561 
 C - - - - - 0x02779A 09:B78A: 60        RTS
-
-
-
-loc_B79C:
-C D 1 - - - 0x0277AC 09:B79C: BD 20 05  LDA ram_obj_state_hi,X ; 0520 0521 
-C - - - - - 0x0277AF 09:B79F: C9 07     CMP #con_plr_state_сидит     
-C - - - - - 0x0277B1 09:B7A1: BD 00 06  LDA ram_0600_plr,X ; 0600 0601 
-C - - - - - 0x0277B4 09:B7A4: 90 0B     BCC bra_B7B1
-C - - - - - 0x0277B6 09:B7A6: FE 00 06  INC ram_0600_plr,X ; 0600 0601 
-C D 1 - - - 0x0277B9 09:B7A9: C9 0E     CMP #$0E
-C - - - - - 0x0277BB 09:B7AB: F0 04     BEQ bra_B7B1
-C - - - - - 0x0277BD 09:B7AD: C9 8E     CMP #$8E
-C - - - - - 0x0277BF 09:B7AF: D0 05     BNE bra_B7B6
-bra_B7B1:
-C - - - - - 0x0277C1 09:B7B1: 29 F0     AND #$F0
-C - - - - - 0x0277C3 09:B7B3: 9D 00 06  STA ram_0600_plr,X ; 0600 0601 
-bra_B7B6:
-C - - - - - 0x0277C6 09:B7B6: 4C 07 8C  JMP loc_8C07
 
 
 
