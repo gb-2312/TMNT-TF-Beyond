@@ -2403,7 +2403,12 @@ C - - - - - 0x024DA7 09:8D97: DE B0 04  DEC ram_obj_spd_Y_lo,X ; 04B0 04B1
 C - - - - - 0x024DAA 09:8D9A: 30 31     BMI bra_8DCD
 C - - - - - 0x024DAC 09:8D9C: A9 08     LDA #$08
 C - - - - - 0x024DAE 09:8D9E: 9D D0 04  STA ram_04D0_obj,X ; 04D0 04D1 
-C - - - - - 0x024DB1 09:8DA1: 4C BA 8F  JMP loc_8FBA
+C D 0 - - - 0x024FCA 09:8FBA: BC B0 04  LDY ram_obj_spd_Y_lo,X ; 04B0 04B1 
+C - - - - - 0x024FCD 09:8FBD: B9 B4 99  LDA tbl_99B4,Y
+C - - - - - 0x024FD0 09:8FC0: 9D 60 04  STA ram_obj_spd_Z_hi,X ; 0460 0461 
+C - - - - - 0x024FD3 09:8FC3: A9 00     LDA #$00
+C - - - - - 0x024FD5 09:8FC5: 9D 70 04  STA ram_obj_spd_Z_lo,X ; 0470 0471 
+C - - - - - 0x024FD8 09:8FC8: 60        RTS
 bra_8DA4_черепаха:
 ; con_fighter_leo
 ; con_fighter_raph
@@ -2762,16 +2767,6 @@ C - - - - - 0x024FC1 09:8FB1: BD 80 05  LDA ram_0580_obj,X ; 0580 0581
 C - - - - - 0x024FC4 09:8FB4: 29 5F     AND #$5F
 C - - - - - 0x024FC6 09:8FB6: 9D 80 05  STA ram_0580_obj,X ; 0580 0581 
 C - - - - - 0x024FC9 09:8FB9: 60        RTS
-
-
-
-loc_8FBA:
-C D 0 - - - 0x024FCA 09:8FBA: BC B0 04  LDY ram_obj_spd_Y_lo,X ; 04B0 04B1 
-C - - - - - 0x024FCD 09:8FBD: B9 B4 99  LDA tbl_99B4,Y
-C - - - - - 0x024FD0 09:8FC0: 9D 60 04  STA ram_obj_spd_Z_hi,X ; 0460 0461 
-C - - - - - 0x024FD3 09:8FC3: A9 00     LDA #$00
-C - - - - - 0x024FD5 09:8FC5: 9D 70 04  STA ram_obj_spd_Z_lo,X ; 0470 0471 
-C - - - - - 0x024FD8 09:8FC8: 60        RTS
 
 
 
