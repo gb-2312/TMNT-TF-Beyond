@@ -6491,10 +6491,10 @@ C - - - - - 0x030038 0C:8028: C8        INY
                                         INY
                                         JMP (ram_0002)
 bra_8035_00:
+; X = 00
 ; выключить буфер и обнулить индекс
-C - - - - - 0x030045 0C:8035: A9 00     LDA #$00
-C - - - - - 0x030047 0C:8037: 8D 00 03  STA ram_ppu_buffer
-C - - - - - 0x03004A 0C:803A: 85 25     STA ram_index_ppu_buffer
+C - - - - - 0x030047 0C:8037: 8D 00 03  STX ram_ppu_buffer
+C - - - - - 0x03004A 0C:803A: 85 25     STX ram_index_ppu_buffer
 C - - - - - 0x03004C 0C:803C: 60        RTS
 
 
