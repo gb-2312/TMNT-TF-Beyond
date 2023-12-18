@@ -3291,7 +3291,15 @@ C - - - - - 0x02690B 09:A8FB: 29 01     AND #$01
 C - - - - - 0x02690D 09:A8FD: A8        TAY
 C - - - - - 0x02690E 09:A8FE: B9 1B A9  LDA tbl_A91B,Y
 C - - - - - 0x026911 09:A901: 9D 40 04  STA ram_obj_pos_X_lo,X ; 0447 
-C - - - - - 0x026914 09:A904: 20 04 DD  JSR sub_0x03DD14_повернуть_прилетающего_сплинтера_в_нужную_сторону_по_горизонтали
+; повернуть прилетающего сплинтера в нужную сторону по горизонтали
+C - - - - - 0x03DD14 0F:DD04: BD 40 04  LDA ram_obj_pos_X_lo,X ; 0447 
+C - - - - - 0x03DD17 0F:DD07: 4A        LSR
+C - - - - - 0x03DD18 0F:DD08: 29 40     AND #$40
+C - - - - - 0x03DD1A 0F:DD0A: 85 00     STA ram_0000
+C - - - - - 0x03DD1C 0F:DD0C: BD 10 05  LDA ram_obj_flip,X ; 0517 
+C - - - - - 0x03DD1F 0F:DD0F: 29 BF     AND #$40 ^ $FF
+C D 2 - - - 0x03DD6F 0F:DD5F: 05 00     ORA ram_0000
+C - - - - - 0x03DD71 0F:DD61: 9D 10 05  STA ram_obj_flip,X ; 0517 
 C - - - - - 0x026917 09:A907: A9 C0     LDA #$C0
 C - - - - - 0x026919 09:A909: 9D 80 05  STA ram_0580_obj,X ; 0587 
 C - - - - - 0x02691C 09:A90C: 20 7D D1  JSR sub_0x03D18D

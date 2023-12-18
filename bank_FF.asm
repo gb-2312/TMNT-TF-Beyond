@@ -70,7 +70,6 @@
 .export sub_0x03DCE6_запись_spd_Z
 .export sub_0x03DCFD_ограничить_pos_Y_во_время_падения
 .export sub_0x03DD0A
-.export sub_0x03DD14_повернуть_прилетающего_сплинтера_в_нужную_сторону_по_горизонтали
 .export sub_0x03DD75_повернуть_объект_в_противоположную_сторону_по_горизонтали
 .export loc_0x03DD75_повернуть_объект_в_противоположную_сторону_по_горизонтали
 .export tbl_0x03E750
@@ -2327,20 +2326,6 @@ C - - - - - 0x03DD0C 0F:DCFC: 29 03     AND #$03
 C - - - - - 0x03DD0E 0F:DCFE: 09 80     ORA #$80
 C - - - - - 0x03DD10 0F:DD00: 9D 00 05  STA ram_0500_obj,X ; 0506 
 C - - - - - 0x03DD13 0F:DD03: 60        RTS
-
-
-
-sub_0x03DD14_повернуть_прилетающего_сплинтера_в_нужную_сторону_по_горизонтали:
-; bzk optimize, переместить в банк 12
-C - - - - - 0x03DD14 0F:DD04: BD 40 04  LDA ram_obj_pos_X_lo,X ; 0447 
-C - - - - - 0x03DD17 0F:DD07: 4A        LSR
-C - - - - - 0x03DD18 0F:DD08: 29 40     AND #$40
-C - - - - - 0x03DD1A 0F:DD0A: 85 00     STA ram_0000
-C - - - - - 0x03DD1C 0F:DD0C: BD 10 05  LDA ram_obj_flip,X ; 0517 
-C - - - - - 0x03DD1F 0F:DD0F: 29 BF     AND #$40 ^ $FF
-C D 2 - - - 0x03DD6F 0F:DD5F: 05 00     ORA ram_0000
-C - - - - - 0x03DD71 0F:DD61: 9D 10 05  STA ram_obj_flip,X ; 0517 
-C - - - - - 0x03DD74 0F:DD64: 60        RTS
 
 
 
