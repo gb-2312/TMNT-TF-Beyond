@@ -6570,7 +6570,7 @@ bra_806C_loop:
 
 
 
-sub_F70B_обработчик_персов:
+sub_F70B_обработчик_ai:
 C - - - - - 0x03F71B 0F:F70B: 20 EF F5  JSR sub_F5EF_swap_prg_1A
 C - - - - - 0x03F71E 0F:F70E: 20 01 80  JSR sub_0x034011_обработчик_ai
 C - - - - - 0x03F721 0F:F711: 4C 17 F6  JMP loc_F617_restore_prg
@@ -7520,7 +7520,7 @@ C - - - - - 0x03FD52 0F:FD42: B9 36 FE  LDA tbl_FE37 - $01,Y
 C - - - - - 0x03FD55 0F:FD45: 85 86     STA ram_0086
 bra_FD47:
 C - - - - - 0x03FD57 0F:FD47: 20 75 F7  JSR sub_F775_вычислить_расстояние_между_персами
-C - - - - - 0x03FD5A 0F:FD4A: 20 0B F7  JSR sub_F70B_обработчик_персов
+C - - - - - 0x03FD5A 0F:FD4A: 20 0B F7  JSR sub_F70B_обработчик_ai
 C - - - - - 0x03FD5D 0F:FD4D: 20 04 80  JSR sub_0x024014
 C - - - - - 0x03FD60 0F:FD50: 20 91 AD  JSR sub_0x026DA1
 C - - - - - 0x03FD63 0F:FD53: 20 3B FF  JSR sub_FF3B_вычисление_приоритета_игрока_в_бою
