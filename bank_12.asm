@@ -7407,11 +7407,6 @@ C - - - - - 0x026E36 09:AE26: 60        RTS
 bra_EF8C:
 C - - - - - 0x03EF9C 0F:EF8C: B0 FA     BCS bra_EF88
 bra_EF8E:
-C - - - - - 0x03EF9E 0F:EF8E: 4C 27 AE  JMP loc_AE27
-
-
-
-loc_AE27:
 C D 1 - - - 0x026E37 09:AE27: 90 0D     BCC bra_AE36
 bra_AE29_loop:
 C - - - - - 0x026E39 09:AE29: BD 40 04  LDA ram_obj_pos_X_lo,X ; 0440 0441 0442 
