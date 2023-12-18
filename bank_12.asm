@@ -584,7 +584,7 @@ C - - - - - 0x024354 09:8344: 20 3C DB  JSR sub_0x03DB4C_очистить_spd_X
 bra_8347:
 C - - - - - 0x024357 09:8347: A9 00     LDA #$00
 C - - - - - 0x024359 09:8349: 9D 16 06  STA ram_plr_этап_удара,X ; 0616 0617 
-C - - - - - 0x02435C 09:834C: 4C A9 8B  JMP loc_8BA9
+C - - - - - 0x02435C 09:834C: 4C A9 8B  JMP loc_8BC5
 
 
 
@@ -1878,9 +1878,7 @@ loc_8BA1:
 C D 0 - - - 0x024BB1 09:8BA1: DE 14 06  DEC ram_plr_время_анимации_удара,X ; 0614 0615 
 C - - - - - 0x024BB4 09:8BA4: 10 1F     BPL bra_8BC5
 C - - - - - 0x024BB6 09:8BA6: FE 16 06  INC ram_plr_этап_удара,X ; 0616 0617 
-loc_8BA9:
-C D 0 - - - 0x024BB9 09:8BA9: 20 C5 8B  JSR sub_8BC5
-C - - - - - 0x024BC5 09:8BB5: 60        RTS
+C D 0 - - - 0x024BB9 09:8BA9: 20 C5 8B  JMP loc_8BC5
 
 
 
@@ -1912,7 +1910,7 @@ bra_8BC5:
 
 
 
-sub_8BC5:
+loc_8BC5:
                                        ;LDA #$07
                                        ;STA $8000
                                         LDA #con_prg_bank + $0C
