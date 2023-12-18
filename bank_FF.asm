@@ -161,7 +161,6 @@
 .export sub_0x03FCA0_set_mirroring_H
 .export loc_0x03FE68_отрисовка_экрана_главное_меню
 .export sub_0x03FE76
-.export sub_0x03FE8A
 .export loc_0x03FEAF
 .export loc_0x03FEEF
 .export sub_0x03FF1D
@@ -7711,16 +7710,6 @@ bra_FE76:
 C - - - - - 0x03FE86 0F:FE76: DE 0D 01  DEC ram_plr_hp_hi,X ; 010D 010E 
 bra_FE79_RTS:
 C - - - - - 0x03FE89 0F:FE79: 60        RTS
-
-
-
-sub_0x03FE8A:
-; bzk optimize, переместить в банк 12 когда там будет место
-C - - - - - 0x03FE8A 0F:FE7A: BD 0D 01  LDA ram_plr_hp_hi,X ; 010D 010E 
-C - - - - - 0x03FE8D 0F:FE7D: D0 03     BNE bra_FE82_RTS
-C - - - - - 0x03FE8F 0F:FE7F: BD 90 05  LDA ram_plr_hp_lo,X ; 0590 0591 
-bra_FE82_RTS:
-C - - - - - 0x03FE92 0F:FE82: 60        RTS
 
 
 

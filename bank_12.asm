@@ -134,7 +134,10 @@ C - - - - - 0x03FF48 0F:FF38: 4C 08 80  JMP loc_8008_loop
 
 
 sub_806C:
-C - - - - - 0x02407C 09:806C: 20 7A FE  JSR sub_0x03FE8A
+C - - - - - 0x03FE8A 0F:FE7A: BD 0D 01  LDA ram_plr_hp_hi,X ; 010D 010E 
+C - - - - - 0x03FE8D 0F:FE7D: D0 03     BNE bra_FE82
+C - - - - - 0x03FE8F 0F:FE7F: BD 90 05  LDA ram_plr_hp_lo,X ; 0590 0591 
+bra_FE82:
 C - - - - - 0x02407F 09:806F: DD 47 06  CMP ram_0647_plr,X ; 0647 0648 
 C - - - - - 0x024082 09:8072: F0 0C     BEQ bra_8080
 C - - - - - 0x024084 09:8074: 9D 47 06  STA ram_0647_plr,X ; 0647 0648 
