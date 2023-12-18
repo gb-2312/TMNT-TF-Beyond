@@ -7395,15 +7395,6 @@ C - - - - - 0x03EF94 0F:EF84: F0 06     BEQ bra_EF8C
 C - - - - - 0x03EF96 0F:EF86: B0 06     BCS bra_EF8E
 bra_EF88:
 C - - - - - 0x03EF98 0F:EF88: 18        CLC
-C - - - - - 0x03EF99 0F:EF89: 4C 0E AE  JMP loc_AE0E
-bra_EF8C:
-C - - - - - 0x03EF9C 0F:EF8C: B0 FA     BCS bra_EF88
-bra_EF8E:
-C - - - - - 0x03EF9E 0F:EF8E: 4C 27 AE  JMP loc_AE27
-
-
-
-loc_AE0E:
 C D 1 - - - 0x026E1E 09:AE0E: BD 90 04  LDA ram_obj_spd_X_lo,X ; 0490 0491 0492 
 C - - - - - 0x026E21 09:AE11: 79 90 04  ADC ram_obj_spd_X_lo,Y ; 0490 0491 058F 
 C - - - - - 0x026E24 09:AE14: 99 90 04  STA ram_obj_spd_X_lo,Y ; 0490 0491 058F 
@@ -7413,6 +7404,10 @@ C - - - - - 0x026E2D 09:AE1D: 79 80 04  ADC ram_obj_spd_X_hi,Y ; 0480 0481 057F
 C - - - - - 0x026E30 09:AE20: 99 80 04  STA ram_obj_spd_X_hi,Y ; 0480 0481 057F 
 C - - - - - 0x026E33 09:AE23: 9D 80 04  STA ram_obj_spd_X_hi,X ; 0480 0481 0482 
 C - - - - - 0x026E36 09:AE26: 60        RTS
+bra_EF8C:
+C - - - - - 0x03EF9C 0F:EF8C: B0 FA     BCS bra_EF88
+bra_EF8E:
+C - - - - - 0x03EF9E 0F:EF8E: 4C 27 AE  JMP loc_AE27
 
 
 
