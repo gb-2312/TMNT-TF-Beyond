@@ -20,6 +20,7 @@ ca65 -U copy_bank_06.asm
 ca65 -U copy_bank_08.asm
 ca65 -U copy_bank_0A.asm
 ca65 -U copy_bank_0C.asm
+ca65 -U copy_bank_0D.asm
 ca65 -U copy_bank_0E.asm
 ca65 -U copy_bank_10.asm
 ca65 -U copy_bank_12.asm
@@ -39,6 +40,7 @@ ld65 -C ld65.cfg -o PRG_ROM.bin ^
     copy_bank_08.o ^
     copy_bank_0A.o ^
     copy_bank_0C.o ^
+    copy_bank_0D.o ^
     copy_bank_0E.o ^
     copy_bank_10.o ^
     copy_bank_12.o ^
