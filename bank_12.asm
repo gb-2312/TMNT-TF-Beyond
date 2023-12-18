@@ -1879,23 +1879,6 @@ C D 0 - - - 0x024BB1 09:8BA1: DE 14 06  DEC ram_plr_время_анимации_
 C - - - - - 0x024BB4 09:8BA4: 10 1F     BPL bra_8BC5
 C - - - - - 0x024BB6 09:8BA6: FE 16 06  INC ram_plr_этап_удара,X ; 0616 0617 
 C D 0 - - - 0x024BB9 09:8BA9: 20 C5 8B  JMP loc_8BC5
-
-
-
-sub_8BB6_уменьшить_на_25_процентов_если_turbo:
-C - - - - - 0x024BC6 09:8BB6: AC 26 01  LDY ram_option_speed
-C - - - - - 0x024BC9 09:8BB9: F0 09     BEQ bra_8BC4_RTS
-; if turbo
-C - - - - - 0x024BCB 09:8BBB: 85 18     STA ram_0018
-C - - - - - 0x024BCD 09:8BBD: 46 18     LSR ram_0018
-C - - - - - 0x024BCF 09:8BBF: 46 18     LSR ram_0018
-C - - - - - 0x024BD1 09:8BC1: 38        SEC
-C - - - - - 0x024BD2 09:8BC2: E5 18     SBC ram_0018
-bra_8BC4_RTS:
-C - - - - - 0x024BD4 09:8BC4: 60        RTS
-
-
-
 bra_8BC5:
                                        ;LDA #$07
                                        ;STA $8000
@@ -1925,6 +1908,20 @@ C - - - - - 0x024BC2 09:8BB2: 9D 14 06  STA ram_plr_время_анимации_
                                         LDA #con_prg_bank + $13
                                         STA $8001
                                         RTS
+
+
+
+sub_8BB6_уменьшить_на_25_процентов_если_turbo:
+C - - - - - 0x024BC6 09:8BB6: AC 26 01  LDY ram_option_speed
+C - - - - - 0x024BC9 09:8BB9: F0 09     BEQ bra_8BC4_RTS
+; if turbo
+C - - - - - 0x024BCB 09:8BBB: 85 18     STA ram_0018
+C - - - - - 0x024BCD 09:8BBD: 46 18     LSR ram_0018
+C - - - - - 0x024BCF 09:8BBF: 46 18     LSR ram_0018
+C - - - - - 0x024BD1 09:8BC1: 38        SEC
+C - - - - - 0x024BD2 09:8BC2: E5 18     SBC ram_0018
+bra_8BC4_RTS:
+C - - - - - 0x024BD4 09:8BC4: 60        RTS
 
 
 
