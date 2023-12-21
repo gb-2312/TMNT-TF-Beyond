@@ -716,8 +716,8 @@ tbl_A8A6:
 
 
 
-loc_AA1E_расчет_автобаланса_с_индексом:
-sub_AA1E_расчет_автобаланса_с_индексом:
+loc_AA1A_расчет_автобаланса_с_индексом:
+sub_AA1A_расчет_автобаланса_с_индексом:
 C - - - - - 0x02EA2A 0B:AA1A: 8A        TXA
 C - - - - - 0x02EA2B 0B:AA1B: 49 01     EOR #$01
 C - - - - - 0x02EA2D 0B:AA1D: A8        TAY
@@ -768,7 +768,7 @@ C - - - - - 0x02EA21 0B:AA11: F0 17     BCS bra_AA2A
 C - - - - - 0x02EA23 0B:AA13: AD 2B 01  LDA ram_option_misc
 C - - - - - 0x02EA26 0B:AA16: 29 08     AND #$08
 C - - - - - 0x02EA28 0B:AA18: F0 12     BEQ bra_AA8C_RTS
-                                        JMP loc_AA1E_расчет_автобаланса_с_индексом
+                                        JMP loc_AA1A_расчет_автобаланса_с_индексом
 
 
 
@@ -782,7 +782,7 @@ C - - - - - 0x02EA6D 0B:AA5D: C0 01     CMP #$01
 C - - - - - 0x02EA6F 0B:AA5F: D0 2B     BNE bra_AA8C_RTS
 C - - - - - 0x02EA71 0B:AA61: 86 9C     TXA
                                         PHA
-                                        JSR sub_AA1E_расчет_автобаланса_с_индексом
+                                        JSR sub_AA1A_расчет_автобаланса_с_индексом
                                         TXA
                                         TAY
 C - - - - - 0x02EA83 0B:AA73: 49 01     EOR #$01
