@@ -6508,7 +6508,7 @@ tbl_A7E2_приоритеты_атак:
 - D 1 - - - 0x02681D 09:A80D: 01        .byte $01   ; 2C con_0552_shred_нога_в_воздухе
 - D 1 - - - 0x02681E 09:A80E: 04        .byte $04   ; 2D con_0552_shred_нога_сидя
 - D 1 - - - 0x02681F 09:A80F: 01        .byte $01   ; 2E con_0552_shred_нога_антиэйр
-                                        .byte $04   ; 2F con_0552_hot_ручка_быстрая
+                                        .byte $03   ; 2F con_0552_hot_ручка_быстрая
                                         .byte $00   ; 30 rezerv
                                         .byte $00   ; 31 rezerv
                                         .byte $00   ; 32 rezerv

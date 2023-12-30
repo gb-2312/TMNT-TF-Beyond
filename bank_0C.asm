@@ -521,10 +521,10 @@ _off010_9605_22_hot_нога_антиэйр:
 _off010_9605_2E_hot_ручка_быстрая:
                                         .byte $FE, con_075C_07
                                         .byte $8D, $05
-                                        .byte $FF, con_0552_00
                                         .byte $FF, con_0552_hot_ручка_быстрая
-                                        .byte $B7, $08
-                                        .byte $82, $05
+                                        .byte $B7, $06
+                                        .byte $82, $03
+                                        .byte $82, $03
                                         .byte $00
 
 
@@ -768,7 +768,7 @@ tbl_A70E_рейндж_Y_нормалов:
 - D 1 - - - 0x026749 09:A739: F6        .byte $F6   ; 2C con_0552_shred_нога_в_воздухе
 - D 1 - - - 0x02674A 09:A73A: EF        .byte $EF   ; 2D con_0552_shred_нога_сидя
 - D 1 - - - 0x02674B 09:A73B: C0        .byte $C0   ; 2E con_0552_shred_нога_антиэйр
-                                        .byte $DC   ; 2F con_0552_hot_ручка_быстрая
+                                        .byte $D6   ; 2F con_0552_hot_ручка_быстрая
                                         .byte $00   ; 30 rezerv
                                         .byte $00   ; 31 rezerv
                                         .byte $00   ; 32 rezerv
@@ -834,7 +834,7 @@ tbl_A73D_активные_кадры_ударов:
 - D 1 - - - 0x026778 09:A768: 10        .byte $10   ; 2C con_0552_shred_нога_в_воздухе
 - D 1 - - - 0x026779 09:A769: 05        .byte $05   ; 2D con_0552_shred_нога_сидя
 - D 1 - - - 0x02677A 09:A76A: 0D        .byte $0D   ; 2E con_0552_shred_нога_антиэйр
-                                        .byte $08   ; 2F con_0552_hot_ручка_быстрая
+                                        .byte $06   ; 2F con_0552_hot_ручка_быстрая
                                         .byte $00   ; 30 rezerv
                                         .byte $00   ; 31 rezerv
                                         .byte $00   ; 32 rezerv
